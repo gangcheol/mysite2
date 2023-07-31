@@ -25,5 +25,8 @@
   },
   "posts/quarto test/test3.ipynb": {
     "test3.html": "5e882ac7"
+  },
+  "posts/quarto test/connect.ipynb": {
+    "connect.html": "c8326b0c"
   }
 }

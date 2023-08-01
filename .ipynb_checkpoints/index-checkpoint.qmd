@@ -1,5 +1,5 @@
 ---
-title: "GangCheol"
+title: "DX track"
 listing:
   contents: posts
   sort: [date desc, title]

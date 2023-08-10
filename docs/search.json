@@ -35,11 +35,74 @@
     "text": "- quarto 원리 : 작성한 ipynb파일 html파일로 출력해서 그 html파일들로 웹사이트를 구성하는 것1\n- step1. posts와 docs라는 폴더를 만들자\n\nposts는 내가 작성하는 ipynb파일들이 들어갈거고, docs에는 html파일이 들어갈 것이다.\n\n- step2. index 파일 수정\n\nindex파일은 뭐랄까 네비게이터 역할이랄까 아래와 같이 바꿔주자\n\n---\ntitle: \"GC site\"\nlisting:\n  contents: posts\n  sort: [date desc, title]\n  type: table\n  categories: true\n  sort-ui: true\n  filter-ui: true\npage-layout: full\ntitle-block-banner: true\n---\n- step3. _quarto.uml 파일 수정 \\(\\to\\) 템플릿이랑 디자인 이쁜거 많으니 본인 입맛에 맞게 수정하면 됩니당\nproject:\n  type: website\n  output-dir : docs  \nwebsite:\n  title: \"GC site\"\n  page-navigation: true\n  navbar:\n    right:\n      - icon : github\n        href : https://github.com/gangcheol/\n  sidebar:\n    style: \"docked\"\n    search: True\n    contents: auto\n    \nformat:\n  html:\n    css: styles.css\n    toc: true\n    code-fold : False\n    code-line-numbers : True\n    code-copy : True\n\ntheme :\n  light : flatly\n  \neditor : visual\n- step4. 앞서 만든 posts폴더에 아무 파일이나 만들어보자\n\n- step5. 그 후 다시 터미널에서 내가 생성한 폴더로 이동\n필자의 경우는 cd gcsite\n- step6. quarto render 입력\n- step7. github desktop보면 난리가 났을 것이다. 막 일을 좀 많이 했음.\n\n로컬하고 연결되어 있으니 로컬이 하고 있는 걸 다적어서 그럼\n\n\n\n저기 내가 밑에 이러한 기록을 init이라고 써놨다. 저건 내가 로컬에서 한 행동을 내 깃허브 로컬에 저장할 건데, 그 행동을 init이라고 쓴거\n이제 저 Commit to main 버튼을 눌러주고 가운데 화면에 뜨는 push origin을 눌러주자!\n\n- 마지막!! 아까 깃허브 로컬 셋팅에서 pases란에 잠시 후에 들어가보면 다음과 같은 것을 볼 수 있다.\n\n- 저 링크로 들어가면 내가 만든 웹사이트 초안을 볼 수 있다.\n- 링크"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DX track",
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html",
+    "title": "00. Python Basic (1)",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nAug 9, 2023\n\n\n00. Python basic\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
+    "text": "from google.colab import drive\ndrive.mount('/content/drive')\n\nDrive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount(\"/content/drive\", force_remount=True).\n\n\n\ncd /content/drive/MyDrive/Colab Notebooks/DX/1wk\n\n/content/drive/MyDrive/Colab Notebooks/DX/1wk"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
+    "title": "00. Python Basic (1)",
+    "section": "ex1) 홀수 짝수 구분",
+    "text": "ex1) 홀수 짝수 구분\n\nlst = list(range(1,10))\nlst\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nsol\n\nodd = [i for i in lst if i % 2 == 1]\nevn = [i for i in lst if i % 2 == 0]\n\n\nodd\n\n[1, 3, 5, 7, 9]\n\n\n\nevn\n\n[2, 4, 6, 8]"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
+    "title": "00. Python Basic (1)",
+    "section": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기",
+    "text": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기\n\nsol\n\nnum  = int(input())\n\na = num // 100\n\nb = (num - a*100) // 10\n\nc = num-(a*100+b*10)\n\nprint(\"백의자리는 {}, 십의자리는 {}, 일의 자리는 {}\".format(a,b,c))\n\n254\n백의자리는 2, 십의자리는 5, 일의 자리는 4"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
+    "title": "00. Python Basic (1)",
+    "section": "ex3) 합과 평균",
+    "text": "ex3) 합과 평균\n\nsol\n\nimport numpy as np\n\n\ns = list(range(1,10))\n\n\nsumm = sum(s)\n\nave = np.mean(s)\n\n\nprint(\"합 : {}, 평균: {}\".format(summ,ave))\n\n합 : 45, 평균: 5.0"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
+    "title": "00. Python Basic (1)",
+    "section": "ex4) 비교 연산자",
+    "text": "ex4) 비교 연산자\n- 숫자 비교\n\na = list(range(1,11))\nb = list(range(11,21))\n\n\na, b\n\n([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [11, 12, 13, 14, 15, 16, 17, 18, 19, 20])\n\n\n\n[a[i] == b[i] for i in range(10)]\n\n[False, False, False, False, False, False, False, False, False, False]\n\n\n- 문자 비교\n\n(\"A\" == \"a\"), (\"A\" &gt;\"a\")\n\n(False, False)\n\n\n\nord(\"A\"), ord(\"a\")\n\n(65, 97)"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
+    "title": "00. Python Basic (1)",
+    "section": "대표적인 자료형",
+    "text": "대표적인 자료형\n\n\n\nint\nfloat\nbool\nstr\ncomplex\n\n\n\n\n3\n3.14\nTrue\n“강철”\n3+2j\n\n\n5\n3.141551\nFalse\n“이강철”\n2-2j"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#형태변환",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#형태변환",
+    "title": "00. Python Basic (1)",
+    "section": "형태변환",
+    "text": "형태변환\n\nfloat \\(\\to\\) int\n- 아래의 경우는 형태변환이 되었으나 정보의 손실이 발생한 것임\n\na = 3.4\n\n_a = int(a)\n\n\ntype(a), type(_a)\n\n(float, int)\n\n\n\n\n\\(\\text{bool} \\to \\text{(float, int)}\\,\\text{and}\\, \\text{(float, int)} \\to \\text{bool}\\)\n- bool \\(\\to\\) int, float\n\na = True\n_a1 = float(a)\n_a2 = int(a)\n\n\ntype(a), type(_a1), type(_a2)\n\n(bool, float, int)\n\n\n- int, float \\(\\to\\) bool\n\na1 = 1\na2 = 1.0\n\n_a1 = bool(a1)\n_a2 = bool(a2)\n\n\n_a1, _a2, type(_a1), type(_a2)\n\n(True, True, bool, bool)\n\n\n- str \\(\\to\\) bool\n\nbool(\"강철\")\n\nTrue\n\n\n\nbool(\"\")\n\nFalse\n\n\n\n\n암묵적 형변환\n\nTrue +1\n\n2\n\n\n\n1*1.0\n\n1.0\n\n\n\nTrue + True\n\n2\n\n\n\n\n형태변환이 불가능한 경우\n\ncomplex1 = 3+ 0j\ncomplex1\n\n(3+0j)\n\n\nfloat(complex1) ## 에러 발생\n\n\n문자열의 사칙연산(O)\n\n\"X\" + \"2\"\n\n'X2'\n\n\n\n\"X\"*2\n\n'XX'\n\n\n\n\n문자열의 사칙연산(x)\n\"X\" * \"Y\"\n\n\"X\" - \"2\"\n\n\"X\" / \"y\"\n\n- 즉 더하기를 제외한 나머지 사칙연산은 문자형 변수에 적용되지 않는다."
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#날짜형-자료",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#날짜형-자료",
+    "title": "00. Python Basic (1)",
+    "section": "날짜형 자료",
+    "text": "날짜형 자료\n\nfrom datetime import datetime\n\n\nnow = datetime.now()\n\n\nnow\n\ndatetime.datetime(2023, 8, 9, 5, 45, 24, 616085)\n\n\n\nprint(now)\n\n2023-08-09 05:45:24.616085\n\n\n\nprint(\"{}년 {}월 {}일 {}시 {}분 {}초\".format(now.year,now.month,now.day,now.hour,now.minute,now.second))\n\n2023년 8월 9일 5시 45분 24초"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#기타-연산",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#기타-연산",
+    "title": "00. Python Basic (1)",
+    "section": "기타 연산",
+    "text": "기타 연산\n\na = \"ABCD\"\nb = \"efgh\"\n\n\na.lower(),b.upper()\n\n('abcd', 'EFGH')"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
+    "title": "00. Python Basic (1)",
+    "section": "f-string(요즘 쓰는 방식)",
+    "text": "f-string(요즘 쓰는 방식)\n\nex1\n\nn = \"이강철\"\na = 28\ns = 100.213141\n\n\nprint(f\"{a}살의 {n}의 점수는 {s:.2f}입니다. \")\n\n28살의 이강철의 점수는 100.00입니다. \n\n\n\n\nex2\n\nn = \"이강철\"\na = 28\ns1 = 100.2\ns2 = 100.3\ns3 = 100.4\ns4 = 100.5\ns5 = 100.6\n\n\ntxt= f'''\n이름 : {n}\n\n연령대 : {age}\n\n점수 : {s1},{s2},{s3},{s4},{s5}\n\n합계 : {ts:,.0f} /평균 : {avg:,.2f}\n'''`\n\nprint(txt)\n\n\n이름 : 이강철\n\n연령대 : 20\n\n점수 : 100.2,100.3,100.4,100.5,100.6\n\n합계 : 502 /평균 : 100.40"
   },
   {
     "objectID": "about.html#education",
@@ -77,73 +140,94 @@
     "text": "Conctact\n- rkdcjf8232@gmail.com"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html",
-    "title": "00. Python basic",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DX track",
     "section": "",
-    "text": "from google.colab import drive\ndrive.mount('/content/drive')\n\nDrive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount(\"/content/drive\", force_remount=True).\n\n\n\ncd /content/drive/MyDrive/Colab Notebooks/DX/1wk\n\n/content/drive/MyDrive/Colab Notebooks/DX/1wk"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nAug 10, 2023\n\n\n01. Python Basic (2)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\n00. Python Basic (1)\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html#ex1-홀수-짝수-구분",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html#ex1-홀수-짝수-구분",
-    "title": "00. Python basic",
-    "section": "ex1) 홀수 짝수 구분",
-    "text": "ex1) 홀수 짝수 구분\n\nlst = list(range(1,10))\nlst\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nsol\n\nodd = [i for i in lst if i % 2 == 1]\nevn = [i for i in lst if i % 2 == 0]\n\n\nodd\n\n[1, 3, 5, 7, 9]\n\n\n\nevn\n\n[2, 4, 6, 8]"
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html",
+    "title": "01. Python Basic (2)",
+    "section": "",
+    "text": "from google.colab import drive\ndrive.mount('/content/drive')\n\nMounted at /content/drive\n\n\n\ncd /content/drive/MyDrive/Colab Notebooks/DX/1wk\n\n/content/drive/MyDrive/Colab Notebooks/DX/1wk\n\n\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
-    "title": "00. Python basic",
-    "section": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기",
-    "text": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기\n\nsol\n\nnum  = int(input())\n\na = num // 100\n\nb = (num - a*100) // 10\n\nc = num-(a*100+b*10)\n\nprint(\"백의자리는 {}, 십의자리는 {}, 일의 자리는 {}\".format(a,b,c))\n\n254\n백의자리는 2, 십의자리는 5, 일의 자리는 4"
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#슬라이싱-1",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#슬라이싱-1",
+    "title": "01. Python Basic (2)",
+    "section": "슬라이싱 1",
+    "text": "슬라이싱 1\n\nn = len(txt)\ntxt[2:n]\n\n' 이름은 이강철입니다.'\n\n\n- 참고 역슬레시는 인데싱에서 제외된다.\n\nprint(\"he's\")\nprint(\"he\\'s\")\n\nhe's\nhe's"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html#ex3-합과-평균",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html#ex3-합과-평균",
-    "title": "00. Python basic",
-    "section": "ex3) 합과 평균",
-    "text": "ex3) 합과 평균\n\nsol\n\nimport numpy as np\n\n\ns = list(range(1,10))\n\n\nsumm = sum(s)\n\nave = np.mean(s)\n\n\nprint(\"합 : {}, 평균: {}\".format(summ,ave))\n\n합 : 45, 평균: 5.0"
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#슬라이싱-2",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#슬라이싱-2",
+    "title": "01. Python Basic (2)",
+    "section": "슬라이싱 2",
+    "text": "슬라이싱 2\n- 구조 : txt[start : end : stride]\n\ntxt\n\n'나의 이름은 이강철입니다.'\n\n\n\nprint(txt[0:n:2])\nprint(txt[::2])\nprint(txt[::3])\nprint(txt[::-1])\nprint(txt[::-2])\n\n나 름 강입다\n나 름 강입다\n나이 철다\n.다니입철강이 은름이 의나\n.니철이은이의"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html#ex4-비교-연산자",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html#ex4-비교-연산자",
-    "title": "00. Python basic",
-    "section": "ex4) 비교 연산자",
-    "text": "ex4) 비교 연산자\n- 숫자 비교\n\na = list(range(1,11))\nb = list(range(11,21))\n\n\na, b\n\n([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [11, 12, 13, 14, 15, 16, 17, 18, 19, 20])\n\n\n\n[a[i] == b[i] for i in range(10)]\n\n[False, False, False, False, False, False, False, False, False, False]\n\n\n- 문자 비교\n\n(\"A\" == \"a\"), (\"A\" &gt;\"a\")\n\n(False, False)\n\n\n\nord(\"A\"), ord(\"a\")\n\n(65, 97)"
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#count",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#count",
+    "title": "01. Python Basic (2)",
+    "section": "Count",
+    "text": "Count\n\ntxt\n\n'나의 이름은 이강철입니다.'\n\n\n- 공백 세기\n\ntxt.count(\" \")\n\n2\n\n\n- 특장 문자 세기\n\ntxt.count(\"이\")\n\n2\n\n\n- 리스트나 튜플로 넘겨주면 에러가 발생\n\ntxt.count((\"이\",\" \"))\n\nTypeError: ignored\n\n\n- 문자가 아닌 문자열 카운트\n\nprint(txt)\nprint(txt.count(\"이강철\"))\n\n나의 이름은 이강철입니다.\n1"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html#대표적인-자료형",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html#대표적인-자료형",
-    "title": "00. Python basic",
-    "section": "대표적인 자료형",
-    "text": "대표적인 자료형\n\n\n\nint\nfloat\nbool\nstr\ncomplex\n\n\n\n\n3\n3.14\nTrue\n“강철”\n3+2j\n\n\n5\n3.141551\nFalse\n“이강철”\n2-2j"
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#find",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#find",
+    "title": "01. Python Basic (2)",
+    "section": "find",
+    "text": "find\n- 특정 문자의 인덱싱을 반환\n\nprint(txt)\nprint(txt.find(\"이\"))\nprint(txt.find(\"이강철\"))\n\n나의 이름은 이강철입니다.\n3\n7\n\n\n- find함수에 문제점은 범위를 지정해주지 않으면 찾고자 하는 문자의 첫 인덱스만 반환한다.\n- 특정 문자열을 찾을때 문자열 시작지점과 끝지점을 정해서 인덱싱\n\nprint(txt)\nprint(txt.find(\"이\",6,n))\n\n나의 이름은 이강철입니다.\n7"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html#형태변환",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html#형태변환",
-    "title": "00. Python basic",
-    "section": "형태변환",
-    "text": "형태변환\n\nfloat \\(\\to\\) int\n- 아래의 경우는 형태변환이 되었으나 정보의 손실이 발생한 것임\n\na = 3.4\n\n_a = int(a)\n\n\ntype(a), type(_a)\n\n(float, int)\n\n\n\n\n\\(\\text{bool} \\to \\text{(float, int)}\\,\\text{and}\\, \\text{(float, int)} \\to \\text{bool}\\)\n- bool \\(\\to\\) int, float\n\na = True\n_a1 = float(a)\n_a2 = int(a)\n\n\ntype(a), type(_a1), type(_a2)\n\n(bool, float, int)\n\n\n- int, float \\(\\to\\) bool\n\na1 = 1\na2 = 1.0\n\n_a1 = bool(a1)\n_a2 = bool(a2)\n\n\n_a1, _a2, type(_a1), type(_a2)\n\n(True, True, bool, bool)\n\n\n- str \\(\\to\\) bool\n\nbool(\"강철\")\n\nTrue\n\n\n\nbool(\"\")\n\nFalse\n\n\n\n\n암묵적 형변환\n\nTrue +1\n\n2\n\n\n\n1*1.0\n\n1.0\n\n\n\nTrue + True\n\n2\n\n\n\n\n형태변환이 불가능한 경우\n\ncomplex1 = 3+ 0j\ncomplex1\n\n(3+0j)\n\n\nfloat(complex1) ## 에러 발생\n\n\n문자열의 사칙연산(O)\n\n\"X\" + \"2\"\n\n'X2'\n\n\n\n\"X\"*2\n\n'XX'\n\n\n\n\n문자열의 사칙연산(x)\n\"X\" * \"Y\"\n\n\"X\" - \"2\"\n\n\"X\" / \"y\"\n\n- 즉 더하기를 제외한 나머지 사칙연산은 문자형 변수에 적용되지 않는다."
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#잠깐-다른-이야기",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#잠깐-다른-이야기",
+    "title": "01. Python Basic (2)",
+    "section": "잠깐 다른 이야기!",
+    "text": "잠깐 다른 이야기!\n- 아래를 잘 살펴보자.\n\na = 3\nb = 3\nprint(id(a),id(b))\na +=1\nprint(id(a))\na *=2\nprint(id(a))\na =a-5\nprint(id(a))\n\n138123241308464 138123241308464\n138123241308496\n138123241308624\n138123241308464\n\n\n- a변수와 b변수에 3이라는 값을 할당하고, 각 메모리 주소를 출력하였다.\n- 질문 1 : 사칙 연산시 메모리 주소가 바뀐다?\n- 질문 2 : 그런데 동일한 값을 할당하면 같은 주소가 할당된다?\n- 질문 3 : 그런데 마지막에 a에서 5를 빼서 처음에 할당한 3과 동일하게 했더니 처음과 동일한 주소가 나왔다?\n- 내 생각 : 각각의 값(할당한 정수)들은 이미 각자의 고유한 주소를 가지고 있고, 변수들은 그 값들을 참조하는 포인터 역할을 하는 것 같다. 또한, 이는 정수 뿐이 아니라 단일 값을 가지는 모든 형태의 해당된다.\n\n문자열 주소확인\n\ns = \"apple\"\nprint(s)\nprint(id(s))\n\nprint(s.upper())\nprint(id(s.upper()))\n\napple\n138121951987056\nAPPLE\n138121951989872\n\n\n\n\n그렇다면 리스트도?\n\na = list(range(5))\nprint(a)\nprint(id(a))\na[1] = 100\nprint(a)\nprint(id(a))\n\n[0, 1, 2, 3, 4]\n138121952117504\n[0, 100, 2, 3, 4]\n138121952117504\n\n\n- 리스트는 바뀌지 않았다!!"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html#날짜형-자료",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html#날짜형-자료",
-    "title": "00. Python basic",
-    "section": "날짜형 자료",
-    "text": "날짜형 자료\n\nfrom datetime import datetime\n\n\nnow = datetime.now()\n\n\nnow\n\ndatetime.datetime(2023, 8, 9, 5, 45, 24, 616085)\n\n\n\nprint(now)\n\n2023-08-09 05:45:24.616085\n\n\n\nprint(\"{}년 {}월 {}일 {}시 {}분 {}초\".format(now.year,now.month,now.day,now.hour,now.minute,now.second))\n\n2023년 8월 9일 5시 45분 24초"
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#capitalize-title",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#capitalize-title",
+    "title": "01. Python Basic (2)",
+    "section": "capitalize & title",
+    "text": "capitalize & title\n- 첫글자만 대문자로 변환\n\na=\"i like apple\"\n\nprint(a.capitalize())\nprint(a.title())\n\nI like apple\nI Like Apple"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html#기타-연산",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html#기타-연산",
-    "title": "00. Python basic",
-    "section": "기타 연산",
-    "text": "기타 연산\n\na = \"ABCD\"\nb = \"efgh\"\n\n\na.lower(),b.upper()\n\n('abcd', 'EFGH')"
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#rjust-ljust-center",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#rjust-ljust-center",
+    "title": "01. Python Basic (2)",
+    "section": "rjust, ljust, center",
+    "text": "rjust, ljust, center\n- 각각, 오른쪽, 왼쪽, 중앙정렬을 하고 공백을 만든다\n\na = \"apple\"\nprint(\"[\"+a.rjust(7)+\"]\",sep=\"\")\nprint(\"[\",a.ljust(7),\"]\",sep=\"\")\nprint(\"[\",a.center(7),\"]\",sep=\"\")\n\n[  apple]\n[apple  ]\n[ apple ]\n\n\n- 근데 문장 단위로는 적용되지 않는다….\n\na = \"I like apple\"\nprint(\"[\"+a.rjust(7)+\"]\",sep=\"\")\nprint(\"[\",a.ljust(7),\"]\",sep=\"\")\nprint(\"[\",a.center(7),\"]\",sep=\"\")\n\n[I like apple]\n[I like apple]\n[I like apple]\n\n\n- 핳 근데 문장길이가 7보다 커서 그런거였당\n\na = \"I like apple\"\nprint(\"[\"+a.rjust(19)+\"]\",sep=\"\")\nprint(\"[\",a.ljust(19),\"]\",sep=\"\")\nprint(\"[\",a.center(19),\"]\",sep=\"\")\n\n[       I like apple]\n[I like apple       ]\n[    I like apple   ]\n\n\n- 즉, 전달되는 매개변수는 전체공간을 의미하고, 각각의 메소드는 어디로 정렬할지 정해준다!"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python basic.html#f-string요즘-쓰는-방식",
-    "href": "posts/DX/1wk/2023-08-09-00. Python basic.html#f-string요즘-쓰는-방식",
-    "title": "00. Python basic",
-    "section": "f-string(요즘 쓰는 방식)",
-    "text": "f-string(요즘 쓰는 방식)\n\nex1\n\nn = \"이강철\"\na = 28\ns = 100.213141\n\n\nprint(f\"{a}살의 {n}의 점수는 {s:.2f}입니다. \")\n\n28살의 이강철의 점수는 100.00입니다. \n\n\n\n\nex2\n\nn = \"이강철\"\na = 28\ns1 = 100.2\ns2 = 100.3\ns3 = 100.4\ns4 = 100.5\ns5 = 100.6\n\n\ntxt= f'''\n이름 : {n}\n\n연령대 : {age}\n\n점수 : {s1},{s2},{s3},{s4},{s5}\n\n합계 : {ts:,.0f} /평균 : {avg:,.2f}\n'''`\n\nprint(txt)\n\n\n이름 : 이강철\n\n연령대 : 20\n\n점수 : 100.2,100.3,100.4,100.5,100.6\n\n합계 : 502 /평균 : 100.40"
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#replace",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#replace",
+    "title": "01. Python Basic (2)",
+    "section": "replace",
+    "text": "replace\n- 값을 바꾼다고 객체가 변환되지는 않는다.\n\ntxt = \"사과\"\nprint(txt.replace(\"사과\",\"바나나\"))\nprint(txt)\n\n바나나\n사과\n\n\n- replace 함수를 자주 사용하는 이유!\n- 실제 데이터 전처리 시 아래와 같은 구조가 많다.\nnumber = \"123,456\"\n이러한 상황이 발생했을 때 replace 함수를 사용\n\nnumber =\"123,456\"\n\nint(number.replace(\",\",\"\"))\n\n123456"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#strip",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#strip",
+    "title": "01. Python Basic (2)",
+    "section": "strip",
+    "text": "strip\n- 텍스트 문자열에서 양쪽 끝에 특정 문자(공백포함)를 제거\n\ntxt = \"  ###사과%%%%  \"\nprint(txt)\nprint(txt.strip(\" \"))\nprint(txt.strip(\"#%\"))  ## 공백이 포함되어 있어서 지워지지 않는 것 같다.\nprint(txt.strip(\" #%\")) ## 공백을 포함하니 깔끔하게 지워졌다.\n\n  ###사과%%%%  \n###사과%%%%\n  ###사과%%%%  \n사과"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#split",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#split",
+    "title": "01. Python Basic (2)",
+    "section": "split",
+    "text": "split\n\n\nCode\ndf = pd.read_csv(\"https://raw.githubusercontent.com/guebin/2021DV/master/_notebooks/covid19_20211202.csv\").iloc[1:,:]\ndf = df.set_index(\"일자\").iloc[:,1:18]\n\ndf = df.reset_index()\ndt = df[\"일자\"].tolist()\n\n\n\ndt[:5]\n\n['2020-01-20', '2020-01-21', '2020-01-22', '2020-01-23', '2020-01-24']\n\n\n\nyear = [i.split(\"-\")[0] for i in dt]\nmonth = [i.split(\"-\")[1] for i in dt]\nday = [i.split(\"-\")[2] for i in dt]\n\n\nnew_df = pd.DataFrame({\"year\": year,\n                       \"month\": month,\n                       \"day\" : day})\nnew_df.head()\n\n\n\n  \n    \n      \n\n\n\n\n\n\nyear\nmonth\nday\n\n\n\n\n0\n2020\n01\n20\n\n\n1\n2020\n01\n21\n\n\n2\n2020\n01\n22\n\n\n3\n2020\n01\n23\n\n\n4\n2020\n01\n24"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#join",
+    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#join",
+    "title": "01. Python Basic (2)",
+    "section": "join",
+    "text": "join\n\ndate = [(\"-\").join([year[i],month[i],day[i]]) for i in range(len(dt))]\n\n\ndate[:5]\n\n['2020-01-20', '2020-01-21', '2020-01-22', '2020-01-23', '2020-01-24']"
   }
 ]

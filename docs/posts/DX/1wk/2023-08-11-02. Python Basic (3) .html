@@ -307,6 +307,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#for문" id="toc-for문" class="nav-link" data-scroll-target="#for문">for문</a></li>
   </ul></li>
+  <li><a href="#딕셔너리" id="toc-딕셔너리" class="nav-link" data-scroll-target="#딕셔너리">딕셔너리</a>
+  <ul class="collapse">
+  <li><a href="#선언" id="toc-선언" class="nav-link" data-scroll-target="#선언">선언</a>
+  <ul class="collapse">
+  <li><a href="#방법-1.-가장-일반적" id="toc-방법-1.-가장-일반적" class="nav-link" data-scroll-target="#방법-1.-가장-일반적">방법 1. 가장 일반적</a></li>
+  <li><a href="#방법-2.-dictstarstar" id="toc-방법-2.-dictstarstar" class="nav-link" data-scroll-target="#방법-2.-dictstarstar">방법 2. dict(<span class="math inline">\(\star\star\)</span>)</a></li>
+  <li><a href="#방법-3.-중첩된-리스트" id="toc-방법-3.-중첩된-리스트" class="nav-link" data-scroll-target="#방법-3.-중첩된-리스트">방법 3. 중첩된 리스트</a></li>
+  <li><a href="#방법-4.-튜플" id="toc-방법-4.-튜플" class="nav-link" data-scroll-target="#방법-4.-튜플">방법 4. 튜플</a></li>
+  </ul></li>
+  <li><a href="#원소-추출" id="toc-원소-추출" class="nav-link" data-scroll-target="#원소-추출">원소 추출</a>
+  <ul class="collapse">
+  <li><a href="#ex1.-딕셔너리를-쓴느-이유" id="toc-ex1.-딕셔너리를-쓴느-이유" class="nav-link" data-scroll-target="#ex1.-딕셔너리를-쓴느-이유">ex1. 딕셔너리를 쓴느 이유?</a></li>
+  </ul></li>
+  <li><a href="#원소-추가-1" id="toc-원소-추가-1" class="nav-link" data-scroll-target="#원소-추가-1">원소 추가</a></li>
+  <li><a href="#원소-삭제-1" id="toc-원소-삭제-1" class="nav-link" data-scroll-target="#원소-삭제-1">원소 삭제</a></li>
+  <li><a href="#연산" id="toc-연산" class="nav-link" data-scroll-target="#연산">연산</a></li>
+  <li><a href="#특수-기능" id="toc-특수-기능" class="nav-link" data-scroll-target="#특수-기능">특수 기능</a></li>
+  <li><a href="#for-dictstarstar" id="toc-for-dictstarstar" class="nav-link" data-scroll-target="#for-dictstarstar">for + dict(<span class="math inline">\(\star\star\)</span>)</a></li>
+  <li><a href="#list-to-dict.values" id="toc-list-to-dict.values" class="nav-link" data-scroll-target="#list-to-dict.values">list <span class="math inline">\(\to\)</span> dict.values</a>
+  <ul class="collapse">
+  <li><a href="#sol" id="toc-sol" class="nav-link" data-scroll-target="#sol">sol</a></li>
+  </ul></li>
+  <li><a href="#dict.values-to-list" id="toc-dict.values-to-list" class="nav-link" data-scroll-target="#dict.values-to-list">dict.values <span class="math inline">\(\to\)</span> list</a>
+  <ul class="collapse">
+  <li><a href="#sol-1" id="toc-sol-1" class="nav-link" data-scroll-target="#sol-1">sol</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#exercise-link" id="toc-exercise-link" class="nav-link" data-scroll-target="#exercise-link">Exercise Link</a></li>
   </ul>
 </nav>
@@ -713,6 +740,341 @@ hodong</code></pre>
 </div>
 </div>
 <hr>
+</section>
+</section>
+<section id="딕셔너리" class="level1">
+<h1>딕셔너리</h1>
+<p><code>-</code> 딕셔너리는 <code>key</code>값과 <code>value</code>로 구성되어 있다.</p>
+<p><code>-</code> 딕셔너리의 키는 중복을 허용하지 않는다.</p>
+<div class="cell" data-execution_count="187">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a>{<span class="st">"a"</span> : [<span class="dv">1</span>,<span class="dv">2</span>],<span class="st">"a"</span> : [<span class="dv">3</span>,<span class="dv">4</span>],<span class="st">"b"</span> : [<span class="dv">5</span>,<span class="dv">6</span>] }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="187">
+<pre><code>{'a': [3, 4], 'b': [5, 6]}</code></pre>
+</div>
+</div>
+<p><code>-</code> 또한,<code>리스트,dict,set</code>는 딕셔너리의 키값이 될 수 없음</p>
+<div class="cell" data-execution_count="191">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a>dct <span class="op">=</span> {[<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>]: <span class="st">'guebin'</span>, [<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">40</span>]: <span class="st">'hanni'</span>} </span>
+<span id="cb96-2"><a href="#cb96-2"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: unhashable type: 'list'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="196">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a>dct <span class="op">=</span> {{<span class="st">"a"</span>:<span class="dv">1</span>}: <span class="st">'guebin'</span>, {<span class="st">"b"</span>:<span class="dv">1</span>}: <span class="st">'hanni'</span>} </span>
+<span id="cb98-2"><a href="#cb98-2"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: unhashable type: 'dict'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="195">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a>dct <span class="op">=</span> {{<span class="st">'샌드위치'</span>,<span class="st">'딸기우유'</span>}:<span class="st">'점심'</span>, {<span class="st">'불고기'</span>,<span class="st">'된장찌개'</span>,<span class="st">'김'</span>,<span class="st">'콩자반'</span>}: <span class="st">'저녁'</span>}</span>
+<span id="cb100-2"><a href="#cb100-2"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: unhashable type: 'set'</code></pre>
+</div>
+</div>
+<p><code>-</code> 튜플은 가능!</p>
+<div class="cell" data-execution_count="194">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1"></a>dct <span class="op">=</span> {(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>): <span class="st">'guebin'</span>, (<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">40</span>): <span class="st">'hanni'</span>} </span>
+<span id="cb102-2"><a href="#cb102-2"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="194">
+<pre><code>{(10, 20, 30, 40): 'guebin', (10, 20, 25, 40): 'hanni'}</code></pre>
+</div>
+</div>
+<p><code>-</code> 순서대로 정리된 자료를 검색할 때는 시퀀스(리스트,튜플,문자열)이 유리하나, 키워드로 검색하고 싶을때는 딕셔너리 타입이 유리하다.</p>
+<p><code>-</code> 순서가 의미가 없어, 인덱싱과 슬라이싱이 의미가 없다.</p>
+<section id="선언" class="level2">
+<h2 class="anchored" data-anchor-id="선언">선언</h2>
+<section id="방법-1.-가장-일반적" class="level3">
+<h3 class="anchored" data-anchor-id="방법-1.-가장-일반적">방법 1. 가장 일반적</h3>
+<div class="cell" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a>dct<span class="op">=</span>  {<span class="st">"a"</span> : <span class="dv">1</span>, <span class="st">"b"</span>:<span class="dv">2</span>}</span>
+<span id="cb104-2"><a href="#cb104-2"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="111">
+<pre><code>{'a': 1, 'b': 2}</code></pre>
+</div>
+</div>
+</section>
+<section id="방법-2.-dictstarstar" class="level3">
+<h3 class="anchored" data-anchor-id="방법-2.-dictstarstar">방법 2. dict(<span class="math inline">\(\star\star\)</span>)</h3>
+<div class="cell" data-execution_count="112">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a>dct <span class="op">=</span> <span class="bu">dict</span>(a<span class="op">=</span><span class="dv">1</span>, b<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb106-2"><a href="#cb106-2"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="112">
+<pre><code>{'a': 1, 'b': 2}</code></pre>
+</div>
+</div>
+</section>
+<section id="방법-3.-중첩된-리스트" class="level3">
+<h3 class="anchored" data-anchor-id="방법-3.-중첩된-리스트">방법 3. 중첩된 리스트</h3>
+<div class="cell" data-execution_count="113">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>dct <span class="op">=</span> <span class="bu">dict</span>([[<span class="st">"a"</span>,<span class="dv">1</span>],[<span class="st">"b"</span>,<span class="dv">2</span>]])</span>
+<span id="cb108-2"><a href="#cb108-2"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="113">
+<pre><code>{'a': 1, 'b': 2}</code></pre>
+</div>
+</div>
+</section>
+<section id="방법-4.-튜플" class="level3">
+<h3 class="anchored" data-anchor-id="방법-4.-튜플">방법 4. 튜플</h3>
+<div class="cell" data-execution_count="114">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1"></a>dct <span class="op">=</span> (<span class="st">"a"</span>,<span class="dv">1</span>),(<span class="st">"b"</span>,<span class="dv">2</span>)</span>
+<span id="cb110-2"><a href="#cb110-2"></a><span class="bu">dict</span>(dct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="114">
+<pre><code>{'a': 1, 'b': 2}</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="원소-추출" class="level2">
+<h2 class="anchored" data-anchor-id="원소-추출">원소 추출</h2>
+<p><code>-</code> 딕셔너리는 key값을 이용해서 추출해야한다. <strong>(value로 key를 찾는 것은 불가!)</strong></p>
+<div class="cell" data-execution_count="115">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1"></a>dct <span class="op">=</span><span class="bu">dict</span>(dct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1"></a>dct[<span class="st">"a"</span>], dct[<span class="st">"b"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="117">
+<pre><code>(1, 2)</code></pre>
+</div>
+</div>
+<section id="ex1.-딕셔너리를-쓴느-이유" class="level3">
+<h3 class="anchored" data-anchor-id="ex1.-딕셔너리를-쓴느-이유">ex1. 딕셔너리를 쓴느 이유?</h3>
+<p><code>-</code> 아래와 같은 구조가 있다고 하자.</p>
+<div class="cell" data-execution_count="118">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1"></a>lst <span class="op">=</span> [[<span class="st">"a"</span>,<span class="dv">1</span>],[<span class="st">"b"</span>,<span class="dv">2</span>]]</span>
+<span id="cb115-2"><a href="#cb115-2"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="118">
+<pre><code>[['a', 1], ['b', 2]]</code></pre>
+</div>
+</div>
+<p><code>-</code> 여기에서 a의 값을 알려면?</p>
+<div class="cell" data-execution_count="119">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1"></a>[s <span class="cf">for</span> n,s <span class="kw">in</span> lst <span class="cf">if</span> n<span class="op">==</span><span class="st">"a"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="119">
+<pre><code>[1]</code></pre>
+</div>
+</div>
+<p><code>-</code> 딕셔너리를 이용한 풀이</p>
+<div class="cell" data-execution_count="120">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1"></a><span class="bu">dict</span>(lst)[<span class="st">"a"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="120">
+<pre><code>1</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="원소-추가-1" class="level2">
+<h2 class="anchored" data-anchor-id="원소-추가-1">원소 추가</h2>
+<div class="cell" data-execution_count="122">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="122">
+<pre><code>{'a': 1, 'b': 2}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1"></a>dct[<span class="st">"c"</span>]<span class="op">=</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="124">
+<pre><code>{'a': 1, 'b': 2, 'c': 3}</code></pre>
+</div>
+</div>
+</section>
+<section id="원소-삭제-1" class="level2">
+<h2 class="anchored" data-anchor-id="원소-삭제-1">원소 삭제</h2>
+<p><code>-</code> 방법 1</p>
+<div class="cell" data-execution_count="125">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1"></a><span class="kw">del</span> dct[<span class="st">"a"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="126">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="126">
+<pre><code>{'b': 2, 'c': 3}</code></pre>
+</div>
+</div>
+<p><code>-</code> 방법 2</p>
+<div class="cell" data-execution_count="127">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1"></a>dct.pop(<span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="127">
+<pre><code>2</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="128">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="128">
+<pre><code>{'c': 3}</code></pre>
+</div>
+</div>
+</section>
+<section id="연산" class="level2">
+<h2 class="anchored" data-anchor-id="연산">연산</h2>
+<div class="cell" data-execution_count="130">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1"></a>dct <span class="op">=</span> <span class="bu">dict</span>(a<span class="op">=</span><span class="dv">1</span>,b<span class="op">=</span><span class="dv">2</span>,c<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="131">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="131">
+<pre><code>{'a': 1, 'b': 2, 'c': 3}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="132">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1"></a><span class="co">"a"</span> <span class="kw">in</span> dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="132">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="특수-기능" class="level2">
+<h2 class="anchored" data-anchor-id="특수-기능">특수 기능</h2>
+<div class="cell" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb138-1"><a href="#cb138-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="133">
+<pre><code>{'a': 1, 'b': 2, 'c': 3}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="137">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb140-1"><a href="#cb140-1"></a>dct.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="137">
+<pre><code>dict_keys(['a', 'b', 'c'])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="138">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb142-1"><a href="#cb142-1"></a>dct.values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="138">
+<pre><code>dict_values([1, 2, 3])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="139">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb144-1"><a href="#cb144-1"></a>dct.items()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="139">
+<pre><code>dict_items([('a', 1), ('b', 2), ('c', 3)])</code></pre>
+</div>
+</div>
+</section>
+<section id="for-dictstarstar" class="level2">
+<h2 class="anchored" data-anchor-id="for-dictstarstar">for + dict(<span class="math inline">\(\star\star\)</span>)</h2>
+<div class="cell" data-execution_count="140">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1"></a><span class="cf">for</span> k <span class="kw">in</span> dct.keys() :</span>
+<span id="cb146-2"><a href="#cb146-2"></a>    <span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a
+b
+c</code></pre>
+</div>
+</div>
+<p><code>-</code> 아 딕셔너리는 루프에서 객체 자체로 전달시 key값을 반환한다.</p>
+<div class="cell" data-execution_count="142">
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1"></a><span class="cf">for</span> k <span class="kw">in</span> dct:</span>
+<span id="cb148-2"><a href="#cb148-2"></a>    <span class="bu">print</span>(k)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a
+b
+c</code></pre>
+</div>
+</div>
+<p><code>-</code> value 접근</p>
+<div class="cell" data-execution_count="143">
+<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1"></a><span class="cf">for</span> i <span class="kw">in</span> dct.values():</span>
+<span id="cb150-2"><a href="#cb150-2"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+2
+3</code></pre>
+</div>
+</div>
+<p><code>-</code> key,value 동시 접근</p>
+<div class="cell" data-execution_count="144">
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1"></a><span class="cf">for</span> i,j <span class="kw">in</span> dct.items():</span>
+<span id="cb152-2"><a href="#cb152-2"></a>    <span class="bu">print</span>(i,j)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a 1
+b 2
+c 3</code></pre>
+</div>
+</div>
+</section>
+<section id="list-to-dict.values" class="level2">
+<h2 class="anchored" data-anchor-id="list-to-dict.values">list <span class="math inline">\(\to\)</span> dict.values</h2>
+<p><code>-</code> 아래와 같은 원핫인코딩을 생각</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">변환전</th>
+<th style="text-align: center;">변환후</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">a</td>
+<td style="text-align: center;">[1,0,0,0]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">b</td>
+<td style="text-align: center;">[0,1,0,0]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">c</td>
+<td style="text-align: center;">[0,0,1,0]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">d</td>
+<td style="text-align: center;">[0,0,0,1]</td>
+</tr>
+</tbody>
+</table>
+<p><code>-</code> 주어진 리스트를 원핫인코딩하여라</p>
+<div class="cell" data-execution_count="173">
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1"></a>lst <span class="op">=</span> <span class="bu">list</span>(<span class="st">"abcd"</span>)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb154-2"><a href="#cb154-2"></a>lst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="173">
+<pre><code>['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd']</code></pre>
+</div>
+</div>
+<section id="sol" class="level3">
+<h3 class="anchored" data-anchor-id="sol">sol</h3>
+<div class="cell" data-execution_count="174">
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1"></a>dct <span class="op">=</span> {<span class="st">"a"</span>: [<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb156-2"><a href="#cb156-2"></a>      <span class="st">"b"</span>: [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
+<span id="cb156-3"><a href="#cb156-3"></a>      <span class="st">"c"</span>: [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
+<span id="cb156-4"><a href="#cb156-4"></a>      <span class="st">"d"</span>: [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>]}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="175">
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1"></a>dct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="175">
+<pre><code>{'a': [1, 0, 0, 0], 'b': [0, 1, 0, 0], 'c': [0, 0, 1, 0], 'd': [0, 0, 0, 1]}</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="dict.values-to-list" class="level2">
+<h2 class="anchored" data-anchor-id="dict.values-to-list">dict.values <span class="math inline">\(\to\)</span> list</h2>
+<p><code>-</code> 위 원핫인코딩을 다시 변환</p>
+<section id="sol-1" class="level3">
+<h3 class="anchored" data-anchor-id="sol-1">sol</h3>
+<div class="cell" data-execution_count="179">
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1"></a>value <span class="op">=</span> [v <span class="cf">for</span> v <span class="kw">in</span> dct.values()] <span class="op">*</span><span class="dv">2</span></span>
+<span id="cb159-2"><a href="#cb159-2"></a>value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="179">
+<pre><code>[[1, 0, 0, 0],
+ [0, 1, 0, 0],
+ [0, 0, 1, 0],
+ [0, 0, 0, 1],
+ [1, 0, 0, 0],
+ [0, 1, 0, 0],
+ [0, 0, 1, 0],
+ [0, 0, 0, 1]]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="185">
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1"></a>[i <span class="cf">for</span> v <span class="kw">in</span> value <span class="cf">for</span> i,j <span class="kw">in</span> dct.items() <span class="cf">if</span> j <span class="op">==</span> v]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="185">
+<pre><code>['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd']</code></pre>
+</div>
+</div>
+</section>
 </section>
 </section>
 <section id="exercise-link" class="level1">

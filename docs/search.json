@@ -432,5 +432,68 @@
     "title": "02. Python Basic (3)",
     "section": "for문",
     "text": "for문\n- 다음에 txt에서 각 알파벳이 몇 번 사용됬는지 구하기\n\ntxt = 'asdkflkjahsdlkjfhlaksglkjdhflkgjhlskdfjhglkajhsdlkfjhalsdkf'\ntxt\n\n'asdkflkjahsdlkjfhlaksglkjdhflkgjhlskdfjhglkajhsdlkfjhalsdkf'\n\n\n\n{i : list(txt).count(i) for i in set(txt)}\n\n{'l': 9, 'h': 7, 's': 6, 'd': 6, 'a': 5, 'g': 3, 'j': 7, 'f': 6, 'k': 10}"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#선언",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#선언",
+    "title": "02. Python Basic (3)",
+    "section": "선언",
+    "text": "선언\n\n방법 1. 가장 일반적\n\ndct=  {\"a\" : 1, \"b\":2}\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n방법 2. dict(\\(\\star\\star\\))\n\ndct = dict(a=1, b=2)\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n방법 3. 중첩된 리스트\n\ndct = dict([[\"a\",1],[\"b\",2]])\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n방법 4. 튜플\n\ndct = (\"a\",1),(\"b\",2)\ndict(dct)\n\n{'a': 1, 'b': 2}"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추출",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추출",
+    "title": "02. Python Basic (3)",
+    "section": "원소 추출",
+    "text": "원소 추출\n- 딕셔너리는 key값을 이용해서 추출해야한다. (value로 key를 찾는 것은 불가!)\n\ndct =dict(dct)\n\n\ndct[\"a\"], dct[\"b\"]\n\n(1, 2)\n\n\n\nex1. 딕셔너리를 쓴느 이유?\n- 아래와 같은 구조가 있다고 하자.\n\nlst = [[\"a\",1],[\"b\",2]]\nlst\n\n[['a', 1], ['b', 2]]\n\n\n- 여기에서 a의 값을 알려면?\n\n[s for n,s in lst if n==\"a\"]\n\n[1]\n\n\n- 딕셔너리를 이용한 풀이\n\ndict(lst)[\"a\"]\n\n1"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추가-1",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추가-1",
+    "title": "02. Python Basic (3)",
+    "section": "원소 추가",
+    "text": "원소 추가\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\ndct[\"c\"]=3\n\n\ndct\n\n{'a': 1, 'b': 2, 'c': 3}"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-삭제-1",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-삭제-1",
+    "title": "02. Python Basic (3)",
+    "section": "원소 삭제",
+    "text": "원소 삭제\n- 방법 1\n\ndel dct[\"a\"]\n\n\ndct\n\n{'b': 2, 'c': 3}\n\n\n- 방법 2\n\ndct.pop(\"b\")\n\n2\n\n\n\ndct\n\n{'c': 3}"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#연산",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#연산",
+    "title": "02. Python Basic (3)",
+    "section": "연산",
+    "text": "연산\n\ndct = dict(a=1,b=2,c=3)\n\n\ndct\n\n{'a': 1, 'b': 2, 'c': 3}\n\n\n\n\"a\" in dct\n\nTrue"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#특수-기능",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#특수-기능",
+    "title": "02. Python Basic (3)",
+    "section": "특수 기능",
+    "text": "특수 기능\n\ndct\n\n{'a': 1, 'b': 2, 'c': 3}\n\n\n\ndct.keys()\n\ndict_keys(['a', 'b', 'c'])\n\n\n\ndct.values()\n\ndict_values([1, 2, 3])\n\n\n\ndct.items()\n\ndict_items([('a', 1), ('b', 2), ('c', 3)])"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#for-dictstarstar",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#for-dictstarstar",
+    "title": "02. Python Basic (3)",
+    "section": "for + dict(\\(\\star\\star\\))",
+    "text": "for + dict(\\(\\star\\star\\))\n\nfor k in dct.keys() :\n    print(k)\n\na\nb\nc\n\n\n- 아 딕셔너리는 루프에서 객체 자체로 전달시 key값을 반환한다.\n\nfor k in dct:\n    print(k)\n\na\nb\nc\n\n\n- value 접근\n\nfor i in dct.values():\n    print(i)\n\n1\n2\n3\n\n\n- key,value 동시 접근\n\nfor i,j in dct.items():\n    print(i,j)\n\na 1\nb 2\nc 3"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#list-to-dict.values",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#list-to-dict.values",
+    "title": "02. Python Basic (3)",
+    "section": "list \\(\\to\\) dict.values",
+    "text": "list \\(\\to\\) dict.values\n- 아래와 같은 원핫인코딩을 생각\n\n\n\n변환전\n변환후\n\n\n\n\na\n[1,0,0,0]\n\n\nb\n[0,1,0,0]\n\n\nc\n[0,0,1,0]\n\n\nd\n[0,0,0,1]\n\n\n\n- 주어진 리스트를 원핫인코딩하여라\n\nlst = list(\"abcd\")*2\nlst\n\n['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd']\n\n\n\nsol\n\ndct = {\"a\": [1,0,0,0],\n      \"b\": [0,1,0,0],\n      \"c\": [0,0,1,0],\n      \"d\": [0,0,0,1]}\n\n\ndct\n\n{'a': [1, 0, 0, 0], 'b': [0, 1, 0, 0], 'c': [0, 0, 1, 0], 'd': [0, 0, 0, 1]}"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#dict.values-to-list",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#dict.values-to-list",
+    "title": "02. Python Basic (3)",
+    "section": "dict.values \\(\\to\\) list",
+    "text": "dict.values \\(\\to\\) list\n- 위 원핫인코딩을 다시 변환\n\nsol\n\nvalue = [v for v in dct.values()] *2\nvalue\n\n[[1, 0, 0, 0],\n [0, 1, 0, 0],\n [0, 0, 1, 0],\n [0, 0, 0, 1],\n [1, 0, 0, 0],\n [0, 1, 0, 0],\n [0, 0, 1, 0],\n [0, 0, 0, 1]]\n\n\n\n[i for v in value for i,j in dct.items() if j == v]\n\n['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd']"
   }
 ]

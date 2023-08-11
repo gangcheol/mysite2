@@ -35,6 +35,167 @@
     "text": "- quarto 원리 : 작성한 ipynb파일 html파일로 출력해서 그 html파일들로 웹사이트를 구성하는 것1\n- step1. posts와 docs라는 폴더를 만들자\n\nposts는 내가 작성하는 ipynb파일들이 들어갈거고, docs에는 html파일이 들어갈 것이다.\n\n- step2. index 파일 수정\n\nindex파일은 뭐랄까 네비게이터 역할이랄까 아래와 같이 바꿔주자\n\n---\ntitle: \"GC site\"\nlisting:\n  contents: posts\n  sort: [date desc, title]\n  type: table\n  categories: true\n  sort-ui: true\n  filter-ui: true\npage-layout: full\ntitle-block-banner: true\n---\n- step3. _quarto.uml 파일 수정 \\(\\to\\) 템플릿이랑 디자인 이쁜거 많으니 본인 입맛에 맞게 수정하면 됩니당\nproject:\n  type: website\n  output-dir : docs  \nwebsite:\n  title: \"GC site\"\n  page-navigation: true\n  navbar:\n    right:\n      - icon : github\n        href : https://github.com/gangcheol/\n  sidebar:\n    style: \"docked\"\n    search: True\n    contents: auto\n    \nformat:\n  html:\n    css: styles.css\n    toc: true\n    code-fold : False\n    code-line-numbers : True\n    code-copy : True\n\ntheme :\n  light : flatly\n  \neditor : visual\n- step4. 앞서 만든 posts폴더에 아무 파일이나 만들어보자\n\n- step5. 그 후 다시 터미널에서 내가 생성한 폴더로 이동\n필자의 경우는 cd gcsite\n- step6. quarto render 입력\n- step7. github desktop보면 난리가 났을 것이다. 막 일을 좀 많이 했음.\n\n로컬하고 연결되어 있으니 로컬이 하고 있는 걸 다적어서 그럼\n\n\n\n저기 내가 밑에 이러한 기록을 init이라고 써놨다. 저건 내가 로컬에서 한 행동을 내 깃허브 로컬에 저장할 건데, 그 행동을 init이라고 쓴거\n이제 저 Commit to main 버튼을 눌러주고 가운데 화면에 뜨는 push origin을 눌러주자!\n\n- 마지막!! 아까 깃허브 로컬 셋팅에서 pases란에 잠시 후에 들어가보면 다음과 같은 것을 볼 수 있다.\n\n- 저 링크로 들어가면 내가 만든 웹사이트 초안을 볼 수 있다.\n- 링크"
   },
   {
+    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html",
+    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html",
+    "title": "Extra 01. 클래스 탐구 (1)",
+    "section": "",
+    "text": "from IPython.core.display import HTML\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n\n\n\nclass jkm:\n    def __init__(self) :\n        self.title = \"중요한건 꺽이지 않는 마음\"\n\n        self.url = \"https://github.com/guebin/PP2023/blob/main/posts/03_Class/JungGGuckMa.jpg?raw=true\"\n\n        self.Q = \"Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\"\n\n        self.A = \"A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\"\n\n        self.h1 = \"마음\"\n\n        self.html_str =  '''\n                    &lt;style&gt;\n                        .title {{\n                            font-family: \"Times New Roman\", serif;\n                            font-size: 30px;\n                            font-weight: 900;\n                        }}\n                        .text {{\n                            font-family: \"Arial\", sans-serif;\n                            font-size: 20px;\n                            font-style: italic;\n                        }}\n                        .highlight {{\n                            font-family: \"Montserrat\", monospace;\n                            font-size: 35px;\n                            font-weight: 900;\n                            text-decoration: underline; ## 밑줄\n                            font-style: normal;\n                            color: darkblue;\n                            background-color: #FFFF00;\n                        }}\n                    &lt;/style&gt;\n\n                    &lt;p class=\"title\"&gt;{tt1}&lt;/p&gt;\n                    &lt;img src={url} width=\"600\"&gt;\n                    &lt;p&gt; \\n &lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {Q}&lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {A}: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt; {h1} &lt;/span&gt;&lt;/p&gt;\n                    '''\n        \n    def show(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        display(HTML(_str))\n\n\ntest = jkm()\n\n\ntest.show()\n\n\n                    \n\n                    중요한건 꺽이지 않는 마음\n                    \n                     \n \n                     Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\n                     A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    중요한 것은 꺾이지 않는  마음 \n                    \n\n\n\n\n\n- 아래처럼 우리가 생성한 test의 타입을 확인하니 type 이 jkm 으로 나온다.\n\ntest?\n\n\nType:        jkm\nString form: &lt;__main__.jkm object at 0x000001E17B1E7850&gt;\nDocstring:   &lt;no docstring&gt;\n\n\n\n- 아래의 리스트, 튜플, 리스트(튜플)의 타입을 확인해보자.\n\ntype([1,2,3])\n\nlist\n\n\n\ntype((1,2,3))\n\ntuple\n\n\n\ntype(list((1,2,3)))\n\nlist\n\n\n- 깨달음1. 우리가 어떤 인스턴스 객체를 생성할 떄 그 자료형은 파이썬 내부, 혹은 우리가 작성한 클래스의 이름이다.\n\n\n\n\na = \"123\"\nlist(a)\n\n['1', '2', '3']\n\n\n\na = list()\n\na.__init__(\"123\")\na\n\n['1', '2', '3']\n\n\n\na = list()\na.__init__('123') \na.__init__() # 리스트 최기화\na\n\n[]\n\n\n- 깨달음 2. 우리가 list(\"123\") 과 같은 메소드를 입력할 때 사실 자료형을 변환하는 것이 아니라, list 라는 클래스의 __init__()으로 인스턴스를 생성하는 것이었다.\n\n\n\n- 아래의 클래스를 관찰하자\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def show(self):\n        print('a={}'.format(self.a))\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na?\n\n\nType:        UpJump\nString form: &lt;__main__.UpJump object at 0x000001E17A4FE650&gt;\nDocstring:   &lt;no docstring&gt;\n\n\n\n\na.up()\n\na의 값이 1 증가합니다.\n\n\n\na.jump(-2)\n\na의 값이 -2 증가합니다.\n\n\n\na.reset()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na.show()\n\na=0\n\n\n- show 함수를 살펴보자.\n\nshow 함수는 print와 비슷하다 \\(\\to\\) 그렇다면….?\nprint(a)를 하면 a.show() 와 동일한 효과를 내도록 만들 수 있을까?\n\n\nprint(a)\n\n&lt;__main__.UpJump object at 0x000001E17A4FE650&gt;\n\n\n\nprint는 파이썬의 내장기능이다. 내장기능을 우리가 마음대로 변환해서 사용하면 많은 문제들이 생긴다.\n\n\\(\\divideontimes\\) 그런데 a의 자료형에 해당하는 인스턴스들에 한정하여 print를 수정하는 방법이 있다면?\n\n즉, 다른 클래스 오브젝트들은 영향을 받지 않고, UpJump로 생성된 오브젝트들만 가능하게끔 하는 것이다.\n\n\n\n- 아래둘은 같은 역할을 한다. \\(\\to\\) 즉, print(“a”)는 print(\"a\".__str__())의 축약 버전이다.\n\n print(\"a\")\n\na\n\n\n\nprint(\"a\".__str__())\n\na\n\n\n- 우리가 정의한 show함수는 다음과 같다.\ndef show(self):\n        print('a={}'.format(self.a))\n- 즉, 작성한 show함수는 단지 print문을 호출하는 함수이므로, a.__str__()의 기능을 재정의하면? print(a)의 결과도 바뀌지 않을까?\n\n\n\n\ndef f():\n    print(\"강철\")\n    \nf()\n\n강철\n\n\n\ndef f() :\n    print(\"DX 강철\")\nf()\n\nDX 강철\n\n\n- 함수를 덮어씌울 수 있다는 것을 확인하였다.\n\n\n\n\ndef show() \\(\\to\\) def __str__(), print \\(\\to\\) return\n\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a={}'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na.__str__()\n\n'a=0'\n\n\n\nprint(a) ## 성공했다!!\n\na=0\n\n\n\n\n\n\n- 우리가 어떤 변수를 할당하고 실행할때 사용되는 내장 함수는 __repr__() \\(\\to\\) representation의 약자이다.\n- 그러면 __repr__도 우리가 정의할 수 있지 않을까?\n- __str()__ 과 비교해보자.\n\na = np.arange(4).reshape(2,2)\n\n\na.__str__()\n\n'[[0 1]\\n [2 3]]'\n\n\n\na.__repr__()\n\n'array([[0, 1],\\n       [2, 3]])'\n\n\n- print 문을 사용한 비교.\n\nprint(a.__str__())\n\n[[0 1]\n [2 3]]\n\n\n\nprint(a.__repr__())\n\narray([[0, 1],\n       [2, 3]])\n\n\n\n\ndef __repr__(self):\n    return 'a={}'.format(self.a)\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n    def __repr__(self):\n        return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\nprint(a)\n\na의 값은 0입니다.\n\n\n\na\n\na=0\n\n\n\n\n\n- 만약 __repr__()만 정의되어 있고 __str__()이 정의되있지 않았다면 __repr__()의 내용이 __str__()의 내용을 대신한다. (단, 역은 성립하지 않음)\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n   # def __str__(self):\n    #    return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n    def __repr__(self):\n        return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na\n\na=0\n\n\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n   # def __repr__(self):\n    #    return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na\n\n&lt;__main__.UpJump at 0x1e17b574090&gt;\n\n\n\n\n\n\n\n\n\ndf = pd.DataFrame({'a':[1,2,3],'b':[2,3,4]})\ndf\n\n\n\n\n\n\n\n\na\nb\n\n\n\n\n0\n1\n2\n\n\n1\n2\n3\n\n\n2\n3\n4\n\n\n\n\n\n\n\n\nprint(df.__repr__())\n\n   a  b\n0  1  2\n1  2  3\n2  3  4\n\n\n\nprint(df.__str__())\n\n   a  b\n0  1  2\n1  2  3\n2  3  4\n\n\n- 뭔가 이상하다. 앞서 배운대로라면 코드를 실행할 때 나오는 표처럼 예쁘게 나와야 하는데 그렇지 않다…\n- 아래를 살펴보자.\n\ndf._repr_html_()\n\n'&lt;div&gt;\\n&lt;style scoped&gt;\\n    .dataframe tbody tr th:only-of-type {\\n        vertical-align: middle;\\n    }\\n\\n    .dataframe tbody tr th {\\n        vertical-align: top;\\n    }\\n\\n    .dataframe thead th {\\n        text-align: right;\\n    }\\n&lt;/style&gt;\\n&lt;table border=\"1\" class=\"dataframe\"&gt;\\n  &lt;thead&gt;\\n    &lt;tr style=\"text-align: right;\"&gt;\\n      &lt;th&gt;&lt;/th&gt;\\n      &lt;th&gt;a&lt;/th&gt;\\n      &lt;th&gt;b&lt;/th&gt;\\n    &lt;/tr&gt;\\n  &lt;/thead&gt;\\n  &lt;tbody&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;0&lt;/th&gt;\\n      &lt;td&gt;1&lt;/td&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;1&lt;/th&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;2&lt;/th&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n      &lt;td&gt;4&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/tbody&gt;\\n&lt;/table&gt;\\n&lt;/div&gt;'\n\n\n\nHTML(df._repr_html_())\n\n\n\n\n\n\n\n\na\nb\n\n\n\n\n0\n1\n2\n\n\n1\n2\n3\n\n\n2\n3\n4\n\n\n\n\n\n\n\n- 깨달음5. 데이터 프레임은 html로 작성되어 있으며 _repr_html_()은 html 구조를 확인할 수 있는 명령어이다!!\n- 그러면 df.__repr__()의 역할은?\n\n아 우리가 대화형 콘솔(anaconda prompt)에서 작성하면 나오는 출력형식을 지원한다!\n\n\n\n\n\n- 초기\ndef show(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        display(HTML(_str))\n- 수정후\ndef _repr_html_(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        return _str\n\nclass jkm:\n    def __init__(self) :\n        self.title = \"중요한건 꺽이지 않는 마음\"\n\n        self.url = \"https://github.com/guebin/PP2023/blob/main/posts/03_Class/JungGGuckMa.jpg?raw=true\"\n\n        self.Q = \"Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\"\n\n        self.A = \"A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\"\n\n        self.h1 = \"마음\"\n\n        self.html_str =  '''\n                    &lt;style&gt;\n                        .title {{\n                            font-family: \"Times New Roman\", serif;\n                            font-size: 30px;\n                            font-weight: 900;\n                        }}\n                        .text {{\n                            font-family: \"Arial\", sans-serif;\n                            font-size: 20px;\n                            font-style: italic;\n                        }}\n                        .highlight {{\n                            font-family: \"Montserrat\", monospace;\n                            font-size: 35px;\n                            font-weight: 900;\n                            text-decoration: underline; ## 밑줄\n                            font-style: normal;\n                            color: darkblue;\n                            background-color: #FFFF00;\n                        }}\n                    &lt;/style&gt;\n\n                    &lt;p class=\"title\"&gt;{tt1}&lt;/p&gt;\n                    &lt;img src={url} width=\"600\"&gt;\n                    &lt;p&gt; \\n &lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {Q}&lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {A}: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt; {h1} &lt;/span&gt;&lt;/p&gt;\n                    '''\n        \n    def _repr_html_(self):\n                _str = self.html_str.format(\n                    tt1 = self.title,\n                    url = self.url,\n                    Q = self.Q,\n                    A = self.A,\n                    h1 = self.h1)\n                return _str\n\n\na = jkm()\na\n\n\n                    \n\n                    중요한건 꺽이지 않는 마음\n                    \n                     \n \n                     Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\n                     A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    중요한 것은 꺾이지 않는  마음"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#작성한-class-등록",
+    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#작성한-class-등록",
+    "title": "Extra 01. 클래스 탐구 (1)",
+    "section": "",
+    "text": "class jkm:\n    def __init__(self) :\n        self.title = \"중요한건 꺽이지 않는 마음\"\n\n        self.url = \"https://github.com/guebin/PP2023/blob/main/posts/03_Class/JungGGuckMa.jpg?raw=true\"\n\n        self.Q = \"Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\"\n\n        self.A = \"A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\"\n\n        self.h1 = \"마음\"\n\n        self.html_str =  '''\n                    &lt;style&gt;\n                        .title {{\n                            font-family: \"Times New Roman\", serif;\n                            font-size: 30px;\n                            font-weight: 900;\n                        }}\n                        .text {{\n                            font-family: \"Arial\", sans-serif;\n                            font-size: 20px;\n                            font-style: italic;\n                        }}\n                        .highlight {{\n                            font-family: \"Montserrat\", monospace;\n                            font-size: 35px;\n                            font-weight: 900;\n                            text-decoration: underline; ## 밑줄\n                            font-style: normal;\n                            color: darkblue;\n                            background-color: #FFFF00;\n                        }}\n                    &lt;/style&gt;\n\n                    &lt;p class=\"title\"&gt;{tt1}&lt;/p&gt;\n                    &lt;img src={url} width=\"600\"&gt;\n                    &lt;p&gt; \\n &lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {Q}&lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {A}: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt; {h1} &lt;/span&gt;&lt;/p&gt;\n                    '''\n        \n    def show(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        display(HTML(_str))\n\n\ntest = jkm()\n\n\ntest.show()\n\n\n                    \n\n                    중요한건 꺽이지 않는 마음\n                    \n                     \n \n                     Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\n                     A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    중요한 것은 꺾이지 않는  마음"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-1.-type-class",
+    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-1.-type-class",
+    "title": "Extra 01. 클래스 탐구 (1)",
+    "section": "",
+    "text": "- 아래처럼 우리가 생성한 test의 타입을 확인하니 type 이 jkm 으로 나온다.\n\ntest?\n\n\nType:        jkm\nString form: &lt;__main__.jkm object at 0x000001E17B1E7850&gt;\nDocstring:   &lt;no docstring&gt;\n\n\n\n- 아래의 리스트, 튜플, 리스트(튜플)의 타입을 확인해보자.\n\ntype([1,2,3])\n\nlist\n\n\n\ntype((1,2,3))\n\ntuple\n\n\n\ntype(list((1,2,3)))\n\nlist\n\n\n- 깨달음1. 우리가 어떤 인스턴스 객체를 생성할 떄 그 자료형은 파이썬 내부, 혹은 우리가 작성한 클래스의 이름이다."
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-2.-__init__",
+    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-2.-__init__",
+    "title": "Extra 01. 클래스 탐구 (1)",
+    "section": "",
+    "text": "a = \"123\"\nlist(a)\n\n['1', '2', '3']\n\n\n\na = list()\n\na.__init__(\"123\")\na\n\n['1', '2', '3']\n\n\n\na = list()\na.__init__('123') \na.__init__() # 리스트 최기화\na\n\n[]\n\n\n- 깨달음 2. 우리가 list(\"123\") 과 같은 메소드를 입력할 때 사실 자료형을 변환하는 것이 아니라, list 라는 클래스의 __init__()으로 인스턴스를 생성하는 것이었다."
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-3.-__str__",
+    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-3.-__str__",
+    "title": "Extra 01. 클래스 탐구 (1)",
+    "section": "",
+    "text": "- 아래의 클래스를 관찰하자\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def show(self):\n        print('a={}'.format(self.a))\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na?\n\n\nType:        UpJump\nString form: &lt;__main__.UpJump object at 0x000001E17A4FE650&gt;\nDocstring:   &lt;no docstring&gt;\n\n\n\n\na.up()\n\na의 값이 1 증가합니다.\n\n\n\na.jump(-2)\n\na의 값이 -2 증가합니다.\n\n\n\na.reset()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na.show()\n\na=0\n\n\n- show 함수를 살펴보자.\n\nshow 함수는 print와 비슷하다 \\(\\to\\) 그렇다면….?\nprint(a)를 하면 a.show() 와 동일한 효과를 내도록 만들 수 있을까?\n\n\nprint(a)\n\n&lt;__main__.UpJump object at 0x000001E17A4FE650&gt;\n\n\n\nprint는 파이썬의 내장기능이다. 내장기능을 우리가 마음대로 변환해서 사용하면 많은 문제들이 생긴다.\n\n\\(\\divideontimes\\) 그런데 a의 자료형에 해당하는 인스턴스들에 한정하여 print를 수정하는 방법이 있다면?\n\n즉, 다른 클래스 오브젝트들은 영향을 받지 않고, UpJump로 생성된 오브젝트들만 가능하게끔 하는 것이다.\n\n\n\n- 아래둘은 같은 역할을 한다. \\(\\to\\) 즉, print(“a”)는 print(\"a\".__str__())의 축약 버전이다.\n\n print(\"a\")\n\na\n\n\n\nprint(\"a\".__str__())\n\na\n\n\n- 우리가 정의한 show함수는 다음과 같다.\ndef show(self):\n        print('a={}'.format(self.a))\n- 즉, 작성한 show함수는 단지 print문을 호출하는 함수이므로, a.__str__()의 기능을 재정의하면? print(a)의 결과도 바뀌지 않을까?\n\n\n\n\ndef f():\n    print(\"강철\")\n    \nf()\n\n강철\n\n\n\ndef f() :\n    print(\"DX 강철\")\nf()\n\nDX 강철\n\n\n- 함수를 덮어씌울 수 있다는 것을 확인하였다.\n\n\n\n\ndef show() \\(\\to\\) def __str__(), print \\(\\to\\) return\n\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a={}'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na.__str__()\n\n'a=0'\n\n\n\nprint(a) ## 성공했다!!\n\na=0"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-4.-__repr__",
+    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-4.-__repr__",
+    "title": "Extra 01. 클래스 탐구 (1)",
+    "section": "",
+    "text": "- 우리가 어떤 변수를 할당하고 실행할때 사용되는 내장 함수는 __repr__() \\(\\to\\) representation의 약자이다.\n- 그러면 __repr__도 우리가 정의할 수 있지 않을까?\n- __str()__ 과 비교해보자.\n\na = np.arange(4).reshape(2,2)\n\n\na.__str__()\n\n'[[0 1]\\n [2 3]]'\n\n\n\na.__repr__()\n\n'array([[0, 1],\\n       [2, 3]])'\n\n\n- print 문을 사용한 비교.\n\nprint(a.__str__())\n\n[[0 1]\n [2 3]]\n\n\n\nprint(a.__repr__())\n\narray([[0, 1],\n       [2, 3]])\n\n\n\n\ndef __repr__(self):\n    return 'a={}'.format(self.a)\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n    def __repr__(self):\n        return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\nprint(a)\n\na의 값은 0입니다.\n\n\n\na\n\na=0\n\n\n\n\n\n- 만약 __repr__()만 정의되어 있고 __str__()이 정의되있지 않았다면 __repr__()의 내용이 __str__()의 내용을 대신한다. (단, 역은 성립하지 않음)\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n   # def __str__(self):\n    #    return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n    def __repr__(self):\n        return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na\n\na=0\n\n\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n   # def __repr__(self):\n    #    return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na\n\n&lt;__main__.UpJump at 0x1e17b574090&gt;"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-5.-_repr_html_",
+    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-5.-_repr_html_",
+    "title": "Extra 01. 클래스 탐구 (1)",
+    "section": "",
+    "text": "df = pd.DataFrame({'a':[1,2,3],'b':[2,3,4]})\ndf\n\n\n\n\n\n\n\n\na\nb\n\n\n\n\n0\n1\n2\n\n\n1\n2\n3\n\n\n2\n3\n4\n\n\n\n\n\n\n\n\nprint(df.__repr__())\n\n   a  b\n0  1  2\n1  2  3\n2  3  4\n\n\n\nprint(df.__str__())\n\n   a  b\n0  1  2\n1  2  3\n2  3  4\n\n\n- 뭔가 이상하다. 앞서 배운대로라면 코드를 실행할 때 나오는 표처럼 예쁘게 나와야 하는데 그렇지 않다…\n- 아래를 살펴보자.\n\ndf._repr_html_()\n\n'&lt;div&gt;\\n&lt;style scoped&gt;\\n    .dataframe tbody tr th:only-of-type {\\n        vertical-align: middle;\\n    }\\n\\n    .dataframe tbody tr th {\\n        vertical-align: top;\\n    }\\n\\n    .dataframe thead th {\\n        text-align: right;\\n    }\\n&lt;/style&gt;\\n&lt;table border=\"1\" class=\"dataframe\"&gt;\\n  &lt;thead&gt;\\n    &lt;tr style=\"text-align: right;\"&gt;\\n      &lt;th&gt;&lt;/th&gt;\\n      &lt;th&gt;a&lt;/th&gt;\\n      &lt;th&gt;b&lt;/th&gt;\\n    &lt;/tr&gt;\\n  &lt;/thead&gt;\\n  &lt;tbody&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;0&lt;/th&gt;\\n      &lt;td&gt;1&lt;/td&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;1&lt;/th&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;2&lt;/th&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n      &lt;td&gt;4&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/tbody&gt;\\n&lt;/table&gt;\\n&lt;/div&gt;'\n\n\n\nHTML(df._repr_html_())\n\n\n\n\n\n\n\n\na\nb\n\n\n\n\n0\n1\n2\n\n\n1\n2\n3\n\n\n2\n3\n4\n\n\n\n\n\n\n\n- 깨달음5. 데이터 프레임은 html로 작성되어 있으며 _repr_html_()은 html 구조를 확인할 수 있는 명령어이다!!\n- 그러면 df.__repr__()의 역할은?\n\n아 우리가 대화형 콘솔(anaconda prompt)에서 작성하면 나오는 출력형식을 지원한다!\n\n\n\n\n\n- 초기\ndef show(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        display(HTML(_str))\n- 수정후\ndef _repr_html_(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        return _str\n\nclass jkm:\n    def __init__(self) :\n        self.title = \"중요한건 꺽이지 않는 마음\"\n\n        self.url = \"https://github.com/guebin/PP2023/blob/main/posts/03_Class/JungGGuckMa.jpg?raw=true\"\n\n        self.Q = \"Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\"\n\n        self.A = \"A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\"\n\n        self.h1 = \"마음\"\n\n        self.html_str =  '''\n                    &lt;style&gt;\n                        .title {{\n                            font-family: \"Times New Roman\", serif;\n                            font-size: 30px;\n                            font-weight: 900;\n                        }}\n                        .text {{\n                            font-family: \"Arial\", sans-serif;\n                            font-size: 20px;\n                            font-style: italic;\n                        }}\n                        .highlight {{\n                            font-family: \"Montserrat\", monospace;\n                            font-size: 35px;\n                            font-weight: 900;\n                            text-decoration: underline; ## 밑줄\n                            font-style: normal;\n                            color: darkblue;\n                            background-color: #FFFF00;\n                        }}\n                    &lt;/style&gt;\n\n                    &lt;p class=\"title\"&gt;{tt1}&lt;/p&gt;\n                    &lt;img src={url} width=\"600\"&gt;\n                    &lt;p&gt; \\n &lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {Q}&lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {A}: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt; {h1} &lt;/span&gt;&lt;/p&gt;\n                    '''\n        \n    def _repr_html_(self):\n                _str = self.html_str.format(\n                    tt1 = self.title,\n                    url = self.url,\n                    Q = self.Q,\n                    A = self.A,\n                    h1 = self.h1)\n                return _str\n\n\na = jkm()\na\n\n\n                    \n\n                    중요한건 꺽이지 않는 마음\n                    \n                     \n \n                     Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\n                     A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    중요한 것은 꺾이지 않는  마음"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html",
+    "title": "00. Python Basic (1)",
+    "section": "",
+    "text": "from google.colab import drive\ndrive.mount('/content/drive')\n\nDrive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount(\"/content/drive\", force_remount=True).\n\n\n\ncd /content/drive/MyDrive/Colab Notebooks/DX/1wk\n\n/content/drive/MyDrive/Colab Notebooks/DX/1wk"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
+    "title": "00. Python Basic (1)",
+    "section": "ex1) 홀수 짝수 구분",
+    "text": "ex1) 홀수 짝수 구분\n\nlst = list(range(1,10))\nlst\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nsol\n\nodd = [i for i in lst if i % 2 == 1]\nevn = [i for i in lst if i % 2 == 0]\n\n\nodd\n\n[1, 3, 5, 7, 9]\n\n\n\nevn\n\n[2, 4, 6, 8]"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
+    "title": "00. Python Basic (1)",
+    "section": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기",
+    "text": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기\n\nsol\n\nnum  = int(input())\n\na = num // 100\n\nb = (num - a*100) // 10\n\nc = num-(a*100+b*10)\n\nprint(\"백의자리는 {}, 십의자리는 {}, 일의 자리는 {}\".format(a,b,c))\n\n254\n백의자리는 2, 십의자리는 5, 일의 자리는 4"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
+    "title": "00. Python Basic (1)",
+    "section": "ex3) 합과 평균",
+    "text": "ex3) 합과 평균\n\nsol\n\nimport numpy as np\n\n\ns = list(range(1,10))\n\n\nsumm = sum(s)\n\nave = np.mean(s)\n\n\nprint(\"합 : {}, 평균: {}\".format(summ,ave))\n\n합 : 45, 평균: 5.0"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
+    "title": "00. Python Basic (1)",
+    "section": "ex4) 비교 연산자",
+    "text": "ex4) 비교 연산자\n- 숫자 비교\n\na = list(range(1,11))\nb = list(range(11,21))\n\n\na, b\n\n([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [11, 12, 13, 14, 15, 16, 17, 18, 19, 20])\n\n\n\n[a[i] == b[i] for i in range(10)]\n\n[False, False, False, False, False, False, False, False, False, False]\n\n\n- 문자 비교\n\n(\"A\" == \"a\"), (\"A\" &gt;\"a\")\n\n(False, False)\n\n\n\nord(\"A\"), ord(\"a\")\n\n(65, 97)"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
+    "title": "00. Python Basic (1)",
+    "section": "대표적인 자료형",
+    "text": "대표적인 자료형\n\n\n\nint\nfloat\nbool\nstr\ncomplex\n\n\n\n\n3\n3.14\nTrue\n“강철”\n3+2j\n\n\n5\n3.141551\nFalse\n“이강철”\n2-2j"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#형태변환",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#형태변환",
+    "title": "00. Python Basic (1)",
+    "section": "형태변환",
+    "text": "형태변환\n\nfloat \\(\\to\\) int\n- 아래의 경우는 형태변환이 되었으나 정보의 손실이 발생한 것임\n\na = 3.4\n\n_a = int(a)\n\n\ntype(a), type(_a)\n\n(float, int)\n\n\n\n\n\\(\\text{bool} \\to \\text{(float, int)}\\,\\text{and}\\, \\text{(float, int)} \\to \\text{bool}\\)\n- bool \\(\\to\\) int, float\n\na = True\n_a1 = float(a)\n_a2 = int(a)\n\n\ntype(a), type(_a1), type(_a2)\n\n(bool, float, int)\n\n\n- int, float \\(\\to\\) bool\n\na1 = 1\na2 = 1.0\n\n_a1 = bool(a1)\n_a2 = bool(a2)\n\n\n_a1, _a2, type(_a1), type(_a2)\n\n(True, True, bool, bool)\n\n\n- str \\(\\to\\) bool\n\nbool(\"강철\")\n\nTrue\n\n\n\nbool(\"\")\n\nFalse\n\n\n\n\n암묵적 형변환\n\nTrue +1\n\n2\n\n\n\n1*1.0\n\n1.0\n\n\n\nTrue + True\n\n2\n\n\n\n\n형태변환이 불가능한 경우\n\ncomplex1 = 3+ 0j\ncomplex1\n\n(3+0j)\n\n\nfloat(complex1) ## 에러 발생\n\n\n문자열의 사칙연산(O)\n\n\"X\" + \"2\"\n\n'X2'\n\n\n\n\"X\"*2\n\n'XX'\n\n\n\n\n문자열의 사칙연산(x)\n\"X\" * \"Y\"\n\n\"X\" - \"2\"\n\n\"X\" / \"y\"\n\n- 즉 더하기를 제외한 나머지 사칙연산은 문자형 변수에 적용되지 않는다."
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#날짜형-자료",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#날짜형-자료",
+    "title": "00. Python Basic (1)",
+    "section": "날짜형 자료",
+    "text": "날짜형 자료\n\nfrom datetime import datetime\n\n\nnow = datetime.now()\n\n\nnow\n\ndatetime.datetime(2023, 8, 9, 5, 45, 24, 616085)\n\n\n\nprint(now)\n\n2023-08-09 05:45:24.616085\n\n\n\nprint(\"{}년 {}월 {}일 {}시 {}분 {}초\".format(now.year,now.month,now.day,now.hour,now.minute,now.second))\n\n2023년 8월 9일 5시 45분 24초"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#기타-연산",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#기타-연산",
+    "title": "00. Python Basic (1)",
+    "section": "기타 연산",
+    "text": "기타 연산\n\na = \"ABCD\"\nb = \"efgh\"\n\n\na.lower(),b.upper()\n\n('abcd', 'EFGH')"
+  },
+  {
+    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
+    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
+    "title": "00. Python Basic (1)",
+    "section": "f-string(요즘 쓰는 방식)",
+    "text": "f-string(요즘 쓰는 방식)\n\nex1\n\nn = \"이강철\"\na = 28\ns = 100.213141\n\n\nprint(f\"{a}살의 {n}의 점수는 {s:.2f}입니다. \")\n\n28살의 이강철의 점수는 100.00입니다. \n\n\n\n\nex2\n\nn = \"이강철\"\na = 28\ns1 = 100.2\ns2 = 100.3\ns3 = 100.4\ns4 = 100.5\ns5 = 100.6\n\n\ntxt= f'''\n이름 : {n}\n\n연령대 : {age}\n\n점수 : {s1},{s2},{s3},{s4},{s5}\n\n합계 : {ts:,.0f} /평균 : {avg:,.2f}\n'''`\n\nprint(txt)\n\n\n이름 : 이강철\n\n연령대 : 20\n\n점수 : 100.2,100.3,100.4,100.5,100.6\n\n합계 : 502 /평균 : 100.40"
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About Me",
+    "section": "Education",
+    "text": "Education\n- 전북대학교 통계학과 학사(부전공: 컴퓨터공학) 졸업 | 3.67 / 4.50 | 2015. 03 ~ 2021. 02\n- 전북대학교 통계학과 석사 졸업 | 4.44 / 4.50 | 2021. 03 ~ 2023. 02"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About Me",
+    "section": "Experience",
+    "text": "Experience\n- 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n- 지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n- 빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\n- KT AIVLE School DX Consultant Track | KT | 2023. 08 ~"
+  },
+  {
+    "objectID": "about.html#publications",
+    "href": "about.html#publications",
+    "title": "About Me",
+    "section": "Publications",
+    "text": "Publications\n- 데이터 분석을 통한 지역별 고령친화도 시각화\n`-` 김영선, 강민구, 이강철 등  | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존 \n- 핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선\n`-` 이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학"
+  },
+  {
+    "objectID": "about.html#certificate",
+    "href": "about.html#certificate",
+    "title": "About Me",
+    "section": "Certificate",
+    "text": "Certificate\n- 워드프로세서 | 대한상공회의소 | 19-19-017981 | 2019. 08. 30\n- 데이터분석준전문가(ADsP) | 한국데이터진흥원 | ADsP-0223898 | 2019. 10. 01\n- 사회조사분석사 2급 | 한국산업인력공단 | 19201142418N | 2019. 10. 01"
+  },
+  {
+    "objectID": "about.html#conctact",
+    "href": "about.html#conctact",
+    "title": "About Me",
+    "section": "Conctact",
+    "text": "Conctact\n- rkdcjf8232@gmail.com"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DX track",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nAug 11, 2023\n\n\n02. Python Basic (3)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\n01. Python Basic (2)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\nExtra 01. 클래스 탐구 (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\n00. Python Basic (1)\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html",
     "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html",
     "title": "01. Python Basic (2)",
@@ -161,164 +322,115 @@
     "text": "exercise Link\n- exercise 1\n- exercise 2"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DX track",
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html",
+    "title": "02. Python Basic (3)",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nAug 10, 2023\n\n\n01. Python Basic (2)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\nExtra 01. 클래스 탐구 (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\n00. Python Basic (1)\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
+    "text": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt"
   },
   {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "About Me",
-    "section": "Education",
-    "text": "Education\n- 전북대학교 통계학과 학사(부전공: 컴퓨터공학) 졸업 | 3.67 / 4.50 | 2015. 03 ~ 2021. 02\n- 전북대학교 통계학과 석사 졸업 | 4.44 / 4.50 | 2021. 03 ~ 2023. 02"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#why-use1",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#why-use1",
+    "title": "02. Python Basic (3)",
+    "section": "why use(1)?",
+    "text": "why use(1)?\n- 빠르고 다중 작업에 유리\n- 메모리 관리측면에서도 좋음, 또한 소괄호 생략이 가능하다."
   },
   {
-    "objectID": "about.html#experience",
-    "href": "about.html#experience",
-    "title": "About Me",
-    "section": "Experience",
-    "text": "Experience\n- 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n- 지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n- 빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\n- KT AIVLE School DX Consultant Track | KT | 2023. 08 ~"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-1-여러개의-변수를-동시-출력-및-할당",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-1-여러개의-변수를-동시-출력-및-할당",
+    "title": "02. Python Basic (3)",
+    "section": "예제 1 : 여러개의 변수를 동시 출력 및 할당",
+    "text": "예제 1 : 여러개의 변수를 동시 출력 및 할당\n\nn,a,s,h,w = 1,2,3,4,5\n\n\nn,a,s,h,w\n\n(1, 2, 3, 4, 5)\n\n\n\na = 3.1,\na\n\n(3.1,)"
   },
   {
-    "objectID": "about.html#publications",
-    "href": "about.html#publications",
-    "title": "About Me",
-    "section": "Publications",
-    "text": "Publications\n- 데이터 분석을 통한 지역별 고령친화도 시각화\n`-` 김영선, 강민구, 이강철 등  | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존 \n- 핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선\n`-` 이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-2.-서로-다른-타입의-원소들로-튜플",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-2.-서로-다른-타입의-원소들로-튜플",
+    "title": "02. Python Basic (3)",
+    "section": "예제 2. 서로 다른 타입의 원소들로 튜플?",
+    "text": "예제 2. 서로 다른 타입의 원소들로 튜플?\n\ns = 90,80,70,\"A\",\"B\"\ns\n\n(90, 80, 70, 'A', 'B')"
   },
   {
-    "objectID": "about.html#certificate",
-    "href": "about.html#certificate",
-    "title": "About Me",
-    "section": "Certificate",
-    "text": "Certificate\n- 워드프로세서 | 대한상공회의소 | 19-19-017981 | 2019. 08. 30\n- 데이터분석준전문가(ADsP) | 한국데이터진흥원 | ADsP-0223898 | 2019. 10. 01\n- 사회조사분석사 2급 | 한국산업인력공단 | 19201142418N | 2019. 10. 01"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-3-튜플-중첩",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-3-튜플-중첩",
+    "title": "02. Python Basic (3)",
+    "section": "예제 3: 튜플 중첩",
+    "text": "예제 3: 튜플 중첩\n\ns = 90,80,70,(\"A\",\"B\")\ns\n\n(90, 80, 70, ('A', 'B'))"
   },
   {
-    "objectID": "about.html#conctact",
-    "href": "about.html#conctact",
-    "title": "About Me",
-    "section": "Conctact",
-    "text": "Conctact\n- rkdcjf8232@gmail.com"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-4-두-변수의-값을-교환",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-4-두-변수의-값을-교환",
+    "title": "02. Python Basic (3)",
+    "section": "예제 4 : 두 변수의 값을 교환",
+    "text": "예제 4 : 두 변수의 값을 교환\n\na,b = 1,2\n\n\na,b\n\n(1, 2)\n\n\n\na,b = b,a\n\n\na,b\n\n(2, 1)"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html",
-    "title": "00. Python Basic (1)",
-    "section": "",
-    "text": "from google.colab import drive\ndrive.mount('/content/drive')\n\nDrive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount(\"/content/drive\", force_remount=True).\n\n\n\ncd /content/drive/MyDrive/Colab Notebooks/DX/1wk\n\n/content/drive/MyDrive/Colab Notebooks/DX/1wk"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-5-for문",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-5-for문",
+    "title": "02. Python Basic (3)",
+    "section": "예제 5: for문",
+    "text": "예제 5: for문\n\nlst = [['gc', 2021502565, 'M'],\n       ['iu',202254321, 'F'],\n       ['hodong', 202011223, 'M']]\nlst\n\n[['gc', 2021502565, 'M'], ['iu', 202254321, 'F'], ['hodong', 202011223, 'M']]\n\n\n\nfor name, s, sex in lst :\n    print(name,s,sex)\n\ngc 2021502565 M\niu 202254321 F\nhodong 202011223 M"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
-    "title": "00. Python Basic (1)",
-    "section": "ex1) 홀수 짝수 구분",
-    "text": "ex1) 홀수 짝수 구분\n\nlst = list(range(1,10))\nlst\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nsol\n\nodd = [i for i in lst if i % 2 == 1]\nevn = [i for i in lst if i % 2 == 0]\n\n\nodd\n\n[1, 3, 5, 7, 9]\n\n\n\nevn\n\n[2, 4, 6, 8]"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-6-range-함수를-사용해-만들기",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-6-range-함수를-사용해-만들기",
+    "title": "02. Python Basic (3)",
+    "section": "예제 6 : range 함수를 사용해 만들기",
+    "text": "예제 6 : range 함수를 사용해 만들기\n\ntest = tuple(range(1,11))\ntest\n\n(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
-    "title": "00. Python Basic (1)",
-    "section": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기",
-    "text": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기\n\nsol\n\nnum  = int(input())\n\na = num // 100\n\nb = (num - a*100) // 10\n\nc = num-(a*100+b*10)\n\nprint(\"백의자리는 {}, 십의자리는 {}, 일의 자리는 {}\".format(a,b,c))\n\n254\n백의자리는 2, 십의자리는 5, 일의 자리는 4"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-7-for-tuple-_",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-7-for-tuple-_",
+    "title": "02. Python Basic (3)",
+    "section": "예제 7 : for +  tuple + \"_\"",
+    "text": "예제 7 : for +  tuple + \"_\"\n\nlst\n\n[['gc', 2021502565, 'M'], ['iu', 202254321, 'F'], ['hodong', 202011223, 'M']]\n\n\n\nfor _,s,_ in lst :\n    print(s)\n\n2021502565\n202254321\n202011223\n\n\n\nfor _,_,s in lst :\n    print(s)\n\nM\nF\nM"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
-    "title": "00. Python Basic (1)",
-    "section": "ex3) 합과 평균",
-    "text": "ex3) 합과 평균\n\nsol\n\nimport numpy as np\n\n\ns = list(range(1,10))\n\n\nsumm = sum(s)\n\nave = np.mean(s)\n\n\nprint(\"합 : {}, 평균: {}\".format(summ,ave))\n\n합 : 45, 평균: 5.0"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-8-언패킹-연산자-for-starstar",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-8-언패킹-연산자-for-starstar",
+    "title": "02. Python Basic (3)",
+    "section": "예제 8 : 언패킹 연산자(*) + for (\\(\\star\\star\\))",
+    "text": "예제 8 : 언패킹 연산자(*) + for (\\(\\star\\star\\))\n\n*는 특정하지 않은 여러개의 인자를 튜플 형태로 받는다.\n\n\nfor n,*a in lst :\n    print(n,*a)\n\ngc 2021502565 M\niu 202254321 F\nhodong 202011223 M\n\n\n\nfor n,*a in lst :\n    print(n,a)\n\ngc [2021502565, 'M']\niu [202254321, 'F']\nhodong [202011223, 'M']\n\n\n\nfor n,*a in lst :\n    print(n)\n\ngc\niu\nhodong\n\n\n\nh,b,*t = range(1,11)\n\n\nh,b,t\n\n(1, 2, [3, 4, 5, 6, 7, 8, 9, 10])\n\n\n\nh,b,*t\n\n(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n\n\n\nt\n\n[3, 4, 5, 6, 7, 8, 9, 10]\n\n\n- 언패킹 연산자를 아래처럼 단일값으로 쓸수는 없다. 대신 print문을 이욯아여 출력!\n\n*t\n\nSyntaxError: can't use starred expression here (3801933867.py, line 1)\n\n\n\nprint(*t)\n\n3 4 5 6 7 8 9 10\n\n\n\ntemp = h,b,t\n\n\ntemp\n\n(1, 2, [3, 5, 5, 6, 7, 8, 9, 10])\n\n\n- 튜플안에 선언한 리스트는 수정할 수 있다!\n\ntemp[2][1]=4\n\n\ntemp\n\n(1, 2, [3, 4, 5, 6, 7, 8, 9, 10])\n\n\n- 단, 튜플안에 선언된 리스트 통째?로는 바꿀 수 없음\n\ntemp[2] = d\n\nNameError: name 'd' is not defined\n\n\n\ntemp[2] = [1,2,3]\n\nTypeError: 'tuple' object does not support item assignment"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
-    "title": "00. Python Basic (1)",
-    "section": "ex4) 비교 연산자",
-    "text": "ex4) 비교 연산자\n- 숫자 비교\n\na = list(range(1,11))\nb = list(range(11,21))\n\n\na, b\n\n([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [11, 12, 13, 14, 15, 16, 17, 18, 19, 20])\n\n\n\n[a[i] == b[i] for i in range(10)]\n\n[False, False, False, False, False, False, False, False, False, False]\n\n\n- 문자 비교\n\n(\"A\" == \"a\"), (\"A\" &gt;\"a\")\n\n(False, False)\n\n\n\nord(\"A\"), ord(\"a\")\n\n(65, 97)"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-9-함수",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-9-함수",
+    "title": "02. Python Basic (3)",
+    "section": "예제 9 : 함수",
+    "text": "예제 9 : 함수\n\n아래의 함수는 여러개의 값을 리턴하는 것처럼 보이나 사실은 길이가 4인, 튜플 1개만을 return한다."
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
-    "title": "00. Python Basic (1)",
-    "section": "대표적인 자료형",
-    "text": "대표적인 자료형\n\n\n\nint\nfloat\nbool\nstr\ncomplex\n\n\n\n\n3\n3.14\nTrue\n“강철”\n3+2j\n\n\n5\n3.141551\nFalse\n“이강철”\n2-2j"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#왜-튜플만이-괄호를-생략",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#왜-튜플만이-괄호를-생략",
+    "title": "02. Python Basic (3)",
+    "section": "왜 튜플만이 괄호를 생략?",
+    "text": "왜 튜플만이 괄호를 생략?\n\n튜플을 먼저 만들고, 괄호를 생략하는 문법을 추가한 것은 아닐것이다.\n원래는 괄호없이 벡터를 만들고 싶었을 것임\n차피 벡터는 한,두번 쓰고 버리는 경우가 많고, 대부분 이름도 필요없음 \\(\\to\\) (즉, 원소에 접근해서 sorting하고… 순서를 바꿀 필요가 없다는 것임)\n데이터를 분석하면서 우리에게 필요한것은, 데이터가 벡터 형태로 모여, 하나이 DataFrame을 구축하기만 하면된다."
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#형태변환",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#형태변환",
-    "title": "00. Python Basic (1)",
-    "section": "형태변환",
-    "text": "형태변환\n\nfloat \\(\\to\\) int\n- 아래의 경우는 형태변환이 되었으나 정보의 손실이 발생한 것임\n\na = 3.4\n\n_a = int(a)\n\n\ntype(a), type(_a)\n\n(float, int)\n\n\n\n\n\\(\\text{bool} \\to \\text{(float, int)}\\,\\text{and}\\, \\text{(float, int)} \\to \\text{bool}\\)\n- bool \\(\\to\\) int, float\n\na = True\n_a1 = float(a)\n_a2 = int(a)\n\n\ntype(a), type(_a1), type(_a2)\n\n(bool, float, int)\n\n\n- int, float \\(\\to\\) bool\n\na1 = 1\na2 = 1.0\n\n_a1 = bool(a1)\n_a2 = bool(a2)\n\n\n_a1, _a2, type(_a1), type(_a2)\n\n(True, True, bool, bool)\n\n\n- str \\(\\to\\) bool\n\nbool(\"강철\")\n\nTrue\n\n\n\nbool(\"\")\n\nFalse\n\n\n\n\n암묵적 형변환\n\nTrue +1\n\n2\n\n\n\n1*1.0\n\n1.0\n\n\n\nTrue + True\n\n2\n\n\n\n\n형태변환이 불가능한 경우\n\ncomplex1 = 3+ 0j\ncomplex1\n\n(3+0j)\n\n\nfloat(complex1) ## 에러 발생\n\n\n문자열의 사칙연산(O)\n\n\"X\" + \"2\"\n\n'X2'\n\n\n\n\"X\"*2\n\n'XX'\n\n\n\n\n문자열의 사칙연산(x)\n\"X\" * \"Y\"\n\n\"X\" - \"2\"\n\n\"X\" / \"y\"\n\n- 즉 더하기를 제외한 나머지 사칙연산은 문자형 변수에 적용되지 않는다."
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추가",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추가",
+    "title": "02. Python Basic (3)",
+    "section": "원소 추가",
+    "text": "원소 추가\n\ns = {\"a\",\"b\"}\n\n\ns.add(\"c\")\ns\n\n{'a', 'b', 'c'}\n\n\n\ns.update([\"c\",\"d\"])\ns\n\n{'a', 'b', 'c', 'd'}"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#날짜형-자료",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#날짜형-자료",
-    "title": "00. Python Basic (1)",
-    "section": "날짜형 자료",
-    "text": "날짜형 자료\n\nfrom datetime import datetime\n\n\nnow = datetime.now()\n\n\nnow\n\ndatetime.datetime(2023, 8, 9, 5, 45, 24, 616085)\n\n\n\nprint(now)\n\n2023-08-09 05:45:24.616085\n\n\n\nprint(\"{}년 {}월 {}일 {}시 {}분 {}초\".format(now.year,now.month,now.day,now.hour,now.minute,now.second))\n\n2023년 8월 9일 5시 45분 24초"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-삭제",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-삭제",
+    "title": "02. Python Basic (3)",
+    "section": "원소 삭제",
+    "text": "원소 삭제\n\ns\n\n{'a', 'b', 'c', 'd'}\n\n\n\ns.remove(\"c\")\n\n\ns\n\n{'a', 'b', 'd'}\n\n\n- discard로 삭제시 에러메세지를 반환하지 않음\n\ns.remove(\"z\")\n\nKeyError: 'z'\n\n\n\ns.discard(\"z\")\n\n- 모든 원소 삭제\n\ns.clear()\n\n\ns\n\nset()"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#기타-연산",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#기타-연산",
-    "title": "00. Python Basic (1)",
-    "section": "기타 연산",
-    "text": "기타 연산\n\na = \"ABCD\"\nb = \"efgh\"\n\n\na.lower(),b.upper()\n\n('abcd', 'EFGH')"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#in",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#in",
+    "title": "02. Python Basic (3)",
+    "section": "in",
+    "text": "in\n\n\"a\" in s\n\nTrue\n\n\n\n합,교,차 집합\n\nset1 = {\"a\",\"b\",\"c\"}\nset2 = {\"b\",\"c\",\"d\"}\n\n- 합집합\n\nset1|set2\n\n{'a', 'b', 'c', 'd'}\n\n\n\nset1.union(set2)\n\n{'a', 'b', 'c', 'd'}\n\n\n- 교집합\n\nset1 & set2\n\n{'b', 'c'}\n\n\n\nset1.intersection(set2)\n\n{'b', 'c'}\n\n\n- 차집합\n\nset1,set2\n\n({'a', 'b', 'c'}, {'b', 'c', 'd'})\n\n\n\nset2-set1\n\n{'d'}\n\n\n\n\n부분 집합\n\nset3 = set1|set2\n\n\nset2&lt;set3\n\nTrue"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
-    "title": "00. Python Basic (1)",
-    "section": "f-string(요즘 쓰는 방식)",
-    "text": "f-string(요즘 쓰는 방식)\n\nex1\n\nn = \"이강철\"\na = 28\ns = 100.213141\n\n\nprint(f\"{a}살의 {n}의 점수는 {s:.2f}입니다. \")\n\n28살의 이강철의 점수는 100.00입니다. \n\n\n\n\nex2\n\nn = \"이강철\"\na = 28\ns1 = 100.2\ns2 = 100.3\ns3 = 100.4\ns4 = 100.5\ns5 = 100.6\n\n\ntxt= f'''\n이름 : {n}\n\n연령대 : {age}\n\n점수 : {s1},{s2},{s3},{s4},{s5}\n\n합계 : {ts:,.0f} /평균 : {avg:,.2f}\n'''`\n\nprint(txt)\n\n\n이름 : 이강철\n\n연령대 : 20\n\n점수 : 100.2,100.3,100.4,100.5,100.6\n\n합계 : 502 /평균 : 100.40"
-  },
-  {
-    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html",
-    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html",
-    "title": "Extra 01. 클래스 탐구 (1)",
-    "section": "",
-    "text": "from IPython.core.display import HTML\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n\n\n\nclass jkm:\n    def __init__(self) :\n        self.title = \"중요한건 꺽이지 않는 마음\"\n\n        self.url = \"https://github.com/guebin/PP2023/blob/main/posts/03_Class/JungGGuckMa.jpg?raw=true\"\n\n        self.Q = \"Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\"\n\n        self.A = \"A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\"\n\n        self.h1 = \"마음\"\n\n        self.html_str =  '''\n                    &lt;style&gt;\n                        .title {{\n                            font-family: \"Times New Roman\", serif;\n                            font-size: 30px;\n                            font-weight: 900;\n                        }}\n                        .text {{\n                            font-family: \"Arial\", sans-serif;\n                            font-size: 20px;\n                            font-style: italic;\n                        }}\n                        .highlight {{\n                            font-family: \"Montserrat\", monospace;\n                            font-size: 35px;\n                            font-weight: 900;\n                            text-decoration: underline; ## 밑줄\n                            font-style: normal;\n                            color: darkblue;\n                            background-color: #FFFF00;\n                        }}\n                    &lt;/style&gt;\n\n                    &lt;p class=\"title\"&gt;{tt1}&lt;/p&gt;\n                    &lt;img src={url} width=\"600\"&gt;\n                    &lt;p&gt; \\n &lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {Q}&lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {A}: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt; {h1} &lt;/span&gt;&lt;/p&gt;\n                    '''\n        \n    def show(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        display(HTML(_str))\n\n\ntest = jkm()\n\n\ntest.show()\n\n\n                    \n\n                    중요한건 꺽이지 않는 마음\n                    \n                     \n \n                     Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\n                     A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    중요한 것은 꺾이지 않는  마음 \n                    \n\n\n\n\n\n- 아래처럼 우리가 생성한 test의 타입을 확인하니 type 이 jkm 으로 나온다.\n\ntest?\n\n\nType:        jkm\nString form: &lt;__main__.jkm object at 0x000001E17B1E7850&gt;\nDocstring:   &lt;no docstring&gt;\n\n\n\n- 아래의 리스트, 튜플, 리스트(튜플)의 타입을 확인해보자.\n\ntype([1,2,3])\n\nlist\n\n\n\ntype((1,2,3))\n\ntuple\n\n\n\ntype(list((1,2,3)))\n\nlist\n\n\n- 깨달음1. 우리가 어떤 인스턴스 객체를 생성할 떄 그 자료형은 파이썬 내부, 혹은 우리가 작성한 클래스의 이름이다.\n\n\n\n\na = \"123\"\nlist(a)\n\n['1', '2', '3']\n\n\n\na = list()\n\na.__init__(\"123\")\na\n\n['1', '2', '3']\n\n\n\na = list()\na.__init__('123') \na.__init__() # 리스트 최기화\na\n\n[]\n\n\n- 깨달음 2. 우리가 list(\"123\") 과 같은 메소드를 입력할 때 사실 자료형을 변환하는 것이 아니라, list 라는 클래스의 __init__()으로 인스턴스를 생성하는 것이었다.\n\n\n\n- 아래의 클래스를 관찰하자\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def show(self):\n        print('a={}'.format(self.a))\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na?\n\n\nType:        UpJump\nString form: &lt;__main__.UpJump object at 0x000001E17A4FE650&gt;\nDocstring:   &lt;no docstring&gt;\n\n\n\n\na.up()\n\na의 값이 1 증가합니다.\n\n\n\na.jump(-2)\n\na의 값이 -2 증가합니다.\n\n\n\na.reset()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na.show()\n\na=0\n\n\n- show 함수를 살펴보자.\n\nshow 함수는 print와 비슷하다 \\(\\to\\) 그렇다면….?\nprint(a)를 하면 a.show() 와 동일한 효과를 내도록 만들 수 있을까?\n\n\nprint(a)\n\n&lt;__main__.UpJump object at 0x000001E17A4FE650&gt;\n\n\n\nprint는 파이썬의 내장기능이다. 내장기능을 우리가 마음대로 변환해서 사용하면 많은 문제들이 생긴다.\n\n\\(\\divideontimes\\) 그런데 a의 자료형에 해당하는 인스턴스들에 한정하여 print를 수정하는 방법이 있다면?\n\n즉, 다른 클래스 오브젝트들은 영향을 받지 않고, UpJump로 생성된 오브젝트들만 가능하게끔 하는 것이다.\n\n\n\n- 아래둘은 같은 역할을 한다. \\(\\to\\) 즉, print(“a”)는 print(\"a\".__str__())의 축약 버전이다.\n\n print(\"a\")\n\na\n\n\n\nprint(\"a\".__str__())\n\na\n\n\n- 우리가 정의한 show함수는 다음과 같다.\ndef show(self):\n        print('a={}'.format(self.a))\n- 즉, 작성한 show함수는 단지 print문을 호출하는 함수이므로, a.__str__()의 기능을 재정의하면? print(a)의 결과도 바뀌지 않을까?\n\n\n\n\ndef f():\n    print(\"강철\")\n    \nf()\n\n강철\n\n\n\ndef f() :\n    print(\"DX 강철\")\nf()\n\nDX 강철\n\n\n- 함수를 덮어씌울 수 있다는 것을 확인하였다.\n\n\n\n\ndef show() \\(\\to\\) def __str__(), print \\(\\to\\) return\n\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a={}'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na.__str__()\n\n'a=0'\n\n\n\nprint(a) ## 성공했다!!\n\na=0\n\n\n\n\n\n\n- 우리가 어떤 변수를 할당하고 실행할때 사용되는 내장 함수는 __repr__() \\(\\to\\) representation의 약자이다.\n- 그러면 __repr__도 우리가 정의할 수 있지 않을까?\n- __str()__ 과 비교해보자.\n\na = np.arange(4).reshape(2,2)\n\n\na.__str__()\n\n'[[0 1]\\n [2 3]]'\n\n\n\na.__repr__()\n\n'array([[0, 1],\\n       [2, 3]])'\n\n\n- print 문을 사용한 비교.\n\nprint(a.__str__())\n\n[[0 1]\n [2 3]]\n\n\n\nprint(a.__repr__())\n\narray([[0, 1],\n       [2, 3]])\n\n\n\n\ndef __repr__(self):\n    return 'a={}'.format(self.a)\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n    def __repr__(self):\n        return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\nprint(a)\n\na의 값은 0입니다.\n\n\n\na\n\na=0\n\n\n\n\n\n- 만약 __repr__()만 정의되어 있고 __str__()이 정의되있지 않았다면 __repr__()의 내용이 __str__()의 내용을 대신한다. (단, 역은 성립하지 않음)\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n   # def __str__(self):\n    #    return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n    def __repr__(self):\n        return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na\n\na=0\n\n\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n   # def __repr__(self):\n    #    return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na\n\n&lt;__main__.UpJump at 0x1e17b574090&gt;\n\n\n\n\n\n\n\n\n\ndf = pd.DataFrame({'a':[1,2,3],'b':[2,3,4]})\ndf\n\n\n\n\n\n\n\n\na\nb\n\n\n\n\n0\n1\n2\n\n\n1\n2\n3\n\n\n2\n3\n4\n\n\n\n\n\n\n\n\nprint(df.__repr__())\n\n   a  b\n0  1  2\n1  2  3\n2  3  4\n\n\n\nprint(df.__str__())\n\n   a  b\n0  1  2\n1  2  3\n2  3  4\n\n\n- 뭔가 이상하다. 앞서 배운대로라면 코드를 실행할 때 나오는 표처럼 예쁘게 나와야 하는데 그렇지 않다…\n- 아래를 살펴보자.\n\ndf._repr_html_()\n\n'&lt;div&gt;\\n&lt;style scoped&gt;\\n    .dataframe tbody tr th:only-of-type {\\n        vertical-align: middle;\\n    }\\n\\n    .dataframe tbody tr th {\\n        vertical-align: top;\\n    }\\n\\n    .dataframe thead th {\\n        text-align: right;\\n    }\\n&lt;/style&gt;\\n&lt;table border=\"1\" class=\"dataframe\"&gt;\\n  &lt;thead&gt;\\n    &lt;tr style=\"text-align: right;\"&gt;\\n      &lt;th&gt;&lt;/th&gt;\\n      &lt;th&gt;a&lt;/th&gt;\\n      &lt;th&gt;b&lt;/th&gt;\\n    &lt;/tr&gt;\\n  &lt;/thead&gt;\\n  &lt;tbody&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;0&lt;/th&gt;\\n      &lt;td&gt;1&lt;/td&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;1&lt;/th&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;2&lt;/th&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n      &lt;td&gt;4&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/tbody&gt;\\n&lt;/table&gt;\\n&lt;/div&gt;'\n\n\n\nHTML(df._repr_html_())\n\n\n\n\n\n\n\n\na\nb\n\n\n\n\n0\n1\n2\n\n\n1\n2\n3\n\n\n2\n3\n4\n\n\n\n\n\n\n\n- 깨달음5. 데이터 프레임은 html로 작성되어 있으며 _repr_html_()은 html 구조를 확인할 수 있는 명령어이다!!\n- 그러면 df.__repr__()의 역할은?\n\n아 우리가 대화형 콘솔(anaconda prompt)에서 작성하면 나오는 출력형식을 지원한다!\n\n\n\n\n\n- 초기\ndef show(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        display(HTML(_str))\n- 수정후\ndef _repr_html_(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        return _str\n\nclass jkm:\n    def __init__(self) :\n        self.title = \"중요한건 꺽이지 않는 마음\"\n\n        self.url = \"https://github.com/guebin/PP2023/blob/main/posts/03_Class/JungGGuckMa.jpg?raw=true\"\n\n        self.Q = \"Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\"\n\n        self.A = \"A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\"\n\n        self.h1 = \"마음\"\n\n        self.html_str =  '''\n                    &lt;style&gt;\n                        .title {{\n                            font-family: \"Times New Roman\", serif;\n                            font-size: 30px;\n                            font-weight: 900;\n                        }}\n                        .text {{\n                            font-family: \"Arial\", sans-serif;\n                            font-size: 20px;\n                            font-style: italic;\n                        }}\n                        .highlight {{\n                            font-family: \"Montserrat\", monospace;\n                            font-size: 35px;\n                            font-weight: 900;\n                            text-decoration: underline; ## 밑줄\n                            font-style: normal;\n                            color: darkblue;\n                            background-color: #FFFF00;\n                        }}\n                    &lt;/style&gt;\n\n                    &lt;p class=\"title\"&gt;{tt1}&lt;/p&gt;\n                    &lt;img src={url} width=\"600\"&gt;\n                    &lt;p&gt; \\n &lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {Q}&lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {A}: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt; {h1} &lt;/span&gt;&lt;/p&gt;\n                    '''\n        \n    def _repr_html_(self):\n                _str = self.html_str.format(\n                    tt1 = self.title,\n                    url = self.url,\n                    Q = self.Q,\n                    A = self.A,\n                    h1 = self.h1)\n                return _str\n\n\na = jkm()\na\n\n\n                    \n\n                    중요한건 꺽이지 않는 마음\n                    \n                     \n \n                     Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\n                     A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    중요한 것은 꺾이지 않는  마음"
-  },
-  {
-    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#작성한-class-등록",
-    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#작성한-class-등록",
-    "title": "Extra 01. 클래스 탐구 (1)",
-    "section": "",
-    "text": "class jkm:\n    def __init__(self) :\n        self.title = \"중요한건 꺽이지 않는 마음\"\n\n        self.url = \"https://github.com/guebin/PP2023/blob/main/posts/03_Class/JungGGuckMa.jpg?raw=true\"\n\n        self.Q = \"Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\"\n\n        self.A = \"A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\"\n\n        self.h1 = \"마음\"\n\n        self.html_str =  '''\n                    &lt;style&gt;\n                        .title {{\n                            font-family: \"Times New Roman\", serif;\n                            font-size: 30px;\n                            font-weight: 900;\n                        }}\n                        .text {{\n                            font-family: \"Arial\", sans-serif;\n                            font-size: 20px;\n                            font-style: italic;\n                        }}\n                        .highlight {{\n                            font-family: \"Montserrat\", monospace;\n                            font-size: 35px;\n                            font-weight: 900;\n                            text-decoration: underline; ## 밑줄\n                            font-style: normal;\n                            color: darkblue;\n                            background-color: #FFFF00;\n                        }}\n                    &lt;/style&gt;\n\n                    &lt;p class=\"title\"&gt;{tt1}&lt;/p&gt;\n                    &lt;img src={url} width=\"600\"&gt;\n                    &lt;p&gt; \\n &lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {Q}&lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {A}: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt; {h1} &lt;/span&gt;&lt;/p&gt;\n                    '''\n        \n    def show(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        display(HTML(_str))\n\n\ntest = jkm()\n\n\ntest.show()\n\n\n                    \n\n                    중요한건 꺽이지 않는 마음\n                    \n                     \n \n                     Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\n                     A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    중요한 것은 꺾이지 않는  마음"
-  },
-  {
-    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-1.-type-class",
-    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-1.-type-class",
-    "title": "Extra 01. 클래스 탐구 (1)",
-    "section": "",
-    "text": "- 아래처럼 우리가 생성한 test의 타입을 확인하니 type 이 jkm 으로 나온다.\n\ntest?\n\n\nType:        jkm\nString form: &lt;__main__.jkm object at 0x000001E17B1E7850&gt;\nDocstring:   &lt;no docstring&gt;\n\n\n\n- 아래의 리스트, 튜플, 리스트(튜플)의 타입을 확인해보자.\n\ntype([1,2,3])\n\nlist\n\n\n\ntype((1,2,3))\n\ntuple\n\n\n\ntype(list((1,2,3)))\n\nlist\n\n\n- 깨달음1. 우리가 어떤 인스턴스 객체를 생성할 떄 그 자료형은 파이썬 내부, 혹은 우리가 작성한 클래스의 이름이다."
-  },
-  {
-    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-2.-__init__",
-    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-2.-__init__",
-    "title": "Extra 01. 클래스 탐구 (1)",
-    "section": "",
-    "text": "a = \"123\"\nlist(a)\n\n['1', '2', '3']\n\n\n\na = list()\n\na.__init__(\"123\")\na\n\n['1', '2', '3']\n\n\n\na = list()\na.__init__('123') \na.__init__() # 리스트 최기화\na\n\n[]\n\n\n- 깨달음 2. 우리가 list(\"123\") 과 같은 메소드를 입력할 때 사실 자료형을 변환하는 것이 아니라, list 라는 클래스의 __init__()으로 인스턴스를 생성하는 것이었다."
-  },
-  {
-    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-3.-__str__",
-    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-3.-__str__",
-    "title": "Extra 01. 클래스 탐구 (1)",
-    "section": "",
-    "text": "- 아래의 클래스를 관찰하자\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def show(self):\n        print('a={}'.format(self.a))\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na?\n\n\nType:        UpJump\nString form: &lt;__main__.UpJump object at 0x000001E17A4FE650&gt;\nDocstring:   &lt;no docstring&gt;\n\n\n\n\na.up()\n\na의 값이 1 증가합니다.\n\n\n\na.jump(-2)\n\na의 값이 -2 증가합니다.\n\n\n\na.reset()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na.show()\n\na=0\n\n\n- show 함수를 살펴보자.\n\nshow 함수는 print와 비슷하다 \\(\\to\\) 그렇다면….?\nprint(a)를 하면 a.show() 와 동일한 효과를 내도록 만들 수 있을까?\n\n\nprint(a)\n\n&lt;__main__.UpJump object at 0x000001E17A4FE650&gt;\n\n\n\nprint는 파이썬의 내장기능이다. 내장기능을 우리가 마음대로 변환해서 사용하면 많은 문제들이 생긴다.\n\n\\(\\divideontimes\\) 그런데 a의 자료형에 해당하는 인스턴스들에 한정하여 print를 수정하는 방법이 있다면?\n\n즉, 다른 클래스 오브젝트들은 영향을 받지 않고, UpJump로 생성된 오브젝트들만 가능하게끔 하는 것이다.\n\n\n\n- 아래둘은 같은 역할을 한다. \\(\\to\\) 즉, print(“a”)는 print(\"a\".__str__())의 축약 버전이다.\n\n print(\"a\")\n\na\n\n\n\nprint(\"a\".__str__())\n\na\n\n\n- 우리가 정의한 show함수는 다음과 같다.\ndef show(self):\n        print('a={}'.format(self.a))\n- 즉, 작성한 show함수는 단지 print문을 호출하는 함수이므로, a.__str__()의 기능을 재정의하면? print(a)의 결과도 바뀌지 않을까?\n\n\n\n\ndef f():\n    print(\"강철\")\n    \nf()\n\n강철\n\n\n\ndef f() :\n    print(\"DX 강철\")\nf()\n\nDX 강철\n\n\n- 함수를 덮어씌울 수 있다는 것을 확인하였다.\n\n\n\n\ndef show() \\(\\to\\) def __str__(), print \\(\\to\\) return\n\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a={}'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na.__str__()\n\n'a=0'\n\n\n\nprint(a) ## 성공했다!!\n\na=0"
-  },
-  {
-    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-4.-__repr__",
-    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-4.-__repr__",
-    "title": "Extra 01. 클래스 탐구 (1)",
-    "section": "",
-    "text": "- 우리가 어떤 변수를 할당하고 실행할때 사용되는 내장 함수는 __repr__() \\(\\to\\) representation의 약자이다.\n- 그러면 __repr__도 우리가 정의할 수 있지 않을까?\n- __str()__ 과 비교해보자.\n\na = np.arange(4).reshape(2,2)\n\n\na.__str__()\n\n'[[0 1]\\n [2 3]]'\n\n\n\na.__repr__()\n\n'array([[0, 1],\\n       [2, 3]])'\n\n\n- print 문을 사용한 비교.\n\nprint(a.__str__())\n\n[[0 1]\n [2 3]]\n\n\n\nprint(a.__repr__())\n\narray([[0, 1],\n       [2, 3]])\n\n\n\n\ndef __repr__(self):\n    return 'a={}'.format(self.a)\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n    def __repr__(self):\n        return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\nprint(a)\n\na의 값은 0입니다.\n\n\n\na\n\na=0\n\n\n\n\n\n- 만약 __repr__()만 정의되어 있고 __str__()이 정의되있지 않았다면 __repr__()의 내용이 __str__()의 내용을 대신한다. (단, 역은 성립하지 않음)\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n   # def __str__(self):\n    #    return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n    def __repr__(self):\n        return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na\n\na=0\n\n\n\nclass UpJump:\n    def __init__(self):\n        self.reset()\n    def up(self):\n        self.a = self.a + 1  \n        print(\"a의 값이 1 증가합니다.\")\n    def jump(self,jump_size):\n        self.a = self.a + jump_size      \n        print(\"a의 값이 {} 증가합니다.\".format(jump_size))\n    def __str__(self):\n        return 'a의 값은 {}입니다.'.format(self.a)\n    def reset(self):\n        self.a = 0\n        print(\"a의 값이 0으로 초기화 되었습니다.\")\n   # def __repr__(self):\n    #    return 'a={}'.format(self.a)  \n\n\na = UpJump()\n\na의 값이 0으로 초기화 되었습니다.\n\n\n\na\n\n&lt;__main__.UpJump at 0x1e17b574090&gt;"
-  },
-  {
-    "objectID": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-5.-_repr_html_",
-    "href": "posts/DX/1wk/2023-08-10-Extra 01. 클래스 탐구 (1).html#깨달음-5.-_repr_html_",
-    "title": "Extra 01. 클래스 탐구 (1)",
-    "section": "",
-    "text": "df = pd.DataFrame({'a':[1,2,3],'b':[2,3,4]})\ndf\n\n\n\n\n\n\n\n\na\nb\n\n\n\n\n0\n1\n2\n\n\n1\n2\n3\n\n\n2\n3\n4\n\n\n\n\n\n\n\n\nprint(df.__repr__())\n\n   a  b\n0  1  2\n1  2  3\n2  3  4\n\n\n\nprint(df.__str__())\n\n   a  b\n0  1  2\n1  2  3\n2  3  4\n\n\n- 뭔가 이상하다. 앞서 배운대로라면 코드를 실행할 때 나오는 표처럼 예쁘게 나와야 하는데 그렇지 않다…\n- 아래를 살펴보자.\n\ndf._repr_html_()\n\n'&lt;div&gt;\\n&lt;style scoped&gt;\\n    .dataframe tbody tr th:only-of-type {\\n        vertical-align: middle;\\n    }\\n\\n    .dataframe tbody tr th {\\n        vertical-align: top;\\n    }\\n\\n    .dataframe thead th {\\n        text-align: right;\\n    }\\n&lt;/style&gt;\\n&lt;table border=\"1\" class=\"dataframe\"&gt;\\n  &lt;thead&gt;\\n    &lt;tr style=\"text-align: right;\"&gt;\\n      &lt;th&gt;&lt;/th&gt;\\n      &lt;th&gt;a&lt;/th&gt;\\n      &lt;th&gt;b&lt;/th&gt;\\n    &lt;/tr&gt;\\n  &lt;/thead&gt;\\n  &lt;tbody&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;0&lt;/th&gt;\\n      &lt;td&gt;1&lt;/td&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;1&lt;/th&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;2&lt;/th&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n      &lt;td&gt;4&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/tbody&gt;\\n&lt;/table&gt;\\n&lt;/div&gt;'\n\n\n\nHTML(df._repr_html_())\n\n\n\n\n\n\n\n\na\nb\n\n\n\n\n0\n1\n2\n\n\n1\n2\n3\n\n\n2\n3\n4\n\n\n\n\n\n\n\n- 깨달음5. 데이터 프레임은 html로 작성되어 있으며 _repr_html_()은 html 구조를 확인할 수 있는 명령어이다!!\n- 그러면 df.__repr__()의 역할은?\n\n아 우리가 대화형 콘솔(anaconda prompt)에서 작성하면 나오는 출력형식을 지원한다!\n\n\n\n\n\n- 초기\ndef show(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        display(HTML(_str))\n- 수정후\ndef _repr_html_(self):\n        _str = self.html_str.format(\n            tt1 = self.title,\n            url = self.url,\n            Q = self.Q,\n            A = self.A,\n            h1 = self.h1 )\n        return _str\n\nclass jkm:\n    def __init__(self) :\n        self.title = \"중요한건 꺽이지 않는 마음\"\n\n        self.url = \"https://github.com/guebin/PP2023/blob/main/posts/03_Class/JungGGuckMa.jpg?raw=true\"\n\n        self.Q = \"Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\"\n\n        self.A = \"A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\"\n\n        self.h1 = \"마음\"\n\n        self.html_str =  '''\n                    &lt;style&gt;\n                        .title {{\n                            font-family: \"Times New Roman\", serif;\n                            font-size: 30px;\n                            font-weight: 900;\n                        }}\n                        .text {{\n                            font-family: \"Arial\", sans-serif;\n                            font-size: 20px;\n                            font-style: italic;\n                        }}\n                        .highlight {{\n                            font-family: \"Montserrat\", monospace;\n                            font-size: 35px;\n                            font-weight: 900;\n                            text-decoration: underline; ## 밑줄\n                            font-style: normal;\n                            color: darkblue;\n                            background-color: #FFFF00;\n                        }}\n                    &lt;/style&gt;\n\n                    &lt;p class=\"title\"&gt;{tt1}&lt;/p&gt;\n                    &lt;img src={url} width=\"600\"&gt;\n                    &lt;p&gt; \\n &lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {Q}&lt;/p&gt;\n                    &lt;p class=\"text\"&gt; {A}: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    &lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt; {h1} &lt;/span&gt;&lt;/p&gt;\n                    '''\n        \n    def _repr_html_(self):\n                _str = self.html_str.format(\n                    tt1 = self.title,\n                    url = self.url,\n                    Q = self.Q,\n                    A = self.A,\n                    h1 = self.h1)\n                return _str\n\n\na = jkm()\na\n\n\n                    \n\n                    중요한건 꺽이지 않는 마음\n                    \n                     \n \n                     Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\n                     A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n                    중요한 것은 꺾이지 않는  마음"
+    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#for문",
+    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#for문",
+    "title": "02. Python Basic (3)",
+    "section": "for문",
+    "text": "for문\n- 다음에 txt에서 각 알파벳이 몇 번 사용됬는지 구하기\n\ntxt = 'asdkflkjahsdlkjfhlaksglkjdhflkgjhlskdfjhglkajhsdlkfjhalsdkf'\ntxt\n\n'asdkflkjahsdlkjfhlaksglkjdhflkgjhlskdfjhglkajhsdlkfjhalsdkf'\n\n\n\n{i : list(txt).count(i) for i in set(txt)}\n\n{'l': 9, 'h': 7, 's': 6, 'd': 6, 'a': 5, 'g': 3, 'j': 7, 'f': 6, 'k': 10}"
   }
 ]

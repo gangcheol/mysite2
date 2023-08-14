@@ -133,162 +133,239 @@
     "text": "4단계 밈놀이 (클래스)\n- 클래스 선언 : 도화지 만들기\n\nclass jkm :\n     pass\n\n\ntest = jkm()\ntest\n\n&lt;__main__.jkm at 0x1c07fdfa2d0&gt;\n\n\n\n뼈대 생성\n\ntest.title = \"중요한건 꺽이지 않는 마음\"\n\ntest.url = \"https://github.com/guebin/PP2023/blob/main/posts/03_Class/JungGGuckMa.jpg?raw=true\"\n\ntest.Q = \"Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\"\n\ntest.A = \"A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\"\n\ntest.h1 = \"마음\"\n\ntest.html_str =  '''\n&lt;style&gt;\n    .title {{\n        font-family: \"Times New Roman\", serif;\n        font-size: 30px;\n        font-weight: 900;\n    }}\n    .text {{\n        font-family: \"Arial\", sans-serif;\n        font-size: 20px;\n        font-style: italic;\n    }}\n    .highlight {{\n        font-family: \"Montserrat\", monospace;\n        font-size: 35px;\n        font-weight: 900;\n        text-decoration: underline; ## 밑줄\n        font-style: normal;\n        color: darkblue;\n        background-color: #FFFF00;\n    }}\n&lt;/style&gt;\n\n&lt;p class=\"title\"&gt;{tt1}&lt;/p&gt;\n&lt;img src={url} width=\"600\"&gt;\n&lt;p&gt; \\n &lt;/p&gt;\n&lt;p class=\"text\"&gt; {Q}&lt;/p&gt;\n&lt;p class=\"text\"&gt; {A}: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n&lt;p class=\"title\"&gt;중요한 것은 꺾이지 않는 &lt;span class=\"highlight\"&gt; {h1} &lt;/span&gt;&lt;/p&gt;\n'''\n\n\n\nshow 함수선언\n\ndef show(test):\n    _str = test.html_str.format(\n        tt1 = test.title,\n        url = test.url,\n        Q = test.Q,\n        A = test.A,\n        h1 = test.h1\n    )\n    display(HTML(_str))\n\n\nshow(test)\n\n\n\n\n중요한건 꺽이지 않는 마음\n\n \n \n Q: 로그와 2라운드 재대결, 어떤 점에 유의해야 할까\n A: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.: 상대팀에 대해서 더 분석할 건 없는 것 같고, 저희가 저희 플레이 잘하는 게 제일 중요한 것 같고 오늘 지긴 했지만 저희끼리만 안 무너지면 충분히 이길 수 있을 것 같아요.\n중요한 것은 꺾이지 않는  마음"
   },
   {
-    "objectID": "posts/DX/2023-07-31-00.intro.html",
-    "href": "posts/DX/2023-07-31-00.intro.html",
-    "title": "00. Intro & setting",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html",
+    "title": "03. Python Basic (4)",
     "section": "",
-    "text": "- 어… 일단 평소에도 quarto를 이용해서 웹사이트를 관리했지만… 뭔가 처음 깃허브를 접하구 하시는 분들은 이 플랫폼을 사용할 때 되게 난항이 있을것 같다… (내가 그랬다…)\n- 그리고 원래 만들어 놓았던 사이트는 뭔가 좀 지저분한 느낌이 들어서….\n- 에이블스쿨 하면서 배운것들 기록할 때는 뭔가 깔끔한 공간에 하고 싶기도 하다.\n- 이참에 절차를 확실히 내가 적어두자!\n\n\n- quarto download link : 여기서 quarto를 다운받자!\n\n\n\n- Terminal을 켠다음에 아래와 같은 명령어를 입력한다!\n(그.. 명령어 입력할 때 현재 자기 주피터 킬때 켜지는 폴더로 옮긴 다음에 수행하자… 골치 아프다ㅜㅜ)\nquarto create project website gcsite\n- 그러면 다음과 같은 이미지가 보인다\n\n- 저기 open with 어찌고 보이는데 d버튼 누르면 (don’t open)으로 넘어가니 그걸 선택한 후 엔터를 눌러준다!\n- 그러면 아래 이미지처럼 맨 밑에 gcsite라는 폴더가 생긴 것을 볼 수 있다.\n\n\n\n\n- git bash 쓰는 사람들 많던데 난 github desktop이 훨씬 편하다.\n- git 알못이기 때문에 많은 것을 알기 위해 괴롭고 싶지 않다.\n- 뭐 여튼 깃허브 데스크탑을 킨다.\n- 상단 메뉴바 \\(\\to\\) File \\(\\to\\) Add local repository\n- 그러면 아래와 같은 경고문이 뜬다.\n\n- local하고 연결하고 싶은데 깃허브에는 gcsite가 없으니 대충 만들어 달라는 것임 “create a repository” 를 눌러주자.\n\n- 무시, 걍 create repository ㄱㄱ\n- 그러면 깃허브 데스크탑에서 너 방금 만든거 너꺼 깃허브에 Publish 할거냐고 물어봄\n\n- Publish repository 눌러주면 끝~~ (단, publish할 때 private 체크박스는 해제하구 하자!)\n- 그 다음 내가 생성산 gcsite 저장소 setting으로 넘어가서 pages를 클릭!\n- 아래와 같이 branch를 수정 후 save 버튼 눌러주자\n\n\n\n\n- quarto 원리 : 작성한 ipynb파일 html파일로 출력해서 그 html파일들로 웹사이트를 구성하는 것1\n- step1. posts와 docs라는 폴더를 만들자\n\nposts는 내가 작성하는 ipynb파일들이 들어갈거고, docs에는 html파일이 들어갈 것이다.\n\n- step2. index 파일 수정\n\nindex파일은 뭐랄까 네비게이터 역할이랄까 아래와 같이 바꿔주자\n\n---\ntitle: \"GC site\"\nlisting:\n  contents: posts\n  sort: [date desc, title]\n  type: table\n  categories: true\n  sort-ui: true\n  filter-ui: true\npage-layout: full\ntitle-block-banner: true\n---\n- step3. _quarto.uml 파일 수정 \\(\\to\\) 템플릿이랑 디자인 이쁜거 많으니 본인 입맛에 맞게 수정하면 됩니당\nproject:\n  type: website\n  output-dir : docs  \nwebsite:\n  title: \"GC site\"\n  page-navigation: true\n  navbar:\n    right:\n      - icon : github\n        href : https://github.com/gangcheol/\n  sidebar:\n    style: \"docked\"\n    search: True\n    contents: auto\n    \nformat:\n  html:\n    css: styles.css\n    toc: true\n    code-fold : False\n    code-line-numbers : True\n    code-copy : True\n\ntheme :\n  light : flatly\n  \neditor : visual\n- step4. 앞서 만든 posts폴더에 아무 파일이나 만들어보자\n\n- step5. 그 후 다시 터미널에서 내가 생성한 폴더로 이동\n필자의 경우는 cd gcsite\n- step6. quarto render 입력\n- step7. github desktop보면 난리가 났을 것이다. 막 일을 좀 많이 했음.\n\n로컬하고 연결되어 있으니 로컬이 하고 있는 걸 다적어서 그럼\n\n\n\n저기 내가 밑에 이러한 기록을 init이라고 써놨다. 저건 내가 로컬에서 한 행동을 내 깃허브 로컬에 저장할 건데, 그 행동을 init이라고 쓴거\n이제 저 Commit to main 버튼을 눌러주고 가운데 화면에 뜨는 push origin을 눌러주자!\n\n- 마지막!! 아까 깃허브 로컬 셋팅에서 pases란에 잠시 후에 들어가보면 다음과 같은 것을 볼 수 있다.\n\n- 저 링크로 들어가면 내가 만든 웹사이트 초안을 볼 수 있다.\n- 링크"
+    "text": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt"
   },
   {
-    "objectID": "posts/DX/2023-07-31-00.intro.html#install",
-    "href": "posts/DX/2023-07-31-00.intro.html#install",
-    "title": "00. Intro & setting",
-    "section": "",
-    "text": "- quarto download link : 여기서 quarto를 다운받자!"
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex1.-특정-수보다-크거나-같으면-10-더하기",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex1.-특정-수보다-크거나-같으면-10-더하기",
+    "title": "03. Python Basic (4)",
+    "section": "ex1. 특정 수보다 크거나 같으면 10 더하기",
+    "text": "ex1. 특정 수보다 크거나 같으면 10 더하기\n\nv = int(input(\"기준값을 입력하시오 : \"))\ns = int(input(\"비교값을 입력하시오 : \"))\nif s&gt;= v:\n    s1 = s+10\n    print(f\"입력값 {v}보다 크거나 같은 숫자가 입력되었습니다. {s}에 10을 더한값은 {s1}입니다.\")\nelse:\n    print(f\"입력값 {v}보다 작은 숫자입니다.\")\n\n기준값을 입력하시오 :  70\n비교값을 입력하시오 :  60\n\n\n입력값 70보다 작은 숫자입니다.\n\n\n\nv = int(input(\"기준값을 입력하시오 : \"))\ns = int(input(\"비교값을 입력하시오 : \"))\nif s&gt;= v:\n    s1 = s+10\n    print(f\"입력값 {v}보다 크거나 같은 숫자가 입력되었습니다. {s}에 10을 더한값은 {s1}입니다.\")\nelse:\n    print(f\"입력값 {v}보다 작은 숫자입니다.\")\n\n기준값을 입력하시오 :  70\n비교값을 입력하시오 :  70\n\n\n입력값 70보다 크거나 같은 숫자가 입력되었습니다. 70에 10을 더한값은 80입니다."
   },
   {
-    "objectID": "posts/DX/2023-07-31-00.intro.html#website-생성",
-    "href": "posts/DX/2023-07-31-00.intro.html#website-생성",
-    "title": "00. Intro & setting",
-    "section": "",
-    "text": "- Terminal을 켠다음에 아래와 같은 명령어를 입력한다!\n(그.. 명령어 입력할 때 현재 자기 주피터 킬때 켜지는 폴더로 옮긴 다음에 수행하자… 골치 아프다ㅜㅜ)\nquarto create project website gcsite\n- 그러면 다음과 같은 이미지가 보인다\n\n- 저기 open with 어찌고 보이는데 d버튼 누르면 (don’t open)으로 넘어가니 그걸 선택한 후 엔터를 눌러준다!\n- 그러면 아래 이미지처럼 맨 밑에 gcsite라는 폴더가 생긴 것을 볼 수 있다."
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2.-리스트-요소-확인",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2.-리스트-요소-확인",
+    "title": "03. Python Basic (4)",
+    "section": "ex2. 리스트 요소 확인",
+    "text": "ex2. 리스트 요소 확인\n\ns = [1,2,3,4,5]\nif s :\n    print(s)\nelse :\n    print(\"요소 없음\")\n\n[1, 2, 3, 4, 5]\n\n\n\ns = []\nif s :\n    print(s)\nelse :\n    print(\"요소 없음\")\n\n요소 없음\n\n\n\ns = [1,2,3,4,5]\nif s :\n    pass ## 나중에 먼가 내가 조건문일 때 정의를 남기려고 `pass`!\nelse :\n    print(\"요소 없음\")"
   },
   {
-    "objectID": "posts/DX/2023-07-31-00.intro.html#깃허브-로컬-연결",
-    "href": "posts/DX/2023-07-31-00.intro.html#깃허브-로컬-연결",
-    "title": "00. Intro & setting",
-    "section": "",
-    "text": "- git bash 쓰는 사람들 많던데 난 github desktop이 훨씬 편하다.\n- git 알못이기 때문에 많은 것을 알기 위해 괴롭고 싶지 않다.\n- 뭐 여튼 깃허브 데스크탑을 킨다.\n- 상단 메뉴바 \\(\\to\\) File \\(\\to\\) Add local repository\n- 그러면 아래와 같은 경고문이 뜬다.\n\n- local하고 연결하고 싶은데 깃허브에는 gcsite가 없으니 대충 만들어 달라는 것임 “create a repository” 를 눌러주자.\n\n- 무시, 걍 create repository ㄱㄱ\n- 그러면 깃허브 데스크탑에서 너 방금 만든거 너꺼 깃허브에 Publish 할거냐고 물어봄\n\n- Publish repository 눌러주면 끝~~ (단, publish할 때 private 체크박스는 해제하구 하자!)\n- 그 다음 내가 생성산 gcsite 저장소 setting으로 넘어가서 pages를 클릭!\n- 아래와 같이 branch를 수정 후 save 버튼 눌러주자"
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex1.-학점",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex1.-학점",
+    "title": "03. Python Basic (4)",
+    "section": "ex1. 학점",
+    "text": "ex1. 학점\n\nimport numpy as np\n\n\ns = list(range(0,100,10))\n\n\ndef grade(s) :\n    if s &gt;= 90:\n        return \"A\"\n    elif s&gt;=80:\n        return \"B\"\n    elif s&gt;=70:\n        return \"C\"\n    elif s&gt;=60:\n        return \"D\"\n    else :\n        return \"F\"        \n\n\ns\n\n[0, 10, 20, 30, 40, 50, 60, 70, 80, 90]\n\n\n\n[grade(i) for i in s]\n\n['F', 'F', 'F', 'F', 'F', 'F', 'D', 'C', 'B', 'A']"
   },
   {
-    "objectID": "posts/DX/2023-07-31-00.intro.html#문서-생성",
-    "href": "posts/DX/2023-07-31-00.intro.html#문서-생성",
-    "title": "00. Intro & setting",
-    "section": "",
-    "text": "- quarto 원리 : 작성한 ipynb파일 html파일로 출력해서 그 html파일들로 웹사이트를 구성하는 것1\n- step1. posts와 docs라는 폴더를 만들자\n\nposts는 내가 작성하는 ipynb파일들이 들어갈거고, docs에는 html파일이 들어갈 것이다.\n\n- step2. index 파일 수정\n\nindex파일은 뭐랄까 네비게이터 역할이랄까 아래와 같이 바꿔주자\n\n---\ntitle: \"GC site\"\nlisting:\n  contents: posts\n  sort: [date desc, title]\n  type: table\n  categories: true\n  sort-ui: true\n  filter-ui: true\npage-layout: full\ntitle-block-banner: true\n---\n- step3. _quarto.uml 파일 수정 \\(\\to\\) 템플릿이랑 디자인 이쁜거 많으니 본인 입맛에 맞게 수정하면 됩니당\nproject:\n  type: website\n  output-dir : docs  \nwebsite:\n  title: \"GC site\"\n  page-navigation: true\n  navbar:\n    right:\n      - icon : github\n        href : https://github.com/gangcheol/\n  sidebar:\n    style: \"docked\"\n    search: True\n    contents: auto\n    \nformat:\n  html:\n    css: styles.css\n    toc: true\n    code-fold : False\n    code-line-numbers : True\n    code-copy : True\n\ntheme :\n  light : flatly\n  \neditor : visual\n- step4. 앞서 만든 posts폴더에 아무 파일이나 만들어보자\n\n- step5. 그 후 다시 터미널에서 내가 생성한 폴더로 이동\n필자의 경우는 cd gcsite\n- step6. quarto render 입력\n- step7. github desktop보면 난리가 났을 것이다. 막 일을 좀 많이 했음.\n\n로컬하고 연결되어 있으니 로컬이 하고 있는 걸 다적어서 그럼\n\n\n\n저기 내가 밑에 이러한 기록을 init이라고 써놨다. 저건 내가 로컬에서 한 행동을 내 깃허브 로컬에 저장할 건데, 그 행동을 init이라고 쓴거\n이제 저 Commit to main 버튼을 눌러주고 가운데 화면에 뜨는 push origin을 눌러주자!\n\n- 마지막!! 아까 깃허브 로컬 셋팅에서 pases란에 잠시 후에 들어가보면 다음과 같은 것을 볼 수 있다.\n\n- 저 링크로 들어가면 내가 만든 웹사이트 초안을 볼 수 있다.\n- 링크"
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2.-아래-인코딩을-수행",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2.-아래-인코딩을-수행",
+    "title": "03. Python Basic (4)",
+    "section": "ex2. 아래 인코딩을 수행",
+    "text": "ex2. 아래 인코딩을 수행\n\n\n\n숫자\n요일\n\n\n\n\n0\n월요일\n\n\n1\n화요일\n\n\n2\n수요일\n\n\n3\n목요일\n\n\n4\n금요일\n\n\n5\n토요일\n\n\n6\n일요일\n\n\n\n\nnum = list(np.random.randint(0,7,20))\n\n\ndef days(n) :\n    if n == 0 :\n        return \"월\"\n    elif n == 1 :\n        return \"화\"\n    elif n == 2 :\n        return \"수\"\n    elif n == 3 :\n        return \"목\"\n    elif n == 4 :\n        return \"금\"\n    elif n == 5 :\n        return \"토\"\n    else :\n        return \"일\"\n\n\nweek = [days(n) for n in num]\n\n\nprint(week)\n\n['월', '일', '토', '수', '월', '금', '일', '목', '월', '월', '토', '금', '일', '수', '화', '월', '수', '목', '일', '일']"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex3.-60점-이하-과락",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex3.-60점-이하-과락",
+    "title": "03. Python Basic (4)",
+    "section": "ex3. 60점 이하 과락",
+    "text": "ex3. 60점 이하 과락\n\ns = [62,59,70]\n\n\nfor i in s :\n    if i &lt;60 :\n        print (i,\"과락\")\n    else :\n        print(i)\n\n62\n59 과락\n70"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex1-for-if-to-짝수만-출력",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex1-for-if-to-짝수만-출력",
+    "title": "03. Python Basic (4)",
+    "section": "ex1) for + if \\(\\to\\) 짝수만 출력",
+    "text": "ex1) for + if \\(\\to\\) 짝수만 출력\n\ns = list(np.random.randint(1,100,size=10))\ns\n\n[37, 10, 35, 31, 70, 28, 40, 74, 69, 55]\n\n\n\ns2 = [i for i in s if i%2==0]\n\n\nprint(f\"짝수 list는 {s2}, 합은 {sum(s2)}\")\n\n짝수 list는 [10, 70, 28, 40, 74], 합은 222"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2-리스트안에-원소-출력",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2-리스트안에-원소-출력",
+    "title": "03. Python Basic (4)",
+    "section": "ex2) 리스트안에 원소 출력",
+    "text": "ex2) 리스트안에 원소 출력\n\nlst = [1,2, \"강철\",True, 1+2j]\n\n\n[i for i in lst]\n\n[1, 2, '강철', True, (1+2j)]"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex3-문자열-리스트-출력",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex3-문자열-리스트-출력",
+    "title": "03. Python Basic (4)",
+    "section": "ex3) 문자열 리스트 출력",
+    "text": "ex3) 문자열 리스트 출력\n\nl = list(\"abc\")\n\nfor i in l:\n    print(i)\n\na\nb\nc"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex4-구구단-구현",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex4-구구단-구현",
+    "title": "03. Python Basic (4)",
+    "section": "ex4) 구구단 구현",
+    "text": "ex4) 구구단 구현\n\nlst = list(range(2,10))\n\n\nfor i in lst :\n    for j in range(1,10) : \n        print (f\"{i} x {j} = {i*j}\")\n\n2 x 1 = 2\n2 x 2 = 4\n2 x 3 = 6\n2 x 4 = 8\n2 x 5 = 10\n2 x 6 = 12\n2 x 7 = 14\n2 x 8 = 16\n2 x 9 = 18\n3 x 1 = 3\n3 x 2 = 6\n3 x 3 = 9\n3 x 4 = 12\n3 x 5 = 15\n3 x 6 = 18\n3 x 7 = 21\n3 x 8 = 24\n3 x 9 = 27\n4 x 1 = 4\n4 x 2 = 8\n4 x 3 = 12\n4 x 4 = 16\n4 x 5 = 20\n4 x 6 = 24\n4 x 7 = 28\n4 x 8 = 32\n4 x 9 = 36\n5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n6 x 1 = 6\n6 x 2 = 12\n6 x 3 = 18\n6 x 4 = 24\n6 x 5 = 30\n6 x 6 = 36\n6 x 7 = 42\n6 x 8 = 48\n6 x 9 = 54\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n8 x 1 = 8\n8 x 2 = 16\n8 x 3 = 24\n8 x 4 = 32\n8 x 5 = 40\n8 x 6 = 48\n8 x 7 = 56\n8 x 8 = 64\n8 x 9 = 72\n9 x 1 = 9\n9 x 2 = 18\n9 x 3 = 27\n9 x 4 = 36\n9 x 5 = 45\n9 x 6 = 54\n9 x 7 = 63\n9 x 8 = 72\n9 x 9 = 81"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex5-enumerate-to-짝수번째-인덱스만-출력",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex5-enumerate-to-짝수번째-인덱스만-출력",
+    "title": "03. Python Basic (4)",
+    "section": "ex5) enumerate \\(\\to\\) 짝수번째 인덱스만 출력",
+    "text": "ex5) enumerate \\(\\to\\) 짝수번째 인덱스만 출력\n- 컨테이너 자료형(문자열(str), 튜플(tuple), 리스트(list), 딕셔터리(dictionary), 집합(set))을 입력받아, 순번과 요소를 포함하는 오브젝트를 출력\n\nlst = list(\"abcdefghi\")\n\n\nlist(enumerate(lst))\n\n[(0, 'a'),\n (1, 'b'),\n (2, 'c'),\n (3, 'd'),\n (4, 'e'),\n (5, 'f'),\n (6, 'g'),\n (7, 'h'),\n (8, 'i')]\n\n\n\nfor i,j in enumerate(lst) :\n    if i%2==0 :\n        print(f\"index : {i}, str = {j}\")\n\nindex : 0, str = a\nindex : 2, str = c\nindex : 4, str = e\nindex : 6, str = g\nindex : 8, str = i"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex6-여러개의-값을-입력받아-짝수들의-제곱을-구하기",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex6-여러개의-값을-입력받아-짝수들의-제곱을-구하기",
+    "title": "03. Python Basic (4)",
+    "section": "ex6) 여러개의 값을 입력받아 짝수들의 제곱을 구하기",
+    "text": "ex6) 여러개의 값을 입력받아 짝수들의 제곱을 구하기\n\nnum_list = list(map(int, input(\"숫자를 입력하세요 : \").split()))\n\n\ns_list = [i**2 for i in num_list if i % 2 == 0]\n\ns_list\n\n숫자를 입력하세요 :  1 2 3 4 5 6\n\n\n[4, 16, 36]"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex1-기본-반복문",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex1-기본-반복문",
+    "title": "03. Python Basic (4)",
+    "section": "ex1) 기본 반복문",
+    "text": "ex1) 기본 반복문\n\ns = dict(a=100,b=55,c=74,d=87)\ns.items()\n\ndict_items([('a', 100), ('b', 55), ('c', 74), ('d', 87)])\n\n\n\nfor i,j in s.items() :\n    print(i,j)\n\na 100\nb 55\nc 74\nd 87"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2-기준값을-입력받은후-특정값보다-큰-keyvalue를-추출",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2-기준값을-입력받은후-특정값보다-큰-keyvalue를-추출",
+    "title": "03. Python Basic (4)",
+    "section": "ex2) 기준값을 입력받은후 특정값보다 큰 key,value를 추출",
+    "text": "ex2) 기준값을 입력받은후 특정값보다 큰 key,value를 추출\n\nnum = int(input(\"숫자를 입력하시오 : \"))\n\nfor i,j in s.items() :\n    if j&gt;num :\n        print (i,j)\n\n숫자를 입력하시오 :  60\n\n\na 100\nc 74\nd 87"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex3-합구하기",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex3-합구하기",
+    "title": "03. Python Basic (4)",
+    "section": "ex3) 합구하기",
+    "text": "ex3) 합구하기\n\ns = {\"a\" : [1,2,3,4],\n     \"b\" : [5,6,7,8],\n     \"c\" : [6,7,8,9]}\n\n\n{i : sum(j) for i,j in s.items()}\n\n{'a': 10, 'b': 26, 'c': 30}"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2.-break",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html#ex2.-break",
+    "title": "03. Python Basic (4)",
+    "section": "ex2. break",
+    "text": "ex2. break\n- 짝수합 구하기\n\ns,i =0,0\n\nwhile True :\n    i+=1\n    if i&gt;100 :\n        break ## 100d을 넘어가면 break\n    if i%2==0 :\n        s += i\n    else :\n        continue ## 다시 처음으로"
+  },
+  {
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html",
     "title": "01. Python Basic (2)",
     "section": "",
     "text": "from google.colab import drive\ndrive.mount('/content/drive')\n\nMounted at /content/drive\n\n\n\ncd /content/drive/MyDrive/Colab Notebooks/DX/1wk\n\n/content/drive/MyDrive/Colab Notebooks/DX/1wk\n\n\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#슬라이싱-1",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#슬라이싱-1",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#슬라이싱-1",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#슬라이싱-1",
     "title": "01. Python Basic (2)",
     "section": "슬라이싱 1",
     "text": "슬라이싱 1\n\nn = len(txt)\ntxt[2:n]\n\n' 이름은 이강철입니다.'\n\n\n- 참고 역슬레시는 인데싱에서 제외된다.\n\nprint(\"he's\")\nprint(\"he\\'s\")\n\nhe's\nhe's"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#슬라이싱-2",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#슬라이싱-2",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#슬라이싱-2",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#슬라이싱-2",
     "title": "01. Python Basic (2)",
     "section": "슬라이싱 2",
     "text": "슬라이싱 2\n- 구조 : txt[start : end : stride]\n\ntxt\n\n'나의 이름은 이강철입니다.'\n\n\n\nprint(txt[0:n:2])\nprint(txt[::2])\nprint(txt[::3])\nprint(txt[::-1])\nprint(txt[::-2])\n\n나 름 강입다\n나 름 강입다\n나이 철다\n.다니입철강이 은름이 의나\n.니철이은이의"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#count",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#count",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#count",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#count",
     "title": "01. Python Basic (2)",
     "section": "Count",
     "text": "Count\n\ntxt\n\n'나의 이름은 이강철입니다.'\n\n\n- 공백 세기\n\ntxt.count(\" \")\n\n2\n\n\n- 특장 문자 세기\n\ntxt.count(\"이\")\n\n2\n\n\n- 리스트나 튜플로 넘겨주면 에러가 발생\n\ntxt.count((\"이\",\" \"))\n\nTypeError: ignored\n\n\n- 문자가 아닌 문자열 카운트\n\nprint(txt)\nprint(txt.count(\"이강철\"))\n\n나의 이름은 이강철입니다.\n1"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#find",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#find",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#find",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#find",
     "title": "01. Python Basic (2)",
     "section": "find",
     "text": "find\n- 특정 문자의 인덱싱을 반환\n\nprint(txt)\nprint(txt.find(\"이\"))\nprint(txt.find(\"이강철\"))\n\n나의 이름은 이강철입니다.\n3\n7\n\n\n- find함수에 문제점은 범위를 지정해주지 않으면 찾고자 하는 문자의 첫 인덱스만 반환한다.\n- 특정 문자열을 찾을때 문자열 시작지점과 끝지점을 정해서 인덱싱\n\nprint(txt)\nprint(txt.find(\"이\",6,n))\n\n나의 이름은 이강철입니다.\n7"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#잠깐-다른-이야기",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#잠깐-다른-이야기",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#잠깐-다른-이야기",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#잠깐-다른-이야기",
     "title": "01. Python Basic (2)",
     "section": "잠깐 다른 이야기!",
     "text": "잠깐 다른 이야기!\n- 아래를 잘 살펴보자.\n\na = 3\nb = 3\nprint(id(a),id(b))\na +=1\nprint(id(a))\na *=2\nprint(id(a))\na =a-5\nprint(id(a))\n\n138123241308464 138123241308464\n138123241308496\n138123241308624\n138123241308464\n\n\n- a변수와 b변수에 3이라는 값을 할당하고, 각 메모리 주소를 출력하였다.\n- 질문 1 : 사칙 연산시 메모리 주소가 바뀐다?\n- 질문 2 : 그런데 동일한 값을 할당하면 같은 주소가 할당된다?\n- 질문 3 : 그런데 마지막에 a에서 5를 빼서 처음에 할당한 3과 동일하게 했더니 처음과 동일한 주소가 나왔다?\n- 내 생각 : 각각의 값(할당한 정수)들은 이미 각자의 고유한 주소를 가지고 있고, 변수들은 그 값들을 참조하는 포인터 역할을 하는 것 같다. 또한, 이는 정수 뿐이 아니라 단일 값을 가지는 모든 형태의 해당된다.\n\n문자열 주소확인\n\ns = \"apple\"\nprint(s)\nprint(id(s))\n\nprint(s.upper())\nprint(id(s.upper()))\n\napple\n138121951987056\nAPPLE\n138121951989872\n\n\n\n\n그렇다면 리스트도?\n\na = list(range(5))\nprint(a)\nprint(id(a))\na[1] = 100\nprint(a)\nprint(id(a))\n\n[0, 1, 2, 3, 4]\n138121952117504\n[0, 100, 2, 3, 4]\n138121952117504\n\n\n- 리스트는 바뀌지 않았다!!"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#capitalize-title",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#capitalize-title",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#capitalize-title",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#capitalize-title",
     "title": "01. Python Basic (2)",
     "section": "capitalize & title",
     "text": "capitalize & title\n- 첫글자만 대문자로 변환\n\na=\"i like apple\"\n\nprint(a.capitalize())\nprint(a.title())\n\nI like apple\nI Like Apple"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#rjust-ljust-center",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#rjust-ljust-center",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#rjust-ljust-center",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#rjust-ljust-center",
     "title": "01. Python Basic (2)",
     "section": "rjust, ljust, center",
     "text": "rjust, ljust, center\n- 각각, 오른쪽, 왼쪽, 중앙정렬을 하고 공백을 만든다\n\na = \"apple\"\nprint(\"[\"+a.rjust(7)+\"]\",sep=\"\")\nprint(\"[\",a.ljust(7),\"]\",sep=\"\")\nprint(\"[\",a.center(7),\"]\",sep=\"\")\n\n[  apple]\n[apple  ]\n[ apple ]\n\n\n- 근데 문장 단위로는 적용되지 않는다….\n\na = \"I like apple\"\nprint(\"[\"+a.rjust(7)+\"]\",sep=\"\")\nprint(\"[\",a.ljust(7),\"]\",sep=\"\")\nprint(\"[\",a.center(7),\"]\",sep=\"\")\n\n[I like apple]\n[I like apple]\n[I like apple]\n\n\n- 핳 근데 문장길이가 7보다 커서 그런거였당\n\na = \"I like apple\"\nprint(\"[\"+a.rjust(19)+\"]\",sep=\"\")\nprint(\"[\",a.ljust(19),\"]\",sep=\"\")\nprint(\"[\",a.center(19),\"]\",sep=\"\")\n\n[       I like apple]\n[I like apple       ]\n[    I like apple   ]\n\n\n- 즉, 전달되는 매개변수는 전체공간을 의미하고, 각각의 메소드는 어디로 정렬할지 정해준다!"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#replace",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#replace",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#replace",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#replace",
     "title": "01. Python Basic (2)",
     "section": "replace",
     "text": "replace\n- 값을 바꾼다고 객체가 변환되지는 않는다.\n\ntxt = \"사과\"\nprint(txt.replace(\"사과\",\"바나나\"))\nprint(txt)\n\n바나나\n사과\n\n\n- replace 함수를 자주 사용하는 이유!\n- 실제 데이터 전처리 시 아래와 같은 구조가 많다.\nnumber = \"123,456\"\n이러한 상황이 발생했을 때 replace 함수를 사용\n\nnumber =\"123,456\"\n\nint(number.replace(\",\",\"\"))\n\n123456"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#strip",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#strip",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#strip",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#strip",
     "title": "01. Python Basic (2)",
     "section": "strip",
     "text": "strip\n- 텍스트 문자열에서 양쪽 끝에 특정 문자(공백포함)를 제거\n\ntxt = \"  ###사과%%%%  \"\nprint(txt)\nprint(txt.strip(\" \"))\nprint(txt.strip(\"#%\"))  ## 공백이 포함되어 있어서 지워지지 않는 것 같다.\nprint(txt.strip(\" #%\")) ## 공백을 포함하니 깔끔하게 지워졌다.\n\n  ###사과%%%%  \n###사과%%%%\n  ###사과%%%%  \n사과"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#split",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#split",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#split",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#split",
     "title": "01. Python Basic (2)",
     "section": "split",
     "text": "split\n\n\nCode\ndf = pd.read_csv(\"https://raw.githubusercontent.com/guebin/2021DV/master/_notebooks/covid19_20211202.csv\").iloc[1:,:]\ndf = df.set_index(\"일자\").iloc[:,1:18]\n\ndf = df.reset_index()\ndt = df[\"일자\"].tolist()\n\n\n\ndt[:5]\n\n['2020-01-20', '2020-01-21', '2020-01-22', '2020-01-23', '2020-01-24']\n\n\n\nyear = [i.split(\"-\")[0] for i in dt]\nmonth = [i.split(\"-\")[1] for i in dt]\nday = [i.split(\"-\")[2] for i in dt]\n\n\nnew_df = pd.DataFrame({\"year\": year,\n                       \"month\": month,\n                       \"day\" : day})\nnew_df.head()\n\n\n\n  \n    \n      \n\n\n\n\n\n\nyear\nmonth\nday\n\n\n\n\n0\n2020\n01\n20\n\n\n1\n2020\n01\n21\n\n\n2\n2020\n01\n22\n\n\n3\n2020\n01\n23\n\n\n4\n2020\n01\n24"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#join",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#join",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#join",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#join",
     "title": "01. Python Basic (2)",
     "section": "join",
     "text": "join\n\ndate = [(\"-\").join([year[i],month[i],day[i]]) for i in range(len(dt))]\n\n\ndate[:5]\n\n['2020-01-20', '2020-01-21', '2020-01-22', '2020-01-23', '2020-01-24']"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-basic",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-basic",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-basic",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-basic",
     "title": "01. Python Basic (2)",
     "section": "리스트 Basic",
     "text": "리스트 Basic\n\n[], list(), list(range(start,end)) 방법으로 리스트를 선언할 수 있다.\n\n\n리스트 선언 & 기본 method\n\na = [1,2,3,4,5]\nb = list((1,2,3,4,5))\nc = list(range(1,6))\n\n\nprint(f'''\n  a= {a}\n  b= {b}\n  c= {c}\n''')\n\n\n  a= [1, 2, 3, 4, 5]\n  b= [1, 2, 3, 4, 5]\n  c= [1, 2, 3, 4, 5]    \n\n\n\n- 선언한 리스트의 합을 구하기\n\nsum(a)\n\n15\n\n\n- 최대값과 최소값\n\nmin(a), max(a)\n\n(1, 5)\n\n\n- 특정 요소 카운트\n\nlst =  np.concatenate([np.ones(2), np.zeros(2)]).tolist()\nlst\n\n[1.0, 1.0, 0.0, 0.0]\n\n\n\nlst.count(0),lst.count(1)\n\n(2, 2)\n\n\n- 인덱스 반환\n\n리스트는 인덱스 반환 시, 맨 처음 인덱스만 반환한다 \\(\\to\\) 문자열.find 함수와 동일!\n\n\nlst.index(0)\n\n2\n\n\n\n그럼 다른 범위에 있는 “원소” 찾을때도 방법이 같지 않을까…???\n\n\nlst.index(0,3,5)\n\n3\n\n\n- 또한, 리스트는 자료형이 같지 않아도 다양한 자료형을 가질 수 있다.\n\n_lst = [True, 3.14, 1, \"에이블\"]\n\n\n[type(i) for i in _lst]\n\n[bool, float, int, str]\n\n\n\n\n리스트 중첩\n- 리스트안에 리스트를 집어넣을 수 있다.\n\nimport numpy as np\n\n\nX = np.arange(1,16).reshape(5,-1)\nprint(\n    f'''\n    X.shape = {X.shape}\n    listX = {X.tolist()}\n   '''\n)\n\n\n    X.shape = (5, 3)\n    listX = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15]]\n   \n\n\n\n_X = X.tolist()\n\n\nlen(_X) ## 길이가 5인리스트로 인식됌\n\n5\n\n\n\n\n중첩된 리스트 flatten\n1 리스트 컴프리헨션\n\n[ j for i in _X for j in i ]\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]\n\n\n2 numpy 이용\n\nnp.array(_X).flatten().tolist()\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-연산",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-연산",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-연산",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-연산",
     "title": "01. Python Basic (2)",
     "section": "리스트 연산",
     "text": "리스트 연산\n- 리스트의 연산은 더하기와 곱하기만 지원한다.\n\n+ : 2개의 리스트를 이어붙임, R에서 처럼 브로드캐스팅이 수행되지 않음\n\n\na = [1,2]\nb = [3,4]\n\n\na+b\n\n[1, 2, 3, 4]\n\n\n\n\\(\\times\\) 는 특정 리스트를 얼마나 반복할지 결정해줌\n\n\na*2\n\n[1, 2, 1, 2]\n\n\n\na*0\n\n[]\n\n\n\na*(-2)\n\n[]"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-원소-추가",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-원소-추가",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-원소-추가",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-원소-추가",
     "title": "01. Python Basic (2)",
     "section": "리스트 원소 추가",
     "text": "리스트 원소 추가\n\nappend\n\na=[]\n\nfor i in range(3):\n    a += [i]\n\na\n\n[0, 1, 2]\n\n\n\nappend 주의!\n- 아래와 같은 연산은 수행되지 않는다.\n\na.append(0).append(1).append(2)\n\nAttributeError: ignored\n\n\n- 또한, 매개변수로 리스트를 전달 시 아래처럼 수행된다.\n\na = [1,2,3]\nb = [4,5]\na.append(b)\na\n\n[1, 2, 3, [4, 5]]\n\n\n\n\nappend를 쓰지않고…\n\na=[]\n\nfor i in range(3):\n    a += [i]\na\n\n[0, 1, 2]\n\n\n\n\n+ 와 .append의 차이\n- append 함수의 경우 연산 수행 후 연산 대상 객체가 변화한다.\n\na = []\na.append(1)\na\n\n[1]\n\n\n- +는 그렇지 않음\n\na = []\na + [1]\na\n\n[]\n\n\n\n\n\nextend\n- 두개의 리스트를 더할 때 extend함수를 사용한다. (append는 리스트 오브 리스트로 붙여준다는점에서 차이가 명확함)\n- append처럼 +와의 차이가 같음.\n\na = [1,2]\nb = [3,4]\na.extend(b)\nprint(f'''\n      a.extend(b) = {a}\n      a = {a}\n      ''')\n\n\n      a.extend(b) = [1, 2, 3, 4]\n      a = [1, 2, 3, 4]\n      \n\n\n\na = [1,2]\nb = [3,4]\na+b\nprint(f'''\n      a + b = {a}\n      a = {a}\n      ''')\n\n\n      a + b = [1, 2]\n      a = [1, 2]\n      \n\n\n\n\ninsert\n- 원하는 인덱스의 요소를 추가한다.\n\na = list(np.round(np.random.normal(size=10),2))\na\n\n[0.51, -0.52, -0.57, -1.48, 0.57, -1.32, 1.71, 0.03, 0.18, 0.97]\n\n\n- 0과 2인덱스의 해당 값을 추가\n\na.insert(0,100)\na.insert(2,77)\n\n\nfor i in range(len(a)) :\n    print(f\"index : {i},  value : {a[i]}\")\n\nindex : 0,  value : 100\nindex : 1,  value : 0.51\nindex : 2,  value : 77\nindex : 3,  value : -0.52\nindex : 4,  value : -0.57\nindex : 5,  value : -1.48\nindex : 6,  value : 0.57\nindex : 7,  value : -1.32\nindex : 8,  value : 1.71\nindex : 9,  value : 0.03\nindex : 10,  value : 0.18\nindex : 11,  value : 0.97"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-원소-삭제",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-원소-삭제",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-원소-삭제",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-원소-삭제",
     "title": "01. Python Basic (2)",
     "section": "리스트 원소 삭제",
     "text": "리스트 원소 삭제\n\na = list(range(5))\na\n\n[0, 1, 2, 3, 4]\n\n\n\n단일 원소삭제\n\na = list(range(5))\na\n\ndel a[0]\n\n\na\n\n[1, 2, 3, 4]\n\n\n\n\n범위 삭제\n\na = list(range(5))\na\n\ndel a[0:2]\na\n\n[2, 3, 4]\n\n\n\n\nremove\n- 특정 원소를 삭제\n\na = list(range(5))\na\n\n[0, 1, 2, 3, 4]\n\n\n\na.remove(3)\n\n\na\n\n[0, 1, 2, 4]\n\n\n\n\npop\n- 특정 index값을 받아 해당 인덱스의 값을 출력하고, 리스트에서 제거된다. \\(\\to\\) 나머지 원소들은 자동으로 인덱스가 앞으로 땅겨짐\n\na = [1,2,3,4]\n\n\na.pop(0)\n\n1\n\n\n\na.pop(0)\n\n2\n\n\n\n\nclear\n- 전체 원소 삭제\n\na = [1,2,3,4]\na\n\n[1, 2, 3, 4]\n\n\n\na.clear()\na\n\n[]"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-정렬",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#리스트-정렬",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-정렬",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#리스트-정렬",
     "title": "01. Python Basic (2)",
     "section": "리스트 정렬",
     "text": "리스트 정렬\n\na = [1,3,2,4]\na\n\n[1, 3, 2, 4]\n\n\n\na.sort()\na\n\n[1, 2, 3, 4]\n\n\n\na.sort(reverse= True)\na\n\n[4, 3, 2, 1]\n\n\n\na.reverse()\na\n\n[1, 2, 3, 4]\n\n\n리스트 카피\n- 카피함수를 사용하는 이유는 아래와 같은 경우를 방지하기 위함이다.\n\na = list(range(4))\nb = a\n\n\nid(a) == id(b)\n\nTrue\n\n\n- 위와 같이 같은 메모리 공간을 참조하고 있으면….\n\na.append(5)\n\n\na\n\n[0, 1, 2, 3, 5]\n\n\n\nb\n\n[0, 1, 2, 3, 5]\n\n\n- 이러한 경우를 방지하기 위해 copy함수를 사용\n\na = list(range(4))\nb = a.copy()\n\nid(a) == id(b)\n\nFalse\n\n\n\na.append(5)\n\n\nprint(a,b)\n\n[0, 1, 2, 3, 5] [0, 1, 2, 3]"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#exercise-link",
-    "href": "posts/DX/1wk/2023-08-10-01. Python Basic (2) .html#exercise-link",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#exercise-link",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html#exercise-link",
     "title": "01. Python Basic (2)",
     "section": "exercise Link",
     "text": "exercise Link\n- exercise 1\n- exercise 2"
@@ -336,361 +413,284 @@
     "text": "Conctact\n- rkdcjf8232@gmail.com"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html",
     "title": "00. Python Basic (1)",
     "section": "",
     "text": "from google.colab import drive\ndrive.mount('/content/drive')\n\nDrive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount(\"/content/drive\", force_remount=True).\n\n\n\ncd /content/drive/MyDrive/Colab Notebooks/DX/1wk\n\n/content/drive/MyDrive/Colab Notebooks/DX/1wk"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#ex1-홀수-짝수-구분",
     "title": "00. Python Basic (1)",
     "section": "ex1) 홀수 짝수 구분",
     "text": "ex1) 홀수 짝수 구분\n\nlst = list(range(1,10))\nlst\n\n[1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n\n\nsol\n\nodd = [i for i in lst if i % 2 == 1]\nevn = [i for i in lst if i % 2 == 0]\n\n\nodd\n\n[1, 3, 5, 7, 9]\n\n\n\nevn\n\n[2, 4, 6, 8]"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#ex2-특정-숫자가-입력되었을-때-각-자리의-숫자를-구하기",
     "title": "00. Python Basic (1)",
     "section": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기",
     "text": "ex2) 특정 숫자가 입력되었을 때 각 자리의 숫자를 구하기\n\nsol\n\nnum  = int(input())\n\na = num // 100\n\nb = (num - a*100) // 10\n\nc = num-(a*100+b*10)\n\nprint(\"백의자리는 {}, 십의자리는 {}, 일의 자리는 {}\".format(a,b,c))\n\n254\n백의자리는 2, 십의자리는 5, 일의 자리는 4"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#ex3-합과-평균",
     "title": "00. Python Basic (1)",
     "section": "ex3) 합과 평균",
     "text": "ex3) 합과 평균\n\nsol\n\nimport numpy as np\n\n\ns = list(range(1,10))\n\n\nsumm = sum(s)\n\nave = np.mean(s)\n\n\nprint(\"합 : {}, 평균: {}\".format(summ,ave))\n\n합 : 45, 평균: 5.0"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#ex4-비교-연산자",
     "title": "00. Python Basic (1)",
     "section": "ex4) 비교 연산자",
     "text": "ex4) 비교 연산자\n- 숫자 비교\n\na = list(range(1,11))\nb = list(range(11,21))\n\n\na, b\n\n([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [11, 12, 13, 14, 15, 16, 17, 18, 19, 20])\n\n\n\n[a[i] == b[i] for i in range(10)]\n\n[False, False, False, False, False, False, False, False, False, False]\n\n\n- 문자 비교\n\n(\"A\" == \"a\"), (\"A\" &gt;\"a\")\n\n(False, False)\n\n\n\nord(\"A\"), ord(\"a\")\n\n(65, 97)"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#대표적인-자료형",
     "title": "00. Python Basic (1)",
     "section": "대표적인 자료형",
     "text": "대표적인 자료형\n\n\n\nint\nfloat\nbool\nstr\ncomplex\n\n\n\n\n3\n3.14\nTrue\n“강철”\n3+2j\n\n\n5\n3.141551\nFalse\n“이강철”\n2-2j"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#형태변환",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#형태변환",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#형태변환",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#형태변환",
     "title": "00. Python Basic (1)",
     "section": "형태변환",
     "text": "형태변환\n\nfloat \\(\\to\\) int\n- 아래의 경우는 형태변환이 되었으나 정보의 손실이 발생한 것임\n\na = 3.4\n\n_a = int(a)\n\n\ntype(a), type(_a)\n\n(float, int)\n\n\n\n\n\\(\\text{bool} \\to \\text{(float, int)}\\,\\text{and}\\, \\text{(float, int)} \\to \\text{bool}\\)\n- bool \\(\\to\\) int, float\n\na = True\n_a1 = float(a)\n_a2 = int(a)\n\n\ntype(a), type(_a1), type(_a2)\n\n(bool, float, int)\n\n\n- int, float \\(\\to\\) bool\n\na1 = 1\na2 = 1.0\n\n_a1 = bool(a1)\n_a2 = bool(a2)\n\n\n_a1, _a2, type(_a1), type(_a2)\n\n(True, True, bool, bool)\n\n\n- str \\(\\to\\) bool\n\nbool(\"강철\")\n\nTrue\n\n\n\nbool(\"\")\n\nFalse\n\n\n\n\n암묵적 형변환\n\nTrue +1\n\n2\n\n\n\n1*1.0\n\n1.0\n\n\n\nTrue + True\n\n2\n\n\n\n\n형태변환이 불가능한 경우\n\ncomplex1 = 3+ 0j\ncomplex1\n\n(3+0j)\n\n\nfloat(complex1) ## 에러 발생\n\n\n문자열의 사칙연산(O)\n\n\"X\" + \"2\"\n\n'X2'\n\n\n\n\"X\"*2\n\n'XX'\n\n\n\n\n문자열의 사칙연산(x)\n\"X\" * \"Y\"\n\n\"X\" - \"2\"\n\n\"X\" / \"y\"\n\n- 즉 더하기를 제외한 나머지 사칙연산은 문자형 변수에 적용되지 않는다."
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#날짜형-자료",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#날짜형-자료",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#날짜형-자료",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#날짜형-자료",
     "title": "00. Python Basic (1)",
     "section": "날짜형 자료",
     "text": "날짜형 자료\n\nfrom datetime import datetime\n\n\nnow = datetime.now()\n\n\nnow\n\ndatetime.datetime(2023, 8, 9, 5, 45, 24, 616085)\n\n\n\nprint(now)\n\n2023-08-09 05:45:24.616085\n\n\n\nprint(\"{}년 {}월 {}일 {}시 {}분 {}초\".format(now.year,now.month,now.day,now.hour,now.minute,now.second))\n\n2023년 8월 9일 5시 45분 24초"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#기타-연산",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#기타-연산",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#기타-연산",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#기타-연산",
     "title": "00. Python Basic (1)",
     "section": "기타 연산",
     "text": "기타 연산\n\na = \"ABCD\"\nb = \"efgh\"\n\n\na.lower(),b.upper()\n\n('abcd', 'EFGH')"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
-    "href": "posts/DX/1wk/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html#f-string요즘-쓰는-방식",
     "title": "00. Python Basic (1)",
     "section": "f-string(요즘 쓰는 방식)",
     "text": "f-string(요즘 쓰는 방식)\n\nex1\n\nn = \"이강철\"\na = 28\ns = 100.213141\n\n\nprint(f\"{a}살의 {n}의 점수는 {s:.2f}입니다. \")\n\n28살의 이강철의 점수는 100.00입니다. \n\n\n\n\nex2\n\nn = \"이강철\"\na = 28\ns1 = 100.2\ns2 = 100.3\ns3 = 100.4\ns4 = 100.5\ns5 = 100.6\n\n\ntxt= f'''\n이름 : {n}\n\n연령대 : {age}\n\n점수 : {s1},{s2},{s3},{s4},{s5}\n\n합계 : {ts:,.0f} /평균 : {avg:,.2f}\n'''`\n\nprint(txt)\n\n\n이름 : 이강철\n\n연령대 : 20\n\n점수 : 100.2,100.3,100.4,100.5,100.6\n\n합계 : 502 /평균 : 100.40"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html",
     "title": "02. Python Basic (3)",
     "section": "",
     "text": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#why-use1",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#why-use1",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#why-use1",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#why-use1",
     "title": "02. Python Basic (3)",
     "section": "why use(1)?",
     "text": "why use(1)?\n- 빠르고 다중 작업에 유리\n- 메모리 관리측면에서도 좋음, 또한 소괄호 생략이 가능하다."
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-1-여러개의-변수를-동시-출력-및-할당",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-1-여러개의-변수를-동시-출력-및-할당",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-1-여러개의-변수를-동시-출력-및-할당",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-1-여러개의-변수를-동시-출력-및-할당",
     "title": "02. Python Basic (3)",
     "section": "예제 1 : 여러개의 변수를 동시 출력 및 할당",
     "text": "예제 1 : 여러개의 변수를 동시 출력 및 할당\n\nn,a,s,h,w = 1,2,3,4,5\n\n\nn,a,s,h,w\n\n(1, 2, 3, 4, 5)\n\n\n\na = 3.1,\na\n\n(3.1,)"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-2.-서로-다른-타입의-원소들로-튜플",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-2.-서로-다른-타입의-원소들로-튜플",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-2.-서로-다른-타입의-원소들로-튜플",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-2.-서로-다른-타입의-원소들로-튜플",
     "title": "02. Python Basic (3)",
     "section": "예제 2. 서로 다른 타입의 원소들로 튜플?",
     "text": "예제 2. 서로 다른 타입의 원소들로 튜플?\n\ns = 90,80,70,\"A\",\"B\"\ns\n\n(90, 80, 70, 'A', 'B')"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-3-튜플-중첩",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-3-튜플-중첩",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-3-튜플-중첩",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-3-튜플-중첩",
     "title": "02. Python Basic (3)",
     "section": "예제 3: 튜플 중첩",
     "text": "예제 3: 튜플 중첩\n\ns = 90,80,70,(\"A\",\"B\")\ns\n\n(90, 80, 70, ('A', 'B'))"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-4-두-변수의-값을-교환",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-4-두-변수의-값을-교환",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-4-두-변수의-값을-교환",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-4-두-변수의-값을-교환",
     "title": "02. Python Basic (3)",
     "section": "예제 4 : 두 변수의 값을 교환",
     "text": "예제 4 : 두 변수의 값을 교환\n\na,b = 1,2\n\n\na,b\n\n(1, 2)\n\n\n\na,b = b,a\n\n\na,b\n\n(2, 1)"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-5-for문",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-5-for문",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-5-for문",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-5-for문",
     "title": "02. Python Basic (3)",
     "section": "예제 5: for문",
     "text": "예제 5: for문\n\nlst = [['gc', 2021502565, 'M'],\n       ['iu',202254321, 'F'],\n       ['hodong', 202011223, 'M']]\nlst\n\n[['gc', 2021502565, 'M'], ['iu', 202254321, 'F'], ['hodong', 202011223, 'M']]\n\n\n\nfor name, s, sex in lst :\n    print(name,s,sex)\n\ngc 2021502565 M\niu 202254321 F\nhodong 202011223 M"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-6-range-함수를-사용해-만들기",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-6-range-함수를-사용해-만들기",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-6-range-함수를-사용해-만들기",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-6-range-함수를-사용해-만들기",
     "title": "02. Python Basic (3)",
     "section": "예제 6 : range 함수를 사용해 만들기",
     "text": "예제 6 : range 함수를 사용해 만들기\n\ntest = tuple(range(1,11))\ntest\n\n(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-7-for-tuple-_",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-7-for-tuple-_",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-7-for-tuple-_",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-7-for-tuple-_",
     "title": "02. Python Basic (3)",
     "section": "예제 7 : for +  tuple + \"_\"",
     "text": "예제 7 : for +  tuple + \"_\"\n\nlst\n\n[['gc', 2021502565, 'M'], ['iu', 202254321, 'F'], ['hodong', 202011223, 'M']]\n\n\n\nfor _,s,_ in lst :\n    print(s)\n\n2021502565\n202254321\n202011223\n\n\n\nfor _,_,s in lst :\n    print(s)\n\nM\nF\nM"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-8-언패킹-연산자-for-starstar",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-8-언패킹-연산자-for-starstar",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-8-언패킹-연산자-for-starstar",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-8-언패킹-연산자-for-starstar",
     "title": "02. Python Basic (3)",
     "section": "예제 8 : 언패킹 연산자(*) + for (\\(\\star\\star\\))",
     "text": "예제 8 : 언패킹 연산자(*) + for (\\(\\star\\star\\))\n\n*는 특정하지 않은 여러개의 인자를 튜플 형태로 받는다.\n\n\nfor n,*a in lst :\n    print(n,*a)\n\ngc 2021502565 M\niu 202254321 F\nhodong 202011223 M\n\n\n\nfor n,*a in lst :\n    print(n,a)\n\ngc [2021502565, 'M']\niu [202254321, 'F']\nhodong [202011223, 'M']\n\n\n\nfor n,*a in lst :\n    print(n)\n\ngc\niu\nhodong\n\n\n\nh,b,*t = range(1,11)\n\n\nh,b,t\n\n(1, 2, [3, 4, 5, 6, 7, 8, 9, 10])\n\n\n\nh,b,*t\n\n(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)\n\n\n\nt\n\n[3, 4, 5, 6, 7, 8, 9, 10]\n\n\n- 언패킹 연산자를 아래처럼 단일값으로 쓸수는 없다. 대신 print문을 이욯아여 출력!\n\n*t\n\nSyntaxError: can't use starred expression here (3801933867.py, line 1)\n\n\n\nprint(*t)\n\n3 4 5 6 7 8 9 10\n\n\n\ntemp = h,b,t\n\n\ntemp\n\n(1, 2, [3, 5, 5, 6, 7, 8, 9, 10])\n\n\n- 튜플안에 선언한 리스트는 수정할 수 있다!\n\ntemp[2][1]=4\n\n\ntemp\n\n(1, 2, [3, 4, 5, 6, 7, 8, 9, 10])\n\n\n- 단, 튜플안에 선언된 리스트 통째?로는 바꿀 수 없음\n\ntemp[2] = d\n\nNameError: name 'd' is not defined\n\n\n\ntemp[2] = [1,2,3]\n\nTypeError: 'tuple' object does not support item assignment"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-9-함수",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#예제-9-함수",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-9-함수",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#예제-9-함수",
     "title": "02. Python Basic (3)",
     "section": "예제 9 : 함수",
     "text": "예제 9 : 함수\n\n아래의 함수는 여러개의 값을 리턴하는 것처럼 보이나 사실은 길이가 4인, 튜플 1개만을 return한다."
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#왜-튜플만이-괄호를-생략",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#왜-튜플만이-괄호를-생략",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#왜-튜플만이-괄호를-생략",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#왜-튜플만이-괄호를-생략",
     "title": "02. Python Basic (3)",
     "section": "왜 튜플만이 괄호를 생략?",
     "text": "왜 튜플만이 괄호를 생략?\n\n튜플을 먼저 만들고, 괄호를 생략하는 문법을 추가한 것은 아닐것이다.\n원래는 괄호없이 벡터를 만들고 싶었을 것임\n차피 벡터는 한,두번 쓰고 버리는 경우가 많고, 대부분 이름도 필요없음 \\(\\to\\) (즉, 원소에 접근해서 sorting하고… 순서를 바꿀 필요가 없다는 것임)\n데이터를 분석하면서 우리에게 필요한것은, 데이터가 벡터 형태로 모여, 하나이 DataFrame을 구축하기만 하면된다."
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추가",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추가",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-추가",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-추가",
     "title": "02. Python Basic (3)",
     "section": "원소 추가",
     "text": "원소 추가\n\ns = {\"a\",\"b\"}\n\n\ns.add(\"c\")\ns\n\n{'a', 'b', 'c'}\n\n\n\ns.update([\"c\",\"d\"])\ns\n\n{'a', 'b', 'c', 'd'}"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-삭제",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-삭제",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-삭제",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-삭제",
     "title": "02. Python Basic (3)",
     "section": "원소 삭제",
     "text": "원소 삭제\n\ns\n\n{'a', 'b', 'c', 'd'}\n\n\n\ns.remove(\"c\")\n\n\ns\n\n{'a', 'b', 'd'}\n\n\n- discard로 삭제시 에러메세지를 반환하지 않음\n\ns.remove(\"z\")\n\nKeyError: 'z'\n\n\n\ns.discard(\"z\")\n\n- 모든 원소 삭제\n\ns.clear()\n\n\ns\n\nset()"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#in",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#in",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#in",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#in",
     "title": "02. Python Basic (3)",
     "section": "in",
     "text": "in\n\n\"a\" in s\n\nTrue\n\n\n\n합,교,차 집합\n\nset1 = {\"a\",\"b\",\"c\"}\nset2 = {\"b\",\"c\",\"d\"}\n\n- 합집합\n\nset1|set2\n\n{'a', 'b', 'c', 'd'}\n\n\n\nset1.union(set2)\n\n{'a', 'b', 'c', 'd'}\n\n\n- 교집합\n\nset1 & set2\n\n{'b', 'c'}\n\n\n\nset1.intersection(set2)\n\n{'b', 'c'}\n\n\n- 차집합\n\nset1,set2\n\n({'a', 'b', 'c'}, {'b', 'c', 'd'})\n\n\n\nset2-set1\n\n{'d'}\n\n\n\n\n부분 집합\n\nset3 = set1|set2\n\n\nset2&lt;set3\n\nTrue"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#for문",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#for문",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#for문",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#for문",
     "title": "02. Python Basic (3)",
     "section": "for문",
     "text": "for문\n- 다음에 txt에서 각 알파벳이 몇 번 사용됬는지 구하기\n\ntxt = 'asdkflkjahsdlkjfhlaksglkjdhflkgjhlskdfjhglkajhsdlkfjhalsdkf'\ntxt\n\n'asdkflkjahsdlkjfhlaksglkjdhflkgjhlskdfjhglkajhsdlkfjhalsdkf'\n\n\n\n{i : list(txt).count(i) for i in set(txt)}\n\n{'l': 9, 'h': 7, 's': 6, 'd': 6, 'a': 5, 'g': 3, 'j': 7, 'f': 6, 'k': 10}"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#선언",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#선언",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#선언",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#선언",
     "title": "02. Python Basic (3)",
     "section": "선언",
     "text": "선언\n\n방법 1. 가장 일반적\n\ndct=  {\"a\" : 1, \"b\":2}\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n방법 2. dict(\\(\\star\\star\\))\n\ndct = dict(a=1, b=2)\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n방법 3. 중첩된 리스트\n\ndct = dict([[\"a\",1],[\"b\",2]])\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n방법 4. 튜플\n\ndct = (\"a\",1),(\"b\",2)\ndict(dct)\n\n{'a': 1, 'b': 2}"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추출",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추출",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-추출",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-추출",
     "title": "02. Python Basic (3)",
     "section": "원소 추출",
     "text": "원소 추출\n- 딕셔너리는 key값을 이용해서 추출해야한다. (value로 key를 찾는 것은 불가!)\n\ndct =dict(dct)\n\n\ndct[\"a\"], dct[\"b\"]\n\n(1, 2)\n\n\n\nex1. 딕셔너리를 쓰는 이유?\n- 아래와 같은 구조가 있다고 하자.\n\nlst = [[\"a\",1],[\"b\",2]]\nlst\n\n[['a', 1], ['b', 2]]\n\n\n- 여기에서 a의 값을 알려면?\n\n[s for n,s in lst if n==\"a\"]\n\n[1]\n\n\n- 딕셔너리를 이용한 풀이\n\ndict(lst)[\"a\"]\n\n1"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추가-1",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-추가-1",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-추가-1",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-추가-1",
     "title": "02. Python Basic (3)",
     "section": "원소 추가",
     "text": "원소 추가\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\ndct[\"c\"]=3\n\n\ndct\n\n{'a': 1, 'b': 2, 'c': 3}"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-삭제-1",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#원소-삭제-1",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-삭제-1",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#원소-삭제-1",
     "title": "02. Python Basic (3)",
     "section": "원소 삭제",
     "text": "원소 삭제\n- 방법 1\n\ndel dct[\"a\"]\n\n\ndct\n\n{'b': 2, 'c': 3}\n\n\n- 방법 2\n\ndct.pop(\"b\")\n\n2\n\n\n\ndct\n\n{'c': 3}"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#연산",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#연산",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#연산",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#연산",
     "title": "02. Python Basic (3)",
     "section": "연산",
     "text": "연산\n\ndct = dict(a=1,b=2,c=3)\n\n\ndct\n\n{'a': 1, 'b': 2, 'c': 3}\n\n\n\n\"a\" in dct\n\nTrue"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#특수-기능",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#특수-기능",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#특수-기능",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#특수-기능",
     "title": "02. Python Basic (3)",
     "section": "특수 기능",
     "text": "특수 기능\n\ndct\n\n{'a': 1, 'b': 2, 'c': 3}\n\n\n\ndct.keys()\n\ndict_keys(['a', 'b', 'c'])\n\n\n\ndct.values()\n\ndict_values([1, 2, 3])\n\n\n\ndct.items()\n\ndict_items([('a', 1), ('b', 2), ('c', 3)])"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#for-dictstarstar",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#for-dictstarstar",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#for-dictstarstar",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#for-dictstarstar",
     "title": "02. Python Basic (3)",
     "section": "for + dict(\\(\\star\\star\\))",
     "text": "for + dict(\\(\\star\\star\\))\n\nfor k in dct.keys() :\n    print(k)\n\na\nb\nc\n\n\n- 아 딕셔너리는 루프에서 객체 자체로 전달시 key값을 반환한다.\n\nfor k in dct:\n    print(k)\n\na\nb\nc\n\n\n- value 접근\n\nfor i in dct.values():\n    print(i)\n\n1\n2\n3\n\n\n- key,value 동시 접근\n\nfor i,j in dct.items():\n    print(i,j)\n\na 1\nb 2\nc 3"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#list-to-dict.values",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#list-to-dict.values",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#list-to-dict.values",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#list-to-dict.values",
     "title": "02. Python Basic (3)",
     "section": "list \\(\\to\\) dict.values",
     "text": "list \\(\\to\\) dict.values\n- 아래와 같은 원핫인코딩을 생각\n\n\n\n변환전\n변환후\n\n\n\n\na\n[1,0,0,0]\n\n\nb\n[0,1,0,0]\n\n\nc\n[0,0,1,0]\n\n\nd\n[0,0,0,1]\n\n\n\n- 주어진 리스트를 원핫인코딩하여라\n\nlst = list(\"abcd\")*2\nlst\n\n['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd']\n\n\n\nsol\n\ndct = {\"a\": [1,0,0,0],\n      \"b\": [0,1,0,0],\n      \"c\": [0,0,1,0],\n      \"d\": [0,0,0,1]}\n\n\ndct\n\n{'a': [1, 0, 0, 0], 'b': [0, 1, 0, 0], 'c': [0, 0, 1, 0], 'd': [0, 0, 0, 1]}"
   },
   {
-    "objectID": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#dict.values-to-list",
-    "href": "posts/DX/1wk/2023-08-11-02. Python Basic (3) .html#dict.values-to-list",
+    "objectID": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#dict.values-to-list",
+    "href": "posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html#dict.values-to-list",
     "title": "02. Python Basic (3)",
     "section": "dict.values \\(\\to\\) list",
     "text": "dict.values \\(\\to\\) list\n- 위 원핫인코딩을 다시 변환\n\nsol\n\nvalue = [v for v in dct.values()] *2\nvalue\n\n[[1, 0, 0, 0],\n [0, 1, 0, 0],\n [0, 0, 1, 0],\n [0, 0, 0, 1],\n [1, 0, 0, 0],\n [0, 1, 0, 0],\n [0, 0, 1, 0],\n [0, 0, 0, 1]]\n\n\n\n[i for v in value for i,j in dct.items() if j == v]\n\n['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd']"
   },
   {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html",
-    "title": "03. Python Basic (4)",
+    "objectID": "posts/DX/2023-07-31-00.intro.html",
+    "href": "posts/DX/2023-07-31-00.intro.html",
+    "title": "00. Intro & setting",
     "section": "",
-    "text": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt"
+    "text": "- 어… 일단 평소에도 quarto를 이용해서 웹사이트를 관리했지만… 뭔가 처음 깃허브를 접하구 하시는 분들은 이 플랫폼을 사용할 때 되게 난항이 있을것 같다… (내가 그랬다…)\n- 그리고 원래 만들어 놓았던 사이트는 뭔가 좀 지저분한 느낌이 들어서….\n- 에이블스쿨 하면서 배운것들 기록할 때는 뭔가 깔끔한 공간에 하고 싶기도 하다.\n- 이참에 절차를 확실히 내가 적어두자!\n\n\n- quarto download link : 여기서 quarto를 다운받자!\n\n\n\n- Terminal을 켠다음에 아래와 같은 명령어를 입력한다!\n(그.. 명령어 입력할 때 현재 자기 주피터 킬때 켜지는 폴더로 옮긴 다음에 수행하자… 골치 아프다ㅜㅜ)\nquarto create project website gcsite\n- 그러면 다음과 같은 이미지가 보인다\n\n- 저기 open with 어찌고 보이는데 d버튼 누르면 (don’t open)으로 넘어가니 그걸 선택한 후 엔터를 눌러준다!\n- 그러면 아래 이미지처럼 맨 밑에 gcsite라는 폴더가 생긴 것을 볼 수 있다.\n\n\n\n\n- git bash 쓰는 사람들 많던데 난 github desktop이 훨씬 편하다.\n- git 알못이기 때문에 많은 것을 알기 위해 괴롭고 싶지 않다.\n- 뭐 여튼 깃허브 데스크탑을 킨다.\n- 상단 메뉴바 \\(\\to\\) File \\(\\to\\) Add local repository\n- 그러면 아래와 같은 경고문이 뜬다.\n\n- local하고 연결하고 싶은데 깃허브에는 gcsite가 없으니 대충 만들어 달라는 것임 “create a repository” 를 눌러주자.\n\n- 무시, 걍 create repository ㄱㄱ\n- 그러면 깃허브 데스크탑에서 너 방금 만든거 너꺼 깃허브에 Publish 할거냐고 물어봄\n\n- Publish repository 눌러주면 끝~~ (단, publish할 때 private 체크박스는 해제하구 하자!)\n- 그 다음 내가 생성산 gcsite 저장소 setting으로 넘어가서 pages를 클릭!\n- 아래와 같이 branch를 수정 후 save 버튼 눌러주자\n\n\n\n\n- quarto 원리 : 작성한 ipynb파일 html파일로 출력해서 그 html파일들로 웹사이트를 구성하는 것1\n- step1. posts와 docs라는 폴더를 만들자\n\nposts는 내가 작성하는 ipynb파일들이 들어갈거고, docs에는 html파일이 들어갈 것이다.\n\n- step2. index 파일 수정\n\nindex파일은 뭐랄까 네비게이터 역할이랄까 아래와 같이 바꿔주자\n\n---\ntitle: \"GC site\"\nlisting:\n  contents: posts\n  sort: [date desc, title]\n  type: table\n  categories: true\n  sort-ui: true\n  filter-ui: true\npage-layout: full\ntitle-block-banner: true\n---\n- step3. _quarto.uml 파일 수정 \\(\\to\\) 템플릿이랑 디자인 이쁜거 많으니 본인 입맛에 맞게 수정하면 됩니당\nproject:\n  type: website\n  output-dir : docs  \nwebsite:\n  title: \"GC site\"\n  page-navigation: true\n  navbar:\n    right:\n      - icon : github\n        href : https://github.com/gangcheol/\n  sidebar:\n    style: \"docked\"\n    search: True\n    contents: auto\n    \nformat:\n  html:\n    css: styles.css\n    toc: true\n    code-fold : False\n    code-line-numbers : True\n    code-copy : True\n\ntheme :\n  light : flatly\n  \neditor : visual\n- step4. 앞서 만든 posts폴더에 아무 파일이나 만들어보자\n\n- step5. 그 후 다시 터미널에서 내가 생성한 폴더로 이동\n필자의 경우는 cd gcsite\n- step6. quarto render 입력\n- step7. github desktop보면 난리가 났을 것이다. 막 일을 좀 많이 했음.\n\n로컬하고 연결되어 있으니 로컬이 하고 있는 걸 다적어서 그럼\n\n\n\n저기 내가 밑에 이러한 기록을 init이라고 써놨다. 저건 내가 로컬에서 한 행동을 내 깃허브 로컬에 저장할 건데, 그 행동을 init이라고 쓴거\n이제 저 Commit to main 버튼을 눌러주고 가운데 화면에 뜨는 push origin을 눌러주자!\n\n- 마지막!! 아까 깃허브 로컬 셋팅에서 pases란에 잠시 후에 들어가보면 다음과 같은 것을 볼 수 있다.\n\n- 저 링크로 들어가면 내가 만든 웹사이트 초안을 볼 수 있다.\n- 링크"
   },
   {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex1.-특정-수보다-크거나-같으면-10-더하기",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex1.-특정-수보다-크거나-같으면-10-더하기",
-    "title": "03. Python Basic (4)",
-    "section": "ex1. 특정 수보다 크거나 같으면 10 더하기",
-    "text": "ex1. 특정 수보다 크거나 같으면 10 더하기\n\nv = int(input(\"기준값을 입력하시오 : \"))\ns = int(input(\"비교값을 입력하시오 : \"))\nif s&gt;= v:\n    s1 = s+10\n    print(f\"입력값 {v}보다 크거나 같은 숫자가 입력되었습니다. {s}에 10을 더한값은 {s1}입니다.\")\nelse:\n    print(f\"입력값 {v}보다 작은 숫자입니다.\")\n\n기준값을 입력하시오 :  70\n비교값을 입력하시오 :  60\n\n\n입력값 70보다 작은 숫자입니다.\n\n\n\nv = int(input(\"기준값을 입력하시오 : \"))\ns = int(input(\"비교값을 입력하시오 : \"))\nif s&gt;= v:\n    s1 = s+10\n    print(f\"입력값 {v}보다 크거나 같은 숫자가 입력되었습니다. {s}에 10을 더한값은 {s1}입니다.\")\nelse:\n    print(f\"입력값 {v}보다 작은 숫자입니다.\")\n\n기준값을 입력하시오 :  70\n비교값을 입력하시오 :  70\n\n\n입력값 70보다 크거나 같은 숫자가 입력되었습니다. 70에 10을 더한값은 80입니다."
+    "objectID": "posts/DX/2023-07-31-00.intro.html#install",
+    "href": "posts/DX/2023-07-31-00.intro.html#install",
+    "title": "00. Intro & setting",
+    "section": "",
+    "text": "- quarto download link : 여기서 quarto를 다운받자!"
   },
   {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2.-리스트-요소-확인",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2.-리스트-요소-확인",
-    "title": "03. Python Basic (4)",
-    "section": "ex2. 리스트 요소 확인",
-    "text": "ex2. 리스트 요소 확인\n\ns = [1,2,3,4,5]\nif s :\n    print(s)\nelse :\n    print(\"요소 없음\")\n\n[1, 2, 3, 4, 5]\n\n\n\ns = []\nif s :\n    print(s)\nelse :\n    print(\"요소 없음\")\n\n요소 없음\n\n\n\ns = [1,2,3,4,5]\nif s :\n    pass ## 나중에 먼가 내가 조건문일 때 정의를 남기려고 `pass`!\nelse :\n    print(\"요소 없음\")"
+    "objectID": "posts/DX/2023-07-31-00.intro.html#website-생성",
+    "href": "posts/DX/2023-07-31-00.intro.html#website-생성",
+    "title": "00. Intro & setting",
+    "section": "",
+    "text": "- Terminal을 켠다음에 아래와 같은 명령어를 입력한다!\n(그.. 명령어 입력할 때 현재 자기 주피터 킬때 켜지는 폴더로 옮긴 다음에 수행하자… 골치 아프다ㅜㅜ)\nquarto create project website gcsite\n- 그러면 다음과 같은 이미지가 보인다\n\n- 저기 open with 어찌고 보이는데 d버튼 누르면 (don’t open)으로 넘어가니 그걸 선택한 후 엔터를 눌러준다!\n- 그러면 아래 이미지처럼 맨 밑에 gcsite라는 폴더가 생긴 것을 볼 수 있다."
   },
   {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex1.-학점",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex1.-학점",
-    "title": "03. Python Basic (4)",
-    "section": "ex1. 학점",
-    "text": "ex1. 학점\n\nimport numpy as np\n\n\ns = list(range(0,100,10))\n\n\ndef grade(s) :\n    if s &gt;= 90:\n        return \"A\"\n    elif s&gt;=80:\n        return \"B\"\n    elif s&gt;=70:\n        return \"C\"\n    elif s&gt;=60:\n        return \"D\"\n    else :\n        return \"F\"        \n\n\ns\n\n[0, 10, 20, 30, 40, 50, 60, 70, 80, 90]\n\n\n\n[grade(i) for i in s]\n\n['F', 'F', 'F', 'F', 'F', 'F', 'D', 'C', 'B', 'A']"
+    "objectID": "posts/DX/2023-07-31-00.intro.html#깃허브-로컬-연결",
+    "href": "posts/DX/2023-07-31-00.intro.html#깃허브-로컬-연결",
+    "title": "00. Intro & setting",
+    "section": "",
+    "text": "- git bash 쓰는 사람들 많던데 난 github desktop이 훨씬 편하다.\n- git 알못이기 때문에 많은 것을 알기 위해 괴롭고 싶지 않다.\n- 뭐 여튼 깃허브 데스크탑을 킨다.\n- 상단 메뉴바 \\(\\to\\) File \\(\\to\\) Add local repository\n- 그러면 아래와 같은 경고문이 뜬다.\n\n- local하고 연결하고 싶은데 깃허브에는 gcsite가 없으니 대충 만들어 달라는 것임 “create a repository” 를 눌러주자.\n\n- 무시, 걍 create repository ㄱㄱ\n- 그러면 깃허브 데스크탑에서 너 방금 만든거 너꺼 깃허브에 Publish 할거냐고 물어봄\n\n- Publish repository 눌러주면 끝~~ (단, publish할 때 private 체크박스는 해제하구 하자!)\n- 그 다음 내가 생성산 gcsite 저장소 setting으로 넘어가서 pages를 클릭!\n- 아래와 같이 branch를 수정 후 save 버튼 눌러주자"
   },
   {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2.-아래-인코딩을-수행",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2.-아래-인코딩을-수행",
-    "title": "03. Python Basic (4)",
-    "section": "ex2. 아래 인코딩을 수행",
-    "text": "ex2. 아래 인코딩을 수행\n\n\n\n숫자\n요일\n\n\n\n\n0\n월요일\n\n\n1\n화요일\n\n\n2\n수요일\n\n\n3\n목요일\n\n\n4\n금요일\n\n\n5\n토요일\n\n\n6\n일요일\n\n\n\n\nnum = list(np.random.randint(0,7,20))\n\n\ndef days(n) :\n    if n == 0 :\n        return \"월\"\n    elif n == 1 :\n        return \"화\"\n    elif n == 2 :\n        return \"수\"\n    elif n == 3 :\n        return \"목\"\n    elif n == 4 :\n        return \"금\"\n    elif n == 5 :\n        return \"토\"\n    else :\n        return \"일\"\n\n\nweek = [days(n) for n in num]\n\n\nprint(week)\n\n['월', '일', '토', '수', '월', '금', '일', '목', '월', '월', '토', '금', '일', '수', '화', '월', '수', '목', '일', '일']"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex3.-60점-이하-과락",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex3.-60점-이하-과락",
-    "title": "03. Python Basic (4)",
-    "section": "ex3. 60점 이하 과락",
-    "text": "ex3. 60점 이하 과락\n\ns = [62,59,70]\n\n\nfor i in s :\n    if i &lt;60 :\n        print (i,\"과락\")\n    else :\n        print(i)\n\n62\n59 과락\n70"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex1-for-if-to-짝수만-출력",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex1-for-if-to-짝수만-출력",
-    "title": "03. Python Basic (4)",
-    "section": "ex1) for + if \\(\\to\\) 짝수만 출력",
-    "text": "ex1) for + if \\(\\to\\) 짝수만 출력\n\ns = list(np.random.randint(1,100,size=10))\ns\n\n[37, 10, 35, 31, 70, 28, 40, 74, 69, 55]\n\n\n\ns2 = [i for i in s if i%2==0]\n\n\nprint(f\"짝수 list는 {s2}, 합은 {sum(s2)}\")\n\n짝수 list는 [10, 70, 28, 40, 74], 합은 222"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2-리스트안에-원소-출력",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2-리스트안에-원소-출력",
-    "title": "03. Python Basic (4)",
-    "section": "ex2) 리스트안에 원소 출력",
-    "text": "ex2) 리스트안에 원소 출력\n\nlst = [1,2, \"강철\",True, 1+2j]\n\n\n[i for i in lst]\n\n[1, 2, '강철', True, (1+2j)]"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex3-문자열-리스트-출력",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex3-문자열-리스트-출력",
-    "title": "03. Python Basic (4)",
-    "section": "ex3) 문자열 리스트 출력",
-    "text": "ex3) 문자열 리스트 출력\n\nl = list(\"abc\")\n\nfor i in l:\n    print(i)\n\na\nb\nc"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex4-구구단-구현",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex4-구구단-구현",
-    "title": "03. Python Basic (4)",
-    "section": "ex4) 구구단 구현",
-    "text": "ex4) 구구단 구현\n\nlst = list(range(2,10))\n\n\nfor i in lst :\n    for j in range(1,10) : \n        print (f\"{i} x {j} = {i*j}\")\n\n2 x 1 = 2\n2 x 2 = 4\n2 x 3 = 6\n2 x 4 = 8\n2 x 5 = 10\n2 x 6 = 12\n2 x 7 = 14\n2 x 8 = 16\n2 x 9 = 18\n3 x 1 = 3\n3 x 2 = 6\n3 x 3 = 9\n3 x 4 = 12\n3 x 5 = 15\n3 x 6 = 18\n3 x 7 = 21\n3 x 8 = 24\n3 x 9 = 27\n4 x 1 = 4\n4 x 2 = 8\n4 x 3 = 12\n4 x 4 = 16\n4 x 5 = 20\n4 x 6 = 24\n4 x 7 = 28\n4 x 8 = 32\n4 x 9 = 36\n5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n6 x 1 = 6\n6 x 2 = 12\n6 x 3 = 18\n6 x 4 = 24\n6 x 5 = 30\n6 x 6 = 36\n6 x 7 = 42\n6 x 8 = 48\n6 x 9 = 54\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n8 x 1 = 8\n8 x 2 = 16\n8 x 3 = 24\n8 x 4 = 32\n8 x 5 = 40\n8 x 6 = 48\n8 x 7 = 56\n8 x 8 = 64\n8 x 9 = 72\n9 x 1 = 9\n9 x 2 = 18\n9 x 3 = 27\n9 x 4 = 36\n9 x 5 = 45\n9 x 6 = 54\n9 x 7 = 63\n9 x 8 = 72\n9 x 9 = 81"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex5-enumerate-to-짝수번째-인덱스만-출력",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex5-enumerate-to-짝수번째-인덱스만-출력",
-    "title": "03. Python Basic (4)",
-    "section": "ex5) enumerate \\(\\to\\) 짝수번째 인덱스만 출력",
-    "text": "ex5) enumerate \\(\\to\\) 짝수번째 인덱스만 출력\n- 컨테이너 자료형(문자열(str), 튜플(tuple), 리스트(list), 딕셔터리(dictionary), 집합(set))을 입력받아, 순번과 요소를 포함하는 오브젝트를 출력\n\nlst = list(\"abcdefghi\")\n\n\nlist(enumerate(lst))\n\n[(0, 'a'),\n (1, 'b'),\n (2, 'c'),\n (3, 'd'),\n (4, 'e'),\n (5, 'f'),\n (6, 'g'),\n (7, 'h'),\n (8, 'i')]\n\n\n\nfor i,j in enumerate(lst) :\n    if i%2==0 :\n        print(f\"index : {i}, str = {j}\")\n\nindex : 0, str = a\nindex : 2, str = c\nindex : 4, str = e\nindex : 6, str = g\nindex : 8, str = i"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex6-여러개의-값을-입력받아-짝수들의-제곱을-구하기",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex6-여러개의-값을-입력받아-짝수들의-제곱을-구하기",
-    "title": "03. Python Basic (4)",
-    "section": "ex6) 여러개의 값을 입력받아 짝수들의 제곱을 구하기",
-    "text": "ex6) 여러개의 값을 입력받아 짝수들의 제곱을 구하기\n\nnum_list = list(map(int, input(\"숫자를 입력하세요 : \").split()))\n\n\ns_list = [i**2 for i in num_list if i % 2 == 0]\n\ns_list\n\n숫자를 입력하세요 :  1 2 3 4 5 6\n\n\n[4, 16, 36]"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex1-기본-반복문",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex1-기본-반복문",
-    "title": "03. Python Basic (4)",
-    "section": "ex1) 기본 반복문",
-    "text": "ex1) 기본 반복문\n\ns = dict(a=100,b=55,c=74,d=87)\ns.items()\n\ndict_items([('a', 100), ('b', 55), ('c', 74), ('d', 87)])\n\n\n\nfor i,j in s.items() :\n    print(i,j)\n\na 100\nb 55\nc 74\nd 87"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2-기준값을-입력받은후-특정값보다-큰-keyvalue를-추출",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2-기준값을-입력받은후-특정값보다-큰-keyvalue를-추출",
-    "title": "03. Python Basic (4)",
-    "section": "ex2) 기준값을 입력받은후 특정값보다 큰 key,value를 추출",
-    "text": "ex2) 기준값을 입력받은후 특정값보다 큰 key,value를 추출\n\nnum = int(input(\"숫자를 입력하시오 : \"))\n\nfor i,j in s.items() :\n    if j&gt;num :\n        print (i,j)\n\n숫자를 입력하시오 :  60\n\n\na 100\nc 74\nd 87"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex3-합구하기",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex3-합구하기",
-    "title": "03. Python Basic (4)",
-    "section": "ex3) 합구하기",
-    "text": "ex3) 합구하기\n\ns = {\"a\" : [1,2,3,4],\n     \"b\" : [5,6,7,8],\n     \"c\" : [6,7,8,9]}\n\n\n{i : sum(j) for i,j in s.items()}\n\n{'a': 10, 'b': 26, 'c': 30}"
-  },
-  {
-    "objectID": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2.-break",
-    "href": "posts/DX/2wk/2023-08-14-03. Python Basic (4).html#ex2.-break",
-    "title": "03. Python Basic (4)",
-    "section": "ex2. break",
-    "text": "ex2. break\n- 짝수합 구하기\n\ns,i =0,0\n\nwhile True :\n    i+=1\n    if i&gt;100 :\n        break ## 100d을 넘어가면 break\n    if i%2==0 :\n        s += i\n    else :\n        continue ## 다시 처음으로"
+    "objectID": "posts/DX/2023-07-31-00.intro.html#문서-생성",
+    "href": "posts/DX/2023-07-31-00.intro.html#문서-생성",
+    "title": "00. Intro & setting",
+    "section": "",
+    "text": "- quarto 원리 : 작성한 ipynb파일 html파일로 출력해서 그 html파일들로 웹사이트를 구성하는 것1\n- step1. posts와 docs라는 폴더를 만들자\n\nposts는 내가 작성하는 ipynb파일들이 들어갈거고, docs에는 html파일이 들어갈 것이다.\n\n- step2. index 파일 수정\n\nindex파일은 뭐랄까 네비게이터 역할이랄까 아래와 같이 바꿔주자\n\n---\ntitle: \"GC site\"\nlisting:\n  contents: posts\n  sort: [date desc, title]\n  type: table\n  categories: true\n  sort-ui: true\n  filter-ui: true\npage-layout: full\ntitle-block-banner: true\n---\n- step3. _quarto.uml 파일 수정 \\(\\to\\) 템플릿이랑 디자인 이쁜거 많으니 본인 입맛에 맞게 수정하면 됩니당\nproject:\n  type: website\n  output-dir : docs  \nwebsite:\n  title: \"GC site\"\n  page-navigation: true\n  navbar:\n    right:\n      - icon : github\n        href : https://github.com/gangcheol/\n  sidebar:\n    style: \"docked\"\n    search: True\n    contents: auto\n    \nformat:\n  html:\n    css: styles.css\n    toc: true\n    code-fold : False\n    code-line-numbers : True\n    code-copy : True\n\ntheme :\n  light : flatly\n  \neditor : visual\n- step4. 앞서 만든 posts폴더에 아무 파일이나 만들어보자\n\n- step5. 그 후 다시 터미널에서 내가 생성한 폴더로 이동\n필자의 경우는 cd gcsite\n- step6. quarto render 입력\n- step7. github desktop보면 난리가 났을 것이다. 막 일을 좀 많이 했음.\n\n로컬하고 연결되어 있으니 로컬이 하고 있는 걸 다적어서 그럼\n\n\n\n저기 내가 밑에 이러한 기록을 init이라고 써놨다. 저건 내가 로컬에서 한 행동을 내 깃허브 로컬에 저장할 건데, 그 행동을 init이라고 쓴거\n이제 저 Commit to main 버튼을 눌러주고 가운데 화면에 뜨는 push origin을 눌러주자!\n\n- 마지막!! 아까 깃허브 로컬 셋팅에서 pases란에 잠시 후에 들어가보면 다음과 같은 것을 볼 수 있다.\n\n- 저 링크로 들어가면 내가 만든 웹사이트 초안을 볼 수 있다.\n- 링크"
   },
   {
     "objectID": "posts/DX/extra/2023-08-09-Extra 01. 클래스.html",

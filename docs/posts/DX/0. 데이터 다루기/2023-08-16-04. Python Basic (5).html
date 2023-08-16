@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="GC">
-<meta name="dcterms.date" content="2023-07-31">
+<meta name="dcterms.date" content="2023-08-16">
 
-<title>Gangcheol - 00. Intro &amp; setting</title>
+<title>Gangcheol - 04. Python Basic (5)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html" rel="next">
-<link href="../../posts/coding test/PR/2023-08-16-00. Lv 0.html" rel="prev">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../posts/DX/0. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" rel="next">
+<link href="../../../posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -78,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
   </div>
@@ -118,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../posts/DX/2023-07-31-00.intro.html">00. Intro &amp; setting</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html">0. 데이터 다루기</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/0. 데이터 다루기/2023-08-16-04. Python Basic (5).html">04. Python Basic (5)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -131,9 +165,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">00. Intro &amp; setting</h1>
+      <h1 class="title">04. Python Basic (5)</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">quarto</div>
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">데이터 다루기</div>
               </div>
                   </div>
   </div>
@@ -151,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 31, 2023</p>
+        <p class="date">August 16, 2023</p>
       </div>
     </div>
     
@@ -171,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>About Me</strong></span></a>
   </div>
 </li>
@@ -204,7 +239,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/coding test/PR/2023-08-16-00. Lv 0.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/coding test/PR/2023-08-16-00. Lv 0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. Lv. 0</span></a>
   </div>
 </li>
@@ -223,46 +258,46 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/2023-07-31-00.intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../posts/DX/2023-07-31-00.intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. Intro &amp; setting</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">0. 데이터 다루기</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. Python Basic (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. Python Basic (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/2023-08-11-02. Python Basic (3) .html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02. Python Basic (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03. Python Basic (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/2023-08-16-04. Python Basic (5).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/2023-08-16-04. Python Basic (5).html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">04. Python Basic (5)</span></a>
   </div>
 </li>
@@ -277,31 +312,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 00. 밈</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 01. 클래스</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 02. 클래스 탐구 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 03. 클래스 탐구 (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/0. 데이터 다루기/extra/2023-08-14-Extra 04. 클래스 탐구 (3).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/0. 데이터 다루기/extra/2023-08-14-Extra 04. 클래스 탐구 (3).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 04. 클래스 탐구 (3)</span></a>
   </div>
 </li>
@@ -323,12 +358,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">1. Quarto</a>
+  <li><a href="#함수" id="toc-함수" class="nav-link active" data-scroll-target="#함수">함수</a>
   <ul class="collapse">
-  <li><a href="#install" id="toc-install" class="nav-link" data-scroll-target="#install">(1) install</a></li>
-  <li><a href="#website-생성" id="toc-website-생성" class="nav-link" data-scroll-target="#website-생성">(2) website 생성</a></li>
-  <li><a href="#깃허브-로컬-연결" id="toc-깃허브-로컬-연결" class="nav-link" data-scroll-target="#깃허브-로컬-연결">(3) 깃허브 &amp; 로컬 연결</a></li>
-  <li><a href="#문서-생성" id="toc-문서-생성" class="nav-link" data-scroll-target="#문서-생성">(4) 문서 생성</a></li>
+  <li><a href="#ex1.-여러개-인수를-입력받아-처리하는-함수" id="toc-ex1.-여러개-인수를-입력받아-처리하는-함수" class="nav-link" data-scroll-target="#ex1.-여러개-인수를-입력받아-처리하는-함수">ex1. 여러개 인수를 입력받아 처리하는 함수</a></li>
+  <li><a href="#ex2.-아래를-만족하는-함수를-작성하라." id="toc-ex2.-아래를-만족하는-함수를-작성하라." class="nav-link" data-scroll-target="#ex2.-아래를-만족하는-함수를-작성하라.">ex2. 아래를 만족하는 함수를 작성하라.</a></li>
+  <li><a href="#ex3.-여러-개의-값-return" id="toc-ex3.-여러-개의-값-return" class="nav-link" data-scroll-target="#ex3.-여러-개의-값-return">ex3. 여러 개의 값 return</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -339,114 +373,110 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="quarto" class="level1">
-<h1>1. Quarto</h1>
-<p><code>-</code> 어… 일단 평소에도 quarto를 이용해서 웹사이트를 관리했지만… 뭔가 처음 깃허브를 접하구 하시는 분들은 이 플랫폼을 사용할 때 되게 난항이 있을것 같다… (내가 그랬다…)</p>
-<p><code>-</code> 그리고 원래 만들어 놓았던 사이트는 뭔가 좀 지저분한 느낌이 들어서….</p>
-<p><code>-</code> 에이블스쿨 하면서 배운것들 기록할 때는 뭔가 깔끔한 공간에 하고 싶기도 하다.</p>
-<p><code>-</code> 이참에 절차를 확실히 내가 적어두자!</p>
-<section id="install" class="level2">
-<h2 class="anchored" data-anchor-id="install">(1) install</h2>
-<p><code>-</code> <a href="https://quarto.org/docs/get-started/">quarto download link</a> : 여기서 quarto를 다운받자!</p>
+<section id="함수" class="level1">
+<h1>함수</h1>
+<section id="ex1.-여러개-인수를-입력받아-처리하는-함수" class="level2">
+<h2 class="anchored" data-anchor-id="ex1.-여러개-인수를-입력받아-처리하는-함수">ex1. 여러개 인수를 입력받아 처리하는 함수</h2>
+<ul>
+<li><code>*</code>은 여러개의 인수를 튜플로 입력받아 처리해주는 메소드이다.</li>
+</ul>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> a(<span class="op">*</span>alpha) :</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="cf">for</span> a <span class="kw">in</span> alpha : </span>
+<span id="cb1-3"><a href="#cb1-3"></a>        <span class="bu">print</span>(<span class="ss">f"입력된 문자는 </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">입니다."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>a(<span class="st">"A"</span>,<span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>입력된 문자는 A입니다.
+입력된 문자는 B입니다.</code></pre>
+</div>
+</div>
+<p><code>-</code> 또한, 임의의 매개변수를 여러개 전달받고, 고정변수를 따로 전달받아 아래와 같이 작성할 수 있다.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> a(<span class="op">*</span>alpha,v) :</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="cf">for</span> a <span class="kw">in</span> alpha : </span>
+<span id="cb4-3"><a href="#cb4-3"></a>        <span class="bu">print</span>(<span class="ss">f"입력된 문자는 </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">이며 종류는 </span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">입니다."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>a(<span class="st">"A"</span>,<span class="st">"B"</span>,v <span class="op">=</span> <span class="st">"알파벳"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>입력된 문자는 A이며 종류는 알파벳입니다.
+입력된 문자는 B이며 종류는 알파벳입니다.</code></pre>
+</div>
+</div>
+<ul>
+<li>단 고정값은 맨뒤에 전달해주어야 한다.</li>
+</ul>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>a(v <span class="op">=</span> <span class="st">"알파벳"</span>,<span class="st">"A"</span>,<span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>SyntaxError: positional argument follows keyword argument (1027399463.py, line 1)</code></pre>
+</div>
+</div>
 </section>
-<section id="website-생성" class="level2">
-<h2 class="anchored" data-anchor-id="website-생성">(2) website 생성</h2>
-<p><code>-</code> Terminal을 켠다음에 아래와 같은 명령어를 입력한다!</p>
-<p>(그.. 명령어 입력할 때 현재 자기 주피터 킬때 켜지는 폴더로 옮긴 다음에 수행하자… 골치 아프다ㅜㅜ)</p>
-<p><strong>quarto create project website gcsite</strong></p>
-<p><code>-</code> 그러면 다음과 같은 이미지가 보인다</p>
-<p><img src="quarto1.png" width="350"></p>
-<p><code>-</code> 저기 open with 어찌고 보이는데 d버튼 누르면 (don’t open)으로 넘어가니 그걸 선택한 후 엔터를 눌러준다!</p>
-<p><code>-</code> 그러면 아래 이미지처럼 맨 밑에 gcsite라는 폴더가 생긴 것을 볼 수 있다.</p>
-<p><img src="quarto2.png" width="150"></p>
+<section id="ex2.-아래를-만족하는-함수를-작성하라." class="level2">
+<h2 class="anchored" data-anchor-id="ex2.-아래를-만족하는-함수를-작성하라.">ex2. 아래를 만족하는 함수를 작성하라.</h2>
+<p><span class="math display">\[\text{result} = \sum_{i=1}^{n} x^2\]</span></p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">def</span> a(<span class="op">*</span>a) :</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    result <span class="op">=</span> <span class="bu">sum</span>([i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> a])</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>a(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>55</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>lst<span class="op">=</span> [<span class="dv">2</span>,<span class="dv">10</span>,<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">def</span> solution(sides):</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    sides.sort()</span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="cf">if</span> sides[<span class="op">-</span><span class="dv">1</span>] <span class="op">&lt;</span> <span class="bu">sum</span>(sides[:<span class="op">-</span><span class="dv">1</span>]) :</span>
+<span id="cb13-4"><a href="#cb13-4"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>    <span class="cf">else</span> :</span>
+<span id="cb13-6"><a href="#cb13-6"></a>        <span class="cf">return</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>solution(lst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>2</code></pre>
+</div>
+</div>
 </section>
-<section id="깃허브-로컬-연결" class="level2">
-<h2 class="anchored" data-anchor-id="깃허브-로컬-연결">(3) 깃허브 &amp; 로컬 연결</h2>
-<p><code>-</code> git bash 쓰는 사람들 많던데 난 github desktop이 훨씬 편하다.</p>
-<p><code>-</code> git 알못이기 때문에 많은 것을 알기 위해 괴롭고 싶지 않다.</p>
-<p><code>-</code> 뭐 여튼 깃허브 데스크탑을 킨다.</p>
-<p><code>-</code> 상단 메뉴바 <span class="math inline">\(\to\)</span> File <span class="math inline">\(\to\)</span> Add local repository</p>
-<p><code>-</code> 그러면 아래와 같은 경고문이 뜬다.</p>
-<p><img src="quarto3.png" width="250"></p>
-<p><code>-</code> local하고 연결하고 싶은데 깃허브에는 gcsite가 없으니 대충 만들어 달라는 것임 <strong>“create a repository”</strong> 를 눌러주자.</p>
-<p><img src="quarto4.png" width="250"></p>
-<p><code>-</code> 무시, 걍 create repository ㄱㄱ</p>
-<p><code>-</code> 그러면 깃허브 데스크탑에서 너 방금 만든거 너꺼 깃허브에 Publish 할거냐고 물어봄</p>
-<p><img src="quarto5.png" width="300"></p>
-<p><code>-</code> Publish repository 눌러주면 끝~~ (단, publish할 때 private 체크박스는 해제하구 하자!)</p>
-<p><code>-</code> 그 다음 내가 생성산 <code>gcsite</code> 저장소 setting으로 넘어가서 <strong>pages</strong>를 클릭!</p>
-<p><code>-</code> 아래와 같이 branch를 수정 후 save 버튼 눌러주자</p>
-<p><img src="quarto6.png" width="450"></p>
-</section>
-<section id="문서-생성" class="level2">
-<h2 class="anchored" data-anchor-id="문서-생성">(4) 문서 생성</h2>
-<p><code>-</code> quarto 원리 : 작성한 ipynb파일 html파일로 출력해서 그 html파일들로 웹사이트를 구성하는 것1</p>
-<p><code>-</code> step1. posts와 docs라는 폴더를 만들자</p>
-<ul>
-<li>posts는 내가 작성하는 ipynb파일들이 들어갈거고, docs에는 html파일이 들어갈 것이다.</li>
-</ul>
-<p><code>-</code> step2. index 파일 수정</p>
-<ul>
-<li>index파일은 뭐랄까 네비게이터 역할이랄까 아래와 같이 바꿔주자</li>
-</ul>
-<pre><code>---
-title: "GC site"
-listing:
-  contents: posts
-  sort: [date desc, title]
-  type: table
-  categories: true
-  sort-ui: true
-  filter-ui: true
-page-layout: full
-title-block-banner: true
----</code></pre>
-<p><code>-</code> step3. _quarto.uml 파일 수정 <span class="math inline">\(\to\)</span> 템플릿이랑 디자인 이쁜거 많으니 본인 입맛에 맞게 수정하면 됩니당</p>
-<pre><code>project:
-  type: website
-  output-dir : docs  
-website:
-  title: "GC site"
-  page-navigation: true
-  navbar:
-    right:
-      - icon : github
-        href : https://github.com/gangcheol/
-  sidebar:
-    style: "docked"
-    search: True
-    contents: auto
-    
-format:
-  html:
-    css: styles.css
-    toc: true
-    code-fold : False
-    code-line-numbers : True
-    code-copy : True
-
-theme :
-  light : flatly
-  
-editor : visual</code></pre>
-<p><code>-</code> step4. 앞서 만든 posts폴더에 아무 파일이나 만들어보자</p>
-<p><img src="quarto8.png" width="200"></p>
-<p><code>-</code> step5. 그 후 다시 터미널에서 내가 생성한 폴더로 이동</p>
-<p>필자의 경우는 <code>cd gcsite</code></p>
-<p><code>-</code> step6. quarto render 입력</p>
-<p><code>-</code> step7. github desktop보면 난리가 났을 것이다. 막 일을 좀 많이 했음.</p>
-<ul>
-<li>로컬하고 연결되어 있으니 로컬이 하고 있는 걸 다적어서 그럼</li>
-</ul>
-<p><img src="quarto9.png" width="200"></p>
-<ul>
-<li><p>저기 내가 밑에 이러한 기록을 init이라고 써놨다. 저건 내가 로컬에서 한 행동을 내 깃허브 로컬에 저장할 건데, 그 행동을 init이라고 쓴거</p></li>
-<li><p>이제 저 Commit to main 버튼을 눌러주고 가운데 화면에 뜨는 push origin을 눌러주자!</p></li>
-</ul>
-<p><code>-</code> 마지막!! 아까 깃허브 로컬 셋팅에서 pases란에 잠시 후에 들어가보면 다음과 같은 것을 볼 수 있다.</p>
-<p><img src="quarto10.png" width="500"></p>
-<p><code>-</code> 저 링크로 들어가면 내가 만든 웹사이트 초안을 볼 수 있다.</p>
-<p><code>-</code> <a href="https://gangcheol.github.io/gcsite/">링크</a></p>
+<section id="ex3.-여러-개의-값-return" class="level2">
+<h2 class="anchored" data-anchor-id="ex3.-여러-개의-값-return">ex3. 여러 개의 값 return</h2>
+<p><code>-</code> 분수 덧셈후 결과의 기약분수의 분모와 분자를 출력</p>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">def</span> sol(n1,d1,n2,d2) :</span>
+<span id="cb17-2"><a href="#cb17-2"></a>    d <span class="op">=</span> d1<span class="op">*</span>d2 <span class="co">## 분모 </span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>    n <span class="op">=</span> n1<span class="op">*</span>d2 <span class="op">+</span> n2<span class="op">*</span>d1 <span class="co">##분자</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a>    gcd <span class="op">=</span> math.gcd(d,n) <span class="co">## 최대공약수</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a></span>
+<span id="cb17-7"><a href="#cb17-7"></a>    <span class="cf">return</span> n<span class="op">//</span>gcd,d<span class="op">//</span>gcd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>n,d <span class="op">=</span> sol(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>5</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>4</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -688,13 +718,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../posts/coding test/PR/2023-08-16-00. Lv 0.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00. Lv. 0</span>
+      <a href="../../../posts/DX/0. 데이터 다루기/2023-08-14-03. Python Basic (4).html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">03. Python Basic (4)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../posts/DX/0. 데이터 다루기/2023-08-09-00. Python Basic (1).html" class="pagination-link">
-        <span class="nav-page-text">00. Python Basic (1)</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../posts/DX/0. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="pagination-link">
+        <span class="nav-page-text">Extra 00. 밈</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

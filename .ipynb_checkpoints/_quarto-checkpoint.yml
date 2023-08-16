@@ -12,6 +12,8 @@ website:
          href : https://gangcheol.github.io/TI2023/
        - text : "DX"
          href : https://gangcheol.github.io/mysite2/
+       - text : "IA2023"
+         href : https://gangcheol.github.io/IA2023/
     right:
       - icon: github
         href: https://github.com/gangcheol/

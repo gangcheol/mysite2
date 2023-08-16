@@ -679,13 +679,6 @@
     "text": "f-string(요즘 쓰는 방식)\n\nex1\n\nn = \"이강철\"\na = 28\ns = 100.213141\n\n\nprint(f\"{a}살의 {n}의 점수는 {s:.2f}입니다. \")\n\n28살의 이강철의 점수는 100.00입니다. \n\n\n\n\nex2\n\nn = \"이강철\"\na = 28\ns1 = 100.2\ns2 = 100.3\ns3 = 100.4\ns4 = 100.5\ns5 = 100.6\n\n\ntxt= f'''\n이름 : {n}\n\n연령대 : {age}\n\n점수 : {s1},{s2},{s3},{s4},{s5}\n\n합계 : {ts:,.0f} /평균 : {avg:,.2f}\n'''`\n\nprint(txt)\n\n\n이름 : 이강철\n\n연령대 : 20\n\n점수 : 100.2,100.3,100.4,100.5,100.6\n\n합계 : 502 /평균 : 100.40"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DX track",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nAug 16, 2023\n\n\n00. Lv. 0\n\n\nGC \n\n\n\n\nAug 16, 2023\n\n\n04. Python Basic (5)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\n03. Python Basic (4)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\nExtra 03. 클래스 탐구 (2)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\nExtra 04. 클래스 탐구 (3)\n\n\nGC \n\n\n\n\nAug 11, 2023\n\n\n02. Python Basic (3)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\n01. Python Basic (2)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\nExtra 02. 클래스 탐구 (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\n00. Python Basic (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\nExtra 01. 클래스\n\n\nGC \n\n\n\n\nAug 8, 2023\n\n\nExtra 00. 밈\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "about.html#education",
     "href": "about.html#education",
     "title": "About Me",
@@ -721,11 +714,11 @@
     "text": "Conctact\n- rkdcjf8232@gmail.com"
   },
   {
-    "objectID": "posts/coding test/PR/2023-08-16-00. Lv 0.html",
-    "href": "posts/coding test/PR/2023-08-16-00. Lv 0.html",
-    "title": "00. Lv. 0",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DX track",
     "section": "",
-    "text": "ex1. 나이 출력 (2022년 기준)\n\nsol = lambda x : 2022-(x-1)\n\nsol(40)\n\n1983\n\n\n\n\nex2. 분수의 덧셈\n\\[\\frac{n1}{d1} + \\frac{n2}{d2} = \\text {기약분수}\\]\n\nimport math\n\n\nn1,d1,n2,d2 = 1,2,3,4\n\n\ndef sol(n1,d1,n2,d2) :\n    d = d1*d2 ## 분모 \n    n = n1*d2 + n2*d1 ##분자\n\n    gcd = math.gcd(d,n) ## 최대공약수\n\n    return [n//gcd,d//gcd]\n\n\nsol(n1,d1,n2,d2)\n\n[5, 4]\n\n\n\nn = 10\nk = 3\n\nn1 = 12000*10\nk1 = (k-n//10)*2000\n\nn1+k1\n\n124000\n\n\n\n\nex3. 삼각형의 완성조건\n- 가장 긴 변의 길이는 다른 두 변이 길이의 합보다 작은지 확인하는 함수를 작성\n\n조건을 만족할경우 1, 아닐경우 2를 return\n\n\nlst= [2,10,4]\n\n\ndef solution(sides):\n    sides.sort() ## 이 부분 주의 !! sides = sides.sort()라고 하면 에러남\n    if sides[-1] &lt; sum(sides[:-1]) :\n        return 1\n    else :\n        return 2\n\n\nsolution(lst)\n\n2\n\n\n\n\nex4. 배열 뒤집기\n\ndef solution(num_list):\n    num_list.reverse() ## 이 부분도 주의!! reverse와 sort는 함수안에 return 값이 없기 때문\n    return num_list\n\n\nlst = [5, 3, 1, 1, 1, 0, 1]\n\n\nsolution(lst)\n\n[1, 0, 1, 1, 1, 3, 5]\n\n\n\nn = 20\n\n\nresult = 0\nfor i in range(1,101) :\n    if n % i == 0 :\n        result +=1\n\n\nresult\n\n6\n\n\n\n\nex5. 옷가게 할인(소수점 이하 버리기)\n\ndef solution(price):\n    if price&gt;=500000:\n        price = price *0.8\n    elif price&gt;=300000:\n        price = price *0.9\n    elif price&gt;=100000:\n        price = price * 0.95\n    return int(price)\n\n\nsolution(580000)\n\n464000.0\n\n\n\n\n\nex6. 문자열 반복 출력\n\ndef solution(my_string, n):\n    s = [i*n for i in my_string]\n    return \"\".join(s)\n\n\nsolution(\"hello\",3)\n\n'hhheeellllllooo'\n\n\n\n\n\nex7. 아메리카노를 몇 잔 살 수 있는지\n\ndef solution(money):\n    ice = 5500\n    x,y =  divmod(money,ice)\n    return [x,y]\n\n\nsolution(5500)\n\n[1, 0]\n\n\n\nsolution(15000)\n\n[2, 4000]\n\n\n\n\nl = list(\"aeiou\")\n\n\nl\n\n['a', 'e', 'i', 'o', 'u']\n\n\n\ns = \"bus\"\n\n\n\"\".join([i for i in s if i not in l])\n\n'bs'\n\n\n\n\nex8. 모음제거\n\ndef solution(my_string):\n    l = list(\"aeiou\")\n    return \"\".join([i for i in my_string if i not in l])\n\n\nsolution(\"bus\")\n\n'bs'\n\n\n\n\n\nex8. 숨어있는 숫자의 덧셈\n\ndef solution(my_string):\n    l = list(range(0,10))\n    l = [str(i) for i in l ]\n    return sum([int(i) for i in my_string if i in l])\n\n\nsolution(\"aAb1B2cC34oOp\")\n\n10\n\n\n\n\n\nex9. 제곱수 판별하기\n\nimport numpy as np\ndef solution(n):\n    if np.sqrt(n) - int(np.sqrt(n)) == 0 :\n        return 1\n    else :\n        return 2\n\n\nsolution(144)\n\n1\n\n\n\n\n\nex10. 홀수짝수(이어붙인 후 더하기)\n\ndef solution(num_list):\n    even = [str(i) for i in  num_list if i %2==0]\n    odd = [str(i) for i in num_list if i %2==1]\n    even1 = int(\"\".join(even))\n    odd1 = int(\"\".join(odd))\n    return even1 + odd1\n\n\nlst = [1,2,3,4]\n\n\nsolution(lst)\n\n37"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nAug 16, 2023\n\n\n04. Python Basic (5)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\n03. Python Basic (4)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\nExtra 03. 클래스 탐구 (2)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\nExtra 04. 클래스 탐구 (3)\n\n\nGC \n\n\n\n\nAug 11, 2023\n\n\n02. Python Basic (3)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\n01. Python Basic (2)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\nExtra 02. 클래스 탐구 (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\n00. Python Basic (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\nExtra 01. 클래스\n\n\nGC \n\n\n\n\nAug 8, 2023\n\n\nExtra 00. 밈\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/DX/0. 데이터 다루기/2023-08-10-01. Python Basic (2) .html",

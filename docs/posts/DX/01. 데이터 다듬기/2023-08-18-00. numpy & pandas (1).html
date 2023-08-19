@@ -170,7 +170,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">00. numpy &amp; pandas (1)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">데이터 다듬기</div>
+                <div class="quarto-category">numpy</div>
+                <div class="quarto-category">pandas</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>GC </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 18, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -371,51 +404,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a></li>
   <li><a href="#ref" id="toc-ref" class="nav-link" data-scroll-target="#ref">ref</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-08-18-00. numpy &amp; pandas (1).out.ipynb" download="2023-08-18-00. numpy &amp; pandas (1).out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">00. numpy &amp; pandas (1)</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">데이터 다듬기</div>
-    <div class="quarto-category">numpy</div>
-    <div class="quarto-category">pandas</div>
-  </div>
-  </div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>GC </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 18, 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
 
 <section id="import" class="level1">
 <h1>import</h1>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="용어-정의" class="level1">
@@ -432,21 +434,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="차원-배열의-선언">(1) 1차원 배열의 선언</h2>
 <p><code>-</code> 튜플</p>
 <div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>np.array((<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>np.array((<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>array([1, 2, 3])</code></pre>
 </div>
 </div>
 <p><code>-</code> 리스트</p>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>array([1, 2, 3])</code></pre>
 </div>
 </div>
 <p><code>-</code> range</p>
 <div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>np.array(<span class="bu">range</span>(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>np.array(<span class="bu">range</span>(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
 </div>
@@ -454,27 +456,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="알아두면-좋은-1차원-배열-선언" class="level3">
 <h3 class="anchored" data-anchor-id="알아두면-좋은-1차원-배열-선언">알아두면 좋은 1차원 배열 선언</h3>
 <div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>np.zeros(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>np.zeros(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>array([0., 0., 0.])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>np.ones(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>np.ones(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>array([1., 1., 1.])</code></pre>
 </div>
 </div>
 <p><code>-</code> <code>np.linspace(2,8,4)</code> : 2~8까지, 4개의 원소를 생성</p>
 <div class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>np.linspace(<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>np.linspace(<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>array([2., 4., 6., 8.])</code></pre>
 </div>
 </div>
 <p><code>-</code> <code>np.arange(start,end)</code> : nump버전 range라고 생각하자!</p>
 <div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">5</span>), np.arange(<span class="dv">1</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>np.arange(<span class="dv">5</span>), np.arange(<span class="dv">1</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>(array([0, 1, 2, 3, 4]), array([1, 2, 3, 4, 5]))</code></pre>
 </div>
@@ -484,16 +486,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="주의-1.-배열의-자료형">주의 1. 배열의 자료형</h3>
 <p><code>-</code> 숫자 <span class="math inline">\(\to\)</span> 문자</p>
 <div class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="st">"A"</span>,<span class="fl">3.0</span>])</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="st">"A"</span>,<span class="fl">3.0</span>])</span>
+<span id="cb16-2"><a href="#cb16-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>array(['1', 'A', '3'], dtype='&lt;U11')</code></pre>
 </div>
 </div>
 <p><code>-</code> 정수 <span class="math inline">\(\to\)</span> 실수</p>
 <div class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.0</span>])</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.0</span>])</span>
+<span id="cb18-2"><a href="#cb18-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="86">
 <pre><code>array([1., 2., 3.])</code></pre>
 </div>
@@ -505,10 +507,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="list" class="level3">
 <h3 class="anchored" data-anchor-id="list">list</h3>
 <div class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>     [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]]</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>np.array(a1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>a1 <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
+<span id="cb20-2"><a href="#cb20-2"></a>     [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]]</span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a>np.array(a1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>array([[1, 2, 3],
        [4, 5, 6]])</code></pre>
@@ -518,11 +520,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="stack" class="level3">
 <h3 class="anchored" data-anchor-id="stack">stack</h3>
 <div class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> np.stack([a1,a2],axis<span class="op">=</span><span class="dv">0</span>) </span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>A1, A1.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a></span>
+<span id="cb22-4"><a href="#cb22-4"></a>A1 <span class="op">=</span> np.stack([a1,a2],axis<span class="op">=</span><span class="dv">0</span>) </span>
+<span id="cb22-5"><a href="#cb22-5"></a>A1, A1.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>(array([[0, 4, 2],
         [3, 2, 3]]),
@@ -530,8 +532,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> np.stack([a1,a2],axis<span class="op">=</span><span class="dv">1</span>) </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>A2, A2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>A2 <span class="op">=</span> np.stack([a1,a2],axis<span class="op">=</span><span class="dv">1</span>) </span>
+<span id="cb24-2"><a href="#cb24-2"></a>A2, A2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>(array([[0, 3],
         [4, 2],
@@ -546,8 +548,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="list-1" class="level3">
 <h3 class="anchored" data-anchor-id="list-1">list</h3>
 <div class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [[[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">4</span>]],[[<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">7</span>,<span class="dv">8</span>]]]</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>np.array(a), np.array(a).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>a <span class="op">=</span> [[[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">4</span>]],[[<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">7</span>,<span class="dv">8</span>]]]</span>
+<span id="cb26-2"><a href="#cb26-2"></a>np.array(a), np.array(a).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
 <pre><code>(array([[[1, 2],
          [3, 4]],
@@ -561,12 +563,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="stack-reshape" class="level3">
 <h3 class="anchored" data-anchor-id="stack-reshape">stack + reshape</h3>
 <div class="cell" data-execution_count="118">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>a3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> np.stack([a1,a2,a3],axis<span class="op">=</span><span class="dv">0</span>).reshape(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>A1, A1.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
+<span id="cb28-2"><a href="#cb28-2"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
+<span id="cb28-3"><a href="#cb28-3"></a>a3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a>A1 <span class="op">=</span> np.stack([a1,a2,a3],axis<span class="op">=</span><span class="dv">0</span>).reshape(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb28-6"><a href="#cb28-6"></a>A1, A1.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="118">
 <pre><code>(array([[[8, 8],
          [4, 0],
@@ -579,7 +581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell" data-execution_count="125">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>A1.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>A1.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="125">
 <pre><code>dtype('int32')</code></pre>
 </div>
@@ -591,13 +593,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="인덱싱-슬라이싱" class="level1">
 <h1>2. 인덱싱 &amp; 슬라이싱</h1>
 <div class="cell" data-execution_count="154">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>a3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>a4 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> np.stack([a1,a2,a3,a4],axis<span class="op">=</span><span class="dv">0</span>) </span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb32-2"><a href="#cb32-2"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb32-3"><a href="#cb32-3"></a>a3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb32-4"><a href="#cb32-4"></a>a4 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb32-5"><a href="#cb32-5"></a></span>
+<span id="cb32-6"><a href="#cb32-6"></a>A1 <span class="op">=</span> np.stack([a1,a2,a3,a4],axis<span class="op">=</span><span class="dv">0</span>) </span>
+<span id="cb32-7"><a href="#cb32-7"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="154">
 <pre><code>array([[8, 8, 7],
        [3, 1, 1],
@@ -608,14 +610,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="행-조회" class="level2">
 <h2 class="anchored" data-anchor-id="행-조회">행 조회</h2>
 <div class="cell" data-execution_count="155">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>A1[<span class="dv">0</span>:<span class="dv">2</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>A1[<span class="dv">0</span>:<span class="dv">2</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="155">
 <pre><code>array([[8, 8, 7],
        [3, 1, 1]])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="156">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>A1[[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>A1[[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="156">
 <pre><code>array([[8, 8, 7],
        [3, 1, 1],
@@ -623,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell" data-execution_count="157">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>A1[[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>], : ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>A1[[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>], : ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="157">
 <pre><code>array([[8, 8, 7],
        [3, 1, 1],
@@ -634,7 +636,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="열-조회" class="level2">
 <h2 class="anchored" data-anchor-id="열-조회">열 조회</h2>
 <div class="cell" data-execution_count="158">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>A1[:,<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>A1[:,<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="158">
 <pre><code>array([[8, 8],
        [3, 1],
@@ -643,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>A1[:,[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>A1[:,[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="159">
 <pre><code>array([[8, 8, 7],
        [3, 1, 1],
@@ -655,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="행열-조회" class="level2">
 <h2 class="anchored" data-anchor-id="행열-조회">행,열 조회</h2>
 <div class="cell" data-execution_count="160">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>A1[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>A1[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="160">
 <pre><code>array([[8, 8],
        [3, 1]])</code></pre>
@@ -665,7 +667,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="stride-start-end-interval" class="level2">
 <h2 class="anchored" data-anchor-id="stride-start-end-interval"><code>stride( start :end : interval)</code></h2>
 <div class="cell" data-execution_count="162">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="162">
 <pre><code>array([[8, 8, 7],
        [3, 1, 1],
@@ -674,7 +676,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell" data-execution_count="161">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>A1[::<span class="dv">2</span>, ::<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>A1[::<span class="dv">2</span>, ::<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="161">
 <pre><code>array([[8, 7],
        [3, 7]])</code></pre>
@@ -684,7 +686,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="특정값을-지정하여-접근" class="level2">
 <h2 class="anchored" data-anchor-id="특정값을-지정하여-접근">특정값을 지정하여 접근</h2>
 <div class="cell" data-execution_count="164">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="164">
 <pre><code>array([[8, 8, 7],
        [3, 1, 1],
@@ -693,13 +695,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell" data-execution_count="170">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>A1[A1<span class="op">==</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>A1[A1<span class="op">==</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="170">
 <pre><code>array([1, 1])</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="173">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>A1[A1<span class="op">==</span><span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>A1[A1<span class="op">==</span><span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="173">
 <pre><code>array([7, 7, 7])</code></pre>
 </div>
@@ -712,31 +714,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="기본-연산" class="level2">
 <h2 class="anchored" data-anchor-id="기본-연산">기본 연산</h2>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="27">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'''</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="ss">1. 사칙연산 </span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="ss">a + 1 = </span><span class="sc">{</span>a<span class="op">+</span><span class="dv">1</span><span class="sc">}</span></span>
-<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="ss">a - 2 = </span><span class="sc">{</span>a<span class="op">-</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="ss">a x 2 = </span><span class="sc">{</span>a<span class="op">*</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="ss">a / 2 = </span><span class="sc">{</span>a<span class="op">/</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="ss">a // 2 = </span><span class="sc">{</span>a<span class="op">//</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="ss">a % 2 = </span><span class="sc">{</span>a <span class="op">%</span> <span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="ss">=======================================</span></span>
-<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="ss">2. 거듭제곱, 로그, 지수, 삼각함수</span></span>
-<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="ss">a^2 = </span><span class="sc">{</span>a<span class="op">**</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a><span class="ss">sqrt(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.sqrt(a),<span class="dv">2</span>)<span class="sc">}</span></span>
-<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a><span class="ss">log(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.log(a),<span class="dv">2</span>)<span class="sc">}</span></span>
-<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a><span class="ss">exp(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.exp(a),<span class="dv">2</span>)<span class="sc">}</span></span>
-<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="ss">sin(a),cos(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.sin(a),<span class="dv">2</span>)<span class="sc">,</span>np<span class="sc">.</span><span class="bu">round</span>(np.cos(a),<span class="dv">2</span>)<span class="sc">}</span></span>
-<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a><span class="ss">'''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="bu">print</span>(<span class="ss">f'''</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="ss">1. 사칙연산 </span></span>
+<span id="cb57-3"><a href="#cb57-3"></a></span>
+<span id="cb57-4"><a href="#cb57-4"></a><span class="ss">a + 1 = </span><span class="sc">{</span>a<span class="op">+</span><span class="dv">1</span><span class="sc">}</span></span>
+<span id="cb57-5"><a href="#cb57-5"></a><span class="ss">a - 2 = </span><span class="sc">{</span>a<span class="op">-</span><span class="dv">2</span><span class="sc">}</span></span>
+<span id="cb57-6"><a href="#cb57-6"></a><span class="ss">a x 2 = </span><span class="sc">{</span>a<span class="op">*</span><span class="dv">2</span><span class="sc">}</span></span>
+<span id="cb57-7"><a href="#cb57-7"></a><span class="ss">a / 2 = </span><span class="sc">{</span>a<span class="op">/</span><span class="dv">2</span><span class="sc">}</span></span>
+<span id="cb57-8"><a href="#cb57-8"></a><span class="ss">a // 2 = </span><span class="sc">{</span>a<span class="op">//</span><span class="dv">2</span><span class="sc">}</span></span>
+<span id="cb57-9"><a href="#cb57-9"></a><span class="ss">a % 2 = </span><span class="sc">{</span>a <span class="op">%</span> <span class="dv">2</span><span class="sc">}</span></span>
+<span id="cb57-10"><a href="#cb57-10"></a></span>
+<span id="cb57-11"><a href="#cb57-11"></a><span class="ss">=======================================</span></span>
+<span id="cb57-12"><a href="#cb57-12"></a></span>
+<span id="cb57-13"><a href="#cb57-13"></a><span class="ss">2. 거듭제곱, 로그, 지수, 삼각함수</span></span>
+<span id="cb57-14"><a href="#cb57-14"></a></span>
+<span id="cb57-15"><a href="#cb57-15"></a><span class="ss">a^2 = </span><span class="sc">{</span>a<span class="op">**</span><span class="dv">2</span><span class="sc">}</span></span>
+<span id="cb57-16"><a href="#cb57-16"></a><span class="ss">sqrt(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.sqrt(a),<span class="dv">2</span>)<span class="sc">}</span></span>
+<span id="cb57-17"><a href="#cb57-17"></a><span class="ss">log(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.log(a),<span class="dv">2</span>)<span class="sc">}</span></span>
+<span id="cb57-18"><a href="#cb57-18"></a><span class="ss">exp(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.exp(a),<span class="dv">2</span>)<span class="sc">}</span></span>
+<span id="cb57-19"><a href="#cb57-19"></a><span class="ss">sin(a),cos(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.sin(a),<span class="dv">2</span>)<span class="sc">,</span>np<span class="sc">.</span><span class="bu">round</span>(np.cos(a),<span class="dv">2</span>)<span class="sc">}</span></span>
+<span id="cb57-20"><a href="#cb57-20"></a><span class="ss">'''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -765,12 +767,12 @@ sin(a),cos(a) = (array([0.84, 0.91, 0.14]), array([ 0.54, -0.42, -0.99]))
 <section id="기타-연산전치행렬역행렬" class="level2">
 <h2 class="anchored" data-anchor-id="기타-연산전치행렬역행렬">기타 연산(전치행렬,역행렬)</h2>
 <div class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>a3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> np.stack([a1,a2,a3],axis<span class="op">=</span><span class="dv">0</span>) </span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb59-2"><a href="#cb59-2"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb59-3"><a href="#cb59-3"></a>a3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
+<span id="cb59-4"><a href="#cb59-4"></a></span>
+<span id="cb59-5"><a href="#cb59-5"></a>A1 <span class="op">=</span> np.stack([a1,a2,a3],axis<span class="op">=</span><span class="dv">0</span>) </span>
+<span id="cb59-6"><a href="#cb59-6"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="186">
 <pre><code>array([[8, 1, 1],
        [2, 1, 4],
@@ -779,7 +781,7 @@ sin(a),cos(a) = (array([0.84, 0.91, 0.14]), array([ 0.54, -0.42, -0.99]))
 </div>
 <p><code>-</code> 전치행렬</p>
 <div class="cell" data-execution_count="187">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>A1.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>A1.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="187">
 <pre><code>array([[8, 2, 4],
        [1, 1, 4],
@@ -788,7 +790,7 @@ sin(a),cos(a) = (array([0.84, 0.91, 0.14]), array([ 0.54, -0.42, -0.99]))
 </div>
 <p><code>-</code> 역행렬</p>
 <div class="cell" data-execution_count="188">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>np.linalg.inv(A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>np.linalg.inv(A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="188">
 <pre><code>array([[ 0.14705882, -0.02941176, -0.02941176],
        [-0.1372549 , -0.03921569,  0.29411765],
@@ -803,7 +805,7 @@ sin(a),cos(a) = (array([0.84, 0.91, 0.14]), array([ 0.54, -0.42, -0.99]))
                                                      0 &amp; 0 &amp; \dots &amp; 1
                                                         \end{bmatrix}\]</span></p>
 <div class="cell" data-execution_count="196">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">round</span>(A1 <span class="op">@</span> np.linalg.inv(A1),<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>np.<span class="bu">round</span>(A1 <span class="op">@</span> np.linalg.inv(A1),<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="196">
 <pre><code>array([[ 1.,  0.,  0.],
        [ 0.,  1., -0.],
@@ -1062,8 +1064,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://utteranc.es/client.js" repo="gangcheol/mysite2" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">

@@ -1,6 +1,6 @@
 project:
   type: website
- 
+  output-dir : docs  
 website:
   title: "Gangcheol"
   page-navigation: true
@@ -31,5 +31,8 @@ format:
     code-fold : False
     code-line-numbers : True
     code-copy : True
-    theme :
-      light : flatly
+
+theme :
+  light : flatly
+  
+editor : visual

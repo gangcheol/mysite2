@@ -39,7 +39,8 @@
     "2023-08-09-00. Python basic.html": "46b2a383"
   },
   "posts/DX/2023-07-31-00.intro.ipynb": {
-    "2023-07-31-00.intro.html": "1858b102"
+    "2023-07-31-00.intro.html": "1858b102",
+    "2023-07-31-00.intro.out.ipynb": "148d6408"
   },
   "posts/DX/1wk/2023-08-09-00. Python Basic (1).ipynb": {
     "2023-08-09-00. Python Basic (1).html": "57ef3406"
@@ -111,45 +112,176 @@
     "2023-08-17-05. Python Basic (6).html": "0b9f82e0"
   },
   "posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).ipynb": {
-    "2023-08-09-00. Python Basic (1).html": "deb416a1"
+    "2023-08-09-00. Python Basic (1).html": "deb416a1",
+    "2023-08-09-00. Python Basic (1).out.ipynb": "a01798c4"
   },
   "posts/DX/00. 데이터 다루기/2023-08-10-01. Python Basic (2) .ipynb": {
-    "2023-08-10-01. Python Basic (2) .html": "378b7ccc"
+    "2023-08-10-01. Python Basic (2) .html": "378b7ccc",
+    "2023-08-10-01. Python Basic (2) .out.ipynb": "57f1881b"
   },
   "posts/DX/00. 데이터 다루기/2023-08-11-02. Python Basic (3) .ipynb": {
-    "2023-08-11-02. Python Basic (3) .html": "d3080a19"
+    "2023-08-11-02. Python Basic (3) .html": "d3080a19",
+    "2023-08-11-02. Python Basic (3) .out.ipynb": "ebc841c5"
   },
   "posts/DX/00. 데이터 다루기/2023-08-14-03. Python Basic (4).ipynb": {
-    "2023-08-14-03. Python Basic (4).html": "bf785aeb"
+    "2023-08-14-03. Python Basic (4).html": "bf785aeb",
+    "2023-08-14-03. Python Basic (4).out.ipynb": "33c76ad7"
   },
   "posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).ipynb": {
-    "2023-08-16-04. Python Basic (5).html": "14b04837"
+    "2023-08-16-04. Python Basic (5).html": "14b04837",
+    "2023-08-16-04. Python Basic (5).out.ipynb": "8f13951a"
   },
   "posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).ipynb": {
-    "2023-08-17-05. Python Basic (6).html": "b4820036"
+    "2023-08-17-05. Python Basic (6).html": "b4820036",
+    "2023-08-17-05. Python Basic (6).out.ipynb": "4515ae0e"
   },
   "posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.ipynb": {
-    "2023-08-08-Extra 00. 밈.html": "651f0edc"
+    "2023-08-08-Extra 00. 밈.html": "651f0edc",
+    "2023-08-08-Extra 00. 밈.out.ipynb": "070b482f"
   },
   "posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.ipynb": {
-    "2023-08-09-Extra 01. 클래스.html": "6cf84590"
+    "2023-08-09-Extra 01. 클래스.html": "6cf84590",
+    "2023-08-09-Extra 01. 클래스.out.ipynb": "d5dba52e"
   },
   "posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).ipynb": {
-    "2023-08-10-Extra 02. 클래스 탐구 (1).html": "bd055b88"
+    "2023-08-10-Extra 02. 클래스 탐구 (1).html": "bd055b88",
+    "2023-08-10-Extra 02. 클래스 탐구 (1).out.ipynb": "c6ce17cf"
   },
   "posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).ipynb": {
-    "2023-08-14-Extra 03. 클래스 탐구 (2).html": "3a349b07"
+    "2023-08-14-Extra 03. 클래스 탐구 (2).html": "3a349b07",
+    "2023-08-14-Extra 03. 클래스 탐구 (2).out.ipynb": "9c4591fb"
   },
   "posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 04. 클래스 탐구 (3).ipynb": {
     "2023-08-14-Extra 04. 클래스 탐구 (3).html": "58524021"
   },
   "posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy & pandas (1).ipynb": {
-    "2023-08-18-00. numpy & pandas (1).html": "b9ac4b63"
+    "2023-08-18-00. numpy & pandas (1).html": "b9ac4b63",
+    "2023-08-18-00. numpy & pandas (1).out.ipynb": "4f4478e1"
   },
   "posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).ipynb": {
-    "2023-08-15-Extra 04. 클래스 탐구 (3).html": "18cadbb3"
+    "2023-08-15-Extra 04. 클래스 탐구 (3).html": "18cadbb3",
+    "2023-08-15-Extra 04. 클래스 탐구 (3).out.ipynb": "af239c94"
   },
   "posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy & pandas (2).ipynb": {
-    "2023-08-18-01. numpy & pandas (2).html": "1a3b7dc7"
+    "2023-08-18-01. numpy & pandas (2).html": "1a3b7dc7",
+    "2023-08-18-01. numpy & pandas (2).out.ipynb": "5cc55c7c"
+  },
+  "posts/DX/2023-08-19-01. Plotly test.ipynb": {
+    "2023-08-19-01. Plotly test.html": "605011b0",
+    "2023-08-19-01. Plotly test.out.ipynb": "9a457a32"
+  },
+  "docs/posts/DX/2023-08-19-01. Plotly test.ipynb": {
+    "2023-08-19-01. Plotly test.out.ipynb": "a309b5fc"
+  },
+  "docs/posts/DX/2023-08-19-01. Plotly test.out.ipynb": {
+    "2023-08-19-01. Plotly test.out.html": "39de6d31"
+  },
+  "docs/docs/posts/DX/2023-08-19-01. Plotly test.ipynb": {
+    "2023-08-19-01. Plotly test.out.ipynb": "16970209"
+  },
+  "docs/docs/posts/DX/2023-08-19-01. Plotly test.out.ipynb": {
+    "2023-08-19-01. Plotly test.out.html": "8e6e93cb"
+  },
+  "docs/docs/docs/posts/DX/2023-08-19-01. Plotly test.ipynb": {
+    "2023-08-19-01. Plotly test.out.ipynb": "4fff1d07"
+  },
+  "docs/docs/docs/posts/DX/2023-08-19-01. Plotly test.out.ipynb": {
+    "2023-08-19-01. Plotly test.out.html": "3a05ae87"
+  },
+  "docs/docs/docs/docs/posts/DX/2023-08-19-01. Plotly test.ipynb": {
+    "2023-08-19-01. Plotly test.out.ipynb": "7e49ef89"
+  },
+  "docs/docs/docs/docs/posts/DX/2023-08-19-01. Plotly test.out.ipynb": {
+    "2023-08-19-01. Plotly test.out.html": "08fc1865"
+  },
+  "docs/docs/docs/docs/docs/posts/DX/2023-08-19-01. Plotly test.out.ipynb": {
+    "2023-08-19-01. Plotly test.out.html": "4d56d0a6"
+  },
+  "posts/DX/ls18.out.ipynb": {
+    "ls18.out.html": "2e0db9cc"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-10-01. Python Basic (2) .out.ipynb": {
+    "2023-08-10-01. Python Basic (2) .out.html": "fd15a780"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).ipynb": {
+    "2023-08-09-00. Python Basic (1).html": "5d3c5479"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).out.ipynb": {
+    "2023-08-09-00. Python Basic (1).out.html": "43922f0a"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-10-01. Python Basic (2) .ipynb": {
+    "2023-08-10-01. Python Basic (2) .html": "96d0618a"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-11-02. Python Basic (3) .ipynb": {
+    "2023-08-11-02. Python Basic (3) .html": "8db79514"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-11-02. Python Basic (3) .out.ipynb": {
+    "2023-08-11-02. Python Basic (3) .out.html": "ba0eeb5a"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-14-03. Python Basic (4).ipynb": {
+    "2023-08-14-03. Python Basic (4).html": "512c2158"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-14-03. Python Basic (4).out.ipynb": {
+    "2023-08-14-03. Python Basic (4).out.html": "0374d832"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).ipynb": {
+    "2023-08-16-04. Python Basic (5).html": "2caf947d"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).out.ipynb": {
+    "2023-08-16-04. Python Basic (5).out.html": "316ae3ea"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).ipynb": {
+    "2023-08-17-05. Python Basic (6).html": "09549a85"
+  },
+  "docs/posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).out.ipynb": {
+    "2023-08-17-05. Python Basic (6).out.html": "3ca03a4a"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.ipynb": {
+    "2023-08-08-Extra 00. 밈.html": "5f704261"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.out.ipynb": {
+    "2023-08-08-Extra 00. 밈.out.html": "700dc1ad"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.ipynb": {
+    "2023-08-09-Extra 01. 클래스.html": "3078db53"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.out.ipynb": {
+    "2023-08-09-Extra 01. 클래스.out.html": "eb59398e"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).ipynb": {
+    "2023-08-10-Extra 02. 클래스 탐구 (1).html": "1cdf4df3"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).out.ipynb": {
+    "2023-08-10-Extra 02. 클래스 탐구 (1).out.html": "1fcafd2c"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).ipynb": {
+    "2023-08-14-Extra 03. 클래스 탐구 (2).html": "16cc811b"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).out.ipynb": {
+    "2023-08-14-Extra 03. 클래스 탐구 (2).out.html": "c2d38ca3"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).ipynb": {
+    "2023-08-15-Extra 04. 클래스 탐구 (3).html": "aea54b05"
+  },
+  "docs/posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).out.ipynb": {
+    "2023-08-15-Extra 04. 클래스 탐구 (3).out.html": "4f5dd7ba"
+  },
+  "docs/posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy & pandas (1).ipynb": {
+    "2023-08-18-00. numpy & pandas (1).html": "ecfd7dbc"
+  },
+  "docs/posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy & pandas (1).out.ipynb": {
+    "2023-08-18-00. numpy & pandas (1).out.html": "5aec8497"
+  },
+  "docs/posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy & pandas (2).ipynb": {
+    "2023-08-18-01. numpy & pandas (2).html": "65876e60"
+  },
+  "docs/posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy & pandas (2).out.ipynb": {
+    "2023-08-18-01. numpy & pandas (2).out.html": "6abf28ca"
+  },
+  "docs/posts/DX/2023-07-31-00.intro.ipynb": {
+    "2023-07-31-00.intro.html": "5069f28d"
+  },
+  "docs/posts/DX/2023-07-31-00.intro.out.ipynb": {
+    "2023-07-31-00.intro.out.html": "0da0afc7"
   }
 }

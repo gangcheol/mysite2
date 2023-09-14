@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="GC">
-<meta name="dcterms.date" content="2023-09-01">
+<meta name="dcterms.date" content="2023-09-14">
 
-<title>Gangcheol - 02. 데이터 분석 (3)</title>
+<title>Gangcheol - 03. 머신러닝 (3)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -66,8 +32,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html" rel="next">
-<link href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" rel="prev">
+<link href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" rel="next">
+<link href="../../../posts/DX/04. 머신러닝/2023-09-13-02. 머신러닝 (2).html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -158,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">02. 데이터 분석</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html">02. 데이터 분석 (3)</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html">04. 머신러닝</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/04. 머신러닝/2023-09-14-03. 머신러닝 (3).html">03. 머신러닝 (3)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -171,12 +137,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">02. 데이터 분석 (3)</h1>
+      <h1 class="title">03. 머신러닝 (3)</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">python</div>
-                <div class="quarto-category">데이터 분석</div>
-                <div class="quarto-category">시계열 분석</div>
-                <div class="quarto-category">이변량 분석</div>
+                <div class="quarto-category">머신러닝</div>
+                <div class="quarto-category">KNN</div>
+                <div class="quarto-category">알고리즘</div>
+                <div class="quarto-category">평가지표 함수</div>
               </div>
                   </div>
   </div>
@@ -194,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 1, 2023</p>
+        <p class="date">September 14, 2023</p>
       </div>
     </div>
     
@@ -379,13 +345,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">02. 데이터 분석</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html" class="sidebar-item-text sidebar-link">
@@ -400,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02. 데이터 분석 (3)</span></a>
   </div>
 </li>
@@ -431,13 +397,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
  <span class="menu-text">04. 머신러닝</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html" class="sidebar-item-text sidebar-link">
@@ -458,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-14-03. 머신러닝 (3).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-14-03. 머신러닝 (3).html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">03. 머신러닝 (3)</span></a>
   </div>
 </li>
@@ -491,18 +457,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
-  <li><a href="#데이터-로드" id="toc-데이터-로드" class="nav-link" data-scroll-target="#데이터-로드">데이터 로드</a>
-  <ul class="collapse">
-  <li><a href="#시각화-1.-survived---age" id="toc-시각화-1.-survived---age" class="nav-link" data-scroll-target="#시각화-1.-survived---age">시각화 1. (<code>Survived &lt;-&gt; Age</code>)</a></li>
-  <li><a href="#시각화-2.-survived---fare" id="toc-시각화-2.-survived---fare" class="nav-link" data-scroll-target="#시각화-2.-survived---fare">시각화 2. (<code>Survived &lt;-&gt; Fare</code>)</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -510,105 +465,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="import" class="level1">
-<h1>import</h1>
-<div class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># import random as rd</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="im">from</span> statsmodels.graphics.mosaicplot <span class="im">import</span> mosaic      <span class="co">#mosaic plot!</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> scipy.stats <span class="im">as</span> spst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="데이터-로드" class="level1">
-<h1>데이터 로드</h1>
-<div class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>titanic <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/titanic.1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="시각화-1.-survived---age" class="level2">
-<h2 class="anchored" data-anchor-id="시각화-1.-survived---age">시각화 1. (<code>Survived &lt;-&gt; Age</code>)</h2>
-<ol type="1">
-<li><p><code>common_norm = True (기본값)</code> : 칵 클래스의 비율을 합쳐서 표시 (두 그래프의 아래 면적의 합이 1)</p></li>
-<li><p><code>common_norm = False</code>: 각각의 클래스로 니누어서 비율을 표시 (각 클래스의 아래 면적은 1)</p></li>
-<li><p><code>multiple = ‘fill’</code>: 각 클래스에 따른 비율을 비교 (각 클래스의 아래 면적은 1)</p></li>
-</ol>
-<div class="cell" data-tags="[]" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>titanic.Survived.value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>Survived
-0    0.616162
-1    0.383838
-Name: proportion, dtype: float64</code></pre>
-</div>
-</div>
-<div class="cell" data-tags="[]" data-execution_count="26">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a>(ax1,ax2,ax3), (ax4,ax5,ax6) <span class="op">=</span> axes</span>
-<span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a>sns.histplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>,ax<span class="op">=</span>ax1,stat<span class="op">=</span><span class="st">"density"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a>sns.histplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>, common_norm <span class="op">=</span> <span class="va">False</span>,ax<span class="op">=</span>ax2,stat<span class="op">=</span><span class="st">"density"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a>sns.histplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>, multiple<span class="op">=</span><span class="st">"fill"</span>,ax<span class="op">=</span>ax3)</span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a>ax3.axhline(titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span>
-<span id="cb5-10"><a href="#cb5-10"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span>,ax<span class="op">=</span>ax4)</span>
-<span id="cb5-11"><a href="#cb5-11"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span>,</span>
-<span id="cb5-12"><a href="#cb5-12"></a>            common_norm <span class="op">=</span> <span class="va">False</span>,ax<span class="op">=</span>ax5)</span>
-<span id="cb5-13"><a href="#cb5-13"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a>            , multiple <span class="op">=</span> <span class="st">'fill'</span>,ax<span class="op">=</span>ax6)</span>
-<span id="cb5-15"><a href="#cb5-15"></a>ax6.axhline(titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span>
-<span id="cb5-16"><a href="#cb5-16"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="2023-09-01-02. 데이터 분석 (2)_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="시각화-2.-survived---fare" class="level2">
-<h2 class="anchored" data-anchor-id="시각화-2.-survived---fare">시각화 2. (<code>Survived &lt;-&gt; Fare</code>)</h2>
-<div class="cell" data-tags="[]" data-execution_count="27">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a>(ax1,ax2,ax3), (ax4,ax5,ax6) <span class="op">=</span> axes</span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a>sns.histplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>,bins<span class="op">=</span><span class="dv">40</span>,ax<span class="op">=</span>ax1,stat<span class="op">=</span><span class="st">"density"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6"></a>sns.histplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>,bins<span class="op">=</span><span class="dv">40</span>, common_norm <span class="op">=</span> <span class="va">False</span>,ax<span class="op">=</span>ax2,stat<span class="op">=</span><span class="st">"density"</span>)</span>
-<span id="cb6-7"><a href="#cb6-7"></a>sns.histplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>, multiple<span class="op">=</span><span class="st">"fill"</span>,ax<span class="op">=</span>ax3,bins<span class="op">=</span><span class="dv">40</span>)</span>
-<span id="cb6-8"><a href="#cb6-8"></a></span>
-<span id="cb6-9"><a href="#cb6-9"></a>ax3.axhline(titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span>
-<span id="cb6-10"><a href="#cb6-10"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span>,ax<span class="op">=</span>ax4)</span>
-<span id="cb6-11"><a href="#cb6-11"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span>,</span>
-<span id="cb6-12"><a href="#cb6-12"></a>            common_norm <span class="op">=</span> <span class="va">False</span>,ax<span class="op">=</span>ax5)</span>
-<span id="cb6-13"><a href="#cb6-13"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a>            , multiple <span class="op">=</span> <span class="st">'fill'</span>,ax<span class="op">=</span>ax6)</span>
-<span id="cb6-15"><a href="#cb6-15"></a>ax6.axhline(titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span>
-<span id="cb6-16"><a href="#cb6-16"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="2023-09-01-02. 데이터 분석 (2)_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-tags="[]" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">100</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>y <span class="op">=</span> [<span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a>plt.plot(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="2023-09-01-02. 데이터 분석 (2)_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
-</div>
-</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -846,13 +704,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">01. 데이터 분석 (2)</span>
+      <a href="../../../posts/DX/04. 머신러닝/2023-09-13-02. 머신러닝 (2).html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">02. 머신러닝 (2)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html" class="pagination-link">
-        <span class="nav-page-text">00. 데이터 수집 (1)</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" class="pagination-link">
+        <span class="nav-page-text">00. MP (1)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

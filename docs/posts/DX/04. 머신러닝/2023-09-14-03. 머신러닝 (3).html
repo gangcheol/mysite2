@@ -100,6 +100,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.25.2.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
 
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -571,7 +587,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="실습" class="level2">
 <h2 class="anchored" data-anchor-id="실습">실습</h2>
-<div class="cell" data-execution_count="200">
+<div class="cell" data-execution_count="236">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 라이브러리 불러오기</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -840,7 +856,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>KNN 알고리즘을 사용하기 위해 정규화를 진행</li>
 </ul>
-<div class="cell">
+<div class="cell" data-execution_count="206">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># 모듈 불러오기</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb7-3"><a href="#cb7-3"></a></span>
@@ -854,7 +870,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="최적의-모델을-찾기-위한-모델링" class="level3">
 <h3 class="anchored" data-anchor-id="최적의-모델을-찾기-위한-모델링">(3) 최적의 모델을 찾기 위한 모델링</h3>
 <p><code>-</code> 의사결정나무</p>
-<div class="cell">
+<div class="cell" data-execution_count="207">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># 불러오기</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
@@ -873,44 +889,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-16"><a href="#cb8-16"></a><span class="co"># 기록</span></span>
 <span id="cb8-17"><a href="#cb8-17"></a>result <span class="op">=</span> {}</span>
 <span id="cb8-18"><a href="#cb8-18"></a>result[<span class="st">"Decision Tree"</span>] <span class="op">=</span> cv_score.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.66666667 0.75925926 0.74074074 0.64814815 0.7037037  0.74074074
+ 0.75925926 0.81132075 0.79245283 0.67924528]
+평균: 0.7301537386443047
+표준편차: 0.05141448587329709</code></pre>
+</div>
 </div>
 <p><code>-</code> KNN</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
-<span id="cb9-2"><a href="#cb9-2"></a></span>
-<span id="cb9-3"><a href="#cb9-3"></a>model2 <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb9-4"><a href="#cb9-4"></a></span>
-<span id="cb9-5"><a href="#cb9-5"></a>cv_score <span class="op">=</span> cross_val_score(model2, x_train_s, y_train,cv<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb9-6"><a href="#cb9-6"></a></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co"># 확인</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="bu">print</span>(cv_score)</span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="bu">print</span>(<span class="st">'평균:'</span>, cv_score.mean())</span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="bu">print</span>(<span class="st">'표준편차:'</span>, cv_score.std())</span>
-<span id="cb9-11"><a href="#cb9-11"></a>result[<span class="st">"KNN"</span>] <span class="op">=</span> cv_score.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="208">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>model2 <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a>cv_score <span class="op">=</span> cross_val_score(model2, x_train_s, y_train,cv<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co"># 확인</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="bu">print</span>(cv_score)</span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="bu">print</span>(<span class="st">'평균:'</span>, cv_score.mean())</span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="bu">print</span>(<span class="st">'표준편차:'</span>, cv_score.std())</span>
+<span id="cb10-11"><a href="#cb10-11"></a>result[<span class="st">"KNN"</span>] <span class="op">=</span> cv_score.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.64814815 0.68518519 0.72222222 0.64814815 0.72222222 0.74074074
+ 0.68518519 0.66037736 0.77358491 0.60377358]
+평균: 0.6889587700908455
+표준편차: 0.04846522080635871</code></pre>
+</div>
 </div>
 <p><code>-</code> 로지스틱</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> sklearn.linear_model  <span class="im">import</span> LogisticRegression</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a>model3 <span class="op">=</span> LogisticRegression()</span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a>cv_score <span class="op">=</span> cross_val_score(model3, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>)</span>
-<span id="cb10-6"><a href="#cb10-6"></a></span>
-<span id="cb10-7"><a href="#cb10-7"></a>result[<span class="st">"Logistic"</span>] <span class="op">=</span> cv_score.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="209">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">from</span> sklearn.linear_model  <span class="im">import</span> LogisticRegression</span>
+<span id="cb12-2"><a href="#cb12-2"></a></span>
+<span id="cb12-3"><a href="#cb12-3"></a>model3 <span class="op">=</span> LogisticRegression()</span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a>cv_score <span class="op">=</span> cross_val_score(model3, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb12-6"><a href="#cb12-6"></a></span>
+<span id="cb12-7"><a href="#cb12-7"></a>result[<span class="st">"Logistic"</span>] <span class="op">=</span> cv_score.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 결과</p>
 <ul>
 <li>k-fold 교차검증결과 : Logisitc 모형이 성능이 가장 좋아보인다.</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="210">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="210">
+<pre><code>{'Decision Tree': 0.7301537386443047,
+ 'KNN': 0.6889587700908455,
+ 'Logistic': 0.7690426275331936}</code></pre>
+</div>
 </div>
 </section>
 <section id="성능비교-시각화" class="level3">
 <h3 class="anchored" data-anchor-id="성능비교-시각화">(4) 성능비교 시각화</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb12-2"><a href="#cb12-2"></a>plt.barh(y<span class="op">=</span><span class="bu">list</span>(result), width <span class="op">=</span> result.values(), height <span class="op">=</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="211">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb15-2"><a href="#cb15-2"></a>plt.barh(y<span class="op">=</span><span class="bu">list</span>(result), width <span class="op">=</span> result.values(), height <span class="op">=</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="211">
+<pre><code>&lt;BarContainer object of 3 artists&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-14-03. 머신러닝 (3)_files/figure-html/cell-13-output-2.png" class="img-fluid"></p>
+</div>
 </div>
 </section>
 <section id="test-data-평가-logistic" class="level3">
@@ -919,29 +958,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>train data set의 전체 데이터로 학습한 적은 없음……</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">def</span> score(<span class="bu">range</span> <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">0.71</span>]) : </span>
-<span id="cb13-2"><a href="#cb13-2"></a>            fig <span class="op">=</span> pd.DataFrame({<span class="st">"score"</span> : [acc,pre,recall,f1_score],</span>
-<span id="cb13-3"><a href="#cb13-3"></a>                            <span class="st">"measure"</span> : [<span class="st">"acc"</span>,<span class="st">"precision"</span>,<span class="st">"recall"</span>,<span class="st">"f1_score"</span>]}).<span class="op">\</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>                                    plot(x <span class="op">=</span> <span class="st">"measure"</span>, y <span class="op">=</span> <span class="st">"score"</span>,  color <span class="op">=</span> <span class="st">"measure"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5"></a>                                            backend <span class="op">=</span> <span class="st">"plotly"</span>, kind <span class="op">=</span>  <span class="st">"bar"</span>,height <span class="op">=</span> <span class="dv">500</span>, width <span class="op">=</span> <span class="dv">600</span>)</span>
-<span id="cb13-6"><a href="#cb13-6"></a>            fig.update_yaxes(<span class="bu">range</span> <span class="op">=</span> <span class="bu">range</span>)</span>
-<span id="cb13-7"><a href="#cb13-7"></a>            <span class="cf">return</span> fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="212">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">def</span> score(<span class="bu">range</span> <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">0.71</span>]) : </span>
+<span id="cb17-2"><a href="#cb17-2"></a>            fig <span class="op">=</span> pd.DataFrame({<span class="st">"score"</span> : [acc,pre,recall,f1_score],</span>
+<span id="cb17-3"><a href="#cb17-3"></a>                            <span class="st">"measure"</span> : [<span class="st">"acc"</span>,<span class="st">"precision"</span>,<span class="st">"recall"</span>,<span class="st">"f1_score"</span>]}).<span class="op">\</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>                                    plot(x <span class="op">=</span> <span class="st">"measure"</span>, y <span class="op">=</span> <span class="st">"score"</span>,  color <span class="op">=</span> <span class="st">"measure"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5"></a>                                            backend <span class="op">=</span> <span class="st">"plotly"</span>, kind <span class="op">=</span>  <span class="st">"bar"</span>,height <span class="op">=</span> <span class="dv">500</span>, width <span class="op">=</span> <span class="dv">600</span>)</span>
+<span id="cb17-6"><a href="#cb17-6"></a>            fig.update_yaxes(<span class="bu">range</span> <span class="op">=</span> <span class="bu">range</span>)</span>
+<span id="cb17-7"><a href="#cb17-7"></a>            <span class="cf">return</span> fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>model3.fit(x_train, y_train)</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a>y_pred <span class="op">=</span> model3.predict(x_test)</span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> <span class="op">*</span> </span>
-<span id="cb14-6"><a href="#cb14-6"></a></span>
-<span id="cb14-7"><a href="#cb14-7"></a>acc <span class="op">=</span> accuracy_score(y_test,y_pred)</span>
-<span id="cb14-8"><a href="#cb14-8"></a>pre <span class="op">=</span> precision_score(y_test,y_pred)</span>
-<span id="cb14-9"><a href="#cb14-9"></a>recall <span class="op">=</span> recall_score(y_test,y_pred)</span>
-<span id="cb14-10"><a href="#cb14-10"></a>f1_score <span class="op">=</span> f1_score(y_test,y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="213">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>model3.fit(x_train, y_train)</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>y_pred <span class="op">=</span> model3.predict(x_test)</span>
+<span id="cb18-4"><a href="#cb18-4"></a></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> <span class="op">*</span> </span>
+<span id="cb18-6"><a href="#cb18-6"></a></span>
+<span id="cb18-7"><a href="#cb18-7"></a>acc <span class="op">=</span> accuracy_score(y_test,y_pred)</span>
+<span id="cb18-8"><a href="#cb18-8"></a>pre <span class="op">=</span> precision_score(y_test,y_pred)</span>
+<span id="cb18-9"><a href="#cb18-9"></a>recall <span class="op">=</span> recall_score(y_test,y_pred)</span>
+<span id="cb18-10"><a href="#cb18-10"></a>f1_score <span class="op">=</span> f1_score(y_test,y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>score(<span class="bu">range</span> <span class="op">=</span> [<span class="fl">0.5</span>,<span class="fl">0.8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="214">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>score(<span class="bu">range</span> <span class="op">=</span> [<span class="fl">0.5</span>,<span class="fl">0.8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="fca929f4-87ed-4c7a-a715-82f8861b5838" class="plotly-graph-div" style="height:500px; width:600px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("fca929f4-87ed-4c7a-a715-82f8861b5838")) {                    Plotly.newPlot(                        "fca929f4-87ed-4c7a-a715-82f8861b5838",                        [{"alignmentgroup":"True","hovertemplate":"measure=%{x}\u003cbr\u003escore=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"acc","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"acc","offsetgroup":"acc","orientation":"v","showlegend":true,"textposition":"auto","x":["acc"],"xaxis":"x","y":[0.7835497835497836],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"measure=%{x}\u003cbr\u003escore=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"precision","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"precision","offsetgroup":"precision","orientation":"v","showlegend":true,"textposition":"auto","x":["precision"],"xaxis":"x","y":[0.7777777777777778],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"measure=%{x}\u003cbr\u003escore=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"recall","marker":{"color":"#00cc96","pattern":{"shape":""}},"name":"recall","offsetgroup":"recall","orientation":"v","showlegend":true,"textposition":"auto","x":["recall"],"xaxis":"x","y":[0.5764705882352941],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"measure=%{x}\u003cbr\u003escore=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"f1_score","marker":{"color":"#ab63fa","pattern":{"shape":""}},"name":"f1_score","offsetgroup":"f1_score","orientation":"v","showlegend":true,"textposition":"auto","x":["f1_score"],"xaxis":"x","y":[0.6621621621621621],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"measure"},"categoryorder":"array","categoryarray":["acc","precision","recall","f1_score"]},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"score"},"range":[0.5,0.8]},"legend":{"title":{"text":"measure"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative","height":500,"width":600},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('fca929f4-87ed-4c7a-a715-82f8861b5838');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
 </div>
 </section>
 </section>
@@ -949,80 +1016,291 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="exercise.-1">exercise. 1</h2>
 <section id="데이터-이해-1" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-이해-1">(1) 데이터 이해</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># 데이터 읽어오기</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>path <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/Jangrae/csv/master/boston.csv'</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>data <span class="op">=</span> pd.read_csv(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="215">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># 데이터 읽어오기</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>path <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/Jangrae/csv/master/boston.csv'</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>data <span class="op">=</span> pd.read_csv(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="216">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 506 entries, 0 to 505
+Data columns (total 14 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   crim     506 non-null    float64
+ 1   zn       506 non-null    float64
+ 2   indus    506 non-null    float64
+ 3   chas     506 non-null    int64  
+ 4   nox      506 non-null    float64
+ 5   rm       506 non-null    float64
+ 6   age      506 non-null    float64
+ 7   dis      506 non-null    float64
+ 8   rad      506 non-null    int64  
+ 9   tax      506 non-null    int64  
+ 10  ptratio  506 non-null    float64
+ 11  black    506 non-null    float64
+ 12  lstat    506 non-null    float64
+ 13  medv     506 non-null    float64
+dtypes: float64(11), int64(3)
+memory usage: 55.5 KB</code></pre>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>data.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="217">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="217">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">crim</th>
+<th data-quarto-table-cell-role="th">zn</th>
+<th data-quarto-table-cell-role="th">indus</th>
+<th data-quarto-table-cell-role="th">chas</th>
+<th data-quarto-table-cell-role="th">nox</th>
+<th data-quarto-table-cell-role="th">rm</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">dis</th>
+<th data-quarto-table-cell-role="th">rad</th>
+<th data-quarto-table-cell-role="th">tax</th>
+<th data-quarto-table-cell-role="th">ptratio</th>
+<th data-quarto-table-cell-role="th">black</th>
+<th data-quarto-table-cell-role="th">lstat</th>
+<th data-quarto-table-cell-role="th">medv</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.00632</td>
+<td>18.0</td>
+<td>2.31</td>
+<td>0</td>
+<td>0.538</td>
+<td>6.575</td>
+<td>65.2</td>
+<td>4.0900</td>
+<td>1</td>
+<td>296</td>
+<td>15.3</td>
+<td>396.90</td>
+<td>4.98</td>
+<td>24.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.02731</td>
+<td>0.0</td>
+<td>7.07</td>
+<td>0</td>
+<td>0.469</td>
+<td>6.421</td>
+<td>78.9</td>
+<td>4.9671</td>
+<td>2</td>
+<td>242</td>
+<td>17.8</td>
+<td>396.90</td>
+<td>9.14</td>
+<td>21.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.02729</td>
+<td>0.0</td>
+<td>7.07</td>
+<td>0</td>
+<td>0.469</td>
+<td>7.185</td>
+<td>61.1</td>
+<td>4.9671</td>
+<td>2</td>
+<td>242</td>
+<td>17.8</td>
+<td>392.83</td>
+<td>4.03</td>
+<td>34.7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.03237</td>
+<td>0.0</td>
+<td>2.18</td>
+<td>0</td>
+<td>0.458</td>
+<td>6.998</td>
+<td>45.8</td>
+<td>6.0622</td>
+<td>3</td>
+<td>222</td>
+<td>18.7</td>
+<td>394.63</td>
+<td>2.94</td>
+<td>33.4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.06905</td>
+<td>0.0</td>
+<td>2.18</td>
+<td>0</td>
+<td>0.458</td>
+<td>7.147</td>
+<td>54.2</td>
+<td>6.0622</td>
+<td>3</td>
+<td>222</td>
+<td>18.7</td>
+<td>396.90</td>
+<td>5.33</td>
+<td>36.2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="218">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>data.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="218">
+<pre><code>crim       0
+zn         0
+indus      0
+chas       0
+nox        0
+rm         0
+age        0
+dis        0
+rad        0
+tax        0
+ptratio    0
+black      0
+lstat      0
+medv       0
+dtype: int64</code></pre>
+</div>
 </div>
 </section>
 <section id="데이터-준비-1" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-준비-1">(2) 데이터 준비</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>target <span class="op">=</span> <span class="st">"medv"</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a></span>
-<span id="cb20-3"><a href="#cb20-3"></a>x <span class="op">=</span> data.drop(target, axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb20-4"><a href="#cb20-4"></a>y <span class="op">=</span> data[[target]]</span>
-<span id="cb20-5"><a href="#cb20-5"></a></span>
-<span id="cb20-6"><a href="#cb20-6"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="co"># 정규화</span></span>
-<span id="cb20-8"><a href="#cb20-8"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, random_state <span class="op">=</span> <span class="dv">1</span>, test_size <span class="op">=</span> <span class="fl">0.3</span>)</span>
-<span id="cb20-9"><a href="#cb20-9"></a></span>
-<span id="cb20-10"><a href="#cb20-10"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
-<span id="cb20-11"><a href="#cb20-11"></a>scaler.fit(x_train)</span>
-<span id="cb20-12"><a href="#cb20-12"></a>x_train_s <span class="op">=</span> scaler.transform(x_train)</span>
-<span id="cb20-13"><a href="#cb20-13"></a>x_test_s <span class="op">=</span> scaler.transform(x_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="219">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>target <span class="op">=</span> <span class="st">"medv"</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a></span>
+<span id="cb26-3"><a href="#cb26-3"></a>x <span class="op">=</span> data.drop(target, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>y <span class="op">=</span> data[[target]]</span>
+<span id="cb26-5"><a href="#cb26-5"></a></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="co"># 정규화</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, random_state <span class="op">=</span> <span class="dv">1</span>, test_size <span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb26-9"><a href="#cb26-9"></a></span>
+<span id="cb26-10"><a href="#cb26-10"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
+<span id="cb26-11"><a href="#cb26-11"></a>scaler.fit(x_train)</span>
+<span id="cb26-12"><a href="#cb26-12"></a>x_train_s <span class="op">=</span> scaler.transform(x_train)</span>
+<span id="cb26-13"><a href="#cb26-13"></a>x_test_s <span class="op">=</span> scaler.transform(x_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="성능-예측" class="level3">
 <h3 class="anchored" data-anchor-id="성능-예측">(3) 성능 예측</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsRegressor</span>
-<span id="cb21-4"><a href="#cb21-4"></a></span>
-<span id="cb21-5"><a href="#cb21-5"></a></span>
-<span id="cb21-6"><a href="#cb21-6"></a>model1 <span class="op">=</span> DecisionTreeRegressor(max_depth <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb21-7"><a href="#cb21-7"></a>model2 <span class="op">=</span> KNeighborsRegressor(n_neighbors<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb21-8"><a href="#cb21-8"></a>model3 <span class="op">=</span> LinearRegression()</span>
-<span id="cb21-9"><a href="#cb21-9"></a></span>
-<span id="cb21-10"><a href="#cb21-10"></a>cv_score1 <span class="op">=</span> cross_val_score(model1, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>, scoring <span class="op">=</span> <span class="st">"r2"</span>)</span>
-<span id="cb21-11"><a href="#cb21-11"></a>cv_score2 <span class="op">=</span> cross_val_score(model2, x_train_s, y_train, cv <span class="op">=</span> <span class="dv">10</span>, scoring <span class="op">=</span> <span class="st">"r2"</span>)</span>
-<span id="cb21-12"><a href="#cb21-12"></a>cv_score3 <span class="op">=</span> cross_val_score(model3, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>, scoring <span class="op">=</span> <span class="st">"r2"</span>)</span>
-<span id="cb21-13"><a href="#cb21-13"></a></span>
-<span id="cb21-14"><a href="#cb21-14"></a>result <span class="op">=</span> pd.DataFrame({<span class="st">"model"</span> : [<span class="st">"tree"</span>, <span class="st">"knn"</span>, <span class="st">"linear reg"</span>],</span>
-<span id="cb21-15"><a href="#cb21-15"></a>                            <span class="st">"score"</span> : [cv_score1.mean(),cv_score2.mean(), cv_score3.mean()]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="220">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsRegressor</span>
+<span id="cb27-4"><a href="#cb27-4"></a></span>
+<span id="cb27-5"><a href="#cb27-5"></a></span>
+<span id="cb27-6"><a href="#cb27-6"></a>model1 <span class="op">=</span> DecisionTreeRegressor(max_depth <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb27-7"><a href="#cb27-7"></a>model2 <span class="op">=</span> KNeighborsRegressor(n_neighbors<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb27-8"><a href="#cb27-8"></a>model3 <span class="op">=</span> LinearRegression()</span>
+<span id="cb27-9"><a href="#cb27-9"></a></span>
+<span id="cb27-10"><a href="#cb27-10"></a>cv_score1 <span class="op">=</span> cross_val_score(model1, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>, scoring <span class="op">=</span> <span class="st">"r2"</span>)</span>
+<span id="cb27-11"><a href="#cb27-11"></a>cv_score2 <span class="op">=</span> cross_val_score(model2, x_train_s, y_train, cv <span class="op">=</span> <span class="dv">10</span>, scoring <span class="op">=</span> <span class="st">"r2"</span>)</span>
+<span id="cb27-12"><a href="#cb27-12"></a>cv_score3 <span class="op">=</span> cross_val_score(model3, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>, scoring <span class="op">=</span> <span class="st">"r2"</span>)</span>
+<span id="cb27-13"><a href="#cb27-13"></a></span>
+<span id="cb27-14"><a href="#cb27-14"></a>result <span class="op">=</span> pd.DataFrame({<span class="st">"model"</span> : [<span class="st">"tree"</span>, <span class="st">"knn"</span>, <span class="st">"linear reg"</span>],</span>
+<span id="cb27-15"><a href="#cb27-15"></a>                            <span class="st">"score"</span> : [cv_score1.mean(),cv_score2.mean(), cv_score3.mean()]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>result.sort_values(<span class="st">"score"</span>, ascending <span class="op">=</span> <span class="va">False</span>).<span class="op">\</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a>                    plot(y <span class="op">=</span> <span class="st">"model"</span>, x<span class="op">=</span> <span class="st">"score"</span>, kind <span class="op">=</span><span class="st">"barh"</span>,</span>
-<span id="cb22-3"><a href="#cb22-3"></a>                            backend <span class="op">=</span> <span class="st">"plotly"</span>, color <span class="op">=</span> <span class="st">"model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="221">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>result.sort_values(<span class="st">"score"</span>, ascending <span class="op">=</span> <span class="va">False</span>).<span class="op">\</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>                    plot(y <span class="op">=</span> <span class="st">"model"</span>, x<span class="op">=</span> <span class="st">"score"</span>, kind <span class="op">=</span><span class="st">"barh"</span>,</span>
+<span id="cb28-3"><a href="#cb28-3"></a>                            backend <span class="op">=</span> <span class="st">"plotly"</span>, color <span class="op">=</span> <span class="st">"model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="92526dd4-ce16-40d1-977e-a62f1cdb2ba0" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("92526dd4-ce16-40d1-977e-a62f1cdb2ba0")) {                    Plotly.newPlot(                        "92526dd4-ce16-40d1-977e-a62f1cdb2ba0",                        [{"alignmentgroup":"True","hovertemplate":"model=%{y}\u003cbr\u003escore=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"tree","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"tree","offsetgroup":"tree","orientation":"h","showlegend":true,"textposition":"auto","x":[0.7800348689457326],"xaxis":"x","y":["tree"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"model=%{y}\u003cbr\u003escore=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"linear reg","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"linear reg","offsetgroup":"linear reg","orientation":"h","showlegend":true,"textposition":"auto","x":[0.6681620144824074],"xaxis":"x","y":["linear reg"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"model=%{y}\u003cbr\u003escore=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"knn","marker":{"color":"#00cc96","pattern":{"shape":""}},"name":"knn","offsetgroup":"knn","orientation":"h","showlegend":true,"textposition":"auto","x":[0.6255982942610578],"xaxis":"x","y":["knn"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"score"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"model"},"categoryorder":"array","categoryarray":["knn","linear reg","tree"]},"legend":{"title":{"text":"model"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('92526dd4-ce16-40d1-977e-a62f1cdb2ba0');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
 </div>
 </section>
 <section id="test-data-평가-tree" class="level3">
 <h3 class="anchored" data-anchor-id="test-data-평가-tree">(4) test data 평가 (tree)</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>model <span class="op">=</span> DecisionTreeRegressor()</span>
-<span id="cb23-2"><a href="#cb23-2"></a></span>
-<span id="cb23-3"><a href="#cb23-3"></a>model.fit(x_train, y_train)</span>
-<span id="cb23-4"><a href="#cb23-4"></a></span>
-<span id="cb23-5"><a href="#cb23-5"></a>y_pred <span class="op">=</span> model.predict(x_test)</span>
-<span id="cb23-6"><a href="#cb23-6"></a></span>
-<span id="cb23-7"><a href="#cb23-7"></a>measure <span class="op">=</span> [<span class="st">"MAE"</span>, <span class="st">"R2"</span>]</span>
-<span id="cb23-8"><a href="#cb23-8"></a>score <span class="op">=</span> [mean_absolute_error(y_test, y_pred) ,r2_score(y_test, y_pred)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="222">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>model <span class="op">=</span> DecisionTreeRegressor()</span>
+<span id="cb29-2"><a href="#cb29-2"></a></span>
+<span id="cb29-3"><a href="#cb29-3"></a>model.fit(x_train, y_train)</span>
+<span id="cb29-4"><a href="#cb29-4"></a></span>
+<span id="cb29-5"><a href="#cb29-5"></a>y_pred <span class="op">=</span> model.predict(x_test)</span>
+<span id="cb29-6"><a href="#cb29-6"></a></span>
+<span id="cb29-7"><a href="#cb29-7"></a>measure <span class="op">=</span> [<span class="st">"MAE"</span>, <span class="st">"R2"</span>]</span>
+<span id="cb29-8"><a href="#cb29-8"></a>score <span class="op">=</span> [mean_absolute_error(y_test, y_pred) ,r2_score(y_test, y_pred)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>pd.DataFrame({ <span class="st">"measure"</span> : measure, </span>
-<span id="cb24-2"><a href="#cb24-2"></a>                             <span class="st">"score"</span> : score}).sort_values(<span class="st">"score"</span>, ascending <span class="op">=</span> <span class="va">False</span>).<span class="op">\</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a>                                        plot( y<span class="op">=</span> <span class="st">"measure"</span>, x<span class="op">=</span><span class="st">"score"</span>, kind <span class="op">=</span> <span class="st">"barh"</span>, backend <span class="op">=</span><span class="st">"plotly"</span>, color <span class="op">=</span> <span class="st">"measure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="223">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>pd.DataFrame({ <span class="st">"measure"</span> : measure, </span>
+<span id="cb30-2"><a href="#cb30-2"></a>                             <span class="st">"score"</span> : score}).sort_values(<span class="st">"score"</span>, ascending <span class="op">=</span> <span class="va">False</span>).<span class="op">\</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>                                        plot( y<span class="op">=</span> <span class="st">"measure"</span>, x<span class="op">=</span><span class="st">"score"</span>, kind <span class="op">=</span> <span class="st">"barh"</span>, backend <span class="op">=</span><span class="st">"plotly"</span>, color <span class="op">=</span> <span class="st">"measure"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="6912cdee-117d-49a7-86c0-2fb8371d2409" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("6912cdee-117d-49a7-86c0-2fb8371d2409")) {                    Plotly.newPlot(                        "6912cdee-117d-49a7-86c0-2fb8371d2409",                        [{"alignmentgroup":"True","hovertemplate":"measure=%{y}\u003cbr\u003escore=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"MAE","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"MAE","offsetgroup":"MAE","orientation":"h","showlegend":true,"textposition":"auto","x":[2.721052631578947],"xaxis":"x","y":["MAE"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"measure=%{y}\u003cbr\u003escore=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"R2","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"R2","offsetgroup":"R2","orientation":"h","showlegend":true,"textposition":"auto","x":[0.8407678383595859],"xaxis":"x","y":["R2"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"score"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"measure"},"categoryorder":"array","categoryarray":["R2","MAE"]},"legend":{"title":{"text":"measure"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('6912cdee-117d-49a7-86c0-2fb8371d2409');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
 </div>
 </section>
 </section>
@@ -1045,99 +1323,518 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>CONSIDERING_CHANGE_OF_PLAN: 향후 변경계획 설문조사 결과</li>
 <li>CHURN: 이탈(번호이동) 여부 (Target 변수)</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># 데이터 읽어오기</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>path <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/Jangrae/csv/master/mobile_cust_churn.csv'</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>data <span class="op">=</span> pd.read_csv(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="224">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># 데이터 읽어오기</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>path <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/Jangrae/csv/master/mobile_cust_churn.csv'</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>data <span class="op">=</span> pd.read_csv(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># 데이터 살펴보기</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="225">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># 데이터 살펴보기</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="225">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">COLLEGE</th>
+<th data-quarto-table-cell-role="th">INCOME</th>
+<th data-quarto-table-cell-role="th">OVERAGE</th>
+<th data-quarto-table-cell-role="th">LEFTOVER</th>
+<th data-quarto-table-cell-role="th">HOUSE</th>
+<th data-quarto-table-cell-role="th">HANDSET_PRICE</th>
+<th data-quarto-table-cell-role="th">OVER_15MINS_CALLS_PER_MONTH</th>
+<th data-quarto-table-cell-role="th">AVERAGE_CALL_DURATION</th>
+<th data-quarto-table-cell-role="th">REPORTED_SATISFACTION</th>
+<th data-quarto-table-cell-role="th">REPORTED_USAGE_LEVEL</th>
+<th data-quarto-table-cell-role="th">CONSIDERING_CHANGE_OF_PLAN</th>
+<th data-quarto-table-cell-role="th">CHURN</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>0</td>
+<td>31953</td>
+<td>0</td>
+<td>6</td>
+<td>313378</td>
+<td>161</td>
+<td>0</td>
+<td>4</td>
+<td>unsat</td>
+<td>little</td>
+<td>no</td>
+<td>STAY</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>1</td>
+<td>36147</td>
+<td>0</td>
+<td>13</td>
+<td>800586</td>
+<td>244</td>
+<td>0</td>
+<td>6</td>
+<td>unsat</td>
+<td>little</td>
+<td>considering</td>
+<td>STAY</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>1</td>
+<td>27273</td>
+<td>230</td>
+<td>0</td>
+<td>305049</td>
+<td>201</td>
+<td>16</td>
+<td>15</td>
+<td>unsat</td>
+<td>very_little</td>
+<td>perhaps</td>
+<td>STAY</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>0</td>
+<td>120070</td>
+<td>38</td>
+<td>33</td>
+<td>788235</td>
+<td>780</td>
+<td>3</td>
+<td>2</td>
+<td>unsat</td>
+<td>very_high</td>
+<td>considering</td>
+<td>LEAVE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>1</td>
+<td>29215</td>
+<td>208</td>
+<td>85</td>
+<td>224784</td>
+<td>241</td>
+<td>21</td>
+<td>1</td>
+<td>very_unsat</td>
+<td>little</td>
+<td>never_thought</td>
+<td>STAY</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </section>
 <section id="데이터-준비-2" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-준비-2">(2) 데이터 준비</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>data.drop(<span class="st">"id"</span>, axis <span class="op">=</span> <span class="dv">1</span>, inplace <span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-2"><a href="#cb27-2"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="226">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>data.drop(<span class="st">"id"</span>, axis <span class="op">=</span> <span class="dv">1</span>, inplace <span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="226">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">COLLEGE</th>
+<th data-quarto-table-cell-role="th">INCOME</th>
+<th data-quarto-table-cell-role="th">OVERAGE</th>
+<th data-quarto-table-cell-role="th">LEFTOVER</th>
+<th data-quarto-table-cell-role="th">HOUSE</th>
+<th data-quarto-table-cell-role="th">HANDSET_PRICE</th>
+<th data-quarto-table-cell-role="th">OVER_15MINS_CALLS_PER_MONTH</th>
+<th data-quarto-table-cell-role="th">AVERAGE_CALL_DURATION</th>
+<th data-quarto-table-cell-role="th">REPORTED_SATISFACTION</th>
+<th data-quarto-table-cell-role="th">REPORTED_USAGE_LEVEL</th>
+<th data-quarto-table-cell-role="th">CONSIDERING_CHANGE_OF_PLAN</th>
+<th data-quarto-table-cell-role="th">CHURN</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>31953</td>
+<td>0</td>
+<td>6</td>
+<td>313378</td>
+<td>161</td>
+<td>0</td>
+<td>4</td>
+<td>unsat</td>
+<td>little</td>
+<td>no</td>
+<td>STAY</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>36147</td>
+<td>0</td>
+<td>13</td>
+<td>800586</td>
+<td>244</td>
+<td>0</td>
+<td>6</td>
+<td>unsat</td>
+<td>little</td>
+<td>considering</td>
+<td>STAY</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>27273</td>
+<td>230</td>
+<td>0</td>
+<td>305049</td>
+<td>201</td>
+<td>16</td>
+<td>15</td>
+<td>unsat</td>
+<td>very_little</td>
+<td>perhaps</td>
+<td>STAY</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+<td>120070</td>
+<td>38</td>
+<td>33</td>
+<td>788235</td>
+<td>780</td>
+<td>3</td>
+<td>2</td>
+<td>unsat</td>
+<td>very_high</td>
+<td>considering</td>
+<td>LEAVE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1</td>
+<td>29215</td>
+<td>208</td>
+<td>85</td>
+<td>224784</td>
+<td>241</td>
+<td>21</td>
+<td>1</td>
+<td>very_unsat</td>
+<td>little</td>
+<td>never_thought</td>
+<td>STAY</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p><code>-</code> x, y 분리</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>target <span class="op">=</span> <span class="st">"CHURN"</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a></span>
-<span id="cb28-3"><a href="#cb28-3"></a>x <span class="op">=</span> data.drop(target, axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb28-4"><a href="#cb28-4"></a>y <span class="op">=</span> [<span class="dv">1</span> <span class="cf">if</span> i <span class="op">==</span> <span class="st">"LEAVE"</span> <span class="cf">else</span> <span class="dv">0</span> <span class="cf">for</span> i <span class="kw">in</span> data[target]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="227">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>target <span class="op">=</span> <span class="st">"CHURN"</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a></span>
+<span id="cb34-3"><a href="#cb34-3"></a>x <span class="op">=</span> data.drop(target, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb34-4"><a href="#cb34-4"></a>y <span class="op">=</span> [<span class="dv">1</span> <span class="cf">if</span> i <span class="op">==</span> <span class="st">"LEAVE"</span> <span class="cf">else</span> <span class="dv">0</span> <span class="cf">for</span> i <span class="kw">in</span> data[target]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 가변수화</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>d_cols <span class="op">=</span> [<span class="st">"REPORTED_SATISFACTION"</span>, <span class="st">"REPORTED_USAGE_LEVEL"</span>, <span class="st">"CONSIDERING_CHANGE_OF_PLAN"</span>]</span>
-<span id="cb29-2"><a href="#cb29-2"></a></span>
-<span id="cb29-3"><a href="#cb29-3"></a>x <span class="op">=</span> pd.get_dummies(x, columns<span class="op">=</span> d_cols, drop_first <span class="op">=</span> <span class="va">True</span>, dtype <span class="op">=</span> <span class="bu">float</span>)</span>
-<span id="cb29-4"><a href="#cb29-4"></a>x.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="228">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>d_cols <span class="op">=</span> [<span class="st">"REPORTED_SATISFACTION"</span>, <span class="st">"REPORTED_USAGE_LEVEL"</span>, <span class="st">"CONSIDERING_CHANGE_OF_PLAN"</span>]</span>
+<span id="cb35-2"><a href="#cb35-2"></a></span>
+<span id="cb35-3"><a href="#cb35-3"></a>x <span class="op">=</span> pd.get_dummies(x, columns<span class="op">=</span> d_cols, drop_first <span class="op">=</span> <span class="va">True</span>, dtype <span class="op">=</span> <span class="bu">float</span>)</span>
+<span id="cb35-4"><a href="#cb35-4"></a>x.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="228">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">COLLEGE</th>
+<th data-quarto-table-cell-role="th">INCOME</th>
+<th data-quarto-table-cell-role="th">OVERAGE</th>
+<th data-quarto-table-cell-role="th">LEFTOVER</th>
+<th data-quarto-table-cell-role="th">HOUSE</th>
+<th data-quarto-table-cell-role="th">HANDSET_PRICE</th>
+<th data-quarto-table-cell-role="th">OVER_15MINS_CALLS_PER_MONTH</th>
+<th data-quarto-table-cell-role="th">AVERAGE_CALL_DURATION</th>
+<th data-quarto-table-cell-role="th">REPORTED_SATISFACTION_sat</th>
+<th data-quarto-table-cell-role="th">REPORTED_SATISFACTION_unsat</th>
+<th data-quarto-table-cell-role="th">REPORTED_SATISFACTION_very_sat</th>
+<th data-quarto-table-cell-role="th">REPORTED_SATISFACTION_very_unsat</th>
+<th data-quarto-table-cell-role="th">REPORTED_USAGE_LEVEL_high</th>
+<th data-quarto-table-cell-role="th">REPORTED_USAGE_LEVEL_little</th>
+<th data-quarto-table-cell-role="th">REPORTED_USAGE_LEVEL_very_high</th>
+<th data-quarto-table-cell-role="th">REPORTED_USAGE_LEVEL_very_little</th>
+<th data-quarto-table-cell-role="th">CONSIDERING_CHANGE_OF_PLAN_considering</th>
+<th data-quarto-table-cell-role="th">CONSIDERING_CHANGE_OF_PLAN_never_thought</th>
+<th data-quarto-table-cell-role="th">CONSIDERING_CHANGE_OF_PLAN_no</th>
+<th data-quarto-table-cell-role="th">CONSIDERING_CHANGE_OF_PLAN_perhaps</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>31953</td>
+<td>0</td>
+<td>6</td>
+<td>313378</td>
+<td>161</td>
+<td>0</td>
+<td>4</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>36147</td>
+<td>0</td>
+<td>13</td>
+<td>800586</td>
+<td>244</td>
+<td>0</td>
+<td>6</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>27273</td>
+<td>230</td>
+<td>0</td>
+<td>305049</td>
+<td>201</td>
+<td>16</td>
+<td>15</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+<td>120070</td>
+<td>38</td>
+<td>33</td>
+<td>788235</td>
+<td>780</td>
+<td>3</td>
+<td>2</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1</td>
+<td>29215</td>
+<td>208</td>
+<td>85</td>
+<td>224784</td>
+<td>241</td>
+<td>21</td>
+<td>1</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 <p><code>-</code> 학습용 평가 데이터 분리</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, random_state <span class="op">=</span> <span class="dv">1</span>, test_size <span class="op">=</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="229">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, random_state <span class="op">=</span> <span class="dv">1</span>, test_size <span class="op">=</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 정규화</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="co"># 정규화</span></span>
-<span id="cb31-3"><a href="#cb31-3"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, random_state <span class="op">=</span> <span class="dv">1</span>, test_size <span class="op">=</span> <span class="fl">0.3</span>)</span>
-<span id="cb31-4"><a href="#cb31-4"></a></span>
-<span id="cb31-5"><a href="#cb31-5"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
-<span id="cb31-6"><a href="#cb31-6"></a>scaler.fit(x_train)</span>
-<span id="cb31-7"><a href="#cb31-7"></a>x_train_s <span class="op">=</span> scaler.transform(x_train)</span>
-<span id="cb31-8"><a href="#cb31-8"></a>x_test_s <span class="op">=</span> scaler.transform(x_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="230">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="co"># 정규화</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, random_state <span class="op">=</span> <span class="dv">1</span>, test_size <span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb37-4"><a href="#cb37-4"></a></span>
+<span id="cb37-5"><a href="#cb37-5"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
+<span id="cb37-6"><a href="#cb37-6"></a>scaler.fit(x_train)</span>
+<span id="cb37-7"><a href="#cb37-7"></a>x_train_s <span class="op">=</span> scaler.transform(x_train)</span>
+<span id="cb37-8"><a href="#cb37-8"></a>x_test_s <span class="op">=</span> scaler.transform(x_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="성능-예측-1" class="level3">
 <h3 class="anchored" data-anchor-id="성능-예측-1">(3) 성능 예측</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
-<span id="cb32-3"><a href="#cb32-3"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb32-4"><a href="#cb32-4"></a></span>
-<span id="cb32-5"><a href="#cb32-5"></a>model1 <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> <span class="dv">5</span>, random_state <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb32-6"><a href="#cb32-6"></a>model2 <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb32-7"><a href="#cb32-7"></a>model3 <span class="op">=</span> LogisticRegression(random_state <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb32-8"><a href="#cb32-8"></a></span>
-<span id="cb32-9"><a href="#cb32-9"></a>cvs1 <span class="op">=</span> cross_val_score(model1, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>).mean()</span>
-<span id="cb32-10"><a href="#cb32-10"></a>cvs2 <span class="op">=</span> cross_val_score(model2, x_train_s, y_train, cv <span class="op">=</span> <span class="dv">10</span>).mean()</span>
-<span id="cb32-11"><a href="#cb32-11"></a>cvs3 <span class="op">=</span> cross_val_score(model3, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>).mean()</span>
-<span id="cb32-12"><a href="#cb32-12"></a></span>
-<span id="cb32-13"><a href="#cb32-13"></a>result <span class="op">=</span> pd.DataFrame({<span class="st">"model"</span> : [<span class="st">"tree"</span>, <span class="st">"knn"</span>, <span class="st">"logistic"</span>],</span>
-<span id="cb32-14"><a href="#cb32-14"></a>                                           <span class="st">"score"</span> : [cvs1, cvs2, cvs3]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="231">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb38-4"><a href="#cb38-4"></a></span>
+<span id="cb38-5"><a href="#cb38-5"></a>model1 <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> <span class="dv">5</span>, random_state <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb38-6"><a href="#cb38-6"></a>model2 <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb38-7"><a href="#cb38-7"></a>model3 <span class="op">=</span> LogisticRegression(random_state <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb38-8"><a href="#cb38-8"></a></span>
+<span id="cb38-9"><a href="#cb38-9"></a>cvs1 <span class="op">=</span> cross_val_score(model1, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>).mean()</span>
+<span id="cb38-10"><a href="#cb38-10"></a>cvs2 <span class="op">=</span> cross_val_score(model2, x_train_s, y_train, cv <span class="op">=</span> <span class="dv">10</span>).mean()</span>
+<span id="cb38-11"><a href="#cb38-11"></a>cvs3 <span class="op">=</span> cross_val_score(model3, x_train, y_train, cv <span class="op">=</span> <span class="dv">10</span>).mean()</span>
+<span id="cb38-12"><a href="#cb38-12"></a></span>
+<span id="cb38-13"><a href="#cb38-13"></a>result <span class="op">=</span> pd.DataFrame({<span class="st">"model"</span> : [<span class="st">"tree"</span>, <span class="st">"knn"</span>, <span class="st">"logistic"</span>],</span>
+<span id="cb38-14"><a href="#cb38-14"></a>                                           <span class="st">"score"</span> : [cvs1, cvs2, cvs3]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>result.sort_values(<span class="st">"score"</span>, ascending <span class="op">=</span> <span class="va">False</span>).<span class="op">\</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>                        plot(x <span class="op">=</span> <span class="st">"score"</span>, y <span class="op">=</span> <span class="st">"model"</span>, kind <span class="op">=</span> <span class="st">"barh"</span>,</span>
-<span id="cb33-3"><a href="#cb33-3"></a>                                backend <span class="op">=</span> <span class="st">"plotly"</span>,color <span class="op">=</span> <span class="st">"model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="232">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>result.sort_values(<span class="st">"score"</span>, ascending <span class="op">=</span> <span class="va">False</span>).<span class="op">\</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>                        plot(x <span class="op">=</span> <span class="st">"score"</span>, y <span class="op">=</span> <span class="st">"model"</span>, kind <span class="op">=</span> <span class="st">"barh"</span>,</span>
+<span id="cb39-3"><a href="#cb39-3"></a>                                backend <span class="op">=</span> <span class="st">"plotly"</span>,color <span class="op">=</span> <span class="st">"model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="c280e0af-143b-4ab5-aa55-b90329385eac" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("c280e0af-143b-4ab5-aa55-b90329385eac")) {                    Plotly.newPlot(                        "c280e0af-143b-4ab5-aa55-b90329385eac",                        [{"alignmentgroup":"True","hovertemplate":"model=%{y}\u003cbr\u003escore=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"tree","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"tree","offsetgroup":"tree","orientation":"h","showlegend":true,"textposition":"auto","x":[0.6977857142857143],"xaxis":"x","y":["tree"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"model=%{y}\u003cbr\u003escore=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"logistic","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"logistic","offsetgroup":"logistic","orientation":"h","showlegend":true,"textposition":"auto","x":[0.6342142857142857],"xaxis":"x","y":["logistic"],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"model=%{y}\u003cbr\u003escore=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"knn","marker":{"color":"#00cc96","pattern":{"shape":""}},"name":"knn","offsetgroup":"knn","orientation":"h","showlegend":true,"textposition":"auto","x":[0.5972857142857143],"xaxis":"x","y":["knn"],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"score"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"model"},"categoryorder":"array","categoryarray":["knn","logistic","tree"]},"legend":{"title":{"text":"model"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('c280e0af-143b-4ab5-aa55-b90329385eac');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
 </div>
 </section>
 <section id="test-data-평가-tree-1" class="level3">
 <h3 class="anchored" data-anchor-id="test-data-평가-tree-1">(4) test data 평가 (tree)</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>model <span class="op">=</span> DecisionTreeClassifier()</span>
-<span id="cb34-2"><a href="#cb34-2"></a></span>
-<span id="cb34-3"><a href="#cb34-3"></a>model.fit(x_train, y_train)</span>
-<span id="cb34-4"><a href="#cb34-4"></a></span>
-<span id="cb34-5"><a href="#cb34-5"></a>y_pred <span class="op">=</span> model.predict(x_test)</span>
-<span id="cb34-6"><a href="#cb34-6"></a></span>
-<span id="cb34-7"><a href="#cb34-7"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
-<span id="cb34-8"><a href="#cb34-8"></a>acc, pre, recall, f1_score <span class="op">=</span> accuracy_score(y_test, y_pred), precision_score(y_test, y_pred), recall_score(y_test, y_pred), metrics.f1_score(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="233">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>model <span class="op">=</span> DecisionTreeClassifier()</span>
+<span id="cb40-2"><a href="#cb40-2"></a></span>
+<span id="cb40-3"><a href="#cb40-3"></a>model.fit(x_train, y_train)</span>
+<span id="cb40-4"><a href="#cb40-4"></a></span>
+<span id="cb40-5"><a href="#cb40-5"></a>y_pred <span class="op">=</span> model.predict(x_test)</span>
+<span id="cb40-6"><a href="#cb40-6"></a></span>
+<span id="cb40-7"><a href="#cb40-7"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
+<span id="cb40-8"><a href="#cb40-8"></a>acc, pre, recall, f1_score <span class="op">=</span> accuracy_score(y_test, y_pred), precision_score(y_test, y_pred), recall_score(y_test, y_pred), metrics.f1_score(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">def</span> score(<span class="bu">range</span> <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">0.71</span>]) : </span>
-<span id="cb35-2"><a href="#cb35-2"></a>            fig <span class="op">=</span> pd.DataFrame({<span class="st">"score"</span> : [acc,pre,recall,f1_score],</span>
-<span id="cb35-3"><a href="#cb35-3"></a>                            <span class="st">"measure"</span> : [<span class="st">"acc"</span>,<span class="st">"precision"</span>,<span class="st">"recall"</span>,<span class="st">"f1_score"</span>]}).<span class="op">\</span></span>
-<span id="cb35-4"><a href="#cb35-4"></a>                                    plot(x <span class="op">=</span> <span class="st">"measure"</span>, y <span class="op">=</span> <span class="st">"score"</span>,  color <span class="op">=</span> <span class="st">"measure"</span>,</span>
-<span id="cb35-5"><a href="#cb35-5"></a>                                            backend <span class="op">=</span> <span class="st">"plotly"</span>, kind <span class="op">=</span>  <span class="st">"bar"</span>,height <span class="op">=</span> <span class="dv">500</span>, width <span class="op">=</span> <span class="dv">600</span>)</span>
-<span id="cb35-6"><a href="#cb35-6"></a>            fig.update_yaxes(<span class="bu">range</span> <span class="op">=</span> <span class="bu">range</span>)</span>
-<span id="cb35-7"><a href="#cb35-7"></a>            <span class="cf">return</span> fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="234">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="kw">def</span> score(<span class="bu">range</span> <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">0.71</span>]) : </span>
+<span id="cb41-2"><a href="#cb41-2"></a>            fig <span class="op">=</span> pd.DataFrame({<span class="st">"score"</span> : [acc,pre,recall,f1_score],</span>
+<span id="cb41-3"><a href="#cb41-3"></a>                            <span class="st">"measure"</span> : [<span class="st">"acc"</span>,<span class="st">"precision"</span>,<span class="st">"recall"</span>,<span class="st">"f1_score"</span>]}).<span class="op">\</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a>                                    plot(x <span class="op">=</span> <span class="st">"measure"</span>, y <span class="op">=</span> <span class="st">"score"</span>,  color <span class="op">=</span> <span class="st">"measure"</span>,</span>
+<span id="cb41-5"><a href="#cb41-5"></a>                                            backend <span class="op">=</span> <span class="st">"plotly"</span>, kind <span class="op">=</span>  <span class="st">"bar"</span>,height <span class="op">=</span> <span class="dv">500</span>, width <span class="op">=</span> <span class="dv">600</span>)</span>
+<span id="cb41-6"><a href="#cb41-6"></a>            fig.update_yaxes(<span class="bu">range</span> <span class="op">=</span> <span class="bu">range</span>)</span>
+<span id="cb41-7"><a href="#cb41-7"></a>            <span class="cf">return</span> fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>score([<span class="fl">0.5</span>,<span class="fl">0.65</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="235">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>score([<span class="fl">0.5</span>,<span class="fl">0.65</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="64338797-7241-4772-878c-0cc7931cc477" class="plotly-graph-div" style="height:500px; width:600px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("64338797-7241-4772-878c-0cc7931cc477")) {                    Plotly.newPlot(                        "64338797-7241-4772-878c-0cc7931cc477",                        [{"alignmentgroup":"True","hovertemplate":"measure=%{x}\u003cbr\u003escore=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"acc","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"acc","offsetgroup":"acc","orientation":"v","showlegend":true,"textposition":"auto","x":["acc"],"xaxis":"x","y":[0.6266666666666667],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"measure=%{x}\u003cbr\u003escore=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"precision","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"precision","offsetgroup":"precision","orientation":"v","showlegend":true,"textposition":"auto","x":["precision"],"xaxis":"x","y":[0.6155636847356168],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"measure=%{x}\u003cbr\u003escore=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"recall","marker":{"color":"#00cc96","pattern":{"shape":""}},"name":"recall","offsetgroup":"recall","orientation":"v","showlegend":true,"textposition":"auto","x":["recall"],"xaxis":"x","y":[0.630664395229983],"yaxis":"y","type":"bar"},{"alignmentgroup":"True","hovertemplate":"measure=%{x}\u003cbr\u003escore=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"f1_score","marker":{"color":"#ab63fa","pattern":{"shape":""}},"name":"f1_score","offsetgroup":"f1_score","orientation":"v","showlegend":true,"textposition":"auto","x":["f1_score"],"xaxis":"x","y":[0.6230225513295187],"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"measure"},"categoryorder":"array","categoryarray":["acc","precision","recall","f1_score"]},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"score"},"range":[0.5,0.65]},"legend":{"title":{"text":"measure"},"tracegroupgap":0},"margin":{"t":60},"barmode":"relative","height":500,"width":600},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('64338797-7241-4772-878c-0cc7931cc477');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
 </div>
 
 

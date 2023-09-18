@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="GC">
+<meta name="dcterms.date" content="2023-09-18">
+
+<title>Gangcheol - 06. 머신러닝 (5)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" rel="next">
+<link href="../../../posts/DX/04. 머신러닝/2023-09-15-05. 종합실습.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.25.2.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Gangcheol</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
+ <span class="menu-text">Lecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
+ <span class="menu-text">Tableau</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
+ <span class="menu-text">DX</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
+ <span class="menu-text">IA2023</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
+ <span class="menu-text">ISLP2023</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html">04. 머신러닝</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/04. 머신러닝/2023-09-18-06. 머신러닝 (5).html">06. 머신러닝 (5)</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">06. 머신러닝 (5)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">머신러닝</div>
+                <div class="quarto-category">비지도학습</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>GC </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 18, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>About Me</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">DX</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/2023-07-31-00.intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro &amp; setting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/2023-08-19-01. Plotly test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Plotly test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">00. 데이터 다루기</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Python Basic (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-10-01. Python Basic (2) .html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Python Basic (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-11-02. Python Basic (3) .html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Python Basic (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-14-03. Python Basic (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Python Basic (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. Python Basic (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. Python Basic (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Extra</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 00. 밈</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 01. 클래스</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 02. 클래스 탐구 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 03. 클래스 탐구 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 04. 클래스 탐구 (3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">01. 데이터 다듬기</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy &amp; pandas (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. numpy &amp; pandas (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy &amp; pandas (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. numpy &amp; pandas (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-21-02. numpy &amp; pandas (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. numpy &amp; pandas (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-22-03. numpy &amp; pandas (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. numpy &amp; pandas (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-23-04. numpy &amp; pandas (5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. numpy &amp; pandas (5)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">02. 데이터 분석</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. 데이터 분석 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 데이터 분석 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 데이터 분석 (3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">03. 데이터 수집</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. 데이터 수집 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/03. 데이터 수집/2023-09-05-01. 데이터 수집 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 데이터 수집 (2)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">04. 머신러닝</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-12-01. 머신러닝 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 머신러닝 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-13-02. 머신러닝 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 머신러닝 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-14-03. 머신러닝 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 머신러닝 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-15-04. 머신러닝 (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 머신러닝 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-15-05. 종합실습.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 종합실습</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-18-06. 머신러닝 (5).html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">06. 머신러닝 (5)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">MP</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. MP (1)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#차원-축소" id="toc-차원-축소" class="nav-link active" data-scroll-target="#차원-축소">차원 축소</a>
+  <ul class="collapse">
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">import</a></li>
+  <li><a href="#데이터-준비" id="toc-데이터-준비" class="nav-link" data-scroll-target="#데이터-준비">1. 데이터 준비</a>
+  <ul class="collapse">
+  <li><a href="#데이터-이해" id="toc-데이터-이해" class="nav-link" data-scroll-target="#데이터-이해">(1) 데이터 이해</a></li>
+  <li><a href="#스케일링" id="toc-스케일링" class="nav-link" data-scroll-target="#스케일링">(2) 스케일링</a></li>
+  <li><a href="#데이터-분할" id="toc-데이터-분할" class="nav-link" data-scroll-target="#데이터-분할">(3) 데이터 분할</a></li>
+  </ul></li>
+  <li><a href="#차원-축소-주성분-분석-pca" id="toc-차원-축소-주성분-분석-pca" class="nav-link" data-scroll-target="#차원-축소-주성분-분석-pca">2. 차원 축소 : 주성분 분석 PCA</a>
+  <ul class="collapse">
+  <li><a href="#주성분-만들기" id="toc-주성분-만들기" class="nav-link" data-scroll-target="#주성분-만들기">(1) 주성분 만들기</a></li>
+  <li><a href="#excercise.1" id="toc-excercise.1" class="nav-link" data-scroll-target="#excercise.1">(2) excercise.1</a></li>
+  <li><a href="#주성분-누적-분산-그래프" id="toc-주성분-누적-분산-그래프" class="nav-link" data-scroll-target="#주성분-누적-분산-그래프">(3) 주성분 누적 분산 그래프</a></li>
+  <li><a href="#시각화" id="toc-시각화" class="nav-link" data-scroll-target="#시각화">(4) 시각화</a></li>
+  </ul></li>
+  <li><a href="#지도학습으로-연계" id="toc-지도학습으로-연계" class="nav-link" data-scroll-target="#지도학습으로-연계">3. 지도학습으로 연계</a>
+  <ul class="collapse">
+  <li><a href="#원본데이터로-모델-생성" id="toc-원본데이터로-모델-생성" class="nav-link" data-scroll-target="#원본데이터로-모델-생성">(1) 원본데이터로 모델 생성</a></li>
+  <li><a href="#주성분-상위-1개로-모델링" id="toc-주성분-상위-1개로-모델링" class="nav-link" data-scroll-target="#주성분-상위-1개로-모델링">(2) 주성분 상위 1개로 모델링</a></li>
+  <li><a href="#주성분-상위-2개로-모델링" id="toc-주성분-상위-2개로-모델링" class="nav-link" data-scroll-target="#주성분-상위-2개로-모델링">(3) 주성분 상위 2개로 모델링</a></li>
+  <li><a href="#주성분-상위-3개로-모델링" id="toc-주성분-상위-3개로-모델링" class="nav-link" data-scroll-target="#주성분-상위-3개로-모델링">(4) 주성분 상위 3개로 모델링</a></li>
+  </ul></li>
+  <li><a href="#차원축소-t-sne" id="toc-차원축소-t-sne" class="nav-link" data-scroll-target="#차원축소-t-sne">4. 차원축소 : t-SNE</a>
+  <ul class="collapse">
+  <li><a href="#실습" id="toc-실습" class="nav-link" data-scroll-target="#실습">실습</a></li>
+  <li><a href="#exercise.-2" id="toc-exercise.-2" class="nav-link" data-scroll-target="#exercise.-2">exercise. 2</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#군집-분석" id="toc-군집-분석" class="nav-link" data-scroll-target="#군집-분석">군집 분석</a>
+  <ul class="collapse">
+  <li><a href="#k-means" id="toc-k-means" class="nav-link" data-scroll-target="#k-means">1. k-means</a>
+  <ul class="collapse">
+  <li><a href="#import-1" id="toc-import-1" class="nav-link" data-scroll-target="#import-1">import</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">data</a></li>
+  <li><a href="#모델링" id="toc-모델링" class="nav-link" data-scroll-target="#모델링">모델링</a></li>
+  <li><a href="#결과-시각화" id="toc-결과-시각화" class="nav-link" data-scroll-target="#결과-시각화">결과 시각화</a></li>
+  <li><a href="#k-값에-따라-모델을-생성하고-스래프-그리기" id="toc-k-값에-따라-모델을-생성하고-스래프-그리기" class="nav-link" data-scroll-target="#k-값에-따라-모델을-생성하고-스래프-그리기">k 값에 따라 모델을 생성하고 스래프 그리기</a></li>
+  <li><a href="#적절한-k찾기" id="toc-적절한-k찾기" class="nav-link" data-scroll-target="#적절한-k찾기">적절한 k찾기</a></li>
+  <li><a href="#kmeans의-한계" id="toc-kmeans의-한계" class="nav-link" data-scroll-target="#kmeans의-한계">kmeans의 한계</a></li>
+  </ul></li>
+  <li><a href="#dbscan" id="toc-dbscan" class="nav-link" data-scroll-target="#dbscan">2. DBSCAN</a>
+  <ul class="collapse">
+  <li><a href="#적절한-eps-찾기" id="toc-적절한-eps-찾기" class="nav-link" data-scroll-target="#적절한-eps-찾기">적절한 eps 찾기</a></li>
+  </ul></li>
+  <li><a href="#실습-1" id="toc-실습-1" class="nav-link" data-scroll-target="#실습-1">3. 실습</a>
+  <ul class="collapse">
+  <li><a href="#데이터-로드" id="toc-데이터-로드" class="nav-link" data-scroll-target="#데이터-로드">(1) 데이터 로드</a></li>
+  <li><a href="#데이터-전처리" id="toc-데이터-전처리" class="nav-link" data-scroll-target="#데이터-전처리">(2) 데이터 전처리</a></li>
+  <li><a href="#스케일링-1" id="toc-스케일링-1" class="nav-link" data-scroll-target="#스케일링-1">(3) 스케일링</a></li>
+  <li><a href="#클러스터링" id="toc-클러스터링" class="nav-link" data-scroll-target="#클러스터링">(4) 클러스터링</a></li>
+  <li><a href="#데이터-군집-결과-정리" id="toc-데이터-군집-결과-정리" class="nav-link" data-scroll-target="#데이터-군집-결과-정리">(5) 데이터 군집 결과 정리</a></li>
+  <li><a href="#군집별-변수-비교" id="toc-군집별-변수-비교" class="nav-link" data-scroll-target="#군집별-변수-비교">(6) 군집별 변수 비교</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="차원-축소" class="level1">
+<h1>차원 축소</h1>
+<section id="import" class="level2">
+<h2 class="anchored" data-anchor-id="import">import</h2>
+<div class="cell" data-execution_count="235">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 기본 라이브러리 가져오기</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, cross_val_score</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_breast_cancer, load_digits</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, MinMaxScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="데이터-준비" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-준비">1. 데이터 준비</h2>
+<section id="데이터-이해" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-이해">(1) 데이터 이해</h3>
+<div class="cell" data-execution_count="236">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># breast_cancer 데이터 로딩</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>cancer<span class="op">=</span>load_breast_cancer()</span>
+<span id="cb2-3"><a href="#cb2-3"></a>x <span class="op">=</span> cancer.data</span>
+<span id="cb2-4"><a href="#cb2-4"></a>y <span class="op">=</span> cancer.target</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a>x <span class="op">=</span> pd.DataFrame(x, columns<span class="op">=</span>cancer.feature_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="237">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>x.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="237">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean radius</th>
+<th data-quarto-table-cell-role="th">mean texture</th>
+<th data-quarto-table-cell-role="th">mean perimeter</th>
+<th data-quarto-table-cell-role="th">mean area</th>
+<th data-quarto-table-cell-role="th">mean smoothness</th>
+<th data-quarto-table-cell-role="th">mean compactness</th>
+<th data-quarto-table-cell-role="th">mean concavity</th>
+<th data-quarto-table-cell-role="th">mean concave points</th>
+<th data-quarto-table-cell-role="th">mean symmetry</th>
+<th data-quarto-table-cell-role="th">mean fractal dimension</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">worst radius</th>
+<th data-quarto-table-cell-role="th">worst texture</th>
+<th data-quarto-table-cell-role="th">worst perimeter</th>
+<th data-quarto-table-cell-role="th">worst area</th>
+<th data-quarto-table-cell-role="th">worst smoothness</th>
+<th data-quarto-table-cell-role="th">worst compactness</th>
+<th data-quarto-table-cell-role="th">worst concavity</th>
+<th data-quarto-table-cell-role="th">worst concave points</th>
+<th data-quarto-table-cell-role="th">worst symmetry</th>
+<th data-quarto-table-cell-role="th">worst fractal dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>17.99</td>
+<td>10.38</td>
+<td>122.80</td>
+<td>1001.0</td>
+<td>0.11840</td>
+<td>0.27760</td>
+<td>0.3001</td>
+<td>0.14710</td>
+<td>0.2419</td>
+<td>0.07871</td>
+<td>...</td>
+<td>25.38</td>
+<td>17.33</td>
+<td>184.60</td>
+<td>2019.0</td>
+<td>0.1622</td>
+<td>0.6656</td>
+<td>0.7119</td>
+<td>0.2654</td>
+<td>0.4601</td>
+<td>0.11890</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>20.57</td>
+<td>17.77</td>
+<td>132.90</td>
+<td>1326.0</td>
+<td>0.08474</td>
+<td>0.07864</td>
+<td>0.0869</td>
+<td>0.07017</td>
+<td>0.1812</td>
+<td>0.05667</td>
+<td>...</td>
+<td>24.99</td>
+<td>23.41</td>
+<td>158.80</td>
+<td>1956.0</td>
+<td>0.1238</td>
+<td>0.1866</td>
+<td>0.2416</td>
+<td>0.1860</td>
+<td>0.2750</td>
+<td>0.08902</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>19.69</td>
+<td>21.25</td>
+<td>130.00</td>
+<td>1203.0</td>
+<td>0.10960</td>
+<td>0.15990</td>
+<td>0.1974</td>
+<td>0.12790</td>
+<td>0.2069</td>
+<td>0.05999</td>
+<td>...</td>
+<td>23.57</td>
+<td>25.53</td>
+<td>152.50</td>
+<td>1709.0</td>
+<td>0.1444</td>
+<td>0.4245</td>
+<td>0.4504</td>
+<td>0.2430</td>
+<td>0.3613</td>
+<td>0.08758</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>11.42</td>
+<td>20.38</td>
+<td>77.58</td>
+<td>386.1</td>
+<td>0.14250</td>
+<td>0.28390</td>
+<td>0.2414</td>
+<td>0.10520</td>
+<td>0.2597</td>
+<td>0.09744</td>
+<td>...</td>
+<td>14.91</td>
+<td>26.50</td>
+<td>98.87</td>
+<td>567.7</td>
+<td>0.2098</td>
+<td>0.8663</td>
+<td>0.6869</td>
+<td>0.2575</td>
+<td>0.6638</td>
+<td>0.17300</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>20.29</td>
+<td>14.34</td>
+<td>135.10</td>
+<td>1297.0</td>
+<td>0.10030</td>
+<td>0.13280</td>
+<td>0.1980</td>
+<td>0.10430</td>
+<td>0.1809</td>
+<td>0.05883</td>
+<td>...</td>
+<td>22.54</td>
+<td>16.67</td>
+<td>152.20</td>
+<td>1575.0</td>
+<td>0.1374</td>
+<td>0.2050</td>
+<td>0.4000</td>
+<td>0.1625</td>
+<td>0.2364</td>
+<td>0.07678</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 30 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="238">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#x.info()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="239">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#x.describe().T</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="스케일링" class="level3">
+<h3 class="anchored" data-anchor-id="스케일링">(2) 스케일링</h3>
+<p><code>-</code> 거리계산 기반 차원축소이므로 스케일링이 필요</p>
+</section>
+<section id="데이터-분할" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-분할">(3) 데이터 분할</h3>
+<div class="cell" data-execution_count="240">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x_train, x_val, y_train, y_val <span class="op">=</span> train_test_split(x, y, test_size <span class="op">=</span> <span class="fl">.3</span>, random_state <span class="op">=</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="차원-축소-주성분-분석-pca" class="level2">
+<h2 class="anchored" data-anchor-id="차원-축소-주성분-분석-pca">2. 차원 축소 : 주성분 분석 PCA</h2>
+<section id="주성분-만들기" class="level3">
+<h3 class="anchored" data-anchor-id="주성분-만들기">(1) 주성분 만들기</h3>
+<div class="cell" data-execution_count="241">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="242">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># feature 수</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>x_train.shape[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="242">
+<pre><code>30</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="243">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 주성분을 몇개로 할지 결정(최대값 : 전체 feature 수)</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>n <span class="op">=</span> x_train.shape[<span class="dv">1</span>] <span class="co">## 일단 원래 feature의 수만 지정</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># 주성분 분석 선언</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span>n)</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co"># 만들고, 적용하기</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>x_train_pc <span class="op">=</span> pca.fit_transform(x_train)</span>
+<span id="cb10-9"><a href="#cb10-9"></a>x_val_pc <span class="op">=</span> pca.transform(x_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 편리한 사용을 위해 데이터프레임으로 변환</p>
+<div class="cell" data-execution_count="244">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># 칼럼이름 생성</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>column_names <span class="op">=</span> [ <span class="st">'PC'</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n) ]</span>
+<span id="cb11-3"><a href="#cb11-3"></a>column_names[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="244">
+<pre><code>['PC1', 'PC2', 'PC3', 'PC4', 'PC5']</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="245">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># 데이터프레임으로 변환하기</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>x_train_pc <span class="op">=</span> pd.DataFrame(x_train_pc, columns <span class="op">=</span> column_names)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>x_val_pc <span class="op">=</span> pd.DataFrame(x_val_pc, columns <span class="op">=</span> column_names)</span>
+<span id="cb13-4"><a href="#cb13-4"></a>x_train_pc.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="245">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">PC1</th>
+<th data-quarto-table-cell-role="th">PC2</th>
+<th data-quarto-table-cell-role="th">PC3</th>
+<th data-quarto-table-cell-role="th">PC4</th>
+<th data-quarto-table-cell-role="th">PC5</th>
+<th data-quarto-table-cell-role="th">PC6</th>
+<th data-quarto-table-cell-role="th">PC7</th>
+<th data-quarto-table-cell-role="th">PC8</th>
+<th data-quarto-table-cell-role="th">PC9</th>
+<th data-quarto-table-cell-role="th">PC10</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">PC21</th>
+<th data-quarto-table-cell-role="th">PC22</th>
+<th data-quarto-table-cell-role="th">PC23</th>
+<th data-quarto-table-cell-role="th">PC24</th>
+<th data-quarto-table-cell-role="th">PC25</th>
+<th data-quarto-table-cell-role="th">PC26</th>
+<th data-quarto-table-cell-role="th">PC27</th>
+<th data-quarto-table-cell-role="th">PC28</th>
+<th data-quarto-table-cell-role="th">PC29</th>
+<th data-quarto-table-cell-role="th">PC30</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-34.932206</td>
+<td>47.067779</td>
+<td>-17.756611</td>
+<td>-7.596006</td>
+<td>1.342721</td>
+<td>-1.956710</td>
+<td>1.710276</td>
+<td>0.641097</td>
+<td>0.120917</td>
+<td>0.139938</td>
+<td>...</td>
+<td>0.000962</td>
+<td>0.010435</td>
+<td>-0.003107</td>
+<td>-0.002029</td>
+<td>0.003974</td>
+<td>-0.000625</td>
+<td>-0.000576</td>
+<td>-0.000446</td>
+<td>0.000679</td>
+<td>0.001145</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>830.092826</td>
+<td>201.450565</td>
+<td>-6.166167</td>
+<td>-2.578986</td>
+<td>-1.794260</td>
+<td>2.619614</td>
+<td>0.284543</td>
+<td>0.366729</td>
+<td>-0.027226</td>
+<td>0.018051</td>
+<td>...</td>
+<td>-0.019489</td>
+<td>0.001261</td>
+<td>0.003305</td>
+<td>-0.011163</td>
+<td>0.005675</td>
+<td>0.001333</td>
+<td>0.001847</td>
+<td>-0.003122</td>
+<td>0.001580</td>
+<td>0.000655</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-546.384045</td>
+<td>22.139574</td>
+<td>17.780018</td>
+<td>0.887465</td>
+<td>-0.308381</td>
+<td>-0.126655</td>
+<td>-1.450590</td>
+<td>-0.632612</td>
+<td>-0.009378</td>
+<td>-0.606726</td>
+<td>...</td>
+<td>0.002701</td>
+<td>-0.014928</td>
+<td>0.001773</td>
+<td>0.001490</td>
+<td>0.007249</td>
+<td>-0.000604</td>
+<td>-0.001318</td>
+<td>-0.001299</td>
+<td>-0.000982</td>
+<td>-0.000077</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>653.345270</td>
+<td>25.739603</td>
+<td>30.832277</td>
+<td>-7.437820</td>
+<td>2.139092</td>
+<td>3.686376</td>
+<td>-0.111756</td>
+<td>0.191535</td>
+<td>-0.181315</td>
+<td>0.111042</td>
+<td>...</td>
+<td>0.002200</td>
+<td>0.021932</td>
+<td>-0.012297</td>
+<td>0.002943</td>
+<td>0.002366</td>
+<td>-0.005320</td>
+<td>0.000484</td>
+<td>0.000967</td>
+<td>-0.002898</td>
+<td>-0.000765</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-422.567968</td>
+<td>19.784995</td>
+<td>6.432610</td>
+<td>-10.383670</td>
+<td>-14.675624</td>
+<td>0.098355</td>
+<td>-0.537767</td>
+<td>-0.113981</td>
+<td>0.062963</td>
+<td>0.442519</td>
+<td>...</td>
+<td>0.003790</td>
+<td>-0.012366</td>
+<td>0.004250</td>
+<td>0.005447</td>
+<td>-0.002826</td>
+<td>-0.000611</td>
+<td>-0.000136</td>
+<td>0.000270</td>
+<td>-0.000225</td>
+<td>0.000407</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 30 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="excercise.1" class="level3">
+<h3 class="anchored" data-anchor-id="excercise.1">(2) excercise.1</h3>
+<p><code>-</code> 주성분을 1,2,3개로 선언하고, <code>x_train</code>을 이용해서 주성분을 추출</p>
+<div class="cell" data-execution_count="246">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># 주성분을 몇개로 할지 결정(최대값 : 전체 feature 수)</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>n <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]<span class="co">## 일단 원래 feature의 수만 지정</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># 주성분 분석 선언</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="cf">for</span> i <span class="kw">in</span> n : </span>
+<span id="cb14-7"><a href="#cb14-7"></a>     <span class="bu">exec</span>(<span class="ss">f"pca</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> = PCA(n_components=</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8"></a>     <span class="bu">exec</span>(<span class="ss">f"x_train_pc</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> = pca</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">.fit_transform(x_train)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="주성분-누적-분산-그래프" class="level3">
+<h3 class="anchored" data-anchor-id="주성분-누적-분산-그래프">(3) 주성분 누적 분산 그래프</h3>
+<ul>
+<li>그래프를 보고 적절한 주성분의 개수를 지정(elbow method!)</li>
+<li>x축 : PC 수</li>
+<li>y축 : 전체 분산크기 - 누적 분산크기</li>
+</ul>
+<div class="cell" data-execution_count="247">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>pca</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="247">
+<style>#sk-container-id-5 {color: black;background-color: white;}#sk-container-id-5 pre{padding: 0;}#sk-container-id-5 div.sk-toggleable {background-color: white;}#sk-container-id-5 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-5 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-5 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-5 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-5 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-5 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-5 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-5 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-5 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-5 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-5 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-5 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-5 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-5 div.sk-item {position: relative;z-index: 1;}#sk-container-id-5 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-5 div.sk-item::before, #sk-container-id-5 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-5 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-5 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-5 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-5 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-5 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-5 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-5 div.sk-label-container {text-align: center;}#sk-container-id-5 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-5 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>PCA(n_components=30)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" checked=""><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">PCA</label><div class="sk-toggleable__content"><pre>PCA(n_components=30)</pre></div></div></div></div></div>
+</div>
+</div>
+<div class="cell" data-execution_count="248">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>plt.plot(pca.explained_variance_ratio_, marker <span class="op">=</span> <span class="st">'.'</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>plt.xlabel(<span class="st">'No. of PC'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a>plt.grid()</span>
+<span id="cb16-4"><a href="#cb16-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="시각화" class="level3">
+<h3 class="anchored" data-anchor-id="시각화">(4) 시각화</h3>
+<p><code>-</code> 주성분 중 상위 2개를 뽑아 시각화</p>
+<div class="cell" data-execution_count="249">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>sns.scatterplot(x <span class="op">=</span> <span class="st">'PC1'</span>, y <span class="op">=</span> <span class="st">'PC2'</span>, data <span class="op">=</span> x_train_pc, hue <span class="op">=</span> y_train)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>plt.grid()</span>
+<span id="cb17-3"><a href="#cb17-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="지도학습으로-연계" class="level2">
+<h2 class="anchored" data-anchor-id="지도학습으로-연계">3. 지도학습으로 연계</h2>
+<section id="원본데이터로-모델-생성" class="level3">
+<h3 class="anchored" data-anchor-id="원본데이터로-모델-생성">(1) 원본데이터로 모델 생성</h3>
+<div class="cell" data-execution_count="250">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>model0 <span class="op">=</span> KNeighborsClassifier()</span>
+<span id="cb18-2"><a href="#cb18-2"></a>model0.fit(x_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="250">
+<style>#sk-container-id-6 {color: black;background-color: white;}#sk-container-id-6 pre{padding: 0;}#sk-container-id-6 div.sk-toggleable {background-color: white;}#sk-container-id-6 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-6 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-6 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-6 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-6 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-6 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-6 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-6 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-6 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-6 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-6 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-6 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-6 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-6 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-6 div.sk-item {position: relative;z-index: 1;}#sk-container-id-6 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-6 div.sk-item::before, #sk-container-id-6 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-6 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-6 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-6 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-6 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-6 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-6 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-6 div.sk-label-container {text-align: center;}#sk-container-id-6 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-6 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-6" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" checked=""><label for="sk-estimator-id-6" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsClassifier()</pre></div></div></div></div></div>
+</div>
+</div>
+<div class="cell" data-execution_count="251">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># 원본데이터 모델의 성능</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>pred0 <span class="op">=</span> model0.predict(x_val)</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="bu">print</span>(confusion_matrix(y_val, pred0))</span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="bu">print</span>(accuracy_score(y_val, pred0))</span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="bu">print</span>(classification_report(y_val, pred0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[ 57   7]
+ [  5 102]]
+0.9298245614035088
+              precision    recall  f1-score   support
+
+           0       0.92      0.89      0.90        64
+           1       0.94      0.95      0.94       107
+
+    accuracy                           0.93       171
+   macro avg       0.93      0.92      0.92       171
+weighted avg       0.93      0.93      0.93       171
+</code></pre>
+</div>
+</div>
+</section>
+<section id="주성분-상위-1개로-모델링" class="level3">
+<h3 class="anchored" data-anchor-id="주성분-상위-1개로-모델링">(2) 주성분 상위 1개로 모델링</h3>
+<div class="cell" data-execution_count="252">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>n <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb21-2"><a href="#cb21-2"></a>x_train_pc_n <span class="op">=</span> x_train_pc[column_names[:n]] </span>
+<span id="cb21-3"><a href="#cb21-3"></a>x_val_pc_n <span class="op">=</span> x_val_pc[column_names[:n]] </span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="co"># 뽑은 데이터로 모델링 </span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>model1 <span class="op">=</span> KNeighborsClassifier() </span>
+<span id="cb21-6"><a href="#cb21-6"></a>model1.fit(x_train_pc_n, y_train) <span class="co"># 예측 평가 </span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>pred1 <span class="op">=</span> model1.predict(x_val_pc_n) </span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="bu">print</span>(accuracy_score(y_val, pred1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.8830409356725146</code></pre>
+</div>
+</div>
+</section>
+<section id="주성분-상위-2개로-모델링" class="level3">
+<h3 class="anchored" data-anchor-id="주성분-상위-2개로-모델링">(3) 주성분 상위 2개로 모델링</h3>
+<div class="cell" data-execution_count="253">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>n <span class="op">=</span> <span class="dv">2</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>x_train_pc_n <span class="op">=</span> x_train_pc[column_names[:n]] </span>
+<span id="cb23-3"><a href="#cb23-3"></a>x_val_pc_n <span class="op">=</span> x_val_pc[column_names[:n]] </span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="co"># 뽑은 데이터로 모델링 </span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>model1 <span class="op">=</span> KNeighborsClassifier() </span>
+<span id="cb23-6"><a href="#cb23-6"></a>model1.fit(x_train_pc_n, y_train) <span class="co"># 예측 평가 </span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>pred1 <span class="op">=</span> model1.predict(x_val_pc_n) </span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="bu">print</span>(accuracy_score(y_val, pred1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9181286549707602</code></pre>
+</div>
+</div>
+</section>
+<section id="주성분-상위-3개로-모델링" class="level3">
+<h3 class="anchored" data-anchor-id="주성분-상위-3개로-모델링">(4) 주성분 상위 3개로 모델링</h3>
+<div class="cell" data-execution_count="254">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>n <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>x_train_pc_n <span class="op">=</span> x_train_pc[column_names[:n]] </span>
+<span id="cb25-3"><a href="#cb25-3"></a>x_val_pc_n <span class="op">=</span> x_val_pc[column_names[:n]] </span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co"># 뽑은 데이터로 모델링 </span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>model1 <span class="op">=</span> KNeighborsClassifier() </span>
+<span id="cb25-6"><a href="#cb25-6"></a>model1.fit(x_train_pc_n, y_train) <span class="co"># 예측 평가 </span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>pred1 <span class="op">=</span> model1.predict(x_val_pc_n) </span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="bu">print</span>(accuracy_score(y_val, pred1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9181286549707602</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="차원축소-t-sne" class="level2">
+<h2 class="anchored" data-anchor-id="차원축소-t-sne">4. 차원축소 : t-SNE</h2>
+<p><code>1</code>. 원본데이터의 유사도(거리) 맵을 만듬</p>
+<p><code>2</code> 원본에서의 유사도가 축소한 차원에서도 유지 되었으면 좋겠음</p>
+<p><code>3</code> 주성분 분석은 선형 축소, t-SNE는 비선형 축소이다.</p>
+<section id="실습" class="level3">
+<h3 class="anchored" data-anchor-id="실습">실습</h3>
+<div class="cell" data-execution_count="255">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="256">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># 2차원으로 축소하기</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>tsne <span class="op">=</span> TSNE(n_components <span class="op">=</span> <span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb28-3"><a href="#cb28-3"></a>x_tsne <span class="op">=</span> tsne.fit_transform(x)</span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="co"># 사용의 편리함을 위해 DataFrame으로` 변환</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>x_tsne <span class="op">=</span> pd.DataFrame(x_tsne, columns <span class="op">=</span> [<span class="st">'T1'</span>,<span class="st">'T2'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="257">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>x_tsne.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="257">
+<pre><code>(569, 2)</code></pre>
+</div>
+</div>
+<p><code>-</code> 시각화</p>
+<div class="cell" data-execution_count="258">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>))</span>
+<span id="cb31-2"><a href="#cb31-2"></a>sns.scatterplot(x <span class="op">=</span> <span class="st">'T1'</span>, y <span class="op">=</span> <span class="st">'T2'</span>, data <span class="op">=</span> x_tsne, hue <span class="op">=</span> y)</span>
+<span id="cb31-3"><a href="#cb31-3"></a>plt.grid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="exercise.-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise.-2">exercise. 2</h3>
+<section id="a.-데이터-준비" class="level4">
+<h4 class="anchored" data-anchor-id="a.-데이터-준비">a. 데이터 준비</h4>
+<div class="cell" data-execution_count="259">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>digits <span class="op">=</span> load_digits()</span>
+<span id="cb32-2"><a href="#cb32-2"></a>x <span class="op">=</span> digits.data</span>
+<span id="cb32-3"><a href="#cb32-3"></a>y <span class="op">=</span> digits.target</span>
+<span id="cb32-4"><a href="#cb32-4"></a></span>
+<span id="cb32-5"><a href="#cb32-5"></a>y <span class="op">=</span> pd.Categorical(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="260">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="260">
+<pre><code>(1797, 64)</code></pre>
+</div>
+</div>
+<p><code>-</code> 데이터 살펴보기</p>
+<div class="cell" data-execution_count="261">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="bu">print</span>(x[<span class="dv">0</span>].reshape(<span class="dv">8</span>,<span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[ 0.  0.  5. 13.  9.  1.  0.  0.]
+ [ 0.  0. 13. 15. 10. 15.  5.  0.]
+ [ 0.  3. 15.  2.  0. 11.  8.  0.]
+ [ 0.  4. 12.  0.  0.  8.  8.  0.]
+ [ 0.  5.  8.  0.  0.  9.  8.  0.]
+ [ 0.  4. 11.  0.  1. 12.  7.  0.]
+ [ 0.  2. 14.  5. 10. 12.  0.  0.]
+ [ 0.  0.  6. 13. 10.  0.  0.  0.]]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="262">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># f, axes = plt.subplots(5, 2, sharey=True, figsize=(16,6))</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb37-4"><a href="#cb37-4"></a>    plt.subplot(<span class="dv">2</span>, <span class="dv">5</span>, i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb37-5"><a href="#cb37-5"></a>    plt.imshow(x[i,:].reshape([<span class="dv">8</span>,<span class="dv">8</span>]), cmap<span class="op">=</span><span class="st">'gray'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>스케일링</li>
+</ul>
+<div class="cell" data-execution_count="263">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># 최대, 최소값</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>np.<span class="bu">min</span>(x), np.<span class="bu">max</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="263">
+<pre><code>(0.0, 16.0)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="264">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># 최대값으로 나누면 Min Max 스케일링이 됩니다.</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>x <span class="op">=</span> x <span class="op">/</span> <span class="dv">16</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b.-pca" class="level4">
+<h4 class="anchored" data-anchor-id="b.-pca">b. pca</h4>
+<p><code>-</code> 주성분 2개로 차원을 축소하고 시각화</p>
+<div class="cell" data-execution_count="265">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>n <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>pca <span class="op">=</span> PCA(n_components <span class="op">=</span> n)</span>
+<span id="cb41-3"><a href="#cb41-3"></a></span>
+<span id="cb41-4"><a href="#cb41-4"></a>x_pca <span class="op">=</span> pca.fit_transform(x)</span>
+<span id="cb41-5"><a href="#cb41-5"></a>x_pca <span class="op">=</span> pd.DataFrame(x_pca, columns <span class="op">=</span> [<span class="st">'PC1'</span>, <span class="st">'PC2'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="266">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># 시각화</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb42-3"><a href="#cb42-3"></a>sns.scatterplot(x <span class="op">=</span> <span class="st">'PC1'</span>, y <span class="op">=</span> <span class="st">'PC2'</span>, data <span class="op">=</span> x_pca, hue <span class="op">=</span> y)</span>
+<span id="cb42-4"><a href="#cb42-4"></a>plt.grid()</span>
+<span id="cb42-5"><a href="#cb42-5"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="c.-tsne" class="level4">
+<h4 class="anchored" data-anchor-id="c.-tsne">c.&nbsp;tsne</h4>
+<div class="cell" data-execution_count="267">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># 2차원으로 축소하기</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>tsne <span class="op">=</span> TSNE(n_components <span class="op">=</span> <span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb43-3"><a href="#cb43-3"></a>x_tsne <span class="op">=</span> tsne.fit_transform(x)</span>
+<span id="cb43-4"><a href="#cb43-4"></a></span>
+<span id="cb43-5"><a href="#cb43-5"></a><span class="co"># 사용의 편리함을 위해 DataFrame으로` 변환</span></span>
+<span id="cb43-6"><a href="#cb43-6"></a>x_tsne <span class="op">=</span> pd.DataFrame(x_tsne, columns <span class="op">=</span> [<span class="st">'T1'</span>,<span class="st">'T2'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="268">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># 시각화</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb44-3"><a href="#cb44-3"></a>sns.scatterplot(x <span class="op">=</span> <span class="st">'T1'</span>, y <span class="op">=</span> <span class="st">'T2'</span>, data <span class="op">=</span> x_tsne, hue <span class="op">=</span> y)</span>
+<span id="cb44-4"><a href="#cb44-4"></a>plt.grid()</span>
+<span id="cb44-5"><a href="#cb44-5"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+</section>
+</section>
+<section id="군집-분석" class="level1">
+<h1>군집 분석</h1>
+<section id="k-means" class="level2">
+<h2 class="anchored" data-anchor-id="k-means">1. k-means</h2>
+<ul>
+<li><p>주어진 데이터를 k개의 클러스터로 묶는 알고리즘, 각 클러스터와 거리 차이의 분산을 최소화 하는 방식으로 동작</p></li>
+<li><p>허나 군집의 수, 가중치와 거리 정의가 어려우며, 사전에 주어진 목적이 없으므로 결과 해석이 어려움.</p></li>
+<li><p>또한 잡음이나 이상값의 영향을 받으며 초기 군집 수를 결정해야 한다는 단점이 있다.</p></li>
+</ul>
+<section id="import-1" class="level3">
+<h3 class="anchored" data-anchor-id="import-1">import</h3>
+<div class="cell" data-execution_count="269">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb45-2"><a href="#cb45-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb45-3"><a href="#cb45-3"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb45-4"><a href="#cb45-4"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb45-5"><a href="#cb45-5"></a></span>
+<span id="cb45-6"><a href="#cb45-6"></a><span class="co"># 샘플데이터 로딩 함수</span></span>
+<span id="cb45-7"><a href="#cb45-7"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs, make_moons</span>
+<span id="cb45-8"><a href="#cb45-8"></a></span>
+<span id="cb45-9"><a href="#cb45-9"></a><span class="co"># 클러스터링을 위한 함수</span></span>
+<span id="cb45-10"><a href="#cb45-10"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> NearestNeighbors</span>
+<span id="cb45-11"><a href="#cb45-11"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans, DBSCAN</span>
+<span id="cb45-12"><a href="#cb45-12"></a></span>
+<span id="cb45-13"><a href="#cb45-13"></a><span class="im">import</span> warnings</span>
+<span id="cb45-14"><a href="#cb45-14"></a>warnings.filterwarnings(<span class="st">"ignore"</span>, category<span class="op">=</span><span class="pp">UserWarning</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">data</h3>
+<div class="cell" data-execution_count="270">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>x, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">300</span>, centers<span class="op">=</span><span class="dv">4</span>, cluster_std<span class="op">=</span><span class="fl">0.60</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb46-2"><a href="#cb46-2"></a>x <span class="op">=</span> pd.DataFrame(x, columns <span class="op">=</span> [<span class="st">'x1'</span>, <span class="st">'x2'</span>])</span>
+<span id="cb46-3"><a href="#cb46-3"></a>y <span class="op">=</span> pd.Series(y, name <span class="op">=</span> <span class="st">'shape'</span>)</span>
+<span id="cb46-4"><a href="#cb46-4"></a></span>
+<span id="cb46-5"><a href="#cb46-5"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb46-6"><a href="#cb46-6"></a>plt.scatter(x[<span class="st">'x1'</span>], x[<span class="st">'x2'</span>])</span>
+<span id="cb46-7"><a href="#cb46-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="모델링" class="level3">
+<h3 class="anchored" data-anchor-id="모델링">모델링</h3>
+<div class="cell" data-execution_count="271">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># k means 학습</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span> <span class="dv">2</span>, n_init <span class="op">=</span> <span class="st">'auto'</span>)</span>
+<span id="cb47-3"><a href="#cb47-3"></a>model.fit(x)</span>
+<span id="cb47-4"><a href="#cb47-4"></a></span>
+<span id="cb47-5"><a href="#cb47-5"></a><span class="co"># 예측</span></span>
+<span id="cb47-6"><a href="#cb47-6"></a>pred <span class="op">=</span> model.predict(x)</span>
+<span id="cb47-7"><a href="#cb47-7"></a><span class="bu">print</span>(pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0 1 0 1 0 0 0 0 1 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1 1 1
+ 1 0 0 0 0 1 0 0 0 1 0 1 0 0 0 1 0 0 0 1 0 1 0 1 0 1 0 0 0 1 0 1 0 0 0 1 0
+ 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 1 0 0 1 0 0 0 0 0 1 0 1 0 1 0 0 0 0 0 1 0 0
+ 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 1 1 0 0 0 0 0 1 0
+ 1 1 1 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 1 0 0 0 0 1 0 0 0 0 0 1 0
+ 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 1 1 1 1 0 0 1 0 0 0 0 0 0 0 0 0
+ 1 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 0 1 0 0 0 1 1 1 0
+ 0 0 1 0]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="272">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># feature + pred + y 붙여 놓고 비교해 봅시다.</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>pred <span class="op">=</span> pd.DataFrame(pred, columns <span class="op">=</span> [<span class="st">'predicted'</span>])</span>
+<span id="cb49-3"><a href="#cb49-3"></a>result <span class="op">=</span> pd.concat([x, pred, y], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb49-4"><a href="#cb49-4"></a>result.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="272">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x1</th>
+<th data-quarto-table-cell-role="th">x2</th>
+<th data-quarto-table-cell-role="th">predicted</th>
+<th data-quarto-table-cell-role="th">shape</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.836857</td>
+<td>2.136359</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-1.413658</td>
+<td>7.409623</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1.155213</td>
+<td>5.099619</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-1.018616</td>
+<td>7.814915</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1.271351</td>
+<td>1.892542</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="결과-시각화" class="level3">
+<h3 class="anchored" data-anchor-id="결과-시각화">결과 시각화</h3>
+<div class="cell" data-execution_count="273">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># k means 모델로 부터 클러스터의 평균 값들을 가져올 수 있습니다.</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>centers <span class="op">=</span> pd.DataFrame(model.cluster_centers_, columns<span class="op">=</span>[<span class="st">'x1'</span>,<span class="st">'x2'</span>])</span>
+<span id="cb50-3"><a href="#cb50-3"></a>centers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="273">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x1</th>
+<th data-quarto-table-cell-role="th">x2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.452332</td>
+<td>2.681056</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-1.334654</td>
+<td>7.694427</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="274">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb51-2"><a href="#cb51-2"></a>plt.scatter(result[<span class="st">'x1'</span>], result[<span class="st">'x2'</span>], c <span class="op">=</span> result[<span class="st">'predicted'</span>], alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb51-3"><a href="#cb51-3"></a>plt.scatter(centers[<span class="st">'x1'</span>], centers[<span class="st">'x2'</span>], s<span class="op">=</span><span class="dv">50</span>, marker<span class="op">=</span><span class="st">'D'</span>, c<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb51-4"><a href="#cb51-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="k-값에-따라-모델을-생성하고-스래프-그리기" class="level3">
+<h3 class="anchored" data-anchor-id="k-값에-따라-모델을-생성하고-스래프-그리기">k 값에 따라 모델을 생성하고 스래프 그리기</h3>
+<div class="cell" data-execution_count="275">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="kw">def</span> k_means_plot(x, y, k) :</span>
+<span id="cb52-2"><a href="#cb52-2"></a>    <span class="co"># 모델 생성</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a>    model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span> k, n_init <span class="op">=</span> <span class="st">'auto'</span>)</span>
+<span id="cb52-4"><a href="#cb52-4"></a>    model.fit(x)</span>
+<span id="cb52-5"><a href="#cb52-5"></a>    pred <span class="op">=</span> model.predict(x)</span>
+<span id="cb52-6"><a href="#cb52-6"></a></span>
+<span id="cb52-7"><a href="#cb52-7"></a>    <span class="co"># 군집 결과와 원본 데이터 합치기(concat)</span></span>
+<span id="cb52-8"><a href="#cb52-8"></a>    pred <span class="op">=</span> pd.DataFrame(pred, columns <span class="op">=</span> [<span class="st">'predicted'</span>])</span>
+<span id="cb52-9"><a href="#cb52-9"></a>    result <span class="op">=</span> pd.concat([x, pred, y], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb52-10"><a href="#cb52-10"></a></span>
+<span id="cb52-11"><a href="#cb52-11"></a>    <span class="co"># 중앙(평균) 값 뽑기</span></span>
+<span id="cb52-12"><a href="#cb52-12"></a>    centers <span class="op">=</span> pd.DataFrame(model.cluster_centers_, columns<span class="op">=</span>[<span class="st">'x1'</span>,<span class="st">'x2'</span>])</span>
+<span id="cb52-13"><a href="#cb52-13"></a></span>
+<span id="cb52-14"><a href="#cb52-14"></a>    <span class="co"># 그래프 그리기</span></span>
+<span id="cb52-15"><a href="#cb52-15"></a>    plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb52-16"><a href="#cb52-16"></a>    plt.scatter(result[<span class="st">'x1'</span>],result[<span class="st">'x2'</span>],c<span class="op">=</span>result[<span class="st">'predicted'</span>],alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb52-17"><a href="#cb52-17"></a>    plt.scatter(centers[<span class="st">'x1'</span>], centers[<span class="st">'x2'</span>], s<span class="op">=</span><span class="dv">50</span>,marker<span class="op">=</span><span class="st">'D'</span>,c<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb52-18"><a href="#cb52-18"></a>    plt.grid()</span>
+<span id="cb52-19"><a href="#cb52-19"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="적절한-k찾기" class="level3">
+<h3 class="anchored" data-anchor-id="적절한-k찾기">적절한 k찾기</h3>
+<p><code>-</code> Inertia value : 군집화가 된 후에, 각 중심점에서 군집의 데이터 간의 거리를 합산한 값</p>
+<div class="cell" data-execution_count="276">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># k의 갯수에 따라 각 점과의 거리를 계산하여 적정한 k를 찾아 봅시다.</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a>kvalues <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb53-3"><a href="#cb53-3"></a>inertias <span class="op">=</span> []</span>
+<span id="cb53-4"><a href="#cb53-4"></a></span>
+<span id="cb53-5"><a href="#cb53-5"></a><span class="cf">for</span> k <span class="kw">in</span> kvalues:</span>
+<span id="cb53-6"><a href="#cb53-6"></a>    model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, n_init <span class="op">=</span> <span class="st">'auto'</span>)</span>
+<span id="cb53-7"><a href="#cb53-7"></a>    model.fit(x)</span>
+<span id="cb53-8"><a href="#cb53-8"></a>    inertias.append(model.inertia_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="277">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># Plot k vs inertias</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb54-3"><a href="#cb54-3"></a>plt.plot(kvalues, inertias, <span class="st">'-o'</span>)</span>
+<span id="cb54-4"><a href="#cb54-4"></a>plt.xlabel(<span class="st">'number of clusters, k'</span>)</span>
+<span id="cb54-5"><a href="#cb54-5"></a>plt.ylabel(<span class="st">'inertia'</span>)</span>
+<span id="cb54-6"><a href="#cb54-6"></a>plt.grid()</span>
+<span id="cb54-7"><a href="#cb54-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><code>-</code> 난 4개의 군집이 좀 적절한 것 같음.</p>
+</section>
+<section id="kmeans의-한계" class="level3">
+<h3 class="anchored" data-anchor-id="kmeans의-한계">kmeans의 한계</h3>
+<div class="cell" data-execution_count="278">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>x, y <span class="op">=</span> make_moons(n_samples <span class="op">=</span> <span class="dv">300</span>, noise <span class="op">=</span> <span class="fl">.08</span>, random_state<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb55-2"><a href="#cb55-2"></a>x <span class="op">=</span> pd.DataFrame(x, columns <span class="op">=</span> [<span class="st">'x1'</span>, <span class="st">'x2'</span>])</span>
+<span id="cb55-3"><a href="#cb55-3"></a>y <span class="op">=</span> pd.Series(y, name <span class="op">=</span> <span class="st">'shape'</span>)</span>
+<span id="cb55-4"><a href="#cb55-4"></a></span>
+<span id="cb55-5"><a href="#cb55-5"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb55-6"><a href="#cb55-6"></a>plt.scatter(x[<span class="st">'x1'</span>], x[<span class="st">'x2'</span>])</span>
+<span id="cb55-7"><a href="#cb55-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-46-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="279">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># k의 갯수에 따라 각 점과의 거리를 계산하여 적정한 k를 찾아 봅시다.</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a>kvalues <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">15</span>)</span>
+<span id="cb56-3"><a href="#cb56-3"></a>inertias <span class="op">=</span> []</span>
+<span id="cb56-4"><a href="#cb56-4"></a></span>
+<span id="cb56-5"><a href="#cb56-5"></a><span class="cf">for</span> k <span class="kw">in</span> kvalues:</span>
+<span id="cb56-6"><a href="#cb56-6"></a>    model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, n_init <span class="op">=</span> <span class="st">'auto'</span>)</span>
+<span id="cb56-7"><a href="#cb56-7"></a>    model.fit(x)</span>
+<span id="cb56-8"><a href="#cb56-8"></a>    inertias.append(model.inertia_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="280">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Plot k vs inertias</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb57-3"><a href="#cb57-3"></a>plt.plot(kvalues, inertias, <span class="st">'-o'</span>)</span>
+<span id="cb57-4"><a href="#cb57-4"></a>plt.xlabel(<span class="st">'number of clusters, k'</span>)</span>
+<span id="cb57-5"><a href="#cb57-5"></a>plt.ylabel(<span class="st">'inertia'</span>)</span>
+<span id="cb57-6"><a href="#cb57-6"></a>plt.grid()</span>
+<span id="cb57-7"><a href="#cb57-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-48-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="281">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># 적절한 k값으로 모델을 생성해 봅시다.</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb58-3"><a href="#cb58-3"></a>k_means_plot(x, y, k <span class="op">=</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 1200x400 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-49-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li><p>우리가 기대하는 모델이 생성되지는 앟는다.</p></li>
+<li><p>Kmeans는 <strong>블록한(convex)</strong> 덩어리 cluster 구분에서는 괜찮지만, 뭐야 근데 위에 잘 분류된거 아녀? 여튼 저런식에서는 잘 분류가 안된다는 것을 말하고 싶었음</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="dbscan" class="level2">
+<h2 class="anchored" data-anchor-id="dbscan">2. DBSCAN</h2>
+<p><code>-</code> DBSCAN모델은 위 kmeans의 한계점을 보완한 모델이다.</p>
+<ol type="1">
+<li><p>임의의 한 점에서 시작</p></li>
+<li><p><code>반경</code> 범위내에 최소 포인트 수가 존재하는지 확인</p></li>
+<li><p>존재한다면 각 포인트들을 중심으로 다시 원을 그어 <code>최소 포인트 수</code>를 확인</p></li>
+<li><p><code>2~3</code>을 반복 수행</p></li>
+<li><p>존재하지 않으면, 군집에 포함되지 않은 점으로 이동하여 <code>1~4</code> 반복 수행</p></li>
+<li><p>어느 군집에도 포함되지 않은점을 이상치로 간주</p></li>
+</ol>
+<ul>
+<li>DBSCAN의 주 매개변수
+<ul>
+<li>min_samples : 핵심 포인트를 중심점으로 간주하는 주변 지역의 표본 수</li>
+<li>eps : 핵심 포인트를 중심으로 측정되는 유클리디언 거리값</li>
+</ul></li>
+</ul>
+<div class="cell" data-execution_count="282">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>x, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">300</span>, centers<span class="op">=</span><span class="dv">5</span>, cluster_std<span class="op">=</span><span class="fl">1.8</span>, random_state<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb60-2"><a href="#cb60-2"></a>x <span class="op">=</span> pd.DataFrame(x, columns <span class="op">=</span> [<span class="st">'x1'</span>, <span class="st">'x2'</span>])</span>
+<span id="cb60-3"><a href="#cb60-3"></a>y <span class="op">=</span> pd.Series(y, name <span class="op">=</span> <span class="st">'shape'</span>)</span>
+<span id="cb60-4"><a href="#cb60-4"></a></span>
+<span id="cb60-5"><a href="#cb60-5"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb60-6"><a href="#cb60-6"></a>plt.scatter(x[<span class="st">'x1'</span>], x[<span class="st">'x2'</span>])</span>
+<span id="cb60-7"><a href="#cb60-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="283">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># DBSCAN 모델을 만들어 봅시다.</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a>model <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="fl">0.1</span>, min_samples<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb61-3"><a href="#cb61-3"></a>model.fit(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="283">
+<style>#sk-container-id-7 {color: black;background-color: white;}#sk-container-id-7 pre{padding: 0;}#sk-container-id-7 div.sk-toggleable {background-color: white;}#sk-container-id-7 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-7 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-7 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-7 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-7 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-7 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-7 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-7 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-7 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-7 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-7 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-7 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-7 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-7 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-7 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-7 div.sk-item {position: relative;z-index: 1;}#sk-container-id-7 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-7 div.sk-item::before, #sk-container-id-7 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-7 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-7 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-7 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-7 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-7 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-7 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-7 div.sk-label-container {text-align: center;}#sk-container-id-7 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-7 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-7" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DBSCAN(eps=0.1, min_samples=3)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" checked=""><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">DBSCAN</label><div class="sk-toggleable__content"><pre>DBSCAN(eps=0.1, min_samples=3)</pre></div></div></div></div></div>
+</div>
+</div>
+<div class="cell" data-execution_count="284">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># fitting한 후에 모델의 labels_ 값이 찾아낸 군집 종류입니다.</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>clusters <span class="op">=</span> model.labels_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="285">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># 군집 번호 중 -1은 이상치를 의미합니다.(어느 군집에도 포함 안되는 값들!)</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>clusters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="285">
+<pre><code>array([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+       -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1], dtype=int64)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="286">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb65-2"><a href="#cb65-2"></a>plt.scatter(x[<span class="st">'x1'</span>], x[<span class="st">'x2'</span>], c<span class="op">=</span>clusters, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb65-3"><a href="#cb65-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-54-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><code>-</code> eps를 적용하며 모델을 생성하고 그래프 그리기</p>
+<div class="cell" data-execution_count="287">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a><span class="kw">def</span> dbscan_plot(x, y, eps) :</span>
+<span id="cb66-2"><a href="#cb66-2"></a>    model <span class="op">=</span> DBSCAN(eps<span class="op">=</span>eps, min_samples<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb66-3"><a href="#cb66-3"></a>    model.fit(x)</span>
+<span id="cb66-4"><a href="#cb66-4"></a>    clusters <span class="op">=</span> model.labels_</span>
+<span id="cb66-5"><a href="#cb66-5"></a>    plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb66-6"><a href="#cb66-6"></a>    plt.scatter(x[<span class="st">'x1'</span>], x[<span class="st">'x2'</span>], c<span class="op">=</span>clusters, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb66-7"><a href="#cb66-7"></a>    plt.grid()</span>
+<span id="cb66-8"><a href="#cb66-8"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="288">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>dbscan_plot(x,y,<span class="fl">1.</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-56-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="적절한-eps-찾기" class="level3">
+<h3 class="anchored" data-anchor-id="적절한-eps-찾기">적절한 eps 찾기</h3>
+<ul>
+<li>역시 눈으로 보면서 찾는 것은 실전에서는 거의 불가능</li>
+<li>DBSCAN에도 적절한 값을 찾는 방법
+<ol type="1">
+<li>모든 점과 가까운 n개와 평균 거리 계산</li>
+<li>평균 거리순으로 정렬해서, 그래프 그리기</li>
+<li>평균 거리가 급격히 커지기 시작하는 지점 찾기(elbow point)</li>
+</ol></li>
+<li>DBSCAN의 주 매개변수</li>
+<li>min_samples : 핵심 포인트를 중심점으로 간주하는 주변 지역의 표본 수</li>
+<li>eps : 핵심 포인트를 중심으로 측정되는 유클리디언 거리값</li>
+</ul>
+<div class="cell" data-execution_count="289">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a><span class="co"># 각점과 근처 3개 점과의 평균 거리</span></span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="co"># NearestNeighbors은 거리계산할 때, 자기 자신을 포함하므로 n+1</span></span>
+<span id="cb68-3"><a href="#cb68-3"></a>n <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb68-4"><a href="#cb68-4"></a>knnDist <span class="op">=</span> NearestNeighbors(n_neighbors <span class="op">=</span> n<span class="op">+</span><span class="dv">1</span>).fit(x)</span>
+<span id="cb68-5"><a href="#cb68-5"></a>distances, _ <span class="op">=</span> knnDist.kneighbors(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 열의 수가 4이다. <span class="math inline">\(\to\)</span> 0은 자기 자신을 의미하고 나머지 3개의 열은 가장 가까운 3개의 점과의 거리를 의미한다.</p>
+<div class="cell" data-execution_count="290">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>distances.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="290">
+<pre><code>(300, 4)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="291">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>distances[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="291">
+<pre><code>array([[0.        , 0.49231025, 0.55853535, 0.63526856],
+       [0.        , 0.47383177, 1.47765296, 1.67802678],
+       [0.        , 0.40879685, 0.43381656, 0.6280564 ],
+       [0.        , 0.63087629, 0.72695518, 0.73171997],
+       [0.        , 0.35638603, 0.3886451 , 0.53734417]])</code></pre>
+</div>
+</div>
+<p><code>-</code> 평균 거리 계산</p>
+<div class="cell" data-execution_count="292">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>dist <span class="op">=</span> np.mean(distances[:,<span class="dv">1</span>:],axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb73-2"><a href="#cb73-2"></a>dist <span class="op">=</span> np.sqrt(dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 급격ㅎ; 갈;기 증가하기 시작하는 구간을 찾아 eps값 적용</p>
+<div class="cell" data-execution_count="293">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>plt.plot(np.sort(dist))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-61-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><code>-</code> 여기서 보니 1.0때가 거리가 급격히 증가하는 것 같다.</p>
+<div class="cell" data-execution_count="294">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>dbscan_plot(x, y, eps <span class="op">=</span> <span class="fl">1.0</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-62-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="실습-1" class="level2">
+<h2 class="anchored" data-anchor-id="실습-1">3. 실습</h2>
+<section id="데이터-로드" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-로드">(1) 데이터 로드</h3>
+<div class="cell" data-execution_count="295">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>path <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/customer_segmentation.csv'</span></span>
+<span id="cb76-2"><a href="#cb76-2"></a>data <span class="op">=</span> pd.read_csv(path)</span>
+<span id="cb76-3"><a href="#cb76-3"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="295">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CustID</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Income</th>
+<th data-quarto-table-cell-role="th">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>Male</td>
+<td>19</td>
+<td>15</td>
+<td>39</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>Male</td>
+<td>21</td>
+<td>15</td>
+<td>81</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>Female</td>
+<td>20</td>
+<td>16</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>Female</td>
+<td>23</td>
+<td>16</td>
+<td>77</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>Female</td>
+<td>31</td>
+<td>17</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="데이터-전처리" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-전처리">(2) 데이터 전처리</h3>
+<div class="cell" data-execution_count="296">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a><span class="co"># 군집화는 아래 변수들만 사용합니다.</span></span>
+<span id="cb77-2"><a href="#cb77-2"></a>x <span class="op">=</span> data.loc[:, [<span class="st">'Age'</span>, <span class="st">'Income'</span>, <span class="st">'Score'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="297">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>x.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="297">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Income</th>
+<th data-quarto-table-cell-role="th">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>19</td>
+<td>15</td>
+<td>39</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>21</td>
+<td>15</td>
+<td>81</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>20</td>
+<td>16</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>23</td>
+<td>16</td>
+<td>77</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>31</td>
+<td>17</td>
+<td>40</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="스케일링-1" class="level3">
+<h3 class="anchored" data-anchor-id="스케일링-1">(3) 스케일링</h3>
+<div class="cell" data-execution_count="298">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
+<span id="cb79-2"><a href="#cb79-2"></a>x_s <span class="op">=</span> scaler.fit_transform(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="클러스터링" class="level3">
+<h3 class="anchored" data-anchor-id="클러스터링">(4) 클러스터링</h3>
+<div class="cell" data-execution_count="299">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a><span class="co"># k의 갯수에 따라 각 점과의 거리를 계산하여 적정한 k를 찾아 봅시다.</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a>kvalues <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb80-3"><a href="#cb80-3"></a>inertias <span class="op">=</span> []</span>
+<span id="cb80-4"><a href="#cb80-4"></a></span>
+<span id="cb80-5"><a href="#cb80-5"></a><span class="cf">for</span> k <span class="kw">in</span> kvalues:</span>
+<span id="cb80-6"><a href="#cb80-6"></a>    model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, n_init <span class="op">=</span> <span class="st">'auto'</span>)</span>
+<span id="cb80-7"><a href="#cb80-7"></a>    model.fit(x)</span>
+<span id="cb80-8"><a href="#cb80-8"></a>    inertias.append(model.inertia_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 적절한 군집의 개수는 5개로 추정된다.</p>
+<div class="cell" data-execution_count="300">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>plt.plot(kvalues, inertias)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-18-06. 머신러닝 (5)_files/figure-html/cell-68-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="301">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a><span class="co"># k means 학습</span></span>
+<span id="cb82-2"><a href="#cb82-2"></a>model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span> <span class="dv">5</span>, n_init <span class="op">=</span> <span class="st">'auto'</span>)</span>
+<span id="cb82-3"><a href="#cb82-3"></a>model.fit(x)</span>
+<span id="cb82-4"><a href="#cb82-4"></a></span>
+<span id="cb82-5"><a href="#cb82-5"></a><span class="co"># 예측</span></span>
+<span id="cb82-6"><a href="#cb82-6"></a>pred <span class="op">=</span> model.predict(x)</span>
+<span id="cb82-7"><a href="#cb82-7"></a><span class="bu">print</span>(pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1 4 1
+ 4 1 4 1 4 1 4 1 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 4 3 3 4 3 3 3 3 3
+ 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+ 3 3 3 3 3 3 3 3 3 3 3 3 0 2 0 3 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 3 0 2 0 2 0
+ 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2
+ 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0]</code></pre>
+</div>
+</div>
+</section>
+<section id="데이터-군집-결과-정리" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-군집-결과-정리">(5) 데이터 군집 결과 정리</h3>
+<div class="cell" data-execution_count="302">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a>data[<span class="st">"pred"</span>] <span class="op">=</span> pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="303">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="303">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">CustID</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Income</th>
+<th data-quarto-table-cell-role="th">Score</th>
+<th data-quarto-table-cell-role="th">pred</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>Male</td>
+<td>19</td>
+<td>15</td>
+<td>39</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>Male</td>
+<td>21</td>
+<td>15</td>
+<td>81</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>Female</td>
+<td>20</td>
+<td>16</td>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>Female</td>
+<td>23</td>
+<td>16</td>
+<td>77</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>Female</td>
+<td>31</td>
+<td>17</td>
+<td>40</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="군집별-변수-비교" class="level3">
+<h3 class="anchored" data-anchor-id="군집별-변수-비교">(6) 군집별 변수 비교</h3>
+<div class="cell" data-execution_count="310">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb86-2"><a href="#cb86-2"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb86-3"><a href="#cb86-3"></a>pio.renderers.default <span class="op">=</span> <span class="st">"plotly_mimetype+notebook_connected"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>1</code> Age</p>
+<div class="cell" data-execution_count="311">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>fig <span class="op">=</span> data.plot(x<span class="op">=</span><span class="st">"Age"</span>, kind <span class="op">=</span><span class="st">"hist"</span>,</span>
+<span id="cb87-2"><a href="#cb87-2"></a>                 backend <span class="op">=</span> <span class="st">"plotly"</span>,color<span class="op">=</span><span class="st">"pred"</span>,nbins<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb87-3"><a href="#cb87-3"></a>                facet_col <span class="op">=</span> <span class="st">"pred"</span>,</span>
+<span id="cb87-4"><a href="#cb87-4"></a>                facet_col_wrap <span class="op">=</span> <span class="dv">3</span>,title <span class="op">=</span> <span class="st">"Age"</span>)</span>
+<span id="cb87-5"><a href="#cb87-5"></a></span>
+<span id="cb87-6"><a href="#cb87-6"></a>fig.update_layout(</span>
+<span id="cb87-7"><a href="#cb87-7"></a>    title<span class="op">=</span>{</span>
+<span id="cb87-8"><a href="#cb87-8"></a>        <span class="st">'text'</span>: <span class="st">"distribution of Age"</span>,</span>
+<span id="cb87-9"><a href="#cb87-9"></a>        <span class="st">'y'</span>:<span class="fl">0.9</span>,</span>
+<span id="cb87-10"><a href="#cb87-10"></a>        <span class="st">'x'</span>:<span class="fl">0.5</span>,</span>
+<span id="cb87-11"><a href="#cb87-11"></a>        <span class="st">'xanchor'</span>: <span class="st">'center'</span>,</span>
+<span id="cb87-12"><a href="#cb87-12"></a>        <span class="st">'yanchor'</span>: <span class="st">'top'</span>})</span>
+<span id="cb87-13"><a href="#cb87-13"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="0a2689c1-4a06-480e-99ee-d0c3dca7f4fd" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("0a2689c1-4a06-480e-99ee-d0c3dca7f4fd")) {                    Plotly.newPlot(                        "0a2689c1-4a06-480e-99ee-d0c3dca7f4fd",                        [{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=1\u003cbr\u003eAge=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"1","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"1","nbinsx":50,"offsetgroup":"1","orientation":"v","showlegend":true,"x":[19,20,31,35,64,67,58,37,35,52,35,46,54,45,40,60,53,49,42,36,65,48,49],"xaxis":"x4","yaxis":"y4","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=4\u003cbr\u003eAge=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"4","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"4","nbinsx":50,"offsetgroup":"4","orientation":"v","showlegend":true,"x":[21,23,22,23,30,35,24,22,20,35,25,31,29,35,23,21,18,21,30,20,24,31,24,18,19],"xaxis":"x5","yaxis":"y5","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=3\u003cbr\u003eAge=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"3","marker":{"color":"#00cc96","pattern":{"shape":""}},"name":"3","nbinsx":50,"offsetgroup":"3","orientation":"v","showlegend":true,"x":[50,27,29,31,49,33,31,59,50,47,51,69,27,53,70,19,67,54,63,43,68,32,70,47,60,60,59,26,45,40,23,49,57,38,67,46,21,48,55,22,34,50,68,18,48,40,32,24,47,27,48,20,23,49,67,26,49,21,66,54,68,66,65,19,38,19,18,19,63,49,51,50,27,38,40,43,28],"xaxis":"x6","yaxis":"y6","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=0\u003cbr\u003eAge=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"0","marker":{"color":"#ab63fa","pattern":{"shape":""}},"name":"0","nbinsx":50,"offsetgroup":"0","orientation":"v","showlegend":true,"x":[39,31,40,38,39,31,29,32,35,32,32,28,32,34,39,38,27,30,30,29,31,36,33,32,28,36,30,27,35,32,29,30,28,36,32,38,35,32,30],"xaxis":"x","yaxis":"y","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=2\u003cbr\u003eAge=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"2","marker":{"color":"#FFA15A","pattern":{"shape":""}},"name":"2","nbinsx":50,"offsetgroup":"2","orientation":"v","showlegend":true,"x":[23,59,47,25,20,44,19,57,25,48,34,43,44,47,37,34,56,19,50,42,36,40,36,52,58,59,37,46,41,54,41,34,33,47,45,32],"xaxis":"x2","yaxis":"y2","type":"histogram"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,0.31999999999999995],"title":{"text":"Age"}},"yaxis":{"anchor":"x","domain":[0.0,0.46499999999999997],"title":{"text":"count"}},"xaxis2":{"anchor":"y2","domain":[0.33999999999999997,0.6599999999999999],"matches":"x","title":{"text":"Age"}},"yaxis2":{"anchor":"x2","domain":[0.0,0.46499999999999997],"matches":"y","showticklabels":false},"xaxis3":{"anchor":"y3","domain":[0.6799999999999999,0.9999999999999999],"matches":"x","title":{"text":"Age"}},"yaxis3":{"anchor":"x3","domain":[0.0,0.46499999999999997],"matches":"y","showticklabels":false},"xaxis4":{"anchor":"y4","domain":[0.0,0.31999999999999995],"matches":"x","showticklabels":false},"yaxis4":{"anchor":"x4","domain":[0.5349999999999999,0.9999999999999999],"matches":"y","title":{"text":"count"}},"xaxis5":{"anchor":"y5","domain":[0.33999999999999997,0.6599999999999999],"matches":"x","showticklabels":false},"yaxis5":{"anchor":"x5","domain":[0.5349999999999999,0.9999999999999999],"matches":"y","showticklabels":false},"xaxis6":{"anchor":"y6","domain":[0.6799999999999999,0.9999999999999999],"matches":"x","showticklabels":false},"yaxis6":{"anchor":"x6","domain":[0.5349999999999999,0.9999999999999999],"matches":"y","showticklabels":false},"annotations":[{"font":{},"showarrow":false,"text":"pred=0","x":0.15999999999999998,"xanchor":"center","xref":"paper","y":0.46499999999999997,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=2","x":0.49999999999999994,"xanchor":"center","xref":"paper","y":0.46499999999999997,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=1","x":0.15999999999999998,"xanchor":"center","xref":"paper","y":0.9999999999999999,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=4","x":0.49999999999999994,"xanchor":"center","xref":"paper","y":0.9999999999999999,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=3","x":0.8399999999999999,"xanchor":"center","xref":"paper","y":0.9999999999999999,"yanchor":"bottom","yref":"paper"}],"legend":{"title":{"text":"pred"},"tracegroupgap":0},"title":{"text":"distribution of Age","y":0.9,"x":0.5,"xanchor":"center","yanchor":"top"},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('0a2689c1-4a06-480e-99ee-d0c3dca7f4fd');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<p><code>2</code> Income</p>
+<div class="cell" data-execution_count="312">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>fig <span class="op">=</span> data.plot(x<span class="op">=</span><span class="st">"Income"</span>, kind <span class="op">=</span><span class="st">"hist"</span>,</span>
+<span id="cb88-2"><a href="#cb88-2"></a>                 backend <span class="op">=</span> <span class="st">"plotly"</span>,color<span class="op">=</span><span class="st">"pred"</span>,nbins<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb88-3"><a href="#cb88-3"></a>                facet_col <span class="op">=</span> <span class="st">"pred"</span>,</span>
+<span id="cb88-4"><a href="#cb88-4"></a>                facet_col_wrap <span class="op">=</span> <span class="dv">3</span>,title <span class="op">=</span> <span class="st">"Age"</span>)</span>
+<span id="cb88-5"><a href="#cb88-5"></a></span>
+<span id="cb88-6"><a href="#cb88-6"></a>fig.update_layout(</span>
+<span id="cb88-7"><a href="#cb88-7"></a>    title<span class="op">=</span>{</span>
+<span id="cb88-8"><a href="#cb88-8"></a>        <span class="st">'text'</span>: <span class="st">"distribution of Income"</span>,</span>
+<span id="cb88-9"><a href="#cb88-9"></a>        <span class="st">'y'</span>:<span class="fl">0.9</span>,</span>
+<span id="cb88-10"><a href="#cb88-10"></a>        <span class="st">'x'</span>:<span class="fl">0.5</span>,</span>
+<span id="cb88-11"><a href="#cb88-11"></a>        <span class="st">'xanchor'</span>: <span class="st">'center'</span>,</span>
+<span id="cb88-12"><a href="#cb88-12"></a>        <span class="st">'yanchor'</span>: <span class="st">'top'</span>})</span>
+<span id="cb88-13"><a href="#cb88-13"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="d7f2e430-b91d-436e-bc80-753cac1b9e90" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("d7f2e430-b91d-436e-bc80-753cac1b9e90")) {                    Plotly.newPlot(                        "d7f2e430-b91d-436e-bc80-753cac1b9e90",                        [{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=1\u003cbr\u003eIncome=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"1","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"1","nbinsx":50,"offsetgroup":"1","orientation":"v","showlegend":true,"x":[15,16,17,18,19,19,20,20,21,23,24,25,28,28,29,30,33,33,34,37,38,39,39],"xaxis":"x4","yaxis":"y4","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=4\u003cbr\u003eIncome=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"4","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"4","nbinsx":50,"offsetgroup":"4","orientation":"v","showlegend":true,"x":[15,16,17,18,19,19,20,20,21,23,24,25,28,28,29,30,33,33,34,37,38,39,39,48,48],"xaxis":"x5","yaxis":"y5","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=3\u003cbr\u003eIncome=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"3","marker":{"color":"#00cc96","pattern":{"shape":""}},"name":"3","nbinsx":50,"offsetgroup":"3","orientation":"v","showlegend":true,"x":[40,40,40,40,42,42,43,43,43,43,44,44,46,46,46,46,47,47,48,48,48,48,49,49,50,50,54,54,54,54,54,54,54,54,54,54,54,54,57,57,58,58,59,59,60,60,60,60,60,60,61,61,62,62,62,62,62,62,63,63,63,63,63,63,64,64,65,65,65,65,67,67,67,67,69,71,76],"xaxis":"x6","yaxis":"y6","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=0\u003cbr\u003eIncome=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"0","marker":{"color":"#ab63fa","pattern":{"shape":""}},"name":"0","nbinsx":50,"offsetgroup":"0","orientation":"v","showlegend":true,"x":[69,70,71,71,71,72,73,73,74,75,76,77,77,78,78,78,78,78,78,79,81,85,86,87,87,87,88,88,93,97,98,99,101,103,103,113,120,126,137],"xaxis":"x","yaxis":"y","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=2\u003cbr\u003eIncome=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"2","marker":{"color":"#FFA15A","pattern":{"shape":""}},"name":"2","nbinsx":50,"offsetgroup":"2","orientation":"v","showlegend":true,"x":[70,71,71,72,73,73,74,75,77,77,78,78,78,78,78,78,79,81,85,86,87,87,87,88,88,93,97,98,99,101,103,103,113,120,126,137],"xaxis":"x2","yaxis":"y2","type":"histogram"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,0.31999999999999995],"title":{"text":"Income"}},"yaxis":{"anchor":"x","domain":[0.0,0.46499999999999997],"title":{"text":"count"}},"xaxis2":{"anchor":"y2","domain":[0.33999999999999997,0.6599999999999999],"matches":"x","title":{"text":"Income"}},"yaxis2":{"anchor":"x2","domain":[0.0,0.46499999999999997],"matches":"y","showticklabels":false},"xaxis3":{"anchor":"y3","domain":[0.6799999999999999,0.9999999999999999],"matches":"x","title":{"text":"Income"}},"yaxis3":{"anchor":"x3","domain":[0.0,0.46499999999999997],"matches":"y","showticklabels":false},"xaxis4":{"anchor":"y4","domain":[0.0,0.31999999999999995],"matches":"x","showticklabels":false},"yaxis4":{"anchor":"x4","domain":[0.5349999999999999,0.9999999999999999],"matches":"y","title":{"text":"count"}},"xaxis5":{"anchor":"y5","domain":[0.33999999999999997,0.6599999999999999],"matches":"x","showticklabels":false},"yaxis5":{"anchor":"x5","domain":[0.5349999999999999,0.9999999999999999],"matches":"y","showticklabels":false},"xaxis6":{"anchor":"y6","domain":[0.6799999999999999,0.9999999999999999],"matches":"x","showticklabels":false},"yaxis6":{"anchor":"x6","domain":[0.5349999999999999,0.9999999999999999],"matches":"y","showticklabels":false},"annotations":[{"font":{},"showarrow":false,"text":"pred=0","x":0.15999999999999998,"xanchor":"center","xref":"paper","y":0.46499999999999997,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=2","x":0.49999999999999994,"xanchor":"center","xref":"paper","y":0.46499999999999997,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=1","x":0.15999999999999998,"xanchor":"center","xref":"paper","y":0.9999999999999999,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=4","x":0.49999999999999994,"xanchor":"center","xref":"paper","y":0.9999999999999999,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=3","x":0.8399999999999999,"xanchor":"center","xref":"paper","y":0.9999999999999999,"yanchor":"bottom","yref":"paper"}],"legend":{"title":{"text":"pred"},"tracegroupgap":0},"title":{"text":"distribution of Income","y":0.9,"x":0.5,"xanchor":"center","yanchor":"top"},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('d7f2e430-b91d-436e-bc80-753cac1b9e90');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<div class="cell" data-execution_count="313">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a>fig <span class="op">=</span> data.plot(x<span class="op">=</span><span class="st">"Score"</span>, kind <span class="op">=</span><span class="st">"hist"</span>,</span>
+<span id="cb89-2"><a href="#cb89-2"></a>                 backend <span class="op">=</span> <span class="st">"plotly"</span>,color<span class="op">=</span><span class="st">"pred"</span>,nbins<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb89-3"><a href="#cb89-3"></a>                facet_col <span class="op">=</span> <span class="st">"pred"</span>,</span>
+<span id="cb89-4"><a href="#cb89-4"></a>                facet_col_wrap <span class="op">=</span> <span class="dv">3</span>,title <span class="op">=</span> <span class="st">"Age"</span>)</span>
+<span id="cb89-5"><a href="#cb89-5"></a></span>
+<span id="cb89-6"><a href="#cb89-6"></a>fig.update_layout(</span>
+<span id="cb89-7"><a href="#cb89-7"></a>    title<span class="op">=</span>{</span>
+<span id="cb89-8"><a href="#cb89-8"></a>        <span class="st">'text'</span>: <span class="st">"distribution of Score"</span>,</span>
+<span id="cb89-9"><a href="#cb89-9"></a>        <span class="st">'y'</span>:<span class="fl">0.9</span>,</span>
+<span id="cb89-10"><a href="#cb89-10"></a>        <span class="st">'x'</span>:<span class="fl">0.5</span>,</span>
+<span id="cb89-11"><a href="#cb89-11"></a>        <span class="st">'xanchor'</span>: <span class="st">'center'</span>,</span>
+<span id="cb89-12"><a href="#cb89-12"></a>        <span class="st">'yanchor'</span>: <span class="st">'top'</span>})</span>
+<span id="cb89-13"><a href="#cb89-13"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+
+<div>                            <div id="94b29e2c-d1a4-4be9-a131-3ebb64b310ce" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("94b29e2c-d1a4-4be9-a131-3ebb64b310ce")) {                    Plotly.newPlot(                        "94b29e2c-d1a4-4be9-a131-3ebb64b310ce",                        [{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=1\u003cbr\u003eScore=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"1","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"1","nbinsx":50,"offsetgroup":"1","orientation":"v","showlegend":true,"x":[39,6,40,6,3,14,15,13,35,29,35,5,14,32,31,4,4,14,17,26,35,36,28],"xaxis":"x4","yaxis":"y4","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=4\u003cbr\u003eScore=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"4","marker":{"color":"#EF553B","pattern":{"shape":""}},"name":"4","nbinsx":50,"offsetgroup":"4","orientation":"v","showlegend":true,"x":[81,77,76,94,72,99,77,79,66,98,73,73,82,61,87,73,92,81,73,75,92,61,65,59,59],"xaxis":"x5","yaxis":"y5","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=3\u003cbr\u003eScore=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"3","marker":{"color":"#00cc96","pattern":{"shape":""}},"name":"3","nbinsx":50,"offsetgroup":"3","orientation":"v","showlegend":true,"x":[55,47,42,42,52,60,54,60,45,41,50,46,51,46,56,55,52,59,51,50,48,47,55,42,49,56,47,54,53,48,52,42,51,55,41,44,57,46,58,55,60,46,55,41,49,40,42,52,47,50,42,49,41,48,59,55,56,42,50,46,43,48,52,54,42,46,48,50,43,59,43,57,56,40,58,35,40],"xaxis":"x6","yaxis":"y6","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=0\u003cbr\u003eScore=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"0","marker":{"color":"#ab63fa","pattern":{"shape":""}},"name":"0","nbinsx":50,"offsetgroup":"0","orientation":"v","showlegend":true,"x":[91,77,95,75,75,71,88,73,72,93,87,97,74,90,88,76,89,78,73,83,93,75,95,63,75,92,86,69,90,86,88,97,68,85,69,91,79,74,83],"xaxis":"x","yaxis":"y","type":"histogram"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"pred=2\u003cbr\u003eScore=%{x}\u003cbr\u003ecount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"2","marker":{"color":"#FFA15A","pattern":{"shape":""}},"name":"2","nbinsx":50,"offsetgroup":"2","orientation":"v","showlegend":true,"x":[29,11,9,34,5,7,10,5,12,36,22,17,20,16,1,1,35,5,26,20,27,13,10,13,15,14,32,15,39,24,17,23,8,16,28,18],"xaxis":"x2","yaxis":"y2","type":"histogram"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,0.31999999999999995],"title":{"text":"Score"}},"yaxis":{"anchor":"x","domain":[0.0,0.46499999999999997],"title":{"text":"count"}},"xaxis2":{"anchor":"y2","domain":[0.33999999999999997,0.6599999999999999],"matches":"x","title":{"text":"Score"}},"yaxis2":{"anchor":"x2","domain":[0.0,0.46499999999999997],"matches":"y","showticklabels":false},"xaxis3":{"anchor":"y3","domain":[0.6799999999999999,0.9999999999999999],"matches":"x","title":{"text":"Score"}},"yaxis3":{"anchor":"x3","domain":[0.0,0.46499999999999997],"matches":"y","showticklabels":false},"xaxis4":{"anchor":"y4","domain":[0.0,0.31999999999999995],"matches":"x","showticklabels":false},"yaxis4":{"anchor":"x4","domain":[0.5349999999999999,0.9999999999999999],"matches":"y","title":{"text":"count"}},"xaxis5":{"anchor":"y5","domain":[0.33999999999999997,0.6599999999999999],"matches":"x","showticklabels":false},"yaxis5":{"anchor":"x5","domain":[0.5349999999999999,0.9999999999999999],"matches":"y","showticklabels":false},"xaxis6":{"anchor":"y6","domain":[0.6799999999999999,0.9999999999999999],"matches":"x","showticklabels":false},"yaxis6":{"anchor":"x6","domain":[0.5349999999999999,0.9999999999999999],"matches":"y","showticklabels":false},"annotations":[{"font":{},"showarrow":false,"text":"pred=0","x":0.15999999999999998,"xanchor":"center","xref":"paper","y":0.46499999999999997,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=2","x":0.49999999999999994,"xanchor":"center","xref":"paper","y":0.46499999999999997,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=1","x":0.15999999999999998,"xanchor":"center","xref":"paper","y":0.9999999999999999,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=4","x":0.49999999999999994,"xanchor":"center","xref":"paper","y":0.9999999999999999,"yanchor":"bottom","yref":"paper"},{"font":{},"showarrow":false,"text":"pred=3","x":0.8399999999999999,"xanchor":"center","xref":"paper","y":0.9999999999999999,"yanchor":"bottom","yref":"paper"}],"legend":{"title":{"text":"pred"},"tracegroupgap":0},"title":{"text":"distribution of Score","y":0.9,"x":0.5,"xanchor":"center","yanchor":"top"},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('94b29e2c-d1a4-4be9-a131-3ebb64b310ce');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../posts/DX/04. 머신러닝/2023-09-15-05. 종합실습.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">05. 종합실습</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" class="pagination-link">
+        <span class="nav-page-text">00. MP (1)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

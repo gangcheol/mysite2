@@ -1,0 +1,2503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="GC">
+<meta name="dcterms.date" content="2023-10-06">
+
+<title>Gangcheol - 03. 딥러닝 (4)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" rel="next">
+<link href="../../../posts/DX/05. 딥러닝/2023-10-05-02. 딥러닝 (3).html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Gangcheol</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
+ <span class="menu-text">Lecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
+ <span class="menu-text">Tableau</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
+ <span class="menu-text">DX</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
+ <span class="menu-text">IA2023</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
+ <span class="menu-text">ISLP2023</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/05. 딥러닝/2023-10-03-00. 딥러닝 (1).html">05. 딥러닝</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/05. 딥러닝/2023-10-06-03. 딥러닝 (4).html">03. 딥러닝 (4)</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">03. 딥러닝 (4)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">딥러닝</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>GC </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 6, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>About Me</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">DX</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/2023-07-31-00.intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro &amp; setting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/2023-08-19-01. Plotly test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Plotly test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">00. 데이터 다루기</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Python Basic (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-10-01. Python Basic (2) .html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Python Basic (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-11-02. Python Basic (3) .html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Python Basic (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-14-03. Python Basic (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Python Basic (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. Python Basic (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. Python Basic (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Extra</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 00. 밈</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 01. 클래스</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 02. 클래스 탐구 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 03. 클래스 탐구 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 04. 클래스 탐구 (3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">01. 데이터 다듬기</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy &amp; pandas (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. numpy &amp; pandas (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy &amp; pandas (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. numpy &amp; pandas (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-21-02. numpy &amp; pandas (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. numpy &amp; pandas (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-22-03. numpy &amp; pandas (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. numpy &amp; pandas (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-23-04. numpy &amp; pandas (5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. numpy &amp; pandas (5)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">02. 데이터 분석</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. 데이터 분석 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 데이터 분석 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 데이터 분석 (3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">03. 데이터 수집</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. 데이터 수집 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/03. 데이터 수집/2023-09-05-01. 데이터 수집 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 데이터 수집 (2)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">04. 머신러닝</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-12-01. 머신러닝 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 머신러닝 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-13-02. 머신러닝 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 머신러닝 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-14-03. 머신러닝 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 머신러닝 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-15-04. 머신러닝 (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 머신러닝 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-15-05. 종합실습.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 종합실습</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-18-06. 머신러닝 (5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. 머신러닝 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-19-07. 머신러닝 (6).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. 머신러닝 (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-28-08. summary (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. summary (1)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+ <span class="menu-text">05. 딥러닝</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-03-00. 딥러닝 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. 딥러닝 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-04-01. 딥러닝 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 딥러닝 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-05-02. 딥러닝 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 딥러닝 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-06-03. 딥러닝 (4).html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">03. 딥러닝 (4)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">MP</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. MP (1)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
+  <li><a href="#cnn-맛보기" id="toc-cnn-맛보기" class="nav-link" data-scroll-target="#cnn-맛보기">CNN 맛보기</a>
+  <ul class="collapse">
+  <li><a href="#가벼운-실습" id="toc-가벼운-실습" class="nav-link" data-scroll-target="#가벼운-실습">가벼운 실습</a></li>
+  <li><a href="#모델링-1" id="toc-모델링-1" class="nav-link" data-scroll-target="#모델링-1">모델링 1</a></li>
+  <li><a href="#모델링-2" id="toc-모델링-2" class="nav-link" data-scroll-target="#모델링-2">모델링 2</a></li>
+  <li><a href="#틀린그림-찾아보기" id="toc-틀린그림-찾아보기" class="nav-link" data-scroll-target="#틀린그림-찾아보기">틀린그림 찾아보기</a></li>
+  <li><a href="#모델-저장하기" id="toc-모델-저장하기" class="nav-link" data-scroll-target="#모델-저장하기">모델 저장하기</a></li>
+  </ul></li>
+  <li><a href="#rnn-맛보기" id="toc-rnn-맛보기" class="nav-link" data-scroll-target="#rnn-맛보기">RNN 맛보기</a>
+  <ul class="collapse">
+  <li><a href="#데이터-이해-및-정리" id="toc-데이터-이해-및-정리" class="nav-link" data-scroll-target="#데이터-이해-및-정리">(1) 데이터 이해 및 정리</a></li>
+  <li><a href="#모델링" id="toc-모델링" class="nav-link" data-scroll-target="#모델링">(2) 모델링</a>
+  <ul class="collapse">
+  <li><a href="#모델-설계" id="toc-모델-설계" class="nav-link" data-scroll-target="#모델-설계">1) 모델 설계</a></li>
+  <li><a href="#모델-fit" id="toc-모델-fit" class="nav-link" data-scroll-target="#모델-fit">2) 모델 fit</a></li>
+  <li><a href="#train-val-loss-확인" id="toc-train-val-loss-확인" class="nav-link" data-scroll-target="#train-val-loss-확인">3) train, val loss 확인</a></li>
+  <li><a href="#예측-및-평가" id="toc-예측-및-평가" class="nav-link" data-scroll-target="#예측-및-평가">4) 예측 및 평가</a></li>
+  </ul></li>
+  <li><a href="#실습-1" id="toc-실습-1" class="nav-link" data-scroll-target="#실습-1">(3) 실습 1</a></li>
+  <li><a href="#실습-2" id="toc-실습-2" class="nav-link" data-scroll-target="#실습-2">(4) 실습 2</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="import" class="level1">
+<h1>import</h1>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:5039,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572020294,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> random <span class="im">as</span> rd</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> cv2, os</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="im">from</span> keras.models <span class="im">import</span> Sequential</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> keras.layers <span class="im">import</span> Dense, Flatten, Conv2D, MaxPooling2D</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="im">from</span> keras.backend <span class="im">import</span> clear_session</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="im">from</span> keras.optimizers <span class="im">import</span> Adam</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="im">from</span> keras.datasets <span class="im">import</span> mnist, fashion_mnist</span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="im">import</span> tensorflow.experimental.numpy <span class="im">as</span> tnp</span>
+<span id="cb1-19"><a href="#cb1-19"></a>tnp.experimental_enable_numpy_behavior()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572020294,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 학습곡선 함수</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">def</span> dl_history_plot(history):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    plt.plot(history[<span class="st">'loss'</span>], label<span class="op">=</span><span class="st">'train_err'</span>, marker <span class="op">=</span> <span class="st">','</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    plt.plot(history[<span class="st">'val_loss'</span>], label<span class="op">=</span><span class="st">'val_err'</span>, marker <span class="op">=</span> <span class="st">','</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a>    plt.ylabel(<span class="st">'Loss'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    plt.xlabel(<span class="st">'Epoch'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    plt.legend()</span>
+<span id="cb2-10"><a href="#cb2-10"></a>    plt.grid()</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572020294,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="9a268602-493a-46a3-d140-e88fcbea7e2a" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>tf.config.experimental.list_physical_devices(<span class="st">"GPU"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]</code></pre>
+</div>
+</div>
+</section>
+<section id="cnn-맛보기" class="level1">
+<h1>CNN 맛보기</h1>
+<section id="가벼운-실습" class="level2">
+<h2 class="anchored" data-anchor-id="가벼운-실습">가벼운 실습</h2>
+<p><code>-</code> 이미지의 각 <strong>영역에 대한 특징들을</strong> 추출하는 것임</p>
+<p><code>-</code> 아래 그림에서 4가지만 기억하자</p>
+<ol type="1">
+<li><p>input shape : [가로 x 세로 x 채널(<code>흑백이면 1, 컬러면 3</code>)]</p></li>
+<li><p>Convolution layer : 이미지의 지역적인 특성들을 추출</p></li>
+<li><p>Max pooling layer : 뽑는 특징을 요약 (최대값, 필터)</p></li>
+<li><p>Flatten : Dense layer에 연결하기 위해 펼침</p></li>
+</ol>
+<p><img src="https://github.com/DA4BAM/image/blob/main/cnn_mnist3.png?raw=true" class="img-fluid"></p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1074,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572021364,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="f60f5f8a-3e14-4c6f-9450-64b85ce897bd" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>(x_train, y_train), (x_val, y_val) <span class="op">=</span> mnist.load_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz
+11490434/11490434 [==============================] - 0s 0us/step</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572021364,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x_train <span class="op">=</span> x_train<span class="op">/</span><span class="dv">255</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>x_val <span class="op">=</span> x_val<span class="op">/</span><span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572021365,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="17f959fd-2ca1-467c-c722-4dfb0b81d84b" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>x_train.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>(60000, 28, 28)</code></pre>
+</div>
+</div>
+<center>
+<img src="https://github.com/DA4BAM/image/blob/main/cnn_mnist3.png?raw=true" width="500">
+</center>
+<p><code>-</code> 위 모델을 설계해보자</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2582,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572023944,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="4d100c23-6ca1-4fec-8b07-5c6665f25c1c" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>clear_session()</span>
+<span id="cb10-2"><a href="#cb10-2"></a>model3 <span class="op">=</span> Sequential([</span>
+<span id="cb10-3"><a href="#cb10-3"></a>                    Conv2D(<span class="dv">32</span>, kernel_size <span class="op">=</span> (<span class="dv">3</span>, <span class="dv">3</span>), input_shape <span class="op">=</span>(<span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">1</span>), padding<span class="op">=</span><span class="st">'same'</span>, activation <span class="op">=</span>  <span class="st">"relu"</span>), <span class="co">## 지역적인 특징 32개 도출</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>                     MaxPooling2D(pool_size <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">2</span>), strides<span class="op">=</span><span class="dv">2</span>), <span class="co">## 특징이 너무 많으니 좀 줄여</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>                     Conv2D (<span class="dv">64</span>, kernel_size <span class="op">=</span> (<span class="dv">3</span>, <span class="dv">3</span>), padding<span class="op">=</span><span class="st">'same'</span>, activation <span class="op">=</span> <span class="st">"relu"</span> ), <span class="co">## 다시, 특징 64개 추출</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>                     MaxPooling2D (pool_size <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">2</span>), strides<span class="op">=</span><span class="dv">2</span>), <span class="co">## 다시 반으로 줄임</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>                     Flatten (), <span class="co">## Dense에 전달하기 위해 펼침</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>                     Dense(<span class="dv">128</span>, activation <span class="op">=</span>  <span class="st">"relu"</span>), <span class="co">## 128개의 node를 가진 Dense</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>                     Dense(<span class="dv">10</span>, activation <span class="op">=</span> <span class="st">"softmax"</span>) <span class="co">## output =10, target class가 총 10개 이므로!</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>])</span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a>model3.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 28, 28, 32)        320       
+                                                                 
+ max_pooling2d (MaxPooling2  (None, 14, 14, 32)        0         
+ D)                                                              
+                                                                 
+ conv2d_1 (Conv2D)           (None, 14, 14, 64)        18496     
+                                                                 
+ max_pooling2d_1 (MaxPoolin  (None, 7, 7, 64)          0         
+ g2D)                                                            
+                                                                 
+ flatten (Flatten)           (None, 3136)              0         
+                                                                 
+ dense (Dense)               (None, 128)               401536    
+                                                                 
+ dense_1 (Dense)             (None, 10)                1290      
+                                                                 
+=================================================================
+Total params: 421642 (1.61 MB)
+Trainable params: 421642 (1.61 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________</code></pre>
+</div>
+</div>
+<p><code>-</code> 학습</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572023945,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>model3.<span class="bu">compile</span>(optimizer<span class="op">=</span>Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>), loss<span class="op">=</span><span class="st">'sparse_categorical_crossentropy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:80122,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572104064,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="84a4e30b-e055-4ffb-de06-3e00047ed3fc" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>history <span class="op">=</span> model3.fit(x_train, y_train, epochs <span class="op">=</span> <span class="dv">10</span>, validation_split<span class="op">=</span><span class="fl">0.2</span>).history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/10
+1500/1500 [==============================] - 25s 6ms/step - loss: 0.1369 - val_loss: 0.0552
+Epoch 2/10
+1500/1500 [==============================] - 6s 4ms/step - loss: 0.0448 - val_loss: 0.0453
+Epoch 3/10
+1500/1500 [==============================] - 6s 4ms/step - loss: 0.0305 - val_loss: 0.0381
+Epoch 4/10
+1500/1500 [==============================] - 6s 4ms/step - loss: 0.0216 - val_loss: 0.0352
+Epoch 5/10
+1500/1500 [==============================] - 5s 4ms/step - loss: 0.0169 - val_loss: 0.0358
+Epoch 6/10
+1500/1500 [==============================] - 7s 5ms/step - loss: 0.0123 - val_loss: 0.0419
+Epoch 7/10
+1500/1500 [==============================] - 6s 4ms/step - loss: 0.0105 - val_loss: 0.0417
+Epoch 8/10
+1500/1500 [==============================] - 6s 4ms/step - loss: 0.0088 - val_loss: 0.0401
+Epoch 9/10
+1500/1500 [==============================] - 5s 4ms/step - loss: 0.0061 - val_loss: 0.0587
+Epoch 10/10
+1500/1500 [==============================] - 6s 4ms/step - loss: 0.0066 - val_loss: 0.0465</code></pre>
+</div>
+</div>
+<p><code>-</code> train-loss 시각화</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:704,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572104756,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="5f24f01f-b999-4fb2-dd76-218a01d7bf60" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb15-2"><a href="#cb15-2"></a>plt.plot(history[<span class="st">"loss"</span>], <span class="st">"-.r"</span>, label <span class="op">=</span> <span class="st">"train_loss"</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>plt.plot(history[<span class="st">"val_loss"</span>], <span class="st">"-.b"</span>, label <span class="op">=</span> <span class="st">"val_loss"</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb15-4"><a href="#cb15-4"></a>plt.legend()</span>
+<span id="cb15-5"><a href="#cb15-5"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="모델링-1" class="level2">
+<h2 class="anchored" data-anchor-id="모델링-1">모델링 1</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Layer (type)</th>
+<th>Output Shape</th>
+<th>Param #</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>conv2d (Conv2D)</td>
+<td>(None, 28, 28, 16)</td>
+<td>160</td>
+</tr>
+<tr class="even">
+<td>max_pooling2d</td>
+<td>(None, 14, 14, 16)</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>flatten (Flatten)</td>
+<td>(None, 3136)</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><strong>dense (Dense)</strong></td>
+<td><strong>(None, 128)</strong></td>
+<td>401536</td>
+</tr>
+<tr class="odd">
+<td>dense_1 (Dense)</td>
+<td>(None, 10)</td>
+<td>1290</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:16,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572104756,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="70ceb0ef-8179-4e27-9fc5-cb5a725cb16e" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>clear_session()</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>model <span class="op">=</span> Sequential([Conv2D(<span class="dv">16</span>, kernel_size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), input_shape<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">1</span>), padding<span class="op">=</span><span class="st">'same'</span>, strides <span class="op">=</span> <span class="dv">1</span>, activation<span class="op">=</span><span class="st">"relu"</span>  ),</span>
+<span id="cb16-4"><a href="#cb16-4"></a>                    MaxPooling2D(pool_size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), strides<span class="op">=</span><span class="dv">2</span>),</span>
+<span id="cb16-5"><a href="#cb16-5"></a>                    Flatten(),</span>
+<span id="cb16-6"><a href="#cb16-6"></a>                    Dense( <span class="dv">128</span>, activation <span class="op">=</span> <span class="st">"relu"</span>),</span>
+<span id="cb16-7"><a href="#cb16-7"></a>                    Dense(<span class="dv">10</span>, activation <span class="op">=</span> <span class="st">"softmax"</span> )</span>
+<span id="cb16-8"><a href="#cb16-8"></a>])</span>
+<span id="cb16-9"><a href="#cb16-9"></a></span>
+<span id="cb16-10"><a href="#cb16-10"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 28, 28, 16)        160       
+                                                                 
+ max_pooling2d (MaxPooling2  (None, 14, 14, 16)        0         
+ D)                                                              
+                                                                 
+ flatten (Flatten)           (None, 3136)              0         
+                                                                 
+ dense (Dense)               (None, 128)               401536    
+                                                                 
+ dense_1 (Dense)             (None, 10)                1290      
+                                                                 
+=================================================================
+Total params: 402986 (1.54 MB)
+Trainable params: 402986 (1.54 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:82836,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572187584,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="54c8d885-77a5-4ca8-bb8a-1872b32f0f77" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span>Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>), loss<span class="op">=</span><span class="st">'sparse_categorical_crossentropy'</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>history <span class="op">=</span> model.fit(x_train, y_train, epochs <span class="op">=</span> <span class="dv">10</span>,</span>
+<span id="cb18-4"><a href="#cb18-4"></a>                    validation_split<span class="op">=</span><span class="fl">0.2</span>).history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/10
+1500/1500 [==============================] - 6s 3ms/step - loss: 0.2019 - val_loss: 0.0923
+Epoch 2/10
+1500/1500 [==============================] - 6s 4ms/step - loss: 0.0684 - val_loss: 0.0688
+Epoch 3/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0427 - val_loss: 0.0589
+Epoch 4/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0296 - val_loss: 0.0525
+Epoch 5/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0206 - val_loss: 0.0571
+Epoch 6/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0149 - val_loss: 0.0538
+Epoch 7/10
+1500/1500 [==============================] - 5s 4ms/step - loss: 0.0107 - val_loss: 0.0614
+Epoch 8/10
+1500/1500 [==============================] - 6s 4ms/step - loss: 0.0074 - val_loss: 0.0704
+Epoch 9/10
+1500/1500 [==============================] - 5s 4ms/step - loss: 0.0070 - val_loss: 0.0637
+Epoch 10/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0058 - val_loss: 0.0641</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:15,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572187584,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="695e4e86-e54d-43e6-8a10-adaef46804b0" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>dl_history_plot(history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:989,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572188570,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="6a02355f-a866-44ab-81b3-e6da0c4d97af" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>pred <span class="op">=</span> model.predict(x_val)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>pred_1 <span class="op">=</span> pred.argmax(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>313/313 [==============================] - 1s 2ms/step</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:8,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572188570,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="b8053ce5-5026-49d1-d359-f473a3470e7f" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="bu">print</span>(accuracy_score(y_val,pred_1))</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="bu">print</span>(<span class="st">'-'</span><span class="op">*</span><span class="dv">60</span>)</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="bu">print</span>(classification_report(y_val, pred_1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9866
+------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99       980
+           1       0.99      0.99      0.99      1135
+           2       0.98      0.98      0.98      1032
+           3       0.98      0.99      0.99      1010
+           4       0.98      0.99      0.99       982
+           5       0.99      0.98      0.99       892
+           6       0.99      0.99      0.99       958
+           7       0.99      0.98      0.98      1028
+           8       0.99      0.98      0.99       974
+           9       0.99      0.98      0.98      1009
+
+    accuracy                           0.99     10000
+   macro avg       0.99      0.99      0.99     10000
+weighted avg       0.99      0.99      0.99     10000
+</code></pre>
+</div>
+</div>
+</section>
+<section id="모델링-2" class="level2">
+<h2 class="anchored" data-anchor-id="모델링-2">모델링 2</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Layer (type)</th>
+<th>Output Shape</th>
+<th>Param #</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>conv2d (Conv2D)</td>
+<td>(None, 28, 28, <strong>32</strong>)</td>
+<td>320</td>
+</tr>
+<tr class="even">
+<td>max_pooling2d</td>
+<td>(None, 14, 14, 32)</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>flatten (Flatten)</td>
+<td>(None, 6272)</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>dense (Dense)</td>
+<td>(None, 128)</td>
+<td>802944</td>
+</tr>
+<tr class="odd">
+<td>dense_1 (Dense)</td>
+<td>(None, 10)</td>
+<td>1290</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572188570,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="5f547b9a-a970-489d-cb94-54c8334ce955" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>clear_session()</span>
+<span id="cb25-2"><a href="#cb25-2"></a>model <span class="op">=</span> Sequential([ Conv2D(<span class="dv">32</span>, kernel_size  <span class="op">=</span>(<span class="dv">3</span>, <span class="dv">3</span>), input_shape <span class="op">=</span> (<span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">1</span>), padding<span class="op">=</span><span class="st">'same'</span>, strides <span class="op">=</span> <span class="dv">1</span>, activation <span class="op">=</span> <span class="st">"relu"</span>  ),</span>
+<span id="cb25-3"><a href="#cb25-3"></a>                     MaxPooling2D(pool_size <span class="op">=</span>(<span class="dv">2</span>, <span class="dv">2</span>), strides<span class="op">=</span><span class="dv">2</span>),</span>
+<span id="cb25-4"><a href="#cb25-4"></a>                     Flatten (),</span>
+<span id="cb25-5"><a href="#cb25-5"></a>                     Dense(<span class="dv">128</span>, activation <span class="op">=</span> <span class="st">"relu"</span> ),</span>
+<span id="cb25-6"><a href="#cb25-6"></a>                     Dense(<span class="dv">10</span>, activation<span class="op">=</span> <span class="st">"softmax"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7"></a>])</span>
+<span id="cb25-8"><a href="#cb25-8"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 28, 28, 32)        320       
+                                                                 
+ max_pooling2d (MaxPooling2  (None, 14, 14, 32)        0         
+ D)                                                              
+                                                                 
+ flatten (Flatten)           (None, 6272)              0         
+                                                                 
+ dense (Dense)               (None, 128)               802944    
+                                                                 
+ dense_1 (Dense)             (None, 10)                1290      
+                                                                 
+=================================================================
+Total params: 804554 (3.07 MB)
+Trainable params: 804554 (3.07 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:51691,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572240258,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="0a5e55d2-02d6-4631-f433-db84623617fe" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span>Adam(learning_rate<span class="op">=</span><span class="fl">0.001</span>), loss<span class="op">=</span><span class="st">'sparse_categorical_crossentropy'</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a></span>
+<span id="cb27-3"><a href="#cb27-3"></a>history <span class="op">=</span> model.fit(x_train, y_train, epochs <span class="op">=</span> <span class="dv">10</span>,</span>
+<span id="cb27-4"><a href="#cb27-4"></a>                    validation_split<span class="op">=</span><span class="fl">0.2</span>).history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/10
+1500/1500 [==============================] - 6s 3ms/step - loss: 0.1732 - val_loss: 0.0848
+Epoch 2/10
+1500/1500 [==============================] - 5s 4ms/step - loss: 0.0571 - val_loss: 0.0609
+Epoch 3/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0370 - val_loss: 0.0557
+Epoch 4/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0234 - val_loss: 0.0528
+Epoch 5/10
+1500/1500 [==============================] - 5s 4ms/step - loss: 0.0167 - val_loss: 0.0600
+Epoch 6/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0119 - val_loss: 0.0634
+Epoch 7/10
+1500/1500 [==============================] - 5s 4ms/step - loss: 0.0089 - val_loss: 0.0663
+Epoch 8/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0063 - val_loss: 0.0588
+Epoch 9/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0059 - val_loss: 0.0903
+Epoch 10/10
+1500/1500 [==============================] - 5s 3ms/step - loss: 0.0047 - val_loss: 0.0744</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:752,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572240997,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="6cf6c84f-7b67-4069-df1f-c35fe29663d1" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>dl_history_plot(history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:599,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572241588,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="988cd4fe-62e0-45e2-97a4-169a7922c481" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>pred <span class="op">=</span> model.predict(x_val)</span>
+<span id="cb30-2"><a href="#cb30-2"></a>pred_1 <span class="op">=</span> pred.argmax(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>313/313 [==============================] - 1s 2ms/step</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:8,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572241588,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="1d3fc5c0-4f47-41d2-cd65-bc4f649a67db" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">print</span>(accuracy_score(y_val,pred_1))</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="bu">print</span>(<span class="st">'-'</span><span class="op">*</span><span class="dv">60</span>)</span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="bu">print</span>(confusion_matrix(y_val, pred_1))</span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="bu">print</span>(<span class="st">'-'</span><span class="op">*</span><span class="dv">60</span>)</span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="bu">print</span>(classification_report(y_val, pred_1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9844
+------------------------------------------------------------
+[[ 976    0    0    1    0    0    3    0    0    0]
+ [   0 1133    2    0    0    0    0    0    0    0]
+ [   2    7 1019    1    1    0    1    1    0    0]
+ [   1    0    3 1001    0    2    0    1    1    1]
+ [   0    3    0    0  976    0    2    0    0    1]
+ [   3    0    1   14    0  870    3    0    1    0]
+ [   5    4    1    1    4    2  939    0    2    0]
+ [   1   10   11    1    0    0    0 1000    5    0]
+ [   5    1    2    2    1    0    1    1  958    3]
+ [   4    4    0    3   17    1    0    5    3  972]]
+------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99       980
+           1       0.98      1.00      0.99      1135
+           2       0.98      0.99      0.98      1032
+           3       0.98      0.99      0.98      1010
+           4       0.98      0.99      0.99       982
+           5       0.99      0.98      0.98       892
+           6       0.99      0.98      0.98       958
+           7       0.99      0.97      0.98      1028
+           8       0.99      0.98      0.99       974
+           9       0.99      0.96      0.98      1009
+
+    accuracy                           0.98     10000
+   macro avg       0.98      0.98      0.98     10000
+weighted avg       0.98      0.98      0.98     10000
+</code></pre>
+</div>
+</div>
+</section>
+<section id="틀린그림-찾아보기" class="level2">
+<h2 class="anchored" data-anchor-id="틀린그림-찾아보기">틀린그림 찾아보기</h2>
+<center>
+<img src="https://github.com/DA4BAM/image/blob/main/cnn_mnist3.png?raw=true" width="500">
+</center>
+<p><code>-</code> 위와 같이 설계한 모델을 가지고 틀린그림을 찾아보자.</p>
+<p><code>-</code> 코드를 이해하기보단 그냥 사용하자..</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1009,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572242593,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="e8c7cc52-a18b-4e05-dba0-616708094f71" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>pred_1 <span class="op">=</span> model3.predict(x_val).argmax(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>313/313 [==============================] - 1s 2ms/step</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572242594,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="72b98b3d-509c-4acf-d611-4180dd5a0671" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>idx <span class="op">=</span> (y_val <span class="op">!=</span> pred_1)</span>
+<span id="cb36-2"><a href="#cb36-2"></a>x_val_wr <span class="op">=</span> x_val[idx]</span>
+<span id="cb36-3"><a href="#cb36-3"></a>y_val_wr <span class="op">=</span> y_val[idx]</span>
+<span id="cb36-4"><a href="#cb36-4"></a>pred_wr <span class="op">=</span> pred_1[idx]</span>
+<span id="cb36-5"><a href="#cb36-5"></a></span>
+<span id="cb36-6"><a href="#cb36-6"></a>x_val_wr <span class="op">=</span> x_val_wr.reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">28</span>,<span class="dv">28</span>)</span>
+<span id="cb36-7"><a href="#cb36-7"></a><span class="bu">print</span>(x_val_wr.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(94, 28, 28)</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1467,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572244058,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="50109a2b-e19e-4fe9-b149-600886e512fb" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>idx <span class="op">=</span> rd.sample(<span class="bu">range</span>(x_val_wr.shape[<span class="dv">0</span>]),<span class="dv">25</span>)</span>
+<span id="cb38-2"><a href="#cb38-2"></a>x_temp <span class="op">=</span> x_val_wr[idx]</span>
+<span id="cb38-3"><a href="#cb38-3"></a>y_temp <span class="op">=</span> y_val_wr[idx]</span>
+<span id="cb38-4"><a href="#cb38-4"></a>p_temp <span class="op">=</span> pred_wr[idx]</span>
+<span id="cb38-5"><a href="#cb38-5"></a></span>
+<span id="cb38-6"><a href="#cb38-6"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">4</span>))</span>
+<span id="cb38-7"><a href="#cb38-7"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">25</span>):</span>
+<span id="cb38-8"><a href="#cb38-8"></a>    plt.subplot(<span class="dv">5</span>,<span class="dv">5</span>,i<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb38-9"><a href="#cb38-9"></a>    plt.xticks([])</span>
+<span id="cb38-10"><a href="#cb38-10"></a>    plt.yticks([])</span>
+<span id="cb38-11"><a href="#cb38-11"></a>    plt.imshow(x_temp[i], cmap<span class="op">=</span>plt.cm.binary)</span>
+<span id="cb38-12"><a href="#cb38-12"></a>    plt.xlabel(<span class="ss">f'actual : </span><span class="sc">{</span>y_temp[i]<span class="sc">}</span><span class="ss">,  predict : </span><span class="sc">{</span>p_temp[i]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb38-13"><a href="#cb38-13"></a>plt.tight_layout()</span>
+<span id="cb38-14"><a href="#cb38-14"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="모델-저장하기" class="level2">
+<h2 class="anchored" data-anchor-id="모델-저장하기">모델 저장하기</h2>
+<p><code>-</code> model save</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:15,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572244061,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="070734ee-0cf6-4b7d-a7e7-6113b8268ddf" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>model3.save(<span class="st">'mnist_model.h5'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.10/dist-packages/keras/src/engine/training.py:3000: UserWarning: You are saving your model as an HDF5 file via `model.save()`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')`.
+  saving_api.save_model(</code></pre>
+</div>
+</div>
+<p><code>-</code> 저장된 경로 : /content/mnist_model.h5</p>
+<ul>
+<li>드라이브 마운트를 안해서… 드라이브에선 저장된 모델을 찾을 수 없다.. 다음부턴 드라이브 마운트를 꼭하자!</li>
+</ul>
+<p><code>-</code> 다시 불러와서 저장</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:14,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572244061,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="im">from</span> keras.models <span class="im">import</span> load_model</span>
+<span id="cb41-2"><a href="#cb41-2"></a>m3 <span class="op">=</span> load_model(<span class="st">'mnist_model.h5'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 예측</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:488,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572244536,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="df95ba41-251a-4664-c96b-7be16fb2f5f1" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>pred <span class="op">=</span> m3.predict(x_val)</span>
+<span id="cb42-2"><a href="#cb42-2"></a>pred_1 <span class="op">=</span> pred.argmax(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>313/313 [==============================] - 1s 2ms/step</code></pre>
+</div>
+</div>
+<p><code>-</code> 결과 report</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696572244536,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="18b2c7fe-e19e-4897-f7ac-7fe661577eb8" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="bu">print</span>(accuracy_score(y_val,pred_1))</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="bu">print</span>(<span class="st">'-'</span><span class="op">*</span><span class="dv">60</span>)</span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="bu">print</span>(classification_report(y_val, pred_1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.9906
+------------------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99       980
+           1       0.99      1.00      0.99      1135
+           2       1.00      0.99      0.99      1032
+           3       0.99      1.00      0.99      1010
+           4       0.99      0.99      0.99       982
+           5       0.98      0.99      0.99       892
+           6       1.00      0.98      0.99       958
+           7       0.98      0.99      0.99      1028
+           8       1.00      0.99      0.99       974
+           9       0.99      0.98      0.98      1009
+
+    accuracy                           0.99     10000
+   macro avg       0.99      0.99      0.99     10000
+weighted avg       0.99      0.99      0.99     10000
+</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="rnn-맛보기" class="level1">
+<h1>RNN 맛보기</h1>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:410,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696573329601,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="im">from</span> keras.layers <span class="im">import</span> Dense, SimpleRNN, LSTM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:351,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696573338357,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># 시계열 데이터 전처리 2차원 --&gt; 3차원으로 변환</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a><span class="kw">def</span> temporalize(x, y, timesteps):</span>
+<span id="cb47-3"><a href="#cb47-3"></a>    nfeature <span class="op">=</span> x.shape[<span class="dv">1</span>]</span>
+<span id="cb47-4"><a href="#cb47-4"></a>    output_x <span class="op">=</span> []</span>
+<span id="cb47-5"><a href="#cb47-5"></a>    output_y <span class="op">=</span> []</span>
+<span id="cb47-6"><a href="#cb47-6"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(x) <span class="op">-</span> timesteps <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb47-7"><a href="#cb47-7"></a>        t <span class="op">=</span> []</span>
+<span id="cb47-8"><a href="#cb47-8"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(timesteps):</span>
+<span id="cb47-9"><a href="#cb47-9"></a>            t.append(x[[(i <span class="op">+</span> j)], :])</span>
+<span id="cb47-10"><a href="#cb47-10"></a>        output_x.append(t)</span>
+<span id="cb47-11"><a href="#cb47-11"></a>        output_y.append(y[i <span class="op">+</span> timesteps <span class="op">-</span> <span class="dv">1</span>])</span>
+<span id="cb47-12"><a href="#cb47-12"></a>    <span class="cf">return</span> np.array(output_x).reshape(<span class="op">-</span><span class="dv">1</span>,timesteps, nfeature), np.array(output_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="데이터-이해-및-정리" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-이해-및-정리">(1) 데이터 이해 및 정리</h2>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:369,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696573378604,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="84e10008-b0eb-41a1-ec1d-586e14b5e290" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/temperature.csv'</span>)</span>
+<span id="cb48-2"><a href="#cb48-2"></a>data.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+
+  <div id="df-421fa2cb-9e94-4871-97a6-74317651b166" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">week</th>
+<th data-quarto-table-cell-role="th">AvgTemp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2010</td>
+<td>1</td>
+<td>-3.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2010</td>
+<td>2</td>
+<td>-7.500000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010</td>
+<td>3</td>
+<td>-7.900000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2010</td>
+<td>4</td>
+<td>-2.357143</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2010</td>
+<td>5</td>
+<td>-3.342857</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2010</td>
+<td>6</td>
+<td>-1.800000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2010</td>
+<td>7</td>
+<td>-0.314286</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2010</td>
+<td>8</td>
+<td>-2.142857</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2010</td>
+<td>9</td>
+<td>4.400000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>2010</td>
+<td>10</td>
+<td>7.057143</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-421fa2cb-9e94-4871-97a6-74317651b166')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-421fa2cb-9e94-4871-97a6-74317651b166 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-421fa2cb-9e94-4871-97a6-74317651b166');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-5c1cbcab-d028-4f06-8bcb-c8d1eb229dd3">
+  <button class="colab-df-quickchart" onclick="quickchart('df-5c1cbcab-d028-4f06-8bcb-c8d1eb229dd3')" title="Suggest charts." style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-5c1cbcab-d028-4f06-8bcb-c8d1eb229dd3 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<p><code>-</code> 온도의 흐름을 살펴보자!</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1018,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574224310,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="29e11d85-9cdb-449f-a988-104032d36f8e" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb49-2"><a href="#cb49-2"></a>plt.plot(data.AvgTemp)</span>
+<span id="cb49-3"><a href="#cb49-3"></a>plt.grid()</span>
+<span id="cb49-4"><a href="#cb49-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><code>-</code> y만들기</p>
+<ul>
+<li>우리가 하려는거 저번주 온도를 가지고 그 다음주 온도를 예측하는것!!! <span class="math inline">\(\to\)</span> shift 함수를 이용!</li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:313,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574299135,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d8657fbb-4300-4682-df3e-07a451cc76d9" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>data[<span class="st">'y'</span>] <span class="op">=</span> data[<span class="st">'AvgTemp'</span>].shift(<span class="op">-</span><span class="dv">1</span>) <span class="co">##</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>data.dropna(axis <span class="op">=</span> <span class="dv">0</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb50-3"><a href="#cb50-3"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+
+  <div id="df-8b914eb1-9297-4c26-9e7a-cfb867da627d" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">week</th>
+<th data-quarto-table-cell-role="th">AvgTemp</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2010</td>
+<td>1</td>
+<td>-3.000000</td>
+<td>-7.500000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2010</td>
+<td>2</td>
+<td>-7.500000</td>
+<td>-7.900000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2010</td>
+<td>3</td>
+<td>-7.900000</td>
+<td>-2.357143</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2010</td>
+<td>4</td>
+<td>-2.357143</td>
+<td>-3.342857</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2010</td>
+<td>5</td>
+<td>-3.342857</td>
+<td>-1.800000</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-8b914eb1-9297-4c26-9e7a-cfb867da627d')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-8b914eb1-9297-4c26-9e7a-cfb867da627d button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-8b914eb1-9297-4c26-9e7a-cfb867da627d');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-b6e8d192-e3ff-4c61-8376-e9e5c09a1d37">
+  <button class="colab-df-quickchart" onclick="quickchart('df-b6e8d192-e3ff-4c61-8376-e9e5c09a1d37')" title="Suggest charts." style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-b6e8d192-e3ff-4c61-8376-e9e5c09a1d37 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<p><code>-</code> x, y 분리</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574313972,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>x <span class="op">=</span> data.loc[:, [<span class="st">'AvgTemp'</span>]]</span>
+<span id="cb51-2"><a href="#cb51-2"></a>y <span class="op">=</span> data.loc[:,<span class="st">'y'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 스케일링</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574349555,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb52-2"><a href="#cb52-2"></a></span>
+<span id="cb52-3"><a href="#cb52-3"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
+<span id="cb52-4"><a href="#cb52-4"></a>x <span class="op">=</span> scaler.fit_transform(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 3차원 구조 만들기</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574363606,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="15619316-fe10-42c1-b4f4-e6115e729530" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>x2, y2 <span class="op">=</span> temporalize(x, y, <span class="dv">4</span>)</span>
+<span id="cb53-2"><a href="#cb53-2"></a>x2.shape, y2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>((260, 4, 1), (260,))</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:334,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574374285,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="84d975dc-f57a-400a-d856-b91a28f9e93b" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>x2[:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>array([[[0.15106693],
+        [0.0364937 ],
+        [0.02630941],
+        [0.16743453]],
+
+       [[0.0364937 ],
+        [0.02630941],
+        [0.16743453],
+        [0.14233754]]])</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574418815,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="94221386-0143-470c-9479-7e716afe71de" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>y[:<span class="dv">7</span>], y2[:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>(0   -7.500000
+ 1   -7.900000
+ 2   -2.357143
+ 3   -3.342857
+ 4   -1.800000
+ 5   -0.314286
+ 6   -2.142857
+ Name: y, dtype: float64,
+ array([-3.34285714, -1.8       , -0.31428571, -2.14285714]))</code></pre>
+</div>
+</div>
+<p><code>-</code> 데이터셋 분할</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:381,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574508028,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>x_train, x_val, y_train, y_val <span class="op">=</span> train_test_split(x2, y2, test_size<span class="op">=</span> <span class="dv">53</span>, shuffle <span class="op">=</span> <span class="va">False</span>) <span class="co">## test_size를 53개로 지정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574508330,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="bfc588a6-bd0f-4ab2-f003-d719b9d575d7" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>x_train.shape, y_train.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>((207, 4, 1), (207,))</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574508646,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="c62900d4-4831-470e-db69-68f32b609d52" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>x_val.shape, y_val.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>((53, 4, 1), (53,))</code></pre>
+</div>
+</div>
+</section>
+<section id="모델링" class="level2">
+<h2 class="anchored" data-anchor-id="모델링">(2) 모델링</h2>
+<section id="모델-설계" class="level3">
+<h3 class="anchored" data-anchor-id="모델-설계">1) 모델 설계</h3>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:320,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574549941,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>timestep <span class="op">=</span> x_train.shape[<span class="dv">1</span>]</span>
+<span id="cb64-2"><a href="#cb64-2"></a>nfeatures <span class="op">=</span> x_train.shape[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:320,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574567385,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="a31fc3d3-49ea-4373-973f-f8d3f6030f8b" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>clear_session()</span>
+<span id="cb65-2"><a href="#cb65-2"></a></span>
+<span id="cb65-3"><a href="#cb65-3"></a>model <span class="op">=</span> Sequential([SimpleRNN(<span class="dv">8</span>, input_shape <span class="op">=</span> (timestep, nfeatures)),</span>
+<span id="cb65-4"><a href="#cb65-4"></a>                    Dense(<span class="dv">1</span>)])</span>
+<span id="cb65-5"><a href="#cb65-5"></a></span>
+<span id="cb65-6"><a href="#cb65-6"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ simple_rnn (SimpleRNN)      (None, 8)                 80        
+                                                                 
+ dense (Dense)               (None, 1)                 9         
+                                                                 
+=================================================================
+Total params: 89 (356.00 Byte)
+Trainable params: 89 (356.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________</code></pre>
+</div>
+</div>
+</section>
+<section id="모델-fit" class="level3">
+<h3 class="anchored" data-anchor-id="모델-fit">2) 모델 fit</h3>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:9726,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574648163,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>model.<span class="bu">compile</span>(optimizer <span class="op">=</span> Adam(learning_rate <span class="op">=</span> <span class="fl">0.01</span>), loss <span class="op">=</span> <span class="st">'mse'</span> )</span>
+<span id="cb67-2"><a href="#cb67-2"></a>history <span class="op">=</span> model.fit(x_train, y_train, epochs <span class="op">=</span> <span class="dv">100</span>, validation_split <span class="op">=</span> <span class="fl">.2</span>, verbose<span class="op">=</span> <span class="dv">0</span>).history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="train-val-loss-확인" class="level3">
+<h3 class="anchored" data-anchor-id="train-val-loss-확인">3) train, val loss 확인</h3>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1083,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574658884,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="a9347254-0030-4e4d-d30a-8452a8823243" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a><span class="co"># 학습 곡선을 그려봅시다.</span></span>
+<span id="cb68-2"><a href="#cb68-2"></a>dl_history_plot(history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="예측-및-평가" class="level3">
+<h3 class="anchored" data-anchor-id="예측-및-평가">4) 예측 및 평가</h3>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:356,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574672914,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="1ad29209-1bab-4b02-d262-5d155166582c" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># 예측</span></span>
+<span id="cb69-2"><a href="#cb69-2"></a>pred <span class="op">=</span> model.predict(x_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2/2 [==============================] - 0s 5ms/step</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:470,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574675417,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="9ff2898b-c915-4954-dcf2-d4ebd9ceff84" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># 평가</span></span>
+<span id="cb71-2"><a href="#cb71-2"></a><span class="bu">print</span>(mean_absolute_error(y_val, pred))</span>
+<span id="cb71-3"><a href="#cb71-3"></a><span class="bu">print</span>(mean_absolute_percentage_error(y_val, pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.580778564868836
+0.5399836745573298</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696574692474,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ca41abbf-6da9-4c83-ae11-7965d59c189a" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb73-2"><a href="#cb73-2"></a>plt.plot(y_val, label <span class="op">=</span> <span class="st">'actual'</span>)</span>
+<span id="cb73-3"><a href="#cb73-3"></a>plt.plot(pred, label <span class="op">=</span> <span class="st">'predicted'</span>)</span>
+<span id="cb73-4"><a href="#cb73-4"></a>plt.legend()</span>
+<span id="cb73-5"><a href="#cb73-5"></a>plt.grid()</span>
+<span id="cb73-6"><a href="#cb73-6"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-48-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="실습-1" class="level2">
+<h2 class="anchored" data-anchor-id="실습-1">(3) 실습 1</h2>
+<p><code>-</code> RNN 레이어를 하나 더 추가…</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:389,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696575557422,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="a6aab670-b1f0-4d14-f414-e800d8f4627f" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>clear_session()</span>
+<span id="cb74-2"><a href="#cb74-2"></a></span>
+<span id="cb74-3"><a href="#cb74-3"></a>model <span class="op">=</span> Sequential([SimpleRNN(<span class="dv">8</span>, input_shape <span class="op">=</span> (timestep, nfeatures), return_sequences<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb74-4"><a href="#cb74-4"></a>                                      SimpleRNN(<span class="dv">4</span>),</span>
+<span id="cb74-5"><a href="#cb74-5"></a>                                          Dense(<span class="dv">1</span>)])</span>
+<span id="cb74-6"><a href="#cb74-6"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ simple_rnn (SimpleRNN)      (None, 4, 8)              80        
+                                                                 
+ simple_rnn_1 (SimpleRNN)    (None, 4)                 52        
+                                                                 
+ dense (Dense)               (None, 1)                 5         
+                                                                 
+=================================================================
+Total params: 137 (548.00 Byte)
+Trainable params: 137 (548.00 Byte)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:23457,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696575589006,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="5ed9fc6d-ee6a-4fe5-9f9f-8ebafbbbf0da" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>model.<span class="bu">compile</span>(optimizer <span class="op">=</span> Adam(lr <span class="op">=</span> <span class="fl">0.01</span>), loss <span class="op">=</span> <span class="st">'mse'</span> )</span>
+<span id="cb76-2"><a href="#cb76-2"></a>history <span class="op">=</span> model.fit(x_train, y_train, epochs <span class="op">=</span> <span class="dv">100</span>, validation_split <span class="op">=</span> <span class="fl">.2</span>).history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>WARNING:absl:`lr` is deprecated in Keras optimizer, please use `learning_rate` or use the legacy optimizer, e.g.,tf.keras.optimizers.legacy.Adam.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/100
+6/6 [==============================] - 4s 116ms/step - loss: 293.2144 - val_loss: 387.0168
+Epoch 2/100
+6/6 [==============================] - 0s 36ms/step - loss: 283.8497 - val_loss: 372.7898
+Epoch 3/100
+6/6 [==============================] - 0s 24ms/step - loss: 273.1573 - val_loss: 356.3178
+Epoch 4/100
+6/6 [==============================] - 0s 28ms/step - loss: 261.0764 - val_loss: 339.0669
+Epoch 5/100
+6/6 [==============================] - 0s 31ms/step - loss: 248.5183 - val_loss: 322.3875
+Epoch 6/100
+6/6 [==============================] - 0s 29ms/step - loss: 237.2658 - val_loss: 308.3640
+Epoch 7/100
+6/6 [==============================] - 0s 25ms/step - loss: 227.8352 - val_loss: 297.9115
+Epoch 8/100
+6/6 [==============================] - 0s 33ms/step - loss: 221.3156 - val_loss: 289.8501
+Epoch 9/100
+6/6 [==============================] - 0s 33ms/step - loss: 216.1329 - val_loss: 284.1252
+Epoch 10/100
+6/6 [==============================] - 0s 33ms/step - loss: 212.7198 - val_loss: 279.6017
+Epoch 11/100
+6/6 [==============================] - 0s 27ms/step - loss: 209.7165 - val_loss: 276.0281
+Epoch 12/100
+6/6 [==============================] - 0s 32ms/step - loss: 207.5396 - val_loss: 273.0580
+Epoch 13/100
+6/6 [==============================] - 0s 25ms/step - loss: 205.6913 - val_loss: 270.4893
+Epoch 14/100
+6/6 [==============================] - 0s 32ms/step - loss: 204.0771 - val_loss: 268.3944
+Epoch 15/100
+6/6 [==============================] - 0s 28ms/step - loss: 202.7937 - val_loss: 266.5363
+Epoch 16/100
+6/6 [==============================] - 0s 20ms/step - loss: 201.6105 - val_loss: 264.8059
+Epoch 17/100
+6/6 [==============================] - 0s 14ms/step - loss: 200.5000 - val_loss: 263.1637
+Epoch 18/100
+6/6 [==============================] - 0s 19ms/step - loss: 199.4231 - val_loss: 261.6020
+Epoch 19/100
+6/6 [==============================] - 0s 16ms/step - loss: 198.4034 - val_loss: 260.1485
+Epoch 20/100
+6/6 [==============================] - 0s 18ms/step - loss: 197.5113 - val_loss: 258.7556
+Epoch 21/100
+6/6 [==============================] - 0s 16ms/step - loss: 196.6525 - val_loss: 257.5038
+Epoch 22/100
+6/6 [==============================] - 0s 15ms/step - loss: 195.8433 - val_loss: 256.3315
+Epoch 23/100
+6/6 [==============================] - 0s 17ms/step - loss: 195.0920 - val_loss: 255.1981
+Epoch 24/100
+6/6 [==============================] - 0s 18ms/step - loss: 194.3712 - val_loss: 254.0450
+Epoch 25/100
+6/6 [==============================] - 0s 14ms/step - loss: 193.6489 - val_loss: 253.0111
+Epoch 26/100
+6/6 [==============================] - 0s 18ms/step - loss: 192.9810 - val_loss: 251.9454
+Epoch 27/100
+6/6 [==============================] - 0s 18ms/step - loss: 192.2778 - val_loss: 250.9067
+Epoch 28/100
+6/6 [==============================] - 0s 14ms/step - loss: 191.6269 - val_loss: 249.8762
+Epoch 29/100
+6/6 [==============================] - 0s 16ms/step - loss: 190.9538 - val_loss: 248.8816
+Epoch 30/100
+6/6 [==============================] - 0s 14ms/step - loss: 190.3148 - val_loss: 247.8869
+Epoch 31/100
+6/6 [==============================] - 0s 15ms/step - loss: 189.6668 - val_loss: 246.8659
+Epoch 32/100
+6/6 [==============================] - 0s 18ms/step - loss: 189.0218 - val_loss: 245.8512
+Epoch 33/100
+6/6 [==============================] - 0s 19ms/step - loss: 188.3576 - val_loss: 244.8610
+Epoch 34/100
+6/6 [==============================] - 0s 16ms/step - loss: 187.7428 - val_loss: 243.9608
+Epoch 35/100
+6/6 [==============================] - 0s 19ms/step - loss: 187.1909 - val_loss: 243.1584
+Epoch 36/100
+6/6 [==============================] - 0s 16ms/step - loss: 186.6783 - val_loss: 242.3853
+Epoch 37/100
+6/6 [==============================] - 0s 18ms/step - loss: 186.1597 - val_loss: 241.6176
+Epoch 38/100
+6/6 [==============================] - 0s 14ms/step - loss: 185.6394 - val_loss: 240.8237
+Epoch 39/100
+6/6 [==============================] - 0s 18ms/step - loss: 185.1329 - val_loss: 240.0594
+Epoch 40/100
+6/6 [==============================] - 0s 16ms/step - loss: 184.6021 - val_loss: 239.2886
+Epoch 41/100
+6/6 [==============================] - 0s 17ms/step - loss: 184.0619 - val_loss: 238.4772
+Epoch 42/100
+6/6 [==============================] - 0s 19ms/step - loss: 183.5141 - val_loss: 237.6295
+Epoch 43/100
+6/6 [==============================] - 0s 21ms/step - loss: 182.9427 - val_loss: 236.8006
+Epoch 44/100
+6/6 [==============================] - 0s 17ms/step - loss: 182.4017 - val_loss: 235.9711
+Epoch 45/100
+6/6 [==============================] - 0s 16ms/step - loss: 181.8439 - val_loss: 235.2101
+Epoch 46/100
+6/6 [==============================] - 0s 18ms/step - loss: 181.3132 - val_loss: 234.4904
+Epoch 47/100
+6/6 [==============================] - 0s 17ms/step - loss: 180.7986 - val_loss: 233.7523
+Epoch 48/100
+6/6 [==============================] - 0s 14ms/step - loss: 180.2276 - val_loss: 233.0964
+Epoch 49/100
+6/6 [==============================] - 0s 18ms/step - loss: 179.6889 - val_loss: 232.3902
+Epoch 50/100
+6/6 [==============================] - 0s 14ms/step - loss: 179.0958 - val_loss: 231.7125
+Epoch 51/100
+6/6 [==============================] - 0s 18ms/step - loss: 178.4332 - val_loss: 231.0642
+Epoch 52/100
+6/6 [==============================] - 0s 17ms/step - loss: 177.7105 - val_loss: 230.5040
+Epoch 53/100
+6/6 [==============================] - 0s 16ms/step - loss: 176.9390 - val_loss: 230.0341
+Epoch 54/100
+6/6 [==============================] - 0s 16ms/step - loss: 175.9770 - val_loss: 229.5280
+Epoch 55/100
+6/6 [==============================] - 0s 15ms/step - loss: 174.9057 - val_loss: 229.0144
+Epoch 56/100
+6/6 [==============================] - 0s 18ms/step - loss: 173.8212 - val_loss: 228.5216
+Epoch 57/100
+6/6 [==============================] - 0s 17ms/step - loss: 172.6341 - val_loss: 228.0173
+Epoch 58/100
+6/6 [==============================] - 0s 16ms/step - loss: 171.4734 - val_loss: 227.5555
+Epoch 59/100
+6/6 [==============================] - 0s 19ms/step - loss: 170.3074 - val_loss: 227.3842
+Epoch 60/100
+6/6 [==============================] - 0s 16ms/step - loss: 169.3547 - val_loss: 227.1719
+Epoch 61/100
+6/6 [==============================] - 0s 14ms/step - loss: 168.5049 - val_loss: 226.4924
+Epoch 62/100
+6/6 [==============================] - 0s 17ms/step - loss: 167.6840 - val_loss: 225.5365
+Epoch 63/100
+6/6 [==============================] - 0s 18ms/step - loss: 166.8976 - val_loss: 224.3217
+Epoch 64/100
+6/6 [==============================] - 0s 19ms/step - loss: 166.0759 - val_loss: 223.1580
+Epoch 65/100
+6/6 [==============================] - 0s 16ms/step - loss: 165.2865 - val_loss: 222.1851
+Epoch 66/100
+6/6 [==============================] - 0s 17ms/step - loss: 164.5682 - val_loss: 221.3897
+Epoch 67/100
+6/6 [==============================] - 0s 16ms/step - loss: 163.8982 - val_loss: 220.6226
+Epoch 68/100
+6/6 [==============================] - 0s 28ms/step - loss: 163.2355 - val_loss: 219.7232
+Epoch 69/100
+6/6 [==============================] - 0s 27ms/step - loss: 162.5961 - val_loss: 218.9677
+Epoch 70/100
+6/6 [==============================] - 0s 27ms/step - loss: 162.0276 - val_loss: 218.0989
+Epoch 71/100
+6/6 [==============================] - 0s 31ms/step - loss: 161.4014 - val_loss: 217.4666
+Epoch 72/100
+6/6 [==============================] - 0s 28ms/step - loss: 160.8126 - val_loss: 216.8285
+Epoch 73/100
+6/6 [==============================] - 0s 30ms/step - loss: 160.1931 - val_loss: 215.9785
+Epoch 74/100
+6/6 [==============================] - 0s 39ms/step - loss: 159.5959 - val_loss: 215.1314
+Epoch 75/100
+6/6 [==============================] - 0s 51ms/step - loss: 159.0238 - val_loss: 214.7249
+Epoch 76/100
+6/6 [==============================] - 0s 49ms/step - loss: 158.4952 - val_loss: 214.3441
+Epoch 77/100
+6/6 [==============================] - 0s 37ms/step - loss: 158.0654 - val_loss: 213.8266
+Epoch 78/100
+6/6 [==============================] - 0s 40ms/step - loss: 157.4570 - val_loss: 212.9087
+Epoch 79/100
+6/6 [==============================] - 0s 45ms/step - loss: 156.9074 - val_loss: 212.0208
+Epoch 80/100
+6/6 [==============================] - 0s 29ms/step - loss: 156.4676 - val_loss: 211.0118
+Epoch 81/100
+6/6 [==============================] - 0s 29ms/step - loss: 155.8935 - val_loss: 210.2588
+Epoch 82/100
+6/6 [==============================] - 0s 25ms/step - loss: 155.3580 - val_loss: 209.6723
+Epoch 83/100
+6/6 [==============================] - 0s 30ms/step - loss: 154.8305 - val_loss: 209.1811
+Epoch 84/100
+6/6 [==============================] - 0s 26ms/step - loss: 154.3170 - val_loss: 208.6301
+Epoch 85/100
+6/6 [==============================] - 0s 21ms/step - loss: 153.8134 - val_loss: 207.9755
+Epoch 86/100
+6/6 [==============================] - 0s 23ms/step - loss: 153.3001 - val_loss: 207.2960
+Epoch 87/100
+6/6 [==============================] - 0s 30ms/step - loss: 152.8152 - val_loss: 206.6420
+Epoch 88/100
+6/6 [==============================] - 0s 28ms/step - loss: 152.2935 - val_loss: 206.0468
+Epoch 89/100
+6/6 [==============================] - 0s 22ms/step - loss: 151.8174 - val_loss: 205.4739
+Epoch 90/100
+6/6 [==============================] - 0s 27ms/step - loss: 151.3512 - val_loss: 204.9155
+Epoch 91/100
+6/6 [==============================] - 0s 27ms/step - loss: 150.9671 - val_loss: 204.4529
+Epoch 92/100
+6/6 [==============================] - 0s 26ms/step - loss: 150.4604 - val_loss: 203.5670
+Epoch 93/100
+6/6 [==============================] - 0s 32ms/step - loss: 149.9585 - val_loss: 202.8719
+Epoch 94/100
+6/6 [==============================] - 0s 31ms/step - loss: 149.5003 - val_loss: 202.2268
+Epoch 95/100
+6/6 [==============================] - 0s 21ms/step - loss: 149.0123 - val_loss: 201.3930
+Epoch 96/100
+6/6 [==============================] - 0s 16ms/step - loss: 148.5756 - val_loss: 200.6106
+Epoch 97/100
+6/6 [==============================] - 0s 14ms/step - loss: 148.0978 - val_loss: 199.9606
+Epoch 98/100
+6/6 [==============================] - 0s 26ms/step - loss: 147.6903 - val_loss: 199.3005
+Epoch 99/100
+6/6 [==============================] - 0s 26ms/step - loss: 147.1875 - val_loss: 198.8547
+Epoch 100/100
+6/6 [==============================] - 0s 32ms/step - loss: 146.7144 - val_loss: 198.4536</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:476,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696575591797,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="f2eb49ce-ef88-43c3-8478-3062a81689b9" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a><span class="co"># 학습 곡선을 그려봅시다.</span></span>
+<span id="cb79-2"><a href="#cb79-2"></a>dl_history_plot(history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-51-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:452,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696575592600,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="8669548c-0142-44a9-c710-224b44c05a6c" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a><span class="co"># 예측</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a>pred <span class="op">=</span> model.predict(x_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2/2 [==============================] - 0s 6ms/step</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696575595837,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="f077f8a1-06f1-485a-9ccf-fdcb6c3c4c76" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a><span class="co"># 평가</span></span>
+<span id="cb82-2"><a href="#cb82-2"></a><span class="bu">print</span>(mean_absolute_error(y_val, pred))</span>
+<span id="cb82-3"><a href="#cb82-3"></a><span class="bu">print</span>(mean_absolute_percentage_error(y_val, pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10.461073768535277
+0.9029887280232256</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696575600061,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="a68c6355-ecc5-4e2a-836b-bde4b3a9b5ed" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb84-2"><a href="#cb84-2"></a>plt.plot(y_val, label <span class="op">=</span> <span class="st">'actual'</span>)</span>
+<span id="cb84-3"><a href="#cb84-3"></a>plt.plot(pred, label <span class="op">=</span> <span class="st">'predicted'</span>)</span>
+<span id="cb84-4"><a href="#cb84-4"></a>plt.legend()</span>
+<span id="cb84-5"><a href="#cb84-5"></a>plt.grid()</span>
+<span id="cb84-6"><a href="#cb84-6"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-54-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><code>-</code> 성능이 더 떨어짐…</p>
+<ul>
+<li>당연한 것임. 히든스테이트의 값을 계속 가져왔으니 train data에 오버피팅이 될 수 밖에 없음</li>
+</ul>
+<p><code>-</code> 근데 RNN layer를 2개 쓸거면 첫 번째 layer에서는 무조건 <code>return_sequences  = True</code>로 줘야함</p>
+<ul>
+<li>왜? 시간의 흐름에 따라 순차적으로 두 번째 RNN layer가 학습해야되기 때문!!</li>
+</ul>
+</section>
+<section id="실습-2" class="level2">
+<h2 class="anchored" data-anchor-id="실습-2">(4) 실습 2</h2>
+<p><code>-</code> 위에 모델을 2개의 모델 정도 수정해보자</p>
+<ul>
+<li>model1 : RNN(8) + RNN(2) + output</li>
+<li>model2: RNN(8) + RNN(2)+ Dense(4) + output</li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1020,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696577462001,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>clear_session()</span>
+<span id="cb85-2"><a href="#cb85-2"></a></span>
+<span id="cb85-3"><a href="#cb85-3"></a>model1 <span class="op">=</span> Sequential([SimpleRNN(<span class="dv">8</span>, input_shape <span class="op">=</span> (timestep, nfeatures), return_sequences<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb85-4"><a href="#cb85-4"></a>                                      SimpleRNN(<span class="dv">2</span>),</span>
+<span id="cb85-5"><a href="#cb85-5"></a>                                          Dense(<span class="dv">1</span>)])</span>
+<span id="cb85-6"><a href="#cb85-6"></a></span>
+<span id="cb85-7"><a href="#cb85-7"></a>model2 <span class="op">=</span> Sequential([SimpleRNN(<span class="dv">8</span>, input_shape <span class="op">=</span> (timestep, nfeatures), return_sequences<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb85-8"><a href="#cb85-8"></a>                                      SimpleRNN(<span class="dv">2</span>),</span>
+<span id="cb85-9"><a href="#cb85-9"></a>                                          Dense(<span class="dv">4</span>, activation <span class="op">=</span> <span class="st">"tanh"</span>),</span>
+<span id="cb85-10"><a href="#cb85-10"></a>                                          Dense(<span class="dv">1</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:24163,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696577486613,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>model1.<span class="bu">compile</span>(optimizer <span class="op">=</span> Adam(<span class="fl">0.01</span>), loss <span class="op">=</span> <span class="st">'mse'</span> )</span>
+<span id="cb86-2"><a href="#cb86-2"></a>model2.<span class="bu">compile</span>(optimizer <span class="op">=</span> Adam(<span class="fl">0.01</span>), loss <span class="op">=</span> <span class="st">'mse'</span> )</span>
+<span id="cb86-3"><a href="#cb86-3"></a></span>
+<span id="cb86-4"><a href="#cb86-4"></a>h1 <span class="op">=</span> model1.fit(x_train, y_train, epochs <span class="op">=</span> <span class="dv">100</span>, validation_split <span class="op">=</span> <span class="fl">.2</span>, verbose <span class="op">=</span> <span class="dv">0</span>).history</span>
+<span id="cb86-5"><a href="#cb86-5"></a>h2 <span class="op">=</span> model1.fit(x_train, y_train, epochs <span class="op">=</span> <span class="dv">100</span>, validation_split <span class="op">=</span> <span class="fl">.2</span>, verbose <span class="op">=</span> <span class="dv">0</span>).history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:741,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696577487345,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="276766a5-2bac-4da6-a1b8-0452d9257941" data-execution_count="92">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb87-2"><a href="#cb87-2"></a></span>
+<span id="cb87-3"><a href="#cb87-3"></a>ax1, ax2 <span class="op">=</span>axes</span>
+<span id="cb87-4"><a href="#cb87-4"></a></span>
+<span id="cb87-5"><a href="#cb87-5"></a>ax1.plot(h1[<span class="st">"loss"</span>], label <span class="op">=</span> <span class="st">"train_loss"</span>)</span>
+<span id="cb87-6"><a href="#cb87-6"></a>ax1.plot(h1[<span class="st">"val_loss"</span>], label <span class="op">=</span> <span class="st">"val_loss"</span>)</span>
+<span id="cb87-7"><a href="#cb87-7"></a>ax1.legend()</span>
+<span id="cb87-8"><a href="#cb87-8"></a></span>
+<span id="cb87-9"><a href="#cb87-9"></a>ax2.plot(h2[<span class="st">"loss"</span>], label <span class="op">=</span> <span class="st">"train_loss"</span>)</span>
+<span id="cb87-10"><a href="#cb87-10"></a>ax2.plot(h2[<span class="st">"val_loss"</span>], label <span class="op">=</span> <span class="st">"val_loss"</span>)</span>
+<span id="cb87-11"><a href="#cb87-11"></a>ax2.legend()</span>
+<span id="cb87-12"><a href="#cb87-12"></a></span>
+<span id="cb87-13"><a href="#cb87-13"></a>fig.tight_layout()</span>
+<span id="cb87-14"><a href="#cb87-14"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-57-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><code>-</code> 안정적인 폭은 <code>model1</code>이지만 전반적인 loss가 model2가 훨씬 작다.</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1750,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696577489092,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="6dc8100b-d02f-4b1c-9be9-730f8cf7b32d" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a><span class="co"># 예측</span></span>
+<span id="cb88-2"><a href="#cb88-2"></a>pred1 <span class="op">=</span> model1.predict(x_val)</span>
+<span id="cb88-3"><a href="#cb88-3"></a>pred2 <span class="op">=</span> model2.predict(x_val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2/2 [==============================] - 0s 8ms/step
+2/2 [==============================] - 0s 6ms/step</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696577573734,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="b99d6b9b-86e5-47d4-b45c-27500206d551" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a><span class="bu">print</span>(mean_absolute_error(y_val, pred1))</span>
+<span id="cb90-2"><a href="#cb90-2"></a><span class="bu">print</span>(mean_absolute_error(y_val, pred2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.0550256566582155
+14.10010453259718</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1175,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1696577538056,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="9aba0061-b928-4514-e0df-fa21304aed11" data-execution_count="95">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb92-2"><a href="#cb92-2"></a></span>
+<span id="cb92-3"><a href="#cb92-3"></a>ax1, ax2 <span class="op">=</span> axes</span>
+<span id="cb92-4"><a href="#cb92-4"></a></span>
+<span id="cb92-5"><a href="#cb92-5"></a>ax1.plot(y_val, <span class="st">".-r"</span> ,label <span class="op">=</span> <span class="vs">r"$(y_</span><span class="sc">{true}</span><span class="vs">)$"</span>,alpha <span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb92-6"><a href="#cb92-6"></a>ax1.plot(pred1, <span class="st">".-b"</span> ,label <span class="op">=</span> <span class="vs">r"$\hat </span><span class="sc">{y}</span><span class="vs">_</span><span class="sc">{model1}</span><span class="vs">$"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb92-7"><a href="#cb92-7"></a>ax1.legend()</span>
+<span id="cb92-8"><a href="#cb92-8"></a></span>
+<span id="cb92-9"><a href="#cb92-9"></a>ax2.plot(y_val, <span class="st">".-r"</span> ,label <span class="op">=</span> <span class="vs">r"$(y_</span><span class="sc">{true}</span><span class="vs">)$"</span>,alpha <span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb92-10"><a href="#cb92-10"></a>ax2.plot(pred2, <span class="st">".-b"</span> ,label <span class="op">=</span> <span class="vs">r"$\hat </span><span class="sc">{y}</span><span class="vs">_</span><span class="sc">{model2}</span><span class="vs">$"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb92-11"><a href="#cb92-11"></a>ax2.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="95">
+<pre><code>&lt;matplotlib.legend.Legend at 0x7e3f74d93400&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-10-06-03. 딥러닝 (4)_files/figure-html/cell-60-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../posts/DX/05. 딥러닝/2023-10-05-02. 딥러닝 (3).html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">02. 딥러닝 (3)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" class="pagination-link">
+        <span class="nav-page-text">00. MP (1)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

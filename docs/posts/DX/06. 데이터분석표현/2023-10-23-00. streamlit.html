@@ -628,6 +628,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#unit-5-2.-layoutsstarsstarsstars" id="toc-unit-5-2.-layoutsstarsstarsstars" class="nav-link" data-scroll-target="#unit-5-2.-layoutsstarsstarsstars">unit 5-2. layouts(<span class="math inline">\(\stars\stars\stars\)</span>)</a></li>
   <li><a href="#unit-5-3.-layouts" id="toc-unit-5-3.-layouts" class="nav-link" data-scroll-target="#unit-5-3.-layouts">unit 5-3. layouts</a></li>
   </ul></li>
+  <li><a href="#chart-elements" id="toc-chart-elements" class="nav-link" data-scroll-target="#chart-elements">chart elements</a>
+  <ul class="collapse">
+  <li><a href="#데이터-핸들링" id="toc-데이터-핸들링" class="nav-link" data-scroll-target="#데이터-핸들링">1. 데이터 핸들링</a></li>
+  <li><a href="#simple-chart" id="toc-simple-chart" class="nav-link" data-scroll-target="#simple-chart">2. simple chart</a></li>
+  <li><a href="#altair-chart" id="toc-altair-chart" class="nav-link" data-scroll-target="#altair-chart">3. altair chart</a></li>
+  <li><a href="#plotly-chart" id="toc-plotly-chart" class="nav-link" data-scroll-target="#plotly-chart">4. plotly chart</a></li>
+  <li><a href="#map" id="toc-map" class="nav-link" data-scroll-target="#map">5. map</a></li>
+  <li><a href="#folium.map" id="toc-folium.map" class="nav-link" data-scroll-target="#folium.map">6. folium.Map</a></li>
+  </ul></li>
+  <li><a href="#종합-실습" id="toc-종합-실습" class="nav-link" data-scroll-target="#종합-실습">종합 실습</a></li>
   </ul>
 </nav>
     </div>
@@ -1054,9 +1064,369 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-60"><a href="#cb8-60"></a>page_names_to_funcs[selected_page]()</span>
 <span id="cb8-61"><a href="#cb8-61"></a></span>
 <span id="cb8-62"><a href="#cb8-62"></a><span class="co"># 파일실행: File &gt; New &gt; Terminal(anaconda prompt) - streamlit run streamlit\5-3.layouts.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
+<hr>
 </section>
+</section>
+<section id="chart-elements" class="level1">
+<h1>chart elements</h1>
+<section id="데이터-핸들링" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-핸들링">1. 데이터 핸들링</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>st.text(<span class="st">'1. 지하철 데이터 읽고 확인- data_subway_in_seoul.csv'</span>)   </span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># streamlit\data_subway_in_seoul.csv</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># encoding='cp949'  읽어오고 확인하기 </span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data_subway_in_seoul.csv"</span>, encoding <span class="op">=</span> <span class="st">"cp949"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8"></a>st.dataframe(df)</span>
+<span id="cb9-9"><a href="#cb9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11"></a>st.text(<span class="st">"2. 구분이 '하차'인 행만 새로운 데이터프레임으로 저장 &amp; 확인"</span>) </span>
+<span id="cb9-12"><a href="#cb9-12"></a>df_off <span class="op">=</span> df.loc[df[<span class="st">"구분"</span>] <span class="op">==</span> <span class="st">"하차"</span>]</span>
+<span id="cb9-13"><a href="#cb9-13"></a>st.dataframe(df_off)</span>
+<span id="cb9-14"><a href="#cb9-14"></a></span>
+<span id="cb9-15"><a href="#cb9-15"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb9-16"><a href="#cb9-16"></a>st.text(<span class="st">"3. '날짜','연번','역번호','역명','구분','합계' 제외하고 저장 &amp; 확인"</span>)</span>
+<span id="cb9-17"><a href="#cb9-17"></a>df_line <span class="op">=</span> df_off.drop([<span class="st">'날짜'</span>,<span class="st">'연번'</span>,<span class="st">'역번호'</span>,<span class="st">'역명'</span>,<span class="st">'구분'</span>,<span class="st">'합계'</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb9-18"><a href="#cb9-18"></a>st.dataframe(df_line)</span>
+<span id="cb9-19"><a href="#cb9-19"></a></span>
+<span id="cb9-20"><a href="#cb9-20"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb9-21"><a href="#cb9-21"></a>st.text(<span class="st">"4. 아래 방법으로 데이터프레임 변환하여 저장 &amp; 확인"</span>)</span>
+<span id="cb9-22"><a href="#cb9-22"></a>st.caption(<span class="st">"melt 함수 사용 unpivot: identifier-'호선', unpivot column-'시간', value column-'인원수'"</span>)</span>
+<span id="cb9-23"><a href="#cb9-23"></a>df_line_melted <span class="op">=</span> df_line.melt(id_vars <span class="op">=</span> <span class="st">"호선"</span>, var_name <span class="op">=</span> <span class="st">"시간"</span>, value_name <span class="op">=</span> <span class="st">"인원수"</span>)</span>
+<span id="cb9-24"><a href="#cb9-24"></a>st.dataframe(df_line_melted)</span>
+<span id="cb9-25"><a href="#cb9-25"></a></span>
+<span id="cb9-26"><a href="#cb9-26"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb9-27"><a href="#cb9-27"></a>st.text(<span class="st">"5. '호선','시간' 별 '인원수' 합,  as_index=False 저장 &amp; 확인"</span>)</span>
+<span id="cb9-28"><a href="#cb9-28"></a>df_line_groupby <span class="op">=</span> df_line_melted.groupby([<span class="st">"호선"</span>, <span class="st">"시간"</span>], as_index <span class="op">=</span> <span class="va">False</span>)[[<span class="st">"인원수"</span>]].<span class="bu">sum</span>()</span>
+<span id="cb9-29"><a href="#cb9-29"></a>st.dataframe(df_line_groupby)</span>
+<span id="cb9-30"><a href="#cb9-30"></a></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="co"># 파일실행: File &gt; New &gt; Terminal(anaconda prompt) - streamlit run streamlit\6-1.datahandling.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="simple-chart" class="level2">
+<h2 class="anchored" data-anchor-id="simple-chart">2. simple chart</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#### 1.line chart</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a>st.markdown(<span class="st">"## line chart"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a>chart_data <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/huhshin/streamlit/master/data_sales.csv"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6"></a>st.dataframe(chart_data)</span>
+<span id="cb10-7"><a href="#cb10-7"></a>st.line_chart(chart_data)</span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co">#### 2.bar chart</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a>st.markdown(<span class="st">"## bar chart"</span>)</span>
+<span id="cb10-13"><a href="#cb10-13"></a>st.bar_chart(chart_data)</span>
+<span id="cb10-14"><a href="#cb10-14"></a></span>
+<span id="cb10-15"><a href="#cb10-15"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb10-16"><a href="#cb10-16"></a></span>
+<span id="cb10-17"><a href="#cb10-17"></a><span class="co">## 3.  Simple area chart</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a>st.markdown(<span class="st">"## area chart"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19"></a>st.area_chart(chart_data)</span>
+<span id="cb10-20"><a href="#cb10-20"></a></span>
+<span id="cb10-21"><a href="#cb10-21"></a>st.markdown(<span class="st">"---"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="altair-chart" class="level2">
+<h2 class="anchored" data-anchor-id="altair-chart">3. altair chart</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb11-2"><a href="#cb11-2"></a>st.markdown(<span class="st">"# Altair chart"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/huhshin/streamlit/master/data_retail.csv'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>df_melted <span class="op">=</span> pd.melt(df, id_vars<span class="op">=</span>[<span class="st">'date'</span>], var_name<span class="op">=</span><span class="st">'teams'</span>, value_name<span class="op">=</span><span class="st">'sales'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a>col1, col2 <span class="op">=</span> st.columns(<span class="dv">2</span>) </span>
+<span id="cb11-7"><a href="#cb11-7"></a></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="cf">with</span> col1 :</span>
+<span id="cb11-9"><a href="#cb11-9"></a>    st.text(<span class="st">'원본 데이터'</span>)</span>
+<span id="cb11-10"><a href="#cb11-10"></a>    st.dataframe(df)</span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="cf">with</span> col2 :</span>
+<span id="cb11-12"><a href="#cb11-12"></a>    st.text(<span class="st">"변환 데이터"</span>)</span>
+<span id="cb11-13"><a href="#cb11-13"></a>    st.dataframe(df_melted)</span>
+<span id="cb11-14"><a href="#cb11-14"></a></span>
+<span id="cb11-15"><a href="#cb11-15"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16"></a></span>
+<span id="cb11-17"><a href="#cb11-17"></a><span class="co">### line chart</span></span>
+<span id="cb11-18"><a href="#cb11-18"></a>st.markdown(<span class="st">"## line chart"</span>)</span>
+<span id="cb11-19"><a href="#cb11-19"></a>chart <span class="op">=</span> alt.Chart(df_melted, title<span class="op">=</span><span class="st">'일별 팀 매출 비교'</span>).mark_line().encode(</span>
+<span id="cb11-20"><a href="#cb11-20"></a>x<span class="op">=</span><span class="st">'date'</span>, y<span class="op">=</span><span class="st">'sales'</span>, color<span class="op">=</span><span class="st">'teams'</span>, strokeDash<span class="op">=</span><span class="st">'teams'</span>).properties(width<span class="op">=</span><span class="dv">650</span>, height<span class="op">=</span><span class="dv">350</span>)</span>
+<span id="cb11-21"><a href="#cb11-21"></a>st.altair_chart(chart, use_container_width<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-22"><a href="#cb11-22"></a></span>
+<span id="cb11-23"><a href="#cb11-23"></a><span class="co">### bar chart</span></span>
+<span id="cb11-24"><a href="#cb11-24"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb11-25"><a href="#cb11-25"></a>st.markdown(<span class="st">"## bar chart"</span>)</span>
+<span id="cb11-26"><a href="#cb11-26"></a>chart <span class="op">=</span> alt.Chart(df_melted, title<span class="op">=</span><span class="st">'일별 매출'</span>).<span class="op">\</span></span>
+<span id="cb11-27"><a href="#cb11-27"></a>                    mark_bar().<span class="op">\</span></span>
+<span id="cb11-28"><a href="#cb11-28"></a>                        encode(x<span class="op">=</span><span class="st">'date'</span>, y<span class="op">=</span><span class="st">'sales'</span>, color<span class="op">=</span><span class="st">'teams'</span>)</span>
+<span id="cb11-29"><a href="#cb11-29"></a></span>
+<span id="cb11-30"><a href="#cb11-30"></a>text <span class="op">=</span> alt.Chart(df_melted).<span class="op">\</span></span>
+<span id="cb11-31"><a href="#cb11-31"></a>                        mark_text(dx<span class="op">=</span><span class="dv">0</span>, dy<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>,size <span class="op">=</span> <span class="dv">8</span>).<span class="op">\</span></span>
+<span id="cb11-32"><a href="#cb11-32"></a>                               encode(x<span class="op">=</span><span class="st">'date'</span>, y<span class="op">=</span><span class="st">'sales'</span>, </span>
+<span id="cb11-33"><a href="#cb11-33"></a>                                      detail<span class="op">=</span><span class="st">'teams'</span>, text<span class="op">=</span>alt.Text(<span class="st">'sales:Q'</span>)) <span class="co"># 소수점 이하 1자리: 'sales:Q',format='.1f'</span></span>
+<span id="cb11-34"><a href="#cb11-34"></a>st.altair_chart(chart<span class="op">+</span>text, use_container_width<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-35"><a href="#cb11-35"></a></span>
+<span id="cb11-36"><a href="#cb11-36"></a><span class="co">### scatter chart</span></span>
+<span id="cb11-37"><a href="#cb11-37"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb11-38"><a href="#cb11-38"></a>st.markdown(<span class="st">"## scatter chart"</span>)</span>
+<span id="cb11-39"><a href="#cb11-39"></a></span>
+<span id="cb11-40"><a href="#cb11-40"></a>iris <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/huhshin/streamlit/master/data_iris.csv"</span>)</span>
+<span id="cb11-41"><a href="#cb11-41"></a></span>
+<span id="cb11-42"><a href="#cb11-42"></a>col1, col2 <span class="op">=</span> st.columns([<span class="dv">1</span>,<span class="dv">2</span>]) <span class="co">## 컬럼 비율 조정</span></span>
+<span id="cb11-43"><a href="#cb11-43"></a></span>
+<span id="cb11-44"><a href="#cb11-44"></a><span class="cf">with</span> col1 :</span>
+<span id="cb11-45"><a href="#cb11-45"></a>    st.text(<span class="st">"iris dataframe"</span>)</span>
+<span id="cb11-46"><a href="#cb11-46"></a>    st.dataframe(iris)</span>
+<span id="cb11-47"><a href="#cb11-47"></a><span class="cf">with</span> col2 : </span>
+<span id="cb11-48"><a href="#cb11-48"></a>    st.text(<span class="st">"iris scatter chart"</span>)</span>
+<span id="cb11-49"><a href="#cb11-49"></a>    chart <span class="op">=</span> alt.Chart(iris).mark_circle().<span class="op">\</span></span>
+<span id="cb11-50"><a href="#cb11-50"></a>                    encode(x <span class="op">=</span> <span class="st">'petal_length'</span>, y<span class="op">=</span><span class="st">'petal_width'</span>, </span>
+<span id="cb11-51"><a href="#cb11-51"></a>                           color <span class="op">=</span> <span class="st">'species'</span>) </span>
+<span id="cb11-52"><a href="#cb11-52"></a>    st.altair_chart(chart, use_container_width<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="plotly-chart" class="level2">
+<h2 class="anchored" data-anchor-id="plotly-chart">4. plotly chart</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># plotly chart</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a>st.header(<span class="st">'Unit 5. Plotly chart'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a>st.subheader(<span class="st">"data check"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7"></a>medal <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/huhshin/streamlit/master/data_medal.csv"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8"></a>st.dataframe(medal)</span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="co">## pie chart</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb12-11"><a href="#cb12-11"></a>st.subheader(<span class="st">"pie chart &amp; bar chart"</span>)</span>
+<span id="cb12-12"><a href="#cb12-12"></a></span>
+<span id="cb12-13"><a href="#cb12-13"></a>co1, col2 <span class="op">=</span> st.columns(<span class="dv">2</span>)</span>
+<span id="cb12-14"><a href="#cb12-14"></a></span>
+<span id="cb12-15"><a href="#cb12-15"></a>fig <span class="op">=</span> px.pie(medal, names <span class="op">=</span> <span class="st">"nation"</span>, values <span class="op">=</span> <span class="st">"gold"</span>,</span>
+<span id="cb12-16"><a href="#cb12-16"></a>            title <span class="op">=</span> <span class="st">"올림픽 양궁 금메달 현황"</span>, hole <span class="op">=</span> <span class="fl">.3</span>)</span>
+<span id="cb12-17"><a href="#cb12-17"></a>fig.update_traces(textposition <span class="op">=</span> <span class="st">"inside"</span>, textinfo<span class="op">=</span><span class="st">"percent + label + value"</span>)</span>
+<span id="cb12-18"><a href="#cb12-18"></a>fig.update_layout(font <span class="op">=</span> <span class="bu">dict</span>(size <span class="op">=</span> <span class="dv">14</span>)) </span>
+<span id="cb12-19"><a href="#cb12-19"></a></span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="co"># # 범례 표시 제거 : fig.update(layout_showlegend=False) </span></span>
+<span id="cb12-21"><a href="#cb12-21"></a>st.plotly_chart(fig)</span>
+<span id="cb12-22"><a href="#cb12-22"></a></span>
+<span id="cb12-23"><a href="#cb12-23"></a><span class="co">### bar chart</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb12-25"><a href="#cb12-25"></a>st.subheader(<span class="st">"bar chart"</span>)</span>
+<span id="cb12-26"><a href="#cb12-26"></a></span>
+<span id="cb12-27"><a href="#cb12-27"></a>fig <span class="op">=</span> px.bar(medal, x<span class="op">=</span><span class="st">"nation"</span>, y<span class="op">=</span>[<span class="st">"gold"</span>, <span class="st">"silver"</span>, <span class="st">"bronze"</span>],</span>
+<span id="cb12-28"><a href="#cb12-28"></a>                            text_auto<span class="op">=</span><span class="va">True</span>, title<span class="op">=</span><span class="st">"올림픽 양궁 메달 현황"</span>) <span class="co"># text_auto=True 값 표시 여부</span></span>
+<span id="cb12-29"><a href="#cb12-29"></a>fig.update_layout(width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span> ) <span class="co"># 그래프 크기 조절</span></span>
+<span id="cb12-30"><a href="#cb12-30"></a><span class="co"># fig.update_traces(textangle=0) # 그래프 안의 텍스트가 바로 씌여지게 설정</span></span>
+<span id="cb12-31"><a href="#cb12-31"></a>st.plotly_chart(fig)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="map" class="level2">
+<h2 class="anchored" data-anchor-id="map">5. map</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>st.markdown(<span class="st">"---"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>st.header(<span class="st">"map"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>map_data <span class="op">=</span> pd.DataFrame({ <span class="st">'lat'</span>: [<span class="op">-</span><span class="dv">34</span>, <span class="dv">49</span>, <span class="op">-</span><span class="dv">38</span>, <span class="fl">59.93</span>, <span class="fl">5.33</span>, <span class="fl">45.52</span>, <span class="op">-</span><span class="fl">1.29</span>, <span class="op">-</span><span class="fl">12.97</span>],</span>
+<span id="cb13-4"><a href="#cb13-4"></a>                <span class="st">'lon'</span>: [<span class="op">-</span><span class="dv">58</span>, <span class="dv">2</span>, <span class="dv">145</span>, <span class="fl">30.32</span>, <span class="op">-</span><span class="fl">4.03</span>, <span class="op">-</span><span class="fl">73.57</span>, <span class="fl">36.82</span>, <span class="op">-</span><span class="fl">38.5</span>],</span>
+<span id="cb13-5"><a href="#cb13-5"></a>                <span class="st">'name'</span>: [<span class="st">'Buenos Aires'</span>, <span class="st">'Paris'</span>, <span class="st">'melbourne'</span>, <span class="st">'St Petersbourg'</span>, <span class="st">'Abidjan'</span>, <span class="st">'Montreal'</span>, <span class="st">'Nairobi'</span>, <span class="st">'Salvador'</span>],</span>
+<span id="cb13-6"><a href="#cb13-6"></a>                <span class="st">'value'</span>: [<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">40</span>, <span class="dv">70</span>, <span class="dv">23</span>, <span class="dv">43</span>, <span class="dv">100</span>, <span class="dv">43</span>]</span>
+<span id="cb13-7"><a href="#cb13-7"></a>                    })</span>
+<span id="cb13-8"><a href="#cb13-8"></a>st.subheader(<span class="st">"Aivle Map"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>col1, col2 <span class="op">=</span>  st.columns([<span class="fl">1.2</span>,<span class="fl">2.8</span>])</span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="cf">with</span> col1 : </span>
+<span id="cb13-11"><a href="#cb13-11"></a>    <span class="cf">if</span> st.checkbox(<span class="st">"Display Data?"</span>) :</span>
+<span id="cb13-12"><a href="#cb13-12"></a>        st.write(map_data)</span>
+<span id="cb13-13"><a href="#cb13-13"></a><span class="cf">with</span> col2 : </span>
+<span id="cb13-14"><a href="#cb13-14"></a>    st.<span class="bu">map</span>(map_data,</span>
+<span id="cb13-15"><a href="#cb13-15"></a>       latitude<span class="op">=</span><span class="st">'lat'</span>,</span>
+<span id="cb13-16"><a href="#cb13-16"></a>       longitude<span class="op">=</span><span class="st">'lon'</span>)</span>
+<span id="cb13-17"><a href="#cb13-17"></a></span>
+<span id="cb13-18"><a href="#cb13-18"></a>st.markdown(<span class="st">"---"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="folium.map" class="level2">
+<h2 class="anchored" data-anchor-id="folium.map">6. folium.Map</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>st.subheader(<span class="st">"folium.map"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="im">import</span> folium</span>
+<span id="cb14-3"><a href="#cb14-3"></a>my_map <span class="op">=</span> folium.Map( </span>
+<span id="cb14-4"><a href="#cb14-4"></a>                     location <span class="op">=</span> [map_data[<span class="st">"lat"</span>].mean(),map_data[<span class="st">"lon"</span>].mean()], <span class="co">## 중심점 잡기</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>                     zoom_start <span class="op">=</span> <span class="dv">2</span> <span class="co">## 얼마나 가깝게 볼건지</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>                )</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="cf">for</span> index, row <span class="kw">in</span> map_data.iterrows(): <span class="co"># 데이터프레임 한 행 씩 index, row에 담아서 처리</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>    folium.CircleMarker( <span class="co"># 원 표시 선언</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>                         location<span class="op">=</span>[row[<span class="st">'lat'</span>], row[<span class="st">'lon'</span>]], <span class="co"># 원 중심- 위도, 경도</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a>                         radius<span class="op">=</span>row[<span class="st">'value'</span>] <span class="op">/</span> <span class="dv">5</span>, <span class="co"># 원의 반지름</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>                         color<span class="op">=</span><span class="st">'pink'</span>, <span class="co"># 원의 테두리 색상</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a>                         fill<span class="op">=</span><span class="va">True</span>, <span class="co"># 원을 채움</span></span>
+<span id="cb14-14"><a href="#cb14-14"></a>                         fill_opacity<span class="op">=</span><span class="fl">1.0</span> <span class="co"># 원의 내부를 채울 때의 투명도</span></span>
+<span id="cb14-15"><a href="#cb14-15"></a>                         ).add_to(my_map) <span class="co"># my_map에 원형 마커 추가</span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>    folium.Marker( <span class="co"># 값 표시 선언</span></span>
+<span id="cb14-17"><a href="#cb14-17"></a>                        location<span class="op">=</span>[row[<span class="st">'lat'</span>], row[<span class="st">'lon'</span>]], <span class="co"># 값 표시 위치- 위도, 경도</span></span>
+<span id="cb14-18"><a href="#cb14-18"></a>                         icon<span class="op">=</span>folium.DivIcon(html<span class="op">=</span><span class="ss">f"&lt;div&gt;</span><span class="sc">{</span>row[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>row[<span class="st">'value'</span>]<span class="sc">}</span><span class="ss">&lt;/div&gt;"</span>), <span class="co"># row['name'], row['value'] 표시</span></span>
+<span id="cb14-19"><a href="#cb14-19"></a>                         ).add_to(my_map) <span class="co"># my_map에 값 추가</span></span>
+<span id="cb14-20"><a href="#cb14-20"></a></span>
+<span id="cb14-21"><a href="#cb14-21"></a><span class="co"># 타이틀과 캡션 표시하기</span></span>
+<span id="cb14-22"><a href="#cb14-22"></a>st.title(<span class="st">'Map with Location Data'</span>)</span>
+<span id="cb14-23"><a href="#cb14-23"></a>st.caption(<span class="st">'Displaying geographical data on a map using Streamlit and Folium'</span>)</span>
+<span id="cb14-24"><a href="#cb14-24"></a></span>
+<span id="cb14-25"><a href="#cb14-25"></a><span class="co"># 지도 그리기</span></span>
+<span id="cb14-26"><a href="#cb14-26"></a><span class="co"># st.components.v1.html : Streamlit 라이브러리의 components 모듈에서 html 함수 사용</span></span>
+<span id="cb14-27"><a href="#cb14-27"></a><span class="co"># ._repr_html_() : 지도를 HTML 형식으로 표시</span></span>
+<span id="cb14-28"><a href="#cb14-28"></a>st.components.v1.html(my_map._repr_html_(), width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb14-29"><a href="#cb14-29"></a></span>
+<span id="cb14-30"><a href="#cb14-30"></a></span>
+<span id="cb14-31"><a href="#cb14-31"></a><span class="co">### covid 시각화</span></span>
+<span id="cb14-32"><a href="#cb14-32"></a>st.subheader(<span class="st">"covid 시각화"</span>)</span>
+<span id="cb14-33"><a href="#cb14-33"></a>map_data <span class="op">=</span> pd.read_csv(<span class="st">"covid_map.csv"</span>)</span>
+<span id="cb14-34"><a href="#cb14-34"></a>my_map <span class="op">=</span> folium.Map( </span>
+<span id="cb14-35"><a href="#cb14-35"></a>                     location <span class="op">=</span> [map_data[<span class="st">"lat"</span>].mean(),map_data[<span class="st">"lon"</span>].mean()], <span class="co">## 중심점 잡기</span></span>
+<span id="cb14-36"><a href="#cb14-36"></a>                     zoom_start <span class="op">=</span> <span class="dv">2</span> <span class="co">## 얼마나 가깝게 볼건지</span></span>
+<span id="cb14-37"><a href="#cb14-37"></a>                )</span>
+<span id="cb14-38"><a href="#cb14-38"></a></span>
+<span id="cb14-39"><a href="#cb14-39"></a><span class="cf">for</span> index, row <span class="kw">in</span> map_data.iterrows(): <span class="co"># 데이터프레임 한 행 씩 index, row에 담아서 처리</span></span>
+<span id="cb14-40"><a href="#cb14-40"></a>    folium.CircleMarker( <span class="co"># 원 표시 선언</span></span>
+<span id="cb14-41"><a href="#cb14-41"></a>                         location<span class="op">=</span>[row[<span class="st">'lat'</span>], row[<span class="st">'lon'</span>]], <span class="co"># 원 중심- 위도, 경도</span></span>
+<span id="cb14-42"><a href="#cb14-42"></a>                         radius<span class="op">=</span>row[<span class="st">'value'</span>] <span class="op">/</span> <span class="dv">10000</span>, <span class="co"># 원의 반지름</span></span>
+<span id="cb14-43"><a href="#cb14-43"></a>                         color<span class="op">=</span><span class="st">'pink'</span>, <span class="co"># 원의 테두리 색상</span></span>
+<span id="cb14-44"><a href="#cb14-44"></a>                         fill<span class="op">=</span><span class="va">True</span>, <span class="co"># 원을 채움</span></span>
+<span id="cb14-45"><a href="#cb14-45"></a>                         fill_opacity<span class="op">=</span><span class="fl">1.0</span> <span class="co"># 원의 내부를 채울 때의 투명도</span></span>
+<span id="cb14-46"><a href="#cb14-46"></a>                         ).add_to(my_map) <span class="co"># my_map에 원형 마커 추가</span></span>
+<span id="cb14-47"><a href="#cb14-47"></a>    folium.Marker( <span class="co"># 값 표시 선언</span></span>
+<span id="cb14-48"><a href="#cb14-48"></a>                        location<span class="op">=</span>[row[<span class="st">'lat'</span>], row[<span class="st">'lon'</span>]], <span class="co"># 값 표시 위치- 위도, 경도</span></span>
+<span id="cb14-49"><a href="#cb14-49"></a>                         icon<span class="op">=</span>folium.DivIcon(html<span class="op">=</span><span class="ss">f"&lt;div&gt;</span><span class="sc">{</span>row[<span class="st">'name'</span>]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>row[<span class="st">'value'</span>]<span class="sc">}</span><span class="ss">&lt;/div&gt;"</span>), <span class="co"># row['name'], row['value'] 표시</span></span>
+<span id="cb14-50"><a href="#cb14-50"></a>                         ).add_to(my_map) <span class="co"># my_map에 값 추가</span></span>
+<span id="cb14-51"><a href="#cb14-51"></a></span>
+<span id="cb14-52"><a href="#cb14-52"></a><span class="co"># 타이틀과 캡션 표시하기</span></span>
+<span id="cb14-53"><a href="#cb14-53"></a>st.title(<span class="st">'covid 시각화'</span>)</span>
+<span id="cb14-54"><a href="#cb14-54"></a>st.caption(<span class="st">'Displaying geographical data on a map using Streamlit and Folium'</span>)</span>
+<span id="cb14-55"><a href="#cb14-55"></a>st.components.v1.html(my_map._repr_html_(), width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="종합-실습" class="level1">
+<h1>종합 실습</h1>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a>st.title(<span class="st">'종합 실습'</span>)</span>
+<span id="cb15-7"><a href="#cb15-7"></a>st.header(<span class="st">'_2021 서울교통공사 지하철 월별 하차 인원_'</span>)</span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co"># streamlit\data_subway_in_seoul.csv</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co">#  encoding='cp949'  읽어오고 확인하기 </span></span>
+<span id="cb15-11"><a href="#cb15-11"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data_subway_in_seoul.csv"</span>, encoding <span class="op">=</span> <span class="st">"cp949"</span>)</span>
+<span id="cb15-12"><a href="#cb15-12"></a></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="co">#  button을 누르면 원본데이터 주소가 나타남: https://www.data.go.kr/data/15044247/fileData.do</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="cf">if</span> st.button(<span class="st">'data copyright link'</span>):</span>
+<span id="cb15-15"><a href="#cb15-15"></a>    st.write(<span class="st">"https://www.data.go.kr/data/15044247/fileData.do"</span>)</span>
+<span id="cb15-16"><a href="#cb15-16"></a></span>
+<span id="cb15-17"><a href="#cb15-17"></a><span class="co">#  checkbox를 선택하면 원본 데이터프레임이 나타남</span></span>
+<span id="cb15-18"><a href="#cb15-18"></a><span class="cf">if</span> st.checkbox(<span class="st">'원본 데이터 보기'</span>):</span>
+<span id="cb15-19"><a href="#cb15-19"></a>    st.subheader(<span class="st">'1. 원본 데이터- df'</span>)</span>
+<span id="cb15-20"><a href="#cb15-20"></a>    st.dataframe(df)</span>
+<span id="cb15-21"><a href="#cb15-21"></a></span>
+<span id="cb15-22"><a href="#cb15-22"></a><span class="co"># '구분' 컬럼이 '하차'인 데이터를 선택</span></span>
+<span id="cb15-23"><a href="#cb15-23"></a><span class="co"># 새로운 데이터프레임에 저장 &amp; checkbox를 선택하면 데이터프레임이 나타남</span></span>
+<span id="cb15-24"><a href="#cb15-24"></a>df_off <span class="op">=</span> df.loc[df[<span class="st">"구분"</span>] <span class="op">==</span> <span class="st">"하차"</span>]</span>
+<span id="cb15-25"><a href="#cb15-25"></a><span class="cf">if</span> st.checkbox(<span class="st">'하차 데이터 보기'</span>):</span>
+<span id="cb15-26"><a href="#cb15-26"></a>    st.subheader(<span class="st">'2. 하차 데이터- df_off'</span>)</span>
+<span id="cb15-27"><a href="#cb15-27"></a>    st.dataframe(df_off)</span>
+<span id="cb15-28"><a href="#cb15-28"></a></span>
+<span id="cb15-29"><a href="#cb15-29"></a><span class="co"># 불필요한 컬럼 '날짜','연번','역번호','역명','구분','합계' 제외</span></span>
+<span id="cb15-30"><a href="#cb15-30"></a><span class="co"># 새로운 데이터프레임에 저장 &amp; checkbox를 선택하면 데이터프레임이 나타남</span></span>
+<span id="cb15-31"><a href="#cb15-31"></a><span class="co"># 참조) df_line = df_off[df_off.columns.difference(['날짜','연번', '역번호', '역명','구분','합계'])]</span></span>
+<span id="cb15-32"><a href="#cb15-32"></a>df_line <span class="op">=</span> df_off.drop([<span class="st">'날짜'</span>,<span class="st">'연번'</span>, <span class="st">'역번호'</span>, <span class="st">'역명'</span>,<span class="st">'구분'</span>,<span class="st">'합계'</span>], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb15-33"><a href="#cb15-33"></a><span class="cf">if</span> st.checkbox(<span class="st">'호선, 시간대별 인원수 보기'</span>):</span>
+<span id="cb15-34"><a href="#cb15-34"></a>    st.subheader(<span class="st">'3. 호선, 시간대별 인원수- df_line'</span>)</span>
+<span id="cb15-35"><a href="#cb15-35"></a>    st.dataframe(df_line)</span>
+<span id="cb15-36"><a href="#cb15-36"></a></span>
+<span id="cb15-37"><a href="#cb15-37"></a><span class="co">#  melt 함수 사용 unpivot: identifier-'호선', unpivot column-'시간', value column-'인원수' </span></span>
+<span id="cb15-38"><a href="#cb15-38"></a><span class="co"># 새로운 데이터프레임에 저장 &amp; checkbox를 선택하면 데이터프레임이 나타남</span></span>
+<span id="cb15-39"><a href="#cb15-39"></a>df_line_melted <span class="op">=</span> pd.melt(df_line, id_vars <span class="op">=</span> <span class="st">"호선"</span>, var_name <span class="op">=</span> <span class="st">"시간"</span>, value_name <span class="op">=</span> <span class="st">"인원수"</span>)</span>
+<span id="cb15-40"><a href="#cb15-40"></a><span class="cf">if</span> st.checkbox(<span class="st">'Unpivot 데이터 보기'</span>):</span>
+<span id="cb15-41"><a href="#cb15-41"></a>    st.subheader(<span class="st">'4. 구조변경 (Unpivot by melt) 데이터- df_line_melted'</span>)</span>
+<span id="cb15-42"><a href="#cb15-42"></a>    st.dataframe(df_line_melted) </span>
+<span id="cb15-43"><a href="#cb15-43"></a></span>
+<span id="cb15-44"><a href="#cb15-44"></a><span class="co"># '호선','시간' 별 '인원수' 합,  as_index=False 저장 &amp; 확인 </span></span>
+<span id="cb15-45"><a href="#cb15-45"></a><span class="co"># 새로운 데이터프레임에 저장 &amp; checkbox를 선택하면 데이터프레임이 나타남</span></span>
+<span id="cb15-46"><a href="#cb15-46"></a>df_line_groupby <span class="op">=</span> df_line_melted.groupby([<span class="st">"호선"</span>,<span class="st">"시간"</span>], as_index <span class="op">=</span> <span class="va">False</span>)[[<span class="st">"인원수"</span>]].<span class="bu">sum</span>()</span>
+<span id="cb15-47"><a href="#cb15-47"></a><span class="cf">if</span> st.checkbox(<span class="st">'호선, 시간대별 인원 집계 데이터 보기'</span>):</span>
+<span id="cb15-48"><a href="#cb15-48"></a>    st.subheader(<span class="st">'5. 호선, 시간대별 인원 집계 데이터- df_line_groupby'</span>)</span>
+<span id="cb15-49"><a href="#cb15-49"></a>    st.dataframe(df_line_groupby)</span>
+<span id="cb15-50"><a href="#cb15-50"></a></span>
+<span id="cb15-51"><a href="#cb15-51"></a><span class="co"># altair mark_line 차트 그리기</span></span>
+<span id="cb15-52"><a href="#cb15-52"></a>st.subheader(<span class="st">'전체 호선 시간대별 하차 인원 (5.df_line_groupby)'</span>)</span>
+<span id="cb15-53"><a href="#cb15-53"></a></span>
+<span id="cb15-54"><a href="#cb15-54"></a>chart <span class="op">=</span> alt.Chart(df_line_groupby, title <span class="op">=</span> <span class="st">"전체 호선 시간대별 하차 인원"</span>).<span class="op">\</span></span>
+<span id="cb15-55"><a href="#cb15-55"></a>                    mark_line().encode(x <span class="op">=</span> <span class="st">"시간"</span>, y <span class="op">=</span> <span class="st">"인원수"</span>).<span class="op">\</span></span>
+<span id="cb15-56"><a href="#cb15-56"></a>                                properties(width<span class="op">=</span><span class="dv">650</span>, height<span class="op">=</span><span class="dv">350</span>)</span>
+<span id="cb15-57"><a href="#cb15-57"></a></span>
+<span id="cb15-58"><a href="#cb15-58"></a>st.altair_chart(chart, use_container_width <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb15-59"><a href="#cb15-59"></a><span class="co"># 데이터프레임- df_line_groupby</span></span>
+<span id="cb15-60"><a href="#cb15-60"></a><span class="co"># x- '시간', y- '인원수', color- '호선', strokeDash- '호선'</span></span>
+<span id="cb15-61"><a href="#cb15-61"></a>chart <span class="op">=</span> alt.Chart(df_line_groupby, title <span class="op">=</span> <span class="st">"전체 호선 시간대별 하차 인원"</span>).<span class="op">\</span></span>
+<span id="cb15-62"><a href="#cb15-62"></a>                    mark_line().encode(x <span class="op">=</span> <span class="st">"시간"</span>, y <span class="op">=</span> <span class="st">"인원수"</span>, color <span class="op">=</span> <span class="st">"호선"</span>, strokeDash <span class="op">=</span> <span class="st">'호선'</span>).<span class="op">\</span></span>
+<span id="cb15-63"><a href="#cb15-63"></a>                                properties(width<span class="op">=</span><span class="dv">650</span>, height<span class="op">=</span><span class="dv">350</span>)</span>
+<span id="cb15-64"><a href="#cb15-64"></a></span>
+<span id="cb15-65"><a href="#cb15-65"></a>st.altair_chart(chart, use_container_width<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-66"><a href="#cb15-66"></a></span>
+<span id="cb15-67"><a href="#cb15-67"></a></span>
+<span id="cb15-68"><a href="#cb15-68"></a>st.subheader(<span class="st">'선택한 호선의 시간대별 하차 인원'</span>)</span>
+<span id="cb15-69"><a href="#cb15-69"></a></span>
+<span id="cb15-70"><a href="#cb15-70"></a><span class="co"># selectbox를 사용하여 '호선' 선택</span></span>
+<span id="cb15-71"><a href="#cb15-71"></a><span class="co"># 데이터프레임- df_line_groupby  ('호선', '시간대별' 인원 집계 )</span></span>
+<span id="cb15-72"><a href="#cb15-72"></a><span class="co"># ['호선'] 컬럼에 대해 .unique() 매소드를 사용하여 </span></span>
+<span id="cb15-73"><a href="#cb15-73"></a><span class="co"># selectbox에 호선이 각각 하나만 나타나게 함</span></span>
+<span id="cb15-74"><a href="#cb15-74"></a>option <span class="op">=</span> st.selectbox(<span class="st">'호선 선택 (5.df_line_groupby)'</span>,df_line_groupby[<span class="st">'호선'</span>].unique())</span>
+<span id="cb15-75"><a href="#cb15-75"></a></span>
+<span id="cb15-76"><a href="#cb15-76"></a><span class="co"># .loc 함수를 사용하여 선택한 호선 데이터 선별하고</span></span>
+<span id="cb15-77"><a href="#cb15-77"></a><span class="co"># 새로운 데이터 프레임-에 저장 &amp; 확인</span></span>
+<span id="cb15-78"><a href="#cb15-78"></a>df_selected_line <span class="op">=</span> df_line_groupby.loc[df_line_groupby[<span class="st">'호선'</span>] <span class="op">==</span> option]</span>
+<span id="cb15-79"><a href="#cb15-79"></a>st.write(option, <span class="st">' 데이터 (df_selected_line)'</span>, df_selected_line)</span>
+<span id="cb15-80"><a href="#cb15-80"></a></span>
+<span id="cb15-81"><a href="#cb15-81"></a><span class="co"># altair mark_area 차트 그리기</span></span>
+<span id="cb15-82"><a href="#cb15-82"></a><span class="co"># 데이터프레임- df_selected_line, x- '시간', y- '인원수'</span></span>
+<span id="cb15-83"><a href="#cb15-83"></a>chart <span class="op">=</span> alt.Chart(df_selected_line).mark_area().encode(</span>
+<span id="cb15-84"><a href="#cb15-84"></a>         x<span class="op">=</span><span class="st">"시간"</span>, y <span class="op">=</span> <span class="st">"인원수"</span>).properties(width<span class="op">=</span><span class="dv">650</span>, height<span class="op">=</span><span class="dv">350</span>)</span>
+<span id="cb15-85"><a href="#cb15-85"></a>st.altair_chart(chart, use_container_width<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-86"><a href="#cb15-86"></a></span>
+<span id="cb15-87"><a href="#cb15-87"></a></span>
+<span id="cb15-88"><a href="#cb15-88"></a>st.subheader(<span class="st">'선택한 역의 시간대별 하차 인원'</span>)</span>
+<span id="cb15-89"><a href="#cb15-89"></a></span>
+<span id="cb15-90"><a href="#cb15-90"></a><span class="co"># selectbox를 사용하여 '하차역' 선택</span></span>
+<span id="cb15-91"><a href="#cb15-91"></a><span class="co"># ['역명'] 컬럼에 대해  .unique() 매소드를 사용하여 </span></span>
+<span id="cb15-92"><a href="#cb15-92"></a><span class="co"># selectbox에 역명이 각각 하나만 나타나게 함</span></span>
+<span id="cb15-93"><a href="#cb15-93"></a></span>
+<span id="cb15-94"><a href="#cb15-94"></a>option <span class="op">=</span> st.selectbox(<span class="st">'하차역 선택 (2.df_off)'</span>, df_off[<span class="st">"역명"</span>].unique())</span>
+<span id="cb15-95"><a href="#cb15-95"></a></span>
+<span id="cb15-96"><a href="#cb15-96"></a><span class="co"># .loc 함수를 사용하여 선택한 역의 데이터를 선별하고</span></span>
+<span id="cb15-97"><a href="#cb15-97"></a><span class="co"># 새로운 데이터 프레임에 저장</span></span>
+<span id="cb15-98"><a href="#cb15-98"></a>df_sta <span class="op">=</span> df_off.loc[df_off[<span class="st">'역명'</span>] <span class="op">==</span> option]</span>
+<span id="cb15-99"><a href="#cb15-99"></a>st.write(option, <span class="st">'하차 데이터 (df_sta)'</span>, df_sta)</span>
+<span id="cb15-100"><a href="#cb15-100"></a></span>
+<span id="cb15-101"><a href="#cb15-101"></a><span class="co"># 불필요한 컬럼 '연번','호선','역번호','역명','구분','합계' 제외하고 기존 데이터 프레임에 저장 &amp; 확인</span></span>
+<span id="cb15-102"><a href="#cb15-102"></a><span class="co"># 참고) df_sta = df_sta[df_sta.columns.difference(['연번', '호선', '역번호', '역명','구분','합계'])]</span></span>
+<span id="cb15-103"><a href="#cb15-103"></a>df_sta_drop <span class="op">=</span> df_sta.drop([<span class="st">'연번'</span>, <span class="st">'호선'</span>, <span class="st">'역번호'</span>, <span class="st">'역명'</span>,<span class="st">'구분'</span>,<span class="st">'합계'</span>],axis <span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb15-104"><a href="#cb15-104"></a>st.write(<span class="st">'날짜, 시간대별 인원수 (df_sta_drop)'</span>, df_sta_drop)</span>
+<span id="cb15-105"><a href="#cb15-105"></a></span>
+<span id="cb15-106"><a href="#cb15-106"></a><span class="co"># melt 함수 사용 unpivot: identifier-'날짜', unpivot column-'시간', value column-'인원수' </span></span>
+<span id="cb15-107"><a href="#cb15-107"></a><span class="co"># 새로운 데이터 프레임-에 저장 &amp; 확인</span></span>
+<span id="cb15-108"><a href="#cb15-108"></a>df_sta_melted <span class="op">=</span> pd.melt(df_sta_drop, id_vars <span class="op">=</span> <span class="st">"날짜"</span>, var_name <span class="op">=</span> <span class="st">"시간"</span>, value_name <span class="op">=</span><span class="st">"인원수"</span>)</span>
+<span id="cb15-109"><a href="#cb15-109"></a>st.write(<span class="st">'Unpivot (df_sta_melted)'</span>, df_sta_melted)</span>
+<span id="cb15-110"><a href="#cb15-110"></a></span>
+<span id="cb15-111"><a href="#cb15-111"></a><span class="co"># '시간' 별 '인원수' 집계 , as_index=False</span></span>
+<span id="cb15-112"><a href="#cb15-112"></a><span class="co"># 새로운 데이터 프레임-에 저장 &amp; 확인</span></span>
+<span id="cb15-113"><a href="#cb15-113"></a>df_sta_groupby <span class="op">=</span> df_sta_melted.groupby([<span class="st">"시간"</span>],as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">"인원수"</span>].<span class="bu">sum</span>()</span>
+<span id="cb15-114"><a href="#cb15-114"></a>st.write(option, <span class="st">' 집계 데이터 (df_sta_groupby)'</span>, df_sta_groupby)</span>
+<span id="cb15-115"><a href="#cb15-115"></a></span>
+<span id="cb15-116"><a href="#cb15-116"></a><span class="co"># altair mark_bar  chart + text 그리기</span></span>
+<span id="cb15-117"><a href="#cb15-117"></a><span class="co"># 데이터프레임- df_sta_groupby,  x-'시간',  y-'인원수'</span></span>
+<span id="cb15-118"><a href="#cb15-118"></a>chart <span class="op">=</span> alt.Chart(df_sta_groupby).mark_bar().encode(</span>
+<span id="cb15-119"><a href="#cb15-119"></a>         x<span class="op">=</span> <span class="st">"시간"</span>, y <span class="op">=</span> <span class="st">"인원수"</span>).properties(width<span class="op">=</span><span class="dv">650</span>, height<span class="op">=</span><span class="dv">350</span>)</span>
+<span id="cb15-120"><a href="#cb15-120"></a>text <span class="op">=</span> alt.Chart(df_sta_groupby).mark_text(dx<span class="op">=</span><span class="dv">0</span>, dy<span class="op">=-</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'black'</span>, size <span class="op">=</span> <span class="dv">10</span>).encode(</span>
+<span id="cb15-121"><a href="#cb15-121"></a>         x<span class="op">=</span> <span class="st">"시간"</span>, y <span class="op">=</span> <span class="st">"인원수"</span>, text<span class="op">=</span>alt.Text(<span class="st">'인원수:Q'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">',.0f'</span>) ) </span>
+<span id="cb15-122"><a href="#cb15-122"></a><span class="co"># format=',.0f' : 천 단위 구분기호+소수점 이하 0</span></span>
+<span id="cb15-123"><a href="#cb15-123"></a></span>
+<span id="cb15-124"><a href="#cb15-124"></a>st.altair_chart(chart <span class="op">+</span> text, use_container_width<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-125"><a href="#cb15-125"></a></span>
+<span id="cb15-126"><a href="#cb15-126"></a></span>
+<span id="cb15-127"><a href="#cb15-127"></a><span class="co"># 파일실행: File &gt; New &gt; Terminal(anaconda prompt) - streamlit run streamlit\8.prac.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
 </section>
 
 </main> <!-- /main -->

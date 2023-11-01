@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="GC">
-<meta name="dcterms.date" content="2023-09-01">
+<meta name="author" content="gc">
+<meta name="dcterms.date" content="2023-11-01">
 
-<title>Gangcheol - 02. 데이터 분석 (3)</title>
+<title>Gangcheol - 02. iris</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,24 +59,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html" rel="next">
-<link href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" rel="prev">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../posts/EX/2023-11-01-03. Titanic.html" rel="next">
+<link href="../../posts/EX/2023-10-31-01. VOC.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -97,9 +97,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -110,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
   </div>
@@ -158,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">02. 데이터 분석</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html">02. 데이터 분석 (3)</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/EX/2023-10-30-00. Churn.html">EX</a></li><li class="breadcrumb-item"><a href="../../posts/EX/2023-11-01-02. iris.html">02. iris</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -171,12 +174,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">02. 데이터 분석 (3)</h1>
+      <h1 class="title">02. iris</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">python</div>
-                <div class="quarto-category">데이터 분석</div>
-                <div class="quarto-category">시계열 분석</div>
-                <div class="quarto-category">이변량 분석</div>
+                <div class="quarto-category">ex</div>
               </div>
                   </div>
   </div>
@@ -187,14 +187,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>GC </p>
+               <p>gc </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 1, 2023</p>
+        <p class="date">November 1, 2023</p>
       </div>
     </div>
     
@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../about.html" class="sidebar-item-text sidebar-link">
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>About Me</strong></span></a>
   </div>
 </li>
@@ -229,28 +229,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">DX</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/2023-07-31-00.intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/2023-07-31-00.intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. Intro &amp; setting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/2023-08-19-01. Plotly test.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/2023-08-19-01. Plotly test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. Plotly test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/2023-10-26-02. BERTopic.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/2023-10-26-02. BERTopic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02. BERTopic</span></a>
   </div>
 </li>
@@ -265,37 +265,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. Python Basic (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-10-01. Python Basic (2) .html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/2023-08-10-01. Python Basic (2) .html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. Python Basic (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-11-02. Python Basic (3) .html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/2023-08-11-02. Python Basic (3) .html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02. Python Basic (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-14-03. Python Basic (4).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/2023-08-14-03. Python Basic (4).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03. Python Basic (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">04. Python Basic (5)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05. Python Basic (6)</span></a>
   </div>
 </li>
@@ -310,31 +310,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 00. 밈</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 01. 클래스</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 02. 클래스 탐구 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 03. 클래스 탐구 (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 04. 클래스 탐구 (3)</span></a>
   </div>
 </li>
@@ -353,31 +353,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy &amp; pandas (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy &amp; pandas (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. numpy &amp; pandas (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy &amp; pandas (2).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy &amp; pandas (2).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. numpy &amp; pandas (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-21-02. numpy &amp; pandas (3).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/01. 데이터 다듬기/2023-08-21-02. numpy &amp; pandas (3).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02. numpy &amp; pandas (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-22-03. numpy &amp; pandas (4).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/01. 데이터 다듬기/2023-08-22-03. numpy &amp; pandas (4).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03. numpy &amp; pandas (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-23-04. numpy &amp; pandas (5).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/01. 데이터 다듬기/2023-08-23-04. numpy &amp; pandas (5).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">04. numpy &amp; pandas (5)</span></a>
   </div>
 </li>
@@ -385,28 +385,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">02. 데이터 분석</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. 데이터 분석 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. 데이터 분석 (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02. 데이터 분석 (3)</span></a>
   </div>
 </li>
@@ -423,13 +423,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. 데이터 수집 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/03. 데이터 수집/2023-09-05-01. 데이터 수집 (2).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/03. 데이터 수집/2023-09-05-01. 데이터 수집 (2).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. 데이터 수집 (2)</span></a>
   </div>
 </li>
@@ -446,55 +446,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-12-01. 머신러닝 (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/04. 머신러닝/2023-09-12-01. 머신러닝 (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. 머신러닝 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-13-02. 머신러닝 (2).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/04. 머신러닝/2023-09-13-02. 머신러닝 (2).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02. 머신러닝 (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-14-03. 머신러닝 (3).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/04. 머신러닝/2023-09-14-03. 머신러닝 (3).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03. 머신러닝 (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-15-04. 머신러닝 (4).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/04. 머신러닝/2023-09-15-04. 머신러닝 (4).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">04. 머신러닝 (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-15-05. 종합실습.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/04. 머신러닝/2023-09-15-05. 종합실습.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05. 종합실습</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-18-06. 머신러닝 (5).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/04. 머신러닝/2023-09-18-06. 머신러닝 (5).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">06. 머신러닝 (5)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-19-07. 머신러닝 (6).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/04. 머신러닝/2023-09-19-07. 머신러닝 (6).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">07. 머신러닝 (6)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-28-08. summary (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/04. 머신러닝/2023-09-28-08. summary (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">08. summary (1)</span></a>
   </div>
 </li>
@@ -511,37 +511,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/05. 딥러닝/2023-10-03-00. 딥러닝 (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/05. 딥러닝/2023-10-03-00. 딥러닝 (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. 딥러닝 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/05. 딥러닝/2023-10-04-01. 딥러닝 (2).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/05. 딥러닝/2023-10-04-01. 딥러닝 (2).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. 딥러닝 (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/05. 딥러닝/2023-10-05-02. 딥러닝 (3).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/05. 딥러닝/2023-10-05-02. 딥러닝 (3).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02. 딥러닝 (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/05. 딥러닝/2023-10-06-03. 딥러닝 (4).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/05. 딥러닝/2023-10-06-03. 딥러닝 (4).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03. 딥러닝 (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/05. 딥러닝/2023-10-10-Extra 01. 언어지능 (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/05. 딥러닝/2023-10-10-Extra 01. 언어지능 (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 01. 언어지능</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/05. 딥러닝/2023-10-11-Extra 02. 시각지능.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/05. 딥러닝/2023-10-11-Extra 02. 시각지능.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Extra 02. 시각지능</span></a>
   </div>
 </li>
@@ -556,19 +556,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 01. RNN.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 01. RNN.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">summary 01. RNN</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 02. LSTM.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 02. LSTM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">summary 02. LSTM</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 03. transformer.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 03. transformer.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">summary 03. Transformer</span></a>
   </div>
 </li>
@@ -587,7 +587,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/06. 데이터분석표현/2023-10-23-00. streamlit.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/06. 데이터분석표현/2023-10-23-00. streamlit.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. streamlit</span></a>
   </div>
 </li>
@@ -604,7 +604,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DX/MP/2023-08-24-00. MP (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. MP (1)</span></a>
   </div>
 </li>
@@ -614,34 +614,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">
  <span class="menu-text">EX</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/EX/2023-10-30-00. Churn.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/EX/2023-10-30-00. Churn.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. Churn</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/EX/2023-10-31-01. VOC.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/EX/2023-10-31-01. VOC.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. VOC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/EX/2023-11-01-02. iris.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/EX/2023-11-01-02. iris.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">02. iris</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/EX/2023-11-01-03. Titanic.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/EX/2023-11-01-03. Titanic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03. Titanic</span></a>
   </div>
 </li>
@@ -659,12 +659,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
-  <li><a href="#데이터-로드" id="toc-데이터-로드" class="nav-link" data-scroll-target="#데이터-로드">데이터 로드</a>
+  <li><a href="#데이터-로드" id="toc-데이터-로드" class="nav-link active" data-scroll-target="#데이터-로드">1. 데이터 로드</a></li>
+  <li><a href="#데이터-분석" id="toc-데이터-분석" class="nav-link" data-scroll-target="#데이터-분석">2. 데이터 분석</a>
   <ul class="collapse">
-  <li><a href="#시각화-1.-survived---age" id="toc-시각화-1.-survived---age" class="nav-link" data-scroll-target="#시각화-1.-survived---age">시각화 1. (<code>Survived &lt;-&gt; Age</code>)</a></li>
-  <li><a href="#시각화-2.-survived---fare" id="toc-시각화-2.-survived---fare" class="nav-link" data-scroll-target="#시각화-2.-survived---fare">시각화 2. (<code>Survived &lt;-&gt; Fare</code>)</a></li>
+  <li><a href="#species-분포-확인" id="toc-species-분포-확인" class="nav-link" data-scroll-target="#species-분포-확인">(1) <code>species</code> 분포 확인</a></li>
   </ul></li>
+  <li><a href="#xy-나누기" id="toc-xy-나누기" class="nav-link" data-scroll-target="#xy-나누기">3. X,y 나누기</a>
+  <ul class="collapse">
+  <li><a href="#species-라벨-인코딩" id="toc-species-라벨-인코딩" class="nav-link" data-scroll-target="#species-라벨-인코딩">(1) species 라벨 인코딩</a></li>
+  </ul></li>
+  <li><a href="#머신러닝-모델링" id="toc-머신러닝-모델링" class="nav-link" data-scroll-target="#머신러닝-모델링">4. 머신러닝 모델링</a>
+  <ul class="collapse">
+  <li><a href="#tree" id="toc-tree" class="nav-link" data-scroll-target="#tree">(1) tree</a></li>
+  <li><a href="#rf" id="toc-rf" class="nav-link" data-scroll-target="#rf">(2) RF</a>
+  <ul class="collapse">
+  <li><a href="#predict-후-라벨-추출" id="toc-predict-후-라벨-추출" class="nav-link" data-scroll-target="#predict-후-라벨-추출">predict 후 라벨 추출</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#딥러닝-모델링" id="toc-딥러닝-모델링" class="nav-link" data-scroll-target="#딥러닝-모델링">5. 딥러닝 모델링</a></li>
   </ul>
 </nav>
     </div>
@@ -674,104 +686,249 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="import" class="level1">
-<h1>import</h1>
-<div class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># import random as rd</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="im">from</span> statsmodels.graphics.mosaicplot <span class="im">import</span> mosaic      <span class="co">#mosaic plot!</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> scipy.stats <span class="im">as</span> spst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 <section id="데이터-로드" class="level1">
-<h1>데이터 로드</h1>
-<div class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>titanic <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/titanic.1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h1>1. 데이터 로드</h1>
+<div class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5"></a>plt.rcParams[<span class="st">'font.family'</span>] <span class="op">=</span> <span class="st">"Malgun Gothic"</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>plt.rcParams[<span class="st">'axes.unicode_minus'</span>] <span class="op">=</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="시각화-1.-survived---age" class="level2">
-<h2 class="anchored" data-anchor-id="시각화-1.-survived---age">시각화 1. (<code>Survived &lt;-&gt; Age</code>)</h2>
-<ol type="1">
-<li><p><code>common_norm = True (기본값)</code> : 칵 클래스의 비율을 합쳐서 표시 (두 그래프의 아래 면적의 합이 1)</p></li>
-<li><p><code>common_norm = False</code>: 각각의 클래스로 니누어서 비율을 표시 (각 클래스의 아래 면적은 1)</p></li>
-<li><p><code>multiple = ‘fill’</code>: 각 클래스에 따른 비율을 비교 (각 클래스의 아래 면적은 1)</p></li>
-</ol>
+<div class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">"iris"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>iris.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">sepal_length</th>
+<th data-quarto-table-cell-role="th">sepal_width</th>
+<th data-quarto-table-cell-role="th">petal_length</th>
+<th data-quarto-table-cell-role="th">petal_width</th>
+<th data-quarto-table-cell-role="th">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>5.1</td>
+<td>3.5</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>4.9</td>
+<td>3.0</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>4.7</td>
+<td>3.2</td>
+<td>1.3</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4.6</td>
+<td>3.1</td>
+<td>1.5</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5.0</td>
+<td>3.6</td>
+<td>1.4</td>
+<td>0.2</td>
+<td>setosa</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="데이터-분석" class="level1">
+<h1>2. 데이터 분석</h1>
+<section id="species-분포-확인" class="level2">
+<h2 class="anchored" data-anchor-id="species-분포-확인">(1) <code>species</code> 분포 확인</h2>
+<p><code>-</code> barplot</p>
+<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb4-2"><a href="#cb4-2"></a>sns.countplot(x <span class="op">=</span> <span class="st">"species"</span>, data <span class="op">=</span> iris )</span>
+<span id="cb4-3"><a href="#cb4-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-11-01-02. iris_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><code>-</code> scatterplot</p>
+<div class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>sns.scatterplot(x <span class="op">=</span> <span class="st">"sepal_length"</span>, y <span class="op">=</span> <span class="st">"petal_length"</span>, hue <span class="op">=</span> <span class="st">"species"</span>, data <span class="op">=</span> iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>&lt;Axes: xlabel='sepal_length', ylabel='petal_length'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-11-01-02. iris_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="xy-나누기" class="level1">
+<h1>3. X,y 나누기</h1>
+<div class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>target <span class="op">=</span> <span class="st">"species"</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a>X <span class="op">=</span> iris.drop(target, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>y <span class="op">=</span> iris[target]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 데이터 타입을 변경</p>
+<ul>
+<li>뒤쪽에서 타입이 맞지 않아서 에러가 날 수 있기 때문</li>
+</ul>
+<div class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>X <span class="op">=</span> X.values</span>
+<span id="cb8-2"><a href="#cb8-2"></a>y <span class="op">=</span> y.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="species-라벨-인코딩" class="level2">
+<h2 class="anchored" data-anchor-id="species-라벨-인코딩">(1) species 라벨 인코딩</h2>
 <div class="cell" data-tags="[]" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>titanic.Survived.value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>Survived
-0    0.616162
-1    0.383838
-Name: proportion, dtype: float64</code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>le <span class="op">=</span> LabelEncoder()</span>
+<span id="cb10-2"><a href="#cb10-2"></a>y <span class="op">=</span> le.fit_transform(y)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(le.classes_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['setosa' 'versicolor' 'virginica']</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="26">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a>(ax1,ax2,ax3), (ax4,ax5,ax6) <span class="op">=</span> axes</span>
-<span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a>sns.histplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>,ax<span class="op">=</span>ax1,stat<span class="op">=</span><span class="st">"density"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a>sns.histplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>, common_norm <span class="op">=</span> <span class="va">False</span>,ax<span class="op">=</span>ax2,stat<span class="op">=</span><span class="st">"density"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a>sns.histplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>, multiple<span class="op">=</span><span class="st">"fill"</span>,ax<span class="op">=</span>ax3)</span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a>ax3.axhline(titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span>
-<span id="cb5-10"><a href="#cb5-10"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span>,ax<span class="op">=</span>ax4)</span>
-<span id="cb5-11"><a href="#cb5-11"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span>,</span>
-<span id="cb5-12"><a href="#cb5-12"></a>            common_norm <span class="op">=</span> <span class="va">False</span>,ax<span class="op">=</span>ax5)</span>
-<span id="cb5-13"><a href="#cb5-13"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Age'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a>            , multiple <span class="op">=</span> <span class="st">'fill'</span>,ax<span class="op">=</span>ax6)</span>
-<span id="cb5-15"><a href="#cb5-15"></a>ax6.axhline(titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span>
-<span id="cb5-16"><a href="#cb5-16"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="2023-09-01-02. 데이터 분석 (2)_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<hr>
+</section>
+</section>
+<section id="머신러닝-모델링" class="level1">
+<h1>4. 머신러닝 모델링</h1>
+<section id="tree" class="level2">
+<h2 class="anchored" data-anchor-id="tree">(1) tree</h2>
+<div class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb12-2"><a href="#cb12-2"></a></span>
+<span id="cb12-3"><a href="#cb12-3"></a>tree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a>tree.fit(X, y)</span>
+<span id="cb12-6"><a href="#cb12-6"></a></span>
+<span id="cb12-7"><a href="#cb12-7"></a>tree_pred <span class="op">=</span> tree.predict(X)</span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a></span>
+<span id="cb12-11"><a href="#cb12-11"></a>accuracy_score(y, tree_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>1.0</code></pre>
 </div>
 </div>
 </section>
-<section id="시각화-2.-survived---fare" class="level2">
-<h2 class="anchored" data-anchor-id="시각화-2.-survived---fare">시각화 2. (<code>Survived &lt;-&gt; Fare</code>)</h2>
+<section id="rf" class="level2">
+<h2 class="anchored" data-anchor-id="rf">(2) RF</h2>
+<div class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a>rf <span class="op">=</span> RandomForestClassifier(max_depth <span class="op">=</span> <span class="dv">5</span>, n_estimators <span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a>rf.fit(X, y)</span>
+<span id="cb14-6"><a href="#cb14-6"></a></span>
+<span id="cb14-7"><a href="#cb14-7"></a>rf_pred <span class="op">=</span> rf.predict(X)</span>
+<span id="cb14-8"><a href="#cb14-8"></a></span>
+<span id="cb14-9"><a href="#cb14-9"></a>accuracy_score(y, rf_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>0.98</code></pre>
+</div>
+</div>
+<section id="predict-후-라벨-추출" class="level3">
+<h3 class="anchored" data-anchor-id="predict-후-라벨-추출">predict 후 라벨 추출</h3>
+<div class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>le.classes_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>array(['setosa', 'versicolor', 'virginica'], dtype=object)</code></pre>
+</div>
+</div>
 <div class="cell" data-tags="[]" data-execution_count="27">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">3</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb6-2"><a href="#cb6-2"></a></span>
-<span id="cb6-3"><a href="#cb6-3"></a>(ax1,ax2,ax3), (ax4,ax5,ax6) <span class="op">=</span> axes</span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a>sns.histplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>,bins<span class="op">=</span><span class="dv">40</span>,ax<span class="op">=</span>ax1,stat<span class="op">=</span><span class="st">"density"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6"></a>sns.histplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>,bins<span class="op">=</span><span class="dv">40</span>, common_norm <span class="op">=</span> <span class="va">False</span>,ax<span class="op">=</span>ax2,stat<span class="op">=</span><span class="st">"density"</span>)</span>
-<span id="cb6-7"><a href="#cb6-7"></a>sns.histplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span> <span class="st">'Survived'</span>, multiple<span class="op">=</span><span class="st">"fill"</span>,ax<span class="op">=</span>ax3,bins<span class="op">=</span><span class="dv">40</span>)</span>
-<span id="cb6-8"><a href="#cb6-8"></a></span>
-<span id="cb6-9"><a href="#cb6-9"></a>ax3.axhline(titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span>
-<span id="cb6-10"><a href="#cb6-10"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span>,ax<span class="op">=</span>ax4)</span>
-<span id="cb6-11"><a href="#cb6-11"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span>,</span>
-<span id="cb6-12"><a href="#cb6-12"></a>            common_norm <span class="op">=</span> <span class="va">False</span>,ax<span class="op">=</span>ax5)</span>
-<span id="cb6-13"><a href="#cb6-13"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'Fare'</span>, data <span class="op">=</span> titanic, hue <span class="op">=</span><span class="st">'Survived'</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a>            , multiple <span class="op">=</span> <span class="st">'fill'</span>,ax<span class="op">=</span>ax6)</span>
-<span id="cb6-15"><a href="#cb6-15"></a>ax6.axhline(titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span>
-<span id="cb6-16"><a href="#cb6-16"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="2023-09-01-02. 데이터 분석 (2)_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>le.classes_[rf.predict([X[<span class="dv">50</span>]])[<span class="dv">0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>'versicolor'</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">100</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>y <span class="op">=</span> [<span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a>plt.plot(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="2023-09-01-02. 데이터 분석 (2)_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-
-
+<hr>
 </section>
+</section>
+</section>
+<section id="딥러닝-모델링" class="level1">
+<h1>5. 딥러닝 모델링</h1>
+<div class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> keras.models <span class="im">import</span> Sequential</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="im">from</span> keras.layers <span class="im">import</span> Dense</span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="im">from</span> keras.losses <span class="im">import</span> sparse_categorical_crossentropy</span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="im">from</span> keras.backend <span class="im">import</span> clear_session</span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="im">from</span> keras.optimizers <span class="im">import</span> Adam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>nf <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb21-2"><a href="#cb21-2"></a>nf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>4</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Sequential 모델 만들기 --&gt; model 변수 저장</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="co"># input layer : (4, )</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="co"># hidden layer : 6 unit , activation='relu'</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="co"># output layer : 3 unit , activation</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>clear_session()</span>
+<span id="cb23-6"><a href="#cb23-6"></a></span>
+<span id="cb23-7"><a href="#cb23-7"></a>model <span class="op">=</span> Sequential()</span>
+<span id="cb23-8"><a href="#cb23-8"></a></span>
+<span id="cb23-9"><a href="#cb23-9"></a>model.add(Dense(<span class="dv">6</span>, input_shape <span class="op">=</span> (nf,), activation <span class="op">=</span> <span class="st">"relu"</span>))</span>
+<span id="cb23-10"><a href="#cb23-10"></a>model.add(Dense(<span class="dv">3</span>, activation <span class="op">=</span> <span class="st">"softmax"</span>))</span>
+<span id="cb23-11"><a href="#cb23-11"></a></span>
+<span id="cb23-12"><a href="#cb23-12"></a>model.<span class="bu">compile</span>(optimizer <span class="op">=</span> Adam(<span class="fl">0.001</span>), loss <span class="op">=</span> sparse_categorical_crossentropy,</span>
+<span id="cb23-13"><a href="#cb23-13"></a>              metrics <span class="op">=</span> [<span class="st">"accuracy"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>history <span class="op">=</span> model.fit(X,y, epochs <span class="op">=</span> <span class="dv">10</span>, batch_size <span class="op">=</span> <span class="dv">8</span>,</span>
+<span id="cb24-2"><a href="#cb24-2"></a>                    verbose <span class="op">=</span> <span class="dv">0</span>, validation_split <span class="op">=</span> <span class="fl">0.2</span>).history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>plt.plot(history[<span class="st">"loss"</span>], label <span class="op">=</span> <span class="st">"Train Loss"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a>plt.plot(history[<span class="st">"val_loss"</span>], label <span class="op">=</span> <span class="st">"Val Loss"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3"></a>plt.plot(history[<span class="st">"accuracy"</span>], label <span class="op">=</span> <span class="st">"Train accuracy"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4"></a>plt.plot(history[<span class="st">"val_accuracy"</span>], label <span class="op">=</span> <span class="st">"Val accuracy"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5"></a>plt.xlabel(<span class="st">"epochs"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6"></a>plt.ylabel(<span class="st">"loss &amp; accuracy"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7"></a></span>
+<span id="cb25-8"><a href="#cb25-8"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>&lt;matplotlib.legend.Legend at 0x18b8ae44d50&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-11-01-02. iris_files/figure-html/cell-19-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1010,13 +1167,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">01. 데이터 분석 (2)</span>
+      <a href="../../posts/EX/2023-10-31-01. VOC.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">01. VOC</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html" class="pagination-link">
-        <span class="nav-page-text">00. 데이터 수집 (1)</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../posts/EX/2023-11-01-03. Titanic.html" class="pagination-link">
+        <span class="nav-page-text">03. Titanic</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

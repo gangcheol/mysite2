@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="GC">
-<meta name="dcterms.date" content="2023-09-11">
+<meta name="dcterms.date" content="2023-11-06">
 
-<title>Gangcheol - 00. Intro</title>
+<title>Gangcheol - 00. IT 인프라 (1)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -66,8 +32,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../posts/DX/04. 머신러닝/2023-09-12-01. 머신러닝 (1).html" rel="next">
-<link href="../../../posts/DX/03. 데이터 수집/2023-09-05-01. 데이터 수집 (2).html" rel="prev">
+<link href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" rel="next">
+<link href="../../../posts/DX/06. 데이터분석표현/2023-10-23-00. streamlit.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -97,12 +63,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
@@ -163,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html">04. 머신러닝</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html">00. Intro</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/07. IT 인프라/2023-11-06-00. IT 인프라 (1).html">07. IT 인프라</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/07. IT 인프라/2023-11-06-00. IT 인프라 (1).html">00. IT 인프라 (1)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -176,9 +137,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">00. Intro</h1>
+      <h1 class="title">00. IT 인프라 (1)</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">머신러닝</div>
+                <div class="quarto-category">IT 인프라</div>
               </div>
                   </div>
   </div>
@@ -196,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 11, 2023</p>
+        <p class="date">November 6, 2023</p>
       </div>
     </div>
     
@@ -439,16 +400,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
  <span class="menu-text">04. 머신러닝</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. Intro</span></a>
   </div>
 </li>
@@ -597,16 +558,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true">
  <span class="menu-text">07. IT 인프라</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/07. IT 인프라/2023-11-06-00. IT 인프라 (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/07. IT 인프라/2023-11-06-00. IT 인프라 (1).html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">00. IT 인프라 (1)</span></a>
   </div>
 </li>
@@ -678,27 +639,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <li><a href="#it-인프라-이해" id="toc-it-인프라-이해" class="nav-link active" data-scroll-target="#it-인프라-이해">1. IT 인프라 이해</a>
   <ul class="collapse">
-  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">import</a></li>
-  <li><a href="#데이터-이해" id="toc-데이터-이해" class="nav-link" data-scroll-target="#데이터-이해">데이터 이해</a>
+  <li><a href="#주요-구성요소" id="toc-주요-구성요소" class="nav-link" data-scroll-target="#주요-구성요소">(1) 주요 구성요소</a></li>
+  <li><a href="#데이터-센터" id="toc-데이터-센터" class="nav-link" data-scroll-target="#데이터-센터">(2) 데이터 센터</a></li>
+  <li><a href="#it-인프라-유형" id="toc-it-인프라-유형" class="nav-link" data-scroll-target="#it-인프라-유형">(3) IT 인프라 유형</a>
   <ul class="collapse">
-  <li><a href="#기본-정보-확인" id="toc-기본-정보-확인" class="nav-link" data-scroll-target="#기본-정보-확인">기본 정보 확인</a></li>
+  <li><a href="#온-프레미스" id="toc-온-프레미스" class="nav-link" data-scroll-target="#온-프레미스">온 프레미스</a></li>
+  <li><a href="#클라우드" id="toc-클라우드" class="nav-link" data-scroll-target="#클라우드">클라우드</a></li>
   </ul></li>
-  <li><a href="#데이터-준비" id="toc-데이터-준비" class="nav-link" data-scroll-target="#데이터-준비">데이터 준비</a>
-  <ul class="collapse">
-  <li><a href="#결측치-확인-후-채우기" id="toc-결측치-확인-후-채우기" class="nav-link" data-scroll-target="#결측치-확인-후-채우기">결측치 확인 후 채우기</a></li>
-  <li><a href="#변수제거" id="toc-변수제거" class="nav-link" data-scroll-target="#변수제거">변수제거</a></li>
-  <li><a href="#data-split" id="toc-data-split" class="nav-link" data-scroll-target="#data-split">data split</a></li>
+  <li><a href="#summary-1" id="toc-summary-1" class="nav-link" data-scroll-target="#summary-1">(4) summary 1</a></li>
   </ul></li>
-  <li><a href="#모델링" id="toc-모델링" class="nav-link" data-scroll-target="#모델링">모델링</a>
+  <li><a href="#스위치-네트워크-구성" id="toc-스위치-네트워크-구성" class="nav-link" data-scroll-target="#스위치-네트워크-구성">2. 스위치 네트워크 구성</a>
   <ul class="collapse">
-  <li><a href="#step-1.-모듈-불러오기" id="toc-step-1.-모듈-불러오기" class="nav-link" data-scroll-target="#step-1.-모듈-불러오기">step 1. 모듈 불러오기</a></li>
-  <li><a href="#step-2.-사용할-모델-선언" id="toc-step-2.-사용할-모델-선언" class="nav-link" data-scroll-target="#step-2.-사용할-모델-선언">step 2. 사용할 모델 선언</a></li>
-  <li><a href="#step-3.-학습하기" id="toc-step-3.-학습하기" class="nav-link" data-scroll-target="#step-3.-학습하기">step 3. 학습하기</a></li>
-  <li><a href="#step-4.-예측하기" id="toc-step-4.-예측하기" class="nav-link" data-scroll-target="#step-4.-예측하기">step 4. 예측하기</a></li>
-  <li><a href="#step-5.-평가하기" id="toc-step-5.-평가하기" class="nav-link" data-scroll-target="#step-5.-평가하기">step 5. 평가하기</a></li>
+  <li><a href="#네트워크" id="toc-네트워크" class="nav-link" data-scroll-target="#네트워크">(1) 네트워크</a></li>
+  <li><a href="#구성요소" id="toc-구성요소" class="nav-link" data-scroll-target="#구성요소">(2) 구성요소</a>
+  <ul class="collapse">
+  <li><a href="#전송-단말기" id="toc-전송-단말기" class="nav-link" data-scroll-target="#전송-단말기">전송 단말기</a></li>
+  <li><a href="#전송-매체" id="toc-전송-매체" class="nav-link" data-scroll-target="#전송-매체">전송 매체</a></li>
+  <li><a href="#전송-프로토콜" id="toc-전송-프로토콜" class="nav-link" data-scroll-target="#전송-프로토콜">전송 프로토콜</a></li>
+  <li><a href="#네트워크-장비" id="toc-네트워크-장비" class="nav-link" data-scroll-target="#네트워크-장비">네트워크 장비</a></li>
   </ul></li>
+  <li><a href="#osi-7계층-모델" id="toc-osi-7계층-모델" class="nav-link" data-scroll-target="#osi-7계층-모델">(3) OSI 7계층 모델</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -709,574 +671,167 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p><code>-</code> AirQuality 데이터를 대상으로 모델링을 수행 후 오존 농도를 예측해보자</p>
-<section id="import" class="level2">
-<h2 class="anchored" data-anchor-id="import">import</h2>
-<div class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># 라이브러리 불러오기</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> warnings</span>
-<span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a>warnings.filterwarnings(action<span class="op">=</span><span class="st">'ignore'</span>)</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="it-인프라-이해" class="level1">
+<h1>1. IT 인프라 이해</h1>
+<p><code>-</code> 인프라 : 기반 시설, 또는 인프라스트럭처는 경제 활동의 기반을 형성하는 기초적인 시설과 시스템을 말하며, 도로나 하천, 항만, 공항 등과 같이 경제 활동에 밀접한 사회 자본</p>
+<p><code>-</code> IT 인프라란?</p>
+<ul>
+<li>네트워크, 서버, 데이터베이스, 정보보안, 시스템 소프트웨어 및 기반시설 등 IT 서비스의 기반이 되는 시스템 및 구조</li>
+</ul>
+<p><code>-</code> 우리가 사용하는 개발언어(python, R)들을 컴퓨터 서버에 설치하고 분석을 하게끔 도와주고, 활용 및 공유하고 이점을 가질 수 있도록 해주는 것이 전부 IT인프라 구성도에 포함되어 있다.</p>
+<p><code>-</code> 이번 시간에 스토리지, 네트워크 등 인프라 구성도에 관한 요소들을 학습한다.</p>
+<section id="주요-구성요소" class="level2">
+<h2 class="anchored" data-anchor-id="주요-구성요소">(1) 주요 구성요소</h2>
+<p><code>1</code> 하드웨어 : 눈에 보이는 물리적 장비</p>
+<ul>
+<li>PC, 모니터, 하드디스크, CPU, MEMORY, 서버, 스토리지, 라우터, 스위치 등</li>
+</ul>
+<p><code>2</code> 소프트웨어 : 하드웨어를 움직이게 하는 눈에 보이지 않는 프로그램</p>
+<ul>
+<li>OS, Database, Microsofrt Office, Photoshop 등</li>
+</ul>
+<p><code>3</code> 네트워크 : 컴퓨터 같은 장비들이 그물망처럼 연결된 형태 또는 장비</p>
+<ul>
+<li>공유기(Router), 스위치, 방화벽, 케이블 등</li>
+</ul>
 </section>
-<section id="데이터-이해" class="level2">
-<h2 class="anchored" data-anchor-id="데이터-이해">데이터 이해</h2>
-<section id="기본-정보-확인" class="level3">
-<h3 class="anchored" data-anchor-id="기본-정보-확인">기본 정보 확인</h3>
-<p><code>-</code> 데이터의 정보 및 EDA 수행</p>
-<div class="cell" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>path <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/Jangrae/csv/master/airquality_simple.csv'</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>data <span class="op">=</span> pd.read_csv(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="99">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Ozone</th>
-<th data-quarto-table-cell-role="th">Solar.R</th>
-<th data-quarto-table-cell-role="th">Wind</th>
-<th data-quarto-table-cell-role="th">Temp</th>
-<th data-quarto-table-cell-role="th">Month</th>
-<th data-quarto-table-cell-role="th">Day</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>41</td>
-<td>190.0</td>
-<td>7.4</td>
-<td>67</td>
-<td>5</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>36</td>
-<td>118.0</td>
-<td>8.0</td>
-<td>72</td>
-<td>5</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>12</td>
-<td>149.0</td>
-<td>12.6</td>
-<td>74</td>
-<td>5</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>18</td>
-<td>313.0</td>
-<td>11.5</td>
-<td>62</td>
-<td>5</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>19</td>
-<td>NaN</td>
-<td>14.3</td>
-<td>56</td>
-<td>5</td>
-<td>5</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 153 entries, 0 to 152
-Data columns (total 6 columns):
- #   Column   Non-Null Count  Dtype  
----  ------   --------------  -----  
- 0   Ozone    153 non-null    int64  
- 1   Solar.R  146 non-null    float64
- 2   Wind     153 non-null    float64
- 3   Temp     153 non-null    int64  
- 4   Month    153 non-null    int64  
- 5   Day      153 non-null    int64  
-dtypes: float64(2), int64(4)
-memory usage: 7.3 KB</code></pre>
-</div>
-</div>
-<p><code>-</code> 기술통계 확인</p>
-<div class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>data.describe().T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="101">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">count</th>
-<th data-quarto-table-cell-role="th">mean</th>
-<th data-quarto-table-cell-role="th">std</th>
-<th data-quarto-table-cell-role="th">min</th>
-<th data-quarto-table-cell-role="th">25%</th>
-<th data-quarto-table-cell-role="th">50%</th>
-<th data-quarto-table-cell-role="th">75%</th>
-<th data-quarto-table-cell-role="th">max</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Ozone</td>
-<td>153.0</td>
-<td>42.052288</td>
-<td>30.156127</td>
-<td>1.0</td>
-<td>20.00</td>
-<td>34.0</td>
-<td>59.00</td>
-<td>168.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Solar.R</td>
-<td>146.0</td>
-<td>185.931507</td>
-<td>90.058422</td>
-<td>7.0</td>
-<td>115.75</td>
-<td>205.0</td>
-<td>258.75</td>
-<td>334.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Wind</td>
-<td>153.0</td>
-<td>9.957516</td>
-<td>3.523001</td>
-<td>1.7</td>
-<td>7.40</td>
-<td>9.7</td>
-<td>11.50</td>
-<td>20.7</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Temp</td>
-<td>153.0</td>
-<td>77.882353</td>
-<td>9.465270</td>
-<td>56.0</td>
-<td>72.00</td>
-<td>79.0</td>
-<td>85.00</td>
-<td>97.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Month</td>
-<td>153.0</td>
-<td>6.993464</td>
-<td>1.416522</td>
-<td>5.0</td>
-<td>6.00</td>
-<td>7.0</td>
-<td>8.00</td>
-<td>9.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Day</td>
-<td>153.0</td>
-<td>15.803922</td>
-<td>8.864520</td>
-<td>1.0</td>
-<td>8.00</td>
-<td>16.0</td>
-<td>23.00</td>
-<td>31.0</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<p><code>-</code> 상관관계 확인</p>
-<div class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>data.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Ozone</th>
-<th data-quarto-table-cell-role="th">Solar.R</th>
-<th data-quarto-table-cell-role="th">Wind</th>
-<th data-quarto-table-cell-role="th">Temp</th>
-<th data-quarto-table-cell-role="th">Month</th>
-<th data-quarto-table-cell-role="th">Day</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Ozone</td>
-<td>1.000000</td>
-<td>0.280068</td>
-<td>-0.605478</td>
-<td>0.683372</td>
-<td>0.174197</td>
-<td>0.004419</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Solar.R</td>
-<td>0.280068</td>
-<td>1.000000</td>
-<td>-0.056792</td>
-<td>0.275840</td>
-<td>-0.075301</td>
-<td>-0.150275</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Wind</td>
-<td>-0.605478</td>
-<td>-0.056792</td>
-<td>1.000000</td>
-<td>-0.457988</td>
-<td>-0.178293</td>
-<td>0.027181</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Temp</td>
-<td>0.683372</td>
-<td>0.275840</td>
-<td>-0.457988</td>
-<td>1.000000</td>
-<td>0.420947</td>
-<td>-0.130593</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Month</td>
-<td>0.174197</td>
-<td>-0.075301</td>
-<td>-0.178293</td>
-<td>0.420947</td>
-<td>1.000000</td>
-<td>-0.007962</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Day</td>
-<td>0.004419</td>
-<td>-0.150275</td>
-<td>0.027181</td>
-<td>-0.130593</td>
-<td>-0.007962</td>
-<td>1.000000</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>sns.heatmap(data.corr(),</span>
-<span id="cb8-2"><a href="#cb8-2"></a>                   fmt <span class="op">=</span> <span class="st">".3f"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>                    annot <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb8-4"><a href="#cb8-4"></a>                   square <span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb8-5"><a href="#cb8-5"></a>                    cbar <span class="op">=</span> <span class="va">False</span>,</span>
-<span id="cb8-6"><a href="#cb8-6"></a>                   annot_kws <span class="op">=</span> {<span class="st">"size"</span>  : <span class="dv">8</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="103">
-<pre><code>&lt;Axes: &gt;</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="2023-09-11-00. intro_files/figure-html/cell-8-output-2.png" class="img-fluid"></p>
-</div>
-</div>
-<p><code>-</code> temp <span class="math inline">\(\to\)</span> ozone의 관계</p>
-<div class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb10-2"><a href="#cb10-2"></a>plt.scatter(data.Temp, data.Ozone,alpha<span class="op">=</span><span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="104">
-<pre><code>&lt;matplotlib.collections.PathCollection at 0x1c510169b10&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="2023-09-11-00. intro_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
-</div>
-</div>
+<section id="데이터-센터" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-센터">(2) 데이터 센터</h2>
+<p><code>-</code> 서버, 네트워크, 스토리지와 같은 기업의 IT인프라 구성 요소들이 모여 있는 시설</p>
+</section>
+<section id="it-인프라-유형" class="level2">
+<h2 class="anchored" data-anchor-id="it-인프라-유형">(3) IT 인프라 유형</h2>
+<p><code>-</code>기존 <code>인프라(On-Premise)</code>와 <code>클라우드</code> 인프라로 구분</p>
+<section id="온-프레미스" class="level3">
+<h3 class="anchored" data-anchor-id="온-프레미스">온 프레미스</h3>
+<p><code>1</code> 서버, 스토리지, 네트워크 등을 기업 자체적으로 보유하여 운영하는 방식</p>
+<p><code>2</code> 클라우드 컴퓨팅의 발전 이전까지 사용하던 일반적이고 전통적인 인프라 유형</p>
+<p><code>3</code> <strong>기업이 데이터 센터를 직접 만들어 운영하는 방식</strong></p>
+</section>
+<section id="클라우드" class="level3">
+<h3 class="anchored" data-anchor-id="클라우드">클라우드</h3>
+<p><code>1</code> 퍼블릭 클라우드</p>
+<ul>
+<li><p>클라우드 컴퓨팅 서비스를 제공해주는 업체(CSP, Cloud Service Provider)에게 인프라에 필요한 자원들을 대여하여 사용하는 방식</p></li>
+<li><p>ex : AWS, Azure, GCP, KT 클라우드, 네이버 클라우드</p></li>
+</ul>
+<p><code>2</code> 프라이빗 클라우드</p>
+<ul>
+<li><p>기업이 직접 클라우드 환경을 구축, 이를 기업내부에서 활용, 계열사에 공개</p></li>
+<li><p>특정 기업, 특정 사용자만 사용하는 방식</p></li>
+<li><p>서비스 자원과 데이터는 기업의 데이터 센터에 저장</p></li>
+</ul>
+<p><code>3</code> 하이브리드 유형</p>
+<ul>
+<li><p>기존 <code>On-premise</code>에 구성되어 있는 인프라와 <code>Public Cloud</code>를 혼용하여 함께 사용하는 방식</p></li>
+<li><p>또는, 프라이빗 클라우드 + 퍼블릭 클라우드</p></li>
+</ul>
+<p><code>4</code> 멀티 클라우드</p>
+<ul>
+<li><p>2개 이상의 서로 다른 퍼블릭 클라우드를 함께 사용하는 방식</p></li>
+<li><p>AWS + Azure, AWS + KT</p></li>
+<li><p>하나의 CSP에 종속되지 않게 하여, 기능 이상 시 하나의 클라우드를 통해 가동하는 방식</p></li>
+</ul>
 </section>
 </section>
-<section id="데이터-준비" class="level2">
-<h2 class="anchored" data-anchor-id="데이터-준비">데이터 준비</h2>
-<section id="결측치-확인-후-채우기" class="level3">
-<h3 class="anchored" data-anchor-id="결측치-확인-후-채우기">결측치 확인 후 채우기</h3>
-<div class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>data.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="105">
-<pre><code>Ozone      0
-Solar.R    7
-Wind       0
-Temp       0
-Month      0
-Day        0
-dtype: int64</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>data.fillna(method<span class="op">=</span> <span class="st">"ffill"</span>,inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>data.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="107">
-<pre><code>Ozone      0
-Solar.R    0
-Wind       0
-Temp       0
-Month      0
-Day        0
-dtype: int64</code></pre>
-</div>
-</div>
+<section id="summary-1" class="level2">
+<h2 class="anchored" data-anchor-id="summary-1">(4) summary 1</h2>
+<p><code>-</code> 온프레미스 : 서버, 스토리지, 네트워크, 데이터 센터 등을 기업 자체적으로 보유하여 운영하는 방식</p>
+<p><code>-</code> 하이브리드 클라우드 : 기존 <code>On-premise</code>에 구성되어 있는 인프라와 <code>Public Cloud</code>를 혼용하여 함께 사용하는 방식</p>
+<ul>
+<li>또는, 프라이빗 클라우드 + 퍼블릭 클라우</li>
+</ul>
+<p><code>-</code> IT 인프라 구성도 : IT 인프라 구성 등을 한 눈에 알아볼 수 있는 다이어그램 또는 구성도</p>
+<ul>
+<li>시스템의 배치 연결관계를 아이콘, 선으로 구조화</li>
+</ul>
 </section>
-<section id="변수제거" class="level3">
-<h3 class="anchored" data-anchor-id="변수제거">변수제거</h3>
-<div class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>d_cols <span class="op">=</span> data.columns.drop([<span class="st">"Month"</span>, <span class="st">"Day"</span>])</span>
-<span id="cb17-2"><a href="#cb17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3"></a>_data <span class="op">=</span> data[d_cols].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="109">
-<div>
+</section>
+<section id="스위치-네트워크-구성" class="level1">
+<h1>2. 스위치 네트워크 구성</h1>
+<section id="네트워크" class="level2">
+<h2 class="anchored" data-anchor-id="네트워크">(1) 네트워크</h2>
+<p><code>-</code> Net + Work의 합성어</p>
+<p><code>-</code> 컴퓨터 같은 노드들이 통신 기술을 이용하여 그물망처럼 연결된 통신형태</p>
+<p><code>-</code> 종류</p>
+<ol type="1">
+<li><p>PAN(Personal Area Network) : 가장 작은 규모</p></li>
+<li><p>LAN(Local Area Network) : 근거리 영역</p></li>
+<li><p>MAN(Metropolitan Area Network) : 대도시 영역</p></li>
+<li><p>WAN(Wide Area Network) : 광대역 등등</p></li>
+</ol>
+<p><code>-</code> 네트워크 사용시 장점</p>
+<ul>
+<li><p>통신의 유용성</p></li>
+<li><p>효율적이고 데이터 전송이 쉬움</p></li>
+</ul>
+<p><code>-</code> 단점</p>
+<ul>
+<li><p>정보 보안을 많이 신경써야한다.</p></li>
+<li><p>디도스, 랜섬웨어 등에 대한 방안을 면밀하게 세워야함</p></li>
+</ul>
+</section>
+<section id="구성요소" class="level2">
+<h2 class="anchored" data-anchor-id="구성요소">(2) 구성요소</h2>
+<section id="전송-단말기" class="level3">
+<h3 class="anchored" data-anchor-id="전송-단말기">전송 단말기</h3>
+<p><code>-</code> 정보를 주고 받는 장치 : PC, 휴대폰, 노트북, 서버 등</p>
+</section>
+<section id="전송-매체" class="level3">
+<h3 class="anchored" data-anchor-id="전송-매체">전송 매체</h3>
+<p><code>-</code> 정보를 전달할 수 있는 수단</p>
+<p><code>-</code> 유선케이블 : 동축케이블, 광케이블, LAN 케이블 등</p>
+<p><code>-</code> 무선기술 : Wifi, 5G, LTE, 블루투스 등</p>
+</section>
+<section id="전송-프로토콜" class="level3">
+<h3 class="anchored" data-anchor-id="전송-프로토콜">전송 프로토콜</h3>
+<p><code>-</code> 전송 단말기간 정보를 주고받기 위한 일종의 규칙, 약속, 규약</p>
+</section>
+<section id="네트워크-장비" class="level3">
+<h3 class="anchored" data-anchor-id="네트워크-장비">네트워크 장비</h3>
+<p><code>-</code> 정보를 전달하기 위해 목적지를 찾고 길을 결정하는 장비(허브, 스위치, 라우터 등)</p>
+</section>
+</section>
+<section id="osi-7계층-모델" class="level2">
+<h2 class="anchored" data-anchor-id="osi-7계층-모델">(3) OSI 7계층 모델</h2>
+<p><code>-</code> 7계층 : 응용(Application)</p>
+<ul>
+<li><p>사용자에게 다양한 Network 서비스를 제공(email-SMTP, FTP, 가상터미널…)</p></li>
+<li><p>사용자가 크롬같은 브라우저 등을 켰을 때 가장 먼저 보이는 화면 (<code>https</code>)</p></li>
+<li><p>사용자가 눈으로 볼 수 있는 화면</p></li>
+</ul>
+<p><code>-</code> 6계층 : 표현(Presentation)</p>
+<ul>
+<li><p>App, Layer에 대한 Date 전송, Syntax 협의</p></li>
+<li><p>Data Format 결정, 구성 : <code>jpg, png, mp4, mp3</code> 등등</p></li>
+<li><p>Code 변환</p></li>
+<li><p>구축변환</p></li>
+<li><p>압축 및 압축 해제</p></li>
+<li><p>7계층에서 사용되는 데이터를 암호화, 5계층에 보내기 위한 데이터를 번역해줌</p></li>
+</ul>
+<p><code>-</code> 5계층 : 세션(Session)</p>
+<ul>
+<li><p>Interhost Communication</p></li>
+<li><p>Application 사이의 대화를 시작, 유지, 끝을 맺는 계층</p></li>
+</ul>
+<p><code>-</code> 4계층 : 전송(Transport)</p>
+<ul>
+<li></li>
+</ul>
+<p><code>-</code> 3계층 : 표현(Presentation)</p>
+<ul>
+<li></li>
+</ul>
+<p><code>-</code> 2계층 : 표현(Presentation)</p>
+<ul>
+<li></li>
+</ul>
+<p><code>-</code> 1계층 : 표현(Presentation)</p>
+<ul>
+<li></li>
+</ul>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Ozone</th>
-<th data-quarto-table-cell-role="th">Solar.R</th>
-<th data-quarto-table-cell-role="th">Wind</th>
-<th data-quarto-table-cell-role="th">Temp</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>41</td>
-<td>190.0</td>
-<td>7.4</td>
-<td>67</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>36</td>
-<td>118.0</td>
-<td>8.0</td>
-<td>72</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>12</td>
-<td>149.0</td>
-<td>12.6</td>
-<td>74</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>18</td>
-<td>313.0</td>
-<td>11.5</td>
-<td>62</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>19</td>
-<td>313.0</td>
-<td>14.3</td>
-<td>56</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">148</td>
-<td>30</td>
-<td>193.0</td>
-<td>6.9</td>
-<td>70</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">149</td>
-<td>23</td>
-<td>145.0</td>
-<td>13.2</td>
-<td>77</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">150</td>
-<td>14</td>
-<td>191.0</td>
-<td>14.3</td>
-<td>75</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">151</td>
-<td>18</td>
-<td>131.0</td>
-<td>8.0</td>
-<td>76</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">152</td>
-<td>20</td>
-<td>223.0</td>
-<td>11.5</td>
-<td>68</td>
-</tr>
-</tbody>
-</table>
-
-<p>153 rows × 4 columns</p>
-</div>
-</div>
-</div>
-</section>
-<section id="data-split" class="level3">
-<h3 class="anchored" data-anchor-id="data-split">data split</h3>
-<div class="cell" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>x <span class="op">=</span> _data.iloc[:,<span class="dv">1</span>:]</span>
-<span id="cb19-2"><a href="#cb19-2"></a>y <span class="op">=</span> _data[<span class="st">"Ozone"</span>]</span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb19-6"><a href="#cb19-6"></a></span>
-<span id="cb19-7"><a href="#cb19-7"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, test_size <span class="op">=</span> <span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">7</span>)</span>
-<span id="cb19-8"><a href="#cb19-8"></a>x_train.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="110">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Solar.R</th>
-<th data-quarto-table-cell-role="th">Wind</th>
-<th data-quarto-table-cell-role="th">Temp</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">62</td>
-<td>248.0</td>
-<td>9.2</td>
-<td>85</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">51</td>
-<td>150.0</td>
-<td>6.3</td>
-<td>77</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">141</td>
-<td>238.0</td>
-<td>10.3</td>
-<td>68</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">118</td>
-<td>153.0</td>
-<td>5.7</td>
-<td>88</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">74</td>
-<td>291.0</td>
-<td>14.9</td>
-<td>91</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="모델링" class="level2">
-<h2 class="anchored" data-anchor-id="모델링">모델링</h2>
-<section id="step-1.-모듈-불러오기" class="level3">
-<h3 class="anchored" data-anchor-id="step-1.-모듈-불러오기">step 1. 모듈 불러오기</h3>
-<div class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="step-2.-사용할-모델-선언" class="level3">
-<h3 class="anchored" data-anchor-id="step-2.-사용할-모델-선언">step 2. 사용할 모델 선언</h3>
-<div class="cell" data-execution_count="112">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>model <span class="op">=</span> LinearRegression()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="step-3.-학습하기" class="level3">
-<h3 class="anchored" data-anchor-id="step-3.-학습하기">step 3. 학습하기</h3>
-<div class="cell" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>model.fit(x_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="113">
-<style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div>
-</div>
-</div>
-</section>
-<section id="step-4.-예측하기" class="level3">
-<h3 class="anchored" data-anchor-id="step-4.-예측하기">step 4. 예측하기</h3>
-<div class="cell" data-execution_count="143">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>y_pred <span class="op">=</span> model.predict(x_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="step-5.-평가하기" class="level3">
-<h3 class="anchored" data-anchor-id="step-5.-평가하기">step 5. 평가하기</h3>
-<div class="cell" data-execution_count="124">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>mean_absolute_error(y_pred,y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="124">
-<pre><code>12.930971421482479</code></pre>
-</div>
-</div>
-<p><code>-</code> 시각화</p>
-<div class="cell" data-execution_count="146">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>plt.plot(y_pred)</span>
-<span id="cb26-2"><a href="#cb26-2"></a>plt.plot(y_test.values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="2023-09-11-00. intro_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-
-
-</section>
 </section>
 </section>
 
@@ -1516,13 +1071,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/DX/03. 데이터 수집/2023-09-05-01. 데이터 수집 (2).html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">01. 데이터 수집 (2)</span>
+      <a href="../../../posts/DX/06. 데이터분석표현/2023-10-23-00. streamlit.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00. streamlit</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/DX/04. 머신러닝/2023-09-12-01. 머신러닝 (1).html" class="pagination-link">
-        <span class="nav-page-text">01. 머신러닝 (1)</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" class="pagination-link">
+        <span class="nav-page-text">00. MP (1)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

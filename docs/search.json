@@ -161,6 +161,69 @@
     "text": "import\n\nimport plotly.express as ex\nimport plotly.express as px\nimport plotly.io as pio\npio.renderers.default = \"plotly_mimetype+notebook_connected\"\nimport numpy as np\nimport pandas as pd\n\n\ndf = pd.read_csv('https://raw.githubusercontent.com/kalilurrahman/datasets/main/mobilephonemktshare2020.csv')\ndf.head()\n\n\n\n\n\n\n\n\nDate\nSamsung\nApple\nHuawei\nXiaomi\nOppo\nMobicel\nMotorola\nLG\nOthers\nRealme\nGoogle\nNokia\nLenovo\nOnePlus\nSony\nAsus\n\n\n\n\n0\n2019-10\n31.49\n22.09\n10.02\n7.79\n4.10\n3.15\n2.41\n2.40\n9.51\n0.54\n2.35\n0.95\n0.96\n0.70\n0.84\n0.74\n\n\n1\n2019-11\n31.36\n22.90\n10.18\n8.16\n4.42\n3.41\n2.40\n2.40\n9.10\n0.78\n0.66\n0.97\n0.97\n0.73\n0.83\n0.75\n\n\n2\n2019-12\n31.37\n24.79\n9.95\n7.73\n4.23\n3.19\n2.50\n2.54\n8.13\n0.84\n0.75\n0.90\n0.87\n0.74\n0.77\n0.70\n\n\n3\n2020-01\n31.29\n24.76\n10.61\n8.10\n4.25\n3.02\n2.42\n2.40\n7.55\n0.88\n0.69\n0.88\n0.86\n0.79\n0.80\n0.69\n\n\n4\n2020-02\n30.91\n25.89\n10.98\n7.80\n4.31\n2.89\n2.36\n2.34\n7.06\n0.89\n0.70\n0.81\n0.77\n0.78\n0.80\n0.69\n\n\n\n\n\n\n\n\ndf.set_index(\"Date\").diff().\\\n  dropna().boxplot(backend = \"plotly\")"
   },
   {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html",
+    "href": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html",
+    "title": "02. 고객가치정의 및 아이디어 도출",
+    "section": "",
+    "text": "- 이번장에서는 STP전략에 대해 세밀하게 배움\n- 3c : customer, company, competitor\n- STP : segmentation, targeting, positioning\n- 4p : product, price, place, promotion"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#시장-세분화의-목적",
+    "href": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#시장-세분화의-목적",
+    "title": "02. 고객가치정의 및 아이디어 도출",
+    "section": "시장 세분화의 목적",
+    "text": "시장 세분화의 목적\n- 시장 세분화를 통한 마케팅 효과\n\n경쟁우위 확보\n마케팅 기회 발견\n차별화를 통한 가격 경쟁 완화\n\n- B2B 고객 세분화를 통한 부가적 효과\n\n공략 대상 기업에 대한 심도 있는 분석\n공략 우선순위 선정 & 자원의 효율적 분배\n실행전략 구체화\n\n- 세분화를 위한 핵심 요소 : Activity + interests + opinion = life style\n\n즉, 비슷한 life style을 가진 사람은 동일한 need를 가질 것이다!\n\n- 성공적 시장세분화의 5가지 조건\n\n측정 가능성 : 세분화에 사용된 벼수들은 측정 가능하고 Data를 구할 수 있는가?\n접근 가능성 : 최소한의 비용과 투자로 접근이 가능한가?\n시장의 중요성 : 이윤을 보장할 만큼 충분히 큰가?\n차별성 : 세분화된 시장들은 마케팅활동에 각각 다르게 반응하는가?\n실행가능성 : 세분 시장을 공랴하기 위한 효과적이고 실행 가능한 마케팅 프로그램이 개발될 수 있는가?"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#b2b-세분화",
+    "href": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#b2b-세분화",
+    "title": "02. 고객가치정의 및 아이디어 도출",
+    "section": "B2B 세분화",
+    "text": "B2B 세분화\n- B2B 세분화의 핵심은 공통의 니즈를 중심으로 정의하는 것임\n- 따라서, 고객을 다양한 집단으로 분류하기 보다는 고객 조지사의 하나의 니즈를 더 깊고 자세하게 분석하여 파악할 필요가 있음\n\n(1) 유형\n\n프로그램형 (Programmatic): 자동화된 시스템을 사용하여 특정 조건을 충족하는 비즈니스 거래를 식별하고 처리하는 방식. 프로그래밍된 소프트웨어나 알고리즘을 활용하여 효율적인 거래를 이룸.\n\n\n예시: 프로그램매틱 광고, 자동화된 주문 및 공급망 관리.\n\n\n관계지향형 (Relationship-Based): 장기적인 협력과 관계 구축을 강조. 고객과의 깊은 관계를 중시하며, 상호 신뢰와 협력이 중요\n\n\n예시: 장기 계약, 고객 충성도 프로그램, 맞춤형 서비스 제공.\n\n\n거래중시형 (Transaction-Based): 거래중시형 B2B 세분화에서는 단기적이며 거래 중심의 관계가 강조. 주로 일회성 거래나 특정 거래 이벤트에 중점.\n\n\n예시: 온라인 거래 플랫폼을 통한 짧은 기간의 거래, 경매.\n\n\n교섭 사냥꾼형 (Hunters vs. Farmers): “사냥꾼”은 새로운 고객을 발굴하고 획득, “농부”는 기존 고객과의 관계를 유지하고 키움.\n\n\n예시: 사냥꾼은 신규 고객 확보, 농부는 기존 고객 관리 및 유지.\n\n\\(\\divideontimes\\) 그래프 참고 (ppt 116)"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#nested-approach",
+    "href": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#nested-approach",
+    "title": "02. 고객가치정의 및 아이디어 도출",
+    "section": "(2) Nested Approach",
+    "text": "(2) Nested Approach\nNested Approach는 조직의 인구통계적인 Macro 변수부터 개인 변수인 Micro변수까지 구체화하여 고객을 세분화하는 방법임\n\n조직의 인구 통계 : 조직의 크기, 산업 부문, 지리적 위치, 기업 문화 등과 같은 특성\n운영변수들(구매정책 등) : ex) 삼성과 LG는 서로의 부품을 구매하지 않음\n\n\n구매 정책, 협력 관계, 생산 및 공급망 전략 등을 포함\n\n\n구매 접근\n\n\n조직이 상품이나 서비스를 구매하는 방식(중앙 집중형, 분산형, 전략적 관리 등)\n\n\n상황 변수들 : 특정한 시점이나 환경에서 조직이 직면하는 변수들. 이는 특별한 프로젝트, 시장 변동성, 경기 변동 등을 포함\n\n\n1개 또는 여러개의 공급 업체 선택\n\n\n개인변수들 : 조직 내 구매 의사 결정에 영향을 미치는 개인들의 특성\n\n\n업무단순화, 성과금 등"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#c",
+    "href": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#c",
+    "title": "02. 고객가치정의 및 아이디어 도출",
+    "section": "3C",
+    "text": "3C\n1 고객 : 주요 타겟 고객 KBF 규명\n2 경쟁 : 경쟁사와의 차별성 확보\n3 자사 : 자사의 강점 반영"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#비교-우위-파악",
+    "href": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#비교-우위-파악",
+    "title": "02. 고객가치정의 및 아이디어 도출",
+    "section": "비교 우위 파악",
+    "text": "비교 우위 파악\n1 상품 차별화 : 기능, 성능, 디자인 또는 속성\n2 서비스 차별회 : 배달, 정치, 수리, 고객 교육\n3 이미지 차별화 : 상징, 분위기\n4 인적 차별화 : 고용, 훈련, 우수한 인적 자원\n\\(\\divideontimes\\) 포지셔닝을 통해 기업은 시장 경쟁구조, 자사제품의 경쟁사대비 위치 파악, 신제품 기회 발견 및 기존 제품의 포지셔닝 변경을 수행한다."
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#가치제안-구성요소-1.-솔루션",
+    "href": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#가치제안-구성요소-1.-솔루션",
+    "title": "02. 고객가치정의 및 아이디어 도출",
+    "section": "가치제안 구성요소 1. 솔루션",
+    "text": "가치제안 구성요소 1. 솔루션\n- 고객과 판매자가 협력하여 개발해야함\n\n그렇지 않으면. 고객들은 판매자가 일반적으로 개발한 가치 제안에서 결점을 찾아내거나 가치제안 전체를 거부"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#가치제안-구성요소-2.-차별화",
+    "href": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#가치제안-구성요소-2.-차별화",
+    "title": "02. 고객가치정의 및 아이디어 도출",
+    "section": "가치제안 구성요소 2. 차별화",
+    "text": "가치제안 구성요소 2. 차별화\n\n(1) 차별화를 위한 기본구조\n\n독점시장에서 가치 제안 : Value &gt; Cost\n경쟁시장에서 가치 제안 : 자사(Value-Cost) &gt; 경쟁사(Value-Cost)\n\n\n\n(2) 차별화 추구를 위한 고려요소\n1 정서가치 : 사용 가치를 통해 개인의 가치관과 생활에 변화를 주는 심리적 가치(Persona)\n2 기능가치 : 제품/서비스가 고객에게 제공하는 물리적 속성(Attribute)\n3 사용가치 : 물리적 속성으로 부터 고객이 얻는 이익(Benefit)"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#효과적인-가치-제안의-3요소",
+    "href": "posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html#효과적인-가치-제안의-3요소",
+    "title": "02. 고객가치정의 및 아이디어 도출",
+    "section": "효과적인 가치 제안의 3요소",
+    "text": "효과적인 가치 제안의 3요소\n\nQuantify : 예측되는 성과 향상의 정량화\nTiming : 효율의 발생, 비용 부가, 투자금액 회수 시기\nMeasurement & Monitoring : 성과의 측정과 추적 방법 명시"
+  },
+  {
     "objectID": "posts/DX/09. 제안전략수립/2023-11-23-00. 제안전략수립.html",
     "href": "posts/DX/09. 제안전략수립/2023-11-23-00. 제안전략수립.html",
     "title": "00. 제안전략수립",
@@ -2062,7 +2125,7 @@
     "href": "index.html",
     "title": "DX track",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 23, 2023\n\n\n00. 제안전략수립\n\n\ngc \n\n\n\n\nNov 6, 2023\n\n\n00. IT 인프라 (1)\n\n\nGC \n\n\n\n\nNov 2, 2023\n\n\n03. Titanic\n\n\ngc \n\n\n\n\nNov 1, 2023\n\n\n02. iris\n\n\ngc \n\n\n\n\nOct 31, 2023\n\n\n01. VOC\n\n\ngc \n\n\n\n\nOct 30, 2023\n\n\n00. Churn\n\n\ngc \n\n\n\n\nOct 26, 2023\n\n\n02. BERTopic\n\n\ngc \n\n\n\n\nOct 23, 2023\n\n\n00. streamlit\n\n\ngc \n\n\n\n\nOct 18, 2023\n\n\nsummary 01. RNN\n\n\nGC \n\n\n\n\nOct 18, 2023\n\n\nsummary 02. LSTM\n\n\nGC \n\n\n\n\nOct 18, 2023\n\n\nsummary 03. Transformer\n\n\nGC \n\n\n\n\nOct 12, 2023\n\n\nExtra 02. 시각지능\n\n\nGC \n\n\n\n\nOct 10, 2023\n\n\nExtra 01. 언어지능\n\n\nGC \n\n\n\n\nOct 6, 2023\n\n\n03. 딥러닝 (4)\n\n\nGC \n\n\n\n\nOct 5, 2023\n\n\n02. 딥러닝 (3)\n\n\nGC \n\n\n\n\nOct 4, 2023\n\n\n01. 딥러닝 (2)\n\n\nGC \n\n\n\n\nOct 3, 2023\n\n\n00. 딥러닝 (1)\n\n\nGC \n\n\n\n\nSep 28, 2023\n\n\n08. summary (1)\n\n\nGC \n\n\n\n\nSep 19, 2023\n\n\n07. 머신러닝 (6)\n\n\nGC \n\n\n\n\nSep 18, 2023\n\n\n06. 머신러닝 (5)\n\n\nGC \n\n\n\n\nSep 15, 2023\n\n\n04. 머신러닝 (4)\n\n\nGC \n\n\n\n\nSep 15, 2023\n\n\n05. 종합실습\n\n\nGC \n\n\n\n\nSep 14, 2023\n\n\n03. 머신러닝 (3)\n\n\nGC \n\n\n\n\nSep 13, 2023\n\n\n02. 머신러닝 (2)\n\n\nGC \n\n\n\n\nSep 12, 2023\n\n\n01. 머신러닝 (1)\n\n\nGC \n\n\n\n\nSep 11, 2023\n\n\n00. Intro\n\n\nGC \n\n\n\n\nSep 5, 2023\n\n\n01. 데이터 수집 (2)\n\n\nGC \n\n\n\n\nSep 4, 2023\n\n\n00. 데이터 수집 (1)\n\n\nGC \n\n\n\n\nSep 1, 2023\n\n\n02. 데이터 분석 (3)\n\n\nGC \n\n\n\n\nAug 31, 2023\n\n\n01. 데이터 분석 (2)\n\n\nGC \n\n\n\n\nAug 28, 2023\n\n\n00. 데이터 분석 (1)\n\n\nGC \n\n\n\n\nAug 24, 2023\n\n\n00. MP (1)\n\n\nGC \n\n\n\n\nAug 23, 2023\n\n\n04. numpy & pandas (5)\n\n\nGC \n\n\n\n\nAug 22, 2023\n\n\n03. numpy & pandas (4)\n\n\nGC \n\n\n\n\nAug 21, 2023\n\n\n02. numpy & pandas (3)\n\n\nGC \n\n\n\n\nAug 19, 2023\n\n\n01. Plotly test\n\n\nGC \n\n\n\n\nAug 18, 2023\n\n\n00. numpy & pandas (1)\n\n\nGC \n\n\n\n\nAug 18, 2023\n\n\n01. numpy & pandas (2)\n\n\nGC \n\n\n\n\nAug 17, 2023\n\n\n05. Python Basic (6)\n\n\nGC \n\n\n\n\nAug 16, 2023\n\n\n04. Python Basic (5)\n\n\nGC \n\n\n\n\nAug 15, 2023\n\n\nExtra 04. 클래스 탐구 (3)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\n03. Python Basic (4)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\nExtra 03. 클래스 탐구 (2)\n\n\nGC \n\n\n\n\nAug 11, 2023\n\n\n02. Python Basic (3)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\n01. Python Basic (2)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\nExtra 02. 클래스 탐구 (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\n00. Python Basic (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\nExtra 01. 클래스\n\n\nGC \n\n\n\n\nAug 8, 2023\n\n\nExtra 00. 밈\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nNov 27, 2023\n\n\n02. 고객가치정의 및 아이디어 도출\n\n\ngc \n\n\n\n\nNov 24, 2023\n\n\n01. 환경분석 기법의 이해\n\n\ngc \n\n\n\n\nNov 23, 2023\n\n\n00. 제안전략수립\n\n\ngc \n\n\n\n\nNov 6, 2023\n\n\n00. IT 인프라 (1)\n\n\nGC \n\n\n\n\nNov 2, 2023\n\n\n03. Titanic\n\n\ngc \n\n\n\n\nNov 1, 2023\n\n\n02. iris\n\n\ngc \n\n\n\n\nOct 31, 2023\n\n\n01. VOC\n\n\ngc \n\n\n\n\nOct 30, 2023\n\n\n00. Churn\n\n\ngc \n\n\n\n\nOct 26, 2023\n\n\n02. BERTopic\n\n\ngc \n\n\n\n\nOct 23, 2023\n\n\n00. streamlit\n\n\ngc \n\n\n\n\nOct 18, 2023\n\n\nsummary 01. RNN\n\n\nGC \n\n\n\n\nOct 18, 2023\n\n\nsummary 02. LSTM\n\n\nGC \n\n\n\n\nOct 18, 2023\n\n\nsummary 03. Transformer\n\n\nGC \n\n\n\n\nOct 12, 2023\n\n\nExtra 02. 시각지능\n\n\nGC \n\n\n\n\nOct 10, 2023\n\n\nExtra 01. 언어지능\n\n\nGC \n\n\n\n\nOct 6, 2023\n\n\n03. 딥러닝 (4)\n\n\nGC \n\n\n\n\nOct 5, 2023\n\n\n02. 딥러닝 (3)\n\n\nGC \n\n\n\n\nOct 4, 2023\n\n\n01. 딥러닝 (2)\n\n\nGC \n\n\n\n\nOct 3, 2023\n\n\n00. 딥러닝 (1)\n\n\nGC \n\n\n\n\nSep 28, 2023\n\n\n08. summary (1)\n\n\nGC \n\n\n\n\nSep 19, 2023\n\n\n07. 머신러닝 (6)\n\n\nGC \n\n\n\n\nSep 18, 2023\n\n\n06. 머신러닝 (5)\n\n\nGC \n\n\n\n\nSep 15, 2023\n\n\n04. 머신러닝 (4)\n\n\nGC \n\n\n\n\nSep 15, 2023\n\n\n05. 종합실습\n\n\nGC \n\n\n\n\nSep 14, 2023\n\n\n03. 머신러닝 (3)\n\n\nGC \n\n\n\n\nSep 13, 2023\n\n\n02. 머신러닝 (2)\n\n\nGC \n\n\n\n\nSep 12, 2023\n\n\n01. 머신러닝 (1)\n\n\nGC \n\n\n\n\nSep 11, 2023\n\n\n00. Intro\n\n\nGC \n\n\n\n\nSep 5, 2023\n\n\n01. 데이터 수집 (2)\n\n\nGC \n\n\n\n\nSep 4, 2023\n\n\n00. 데이터 수집 (1)\n\n\nGC \n\n\n\n\nSep 1, 2023\n\n\n02. 데이터 분석 (3)\n\n\nGC \n\n\n\n\nAug 31, 2023\n\n\n01. 데이터 분석 (2)\n\n\nGC \n\n\n\n\nAug 28, 2023\n\n\n00. 데이터 분석 (1)\n\n\nGC \n\n\n\n\nAug 24, 2023\n\n\n00. MP (1)\n\n\nGC \n\n\n\n\nAug 23, 2023\n\n\n04. numpy & pandas (5)\n\n\nGC \n\n\n\n\nAug 22, 2023\n\n\n03. numpy & pandas (4)\n\n\nGC \n\n\n\n\nAug 21, 2023\n\n\n02. numpy & pandas (3)\n\n\nGC \n\n\n\n\nAug 19, 2023\n\n\n01. Plotly test\n\n\nGC \n\n\n\n\nAug 18, 2023\n\n\n00. numpy & pandas (1)\n\n\nGC \n\n\n\n\nAug 18, 2023\n\n\n01. numpy & pandas (2)\n\n\nGC \n\n\n\n\nAug 17, 2023\n\n\n05. Python Basic (6)\n\n\nGC \n\n\n\n\nAug 16, 2023\n\n\n04. Python Basic (5)\n\n\nGC \n\n\n\n\nAug 15, 2023\n\n\nExtra 04. 클래스 탐구 (3)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\n03. Python Basic (4)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\nExtra 03. 클래스 탐구 (2)\n\n\nGC \n\n\n\n\nAug 11, 2023\n\n\n02. Python Basic (3)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\n01. Python Basic (2)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\nExtra 02. 클래스 탐구 (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\n00. Python Basic (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\nExtra 01. 클래스\n\n\nGC \n\n\n\n\nAug 8, 2023\n\n\nExtra 00. 밈\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html#education",
@@ -3589,6 +3652,90 @@
     "title": "00. IT 인프라 (1)",
     "section": "summary2",
     "text": "summary2\n- 스위치 :\n- MAC주소 :\n- 캡슐화 :"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "",
+    "text": "1 무엇을 분석할 것인가?\n2 분석의 범위는 어느 정도가지 봐야 하는가?\n3 어떻게 분석할 것인가?\n\n\n- 우리가 공급업체라면 고객과 고객의 기업까지 보아야한다.\n\nexample : 공급기업(KT) \\(\\to\\) 고객사/정부 \\(\\to\\) 소비자/이용자\n\n\n\n\n\n\n- 최종재의수요의 결과로 생겨나는 간접적인 요소, 즉 생산요소(산업재)에 대한 수요\n\n산업재(원자재) \\(\\to\\) 산업재(부품1) \\(\\to\\) 산업재(부품2) \\(\\to\\) 최종재 \\(\\to\\) 고객\n일반적으로 생산 연쇄 과정이 길수록 가속효과는 두드러짐\n\n- 발생하는 현상\n\n최종고객에 비하여 산업재의 수요 변동폭이 크게 나타남 \\(\\to\\) 이러한 가속효과는 수요예측의 어려음을 가속시킴\n\n- 그래서!! 최종고객 니즈 변화에 대한 예측이 필요하고, 최종고객에 대한 마케팅활동의 수정이 필요하다!!\n\n즉, B2B 뿐만 아니라 B2C 모니터링도 지속적으로 이루어져야 한다.\n\n\n\n\n- 구매자의 필요나 기호에 의하여 함께 사용되는 둘 이상의 생산물에 대한 수요\n\n어떤 상품을 구입할 때 그에 따른 다른 상품도 반드시 구입해야 하는 경우에 나타남\n\n\n\n\n- 기업 내에서 제품이나 서비스를 구매하기 위한 의사 결정 과정에서 관여하는 조직 내의 직원들의 그룹\n\n구성원 : 구매 관리자, 기술 전문가, 운영 전문가 등"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#분석-프레임",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#분석-프레임",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "",
+    "text": "1 무엇을 분석할 것인가?\n2 분석의 범위는 어느 정도가지 봐야 하는가?\n3 어떻게 분석할 것인가?\n\n\n- 우리가 공급업체라면 고객과 고객의 기업까지 보아야한다.\n\nexample : 공급기업(KT) \\(\\to\\) 고객사/정부 \\(\\to\\) 소비자/이용자\n\n\n\n\n\n\n- 최종재의수요의 결과로 생겨나는 간접적인 요소, 즉 생산요소(산업재)에 대한 수요\n\n산업재(원자재) \\(\\to\\) 산업재(부품1) \\(\\to\\) 산업재(부품2) \\(\\to\\) 최종재 \\(\\to\\) 고객\n일반적으로 생산 연쇄 과정이 길수록 가속효과는 두드러짐\n\n- 발생하는 현상\n\n최종고객에 비하여 산업재의 수요 변동폭이 크게 나타남 \\(\\to\\) 이러한 가속효과는 수요예측의 어려음을 가속시킴\n\n- 그래서!! 최종고객 니즈 변화에 대한 예측이 필요하고, 최종고객에 대한 마케팅활동의 수정이 필요하다!!\n\n즉, B2B 뿐만 아니라 B2C 모니터링도 지속적으로 이루어져야 한다.\n\n\n\n\n- 구매자의 필요나 기호에 의하여 함께 사용되는 둘 이상의 생산물에 대한 수요\n\n어떤 상품을 구입할 때 그에 따른 다른 상품도 반드시 구입해야 하는 경우에 나타남\n\n\n\n\n- 기업 내에서 제품이나 서비스를 구매하기 위한 의사 결정 과정에서 관여하는 조직 내의 직원들의 그룹\n\n구성원 : 구매 관리자, 기술 전문가, 운영 전문가 등"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#가설지향-프로세스",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#가설지향-프로세스",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "가설지향 프로세스",
+    "text": "가설지향 프로세스\n- 설정한 가설과 관련된 Data 분석 등을 통해 수정하는 활동을 거쳐 정확한 가설로서 결론에 도달함\n\n핵심이슈 \\(\\to\\) 가설설정 \\(\\to\\) 가설수정 \\(\\to\\) 가설설정 \\(\\to\\) 가설수정 \\(\\dots\\) \\(\\to\\) 가설수정 \\(\\to\\) 결론"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#전략요소",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#전략요소",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "전략요소",
+    "text": "전략요소\n1 전략적 의사결정을 수행하기 위해 파악해야 하는 요소들\n2 그 요소들의 변화에 큰 영향을 주는 핵심 환경 요소를 의미\n3 산업/고객의 변화에 따른 전략요소 정의\n\nexample : 전통시장 활성화 전략\n\n\n전통시장의 매출감소량 및 매출이 유지되는 곳 파악\n고객과 관련된 내용 파악 \\(\\to\\) 니즈 파악\n경쟁사의 전략을 파악 \\(\\to\\) 대형마트에서 파는 상품, 전략 등"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#자료-정리-및-추정",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#자료-정리-및-추정",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "자료 정리 및 추정",
+    "text": "자료 정리 및 추정\n1 연역법 : 일반적인 전제로부터 특정한 결론을 도출하는 방법\n\n모든 사람은 죽는다. 존은 사람이다. 존은 죽는다.\n\n2 귀납법 : 특별한 사례나 관찰로부터 일반적인 규칙이나 법칙을 도출\n\n지금까지의 관측에서 모든 사람은 물을 마시고 있다. 따라서 미래에도 모든 사람은 물을 마실 것이다.\n\n3 가추법 : 주어진 사실이나 현상을 설명할 수 있는 여러 가능성 중에서 가장 타당한 설명을 찾는 추론 방법\n\n창문이 열려 있고 비가 온다. 지면이 젖어 있으며 물기가 많다. 따라서 비가 내린 것이다.\n\n4 규모추정 : 특정 프로젝트, 작업 도는 일련의 활동에 대한 크기 또는 양을 평가\n\n페르미 추정 : 대략적인 수량을 어림잡아 추정 \\(\\to\\) 오래된 자료와 시장에 영향을 미치는 요소들을 중심으로 페르미 추정 실시\n\n5 전략추정 : 조직이나 기업이 비즈니스 전략을 수립하고 실행하기 위해 미래의 상황이나 변수에 대해 평가하고 예측하는 과정\n\nWhy 추정: 전략 추정에서 “Why” 추정은 특정 전략이나 목표를 설정한 이유, 그 목표를 달성하기 위한 비전 및 이유를 설명하는 단계.\n\n전략의 근본적인 목적을 이해하고, 그 목적이 조직의 장기적인 비전과 어떻게 연결되는지 이해하는 것이 중요\n\nHow 추정: 전략이나 목표를 달성하는 데 필요한 구체적인 행동 계획을 설계하는 것.\n\n이는 전략의 실행 방법, 필요한 리소스, 프로젝트 일정 등을 정의하는 과정을 포함"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#환경분석과-정보원",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#환경분석과-정보원",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "환경분석과 정보원",
+    "text": "환경분석과 정보원\n\n\n\n환경분석\n정보원\n\n\n\n\n소비자의 소비 변화\n카드사 발표자료 등\n\n\n소비자의 소비 변화와 관련된 파생공급자\n파생공급자 협회 등\n\n\n정부의 지원 정책 변화\n주요 부처의 홍보 자료\n\n\n산업 변화\n경제기관 애널리스트\n\n\n고객사내 변화\n논문/전문잡지 검색"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#example.-전략요소-정의",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#example.-전략요소-정의",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "example. 전략요소 정의",
+    "text": "example. 전략요소 정의"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#인터뷰시-유의점",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#인터뷰시-유의점",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "인터뷰시 유의점",
+    "text": "인터뷰시 유의점\n1 확인 질문에서 시작해서 새로운 정보 파악을 위한 질문으로 넘기기\n2 Yes/No로 답할 수 있는 질문은 삼가\n3 왜 why를 묻지 않고 속성 attribute를 중심으로 질문"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#조사-자료에-대한-평가",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#조사-자료에-대한-평가",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "조사 자료에 대한 평가",
+    "text": "조사 자료에 대한 평가\n1 이미 알고 있던 정보는 무엇인가?\n2 모호하게 알고 있었던 정보는 무엇인가?\n3 전혀 몰랐던 정보는 무엇인가?\n4 전략요소가 명확하게 정의 되었는가?\n5 정보원이 믿을만 한가?\n6 선입관은 배제 되었는가?"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#고객-니즈-구조",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#고객-니즈-구조",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "고객 니즈 구조",
+    "text": "고객 니즈 구조\n1 고객이 표현하는 니즈\n2 고객이 표현하지 않는 니즈\n\n고객이 아는 니즈\n고객도 모르는 니즈"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#b2bg-구매의-특성",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#b2bg-구매의-특성",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "B2B(G) 구매의 특성",
+    "text": "B2B(G) 구매의 특성\n- 조직 구매자는 구매를 위해 집단 의사결정 또는 의사결정을 조율함 (B2C와의 차이점)\n- 즉, 구매센터의 경계가 없음 (B2C와의 차이점)\n- 구매센터의 규모와 구조(ppt101, 102 참고)"
+  },
+  {
+    "objectID": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#고객-니즈-정의-요소",
+    "href": "posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html#고객-니즈-정의-요소",
+    "title": "01. 환경분석 기법의 이해",
+    "section": "고객 니즈 정의 요소",
+    "text": "고객 니즈 정의 요소\n1 Quality (품질):\n\n품질은 제품이나 서비스가 기대치를 충족하거나 초과하는 정도를 의미하며, 신뢰성, 내구성, 성능 등이 중요한 평가 요소\n\n2 Cost (비용):\n\n고객은 합리적인 가격대에서 원하는 가치를 얻을 수 있는지에 대해 관심을 가짐\n\n3 Delivery (납품):\n\n고객은 빠르고 정확한 납품이 기업과의 협력을 강화하는 중요한 요소로 인식\n\n4 Technology (기술):\n\n고객은 혁신적이고 최신 기술을 활용한 제품이나 서비스를 원함. 기술적인 우위는 경쟁 우위로 이어질 수 있습니다."
   },
   {
     "objectID": "posts/DX/2023-07-31-00.intro.html",

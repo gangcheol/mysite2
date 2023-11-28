@@ -660,7 +660,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#전송-프로토콜" id="toc-전송-프로토콜" class="nav-link" data-scroll-target="#전송-프로토콜">전송 프로토콜</a></li>
   <li><a href="#네트워크-장비" id="toc-네트워크-장비" class="nav-link" data-scroll-target="#네트워크-장비">네트워크 장비</a></li>
   </ul></li>
-  <li><a href="#osi-7계층-모델" id="toc-osi-7계층-모델" class="nav-link" data-scroll-target="#osi-7계층-모델">(3) OSI 7계층 모델</a></li>
+  <li><a href="#osi-7계층-모델" id="toc-osi-7계층-모델" class="nav-link" data-scroll-target="#osi-7계층-모델">(3) OSI 7계층 모델</a>
+  <ul class="collapse">
+  <li><a href="#각-계층-설명" id="toc-각-계층-설명" class="nav-link" data-scroll-target="#각-계층-설명">각 계층 설명</a></li>
+  </ul></li>
+  <li><a href="#summary2" id="toc-summary2" class="nav-link" data-scroll-target="#summary2">summary2</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -794,6 +798,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="osi-7계층-모델" class="level2">
 <h2 class="anchored" data-anchor-id="osi-7계층-모델">(3) OSI 7계층 모델</h2>
+<section id="각-계층-설명" class="level3">
+<h3 class="anchored" data-anchor-id="각-계층-설명">각 계층 설명</h3>
 <p><code>-</code> 7계층 : 응용(Application)</p>
 <ul>
 <li><p>사용자에게 다양한 Network 서비스를 제공(email-SMTP, FTP, 가상터미널…)</p></li>
@@ -816,20 +822,33 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><code>-</code> 4계층 : 전송(Transport)</p>
 <ul>
-<li></li>
+<li><p>데이터를 어디로 보낼지 결정하는 단계 (ex, 아파트 동 호수)</p></li>
+<li><p>Application 사이의 논리적인 통로 제공</p></li>
+<li><p>전송 문제 관리 및 신뢰성 있는 전송 보장</p></li>
 </ul>
-<p><code>-</code> 3계층 : 표현(Presentation)</p>
+<p><code>-</code> 3계층 : 네트워크(Network)</p>
 <ul>
-<li></li>
+<li><p>논리적인 주소를 사용(IP주소)</p></li>
+<li><p>경로 관리, 최적 경로 선정</p></li>
+<li><p>사용자 Date(Packet) 전송</p></li>
 </ul>
-<p><code>-</code> 2계층 : 표현(Presentation)</p>
+<p><code>-</code> 2계층 : 데이터 링크(Date Link)</p>
 <ul>
-<li></li>
+<li><p>IP주소를 읽어 하드웨어 주소인 MAC을 사용</p></li>
+<li><p>3계층에서 IP주소를 받아서 하드웨어 주소인 MAC주소와 연결</p></li>
 </ul>
-<p><code>-</code> 1계층 : 표현(Presentation)</p>
+<p><code>-</code> 1계층 : 물리(Physical)</p>
 <ul>
-<li></li>
+<li><p>물리적인 연결</p></li>
+<li><p>전기적, 기계적, 기능적 절차적인 수단을 제공</p></li>
 </ul>
+</section>
+</section>
+<section id="summary2" class="level2">
+<h2 class="anchored" data-anchor-id="summary2">summary2</h2>
+<p><code>-</code> 스위치 :</p>
+<p><code>-</code> MAC주소 :</p>
+<p><code>-</code> 캡슐화 :</p>
 
 
 </section>

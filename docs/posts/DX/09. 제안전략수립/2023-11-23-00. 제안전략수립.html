@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="GC">
-<meta name="dcterms.date" content="2023-08-18">
+<meta name="author" content="gc">
+<meta name="dcterms.date" content="2023-11-23">
 
-<title>Gangcheol - 00. numpy &amp; pandas (1)</title>
+<title>Gangcheol - 00. 제안전략수립</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -66,8 +32,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy &amp; pandas (2).html" rel="next">
-<link href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).html" rel="prev">
+<link href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" rel="next">
+<link href="../../../posts/DX/07. IT 인프라/2023-11-06-00. IT 인프라 (1).html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -160,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy &amp; pandas (1).html">01. 데이터 다듬기</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy &amp; pandas (1).html">00. numpy &amp; pandas (1)</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/09. 제안전략수립/2023-11-23-00. 제안전략수립.html">09. 제안전략수립</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/09. 제안전략수립/2023-11-23-00. 제안전략수립.html">00. 제안전략수립</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -173,11 +139,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">00. numpy &amp; pandas (1)</h1>
+      <h1 class="title">00. 제안전략수립</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">데이터 다듬기</div>
-                <div class="quarto-category">numpy</div>
-                <div class="quarto-category">pandas</div>
+                <div class="quarto-category">제안전략수립</div>
               </div>
                   </div>
   </div>
@@ -188,14 +152,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>GC </p>
+               <p>gc </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 18, 2023</p>
+        <p class="date">November 23, 2023</p>
       </div>
     </div>
     
@@ -345,16 +309,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">01. 데이터 다듬기</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy &amp; pandas (1).html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy &amp; pandas (1).html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00. numpy &amp; pandas (1)</span></a>
   </div>
 </li>
@@ -613,16 +577,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">
  <span class="menu-text">09. 제안전략수립</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../posts/DX/09. 제안전략수립/2023-11-23-00. 제안전략수립.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../posts/DX/09. 제안전략수립/2023-11-23-00. 제안전략수립.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">00. 제안전략수립</span></a>
   </div>
 </li>
@@ -694,41 +658,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
-  <li><a href="#용어-정의" id="toc-용어-정의" class="nav-link" data-scroll-target="#용어-정의">0. 용어 정의</a></li>
-  <li><a href="#배열-선언" id="toc-배열-선언" class="nav-link" data-scroll-target="#배열-선언">1. 배열 선언</a>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">intro</a>
   <ul class="collapse">
-  <li><a href="#차원-배열의-선언" id="toc-차원-배열의-선언" class="nav-link" data-scroll-target="#차원-배열의-선언">(1) 1차원 배열의 선언</a>
+  <li><a href="#제안컨설팅을-위한-사업화-프로세스" id="toc-제안컨설팅을-위한-사업화-프로세스" class="nav-link" data-scroll-target="#제안컨설팅을-위한-사업화-프로세스">제안컨설팅을 위한 사업화 프로세스</a>
   <ul class="collapse">
-  <li><a href="#알아두면-좋은-1차원-배열-선언" id="toc-알아두면-좋은-1차원-배열-선언" class="nav-link" data-scroll-target="#알아두면-좋은-1차원-배열-선언">알아두면 좋은 1차원 배열 선언</a></li>
-  <li><a href="#주의-1.-배열의-자료형" id="toc-주의-1.-배열의-자료형" class="nav-link" data-scroll-target="#주의-1.-배열의-자료형">주의 1. 배열의 자료형</a></li>
-  </ul></li>
-  <li><a href="#차원-배열의-선언-1" id="toc-차원-배열의-선언-1" class="nav-link" data-scroll-target="#차원-배열의-선언-1">(2) 2차원 배열의 선언</a>
-  <ul class="collapse">
-  <li><a href="#list" id="toc-list" class="nav-link" data-scroll-target="#list">list</a></li>
-  <li><a href="#stack" id="toc-stack" class="nav-link" data-scroll-target="#stack">stack</a></li>
-  </ul></li>
-  <li><a href="#차원-배열의-선언-2" id="toc-차원-배열의-선언-2" class="nav-link" data-scroll-target="#차원-배열의-선언-2">(3) 3차원 배열의 선언</a>
-  <ul class="collapse">
-  <li><a href="#list-1" id="toc-list-1" class="nav-link" data-scroll-target="#list-1">list</a></li>
-  <li><a href="#stack-reshape" id="toc-stack-reshape" class="nav-link" data-scroll-target="#stack-reshape">stack + reshape</a></li>
+  <li><a href="#사업의-이해" id="toc-사업의-이해" class="nav-link" data-scroll-target="#사업의-이해">(1) 사업의 이해</a></li>
+  <li><a href="#환경분석" id="toc-환경분석" class="nav-link" data-scroll-target="#환경분석">(2) 환경분석</a></li>
+  <li><a href="#표본-고객-pain-point-분석" id="toc-표본-고객-pain-point-분석" class="nav-link" data-scroll-target="#표본-고객-pain-point-분석">(3) 표본 고객 pain point 분석</a></li>
+  <li><a href="#전략수립" id="toc-전략수립" class="nav-link" data-scroll-target="#전략수립">(4) 전략수립</a></li>
+  <li><a href="#가치-제안" id="toc-가치-제안" class="nav-link" data-scroll-target="#가치-제안">(5) 가치 제안</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#인덱싱-슬라이싱" id="toc-인덱싱-슬라이싱" class="nav-link" data-scroll-target="#인덱싱-슬라이싱">2. 인덱싱 &amp; 슬라이싱</a>
+  <li><a href="#ch1.-비즈니스의-이해" id="toc-ch1.-비즈니스의-이해" class="nav-link" data-scroll-target="#ch1.-비즈니스의-이해">ch1. 비즈니스의 이해</a>
   <ul class="collapse">
-  <li><a href="#행-조회" id="toc-행-조회" class="nav-link" data-scroll-target="#행-조회">행 조회</a></li>
-  <li><a href="#열-조회" id="toc-열-조회" class="nav-link" data-scroll-target="#열-조회">열 조회</a></li>
-  <li><a href="#행열-조회" id="toc-행열-조회" class="nav-link" data-scroll-target="#행열-조회">행,열 조회</a></li>
-  <li><a href="#stride-start-end-interval" id="toc-stride-start-end-interval" class="nav-link" data-scroll-target="#stride-start-end-interval"><code>stride( start :end : interval)</code></a></li>
-  <li><a href="#특정값을-지정하여-접근" id="toc-특정값을-지정하여-접근" class="nav-link" data-scroll-target="#특정값을-지정하여-접근">특정값을 지정하여 접근</a></li>
+  <li><a href="#biz-체계의-이해" id="toc-biz-체계의-이해" class="nav-link" data-scroll-target="#biz-체계의-이해">Biz 체계의 이해</a></li>
   </ul></li>
-  <li><a href="#넘파이-연산" id="toc-넘파이-연산" class="nav-link" data-scroll-target="#넘파이-연산">3. 넘파이 연산</a>
+  <li><a href="#ch2.-비즈니스-발굴을-위한-고객문제-정의" id="toc-ch2.-비즈니스-발굴을-위한-고객문제-정의" class="nav-link" data-scroll-target="#ch2.-비즈니스-발굴을-위한-고객문제-정의">ch2. 비즈니스 발굴을 위한 고객문제 정의</a>
   <ul class="collapse">
-  <li><a href="#기본-연산" id="toc-기본-연산" class="nav-link" data-scroll-target="#기본-연산">기본 연산</a></li>
-  <li><a href="#기타-연산전치행렬역행렬" id="toc-기타-연산전치행렬역행렬" class="nav-link" data-scroll-target="#기타-연산전치행렬역행렬">기타 연산(전치행렬,역행렬)</a></li>
+  <li><a href="#b2b-사업의-본질" id="toc-b2b-사업의-본질" class="nav-link" data-scroll-target="#b2b-사업의-본질">B2B 사업의 본질</a></li>
+  <li><a href="#문제의-종류" id="toc-문제의-종류" class="nav-link" data-scroll-target="#문제의-종류">문제의 종류</a>
+  <ul class="collapse">
+  <li><a href="#탐색형" id="toc-탐색형" class="nav-link" data-scroll-target="#탐색형">(1) 탐색형</a></li>
+  <li><a href="#탐색형-1" id="toc-탐색형-1" class="nav-link" data-scroll-target="#탐색형-1">(2) 탐색형</a></li>
+  <li><a href="#설정형" id="toc-설정형" class="nav-link" data-scroll-target="#설정형">(3) 설정형</a></li>
+  <li><a href="#요약" id="toc-요약" class="nav-link" data-scroll-target="#요약">(4) 요약</a></li>
   </ul></li>
-  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a></li>
-  <li><a href="#ref" id="toc-ref" class="nav-link" data-scroll-target="#ref">ref</a></li>
+  <li><a href="#example.-문제정의" id="toc-example.-문제정의" class="nav-link" data-scroll-target="#example.-문제정의">example. 문제정의</a></li>
+  </ul></li>
+  <li><a href="#ch3.-to-be-설정을-위한-사고법" id="toc-ch3.-to-be-설정을-위한-사고법" class="nav-link" data-scroll-target="#ch3.-to-be-설정을-위한-사고법">ch3. To-Be 설정을 위한 사고법</a>
+  <ul class="collapse">
+  <li><a href="#forecasting" id="toc-forecasting" class="nav-link" data-scroll-target="#forecasting">Forecasting</a></li>
+  <li><a href="#backcasting" id="toc-backcasting" class="nav-link" data-scroll-target="#backcasting">Backcasting</a>
+  <ul class="collapse">
+  <li><a href="#process" id="toc-process" class="nav-link" data-scroll-target="#process">Process</a></li>
+  </ul></li>
+  <li><a href="#sic" id="toc-sic" class="nav-link" data-scroll-target="#sic">SIC</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -738,423 +703,157 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="import" class="level1">
-<h1>import</h1>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="intro" class="level1">
+<h1>intro</h1>
+<section id="제안컨설팅을-위한-사업화-프로세스" class="level2">
+<h2 class="anchored" data-anchor-id="제안컨설팅을-위한-사업화-프로세스">제안컨설팅을 위한 사업화 프로세스</h2>
+<section id="사업의-이해" class="level3">
+<h3 class="anchored" data-anchor-id="사업의-이해">(1) 사업의 이해</h3>
+<p><code>-</code> 사업의 개념과 도메인 지식이 필요</p>
+<p><code>-</code> 문제정의</p>
 </section>
-<section id="용어-정의" class="level1">
-<h1>0. 용어 정의</h1>
-<ol type="1">
-<li><p>axis : 배열의 각 축을 의미</p></li>
-<li><p>rank : 축의 개수</p></li>
-<li><p>shape : (3,4) <span class="math inline">\(\to (3 \times 4 \,\text{by matrix})\)</span></p></li>
-</ol>
+<section id="환경분석" class="level3">
+<h3 class="anchored" data-anchor-id="환경분석">(2) 환경분석</h3>
+<p>B2B 산업의 환경구조 <span class="math inline">\(\to\)</span> 환경분석 프레임</p>
 </section>
-<section id="배열-선언" class="level1">
-<h1>1. 배열 선언</h1>
-<section id="차원-배열의-선언" class="level2">
-<h2 class="anchored" data-anchor-id="차원-배열의-선언">(1) 1차원 배열의 선언</h2>
-<p><code>-</code> 튜플</p>
-<div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>np.array((<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
-<pre><code>array([1, 2, 3])</code></pre>
-</div>
-</div>
-<p><code>-</code> 리스트</p>
-<div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
-<pre><code>array([1, 2, 3])</code></pre>
-</div>
-</div>
-<p><code>-</code> range</p>
-<div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>np.array(<span class="bu">range</span>(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="39">
-<pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre>
-</div>
-</div>
-<section id="알아두면-좋은-1차원-배열-선언" class="level3">
-<h3 class="anchored" data-anchor-id="알아두면-좋은-1차원-배열-선언">알아두면 좋은 1차원 배열 선언</h3>
-<div class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>np.zeros(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="40">
-<pre><code>array([0., 0., 0.])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>np.ones(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="41">
-<pre><code>array([1., 1., 1.])</code></pre>
-</div>
-</div>
-<p><code>-</code> <code>np.linspace(2,8,4)</code> : 2~8까지, 4개의 원소를 생성</p>
-<div class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>np.linspace(<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
-<pre><code>array([2., 4., 6., 8.])</code></pre>
-</div>
-</div>
-<p><code>-</code> <code>np.arange(start,end)</code> : nump버전 range라고 생각하자!</p>
-<div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>np.arange(<span class="dv">5</span>), np.arange(<span class="dv">1</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="45">
-<pre><code>(array([0, 1, 2, 3, 4]), array([1, 2, 3, 4, 5]))</code></pre>
-</div>
-</div>
+<section id="표본-고객-pain-point-분석" class="level3">
+<h3 class="anchored" data-anchor-id="표본-고객-pain-point-분석">(3) 표본 고객 pain point 분석</h3>
+<p><code>-</code> 고객사에 대한 충분한 이해가 필요</p>
+<ul>
+<li>고객정의(구매센터) <span class="math inline">\(\to\)</span> 니즈 정의</li>
+</ul>
 </section>
-<section id="주의-1.-배열의-자료형" class="level3">
-<h3 class="anchored" data-anchor-id="주의-1.-배열의-자료형">주의 1. 배열의 자료형</h3>
-<p><code>-</code> 숫자 <span class="math inline">\(\to\)</span> 문자</p>
-<div class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="st">"A"</span>,<span class="fl">3.0</span>])</span>
-<span id="cb16-2"><a href="#cb16-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="85">
-<pre><code>array(['1', 'A', '3'], dtype='&lt;U11')</code></pre>
-</div>
-</div>
-<p><code>-</code> 정수 <span class="math inline">\(\to\)</span> 실수</p>
-<div class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="fl">3.0</span>])</span>
-<span id="cb18-2"><a href="#cb18-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="86">
-<pre><code>array([1., 2., 3.])</code></pre>
-</div>
-</div>
+<section id="전략수립" class="level3">
+<h3 class="anchored" data-anchor-id="전략수립">(4) 전략수립</h3>
+<ul>
+<li><p>세분화 타겟팅 <span class="math inline">\(\to\)</span> 포지셔닝</p></li>
+<li><p>아이디어 도출</p></li>
+</ul>
+</section>
+<section id="가치-제안" class="level3">
+<h3 class="anchored" data-anchor-id="가치-제안">(5) 가치 제안</h3>
+<ul>
+<li>가치제안서/실행전략 <span class="math inline">\(\to\)</span> 비즈니스 모델</li>
+</ul>
 </section>
 </section>
-<section id="차원-배열의-선언-1" class="level2">
-<h2 class="anchored" data-anchor-id="차원-배열의-선언-1">(2) 2차원 배열의 선언</h2>
-<section id="list" class="level3">
-<h3 class="anchored" data-anchor-id="list">list</h3>
-<div class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>a1 <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],</span>
-<span id="cb20-2"><a href="#cb20-2"></a>     [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]]</span>
-<span id="cb20-3"><a href="#cb20-3"></a></span>
-<span id="cb20-4"><a href="#cb20-4"></a>np.array(a1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="58">
-<pre><code>array([[1, 2, 3],
-       [4, 5, 6]])</code></pre>
-</div>
-</div>
 </section>
-<section id="stack" class="level3">
-<h3 class="anchored" data-anchor-id="stack">stack</h3>
-<div class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb22-3"><a href="#cb22-3"></a></span>
-<span id="cb22-4"><a href="#cb22-4"></a>A1 <span class="op">=</span> np.stack([a1,a2],axis<span class="op">=</span><span class="dv">0</span>) </span>
-<span id="cb22-5"><a href="#cb22-5"></a>A1, A1.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="60">
-<pre><code>(array([[0, 4, 2],
-        [3, 2, 3]]),
- (2, 3))</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>A2 <span class="op">=</span> np.stack([a1,a2],axis<span class="op">=</span><span class="dv">1</span>) </span>
-<span id="cb24-2"><a href="#cb24-2"></a>A2, A2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="62">
-<pre><code>(array([[0, 3],
-        [4, 2],
-        [2, 3]]),
- (3, 2))</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="차원-배열의-선언-2" class="level2">
-<h2 class="anchored" data-anchor-id="차원-배열의-선언-2">(3) 3차원 배열의 선언</h2>
-<section id="list-1" class="level3">
-<h3 class="anchored" data-anchor-id="list-1">list</h3>
-<div class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>a <span class="op">=</span> [[[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">4</span>]],[[<span class="dv">5</span>,<span class="dv">6</span>],[<span class="dv">7</span>,<span class="dv">8</span>]]]</span>
-<span id="cb26-2"><a href="#cb26-2"></a>np.array(a), np.array(a).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="72">
-<pre><code>(array([[[1, 2],
-         [3, 4]],
- 
-        [[5, 6],
-         [7, 8]]]),
- (2, 2, 2))</code></pre>
-</div>
-</div>
-</section>
-<section id="stack-reshape" class="level3">
-<h3 class="anchored" data-anchor-id="stack-reshape">stack + reshape</h3>
-<div class="cell" data-execution_count="118">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
-<span id="cb28-2"><a href="#cb28-2"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
-<span id="cb28-3"><a href="#cb28-3"></a>a3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">4</span>)</span>
-<span id="cb28-4"><a href="#cb28-4"></a></span>
-<span id="cb28-5"><a href="#cb28-5"></a>A1 <span class="op">=</span> np.stack([a1,a2,a3],axis<span class="op">=</span><span class="dv">0</span>).reshape(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
-<span id="cb28-6"><a href="#cb28-6"></a>A1, A1.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="118">
-<pre><code>(array([[[8, 8],
-         [4, 0],
-         [6, 8]],
- 
-        [[8, 4],
-         [0, 1],
-         [1, 6]]]),
- (2, 3, 2))</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="125">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>A1.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="125">
-<pre><code>dtype('int32')</code></pre>
-</div>
-</div>
+<section id="ch1.-비즈니스의-이해" class="level1">
+<h1>ch1. 비즈니스의 이해</h1>
+<section id="biz-체계의-이해" class="level2">
+<h2 class="anchored" data-anchor-id="biz-체계의-이해">Biz 체계의 이해</h2>
+<p><code>-</code> <code>biz</code>는 <code>Business</code>의 약자로 상품이나 서비스를 생산하고 판매하며, 수익을 얻는 활동을 의미함</p>
+<p><code>-</code> biz 체계</p>
+<ul>
+<li><p>비즈니스의 전반적인 구조와 기능을 나타냄</p></li>
+<li><p>기업이 제품이나 서비스를 제공하고, 조직 구조, 프로세스, 기술, 인력 등을 포함한 다양한 요소를 통합하여 운영하는 방식을 의미한다</p></li>
+</ul>
+<p><code>-</code> biz체게는 일반적으로 처음에는 고객중심으로 시작했다가 관리 중심으로 변환함</p>
+<ul>
+<li><strong>관리 중심으로 시작한 기업은… 결과가 좋지않음 (관리가 고객의 이익을 침해하면 안됨…)</strong></li>
+</ul>
+<p><em>기업의 존재 이유는 고객이고 기업의 목적은 시장을 창조하는 것이다 -피터 드리커-</em></p>
 <hr>
 </section>
 </section>
+<section id="ch2.-비즈니스-발굴을-위한-고객문제-정의" class="level1">
+<h1>ch2. 비즈니스 발굴을 위한 고객문제 정의</h1>
+<section id="b2b-사업의-본질" class="level2">
+<h2 class="anchored" data-anchor-id="b2b-사업의-본질">B2B 사업의 본질</h2>
+<p><code>-</code> B2B : <code>Bussiness-to-Bussiness</code>의 약어로, 기업 간에 이루어지는 거래를 나타냄</p>
+<ul>
+<li>B2B 비즈니스는 B2B 고객의 <strong>성공적인 전략실행을 위한 솔루션을 제시</strong>하는 것이다.</li>
+</ul>
 </section>
-<section id="인덱싱-슬라이싱" class="level1">
-<h1>2. 인덱싱 &amp; 슬라이싱</h1>
-<div class="cell" data-execution_count="154">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb32-2"><a href="#cb32-2"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb32-3"><a href="#cb32-3"></a>a3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb32-4"><a href="#cb32-4"></a>a4 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb32-5"><a href="#cb32-5"></a></span>
-<span id="cb32-6"><a href="#cb32-6"></a>A1 <span class="op">=</span> np.stack([a1,a2,a3,a4],axis<span class="op">=</span><span class="dv">0</span>) </span>
-<span id="cb32-7"><a href="#cb32-7"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="154">
-<pre><code>array([[8, 8, 7],
-       [3, 1, 1],
-       [3, 5, 7],
-       [7, 8, 6]])</code></pre>
-</div>
-</div>
-<section id="행-조회" class="level2">
-<h2 class="anchored" data-anchor-id="행-조회">행 조회</h2>
-<div class="cell" data-execution_count="155">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>A1[<span class="dv">0</span>:<span class="dv">2</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="155">
-<pre><code>array([[8, 8, 7],
-       [3, 1, 1]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="156">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>A1[[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="156">
-<pre><code>array([[8, 8, 7],
-       [3, 1, 1],
-       [3, 5, 7]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="157">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>A1[[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>], : ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="157">
-<pre><code>array([[8, 8, 7],
-       [3, 1, 1],
-       [3, 5, 7]])</code></pre>
-</div>
-</div>
+<section id="문제의-종류" class="level2">
+<h2 class="anchored" data-anchor-id="문제의-종류">문제의 종류</h2>
+<section id="탐색형" class="level3">
+<h3 class="anchored" data-anchor-id="탐색형">(1) 탐색형</h3>
+<p><code>-</code> 시간축 : 과거</p>
+<p><code>-</code> 발생원인 : 기준이탈 <span class="math inline">\(\cdot\)</span> 미달</p>
+<p><code>-</code> 성격 : 이미 일어나버린 문제</p>
 </section>
-<section id="열-조회" class="level2">
-<h2 class="anchored" data-anchor-id="열-조회">열 조회</h2>
-<div class="cell" data-execution_count="158">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>A1[:,<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="158">
-<pre><code>array([[8, 8],
-       [3, 1],
-       [3, 5],
-       [7, 8]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>A1[:,[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="159">
-<pre><code>array([[8, 8, 7],
-       [3, 1, 1],
-       [3, 5, 7],
-       [7, 8, 6]])</code></pre>
-</div>
-</div>
+<section id="탐색형-1" class="level3">
+<h3 class="anchored" data-anchor-id="탐색형-1">(2) 탐색형</h3>
+<p><code>-</code> 시간축 : 현재</p>
+<p><code>-</code> 발생원인 : 개선 <span class="math inline">\(\cdot\)</span> 개량 <span class="math inline">\(\cdot\)</span> 강화</p>
+<p><code>-</code> 성격 : 더 잘해보고 싶은 문제</p>
 </section>
-<section id="행열-조회" class="level2">
-<h2 class="anchored" data-anchor-id="행열-조회">행,열 조회</h2>
-<div class="cell" data-execution_count="160">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>A1[<span class="dv">0</span>:<span class="dv">2</span>,<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="160">
-<pre><code>array([[8, 8],
-       [3, 1]])</code></pre>
-</div>
-</div>
+<section id="설정형" class="level3">
+<h3 class="anchored" data-anchor-id="설정형">(3) 설정형</h3>
+<p><code>-</code> 시간축 : 미래</p>
+<p><code>-</code> 발생원인 : 개발 <span class="math inline">\(\cdot\)</span> 기획 <span class="math inline">\(\cdot\)</span> 리스크 회피</p>
+<p><code>-</code> 성격 : 앞으로 어떻게 할 것인가의 문제</p>
+<p><span class="math inline">\(\divideontimes\)</span> <strong>우리는 일반적으로 설정형으로 문제를 정의하고 해결할 줄 알아야 한다.</strong></p>
 </section>
-<section id="stride-start-end-interval" class="level2">
-<h2 class="anchored" data-anchor-id="stride-start-end-interval"><code>stride( start :end : interval)</code></h2>
-<div class="cell" data-execution_count="162">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="162">
-<pre><code>array([[8, 8, 7],
-       [3, 1, 1],
-       [3, 5, 7],
-       [7, 8, 6]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="161">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>A1[::<span class="dv">2</span>, ::<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="161">
-<pre><code>array([[8, 7],
-       [3, 7]])</code></pre>
-</div>
-</div>
+<section id="요약" class="level3">
+<h3 class="anchored" data-anchor-id="요약">(4) 요약</h3>
+<center>
+<img src="https://t1.daumcdn.net/cfile/tistory/114637504DD7B3D014" width="547" height="417">
+</center>
 </section>
-<section id="특정값을-지정하여-접근" class="level2">
-<h2 class="anchored" data-anchor-id="특정값을-지정하여-접근">특정값을 지정하여 접근</h2>
-<div class="cell" data-execution_count="164">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="164">
-<pre><code>array([[8, 8, 7],
-       [3, 1, 1],
-       [3, 5, 7],
-       [7, 8, 6]])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="170">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>A1[A1<span class="op">==</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="170">
-<pre><code>array([1, 1])</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="173">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>A1[A1<span class="op">==</span><span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="173">
-<pre><code>array([7, 7, 7])</code></pre>
-</div>
-</div>
+</section>
+<section id="example.-문제정의" class="level2">
+<h2 class="anchored" data-anchor-id="example.-문제정의">example. 문제정의</h2>
+<center>
+<img src="양식1.png" width="700">
+</center>
 <hr>
 </section>
 </section>
-<section id="넘파이-연산" class="level1">
-<h1>3. 넘파이 연산</h1>
-<section id="기본-연산" class="level2">
-<h2 class="anchored" data-anchor-id="기본-연산">기본 연산</h2>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="27">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="bu">print</span>(<span class="ss">f'''</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a><span class="ss">1. 사칙연산 </span></span>
-<span id="cb57-3"><a href="#cb57-3"></a></span>
-<span id="cb57-4"><a href="#cb57-4"></a><span class="ss">a + 1 = </span><span class="sc">{</span>a<span class="op">+</span><span class="dv">1</span><span class="sc">}</span></span>
-<span id="cb57-5"><a href="#cb57-5"></a><span class="ss">a - 2 = </span><span class="sc">{</span>a<span class="op">-</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-6"><a href="#cb57-6"></a><span class="ss">a x 2 = </span><span class="sc">{</span>a<span class="op">*</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-7"><a href="#cb57-7"></a><span class="ss">a / 2 = </span><span class="sc">{</span>a<span class="op">/</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-8"><a href="#cb57-8"></a><span class="ss">a // 2 = </span><span class="sc">{</span>a<span class="op">//</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-9"><a href="#cb57-9"></a><span class="ss">a % 2 = </span><span class="sc">{</span>a <span class="op">%</span> <span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-10"><a href="#cb57-10"></a></span>
-<span id="cb57-11"><a href="#cb57-11"></a><span class="ss">=======================================</span></span>
-<span id="cb57-12"><a href="#cb57-12"></a></span>
-<span id="cb57-13"><a href="#cb57-13"></a><span class="ss">2. 거듭제곱, 로그, 지수, 삼각함수</span></span>
-<span id="cb57-14"><a href="#cb57-14"></a></span>
-<span id="cb57-15"><a href="#cb57-15"></a><span class="ss">a^2 = </span><span class="sc">{</span>a<span class="op">**</span><span class="dv">2</span><span class="sc">}</span></span>
-<span id="cb57-16"><a href="#cb57-16"></a><span class="ss">sqrt(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.sqrt(a),<span class="dv">2</span>)<span class="sc">}</span></span>
-<span id="cb57-17"><a href="#cb57-17"></a><span class="ss">log(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.log(a),<span class="dv">2</span>)<span class="sc">}</span></span>
-<span id="cb57-18"><a href="#cb57-18"></a><span class="ss">exp(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.exp(a),<span class="dv">2</span>)<span class="sc">}</span></span>
-<span id="cb57-19"><a href="#cb57-19"></a><span class="ss">sin(a),cos(a) = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(np.sin(a),<span class="dv">2</span>)<span class="sc">,</span>np<span class="sc">.</span><span class="bu">round</span>(np.cos(a),<span class="dv">2</span>)<span class="sc">}</span></span>
-<span id="cb57-20"><a href="#cb57-20"></a><span class="ss">'''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-1. 사칙연산 
-
-a + 1 = [2 3 4]
-a - 2 = [-1  0  1]
-a x 2 = [2 4 6]
-a / 2 = [0.5 1.  1.5]
-a // 2 = [0 1 1]
-a % 2 = [1 0 1]
-
-=======================================
-
-2. 거듭제곱, 로그, 지수, 삼각함수
-
-a^2 = [1 4 9]
-sqrt(a) = [1.   1.41 1.73]
-log(a) = [0.   0.69 1.1 ]
-exp(a) = [ 2.72  7.39 20.09]
-sin(a),cos(a) = (array([0.84, 0.91, 0.14]), array([ 0.54, -0.42, -0.99]))
-</code></pre>
-</div>
-</div>
+<section id="ch3.-to-be-설정을-위한-사고법" class="level1">
+<h1>ch3. To-Be 설정을 위한 사고법</h1>
+<section id="forecasting" class="level2">
+<h2 class="anchored" data-anchor-id="forecasting">Forecasting</h2>
+<p><code>-</code> 현재 시점에서 미래를 보는 사고법</p>
+<ul>
+<li>활용 가능 자료 수집 <span class="math inline">\(\to\)</span> 자료분석 <span class="math inline">\(\to\)</span> Ouput 도출</li>
+</ul>
+<p><code>-</code> 자료 분석에 많은 시간을 들이고 정작 전략 수집에는 소홀하게 됨, 특히 기존 유사 프로젝트와 비슷한 결론이 나올 가능성이 높음</p>
 </section>
-<section id="기타-연산전치행렬역행렬" class="level2">
-<h2 class="anchored" data-anchor-id="기타-연산전치행렬역행렬">기타 연산(전치행렬,역행렬)</h2>
-<div class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>a1 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb59-2"><a href="#cb59-2"></a>a2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb59-3"><a href="#cb59-3"></a>a3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">3</span>)</span>
-<span id="cb59-4"><a href="#cb59-4"></a></span>
-<span id="cb59-5"><a href="#cb59-5"></a>A1 <span class="op">=</span> np.stack([a1,a2,a3],axis<span class="op">=</span><span class="dv">0</span>) </span>
-<span id="cb59-6"><a href="#cb59-6"></a>A1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="186">
-<pre><code>array([[8, 1, 1],
-       [2, 1, 4],
-       [4, 4, 1]])</code></pre>
-</div>
-</div>
-<p><code>-</code> 전치행렬</p>
-<div class="cell" data-execution_count="187">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>A1.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="187">
-<pre><code>array([[8, 2, 4],
-       [1, 1, 4],
-       [1, 4, 1]])</code></pre>
-</div>
-</div>
-<p><code>-</code> 역행렬</p>
-<div class="cell" data-execution_count="188">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>np.linalg.inv(A1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="188">
-<pre><code>array([[ 0.14705882, -0.02941176, -0.02941176],
-       [-0.1372549 , -0.03921569,  0.29411765],
-       [-0.03921569,  0.2745098 , -0.05882353]])</code></pre>
-</div>
-</div>
-<p><code>-</code> 행렬연산</p>
-<p><span class="math display">\[\bf A^{-1} \times A = {I}\]</span></p>
-<p><span class="math display">\[\bf {I} = \begin{bmatrix} 1 &amp; 0 &amp; \dots &amp; 0 \\
-                                                     0 &amp; 1 &amp; \dots &amp; 0 \\
-                                                     \dots &amp;\dots &amp;\dots &amp;\dots \\
-                                                     0 &amp; 0 &amp; \dots &amp; 1
-                                                        \end{bmatrix}\]</span></p>
-<div class="cell" data-execution_count="196">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>np.<span class="bu">round</span>(A1 <span class="op">@</span> np.linalg.inv(A1),<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="196">
-<pre><code>array([[ 1.,  0.,  0.],
-       [ 0.,  1., -0.],
-       [ 0.,  0.,  1.]])</code></pre>
-</div>
-</div>
-<hr>
+<section id="backcasting" class="level2">
+<h2 class="anchored" data-anchor-id="backcasting">Backcasting</h2>
+<p><code>-</code> 미래 시점에서 현재를 보는 사고법</p>
+<ul>
+<li>Ouput 추론/상상 <span class="math inline">\(\to\)</span> Output 실현을 위한 조건과 가정 정의 <span class="math inline">\(\to\)</span> 조건과 가정을 구현하기 위한 방법 정의</li>
+</ul>
+<p><code>-</code> 역가치사슬분석, 보도자료기반 가치정의</p>
+<section id="process" class="level3">
+<h3 class="anchored" data-anchor-id="process">Process</h3>
+<p><code>1</code> Awarensss : 이상상황 정의</p>
+<ul>
+<li><p>주요 참여자 정의</p></li>
+<li><p>이상적 가치 정의 <span class="math inline">\(\to\)</span> 전체 최적화를 고려 (풍선효과 등을 막기 위한 방안)</p></li>
+</ul>
+<p><span class="math inline">\(\divideontimes\)</span> 풍선효과 : 풍선의 한쪽을 누르면 다른 쪽이 불룩 튀어나오는 모습을 빗댄 표현으로, 어떤 현상이나 문제를 억제하면 다른 현상이나 문제가 새로이 불거져 나오는 상황</p>
+<p><code>2</code> interests : 이해관계자 정의</p>
+<ul>
+<li><p>이상적 가치 제공 및 운영 시 참여/고려 되는 이해관계자 도출</p></li>
+<li><p>이해관계자 니즈 정의</p></li>
+</ul>
+<p><code>3</code> Down to Action : 목표 도달을 위한 활동/조건 정의</p>
+<ul>
+<li>이상목표 달성을 위한 세부활동 정의 : 참여자/조건 별</li>
+</ul>
+<p><code>4</code> Baseline : 현 상황 정의</p>
+<p><code>5</code> Gap Analysis : Gap 및 장애요소 도출</p>
+<p><code>6</code> 핵심 성공요소 정의 및 세부 실행계획 정의</p>
 </section>
 </section>
-<section id="연습문제" class="level1">
-<h1>연습문제</h1>
-<p><code>-</code> <a href="https://gangcheol.github.io/mysite/posts/Lecture/IP/2023-08-04-06.%20numpy.html#exercise-1">excercise1</a></p>
-<p><code>-</code> <a href="https://gangcheol.github.io/mysite/posts/Lecture/IP/2023-08-04-06.%20numpy.html#exercise">excercise2</a></p>
-<p><code>-</code> <a href="https://gangcheol.github.io/mysite/posts/Lecture/IP/2023-08-04-07.%20Numpy%20%ED%99%9C%EC%9A%A9.html#%EB%84%98%ED%8C%8C%EC%9D%B4-%ED%99%9C%EC%9A%A9-1">excercise3</a></p>
-<p><code>-</code> <a href="https://gangcheol.github.io/mysite/posts/Lecture/IP/2023-08-04-07.%20Numpy%20%ED%99%9C%EC%9A%A9.html#%EB%84%98%ED%8C%8C%EC%9D%B4-%ED%99%9C%EC%9A%A9-2">excercise4</a></p>
-<hr>
+<section id="sic" class="level2">
+<h2 class="anchored" data-anchor-id="sic">SIC</h2>
+<p><code>-</code> success image canvas</p>
+<p><code>-</code> 고려사항 : 사람, 기술, 재료, 방법 등</p>
+<p><code>-</code> 주요요소</p>
+<ul>
+<li><p>경쟁사/대체재의 미래 제시가치</p></li>
+<li><p>필요 인프라 (H/W 및 S/W)</p></li>
+<li><p>이해관계자 : 보안/협력자, 관련기관 등</p></li>
+<li><p>필요자원</p></li>
+</ul>
+
+
 </section>
-<section id="ref" class="level1">
-<h1>ref</h1>
-<p><code>-</code> <a href="https://gangcheol.github.io/mysite/posts/Lecture/IP/2023-08-04-06.%20numpy.html">numpy basic</a></p>
-<p><code>-</code> <a href="https://gangcheol.github.io/mysite/posts/Lecture/IP/2023-08-04-06.%20numpy.html">numpy 활용</a></p>
-
-
 </section>
 
 </main> <!-- /main -->
@@ -1393,13 +1092,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Extra 04. 클래스 탐구 (3)</span>
+      <a href="../../../posts/DX/07. IT 인프라/2023-11-06-00. IT 인프라 (1).html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00. IT 인프라 (1)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy &amp; pandas (2).html" class="pagination-link">
-        <span class="nav-page-text">01. numpy &amp; pandas (2)</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" class="pagination-link">
+        <span class="nav-page-text">00. MP (1)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

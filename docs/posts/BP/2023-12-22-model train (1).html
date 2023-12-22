@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="GC">
-<meta name="dcterms.date" content="2023-08-19">
+<meta name="author" content="gc">
+<meta name="dcterms.date" content="2023-12-22">
 
-<title>Gangcheol - 01. Plotly test</title>
+<title>Gangcheol - 00. model train (1)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../posts/DX/2023-10-26-02. BERTopic.html" rel="next">
-<link href="../../posts/DX/2023-07-31-00.intro.html" rel="prev">
+<link href="../../posts/DX/2023-07-31-00.intro.html" rel="next">
+<link href="../../about.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -97,25 +97,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script type="text/javascript">
-window.PlotlyConfig = {MathJaxConfig: 'local'};
-if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-if (typeof require !== 'undefined') {
-require.undef("plotly");
-requirejs.config({
-    paths: {
-        'plotly': ['https://cdn.plot.ly/plotly-2.25.2.min']
-    }
-});
-require(['plotly'], function(Plotly) {
-    window._Plotly = Plotly;
-});
-}
-</script>
-
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -177,7 +158,7 @@ require(['plotly'], function(Plotly) {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../posts/DX/2023-08-19-01. Plotly test.html">01. Plotly test</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/BP/2023-12-22-model train (1).html">BP</a></li><li class="breadcrumb-item"><a href="../../posts/BP/2023-12-22-model train (1).html">00. model train (1)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -190,10 +171,9 @@ require(['plotly'], function(Plotly) {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">01. Plotly test</h1>
+      <h1 class="title">00. model train (1)</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">python</div>
-                <div class="quarto-category">plotly</div>
+                <div class="quarto-category">BP</div>
               </div>
                   </div>
   </div>
@@ -204,14 +184,14 @@ require(['plotly'], function(Plotly) {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>GC </p>
+               <p>gc </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 19, 2023</p>
+        <p class="date">December 22, 2023</p>
       </div>
     </div>
     
@@ -246,16 +226,16 @@ require(['plotly'], function(Plotly) {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">BP</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/BP/2023-12-22-model train (1).html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/BP/2023-12-22-model train (1).html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">00. model train (1)</span></a>
   </div>
 </li>
@@ -263,13 +243,13 @@ require(['plotly'], function(Plotly) {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">DX</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../posts/DX/2023-07-31-00.intro.html" class="sidebar-item-text sidebar-link">
@@ -278,7 +258,7 @@ require(['plotly'], function(Plotly) {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DX/2023-08-19-01. Plotly test.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/DX/2023-08-19-01. Plotly test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. Plotly test</span></a>
   </div>
 </li>
@@ -758,6 +738,14 @@ require(['plotly'], function(Plotly) {
    
   <ul>
   <li><a href="#import" id="toc-import" class="nav-link active" data-scroll-target="#import">import</a></li>
+  <li><a href="#필요한-함수-정의" id="toc-필요한-함수-정의" class="nav-link" data-scroll-target="#필요한-함수-정의">필요한 함수 정의</a></li>
+  <li><a href="#잡다" id="toc-잡다" class="nav-link" data-scroll-target="#잡다">잡다</a></li>
+  <li><a href="#사전학습된-모델-로드" id="toc-사전학습된-모델-로드" class="nav-link" data-scroll-target="#사전학습된-모델-로드">사전학습된 모델 로드</a>
+  <ul class="collapse">
+  <li><a href="#모델-설계" id="toc-모델-설계" class="nav-link" data-scroll-target="#모델-설계">모델 설계</a></li>
+  <li><a href="#모델-학습" id="toc-모델-학습" class="nav-link" data-scroll-target="#모델-학습">모델 학습</a></li>
+  <li><a href="#모델-예측" id="toc-모델-예측" class="nav-link" data-scroll-target="#모델-예측">모델 예측</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -769,185 +757,353 @@ require(['plotly'], function(Plotly) {
 
 <section id="import" class="level1">
 <h1>import</h1>
-<div class="cell" data-tags="[]" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> ex</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
-<span id="cb1-4"><a href="#cb1-4"></a>pio.renderers.default <span class="op">=</span> <span class="st">"plotly_mimetype+notebook_connected"</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">!</span>pip install remotezip tqdm opencv<span class="op">-</span>python<span class="op">==</span><span class="fl">4.5.2.52</span> opencv<span class="op">-</span>python<span class="op">-</span>headless<span class="op">==</span><span class="fl">4.5.2.52</span> tf<span class="op">-</span>models<span class="op">-</span>official</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">!</span>pip install remotezip</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="op">!</span>pip install tf<span class="op">-</span>models<span class="op">-</span>official</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> tqdm</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> random</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> pathlib</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="im">import</span> itertools</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="im">import</span> collections</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="im">import</span> cv2</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="im">import</span> remotezip <span class="im">as</span> rz</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="im">import</span> keras</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="im">import</span> tensorflow_hub <span class="im">as</span> hub</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="im">from</span> tensorflow.keras <span class="im">import</span> layers</span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="im">from</span> tensorflow.keras.optimizers <span class="im">import</span> Adam</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="im">from</span> tensorflow.keras.losses <span class="im">import</span> SparseCategoricalCrossentropy</span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="im">from</span> pathlib <span class="im">import</span> PosixPath</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="co"># Import the MoViNet model from TensorFlow Models (tf-models-official) for the MoViNet model</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="im">from</span> official.projects.movinet.modeling <span class="im">import</span> movinet</span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="im">from</span> official.projects.movinet.modeling <span class="im">import</span> movinet_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/kalilurrahman/datasets/main/mobilephonemktshare2020.csv'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">Samsung</th>
-<th data-quarto-table-cell-role="th">Apple</th>
-<th data-quarto-table-cell-role="th">Huawei</th>
-<th data-quarto-table-cell-role="th">Xiaomi</th>
-<th data-quarto-table-cell-role="th">Oppo</th>
-<th data-quarto-table-cell-role="th">Mobicel</th>
-<th data-quarto-table-cell-role="th">Motorola</th>
-<th data-quarto-table-cell-role="th">LG</th>
-<th data-quarto-table-cell-role="th">Others</th>
-<th data-quarto-table-cell-role="th">Realme</th>
-<th data-quarto-table-cell-role="th">Google</th>
-<th data-quarto-table-cell-role="th">Nokia</th>
-<th data-quarto-table-cell-role="th">Lenovo</th>
-<th data-quarto-table-cell-role="th">OnePlus</th>
-<th data-quarto-table-cell-role="th">Sony</th>
-<th data-quarto-table-cell-role="th">Asus</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>2019-10</td>
-<td>31.49</td>
-<td>22.09</td>
-<td>10.02</td>
-<td>7.79</td>
-<td>4.10</td>
-<td>3.15</td>
-<td>2.41</td>
-<td>2.40</td>
-<td>9.51</td>
-<td>0.54</td>
-<td>2.35</td>
-<td>0.95</td>
-<td>0.96</td>
-<td>0.70</td>
-<td>0.84</td>
-<td>0.74</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2019-11</td>
-<td>31.36</td>
-<td>22.90</td>
-<td>10.18</td>
-<td>8.16</td>
-<td>4.42</td>
-<td>3.41</td>
-<td>2.40</td>
-<td>2.40</td>
-<td>9.10</td>
-<td>0.78</td>
-<td>0.66</td>
-<td>0.97</td>
-<td>0.97</td>
-<td>0.73</td>
-<td>0.83</td>
-<td>0.75</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>2019-12</td>
-<td>31.37</td>
-<td>24.79</td>
-<td>9.95</td>
-<td>7.73</td>
-<td>4.23</td>
-<td>3.19</td>
-<td>2.50</td>
-<td>2.54</td>
-<td>8.13</td>
-<td>0.84</td>
-<td>0.75</td>
-<td>0.90</td>
-<td>0.87</td>
-<td>0.74</td>
-<td>0.77</td>
-<td>0.70</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>2020-01</td>
-<td>31.29</td>
-<td>24.76</td>
-<td>10.61</td>
-<td>8.10</td>
-<td>4.25</td>
-<td>3.02</td>
-<td>2.42</td>
-<td>2.40</td>
-<td>7.55</td>
-<td>0.88</td>
-<td>0.69</td>
-<td>0.88</td>
-<td>0.86</td>
-<td>0.79</td>
-<td>0.80</td>
-<td>0.69</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>2020-02</td>
-<td>30.91</td>
-<td>25.89</td>
-<td>10.98</td>
-<td>7.80</td>
-<td>4.31</td>
-<td>2.89</td>
-<td>2.36</td>
-<td>2.34</td>
-<td>7.06</td>
-<td>0.89</td>
-<td>0.70</td>
-<td>0.81</td>
-<td>0.77</td>
-<td>0.78</td>
-<td>0.80</td>
-<td>0.69</td>
-</tr>
-</tbody>
-</table>
-
+<div class="cell" data-outputid="a8f2938e-1581-4c3b-aaed-d50c82140cff" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">%</span>cd <span class="op">/</span>content<span class="op">/</span>drive<span class="op">/</span>MyDrive<span class="op">/</span>Colab Notebooks<span class="op">/</span>big project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/content/drive/MyDrive/Colab Notebooks/big project</code></pre>
 </div>
 </div>
+</section>
+<section id="필요한-함수-정의" class="level1">
+<h1>필요한 함수 정의</h1>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> format_frames(frame, output_size):</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="co">"""</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">    Pad and resize an image from a video.</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">    Args:</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">      frame: Image that needs to resized and padded.</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">      output_size: Pixel size of the output frame image.</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">    Return:</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">      Formatted frame with padding of specified output size.</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">  """</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>  frame <span class="op">=</span> tf.image.convert_image_dtype(frame, tf.float32)</span>
+<span id="cb5-13"><a href="#cb5-13"></a>  frame <span class="op">=</span> tf.image.resize_with_pad(frame, <span class="op">*</span>output_size)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>  <span class="cf">return</span> frame</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df.set_index(<span class="st">"Date"</span>).diff().<span class="op">\</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  dropna().boxplot(backend <span class="op">=</span> <span class="st">"plotly"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-
-<div>                            <div id="b6eebe69-255c-4110-8f7e-4772bd1803d8" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("b6eebe69-255c-4110-8f7e-4772bd1803d8")) {                    Plotly.newPlot(                        "b6eebe69-255c-4110-8f7e-4772bd1803d8",                        [{"alignmentgroup":"True","hovertemplate":"variable=%{x}\u003cbr\u003evalue=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa"},"name":"","notched":false,"offsetgroup":"","orientation":"v","showlegend":false,"x":["Samsung","Samsung","Samsung","Samsung","Samsung","Samsung","Samsung","Samsung","Samsung","Samsung","Samsung","Samsung","Apple","Apple","Apple","Apple","Apple","Apple","Apple","Apple","Apple","Apple","Apple","Apple","Huawei","Huawei","Huawei","Huawei","Huawei","Huawei","Huawei","Huawei","Huawei","Huawei","Huawei","Huawei","Xiaomi","Xiaomi","Xiaomi","Xiaomi","Xiaomi","Xiaomi","Xiaomi","Xiaomi","Xiaomi","Xiaomi","Xiaomi","Xiaomi","Oppo","Oppo","Oppo","Oppo","Oppo","Oppo","Oppo","Oppo","Oppo","Oppo","Oppo","Oppo","Mobicel","Mobicel","Mobicel","Mobicel","Mobicel","Mobicel","Mobicel","Mobicel","Mobicel","Mobicel","Mobicel","Mobicel","Motorola","Motorola","Motorola","Motorola","Motorola","Motorola","Motorola","Motorola","Motorola","Motorola","Motorola","Motorola","LG","LG","LG","LG","LG","LG","LG","LG","LG","LG","LG","LG","Others","Others","Others","Others","Others","Others","Others","Others","Others","Others","Others","Others","Realme","Realme","Realme","Realme","Realme","Realme","Realme","Realme","Realme","Realme","Realme","Realme","Google","Google","Google","Google","Google","Google","Google","Google","Google","Google","Google","Google","Nokia","Nokia","Nokia","Nokia","Nokia","Nokia","Nokia","Nokia","Nokia","Nokia","Nokia","Nokia","Lenovo","Lenovo","Lenovo","Lenovo","Lenovo","Lenovo","Lenovo","Lenovo","Lenovo","Lenovo","Lenovo","Lenovo","OnePlus","OnePlus","OnePlus","OnePlus","OnePlus","OnePlus","OnePlus","OnePlus","OnePlus","OnePlus","OnePlus","OnePlus","Sony","Sony","Sony","Sony","Sony","Sony","Sony","Sony","Sony","Sony","Sony","Sony","Asus","Asus","Asus","Asus","Asus","Asus","Asus","Asus","Asus","Asus","Asus","Asus"],"x0":" ","xaxis":"x","y":[-0.129999999999999,0.010000000000001563,-0.08000000000000185,-0.379999999999999,-0.10999999999999943,-0.39000000000000057,-0.23000000000000043,0.879999999999999,-0.10999999999999943,0.08999999999999986,-0.46999999999999886,-0.3200000000000003,0.8099999999999987,1.8900000000000006,-0.029999999999997584,1.129999999999999,1.1400000000000006,1.759999999999998,-2.0700000000000003,-1.4599999999999973,-0.4400000000000013,0.3299999999999983,-0.16999999999999815,1.5500000000000007,0.16000000000000014,-0.23000000000000043,0.6600000000000001,0.370000000000001,-0.28000000000000114,-0.41999999999999993,0.11000000000000121,0.29999999999999893,0.0600000000000005,-0.019999999999999574,-0.15000000000000036,-0.14000000000000057,0.3700000000000001,-0.4299999999999997,0.3699999999999992,-0.2999999999999998,-0.09999999999999964,-0.10000000000000053,0.7599999999999998,0.19000000000000128,0.3899999999999988,-0.03999999999999915,0.5899999999999999,0.17999999999999972,0.3200000000000003,-0.1899999999999995,0.019999999999999574,0.05999999999999961,-0.009999999999999787,-0.09999999999999964,0.5,-0.04999999999999982,0.040000000000000036,0.0,0.25,-0.11000000000000032,0.26000000000000023,-0.2200000000000002,-0.16999999999999993,-0.1299999999999999,-0.020000000000000018,-0.1200000000000001,0.3700000000000001,0.06000000000000005,0.2799999999999998,-0.08000000000000007,0.1200000000000001,-0.96,-0.010000000000000231,0.10000000000000009,-0.08000000000000007,-0.06000000000000005,-0.009999999999999787,0.1599999999999997,-0.04999999999999982,0.10999999999999988,-0.11999999999999966,-0.06000000000000005,-0.1200000000000001,-0.06000000000000005,0.0,0.14000000000000012,-0.14000000000000012,-0.06000000000000005,-0.06000000000000005,0.0,-0.08999999999999986,-0.08000000000000007,-0.08000000000000007,-0.06999999999999984,-0.08000000000000007,-0.08999999999999986,-0.41000000000000014,-0.9699999999999989,-0.580000000000001,-0.4900000000000002,-0.4299999999999997,-0.79,0.46999999999999975,0.08000000000000007,0.020000000000000462,-0.10000000000000053,-0.1899999999999995,-0.08000000000000007,0.24,0.05999999999999994,0.040000000000000036,0.010000000000000009,0.040000000000000036,-0.030000000000000027,0.14,0.0,0.08999999999999986,0.050000000000000044,0.27,0.10000000000000009,-1.69,0.08999999999999997,-0.06000000000000005,0.010000000000000009,0.030000000000000027,0.020000000000000018,-0.050000000000000044,-0.019999999999999907,-0.030000000000000027,-0.020000000000000018,0.0,0.0,0.020000000000000018,-0.06999999999999995,-0.020000000000000018,-0.06999999999999995,-0.09000000000000008,-0.030000000000000027,0.040000000000000036,0.010000000000000009,0.020000000000000018,-0.020000000000000018,0.0,-0.050000000000000044,0.010000000000000009,-0.09999999999999998,-0.010000000000000009,-0.08999999999999997,-0.030000000000000027,-0.030000000000000027,0.06000000000000005,-0.020000000000000018,-0.010000000000000009,-0.020000000000000018,-0.04999999999999993,-0.020000000000000018,0.030000000000000027,0.010000000000000009,0.050000000000000044,-0.010000000000000009,0.0,0.020000000000000018,0.010000000000000009,-0.040000000000000036,-0.010000000000000009,-0.010000000000000009,0.06000000000000005,0.039999999999999925,-0.010000000000000009,-0.05999999999999994,0.030000000000000027,0.0,-0.040000000000000036,0.0,0.020000000000000018,0.0,-0.030000000000000027,-0.020000000000000018,-0.040000000000000036,-0.019999999999999907,0.010000000000000009,-0.050000000000000044,-0.010000000000000009,0.0,-0.029999999999999916,0.039999999999999925,0.06000000000000005,-0.010000000000000009,-0.030000000000000027,-0.020000000000000018,-0.029999999999999916,-0.030000000000000027],"y0":" ","yaxis":"y","type":"box"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"variable"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"value"}},"legend":{"tracegroupgap":0},"margin":{"t":60},"boxmode":"group"},                        {"responsive": true}                    ).then(function(){
-                            
-var gd = document.getElementById('b6eebe69-255c-4110-8f7e-4772bd1803d8');
-var x = new MutationObserver(function (mutations, observer) {{
-        var display = window.getComputedStyle(gd).display;
-        if (!display || display === 'none') {{
-            console.log([gd, 'removed!']);
-            Plotly.purge(gd);
-            observer.disconnect();
-        }}
-}});
-
-// Listen for the removal of the full notebook cells
-var notebookContainer = gd.closest('#notebook-container');
-if (notebookContainer) {{
-    x.observe(notebookContainer, {childList: true});
-}}
-
-// Listen for the clearing of the current output cell
-var outputEl = gd.closest('.output');
-if (outputEl) {{
-    x.observe(outputEl, {childList: true});
-}}
-
-                        })                };                });            </script>        </div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> frames_from_video_file(video_path, n_frames, output_size <span class="op">=</span> (<span class="dv">224</span>,<span class="dv">224</span>), frame_step <span class="op">=</span> <span class="dv">15</span>):</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="co">"""</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">    Creates frames from each video file present for each category.</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">    Args:</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">      video_path: File path to the video.</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">      n_frames: Number of frames to be created per video file.</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">      output_size: Pixel size of the output frame image.</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">    Return:</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">      An NumPy array of frames in the shape of (n_frames, height, width, channels).</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">  """</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>  <span class="co"># Read each video frame by frame</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>  result <span class="op">=</span> []</span>
+<span id="cb6-15"><a href="#cb6-15"></a>  src <span class="op">=</span> cv2.VideoCapture(<span class="bu">str</span>(video_path))</span>
+<span id="cb6-16"><a href="#cb6-16"></a></span>
+<span id="cb6-17"><a href="#cb6-17"></a>  video_length <span class="op">=</span> src.get(cv2.CAP_PROP_FRAME_COUNT)</span>
+<span id="cb6-18"><a href="#cb6-18"></a></span>
+<span id="cb6-19"><a href="#cb6-19"></a>  need_length <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> (n_frames <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> frame_step</span>
+<span id="cb6-20"><a href="#cb6-20"></a></span>
+<span id="cb6-21"><a href="#cb6-21"></a>  <span class="cf">if</span> need_length <span class="op">&gt;</span> video_length:</span>
+<span id="cb6-22"><a href="#cb6-22"></a>    start <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a>  <span class="cf">else</span>:</span>
+<span id="cb6-24"><a href="#cb6-24"></a>    max_start <span class="op">=</span> video_length <span class="op">-</span> need_length</span>
+<span id="cb6-25"><a href="#cb6-25"></a>    start <span class="op">=</span> random.randint(<span class="dv">0</span>, max_start <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb6-26"><a href="#cb6-26"></a></span>
+<span id="cb6-27"><a href="#cb6-27"></a>  src.<span class="bu">set</span>(cv2.CAP_PROP_POS_FRAMES, start)</span>
+<span id="cb6-28"><a href="#cb6-28"></a>  <span class="co"># ret is a boolean indicating whether read was successful, frame is the image itself</span></span>
+<span id="cb6-29"><a href="#cb6-29"></a>  ret, frame <span class="op">=</span> src.read()</span>
+<span id="cb6-30"><a href="#cb6-30"></a>  result.append(format_frames(frame, output_size))</span>
+<span id="cb6-31"><a href="#cb6-31"></a></span>
+<span id="cb6-32"><a href="#cb6-32"></a>  <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_frames <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb6-33"><a href="#cb6-33"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(frame_step):</span>
+<span id="cb6-34"><a href="#cb6-34"></a>      ret, frame <span class="op">=</span> src.read()</span>
+<span id="cb6-35"><a href="#cb6-35"></a>    <span class="cf">if</span> ret:</span>
+<span id="cb6-36"><a href="#cb6-36"></a>      frame <span class="op">=</span> format_frames(frame, output_size)</span>
+<span id="cb6-37"><a href="#cb6-37"></a>      result.append(frame)</span>
+<span id="cb6-38"><a href="#cb6-38"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-39"><a href="#cb6-39"></a>      result.append(np.zeros_like(result[<span class="dv">0</span>]))</span>
+<span id="cb6-40"><a href="#cb6-40"></a>  src.release()</span>
+<span id="cb6-41"><a href="#cb6-41"></a>  result <span class="op">=</span> np.array(result)[..., [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>]]</span>
+<span id="cb6-42"><a href="#cb6-42"></a></span>
+<span id="cb6-43"><a href="#cb6-43"></a>  <span class="cf">return</span> result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">class</span> FrameGenerator:</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, path, n_frames, training <span class="op">=</span> <span class="va">False</span>):</span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="co">""" Returns a set of frames with their associated label.</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">      Args:</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">        path: Video file paths.</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">        n_frames: Number of frames.</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">        training: Boolean to determine if training dataset is being created.</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">    """</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>    <span class="va">self</span>.path <span class="op">=</span> path</span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="va">self</span>.n_frames <span class="op">=</span> n_frames</span>
+<span id="cb7-12"><a href="#cb7-12"></a>    <span class="va">self</span>.training <span class="op">=</span> training</span>
+<span id="cb7-13"><a href="#cb7-13"></a>    <span class="va">self</span>.class_names <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">set</span>(p.name <span class="cf">for</span> p <span class="kw">in</span> <span class="va">self</span>.path.iterdir() <span class="cf">if</span> p.is_dir()))</span>
+<span id="cb7-14"><a href="#cb7-14"></a>    <span class="va">self</span>.class_ids_for_name <span class="op">=</span> <span class="bu">dict</span>((name, idx) <span class="cf">for</span> idx, name <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="va">self</span>.class_names))</span>
+<span id="cb7-15"><a href="#cb7-15"></a></span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="kw">def</span> get_files_and_class_names(<span class="va">self</span>):</span>
+<span id="cb7-17"><a href="#cb7-17"></a>    video_paths <span class="op">=</span> <span class="bu">list</span>(<span class="va">self</span>.path.glob(<span class="st">'*/*.mp4'</span>))</span>
+<span id="cb7-18"><a href="#cb7-18"></a>    classes <span class="op">=</span> [p.parent.name <span class="cf">for</span> p <span class="kw">in</span> video_paths]</span>
+<span id="cb7-19"><a href="#cb7-19"></a>    <span class="cf">return</span> video_paths, classes</span>
+<span id="cb7-20"><a href="#cb7-20"></a></span>
+<span id="cb7-21"><a href="#cb7-21"></a>  <span class="kw">def</span> <span class="fu">__call__</span>(<span class="va">self</span>):</span>
+<span id="cb7-22"><a href="#cb7-22"></a>    video_paths, classes <span class="op">=</span> <span class="va">self</span>.get_files_and_class_names()</span>
+<span id="cb7-23"><a href="#cb7-23"></a></span>
+<span id="cb7-24"><a href="#cb7-24"></a>    pairs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(video_paths, classes))</span>
+<span id="cb7-25"><a href="#cb7-25"></a></span>
+<span id="cb7-26"><a href="#cb7-26"></a>    <span class="cf">if</span> <span class="va">self</span>.training:</span>
+<span id="cb7-27"><a href="#cb7-27"></a>      random.shuffle(pairs)</span>
+<span id="cb7-28"><a href="#cb7-28"></a></span>
+<span id="cb7-29"><a href="#cb7-29"></a>    <span class="cf">for</span> path, name <span class="kw">in</span> pairs:</span>
+<span id="cb7-30"><a href="#cb7-30"></a>      video_frames <span class="op">=</span> frames_from_video_file(path, <span class="va">self</span>.n_frames)</span>
+<span id="cb7-31"><a href="#cb7-31"></a>      label <span class="op">=</span> <span class="va">self</span>.class_ids_for_name[name] <span class="co"># Encode labels</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a>      <span class="cf">yield</span> video_frames, label</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>subset_paths  <span class="op">=</span> {<span class="st">'train'</span>: PosixPath(<span class="st">'DATA(20231222)/train'</span>),</span>
+<span id="cb8-2"><a href="#cb8-2"></a>                              <span class="st">'test'</span>: PosixPath(<span class="st">'DATA(20231222)/test'</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="잡다" class="level1">
+<h1>잡다</h1>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>batch_size <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>num_frames <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>output_signature <span class="op">=</span> (tf.TensorSpec(shape <span class="op">=</span> (<span class="va">None</span>, <span class="va">None</span>, <span class="va">None</span>, <span class="dv">3</span>), dtype <span class="op">=</span> tf.float32),</span>
+<span id="cb9-5"><a href="#cb9-5"></a>                    tf.TensorSpec(shape <span class="op">=</span> (), dtype <span class="op">=</span> tf.int16))</span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a>train_ds <span class="op">=</span> tf.data.Dataset.from_generator(FrameGenerator(subset_paths[<span class="st">'train'</span>], num_frames, training <span class="op">=</span> <span class="va">True</span>),</span>
+<span id="cb9-8"><a href="#cb9-8"></a>                                          output_signature <span class="op">=</span> output_signature)</span>
+<span id="cb9-9"><a href="#cb9-9"></a>train_ds <span class="op">=</span> train_ds.batch(batch_size)</span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a>test_ds <span class="op">=</span> tf.data.Dataset.from_generator(FrameGenerator(subset_paths[<span class="st">'test'</span>], num_frames),</span>
+<span id="cb9-12"><a href="#cb9-12"></a>                                         output_signature <span class="op">=</span> output_signature)</span>
+<span id="cb9-13"><a href="#cb9-13"></a>test_ds <span class="op">=</span> test_ds.batch(batch_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="de3284fd-d543-4225-e1f8-ac1f7df8908b" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="cf">for</span> frames, labels <span class="kw">in</span> train_ds.take(<span class="dv">10</span>):</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="bu">print</span>(labels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor([1 0 3 2 3 2 0 0], shape=(8,), dtype=int16)
+tf.Tensor([3 0 2 4 0 0 1 1], shape=(8,), dtype=int16)
+tf.Tensor([2 2 2 0 3 1 4 3], shape=(8,), dtype=int16)
+tf.Tensor([1 3 4 0 0 3 4 2], shape=(8,), dtype=int16)
+tf.Tensor([2 1 1 0 0 1 1 3], shape=(8,), dtype=int16)
+tf.Tensor([2 1 2 3 2 4 0 1], shape=(8,), dtype=int16)
+tf.Tensor([3 4 3 2 1 2 2 1], shape=(8,), dtype=int16)
+tf.Tensor([2 3 4 3 4 4 3 3], shape=(8,), dtype=int16)
+tf.Tensor([1 4 3 0 0 2 0 3], shape=(8,), dtype=int16)
+tf.Tensor([1 3 3 0 1 2 4 3], shape=(8,), dtype=int16)</code></pre>
 </div>
 </div>
+<div class="cell" data-outputid="b7aacf65-a3ee-4bf2-9402-f43efdad5f82" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>frames<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">print</span>(<span class="ss">f"Label: </span><span class="sc">{</span>labels<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Shape: (8, 8, 224, 224, 3)
+Label: (8,)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>gru <span class="op">=</span> layers.GRU(units<span class="op">=</span><span class="dv">4</span>, return_sequences<span class="op">=</span><span class="va">True</span>, return_state<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a>inputs <span class="op">=</span> tf.random.normal(shape<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">8</span>]) <span class="co"># (batch, sequence, channels)</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a>result, state <span class="op">=</span> gru(inputs) <span class="co"># Run it all at once</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="652a6444-bc94-49d0-e030-5386eb9a1a41" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>&lt;tf.Tensor: shape=(1, 10, 4), dtype=float32, numpy=
+array([[[ 0.78977203, -0.7666972 , -0.18226078, -0.11051563],
+        [ 0.7447158 , -0.5760373 , -0.3625499 , -0.32132182],
+        [ 0.70870763, -0.8776552 , -0.40342405, -0.20605183],
+        [ 0.8300309 , -0.7762664 , -0.66221005, -0.15138052],
+        [ 0.7058173 , -0.601603  , -0.697772  ,  0.21956235],
+        [ 0.2517114 , -0.8170609 , -0.6245837 ,  0.2573869 ],
+        [-0.09677514, -0.753946  , -0.44089788, -0.1442756 ],
+        [-0.13653909, -0.5563181 ,  0.04367654,  0.1682852 ],
+        [ 0.16750489, -0.43640408, -0.30911005,  0.16984233],
+        [ 0.50685465, -0.84352696, -0.295877  ,  0.06026528]]],
+      dtype=float32)&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="4ad1613c-7fe4-485d-e5ef-37a39807a765" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>first_half, state <span class="op">=</span> gru(inputs[:, :<span class="dv">5</span>, :])   <span class="co"># run the first half, and capture the state</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>second_half, _ <span class="op">=</span> gru(inputs[:,<span class="dv">5</span>:, :], initial_state<span class="op">=</span>state)  <span class="co"># Use the state to continue where you left off.</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="bu">print</span>(np.allclose(result[:, :<span class="dv">5</span>,:], first_half))</span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="bu">print</span>(np.allclose(result[:, <span class="dv">5</span>:,:], second_half))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+True</code></pre>
+</div>
+</div>
+</section>
+<section id="사전학습된-모델-로드" class="level1">
+<h1>사전학습된 모델 로드</h1>
+<div class="cell" data-outputid="0cc7644a-2c97-401a-fd24-58d3fc31c57d" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>model_id <span class="op">=</span> <span class="st">'a0'</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>resolution <span class="op">=</span> <span class="dv">224</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a>tf.keras.backend.clear_session()</span>
+<span id="cb19-5"><a href="#cb19-5"></a></span>
+<span id="cb19-6"><a href="#cb19-6"></a>backbone <span class="op">=</span> movinet.Movinet(model_id<span class="op">=</span>model_id)</span>
+<span id="cb19-7"><a href="#cb19-7"></a>backbone.trainable <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="co"># Set num_classes=600 to load the pre-trained weights from the original model</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a>model <span class="op">=</span> movinet_model.MovinetClassifier(backbone<span class="op">=</span>backbone, num_classes<span class="op">=</span><span class="dv">600</span>)</span>
+<span id="cb19-11"><a href="#cb19-11"></a>model.build([<span class="va">None</span>, <span class="va">None</span>, <span class="va">None</span>, <span class="va">None</span>, <span class="dv">3</span>])</span>
+<span id="cb19-12"><a href="#cb19-12"></a></span>
+<span id="cb19-13"><a href="#cb19-13"></a><span class="co"># Load pre-trained weights</span></span>
+<span id="cb19-14"><a href="#cb19-14"></a><span class="op">!</span>wget https:<span class="op">//</span>storage.googleapis.com<span class="op">/</span>tf_model_garden<span class="op">/</span>vision<span class="op">/</span>movinet<span class="op">/</span>movinet_a0_base.tar.gz <span class="op">-</span>O movinet_a0_base.tar.gz <span class="op">-</span>q</span>
+<span id="cb19-15"><a href="#cb19-15"></a><span class="op">!</span>tar <span class="op">-</span>xvf movinet_a0_base.tar.gz</span>
+<span id="cb19-16"><a href="#cb19-16"></a></span>
+<span id="cb19-17"><a href="#cb19-17"></a>checkpoint_dir <span class="op">=</span> <span class="ss">f'movinet_</span><span class="sc">{</span>model_id<span class="sc">}</span><span class="ss">_base'</span></span>
+<span id="cb19-18"><a href="#cb19-18"></a>checkpoint_path <span class="op">=</span> tf.train.latest_checkpoint(checkpoint_dir)</span>
+<span id="cb19-19"><a href="#cb19-19"></a>checkpoint <span class="op">=</span> tf.train.Checkpoint(model<span class="op">=</span>model)</span>
+<span id="cb19-20"><a href="#cb19-20"></a>status <span class="op">=</span> checkpoint.restore(checkpoint_path)</span>
+<span id="cb19-21"><a href="#cb19-21"></a>status.assert_existing_objects_matched()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>movinet_a0_base/
+movinet_a0_base/checkpoint
+movinet_a0_base/ckpt-1.data-00000-of-00001
+movinet_a0_base/ckpt-1.index</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>&lt;tensorflow.python.checkpoint.checkpoint.CheckpointLoadStatus at 0x78f47a527970&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">def</span> build_classifier(batch_size, num_frames, resolution, backbone, num_classes):</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="co">"""Builds a classifier on top of a backbone model."""</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>  model <span class="op">=</span> movinet_model.MovinetClassifier(</span>
+<span id="cb22-4"><a href="#cb22-4"></a>      backbone<span class="op">=</span>backbone,</span>
+<span id="cb22-5"><a href="#cb22-5"></a>      num_classes<span class="op">=</span>num_classes)</span>
+<span id="cb22-6"><a href="#cb22-6"></a>  model.build([batch_size, num_frames, resolution, resolution, <span class="dv">3</span>])</span>
+<span id="cb22-7"><a href="#cb22-7"></a></span>
+<span id="cb22-8"><a href="#cb22-8"></a>  <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>model <span class="op">=</span> build_classifier(batch_size, num_frames, resolution, backbone, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="모델-설계" class="level2">
+<h2 class="anchored" data-anchor-id="모델-설계">모델 설계</h2>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>num_epochs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a></span>
+<span id="cb24-3"><a href="#cb24-3"></a>loss_obj <span class="op">=</span> tf.keras.losses.SparseCategoricalCrossentropy(from_logits<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>optimizer <span class="op">=</span> tf.keras.optimizers.Adam(learning_rate <span class="op">=</span> <span class="fl">0.001</span>)</span>
+<span id="cb24-6"><a href="#cb24-6"></a></span>
+<span id="cb24-7"><a href="#cb24-7"></a>model.<span class="bu">compile</span>(loss<span class="op">=</span>loss_obj, optimizer<span class="op">=</span>optimizer, metrics<span class="op">=</span>[<span class="st">'accuracy'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="모델-학습" class="level2">
+<h2 class="anchored" data-anchor-id="모델-학습">모델 학습</h2>
+<div class="cell" data-outputid="016b2ae9-53d3-42be-d974-fa87f6b6166a" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>history <span class="op">=</span> model.fit(train_ds,</span>
+<span id="cb25-2"><a href="#cb25-2"></a>                    validation_data<span class="op">=</span>test_ds,</span>
+<span id="cb25-3"><a href="#cb25-3"></a>                    epochs<span class="op">=</span>num_epochs,</span>
+<span id="cb25-4"><a href="#cb25-4"></a>                    validation_freq<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb25-5"><a href="#cb25-5"></a>                    verbose<span class="op">=</span><span class="dv">1</span>).history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/10
+25/25 [==============================] - 262s 11s/step - loss: 0.2182 - accuracy: 0.9250 - val_loss: 1.8610 - val_accuracy: 0.5300
+Epoch 2/10
+25/25 [==============================] - 236s 10s/step - loss: 0.1098 - accuracy: 0.9550 - val_loss: 2.0431 - val_accuracy: 0.4700
+Epoch 3/10
+25/25 [==============================] - 241s 10s/step - loss: 0.0851 - accuracy: 0.9650 - val_loss: 2.2936 - val_accuracy: 0.4800
+Epoch 4/10
+25/25 [==============================] - 245s 10s/step - loss: 0.0808 - accuracy: 0.9700 - val_loss: 2.2675 - val_accuracy: 0.4300
+Epoch 5/10
+25/25 [==============================] - 240s 10s/step - loss: 0.0554 - accuracy: 0.9800 - val_loss: 2.7530 - val_accuracy: 0.4700
+Epoch 6/10
+25/25 [==============================] - 237s 10s/step - loss: 0.0691 - accuracy: 0.9750 - val_loss: 2.4889 - val_accuracy: 0.4900
+Epoch 7/10
+25/25 [==============================] - 235s 10s/step - loss: 0.0576 - accuracy: 0.9800 - val_loss: 2.6091 - val_accuracy: 0.4300
+Epoch 8/10
+25/25 [==============================] - 236s 10s/step - loss: 0.0273 - accuracy: 0.9950 - val_loss: 3.0559 - val_accuracy: 0.4500
+Epoch 9/10
+25/25 [==============================] - 238s 10s/step - loss: 0.0222 - accuracy: 0.9950 - val_loss: 2.4566 - val_accuracy: 0.4600
+Epoch 10/10
+25/25 [==============================] - 234s 9s/step - loss: 0.0236 - accuracy: 0.9950 - val_loss: 2.6278 - val_accuracy: 0.4500</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="bba8eeb2-a1f6-4c24-bfb1-55ebe9b91148" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>history[<span class="st">"loss"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>[0.21817944943904877,
+ 0.10981059074401855,
+ 0.08505159616470337,
+ 0.08084923028945923,
+ 0.05538821220397949,
+ 0.06905801594257355,
+ 0.05758459120988846,
+ 0.027318188920617104,
+ 0.022160962224006653,
+ 0.023646153509616852]</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="b9bcb46b-4cf2-414b-c15b-f97159065b86" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb30-2"><a href="#cb30-2"></a>plt.plot(history[<span class="st">"loss"</span>], <span class="st">"--."</span>, label <span class="op">=</span> <span class="st">"train_loss"</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb30-3"><a href="#cb30-3"></a>plt.plot(history[<span class="st">"val_loss"</span>], <span class="st">"--."</span>, label <span class="op">=</span> <span class="st">"val_loss"</span>,alpha <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb30-4"><a href="#cb30-4"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>&lt;matplotlib.legend.Legend at 0x78f3dc26e530&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="모델-예측" class="level2">
+<h2 class="anchored" data-anchor-id="모델-예측">모델 예측</h2>
+<div class="cell" data-outputid="bd79825a-ce76-41c3-a0c3-df1bd640eefd" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>model.evaluate(test_ds, return_dict<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>13/13 [==============================] - 80s 6s/step - loss: 2.5152 - accuracy: 0.4400</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>{'loss': 2.515213966369629, 'accuracy': 0.4399999976158142}</code></pre>
+</div>
+</div>
+<p><code>-</code> 모델 성능이 너무 안나온다…</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1186,13 +1342,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../posts/DX/2023-07-31-00.intro.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00. Intro &amp; setting</span>
+      <a href="../../about.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>About Me</strong></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../posts/DX/2023-10-26-02. BERTopic.html" class="pagination-link">
-        <span class="nav-page-text">02. BERTopic</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../posts/DX/2023-07-31-00.intro.html" class="pagination-link">
+        <span class="nav-page-text">00. Intro &amp; setting</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

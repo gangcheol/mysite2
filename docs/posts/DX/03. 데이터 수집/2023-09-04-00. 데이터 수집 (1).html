@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="GC">
+<meta name="dcterms.date" content="2023-09-04">
+
+<title>Gangcheol - 00. 데이터 수집 (1)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../posts/DX/03. 데이터 수집/2023-09-05-01. 데이터 수집 (2).html" rel="next">
+<link href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Gangcheol</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
+ <span class="menu-text">Lecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
+ <span class="menu-text">Tableau</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
+ <span class="menu-text">DX</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
+ <span class="menu-text">IA2023</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
+ <span class="menu-text">ISLP2023</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html">03. 데이터 수집</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html">00. 데이터 수집 (1)</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">00. 데이터 수집 (1)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">데이터 수집</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>GC </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 4, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>About Me</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">DX</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/2023-07-31-00.intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro &amp; setting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/2023-08-19-01. Plotly test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Plotly test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/2023-10-26-02. BERTopic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. BERTopic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">00. 데이터 다루기</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Python Basic (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-10-01. Python Basic (2) .html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Python Basic (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-11-02. Python Basic (3) .html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Python Basic (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-14-03. Python Basic (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Python Basic (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. Python Basic (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. Python Basic (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Extra</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 00. 밈</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 01. 클래스</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 02. 클래스 탐구 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 03. 클래스 탐구 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-15-Extra 04. 클래스 탐구 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 04. 클래스 탐구 (3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">01. 데이터 다듬기</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-00. numpy &amp; pandas (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. numpy &amp; pandas (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-18-01. numpy &amp; pandas (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. numpy &amp; pandas (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-21-02. numpy &amp; pandas (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. numpy &amp; pandas (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-22-03. numpy &amp; pandas (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. numpy &amp; pandas (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-23-04. numpy &amp; pandas (5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. numpy &amp; pandas (5)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">02. 데이터 분석</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. 데이터 분석 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 데이터 분석 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 데이터 분석 (3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">03. 데이터 수집</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/03. 데이터 수집/2023-09-04-00. 데이터 수집 (1).html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">00. 데이터 수집 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/03. 데이터 수집/2023-09-05-01. 데이터 수집 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 데이터 수집 (2)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">04. 머신러닝</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-11-00. intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-12-01. 머신러닝 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 머신러닝 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-13-02. 머신러닝 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 머신러닝 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-14-03. 머신러닝 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 머신러닝 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-15-04. 머신러닝 (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 머신러닝 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-15-05. 종합실습.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 종합실습</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-18-06. 머신러닝 (5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. 머신러닝 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-19-07. 머신러닝 (6).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. 머신러닝 (6)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/04. 머신러닝/2023-09-28-08. summary (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. summary (1)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">05. 딥러닝</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-03-00. 딥러닝 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. 딥러닝 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-04-01. 딥러닝 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 딥러닝 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-05-02. 딥러닝 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 딥러닝 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-06-03. 딥러닝 (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 딥러닝 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-10-Extra 01. 언어지능 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 01. 언어지능</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/2023-10-11-Extra 02. 시각지능.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra 02. 시각지능</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">Summary</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 01. RNN.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">summary 01. RNN</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 02. LSTM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">summary 02. LSTM</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 03. transformer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">summary 03. Transformer</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+ <span class="menu-text">06. 데이터분석표현</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/06. 데이터분석표현/2023-10-23-00. streamlit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. streamlit</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">07. IT 인프라</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/07. IT 인프라/2023-11-06-00. IT 인프라 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. IT 인프라 (1)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+ <span class="menu-text">09. 제안전략수립</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/09. 제안전략수립/2023-11-23-00. 제안전략수립.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. 제안전략수립</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/09. 제안전략수립/2023-11-24-01. 환경분석 기법의 이해.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 환경분석 기법의 이해</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/09. 제안전략수립/2023-11-27-02. 고객가치정의 및 아이디어 도출.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 고객가치정의 및 아이디어 도출</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/09. 제안전략수립/2023-11-28-03. 실행계획 수립.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 실행계획 수립</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/09. 제안전략수립/2023-11-29-04. 사업정의.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 사업정의</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/09. 제안전략수립/2023-11-30-05. 제안서 작성 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 제안서 작성 (1)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+ <span class="menu-text">BP</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/BP/2023-12-28-00. model train (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. model train (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/BP/2023-12-28-01. model train (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. model train (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/BP/2023-12-28-02. model fit &amp; save.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. model fit &amp; save</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/BP/2024-01-01-03. model theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. model theory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
+ <span class="menu-text">Extra</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/BP/Extra/2024-01-15-00. CA (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. CA (1)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false">
+ <span class="menu-text">MP</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. MP (1)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false">
+ <span class="menu-text">EX</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/EX/2023-10-30-00. Churn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Churn</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/EX/2023-10-31-01. VOC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. VOC</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/EX/2023-11-01-02. iris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. iris</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/EX/2023-11-01-03. Titanic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Titanic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/EX/2024-01-08-04. MNIST.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. MNIST</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#review" id="toc-review" class="nav-link active" data-scroll-target="#review">review</a>
+  <ul class="collapse">
+  <li><a href="#변수-선언-및-삭제" id="toc-변수-선언-및-삭제" class="nav-link" data-scroll-target="#변수-선언-및-삭제">1. 변수 선언 및 삭제</a></li>
+  <li><a href="#데이터-타입" id="toc-데이터-타입" class="nav-link" data-scroll-target="#데이터-타입">2. 데이터 타입</a></li>
+  <li><a href="#변수-속성값-함수" id="toc-변수-속성값-함수" class="nav-link" data-scroll-target="#변수-속성값-함수">3. 변수 속성값 함수</a></li>
+  <li><a href="#연산자" id="toc-연산자" class="nav-link" data-scroll-target="#연산자">4. 연산자</a></li>
+  <li><a href="#row-dash-변수를-사용하지-않음" id="toc-row-dash-변수를-사용하지-않음" class="nav-link" data-scroll-target="#row-dash-변수를-사용하지-않음">5. <code>_</code> : row dash (변수를 사용하지 않음)</a></li>
+  <li><a href="#함수-코드-작성의-효율을-높임" id="toc-함수-코드-작성의-효율을-높임" class="nav-link" data-scroll-target="#함수-코드-작성의-효율을-높임">6. 함수 : 코드 작성의 효율을 높임</a>
+  <ul class="collapse">
+  <li><a href="#함수-작성-코드가-작성되고-실행되지는-않는다" id="toc-함수-작성-코드가-작성되고-실행되지는-않는다" class="nav-link" data-scroll-target="#함수-작성-코드가-작성되고-실행되지는-않는다"><code>1</code> 함수 작성 : 코드가 작성되고 실행되지는 않는다!</a></li>
+  <li><a href="#함수-호출-코드-실행" id="toc-함수-호출-코드-실행" class="nav-link" data-scroll-target="#함수-호출-코드-실행"><code>2</code> 함수 호출 (코드 실행)</a></li>
+  <li><a href="#return-추가" id="toc-return-추가" class="nav-link" data-scroll-target="#return-추가"><code>3</code> return 추가</a></li>
+  <li><a href="#dostring-함수의-설명글-help를-이용" id="toc-dostring-함수의-설명글-help를-이용" class="nav-link" data-scroll-target="#dostring-함수의-설명글-help를-이용"><code>4</code> dostring : 함수의 설명글, <code>help()</code>를 이용</a></li>
+  </ul></li>
+  <li><a href="#클래스" id="toc-클래스" class="nav-link" data-scroll-target="#클래스">7. 클래스</a>
+  <ul class="collapse">
+  <li><a href="#클래스-선언" id="toc-클래스-선언" class="nav-link" data-scroll-target="#클래스-선언">(1) 클래스 선언</a></li>
+  <li><a href="#객체-선언" id="toc-객체-선언" class="nav-link" data-scroll-target="#객체-선언">(2) 객체 선언</a></li>
+  <li><a href="#메소드-호출" id="toc-메소드-호출" class="nav-link" data-scroll-target="#메소드-호출">(3) 메소드 호출</a></li>
+  <li><a href="#생성자-메서드" id="toc-생성자-메서드" class="nav-link" data-scroll-target="#생성자-메서드">(4) 생성자 메서드</a></li>
+  <li><a href="#extra.-01-클래스-이후에-df" id="toc-extra.-01-클래스-이후에-df" class="nav-link" data-scroll-target="#extra.-01-클래스-이후에-df">Extra. 01 클래스 이후에 DF…</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#web" id="toc-web" class="nav-link" data-scroll-target="#web">Web</a>
+  <ul class="collapse">
+  <li><a href="#종류" id="toc-종류" class="nav-link" data-scroll-target="#종류">종류</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">import</a></li>
+  <li><a href="#step-1.-url-찾기-to-웹-페이지-분석" id="toc-step-1.-url-찾기-to-웹-페이지-분석" class="nav-link" data-scroll-target="#step-1.-url-찾기-to-웹-페이지-분석">step 1. url 찾기 <span class="math inline">\(\to\)</span> 웹 페이지 분석</a></li>
+  <li><a href="#step-2.-response" id="toc-step-2.-response" class="nav-link" data-scroll-target="#step-2.-response">step 2. response</a></li>
+  <li><a href="#step-3.-데이터-파싱" id="toc-step-3.-데이터-파싱" class="nav-link" data-scroll-target="#step-3.-데이터-파싱">step 3. 데이터 파싱</a></li>
+  <li><a href="#step-4.-위-과정을-함수로-작성" id="toc-step-4.-위-과정을-함수로-작성" class="nav-link" data-scroll-target="#step-4.-위-과정을-함수로-작성">step 4. 위 과정을 함수로 작성</a></li>
+  <li><a href="#extra-코스닥-데이터-가져오기" id="toc-extra-코스닥-데이터-가져오기" class="nav-link" data-scroll-target="#extra-코스닥-데이터-가져오기">Extra : 코스닥 데이터 가져오기</a></li>
+  <li><a href="#step-5.-원달러-환율-데이터-수집하기" id="toc-step-5.-원달러-환율-데이터-수집하기" class="nav-link" data-scroll-target="#step-5.-원달러-환율-데이터-수집하기">step 5. 원달러 환율 데이터 수집하기</a></li>
+  <li><a href="#step-6.-시각화" id="toc-step-6.-시각화" class="nav-link" data-scroll-target="#step-6.-시각화">step 6. 시각화</a>
+  <ul class="collapse">
+  <li><a href="#데이터-전처리" id="toc-데이터-전처리" class="nav-link" data-scroll-target="#데이터-전처리">(1) 데이터 전처리</a></li>
+  <li><a href="#시각화" id="toc-시각화" class="nav-link" data-scroll-target="#시각화">(2) 시각화</a></li>
+  <li><a href="#데이터-스케일링-시각화" id="toc-데이터-스케일링-시각화" class="nav-link" data-scroll-target="#데이터-스케일링-시각화">(3) 데이터 스케일링 + 시각화</a></li>
+  </ul></li>
+  <li><a href="#step-7.-상관분석" id="toc-step-7.-상관분석" class="nav-link" data-scroll-target="#step-7.-상관분석">step 7. 상관분석</a></li>
+  <li><a href="#다음-환율-조사" id="toc-다음-환율-조사" class="nav-link" data-scroll-target="#다음-환율-조사">다음 환율 조사</a>
+  <ul class="collapse">
+  <li><a href="#웹서비스-분석-url-찾기" id="toc-웹서비스-분석-url-찾기" class="nav-link" data-scroll-target="#웹서비스-분석-url-찾기">1. 웹서비스 분석 : URL 찾기</a></li>
+  <li><a href="#response" id="toc-response" class="nav-link" data-scroll-target="#response">2. response</a></li>
+  <li><a href="#데이터-파싱" id="toc-데이터-파싱" class="nav-link" data-scroll-target="#데이터-파싱">3. 데이터 파싱</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="review" class="level1">
+<h1>review</h1>
+<section id="변수-선언-및-삭제" class="level2">
+<h2 class="anchored" data-anchor-id="변수-선언-및-삭제">1. 변수 선언 및 삭제</h2>
+<div class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>b,c <span class="op">=</span> <span class="dv">2</span>,<span class="dv">3</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>d <span class="op">=</span> e <span class="op">=</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">%</span>whos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variable   Type    Data/Info
+----------------------------
+a          int     1
+b          int     2
+c          int     3
+d          int     4
+e          int     4</code></pre>
+</div>
+</div>
+<p><code>-</code> 생성한 변수 reset</p>
+<div class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>reset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdin">
+<pre><code>Once deleted, variables cannot be recovered. Proceed (y/[n])?  y</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>whos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Interactive namespace is empty.</code></pre>
+</div>
+</div>
+</section>
+<section id="데이터-타입" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-타입">2. 데이터 타입</h2>
+<p><code>-</code> 기본 : int, float, bool, str</p>
+<div class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>a,b,c,d <span class="op">=</span> <span class="op">-</span><span class="dv">3</span>,<span class="fl">1.2</span>,<span class="va">True</span>, <span class="st">"py"</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="op">%</span>whos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variable   Type     Data/Info
+-----------------------------
+a          int      -3
+b          float    1.2
+c          bool     True
+d          str      py</code></pre>
+</div>
+</div>
+<p><code>-</code> 컬렉션 : list, tuple, dict, set <span class="math inline">\(\to\)</span> 변수 1개가 여러 개의 데이터를 가지고 있는 형태</p>
+<ul>
+<li>데이터를 다룰 때 중요 개념 : create, read, update, delete (CRUD)</li>
+</ul>
+<p><code>1</code> create</p>
+<div class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>d5, d6, d7 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">"A"</span>, <span class="st">"B"</span>], (<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">"A"</span>, <span class="st">"B"</span>), {<span class="st">"A"</span> : <span class="dv">1</span>, <span class="dv">2</span> : <span class="st">"B"</span>}</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="op">%</span>whos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variable   Type     Data/Info
+-----------------------------
+a          int      -3
+b          float    1.2
+c          bool     True
+d          str      py
+d5         list     n=4
+d6         tuple    n=4
+d7         dict     n=2</code></pre>
+</div>
+</div>
+<p><code>2</code> read : masking 문법(<code>:</code>)</p>
+<div class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>d5[<span class="dv">2</span>] <span class="co">## data[idx]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>'A'</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>d7[<span class="st">"A"</span>] <span class="co">## data[key]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>1</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>d5[<span class="dv">1</span>:<span class="dv">3</span>] <span class="co">## slice</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[2, 'A']</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>d5[::<span class="dv">2</span>] <span class="co">## stride</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>[1, 'A']</code></pre>
+</div>
+</div>
+<p><code>3</code> update : 데이터 선택 = 수정할 데이터</p>
+<div class="cell" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>d5[<span class="dv">2</span>] <span class="op">=</span> <span class="st">"C"</span> </span>
+<span id="cb20-2"><a href="#cb20-2"></a>d5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[1, 2, 'C', 'B']</code></pre>
+</div>
+</div>
+<p><code>4</code> delete : del 데이터 선택</p>
+<div class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">del</span> d5[<span class="dv">2</span>]</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a>d5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>[1, 2, 'B']</code></pre>
+</div>
+</div>
+</section>
+<section id="변수-속성값-함수" class="level2">
+<h2 class="anchored" data-anchor-id="변수-속성값-함수">3. 변수 속성값 함수</h2>
+<div class="cell" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>d1, d2 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="bu">print</span>(d1,d2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1, 2, 3] (1, 2, 4)</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">print</span>(<span class="bu">type</span>(d1),<span class="bu">type</span>(d2)) <span class="co">## type 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'list'&gt; &lt;class 'tuple'&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="bu">print</span>(<span class="bu">id</span>(d1),<span class="bu">id</span>(d2)) <span class="co">## 주소값 출력</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2444525537280 2444526172864</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">import</span> sys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 수정할 필요가 없는 데이터는 리스트보다 튜플이 메모리 효율적으로 좋다.</p>
+<div class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">print</span>(sys.getsizeof(d1),sys.getsizeof(d2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>88 64</code></pre>
+</div>
+</div>
+</section>
+<section id="연산자" class="level2">
+<h2 class="anchored" data-anchor-id="연산자">4. 연산자</h2>
+<p><code>-</code> 산술 : (+, -) &lt; <code>(*, /, //, %)</code> &lt;&lt; **</p>
+<p><code>-</code> 비교 : ==, !=, &gt;, &lt;, &gt;=, &lt;= : 조건 1개</p>
+<p><code>-</code> 논리 : not, and, or</p>
+</section>
+<section id="row-dash-변수를-사용하지-않음" class="level2">
+<h2 class="anchored" data-anchor-id="row-dash-변수를-사용하지-않음">5. <code>_</code> : row dash (변수를 사용하지 않음)</h2>
+<div class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>) : </span>
+<span id="cb34-2"><a href="#cb34-2"></a>    <span class="bu">print</span>(<span class="st">"py"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>py
+py
+py</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="op">%</span>whos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variable   Type      Data/Info
+------------------------------
+a          int       -3
+b          float     1.2
+c          bool      True
+d          str       py
+d1         list      n=3
+d2         tuple     n=3
+d5         list      n=3
+d6         tuple     n=4
+d7         dict      n=2
+sys        module    &lt;module 'sys' (built-in)&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="함수-코드-작성의-효율을-높임" class="level2">
+<h2 class="anchored" data-anchor-id="함수-코드-작성의-효율을-높임">6. 함수 : 코드 작성의 효율을 높임</h2>
+<section id="함수-작성-코드가-작성되고-실행되지는-않는다" class="level3">
+<h3 class="anchored" data-anchor-id="함수-작성-코드가-작성되고-실행되지는-않는다"><code>1</code> 함수 작성 : 코드가 작성되고 실행되지는 않는다!</h3>
+<div class="cell" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="kw">def</span> plus(a <span class="op">=</span> <span class="dv">1</span>, b <span class="op">=</span> <span class="dv">2</span>) :</span>
+<span id="cb38-2"><a href="#cb38-2"></a>    <span class="bu">print</span>(a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> data type이 function이다.</p>
+<div class="cell" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="op">%</span>whos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variable   Type        Data/Info
+--------------------------------
+a          int         -3
+b          float       1.2
+c          bool        True
+d          str         py
+d1         list        n=3
+d2         tuple       n=3
+d5         list        n=3
+d6         tuple       n=4
+d7         dict        n=2
+plus       function    &lt;function plus at 0x00000239291E2B60&gt;
+sys        module      &lt;module 'sys' (built-in)&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="함수-호출-코드-실행" class="level3">
+<h3 class="anchored" data-anchor-id="함수-호출-코드-실행"><code>2</code> 함수 호출 (코드 실행)</h3>
+<div class="cell" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>plus() <span class="co">## 디퐅트값</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>plus(<span class="dv">1</span>,<span class="dv">3</span>) <span class="co">## 값을 전달</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3
+4</code></pre>
+</div>
+</div>
+</section>
+<section id="return-추가" class="level3">
+<h3 class="anchored" data-anchor-id="return-추가"><code>3</code> return 추가</h3>
+<ul>
+<li>return을 추가하지 않아 아래처럼 <code>None</code>으로 결과를 뱉는다.</li>
+</ul>
+<div class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="kw">def</span> plus(a,b <span class="op">=</span> <span class="dv">1</span>, c <span class="op">=</span> <span class="dv">2</span>) :</span>
+<span id="cb43-2"><a href="#cb43-2"></a>    <span class="bu">print</span>(a <span class="op">+</span> b <span class="op">+</span> c)</span>
+<span id="cb43-3"><a href="#cb43-3"></a>    </span>
+<span id="cb43-4"><a href="#cb43-4"></a>result <span class="op">=</span> plus(<span class="dv">1</span>, c <span class="op">=</span> <span class="dv">50</span>)</span>
+<span id="cb43-5"><a href="#cb43-5"></a><span class="bu">print</span>(<span class="st">"result"</span>, result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>52
+result None</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="kw">def</span> plus(a,b <span class="op">=</span> <span class="dv">1</span>, c <span class="op">=</span> <span class="dv">2</span>) :</span>
+<span id="cb45-2"><a href="#cb45-2"></a>    <span class="cf">return</span>(a <span class="op">+</span> b <span class="op">+</span> c)</span>
+<span id="cb45-3"><a href="#cb45-3"></a>    </span>
+<span id="cb45-4"><a href="#cb45-4"></a>result <span class="op">=</span> plus(<span class="dv">1</span>, c <span class="op">=</span> <span class="dv">50</span>)</span>
+<span id="cb45-5"><a href="#cb45-5"></a><span class="bu">print</span>(<span class="st">"result"</span>, result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>result 52</code></pre>
+</div>
+</div>
+</section>
+<section id="dostring-함수의-설명글-help를-이용" class="level3">
+<h3 class="anchored" data-anchor-id="dostring-함수의-설명글-help를-이용"><code>4</code> dostring : 함수의 설명글, <code>help()</code>를 이용</h3>
+<ul>
+<li>함수를 작성한 사람이, 함수를 어떻게 사용하면 되는지 남겨둔 것!</li>
+</ul>
+<div class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>?<span class="bu">print</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg ansi-bold">Signature:</span> print<span class="ansi-yellow-fg ansi-bold">(</span><span class="ansi-yellow-fg ansi-bold">*</span>args<span class="ansi-yellow-fg ansi-bold">,</span> sep<span class="ansi-yellow-fg ansi-bold">=</span><span class="ansi-blue-fg ansi-bold">' '</span><span class="ansi-yellow-fg ansi-bold">,</span> end<span class="ansi-yellow-fg ansi-bold">=</span><span class="ansi-blue-fg ansi-bold">'\n'</span><span class="ansi-yellow-fg ansi-bold">,</span> file<span class="ansi-yellow-fg ansi-bold">=</span><span class="ansi-green-fg ansi-bold">None</span><span class="ansi-yellow-fg ansi-bold">,</span> flush<span class="ansi-yellow-fg ansi-bold">=</span><span class="ansi-green-fg ansi-bold">False</span><span class="ansi-yellow-fg ansi-bold">)</span>
+<span class="ansi-red-fg ansi-bold">Docstring:</span>
+Prints the values to a stream, or to sys.stdout by default.
+sep
+  string inserted between values, default a space.
+end
+  string appended after the last value, default a newline.
+file
+  a file-like object (stream); defaults to the current sys.stdout.
+flush
+  whether to forcibly flush the stream.
+<span class="ansi-red-fg ansi-bold">Type:</span>      builtin_function_or_method</pre>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="bu">print</span>(<span class="st">"A"</span>,<span class="st">"B"</span>)</span>
+<span id="cb48-2"><a href="#cb48-2"></a><span class="bu">print</span>(<span class="st">"C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A B
+C</code></pre>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="bu">print</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,sep<span class="op">=</span><span class="st">","</span>, end <span class="op">=</span> <span class="st">":"</span>)</span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="bu">print</span>(<span class="st">"C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A,B:C</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="클래스" class="level2">
+<h2 class="anchored" data-anchor-id="클래스">7. 클래스</h2>
+<p><code>-</code> 변수, 함수를 묶어서 코드 작성 실행</p>
+<p><code>-</code> 객체 지향 문법을 구현한 방법 : 실제 세계를 모델링하여 프로그램을 개발하는 방법론 (사전적 의미)</p>
+<ul>
+<li><code>교수님 생각</code> : <strong>클래스는 복제, 변형, 재생산을 용이하게 하기 위해 만들어진 확장가능한 프로그램이 코드 단위(extensible program-code-template)이다.</strong></li>
+</ul>
+<p><code>-</code> 사용법 : 클래스 선언 (코드 작성) -&gt; 객체 생성(메모리에 탑재<code>(사용)</code>) -&gt; 메소드 호출 (코드 실행)</p>
+<p><code>-</code> 클래스 식별자 컨벤션 : PascalCase(O), snake_case(X)</p>
+<section id="클래스-선언" class="level3">
+<h3 class="anchored" data-anchor-id="클래스-선언">(1) 클래스 선언</h3>
+<div class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="kw">class</span> Marine : </span>
+<span id="cb52-2"><a href="#cb52-2"></a>    health, ap <span class="op">=</span> <span class="dv">40</span>, <span class="dv">5</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a>    <span class="kw">def</span> attack(<span class="va">self</span>, target) :</span>
+<span id="cb52-4"><a href="#cb52-4"></a>        target.health <span class="op">-=</span><span class="va">self</span>.ap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="객체-선언" class="level3">
+<h3 class="anchored" data-anchor-id="객체-선언">(2) 객체 선언</h3>
+<div class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>m1, m2 <span class="op">=</span> Marine(), Marine()</span>
+<span id="cb53-2"><a href="#cb53-2"></a>m1.health, m1.ap, m2.health, m2.ap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>(40, 5, 40, 5)</code></pre>
+</div>
+</div>
+<p><code>-</code> dir() : 객체에 저장되어 있는 변수(함수포함) 출력</p>
+<div class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="bu">dir</span>(m1)[<span class="op">-</span><span class="dv">3</span> : ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>['ap', 'attack', 'health']</code></pre>
+</div>
+</div>
+<p><code>-</code> 값 변경</p>
+<div class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>m2.health, m2.ap <span class="op">=</span>  <span class="dv">60</span>, <span class="dv">7</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a></span>
+<span id="cb57-3"><a href="#cb57-3"></a>m2.health, m2.ap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>(60, 7)</code></pre>
+</div>
+</div>
+</section>
+<section id="메소드-호출" class="level3">
+<h3 class="anchored" data-anchor-id="메소드-호출">(3) 메소드 호출</h3>
+<div class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>m2.attack(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>m1.health</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>33</code></pre>
+</div>
+</div>
+<p><code>-</code> m1의 피가 깍여버린 원리</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a><span class="kw">class</span> Marine : </span>
+<span id="cb62-2"><a href="#cb62-2"></a>    health, ap <span class="op">=</span> <span class="dv">40</span>, <span class="dv">5</span></span>
+<span id="cb62-3"><a href="#cb62-3"></a>    <span class="kw">def</span> attack(<span class="va">self</span>, target) : <span class="co">## self : 생성된 객체 자신</span></span>
+<span id="cb62-4"><a href="#cb62-4"></a>        target.health <span class="op">-=</span><span class="va">self</span>.ap <span class="co">## 여기에서 target이 공격당한 대상이 m1, 따라서 m2의 공격력 7만큼 감소</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="생성자-메서드" class="level3">
+<h3 class="anchored" data-anchor-id="생성자-메서드">(4) 생성자 메서드</h3>
+<p><code>-</code> 스페셜 메서드 중 하나 (<code>__init__()</code>)</p>
+<div class="cell" data-tags="[]" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a><span class="kw">class</span> Marine : </span>
+<span id="cb63-2"><a href="#cb63-2"></a>    <span class="co">#health, ap = 40, 5</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a>    <span class="kw">def</span> attack(<span class="va">self</span>, target) : <span class="co">## self : 생성된 객체 자신</span></span>
+<span id="cb63-4"><a href="#cb63-4"></a>        target.health <span class="op">-=</span><span class="va">self</span>.ap <span class="co">## 여기에서 target이 공격당한 대상이 m1, 따라서 m2의 공격력 7만큼 감소</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>m1, m2 <span class="op">=</span> Marine(), Marine()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 객체는 생성이 되었으나 피와 공격력이 없어서 메소드 호출 시 에러가 발생한다.</p>
+<ul>
+<li><code>'Marine' object has no attribute 'health'</code></li>
+</ul>
+<div class="cell" data-tags="[]" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>m2.attack(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>AttributeError: 'Marine' object has no attribute 'health'</code></pre>
+</div>
+</div>
+<p><code>-</code> 위를 방지하는 방법 중 하나가 생성자 메소드이다.</p>
+<ul>
+<li>제품을 만들 때, 메소드에서 사용하는 변수들이 있는지 한번 다 확인하는 것!</li>
+</ul>
+<div class="cell" data-tags="[]" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a><span class="kw">class</span> Marine : </span>
+<span id="cb67-2"><a href="#cb67-2"></a>    <span class="co">#health, ap = 40, 5</span></span>
+<span id="cb67-3"><a href="#cb67-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,health,ap) : <span class="co">## 생성자 작성</span></span>
+<span id="cb67-4"><a href="#cb67-4"></a>        <span class="va">self</span>.health, <span class="va">self</span>.ap <span class="op">=</span> health, ap</span>
+<span id="cb67-5"><a href="#cb67-5"></a>    <span class="kw">def</span> attack(<span class="va">self</span>, target) : <span class="co">## self : 생성된 객체 자신</span></span>
+<span id="cb67-6"><a href="#cb67-6"></a>        target.health <span class="op">-=</span><span class="va">self</span>.ap <span class="co">## 여기에서 target이 공격당한 대상이 m1, 따라서 m2의 공격력 7만큼 감소</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 이제 메서드가 제대로 실행된다.</p>
+<div class="cell" data-tags="[]" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>m1, m2 <span class="op">=</span> Marine(<span class="dv">40</span>,<span class="dv">5</span>), Marine(<span class="dv">40</span>,<span class="dv">5</span>)</span>
+<span id="cb68-2"><a href="#cb68-2"></a>m2.attack(m1)</span>
+<span id="cb68-3"><a href="#cb68-3"></a>m2.health, m1.health</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>(40, 35)</code></pre>
+</div>
+</div>
+<p><code>-</code> 요약 : 생성자는 객체 생성시 변수의 초기값을 검사 및 설정한다.</p>
+<ul>
+<li>디폴트 값도 사용가능</li>
+</ul>
+<div class="cell" data-tags="[]" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="kw">class</span> Marine : </span>
+<span id="cb70-2"><a href="#cb70-2"></a>    <span class="co">#health, ap = 40, 5</span></span>
+<span id="cb70-3"><a href="#cb70-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,health,ap <span class="op">=</span> <span class="dv">5</span>) : <span class="co">## 생성자 작성</span></span>
+<span id="cb70-4"><a href="#cb70-4"></a>        <span class="va">self</span>.health, <span class="va">self</span>.ap <span class="op">=</span> health, ap</span>
+<span id="cb70-5"><a href="#cb70-5"></a>    <span class="kw">def</span> attack(<span class="va">self</span>, target) : <span class="co">## self : 생성된 객체 자신</span></span>
+<span id="cb70-6"><a href="#cb70-6"></a>        target.health <span class="op">-=</span><span class="va">self</span>.ap <span class="co">## 여기에서 target이 공격당한 대상이 m1, 따라서 m2의 공격력 7만큼 감소</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>m1, m2 <span class="op">=</span> Marine(<span class="dv">40</span>,<span class="dv">5</span>), Marine(<span class="dv">40</span>)</span>
+<span id="cb71-2"><a href="#cb71-2"></a>m2.attack(m1)</span>
+<span id="cb71-3"><a href="#cb71-3"></a>m2.health, m1.health</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>(40, 35)</code></pre>
+</div>
+</div>
+</section>
+<section id="extra.-01-클래스-이후에-df" class="level3">
+<h3 class="anchored" data-anchor-id="extra.-01-클래스-이후에-df">Extra. 01 클래스 이후에 DF…</h3>
+<div class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb73-2"><a href="#cb73-2"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"kospi"</span> : [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], <span class="st">"usd"</span> : [<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">1</span>]})</span>
+<span id="cb73-3"><a href="#cb73-3"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">kospi</th>
+<th data-quarto-table-cell-role="th">usd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><code>1</code> 아래 코드는 다른사람이 만든 클래스(모듈) 코드를 우리가 불러오는 것!</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>2</code> 생성자 메서드를 이용하여 초기값을 설정하는 것! (메모리가 사용됨)</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"kospi"</span> : [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], <span class="st">"usd"</span> : [<span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">1</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>3</code> 객체(df) 안에는 <code>pandas</code>안에 작성된 다양한 메서드들이 존재하며 다음과 같이 사용할 수 있다.</p>
+<div class="cell" data-tags="[]" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>df.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">kospi</th>
+<th data-quarto-table-cell-role="th">usd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">kospi</td>
+<td>1.000000</td>
+<td>-0.917663</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">usd</td>
+<td>-0.917663</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><code>4</code>. 가장 중요 : dir을 통해 객체안에서 쓸 수 있는 <code>method</code>를 잘 살펴보자!</p>
+<p><code>5</code> 클래스는 데이터 타입이다!! (<span class="math inline">\(\star\star\)</span>)</p>
+<ul>
+<li>m1 객체는 우리가 만든 marine이라는 클래스의 객체이다.
+<ul>
+<li>커스터마이징, 즉, 클래스는 사용자 정의 데이터 타입이다.</li>
+</ul></li>
+</ul>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>m1 <span class="op">=</span> Marine(<span class="dv">40</span>)</span>
+<span id="cb77-2"><a href="#cb77-2"></a><span class="bu">type</span>(m1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>__main__.Marine</code></pre>
+</div>
+</div>
+<p><code>6</code> d1, d2 객체에서 사용가능한 변수와 메서드는 <code>str, list</code> 클래스, 정의되어 있다.</p>
+<ul>
+<li><strong>파이썬 문법으로 만들어진 내장 클래스는 앞글자를 소문자로 쓴다.</strong></li>
+</ul>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>d1 <span class="op">=</span> <span class="st">"python"</span></span>
+<span id="cb79-2"><a href="#cb79-2"></a>d2 <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a><span class="bu">type</span>(d1), <span class="bu">type</span>(d2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>(str, list)</code></pre>
+</div>
+</div>
+<p><code>7</code> 최종 결론</p>
+<ul>
+<li><p>사실 우리가 하는 변수 생성은 객체를 생성, 즉 클래스 객체를 생성한 것이다.</p></li>
+<li><p>따라서, 데이터 타입에 따라서 변수에서 사용가능한 변수, 메서드가 다르다.</p></li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="web" class="level1">
+<h1>Web</h1>
+<section id="종류" class="level2">
+<h2 class="anchored" data-anchor-id="종류">종류</h2>
+<p><code>-</code> 동적 페이지 : 웹 브라우저에서 이벤트가 발생하면 서버에서 데이터를 가져와 화면을 변경하는 페이지 (<code>url 변경 x</code>)</p>
+<ul>
+<li><p>동적 페이지는 데이터를 가져올 때 <code>json</code> 포맷에서 데이터를 가져온다.</p>
+<ul>
+<li><p>위 경우는 리스트나 딕셔너리로 가져오기 편함</p></li>
+<li><p>데이터를 가져오기 위해 추가적인 request, response가 발생함.</p></li>
+<li><p>이 때, json 포맷의 데이터를 가져온다!!</p></li>
+<li><p>이말은 우리가 파이썬 코드로 해당 url을 요청했을 때 json포맷에 데이터를 가져오는 것이다!</p></li>
+</ul></li>
+</ul>
+<p><code>-</code> 정적 페이지 : url이 바뀌어야만 화면이 바뀌는 페이지</p>
+<ul>
+<li><p>정적 페이지는 <code>html</code> 포맷에서 데이터를 가져옴</p>
+<ul>
+<li><p>이 경우는 리스트나 딕셔너리로 가져오기 어려움</p></li>
+<li><p>request, response 시 html 포맷의 데이터를 가져옴</p></li>
+<li><p>파이썬 코드로 데이터 수집 시 해당 이벤트의 url을 찾고 requset, response를 한다!</p></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\divideontimes\)</span> 즉, 페이지 방식에 따라 url 접근 방식이 달라지고, 이에 따라 format이 달라져 크롤링 방식이 달라진다.</p>
+</section>
+<section id="import" class="level2">
+<h2 class="anchored" data-anchor-id="import">import</h2>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a><span class="im">import</span> warnings</span>
+<span id="cb82-2"><a href="#cb82-2"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb82-3"><a href="#cb82-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb82-4"><a href="#cb82-4"></a><span class="im">import</span> requests <span class="co">## 크롤링을 위한 모듈</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-1.-url-찾기-to-웹-페이지-분석" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-url-찾기-to-웹-페이지-분석">step 1. url 찾기 <span class="math inline">\(\to\)</span> 웹 페이지 분석</h2>
+<p><code>-</code> 크롬 개발자 도구를 이용하여 url을 찾기</p>
+<p><code>1</code> 네이버의 코스피 주가데이터를 크롤링 (크롤링 할때는 모바일을 이용하자!)</p>
+<p><a href="https://m.stock.naver.com/domestic/index/KOSPI/enrollstocks">네이버 코스피 주가 데이터</a> : 해당 페이지는 동적 페이지</p>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a>page, pagesize <span class="op">=</span> <span class="dv">1</span>, <span class="dv">20</span> </span>
+<span id="cb83-2"><a href="#cb83-2"></a>url <span class="op">=</span> <span class="ss">f'https://m.stock.naver.com/api/index/KOSPI/price?pageSize=</span><span class="sc">{</span>pagesize<span class="sc">}</span><span class="ss">&amp;page=</span><span class="sc">{</span>page<span class="sc">}</span><span class="ss">'</span> </span>
+<span id="cb83-3"><a href="#cb83-3"></a><span class="bu">print</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>https://m.stock.naver.com/api/index/KOSPI/price?pageSize=20&amp;page=1</code></pre>
+</div>
+</div>
+</section>
+<section id="step-2.-response" class="level2">
+<h2 class="anchored" data-anchor-id="step-2.-response">step 2. response</h2>
+<p><code>2</code> response</p>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb85-2"><a href="#cb85-2"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>&lt;Response [200]&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>response.text[:<span class="dv">200</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>'[{"localTradedAt":"2023-09-04","closePrice":"2,579.39","compareToPreviousClosePrice":"15.68","compareToPreviousPrice":{"code":"2","text":"상승","name":"RISING"},"fluctuationsRatio":"0.61","openPrice":"2'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a><span class="bu">type</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="62">
+<pre><code>requests.models.Response</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="step-3.-데이터-파싱" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.-데이터-파싱">step 3. 데이터 파싱</h2>
+<p><code>3</code>. data(json(str)) <span class="math inline">\(\to\)</span> list,dict <span class="math inline">\(\to\)</span> dataframe : 파싱을 수행</p>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a><span class="bu">type</span>(response.text), <span class="bu">type</span>(response.json())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="63">
+<pre><code>(str, list)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb93-2"><a href="#cb93-2"></a></span>
+<span id="cb93-3"><a href="#cb93-3"></a>kospi <span class="op">=</span> pd.DataFrame(data)[[<span class="st">"localTradedAt"</span>,<span class="st">"closePrice"</span>]]</span>
+<span id="cb93-4"><a href="#cb93-4"></a>kospi.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">localTradedAt</th>
+<th data-quarto-table-cell-role="th">closePrice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2023-09-04</td>
+<td>2,579.39</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2023-09-01</td>
+<td>2,563.71</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2023-08-31</td>
+<td>2,556.27</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2023-08-30</td>
+<td>2,561.22</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2023-08-29</td>
+<td>2,552.16</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="step-4.-위-과정을-함수로-작성" class="level2">
+<h2 class="anchored" data-anchor-id="step-4.-위-과정을-함수로-작성">step 4. 위 과정을 함수로 작성</h2>
+<div class="cell" data-execution_count="113">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a><span class="kw">def</span> stock_crawling(page<span class="op">=</span><span class="dv">1</span>, pagesize<span class="op">=</span><span class="dv">60</span>) :</span>
+<span id="cb94-2"><a href="#cb94-2"></a>    url <span class="op">=</span> <span class="ss">f'https://m.stock.naver.com/api/index/KOSPI/price?pageSize=</span><span class="sc">{</span>pagesize<span class="sc">}</span><span class="ss">&amp;page=</span><span class="sc">{</span>page<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb94-3"><a href="#cb94-3"></a>    response <span class="op">=</span> requests.get(url)</span>
+<span id="cb94-4"><a href="#cb94-4"></a>    data <span class="op">=</span> response.json()</span>
+<span id="cb94-5"><a href="#cb94-5"></a>    kospi <span class="op">=</span> pd.DataFrame(data)[[<span class="st">"localTradedAt"</span>,<span class="st">"closePrice"</span>]]</span>
+<span id="cb94-6"><a href="#cb94-6"></a>    <span class="cf">return</span> kospi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="114">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>kospi <span class="op">=</span> stock_crawling()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="extra-코스닥-데이터-가져오기" class="level2">
+<h2 class="anchored" data-anchor-id="extra-코스닥-데이터-가져오기">Extra : 코스닥 데이터 가져오기</h2>
+<div class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a><span class="kw">def</span> stock_crawling2(code <span class="op">=</span> <span class="st">"KOSPI"</span>,page<span class="op">=</span><span class="dv">1</span>, pagesize<span class="op">=</span><span class="dv">60</span>) :</span>
+<span id="cb96-2"><a href="#cb96-2"></a>    url <span class="op">=</span> <span class="ss">f'https://m.stock.naver.com/api/index/</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">/price?pageSize=</span><span class="sc">{</span>pagesize<span class="sc">}</span><span class="ss">&amp;page=</span><span class="sc">{</span>page<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb96-3"><a href="#cb96-3"></a>    response <span class="op">=</span> requests.get(url)</span>
+<span id="cb96-4"><a href="#cb96-4"></a>    data <span class="op">=</span> response.json()</span>
+<span id="cb96-5"><a href="#cb96-5"></a>    kospi <span class="op">=</span> pd.DataFrame(data)[[<span class="st">"localTradedAt"</span>,<span class="st">"closePrice"</span>]]</span>
+<span id="cb96-6"><a href="#cb96-6"></a>    <span class="cf">return</span> kospi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="115">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a>kosdaq <span class="op">=</span> stock_crawling2(code <span class="op">=</span> <span class="st">"KOSDAQ"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-5.-원달러-환율-데이터-수집하기" class="level2">
+<h2 class="anchored" data-anchor-id="step-5.-원달러-환율-데이터-수집하기">step 5. 원달러 환율 데이터 수집하기</h2>
+<p><code>-</code> 뼈대</p>
+<div class="cell" data-execution_count="105">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a>page <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb98-2"><a href="#cb98-2"></a>url <span class="op">=</span> <span class="ss">f"https://m.stock.naver.com/front-api/v1/marketIndex/prices?page=</span><span class="sc">{</span>page<span class="sc">}</span><span class="ss">&amp;category=exchange&amp;reutersCode=FX_USDKRW"</span></span>
+<span id="cb98-3"><a href="#cb98-3"></a></span>
+<span id="cb98-4"><a href="#cb98-4"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb98-5"><a href="#cb98-5"></a></span>
+<span id="cb98-6"><a href="#cb98-6"></a>usd <span class="op">=</span> pd.DataFrame(response.json()[<span class="st">"result"</span>])[[<span class="st">"localTradedAt"</span>,<span class="st">"closePrice"</span>]]</span>
+<span id="cb98-7"><a href="#cb98-7"></a>usd.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="105">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">localTradedAt</th>
+<th data-quarto-table-cell-role="th">closePrice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>2023-08-28</td>
+<td>1,326.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>2023-08-25</td>
+<td>1,327.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>2023-08-24</td>
+<td>1,325.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2023-08-23</td>
+<td>1,335.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">9</td>
+<td>2023-08-22</td>
+<td>1,339.50</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><code>-</code> <code>pagesize = 60</code> 설정</p>
+<div class="cell" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a>page <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb99-2"><a href="#cb99-2"></a>pagesize <span class="op">=</span> <span class="dv">60</span></span>
+<span id="cb99-3"><a href="#cb99-3"></a>url <span class="op">=</span> <span class="ss">f"https://m.stock.naver.com/front-api/v1/marketIndex/prices?page=</span><span class="sc">{</span>page<span class="sc">}</span><span class="ss">&amp;category=exchange&amp;reutersCode=FX_USDKRW&amp;pageSize=</span><span class="sc">{</span>pagesize<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb99-4"><a href="#cb99-4"></a></span>
+<span id="cb99-5"><a href="#cb99-5"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb99-6"><a href="#cb99-6"></a></span>
+<span id="cb99-7"><a href="#cb99-7"></a>usd <span class="op">=</span> pd.DataFrame(response.json()[<span class="st">"result"</span>])[[<span class="st">"localTradedAt"</span>,<span class="st">"closePrice"</span>]]</span>
+<span id="cb99-8"><a href="#cb99-8"></a>usd.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="110">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">localTradedAt</th>
+<th data-quarto-table-cell-role="th">closePrice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">55</td>
+<td>2023-06-16</td>
+<td>1,280.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">56</td>
+<td>2023-06-15</td>
+<td>1,277.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">57</td>
+<td>2023-06-14</td>
+<td>1,275.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">58</td>
+<td>2023-06-13</td>
+<td>1,272.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">59</td>
+<td>2023-06-12</td>
+<td>1,290.00</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="step-6.-시각화" class="level2">
+<h2 class="anchored" data-anchor-id="step-6.-시각화">step 6. 시각화</h2>
+<section id="데이터-전처리" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-전처리">(1) 데이터 전처리</h3>
+<div class="cell" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a>df <span class="op">=</span> kospi.copy()</span>
+<span id="cb100-2"><a href="#cb100-2"></a>df.columns <span class="op">=</span> [<span class="st">"date"</span>,<span class="st">"kospi"</span>]</span>
+<span id="cb100-3"><a href="#cb100-3"></a>df[<span class="st">"kosdaq"</span>] <span class="op">=</span> kosdaq[<span class="st">"closePrice"</span>]</span>
+<span id="cb100-4"><a href="#cb100-4"></a>df[<span class="st">"usd"</span>] <span class="op">=</span> usd[<span class="st">"closePrice"</span>]</span>
+<span id="cb100-5"><a href="#cb100-5"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="124">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">kospi</th>
+<th data-quarto-table-cell-role="th">kosdaq</th>
+<th data-quarto-table-cell-role="th">usd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2023-09-04</td>
+<td>2,584.55</td>
+<td>919.16</td>
+<td>1,320.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2023-09-01</td>
+<td>2,563.71</td>
+<td>919.74</td>
+<td>1,321.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2023-08-31</td>
+<td>2,556.27</td>
+<td>928.40</td>
+<td>1,325.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2023-08-30</td>
+<td>2,561.22</td>
+<td>923.81</td>
+<td>1,322.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2023-08-29</td>
+<td>2,552.16</td>
+<td>916.24</td>
+<td>1,325.00</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a>temp <span class="op">=</span> df.iloc[:,<span class="dv">1</span>:].applymap(<span class="kw">lambda</span> x : <span class="bu">float</span>(x.replace(<span class="st">","</span>,<span class="st">""</span>)))</span>
+<span id="cb101-2"><a href="#cb101-2"></a>_df <span class="op">=</span> pd.concat([df[<span class="st">"date"</span>],temp],axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb101-3"><a href="#cb101-3"></a>_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 60 entries, 0 to 59
+Data columns (total 4 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   date    60 non-null     object 
+ 1   kospi   60 non-null     float64
+ 2   kosdaq  60 non-null     float64
+ 3   usd     60 non-null     float64
+dtypes: float64(3), object(1)
+memory usage: 2.0+ KB</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1"></a>_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="164">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">kospi</th>
+<th data-quarto-table-cell-role="th">kosdaq</th>
+<th data-quarto-table-cell-role="th">usd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2023-09-04</td>
+<td>2584.55</td>
+<td>919.16</td>
+<td>1320.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2023-09-01</td>
+<td>2563.71</td>
+<td>919.74</td>
+<td>1321.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2023-08-31</td>
+<td>2556.27</td>
+<td>928.40</td>
+<td>1325.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2023-08-30</td>
+<td>2561.22</td>
+<td>923.81</td>
+<td>1322.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2023-08-29</td>
+<td>2552.16</td>
+<td>916.24</td>
+<td>1325.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="시각화" class="level3">
+<h3 class="anchored" data-anchor-id="시각화">(2) 시각화</h3>
+<div class="cell" data-execution_count="156">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="187">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">5</span>))</span>
+<span id="cb105-2"><a href="#cb105-2"></a>plt.plot(_df[<span class="st">"date"</span>], _df.kospi)</span>
+<span id="cb105-3"><a href="#cb105-3"></a>plt.plot(_df[<span class="st">"date"</span>], _df.kosdaq)</span>
+<span id="cb105-4"><a href="#cb105-4"></a>plt.plot(_df[<span class="st">"date"</span>], _df.usd)</span>
+<span id="cb105-5"><a href="#cb105-5"></a>plt.xticks(_df[<span class="st">"date"</span>].values[::<span class="dv">5</span>])</span>
+<span id="cb105-6"><a href="#cb105-6"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-04-00. 데이터 수집 (1)_files/figure-html/cell-65-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="데이터-스케일링-시각화" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-스케일링-시각화">(3) 데이터 스케일링 + 시각화</h3>
+<div class="cell" data-execution_count="184">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> minmax_scale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="186">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">5</span>))</span>
+<span id="cb107-2"><a href="#cb107-2"></a>plt.plot(_df[<span class="st">"date"</span>], minmax_scale(_df.kospi))</span>
+<span id="cb107-3"><a href="#cb107-3"></a>plt.plot(_df[<span class="st">"date"</span>], minmax_scale(_df.kosdaq))</span>
+<span id="cb107-4"><a href="#cb107-4"></a>plt.plot(_df[<span class="st">"date"</span>], minmax_scale(_df.usd))</span>
+<span id="cb107-5"><a href="#cb107-5"></a>plt.xticks(_df[<span class="st">"date"</span>].values[::<span class="dv">5</span>])</span>
+<span id="cb107-6"><a href="#cb107-6"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-09-04-00. 데이터 수집 (1)_files/figure-html/cell-67-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="step-7.-상관분석" class="level2">
+<h2 class="anchored" data-anchor-id="step-7.-상관분석">step 7. 상관분석</h2>
+<div class="cell" data-execution_count="188">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>_df.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="188">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">kospi</th>
+<th data-quarto-table-cell-role="th">kosdaq</th>
+<th data-quarto-table-cell-role="th">usd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">kospi</td>
+<td>1.000000</td>
+<td>0.435544</td>
+<td>-0.777496</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">kosdaq</td>
+<td>0.435544</td>
+<td>1.000000</td>
+<td>-0.163426</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">usd</td>
+<td>-0.777496</td>
+<td>-0.163426</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="다음-환율-조사" class="level2">
+<h2 class="anchored" data-anchor-id="다음-환율-조사">다음 환율 조사</h2>
+<div class="cell" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1"></a><span class="im">import</span> warnings</span>
+<span id="cb109-2"><a href="#cb109-2"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb109-3"><a href="#cb109-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb109-4"><a href="#cb109-4"></a><span class="im">import</span> requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="웹서비스-분석-url-찾기" class="level3">
+<h3 class="anchored" data-anchor-id="웹서비스-분석-url-찾기">1. 웹서비스 분석 : URL 찾기</h3>
+<div class="cell" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1"></a>url <span class="op">=</span> <span class="st">"https://finance.daum.net/api/exchanges/summaries"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="response" class="level3">
+<h3 class="anchored" data-anchor-id="response">2. response</h3>
+<p><code>-</code> 403 error가 뜬다? 현재 user-agent가 python으로 찍혀서 그럼</p>
+<p>response = requests.get(url) response</p>
+<p><code>-</code> <code>User-Agent</code>를 같이 보내주어야 한다! (크롤링 소스를 잘보자….)</p>
+<p><code>-</code> 근데도 403 error가 뜬다….</p>
+<div class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb111-2"><a href="#cb111-2"></a><span class="st">"User-Agent"</span> : <span class="st">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</span><span class="ch">\</span></span>
+<span id="cb111-3"><a href="#cb111-3"></a><span class="st">                Chrome/116.0.0.0 Safari/537.36"</span>,}</span>
+<span id="cb111-4"><a href="#cb111-4"></a></span>
+<span id="cb111-5"><a href="#cb111-5"></a>response <span class="op">=</span> requests.get(url, headers <span class="op">=</span> headers)</span>
+<span id="cb111-6"><a href="#cb111-6"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>&lt;Response [403]&gt;</code></pre>
+</div>
+</div>
+<p><code>-</code> Referer도 추가해야한다. 근데 이런 방법을 알려면 노가다로 다 넣어서 찾아야한다.</p>
+<div class="cell" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb113-2"><a href="#cb113-2"></a><span class="st">"User-Agent"</span> : <span class="st">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)</span><span class="ch">\</span></span>
+<span id="cb113-3"><a href="#cb113-3"></a><span class="st">                Chrome/116.0.0.0 Safari/537.36"</span>,</span>
+<span id="cb113-4"><a href="#cb113-4"></a><span class="st">"Referer"</span> : <span class="st">"https://finance.daum.net/exchanges"</span> }</span>
+<span id="cb113-5"><a href="#cb113-5"></a></span>
+<span id="cb113-6"><a href="#cb113-6"></a>response <span class="op">=</span> requests.get(url, headers <span class="op">=</span> headers)</span>
+<span id="cb113-7"><a href="#cb113-7"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>&lt;Response [200]&gt;</code></pre>
+</div>
+</div>
+<p><code>-</code> 드디어 성공 !</p>
+<div class="cell" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1"></a>response.text[:<span class="dv">500</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>'{"data":[{"symbolCode":"FRX.KRWUSD","date":"2023-09-04 16:53:55","currencyCode":"USD","currencyName":"달러","currencyUnit":1,"country":"미국","region":{"korName":"아메리카","engName":"America"},"name":"미국 (USD/KRW)","recurrenceCount":372,"basePrice":1320.5,"change":"FALL","changePrice":1.0,"changeRate":0.0007567159,"cashBuyingPrice":1343.6,"cashSellingPrice":1297.4,"ttBuyingPrice":1307.6,"ttSellingPrice":1333.4,"tcBuyingPrice":null,"fcSellingPrice":null,"exchangeCommission":7.1789,"usDollarRate":1.0,"ch'</code></pre>
+</div>
+</div>
+</section>
+<section id="데이터-파싱" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-파싱">3. 데이터 파싱</h3>
+<div class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1"></a>df <span class="op">=</span> pd.DataFrame(response.json()[<span class="st">"data"</span>])[[<span class="st">"symbolCode"</span>,<span class="st">"currencyCode"</span>,<span class="st">"basePrice"</span>]]</span>
+<span id="cb117-2"><a href="#cb117-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">symbolCode</th>
+<th data-quarto-table-cell-role="th">currencyCode</th>
+<th data-quarto-table-cell-role="th">basePrice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>FRX.KRWUSD</td>
+<td>USD</td>
+<td>1320.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>FRX.KRWJPY</td>
+<td>JPY</td>
+<td>901.70</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>FRX.KRWCNY</td>
+<td>CNY</td>
+<td>181.52</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>FRX.KRWEUR</td>
+<td>EUR</td>
+<td>1426.14</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>FRX.KRWGBP</td>
+<td>GBP</td>
+<td>1667.00</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">02. 데이터 분석 (3)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../posts/DX/03. 데이터 수집/2023-09-05-01. 데이터 수집 (2).html" class="pagination-link">
+        <span class="nav-page-text">01. 데이터 수집 (2)</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

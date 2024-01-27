@@ -1,5 +1,5 @@
 ---
-title: "C.I.C blog"
+title: "GC blog"
 listing:
   contents: posts
   sort: [date desc, title]

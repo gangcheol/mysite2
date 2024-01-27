@@ -1,91 +1,91 @@
 [
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html",
     "title": "02. 이미지 분류",
     "section": "",
     "text": "Fashion_mnist 자료를 불러온 뒤 아래의 네트워크를 이용하여 적합하라.\n1 평가지표로 accuracy를 이용할 것\n2 epoch는 10으로 설정할 것\n3 optimizer는 adam을 이용할 것\n\n\n\nimport tensorflow as tf\n\nfrom keras.backend import *\nfrom keras.models import *\nfrom keras.layers import *\nfrom keras.callbacks import *\nfrom keras.datasets import *\nfrom keras.losses import *\nfrom keras.optimizers import *\n\n\n(x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()\n\nDownloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-labels-idx1-ubyte.gz\n29515/29515 [==============================] - 0s 0us/step\nDownloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-images-idx3-ubyte.gz\n26421880/26421880 [==============================] - 0s 0us/step\nDownloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-labels-idx1-ubyte.gz\n5148/5148 [==============================] - 0s 0us/step\nDownloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-images-idx3-ubyte.gz\n4422102/4422102 [==============================] - 0s 0us/step\n\n\n\nx_train.shape, y_train.shape\n\n((60000, 28, 28), (60000,))\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nplt.imshow(x_test[1], cmap = \"Greys\")\n\n&lt;matplotlib.image.AxesImage at 0x7ca011e8f970&gt;\n\n\n\n\n\n\n\n\n- MinMax scaler 금지 \\(\\to\\) 태블러 데이터에 최적화되어있기 때문\n\n전처리 규칙은 train set을 따라야한다!\n\n\nM, m = x_train.max(), x_train.min()\n\ntrain_x  = ((x_train-m)/(M-m)).reshape(-1, 28, 28, 1)\ntest_x  = ((x_test-m)/(M-m)).reshape(-1, 28, 28, 1)\n\n\n\n\n\nimport graphviz\ndef gv(s): return graphviz.Source('digraph G{ rankdir=\"LR\"'+ s + ';}')\n\n#collapse\ngv('''\nsplines=line\nsubgraph cluster_1{\n    style=filled;\n    color=lightgrey;\n    \"x1\"\n    \"x2\"\n    \"..\"\n    \"x784\"\n    label = \"Layer 0\"\n}\nsubgraph cluster_2{\n    style=filled;\n    color=lightgrey;\n    \"x1\" -&gt; \"node1\"\n    \"x2\" -&gt; \"node1\"\n    \"..\" -&gt; \"node1\"\n    \"x784\" -&gt; \"node1\"\n\n    \"x1\" -&gt; \"node2\"\n    \"x2\" -&gt; \"node2\"\n    \"..\" -&gt; \"node2\"\n    \"x784\" -&gt; \"node2\"\n\n    \"x1\" -&gt; \"...\"\n    \"x2\" -&gt; \"...\"\n    \"..\" -&gt; \"...\"\n    \"x784\" -&gt; \"...\"\n\n    \"x1\" -&gt; \"node20\"\n    \"x2\" -&gt; \"node20\"\n    \"..\" -&gt; \"node20\"\n    \"x784\" -&gt; \"node20\"\n\n\n    label = \"Layer 1: relu\"\n}\nsubgraph cluster_3{\n    style=filled;\n    color=lightgrey;\n    \"node1\" -&gt; \"node1 \"\n    \"node2\" -&gt; \"node1 \"\n    \"...\" -&gt; \"node1 \"\n    \"node20\" -&gt; \"node1 \"\n\n    \"node1\" -&gt; \"node2 \"\n    \"node2\" -&gt; \"node2 \"\n    \"...\" -&gt; \"node2 \"\n    \"node20\" -&gt; \"node2 \"\n\n    \"node1\" -&gt; \"... \"\n    \"node2\" -&gt; \"... \"\n    \"...\" -&gt; \"... \"\n    \"node20\" -&gt; \"... \"\n\n    \"node1\" -&gt; \"node30 \"\n    \"node2\" -&gt; \"node30 \"\n    \"...\" -&gt; \"node30 \"\n    \"node20\" -&gt; \"node30 \"\n\n\n    label = \"Layer 2: relu\"\n}\nsubgraph cluster_4{\n    style=filled;\n    color=lightgrey;\n\n    \"node1 \" -&gt; \"y10\"\n    \"node2 \" -&gt; \"y10\"\n    \"... \" -&gt; \"y10\"\n    \"node30 \" -&gt; \"y10\"\n\n    \"node1 \" -&gt; \"y1\"\n    \"node2 \" -&gt; \"y1\"\n    \"... \" -&gt; \"y1\"\n    \"node30 \" -&gt; \"y1\"\n\n    \"node1 \" -&gt; \".\"\n    \"node2 \" -&gt; \".\"\n    \"... \" -&gt; \".\"\n    \"node30 \" -&gt; \".\"\n\n    label = \"Layer 3: softmax\"\n}\n''')\n\n\n\n\n\n28*28\n\n784\n\n\n\nnp.unique(y_train)\n\narray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=uint8)\n\n\n\nmodel.compile?\n\nObject `model.compile` not found.\n\n\n\nmodel = Sequential()\n\nmodel.add(Flatten())\nmodel.add(Dense(20, activation = \"relu\"))\nmodel.add(Dense(30, activation = \"relu\"))\nmodel.add(Dense(10, activation = \"softmax\"))\n\nmodel.compile(optimizer = Adam(0.001), metrics = [\"acc\"], loss =  \"sparse_categorical_crossentropy\")\n\n\nes  = EarlyStopping(monitor = \"val_loss\", mode = \"min\", patience = 5, verbose = 1)\n\nmc = ModelCheckpoint(monitor = \"val_loss\", filepath = \"mnist_dnn.ckpt\",\n                                    save_best_only = True,  mode = \"min\", verbose = 1 )\n\n\n\n\n\nhistory = model.fit(train_x, y_train, epochs = 10, validation_split = 0.2,\n                                  callbacks = [es, mc]).history\n\nEpoch 1/10\n1485/1500 [============================&gt;.] - ETA: 0s - loss: 0.3112 - acc: 0.8847\nEpoch 1: val_loss did not improve from 0.35468\n1500/1500 [==============================] - 6s 4ms/step - loss: 0.3110 - acc: 0.8849 - val_loss: 0.3716 - val_acc: 0.8689\nEpoch 2/10\n1489/1500 [============================&gt;.] - ETA: 0s - loss: 0.3018 - acc: 0.8887\nEpoch 2: val_loss did not improve from 0.35468\n1500/1500 [==============================] - 5s 3ms/step - loss: 0.3020 - acc: 0.8888 - val_loss: 0.3825 - val_acc: 0.8664\nEpoch 3/10\n1483/1500 [============================&gt;.] - ETA: 0s - loss: 0.2999 - acc: 0.8894\nEpoch 3: val_loss did not improve from 0.35468\n1500/1500 [==============================] - 5s 3ms/step - loss: 0.2999 - acc: 0.8895 - val_loss: 0.3568 - val_acc: 0.8772\nEpoch 4/10\n1499/1500 [============================&gt;.] - ETA: 0s - loss: 0.2959 - acc: 0.8922\nEpoch 4: val_loss did not improve from 0.35468\n1500/1500 [==============================] - 5s 4ms/step - loss: 0.2958 - acc: 0.8923 - val_loss: 0.3665 - val_acc: 0.8738\nEpoch 5/10\n1490/1500 [============================&gt;.] - ETA: 0s - loss: 0.2912 - acc: 0.8904\nEpoch 5: val_loss did not improve from 0.35468\n1500/1500 [==============================] - 5s 4ms/step - loss: 0.2911 - acc: 0.8905 - val_loss: 0.3589 - val_acc: 0.8723\nEpoch 6/10\n1499/1500 [============================&gt;.] - ETA: 0s - loss: 0.2865 - acc: 0.8951\nEpoch 6: val_loss improved from 0.35468 to 0.35428, saving model to mnist_dnn.ckpt\n1500/1500 [==============================] - 8s 5ms/step - loss: 0.2865 - acc: 0.8951 - val_loss: 0.3543 - val_acc: 0.8740\nEpoch 7/10\n1498/1500 [============================&gt;.] - ETA: 0s - loss: 0.2824 - acc: 0.8946\nEpoch 7: val_loss did not improve from 0.35428\n1500/1500 [==============================] - 5s 3ms/step - loss: 0.2823 - acc: 0.8946 - val_loss: 0.3610 - val_acc: 0.8751\nEpoch 8/10\n1482/1500 [============================&gt;.] - ETA: 0s - loss: 0.2809 - acc: 0.8966\nEpoch 8: val_loss improved from 0.35428 to 0.35115, saving model to mnist_dnn.ckpt\n1500/1500 [==============================] - 6s 4ms/step - loss: 0.2807 - acc: 0.8966 - val_loss: 0.3511 - val_acc: 0.8751\nEpoch 9/10\n1485/1500 [============================&gt;.] - ETA: 0s - loss: 0.2759 - acc: 0.8977\nEpoch 9: val_loss did not improve from 0.35115\n1500/1500 [==============================] - 5s 3ms/step - loss: 0.2760 - acc: 0.8977 - val_loss: 0.3617 - val_acc: 0.8750\nEpoch 10/10\n1495/1500 [============================&gt;.] - ETA: 0s - loss: 0.2708 - acc: 0.9002\nEpoch 10: val_loss did not improve from 0.35115\n1500/1500 [==============================] - 5s 3ms/step - loss: 0.2712 - acc: 0.9001 - val_loss: 0.3593 - val_acc: 0.8748\n\n\n\n\n\n\nresult1 = model.predict(test_x)\n\n313/313 [==============================] - 1s 2ms/step\n\n\n\nresult1 = np.argmax(result1, axis = 1)\n\n\nfrom sklearn.metrics import *\n\naccuracy_score(y_test, result1)\n\n0.8652\n\n\n\n\n\n1 train_loss, val_loss 확인\n\nimport matplotlib.pyplot as plt\n\nplt.figure(figsize = (8,4))\nplt.plot(history[\"loss\"], label = \"train_loss\")\nplt.plot(history[\"val_loss\"], label = \"val_loss\")\nplt.legend()\nplt.show()\n\n\n\n\n2 실젝값, 예측값 비교\n\nfrom sklearn.metrics import *\nimport seaborn as sns\n\nsns.heatmap(confusion_matrix(y_test, result1),\n                        annot = True, fmt = \"3d\")\n\nprint(classification_report(y_test, result1))\nplt.show()\n\n              precision    recall  f1-score   support\n\n           0       0.80      0.83      0.81      1000\n           1       0.96      0.97      0.97      1000\n           2       0.81      0.73      0.76      1000\n           3       0.87      0.86      0.87      1000\n           4       0.75      0.82      0.78      1000\n           5       0.95      0.96      0.96      1000\n           6       0.69      0.62      0.65      1000\n           7       0.93      0.95      0.94      1000\n           8       0.91      0.97      0.94      1000\n           9       0.97      0.94      0.95      1000\n\n    accuracy                           0.87     10000\n   macro avg       0.86      0.87      0.86     10000\nweighted avg       0.86      0.87      0.86     10000"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#적합된-네트워크를-이용하여-test-data의-accuracy를-구하라",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#적합된-네트워크를-이용하여-test-data의-accuracy를-구하라",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#적합된-네트워크를-이용하여-test-data의-accuracy를-구하라",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#적합된-네트워크를-이용하여-test-data의-accuracy를-구하라",
     "title": "02. 이미지 분류",
     "section": "",
     "text": "result1 = model.predict(test_x)\n\n313/313 [==============================] - 1s 2ms/step\n\n\n\nresult1 = np.argmax(result1, axis = 1)\n\n\nfrom sklearn.metrics import *\n\naccuracy_score(y_test, result1)\n\n0.8652"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#과적합인지-확인",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#과적합인지-확인",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#과적합인지-확인",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#과적합인지-확인",
     "title": "02. 이미지 분류",
     "section": "",
     "text": "1 train_loss, val_loss 확인\n\nimport matplotlib.pyplot as plt\n\nplt.figure(figsize = (8,4))\nplt.plot(history[\"loss\"], label = \"train_loss\")\nplt.plot(history[\"val_loss\"], label = \"val_loss\")\nplt.legend()\nplt.show()\n\n\n\n\n2 실젝값, 예측값 비교\n\nfrom sklearn.metrics import *\nimport seaborn as sns\n\nsns.heatmap(confusion_matrix(y_test, result1),\n                        annot = True, fmt = \"3d\")\n\nprint(classification_report(y_test, result1))\nplt.show()\n\n              precision    recall  f1-score   support\n\n           0       0.80      0.83      0.81      1000\n           1       0.96      0.97      0.97      1000\n           2       0.81      0.73      0.76      1000\n           3       0.87      0.86      0.87      1000\n           4       0.75      0.82      0.78      1000\n           5       0.95      0.96      0.96      1000\n           6       0.69      0.62      0.65      1000\n           7       0.93      0.95      0.94      1000\n           8       0.91      0.97      0.94      1000\n           9       0.97      0.94      0.95      1000\n\n    accuracy                           0.87     10000\n   macro avg       0.86      0.87      0.86     10000\nweighted avg       0.86      0.87      0.86     10000"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#데이터-로드-및-전처리",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#데이터-로드-및-전처리",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#데이터-로드-및-전처리",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#데이터-로드-및-전처리",
     "title": "02. 이미지 분류",
     "section": "데이터 로드 및 전처리",
     "text": "데이터 로드 및 전처리\n\n(x_train, y_train), (x_test, y_test)  = fashion_mnist.load_data()\n\n\nM, m = x_train.max(), x_train.min()\n\ntrain_x = ((x_train-m)/(M-m)).reshape(-1, 28, 28, 1)\ntest_x = ((x_test-m)/(M-m)).reshape(-1, 28, 28, 1)"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#모델-설계-1",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#모델-설계-1",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#모델-설계-1",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#모델-설계-1",
     "title": "02. 이미지 분류",
     "section": "모델 설계 1",
     "text": "모델 설계 1\n이때 n1=6, n2=16, n3=120 으로 설정한다, 드랍아웃비율은 20%로 설정한다.\n\nmodel  = Sequential()\n\nmodel.add(Conv2D(filters = 6, kernel_size = (5 ,5), input_shape = (28, 28, 1), padding = \"valid\")) ## 패딩은 \"valid\"가 기본값\nmodel.add(MaxPool2D(pool_size = (2,2),  padding = \"valid\")) ## 패딩과 pool_size는 입력한 값이 디폴트임\nmodel.add(Conv2D(16, (5, 5)))\nmodel.add(MaxPool2D())\nmodel.add(Flatten())\nmodel.add(Dense(120, activation = \"relu\"))\nmodel.add(Dropout(0.2))\nmodel.add(Dense(10, activation = \"softmax\"))\n\nmodel.compile(optimizer = Adam(0.001), loss = \"sparse_categorical_crossentropy\", metrics = [\"acc\"])\n\n\nmodel.summary()\n\nModel: \"sequential_9\"\n_________________________________________________________________\n Layer (type)                Output Shape              Param #   \n=================================================================\n conv2d_8 (Conv2D)           (None, 24, 24, 6)         156       \n                                                                 \n max_pooling2d_7 (MaxPoolin  (None, 12, 12, 6)         0         \n g2D)                                                            \n                                                                 \n conv2d_9 (Conv2D)           (None, 8, 8, 16)          2416      \n                                                                 \n max_pooling2d_8 (MaxPoolin  (None, 4, 4, 16)          0         \n g2D)                                                            \n                                                                 \n flatten_6 (Flatten)         (None, 256)               0         \n                                                                 \n dense_15 (Dense)            (None, 120)               30840     \n                                                                 \n dropout_3 (Dropout)         (None, 120)               0         \n                                                                 \n dense_16 (Dense)            (None, 10)                1210      \n                                                                 \n=================================================================\nTotal params: 34622 (135.24 KB)\nTrainable params: 34622 (135.24 KB)\nNon-trainable params: 0 (0.00 Byte)\n_________________________________________________________________"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#모델-설계-2",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#모델-설계-2",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#모델-설계-2",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#모델-설계-2",
     "title": "02. 이미지 분류",
     "section": "모델 설계 2",
     "text": "모델 설계 2\nn1=(6,64,128), n2=(16,256)에 대하여 test set의 loss가 최소화되는 조합을 찾아라.\n\nepoc = 3, validation = 0.2로 설정\n\n\nn1 = [6, 64, 128]\nn2 = [16, 256]\n\nfor i in n1 :\n  for j in n2 :\n      model  = Sequential()\n      model.add(Conv2D(filters = i, kernel_size = (5 ,5), input_shape = (28, 28, 1), padding = \"valid\")) ## 패딩은 \"valid\"가 기본값\n      model.add(MaxPool2D(pool_size = (2,2),  padding = \"valid\")) ## 패딩과 pool_size는 입력한 값이 디폴트임\n      model.add(Conv2D(j, (5, 5)))\n      model.add(MaxPool2D())\n      model.add(Flatten())\n      model.add(Dense(120, activation = \"relu\"))\n      model.add(Dropout(0.2))\n      model.add(Dense(10, activation = \"softmax\"))\n\n      model.compile(optimizer = Adam(0.001), loss = \"sparse_categorical_crossentropy\", metrics = [\"acc\"])\n      model.fit(train_x, y_train, validation_split = 0.2, epochs = 3, verbose = 0)\n\n      result = model.evaluate(test_x, y_test)\n      print(f\"n1 : {i}, n2 : {j} -&gt; loss : {result[0]}, acc  :  {result[1]}\")\n\n313/313 [==============================] - 1s 2ms/step - loss: 0.3501 - acc: 0.8754\nn1 : 6, n2 : 16 -&gt; loss : 0.3500571548938751, acc  :  0.8754000067710876\n313/313 [==============================] - 1s 2ms/step - loss: 0.3233 - acc: 0.8802\nn1 : 6, n2 : 256 -&gt; loss : 0.32328951358795166, acc  :  0.8802000284194946\n313/313 [==============================] - 1s 3ms/step - loss: 0.3424 - acc: 0.8788\nn1 : 64, n2 : 16 -&gt; loss : 0.34240153431892395, acc  :  0.8787999749183655\n313/313 [==============================] - 1s 3ms/step - loss: 0.3065 - acc: 0.8891\nn1 : 64, n2 : 256 -&gt; loss : 0.30652520060539246, acc  :  0.8891000151634216\n313/313 [==============================] - 1s 3ms/step - loss: 0.3387 - acc: 0.8804\nn1 : 128, n2 : 16 -&gt; loss : 0.3387366831302643, acc  :  0.8804000020027161\n313/313 [==============================] - 1s 4ms/step - loss: 0.3110 - acc: 0.8912\nn1 : 128, n2 : 256 -&gt; loss : 0.31100359559059143, acc  :  0.8912000060081482\n\n\n- 64, 256 일 때 test_loss가 가장 작음"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#데이터-로드-및-전처리-1",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#데이터-로드-및-전처리-1",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#데이터-로드-및-전처리-1",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#데이터-로드-및-전처리-1",
     "title": "02. 이미지 분류",
     "section": "데이터 로드 및 전처리",
     "text": "데이터 로드 및 전처리\n\n(x_train, y_train), (x_test, y_test) = cifar10.load_data()\n\n\nx_train.shape, y_train.shape, x_test. shape,y_test.shape\n\n((50000, 32, 32, 3), (50000, 1), (10000, 32, 32, 3), (10000, 1))\n\n\n\ntrain_x = x_train/255.0\ntest_x = x_test/255.0\n\ny_train = y_train.reshape(-1,)\ny_test = y_test.reshape(-1,)\n\n\ny_test.shape\n\n(10000,)"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#모델-설계-3",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#모델-설계-3",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#모델-설계-3",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#모델-설계-3",
     "title": "02. 이미지 분류",
     "section": "모델 설계",
     "text": "모델 설계\n\nmodel  = Sequential()\n\nmodel.add(Conv2D(32, (3,3), input_shape = (32,32, 3)))\nmodel.add(Conv2D(32, (3,3)))\nmodel.add(BatchNormalization())\nmodel.add(MaxPool2D((2, 2), strides = (2,2)))\nmodel.add(Dropout(0.25))\n\n\nmodel.add(Conv2D(64, (3,3)))\nmodel.add(Conv2D(64, (3, 3)))\nmodel.add(MaxPool2D((2, 2), strides = (2,2)))\nmodel.add(BatchNormalization())\nmodel.add(Dropout(0.25))\n\nmodel.add(Flatten())\nmodel.add(Dense(1024, activation = \"relu\"))\nmodel.add(BatchNormalization())\nmodel.add(Dropout(0.2))\nmodel.add(Dense(10, activation = \"softmax\"))\n\nmodel.compile(optimizer = Adam(0.001), loss = \"sparse_categorical_crossentropy\", metrics = [\"acc\"])\n\n\nes = EarlyStopping(monitor = \"val_loss\", mode = \"min\", verbose = 1, patience = 5)\nch = ModelCheckpoint(filepath = \"CIFAR.h5\", monitor = \"val_loss\", verbose = 1,  save_best_only= True )\n\n\nmodel.fit(train_x, y_train, epochs = 30, validation_split = 0.2, callbacks = [es, ch])\n\nEpoch 1/30\n1243/1250 [============================&gt;.] - ETA: 0s - loss: 1.6670 - acc: 0.4495\nEpoch 1: val_loss improved from inf to 2.01761, saving model to CIFAR.h5\n1250/1250 [==============================] - 13s 7ms/step - loss: 1.6649 - acc: 0.4503 - val_loss: 2.0176 - val_acc: 0.3802\nEpoch 2/30\n  10/1250 [..............................] - ETA: 7s - loss: 1.4683 - acc: 0.4750 1250/1250 [==============================] - ETA: 0s - loss: 1.2204 - acc: 0.5806\nEpoch 2: val_loss improved from 2.01761 to 1.30872, saving model to CIFAR.h5\n1250/1250 [==============================] - 8s 6ms/step - loss: 1.2204 - acc: 0.5806 - val_loss: 1.3087 - val_acc: 0.5842\nEpoch 3/30\n1243/1250 [============================&gt;.] - ETA: 0s - loss: 1.0502 - acc: 0.6359\nEpoch 3: val_loss improved from 1.30872 to 1.11962, saving model to CIFAR.h5\n1250/1250 [==============================] - 8s 7ms/step - loss: 1.0508 - acc: 0.6355 - val_loss: 1.1196 - val_acc: 0.6230\nEpoch 4/30\n1245/1250 [============================&gt;.] - ETA: 0s - loss: 0.9571 - acc: 0.6714\nEpoch 4: val_loss improved from 1.11962 to 0.93383, saving model to CIFAR.h5\n1250/1250 [==============================] - 8s 7ms/step - loss: 0.9571 - acc: 0.6715 - val_loss: 0.9338 - val_acc: 0.6749\nEpoch 5/30\n1250/1250 [==============================] - ETA: 0s - loss: 0.8859 - acc: 0.6924\nEpoch 5: val_loss improved from 0.93383 to 0.86031, saving model to CIFAR.h5\n1250/1250 [==============================] - 8s 6ms/step - loss: 0.8859 - acc: 0.6924 - val_loss: 0.8603 - val_acc: 0.7047\nEpoch 6/30\n1243/1250 [============================&gt;.] - ETA: 0s - loss: 0.8145 - acc: 0.7167\nEpoch 6: val_loss did not improve from 0.86031\n1250/1250 [==============================] - 9s 7ms/step - loss: 0.8142 - acc: 0.7168 - val_loss: 0.9080 - val_acc: 0.6976\nEpoch 7/30\n1249/1250 [============================&gt;.] - ETA: 0s - loss: 0.7646 - acc: 0.7375\nEpoch 7: val_loss improved from 0.86031 to 0.84302, saving model to CIFAR.h5\n1250/1250 [==============================] - 8s 6ms/step - loss: 0.7648 - acc: 0.7375 - val_loss: 0.8430 - val_acc: 0.7168\nEpoch 8/30\n1243/1250 [============================&gt;.] - ETA: 0s - loss: 0.7157 - acc: 0.7530\nEpoch 8: val_loss did not improve from 0.84302\n1250/1250 [==============================] - 8s 6ms/step - loss: 0.7159 - acc: 0.7528 - val_loss: 0.8542 - val_acc: 0.7174\nEpoch 9/30\n1243/1250 [============================&gt;.] - ETA: 0s - loss: 0.6680 - acc: 0.7698\nEpoch 9: val_loss did not improve from 0.84302\n1250/1250 [==============================] - 10s 8ms/step - loss: 0.6687 - acc: 0.7694 - val_loss: 0.8723 - val_acc: 0.7212\nEpoch 10/30\n1245/1250 [============================&gt;.] - ETA: 0s - loss: 0.6272 - acc: 0.7805\nEpoch 10: val_loss improved from 0.84302 to 0.78872, saving model to CIFAR.h5\n1250/1250 [==============================] - 9s 7ms/step - loss: 0.6279 - acc: 0.7804 - val_loss: 0.7887 - val_acc: 0.7422\nEpoch 11/30\n1248/1250 [============================&gt;.] - ETA: 0s - loss: 0.5885 - acc: 0.7975\nEpoch 11: val_loss did not improve from 0.78872\n1250/1250 [==============================] - 8s 6ms/step - loss: 0.5884 - acc: 0.7974 - val_loss: 0.8317 - val_acc: 0.7329\nEpoch 12/30\n1242/1250 [============================&gt;.] - ETA: 0s - loss: 0.5561 - acc: 0.8071\nEpoch 12: val_loss did not improve from 0.78872\n1250/1250 [==============================] - 9s 7ms/step - loss: 0.5563 - acc: 0.8072 - val_loss: 0.8331 - val_acc: 0.7350\nEpoch 13/30\n1245/1250 [============================&gt;.] - ETA: 0s - loss: 0.5360 - acc: 0.8161\nEpoch 13: val_loss did not improve from 0.78872\n1250/1250 [==============================] - 8s 7ms/step - loss: 0.5360 - acc: 0.8161 - val_loss: 0.8569 - val_acc: 0.7379\nEpoch 14/30\n1246/1250 [============================&gt;.] - ETA: 0s - loss: 0.5022 - acc: 0.8245\nEpoch 14: val_loss did not improve from 0.78872\n1250/1250 [==============================] - 8s 6ms/step - loss: 0.5022 - acc: 0.8244 - val_loss: 0.8388 - val_acc: 0.7460\nEpoch 15/30\n1244/1250 [============================&gt;.] - ETA: 0s - loss: 0.4688 - acc: 0.8346\nEpoch 15: val_loss did not improve from 0.78872\n1250/1250 [==============================] - 9s 7ms/step - loss: 0.4691 - acc: 0.8344 - val_loss: 0.8866 - val_acc: 0.7282\nEpoch 15: early stopping\n\n\n/usr/local/lib/python3.10/dist-packages/keras/src/engine/training.py:3103: UserWarning: You are saving your model as an HDF5 file via `model.save()`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')`.\n  saving_api.save_model(\n\n\n&lt;keras.src.callbacks.History at 0x79059019eb00&gt;"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#예측",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#예측",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#예측",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#예측",
     "title": "02. 이미지 분류",
     "section": "예측",
     "text": "예측\n\nmodel.evaluate(test_x, y_test)\n\n313/313 [==============================] - 2s 5ms/step - loss: 0.9003 - acc: 0.7314\n\n\n[0.9002749919891357, 0.7314000129699707]"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#모델-로드-후-예측-결과-시각화",
-    "href": "posts/EX/PRO/2024-01-22-02.이미지_분류.html#모델-로드-후-예측-결과-시각화",
+    "objectID": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#모델-로드-후-예측-결과-시각화",
+    "href": "posts/EX/advanced/2024-01-22-02.이미지_분류.html#모델-로드-후-예측-결과-시각화",
     "title": "02. 이미지 분류",
     "section": "모델 로드 후 예측 결과 시각화",
     "text": "모델 로드 후 예측 결과 시각화\n\nload_model = load_model(\"CIFAR.h5\")\n\n\nimport numpy as np\npred = np.argmax(load_model.predict(test_x), axis = 1)\n\n313/313 [==============================] - 2s 5ms/step\n\n\n\nimport seaborn as sns\nfrom sklearn.metrics import *\n\nsns.heatmap(confusion_matrix(y_test, pred),\n                                                      annot = True, fmt = \"3d\")\n\n&lt;Axes: &gt;"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-21-00. Associate review.html",
-    "href": "posts/EX/PRO/2024-01-21-00. Associate review.html",
+    "objectID": "posts/EX/advanced/2024-01-21-00. Associate review.html",
+    "href": "posts/EX/advanced/2024-01-21-00. Associate review.html",
     "title": "00. Associate Review",
     "section": "",
     "text": "1 반드시 답안을 작성하라는 셀안에 코드를 작성하기\n2 변수명이 제시된 경우 반드시 해당 변수명을 사용하기\n3 데이터를 분석 및 전처리한 후 머신러닝과 딥러닝으로 VOC를 제기한 고객의 해지여부를 예측하고 결과를 분석하세요."
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-21-00. Associate review.html#voc_trt_perd_itg_cd-변수의-고유값-count",
-    "href": "posts/EX/PRO/2024-01-21-00. Associate review.html#voc_trt_perd_itg_cd-변수의-고유값-count",
+    "objectID": "posts/EX/advanced/2024-01-21-00. Associate review.html#voc_trt_perd_itg_cd-변수의-고유값-count",
+    "href": "posts/EX/advanced/2024-01-21-00. Associate review.html#voc_trt_perd_itg_cd-변수의-고유값-count",
     "title": "00. Associate Review",
     "section": "voc_trt_perd_itg_cd 변수의 고유값 count",
     "text": "voc_trt_perd_itg_cd 변수의 고유값 count\n\ndf[\"voc_trt_perd_itg_cd\"].value_counts()\n\n_        5422\n10000    4283\n10001     163\n10002      58\n10003      25\n10004      16\n10005      10\n10006       6\n10008       3\n10009       3\n10016       2\n10011       2\n10012       2\n10007       2\n10014       1\n10013       1\n10015       1\nName: voc_trt_perd_itg_cd, dtype: int64\n\n\n\ndf[\"voc_trt_perd_itg_cd\"].value_counts(normalize = True)\n\n_        0.5422\n10000    0.4283\n10001    0.0163\n10002    0.0058\n10003    0.0025\n10004    0.0016\n10005    0.0010\n10006    0.0006\n10008    0.0003\n10009    0.0003\n10016    0.0002\n10011    0.0002\n10012    0.0002\n10007    0.0002\n10014    0.0001\n10013    0.0001\n10015    0.0001\nName: voc_trt_perd_itg_cd, dtype: float64"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-21-00. Associate review.html#라벨인코딩",
-    "href": "posts/EX/PRO/2024-01-21-00. Associate review.html#라벨인코딩",
+    "objectID": "posts/EX/advanced/2024-01-21-00. Associate review.html#라벨인코딩",
+    "href": "posts/EX/advanced/2024-01-21-00. Associate review.html#라벨인코딩",
     "title": "00. Associate Review",
     "section": "라벨인코딩",
     "text": "라벨인코딩\ncat_cols 데이터프레임에서 cust_clas_itg_cd 열의 범주형 데이터를 숫자로 인코딩하고, 그 결과를 le_cust_clas_itg_cd 열에 저장\n\nfrom sklearn.preprocessing import LabelEncoder\n\nle = LabelEncoder()\n\ncat_cols[\"le_cust_clas_itg_cd\"] = le.fit_transform(cat_cols[\"cust_clas_itg_cd\"])\n\n\ncat_cols.head()\n\n\n  \n    \n\n\n\n\n\n\ncust_clas_itg_cd\ncont_sttus_itg_cd\ncust_dtl_ctg_itg_cd\ntrm_yn\nle_cust_clas_itg_cd\n\n\n\n\n0\nF\n10001\n10003\nN\n0\n\n\n1\nG\n10001\n10002\nN\n1\n\n\n2\nG\n10001\n10003\nN\n1\n\n\n3\nL\n10001\n90024\nN\n5\n\n\n4\nG\n10001\n90024\nN\n1"
@@ -2417,7 +2417,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "DX track",
+    "title": "C.I.C blog",
     "section": "",
     "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJan 22, 2024\n\n\n01. 텍스트 분류\n\n\nGC \n\n\n\n\nJan 22, 2024\n\n\n02. 이미지 분류\n\n\nGC \n\n\n\n\nJan 21, 2024\n\n\n00. Associate Review\n\n\nGC \n\n\n\n\nJan 15, 2024\n\n\n00. CA (1)\n\n\nGC \n\n\n\n\nJan 8, 2024\n\n\n04. MNIST\n\n\ngc \n\n\n\n\nJan 1, 2024\n\n\n03. model theory\n\n\nGC \n\n\n\n\nDec 28, 2023\n\n\n00. model train (1)\n\n\nGC \n\n\n\n\nDec 28, 2023\n\n\n01. model train (2)\n\n\nGC \n\n\n\n\nDec 28, 2023\n\n\n02. model fit & save\n\n\nGC \n\n\n\n\nNov 30, 2023\n\n\n05. 제안서 작성 (1)\n\n\ngc \n\n\n\n\nNov 29, 2023\n\n\n04. 사업정의\n\n\ngc \n\n\n\n\nNov 28, 2023\n\n\n03. 실행계획 수립\n\n\ngc \n\n\n\n\nNov 27, 2023\n\n\n02. 고객가치정의 및 아이디어 도출\n\n\ngc \n\n\n\n\nNov 24, 2023\n\n\n01. 환경분석 기법의 이해\n\n\ngc \n\n\n\n\nNov 23, 2023\n\n\n00. 제안전략수립\n\n\ngc \n\n\n\n\nNov 6, 2023\n\n\n00. IT 인프라 (1)\n\n\nGC \n\n\n\n\nNov 2, 2023\n\n\n03. Titanic\n\n\ngc \n\n\n\n\nNov 1, 2023\n\n\n02. iris\n\n\ngc \n\n\n\n\nOct 31, 2023\n\n\n01. VOC\n\n\ngc \n\n\n\n\nOct 30, 2023\n\n\n00. Churn\n\n\ngc \n\n\n\n\nOct 26, 2023\n\n\n02. BERTopic\n\n\ngc \n\n\n\n\nOct 23, 2023\n\n\n00. streamlit\n\n\ngc \n\n\n\n\nOct 18, 2023\n\n\nsummary 01. RNN\n\n\nGC \n\n\n\n\nOct 18, 2023\n\n\nsummary 02. LSTM\n\n\nGC \n\n\n\n\nOct 18, 2023\n\n\nsummary 03. Transformer\n\n\nGC \n\n\n\n\nOct 12, 2023\n\n\nExtra 02. 시각지능\n\n\nGC \n\n\n\n\nOct 10, 2023\n\n\nExtra 01. 언어지능\n\n\nGC \n\n\n\n\nOct 6, 2023\n\n\n03. 딥러닝 (4)\n\n\nGC \n\n\n\n\nOct 5, 2023\n\n\n02. 딥러닝 (3)\n\n\nGC \n\n\n\n\nOct 4, 2023\n\n\n01. 딥러닝 (2)\n\n\nGC \n\n\n\n\nOct 3, 2023\n\n\n00. 딥러닝 (1)\n\n\nGC \n\n\n\n\nSep 28, 2023\n\n\n08. summary (1)\n\n\nGC \n\n\n\n\nSep 19, 2023\n\n\n07. 머신러닝 (6)\n\n\nGC \n\n\n\n\nSep 18, 2023\n\n\n06. 머신러닝 (5)\n\n\nGC \n\n\n\n\nSep 15, 2023\n\n\n04. 머신러닝 (4)\n\n\nGC \n\n\n\n\nSep 15, 2023\n\n\n05. 종합실습\n\n\nGC \n\n\n\n\nSep 14, 2023\n\n\n03. 머신러닝 (3)\n\n\nGC \n\n\n\n\nSep 13, 2023\n\n\n02. 머신러닝 (2)\n\n\nGC \n\n\n\n\nSep 12, 2023\n\n\n01. 머신러닝 (1)\n\n\nGC \n\n\n\n\nSep 11, 2023\n\n\n00. Intro\n\n\nGC \n\n\n\n\nSep 5, 2023\n\n\n01. 데이터 수집 (2)\n\n\nGC \n\n\n\n\nSep 4, 2023\n\n\n00. 데이터 수집 (1)\n\n\nGC \n\n\n\n\nSep 1, 2023\n\n\n02. 데이터 분석 (3)\n\n\nGC \n\n\n\n\nAug 31, 2023\n\n\n01. 데이터 분석 (2)\n\n\nGC \n\n\n\n\nAug 28, 2023\n\n\n00. 데이터 분석 (1)\n\n\nGC \n\n\n\n\nAug 24, 2023\n\n\n00. MP (1)\n\n\nGC \n\n\n\n\nAug 23, 2023\n\n\n04. numpy & pandas (5)\n\n\nGC \n\n\n\n\nAug 22, 2023\n\n\n03. numpy & pandas (4)\n\n\nGC \n\n\n\n\nAug 21, 2023\n\n\n02. numpy & pandas (3)\n\n\nGC \n\n\n\n\nAug 19, 2023\n\n\n01. Plotly test\n\n\nGC \n\n\n\n\nAug 18, 2023\n\n\n00. numpy & pandas (1)\n\n\nGC \n\n\n\n\nAug 18, 2023\n\n\n01. numpy & pandas (2)\n\n\nGC \n\n\n\n\nAug 17, 2023\n\n\n05. Python Basic (6)\n\n\nGC \n\n\n\n\nAug 16, 2023\n\n\n04. Python Basic (5)\n\n\nGC \n\n\n\n\nAug 15, 2023\n\n\nExtra 04. 클래스 탐구 (3)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\n03. Python Basic (4)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\nExtra 03. 클래스 탐구 (2)\n\n\nGC \n\n\n\n\nAug 11, 2023\n\n\n02. Python Basic (3)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\n01. Python Basic (2)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\nExtra 02. 클래스 탐구 (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\n00. Python Basic (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\nExtra 01. 클래스\n\n\nGC \n\n\n\n\nAug 8, 2023\n\n\nExtra 00. 밈\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
   },
@@ -2433,7 +2433,7 @@
     "href": "about.html#experience",
     "title": "About Me",
     "section": "Experience",
-    "text": "Experience\n- 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n- 지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n- 빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\n- KT AIVLE School DX Consultant Track | KT | 2023. 08 ~"
+    "text": "Experience\n- 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n- 지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n- 빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\n- KT AIVLE School DX Consultant Track | KT | 2023. 08. 08 ~ 2024. 01. 25"
   },
   {
     "objectID": "about.html#publications",
@@ -2447,7 +2447,14 @@
     "href": "about.html#certificate",
     "title": "About Me",
     "section": "Certificate",
-    "text": "Certificate\n- 워드프로세서 | 대한상공회의소 | 19-19-017981 | 2019. 08. 30\n- 데이터분석준전문가(ADsP) | 한국데이터진흥원 | ADsP-0223898 | 2019. 10. 01\n- 사회조사분석사 2급 | 한국산업인력공단 | 19201142418N | 2019. 10. 01"
+    "text": "Certificate\n- 워드프로세서 | 대한상공회의소 | 19-19-017981 | 2019. 08. 30\n- 데이터분석준전문가(ADsP) | 한국데이터진흥원 | ADsP-0223898 | 2019. 10. 01\n- 사회조사분석사 2급 | 한국산업인력공단 | 19201142418N | 2019. 10. 01\n- AICE associate | 케이티 | AICE_20231103_A00084 | 2023. 11. 03"
+  },
+  {
+    "objectID": "about.html#language",
+    "href": "about.html#language",
+    "title": "About Me",
+    "section": "Language",
+    "text": "Language\n- - Toeic speaking IH | 2023. 07. 01"
   },
   {
     "objectID": "about.html#conctact",
@@ -4361,127 +4368,127 @@
     "text": "(2) RF\n\nfrom sklearn.ensemble import RandomForestClassifier\n\nrf = RandomForestClassifier(max_depth = 5, n_estimators = 10)\n\nrf.fit(X, y)\n\nrf_pred = rf.predict(X)\n\naccuracy_score(y, rf_pred)\n\n0.98\n\n\n\npredict 후 라벨 추출\n\nle.classes_\n\narray(['setosa', 'versicolor', 'virginica'], dtype=object)\n\n\n\nle.classes_[rf.predict([X[50]])[0]]\n\n'versicolor'"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html",
     "title": "04. MNIST",
     "section": "",
     "text": "import tensorflow as tf\nfrom tensorflow import keras"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#one-hot-encoding",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#one-hot-encoding",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#one-hot-encoding",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#one-hot-encoding",
     "title": "04. MNIST",
     "section": "one-hot encoding",
     "text": "one-hot encoding\n\nfrom keras.utils import to_categorical\n\n\ntrain_y_c = to_categorical(y_train, 10)\ntest_y_c = to_categorical(y_test, 10)"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#import-1",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#import-1",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#import-1",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#import-1",
     "title": "04. MNIST",
     "section": "import",
     "text": "import\n\nimport tensorflow as tf\nfrom tensorflow import keras\n\nfrom tensorflow.keras.backend import clear_session\nfrom tensorflow.keras.models import Sequential, Model\nfrom tensorflow.keras.layers import Input, Dense, Flatten, BatchNormalization, Dropout"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#모델-설계",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#모델-설계",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#모델-설계",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#모델-설계",
     "title": "04. MNIST",
     "section": "모델 설계",
     "text": "모델 설계\n\n# 1. 세션 클리어\nclear_session()\n\n# 2. 모델 설계\n\nmodel1 = Sequential()\n\nmodel1.add( Input(shape = (28,28,1)))\nmodel1.add( Flatten() )\nmodel1.add( Dense(1024, activation = \"relu\"))\nmodel1.add( Dense(1024, activation = \"relu\"))\nmodel1.add( BatchNormalization())\nmodel1.add( Dropout(0.25) )\n\nmodel1.add( Dense(512, activation = \"relu\"))\nmodel1.add( Dense(512, activation = \"relu\"))\nmodel1.add( BatchNormalization())\nmodel1.add( Dropout(0.25) )\n\nmodel1.add( Dense (10, activation = \"softmax\"))\n\n# 3. 모델 컴파일\nmodel1.compile(optimizer = \"adam\", loss = tf.keras.losses.categorical_crossentropy,\n               metrics = [\"accuracy\"])\n\n\nmodel1.summary()\n\nModel: \"sequential\"\n_________________________________________________________________\n Layer (type)                Output Shape              Param #   \n=================================================================\n flatten (Flatten)           (None, 784)               0         \n                                                                 \n dense (Dense)               (None, 1024)              803840    \n                                                                 \n dense_1 (Dense)             (None, 1024)              1049600   \n                                                                 \n batch_normalization (Batch  (None, 1024)              4096      \n Normalization)                                                  \n                                                                 \n dropout (Dropout)           (None, 1024)              0         \n                                                                 \n dense_2 (Dense)             (None, 512)               524800    \n                                                                 \n dense_3 (Dense)             (None, 512)               262656    \n                                                                 \n batch_normalization_1 (Bat  (None, 512)               2048      \n chNormalization)                                                \n                                                                 \n dropout_1 (Dropout)         (None, 512)               0         \n                                                                 \n dense_4 (Dense)             (None, 10)                5130      \n                                                                 \n=================================================================\nTotal params: 2652170 (10.12 MB)\nTrainable params: 2649098 (10.11 MB)\nNon-trainable params: 3072 (12.00 KB)\n_________________________________________________________________"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#학습",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#학습",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#학습",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#학습",
     "title": "04. MNIST",
     "section": "학습",
     "text": "학습\n\nfrom keras.callbacks import EarlyStopping\n\n\nes = EarlyStopping(monitor = \"val_loss\",\n                  min_delta = 0,\n                  patience = 3,\n                   verbose = 1,\n                   restore_best_weights = True)\n\n\nhistory = model1.fit(train_x_rel, train_y_c,\n                     epochs = 10000, verbose = 1,\n                     validation_split = 0.2,\n                     callbacks = [es]).history\n\nEpoch 1/10000\n1500/1500 [==============================] - 10s 7ms/step - loss: 0.5921 - accuracy: 0.7939 - val_loss: 0.5014 - val_accuracy: 0.8234\nEpoch 2/10000\n1500/1500 [==============================] - 12s 8ms/step - loss: 0.4375 - accuracy: 0.8434 - val_loss: 0.5076 - val_accuracy: 0.8056\nEpoch 3/10000\n1500/1500 [==============================] - 14s 9ms/step - loss: 0.3908 - accuracy: 0.8593 - val_loss: 0.4336 - val_accuracy: 0.8573\nEpoch 4/10000\n1500/1500 [==============================] - 12s 8ms/step - loss: 0.3534 - accuracy: 0.8709 - val_loss: 0.3595 - val_accuracy: 0.8655\nEpoch 5/10000\n1500/1500 [==============================] - 14s 10ms/step - loss: 0.3349 - accuracy: 0.8790 - val_loss: 0.3693 - val_accuracy: 0.8729\nEpoch 6/10000\n1500/1500 [==============================] - 13s 9ms/step - loss: 0.3183 - accuracy: 0.8831 - val_loss: 0.3335 - val_accuracy: 0.8810\nEpoch 7/10000\n1500/1500 [==============================] - 11s 7ms/step - loss: 0.3068 - accuracy: 0.8870 - val_loss: 0.3397 - val_accuracy: 0.8715\nEpoch 8/10000\n1500/1500 [==============================] - 11s 7ms/step - loss: 0.2890 - accuracy: 0.8942 - val_loss: 0.3358 - val_accuracy: 0.8773\nEpoch 9/10000\n1500/1500 [==============================] - 12s 8ms/step - loss: 0.2774 - accuracy: 0.8978 - val_loss: 0.3327 - val_accuracy: 0.8827\nEpoch 10/10000\n1500/1500 [==============================] - 10s 7ms/step - loss: 0.2664 - accuracy: 0.9011 - val_loss: 0.3199 - val_accuracy: 0.8850\nEpoch 11/10000\n1500/1500 [==============================] - 11s 7ms/step - loss: 0.2569 - accuracy: 0.9037 - val_loss: 0.3585 - val_accuracy: 0.8722\nEpoch 12/10000\n1500/1500 [==============================] - 15s 10ms/step - loss: 0.2463 - accuracy: 0.9079 - val_loss: 0.3201 - val_accuracy: 0.8879\nEpoch 13/10000\n1498/1500 [============================&gt;.] - ETA: 0s - loss: 0.2410 - accuracy: 0.9102Restoring model weights from the end of the best epoch: 10.\n1500/1500 [==============================] - 10s 6ms/step - loss: 0.2413 - accuracy: 0.9100 - val_loss: 0.3282 - val_accuracy: 0.8843\nEpoch 13: early stopping"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#결과-시각화",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#결과-시각화",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#결과-시각화",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#결과-시각화",
     "title": "04. MNIST",
     "section": "결과 시각화",
     "text": "결과 시각화\n\nplt.figure(figsize = (12,4))\nplt.plot(history[\"loss\"],\"--.\",label = \"train_loss\")\nplt.plot(history[\"val_loss\"], \"--.\",label = \"val_loss\")\nplt.legend()\nplt.show()"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#예측",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#예측",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#예측",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#예측",
     "title": "04. MNIST",
     "section": "예측",
     "text": "예측\n\ny_pred =  model1.predict(test_x_rel).argmax(axis = 1)\n\n313/313 [==============================] - 1s 2ms/step\n\n\n\nfrom sklearn.metrics import *\n\n\nconfusion_matrix(y_test, y_pred)\n\narray([[875,   0,  18,  27,   1,   0,  70,   0,   9,   0],\n       [  5, 958,   3,  30,   1,   0,   2,   0,   1,   0],\n       [ 19,   0, 842,  15,  65,   0,  55,   0,   4,   0],\n       [ 26,   2,   9, 920,  17,   0,  22,   0,   4,   0],\n       [  1,   0, 146,  52, 721,   0,  73,   0,   7,   0],\n       [  0,   0,   0,   0,   0, 987,   0,   9,   2,   2],\n       [162,   0, 109,  31,  48,   0, 639,   0,  11,   0],\n       [  0,   0,   0,   0,   0,  52,   0, 921,   0,  27],\n       [  5,   0,  10,   2,   5,   4,   0,   4, 970,   0],\n       [  0,   0,   0,   0,   0,  17,   1,  27,   0, 955]])\n\n\n\nprint(classification_report(y_test, y_pred))\n\n              precision    recall  f1-score   support\n\n           0       0.80      0.88      0.84      1000\n           1       1.00      0.96      0.98      1000\n           2       0.74      0.84      0.79      1000\n           3       0.85      0.92      0.89      1000\n           4       0.84      0.72      0.78      1000\n           5       0.93      0.99      0.96      1000\n           6       0.74      0.64      0.69      1000\n           7       0.96      0.92      0.94      1000\n           8       0.96      0.97      0.97      1000\n           9       0.97      0.95      0.96      1000\n\n    accuracy                           0.88     10000\n   macro avg       0.88      0.88      0.88     10000\nweighted avg       0.88      0.88      0.88     10000"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#import-2",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#import-2",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#import-2",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#import-2",
     "title": "04. MNIST",
     "section": "import",
     "text": "import\n\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom keras.backend import clear_session\nfrom keras.models import Sequential\nfrom keras.layers import Dense, Input, Conv2D, MaxPool2D"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#모델-설계-1",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#모델-설계-1",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#모델-설계-1",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#모델-설계-1",
     "title": "04. MNIST",
     "section": "모델 설계",
     "text": "모델 설계\n\n\n# 1. 세션클리어\nkeras.backend.clear_session()\n\n# 2. 모델 설계\nmodel2 = Sequential()\n\nmodel2.add(Input(shape = (28, 28, 1)))\n\nmodel2.add( Conv2D(filters = 28, kernel_size = (3,3),\n            strides = (1,1), padding = \"same\",\n             activation = \"relu\"))\n\nmodel2.add( Conv2D(filters = 28, kernel_size = (3,3),\n            strides = (1,1), padding = \"same\",\n             activation = \"relu\"))\n\nmodel2.add( BatchNormalization() )\nmodel2.add(MaxPool2D(pool_size = (2,2), strides= (2,2)))\nmodel2.add ( keras.layers.Dropout(0.25) )\n\nmodel2.add( keras.layers.Flatten() )\n# Fully Connected Layer : 노드 1024개\nmodel2.add( keras.layers.Dense(1024, activation = \"relu\"))\n\n# BatchNormalization\n\nmodel2.add(keras.layers.BatchNormalization())\n\n# DropOut : 35% 비활성화\n\nmodel2.add( keras.layers.Dropout(0.35) )\n\n# 아웃풋레이어\nmodel2.add( keras.layers.Dense(10, activation = \"softmax\"))\n\nmodel2.compile(optimizer = \"adam\",\n                              loss = keras.losses.categorical_crossentropy,\n                              metrics = [\"accuracy\"])\nmodel2.summary()\n\nModel: \"sequential\"\n_________________________________________________________________\n Layer (type)                Output Shape              Param #   \n=================================================================\n conv2d (Conv2D)             (None, 28, 28, 28)        280       \n                                                                 \n conv2d_1 (Conv2D)           (None, 28, 28, 28)        7084      \n                                                                 \n batch_normalization (Batch  (None, 28, 28, 28)        112       \n Normalization)                                                  \n                                                                 \n max_pooling2d (MaxPooling2  (None, 14, 14, 28)        0         \n D)                                                              \n                                                                 \n dropout (Dropout)           (None, 14, 14, 28)        0         \n                                                                 \n flatten (Flatten)           (None, 5488)              0         \n                                                                 \n dense (Dense)               (None, 1024)              5620736   \n                                                                 \n batch_normalization_1 (Bat  (None, 1024)              4096      \n chNormalization)                                                \n                                                                 \n dropout_1 (Dropout)         (None, 1024)              0         \n                                                                 \n dense_1 (Dense)             (None, 10)                10250     \n                                                                 \n=================================================================\nTotal params: 5642558 (21.52 MB)\nTrainable params: 5640454 (21.52 MB)\nNon-trainable params: 2104 (8.22 KB)\n_________________________________________________________________"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#모델-학습",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#모델-학습",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#모델-학습",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#모델-학습",
     "title": "04. MNIST",
     "section": "모델 학습",
     "text": "모델 학습\n\nfrom tensorflow.keras.callbacks import EarlyStopping\n\n\ntrain_x_rel.shape\n\n(60000, 28, 28, 1)\n\n\n\nes = EarlyStopping(\n      monitor = \"val_loss\",\n      min_delta = 0,\n      patience = 3,\n      verbose = 1,\n      restore_best_weights  = True\n)\n\n\nhistory = model2.fit(train_x_rel, train_y_c,\n                     epochs = 10000, verbose = 1,\n                     validation_split = 0.2,\n                     callbacks = [es]).history\n\nEpoch 1/10000\n1500/1500 [==============================] - 15s 7ms/step - loss: 0.4567 - accuracy: 0.8470 - val_loss: 0.2840 - val_accuracy: 0.9010\nEpoch 2/10000\n1500/1500 [==============================] - 11s 7ms/step - loss: 0.3097 - accuracy: 0.8893 - val_loss: 0.4721 - val_accuracy: 0.8445\nEpoch 3/10000\n1500/1500 [==============================] - 10s 7ms/step - loss: 0.2647 - accuracy: 0.9051 - val_loss: 0.2349 - val_accuracy: 0.9137\nEpoch 4/10000\n1500/1500 [==============================] - 10s 7ms/step - loss: 0.2322 - accuracy: 0.9162 - val_loss: 0.2548 - val_accuracy: 0.9100\nEpoch 5/10000\n1500/1500 [==============================] - 10s 6ms/step - loss: 0.2109 - accuracy: 0.9235 - val_loss: 0.2960 - val_accuracy: 0.8965\nEpoch 6/10000\n1496/1500 [============================&gt;.] - ETA: 0s - loss: 0.1827 - accuracy: 0.9339Restoring model weights from the end of the best epoch: 3.\n1500/1500 [==============================] - 10s 7ms/step - loss: 0.1826 - accuracy: 0.9339 - val_loss: 0.2662 - val_accuracy: 0.9133\nEpoch 6: early stopping"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#결과-시각화-1",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#결과-시각화-1",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#결과-시각화-1",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#결과-시각화-1",
     "title": "04. MNIST",
     "section": "결과 시각화",
     "text": "결과 시각화\n\nplt.figure(figsize = (12,4))\nplt.plot(history[\"loss\"],\"--.\",label = \"train_loss\")\nplt.plot(history[\"val_loss\"], \"--.\",label = \"val_loss\")\nplt.legend()\nplt.show()"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-08-04. MNIST.html#예측-1",
-    "href": "posts/EX/PRO/2024-01-08-04. MNIST.html#예측-1",
+    "objectID": "posts/EX/advanced/2024-01-08-04. MNIST.html#예측-1",
+    "href": "posts/EX/advanced/2024-01-08-04. MNIST.html#예측-1",
     "title": "04. MNIST",
     "section": "예측",
     "text": "예측\n\ny_pred =  model1.predict(test_x_rel).argmax(axis = 1)\n\n313/313 [==============================] - 1s 3ms/step\n\n\n\nprint(classification_report(y_test, y_pred))\n\n              precision    recall  f1-score   support\n\n           0       0.80      0.88      0.84      1000\n           1       1.00      0.96      0.98      1000\n           2       0.74      0.84      0.79      1000\n           3       0.85      0.92      0.89      1000\n           4       0.84      0.72      0.78      1000\n           5       0.93      0.99      0.96      1000\n           6       0.74      0.64      0.69      1000\n           7       0.96      0.92      0.94      1000\n           8       0.96      0.97      0.97      1000\n           9       0.97      0.95      0.96      1000\n\n    accuracy                           0.88     10000\n   macro avg       0.88      0.88      0.88     10000\nweighted avg       0.88      0.88      0.88     10000"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html",
-    "href": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html",
+    "objectID": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html",
+    "href": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html",
     "title": "01. 텍스트 분류",
     "section": "",
     "text": "- tensorflow 튜토리얼 : 영화 리뷰를 사용한 텍스트 분류\n- environment : [colab]"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#리뷰-길이-분포-확인",
-    "href": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#리뷰-길이-분포-확인",
+    "objectID": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#리뷰-길이-분포-확인",
+    "href": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#리뷰-길이-분포-확인",
     "title": "01. 텍스트 분류",
     "section": "리뷰 길이 분포 확인",
     "text": "리뷰 길이 분포 확인\n- train 리뷰 길이 분포 시각화\n\nimport numpy as np\n\n\nreview_length = [len(i) for i in x_train]\n\nfig,axes = plt.subplots(1,2, figsize = (12,4))\n\nax1, ax2 = axes\n\nax1.hist(review_length)\n#ax1.set_title(\"리뷰길이 hist\")\nax2.boxplot(review_length)\n#ax2.set_title(\"리뷰길이 boxplot\")\nfig.tight_layout()\nplt.show()\n\nprint(f\"리뷰의 최대 길이  : {max(review_length)}\")\nprint(f\"리뷰의 평균 길이  : {np.mean(review_length)}\")\n\n\n\n\n리뷰의 최대 길이  : 2494\n리뷰의 평균 길이  : 238.71364"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#라벨-분포-확인",
-    "href": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#라벨-분포-확인",
+    "objectID": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#라벨-분포-확인",
+    "href": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#라벨-분포-확인",
     "title": "01. 텍스트 분류",
     "section": "라벨 분포 확인",
     "text": "라벨 분포 확인\n\nindex = np.unique(y_train, return_counts=True)[0]\ncounts = np.unique(y_train, return_counts=True)[1]\n\nnp.asarray((index, counts))\n\narray([[    0,     1],\n       [12500, 12500]])"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#정수-맵핑-단어-확인",
-    "href": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#정수-맵핑-단어-확인",
+    "objectID": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#정수-맵핑-단어-확인",
+    "href": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#정수-맵핑-단어-확인",
     "title": "01. 텍스트 분류",
     "section": "정수 맵핑 단어 확인",
     "text": "정수 맵핑 단어 확인\n- imdb.get_word_index()에 각 단어와 맵핑되는 정수가 저장되어 있음\n\n주의 : 저장된 값에 +3을 해야 실제 맵핑되는 정수임 (이것은 IMDB 리뷰 데이터 셋에서 정한 규칙이다.)\n\n\nword_to_index = imdb.get_word_index()\n#word_to_index\n\n\nindex_to_word = {}\n\nfor key, value in word_to_index.items() :\n    index_to_word[value+3] = key\n\n\nindex_to_word에 인덱스를 집어넣으면 전처리 전에 어떤 단어였는지 확인할 수 있음.\n\n0,1,2,3은 특별토큰, 정수 4부터가 실제 IMDB 리뷰 데이터셋에서 내림차순으로 빈도수가 영단어임\n\n\n\nprint(f\"빈도수 상위 1등 단어 : {index_to_word[4]}\" )\n\n빈도수 상위 1등 단어 : the\n\n\n\nprint(f\"빈도수 상위 3938등 단어 : {index_to_word[3941]}\")\n\n빈도수 상위 3938등 단어 : suited\n\n\n- 첫 번째 훈련용 리뷰의 각 단어가 정수로 바뀌기 전에 어떤 단어들이 었는지 확인\n\n아래작업은 0,1,2,3 특별토큰의 값을 집어넣는 과정\n\n\nfor index, token in enumerate((\"&lt;pad&gt;\", \"&lt;sos&gt;\", \"&lt;unk&gt;\")):\n  index_to_word[index] = token\n\n\nindex_to_word[0], index_to_word[1], index_to_word[2]\n\n('&lt;pad&gt;', '&lt;sos&gt;', '&lt;unk&gt;')\n\n\n\nprint(\" \".join([index_to_word[i] for i in x_train[0]]))\n\n&lt;sos&gt; this film was just brilliant casting location scenery story direction everyone's really suited the part they played and you could just imagine being there robert redford's is an amazing actor and now the same being director norman's father came from the same scottish island as myself so i loved the fact there was a real connection with this film the witty remarks throughout the film were great it was just brilliant so much that i bought the film as soon as it was released for retail and would recommend it to everyone to watch and the fly fishing was amazing really cried at the end it was so sad and you know what they say if you cry at a film it must have been good and this definitely was also congratulations to the two little boy's that played the part's of norman and paul they were just brilliant children are often left out of the praising list i think because the stars that play them all grown up are such a big profile for the whole film but these children are amazing and should be praised for what they have done don't you think the whole story was so lovely because it was true and was someone's life after all that was shared with us all"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#loss-시각화",
-    "href": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#loss-시각화",
+    "objectID": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#loss-시각화",
+    "href": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#loss-시각화",
     "title": "01. 텍스트 분류",
     "section": "loss 시각화",
     "text": "loss 시각화\n\nplt.figure(figsize = (8,4))\nplt.plot(history1[\"loss\"], label = \"train_loss\")\nplt.plot(history1[\"val_loss\"], label = \"val_loss\")\nplt.legend()\nplt.show()"
   },
   {
-    "objectID": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#predict",
-    "href": "posts/EX/PRO/2024-01-22-01. 텍스트 분류.html#predict",
+    "objectID": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#predict",
+    "href": "posts/EX/advanced/2024-01-22-01. 텍스트 분류.html#predict",
     "title": "01. 텍스트 분류",
     "section": "predict",
     "text": "predict\n\nrnn_pred1 =  model.predict(x_test)\n\n782/782 [==============================] - 3s 3ms/step\n\n\n\nrnn_pred1 = np.where(rnn_pred1&gt;0.5,1,0)\n\n\nfrom sklearn.metrics import *\n\n\nprint(confusion_matrix(y_test, rnn_pred1))\nprint(classification_report(y_test, rnn_pred1))\n\n[[8756 3744]\n [3500 9000]]\n              precision    recall  f1-score   support\n\n           0       0.71      0.70      0.71     12500\n           1       0.71      0.72      0.71     12500\n\n    accuracy                           0.71     25000\n   macro avg       0.71      0.71      0.71     25000\nweighted avg       0.71      0.71      0.71     25000"

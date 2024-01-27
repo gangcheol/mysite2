@@ -1,5 +1,5 @@
 ---
-title: "DX track"
+title: "C.I.C blog"
 listing:
   contents: posts
   sort: [date desc, title]

@@ -2431,63 +2431,63 @@
   {
     "objectID": "about.html#contact",
     "href": "about.html#contact",
-    "title": "Gang-Cheol, Lee",
-    "section": "",
-    "text": "E-mail : rkdcjf8232@gmail.com"
+    "title": "About me",
+    "section": "contact",
+    "text": "contact\n\nE-mail : rkdcjf8232@gmail.com"
   },
   {
     "objectID": "about.html#education",
     "href": "about.html#education",
-    "title": "Gang-Cheol, Lee",
+    "title": "About me",
     "section": "Education",
     "text": "Education\n\n전북대학교 통계학 학사(부전공 : 컴퓨터공학) | 2015.03 ~ 2021.02\n전북대학교 통계학 석사 | 2021.03 ~ 2023.02"
   },
   {
     "objectID": "about.html#certificate",
     "href": "about.html#certificate",
-    "title": "Gang-Cheol, Lee",
+    "title": "About me",
     "section": "Certificate",
     "text": "Certificate\n\n사회조사분석사 2급\n데이터분석준전문가(ADsP)\nAICE Associate"
   },
   {
     "objectID": "about.html#skill",
     "href": "about.html#skill",
-    "title": "Gang-Cheol, Lee",
+    "title": "About me",
     "section": "Skill",
     "text": "Skill\n\nR ⭐⭐⭐⭐\nPython ⭐⭐⭐⭐\nEXCEL ⭐⭐⭐⭐\nSPSS ⭐⭐⭐⭐\nSQL ⭐⭐⭐\nJAVA, C ⭐⭐"
   },
   {
     "objectID": "about.html#extracurricular-activities",
     "href": "about.html#extracurricular-activities",
-    "title": "Gang-Cheol, Lee",
+    "title": "About me",
     "section": "Extracurricular Activities",
     "text": "Extracurricular Activities\n\n국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\nKT AIVLE School DX Consultant Track | KT | 2023. 08. 08 ~ 2024. 01. 25"
   },
   {
     "objectID": "about.html#publication",
     "href": "about.html#publication",
-    "title": "Gang-Cheol, Lee",
+    "title": "About me",
     "section": "Publication",
     "text": "Publication\n\n데이터 분석을 통한 지역별 고령친화도 시각화\n\n김영선, 강민구, 이강철 등 | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존\n\n핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선\n\n이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학"
   },
   {
     "objectID": "about.html#awards",
     "href": "about.html#awards",
-    "title": "Gang-Cheol, Lee",
+    "title": "About me",
     "section": "Awards",
     "text": "Awards\n\n학회장상 | 한국통계학회 | 2023. 02. 22\nAIVLE Big Project Practical | KT | 2024. 01. 25"
   },
   {
     "objectID": "about.html#interest",
     "href": "about.html#interest",
-    "title": "Gang-Cheol, Lee",
+    "title": "About me",
     "section": "Interest",
     "text": "Interest\n\nNLP\nAction Recognition, Object Detection\nData Science\nGrowth Hacking"
   },
   {
     "objectID": "about.html#my-blog",
     "href": "about.html#my-blog",
-    "title": "Gang-Cheol, Lee",
+    "title": "About me",
     "section": "My blog",
     "text": "My blog\n 1. Lecture\n\nR for Data Science\nSpecial Topics in Data Visualization\nIntroduction to Python\nSpecial Topics in Big Data Analysis\nSpecial Topics in Machine Learning\n\n 2. Tableau\n\nTableau Practice\n\n 3. DX\n\nDX Consultant Education\n\n 4. Study\n\nISLP Study\nAlgorithm Study"
   },

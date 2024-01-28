@@ -1,9 +1,9 @@
 ---
-title: "Gang-Cheol, Lee"
-image: profile.jpg
+title: "**About me**"
 about:
-  template: marquee
-  image : "증명사진.jpg"
+  id : hero-heading
+  template: jolla
+  image: 증명사진.jpg
   image-width : 10em
   image-shape: round
   links:
@@ -17,6 +17,11 @@ about:
       text : music
       href : https://soundcloud.com/qfmtzwxyygft/sets/cic-2nd-mixtape-outro
 ---
+
+###
+
+:::{#hero-heading}
+
 ## contact
 
 * E-mail : **rkdcjf8232@gmail.com**
@@ -126,3 +131,7 @@ about:
 * [ISLP Study](https://gangcheol.github.io/ISLP2023/)
 
 * [Algorithm Study](https://gangcheol.github.io/IA2023/)
+
+:::
+
+### 

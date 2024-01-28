@@ -2422,46 +2422,74 @@
     "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJan 22, 2024\n\n\n01. 텍스트 분류\n\n\nGC \n\n\n\n\nJan 22, 2024\n\n\n02. 이미지 분류\n\n\nGC \n\n\n\n\nJan 21, 2024\n\n\n00. Associate Review\n\n\nGC \n\n\n\n\nJan 15, 2024\n\n\n00. CA (1)\n\n\nGC \n\n\n\n\nJan 8, 2024\n\n\n04. MNIST\n\n\ngc \n\n\n\n\nJan 1, 2024\n\n\n03. model theory\n\n\nGC \n\n\n\n\nDec 28, 2023\n\n\n00. model train (1)\n\n\nGC \n\n\n\n\nDec 28, 2023\n\n\n01. model train (2)\n\n\nGC \n\n\n\n\nDec 28, 2023\n\n\n02. model fit & save\n\n\nGC \n\n\n\n\nNov 30, 2023\n\n\n05. 제안서 작성 (1)\n\n\ngc \n\n\n\n\nNov 29, 2023\n\n\n04. 사업정의\n\n\ngc \n\n\n\n\nNov 28, 2023\n\n\n03. 실행계획 수립\n\n\ngc \n\n\n\n\nNov 27, 2023\n\n\n02. 고객가치정의 및 아이디어 도출\n\n\ngc \n\n\n\n\nNov 24, 2023\n\n\n01. 환경분석 기법의 이해\n\n\ngc \n\n\n\n\nNov 23, 2023\n\n\n00. 제안전략수립\n\n\ngc \n\n\n\n\nNov 6, 2023\n\n\n00. IT 인프라 (1)\n\n\nGC \n\n\n\n\nNov 2, 2023\n\n\n03. Titanic\n\n\ngc \n\n\n\n\nNov 1, 2023\n\n\n02. iris\n\n\ngc \n\n\n\n\nOct 31, 2023\n\n\n01. VOC\n\n\ngc \n\n\n\n\nOct 30, 2023\n\n\n00. Churn\n\n\ngc \n\n\n\n\nOct 26, 2023\n\n\n02. BERTopic\n\n\ngc \n\n\n\n\nOct 23, 2023\n\n\n00. streamlit\n\n\ngc \n\n\n\n\nOct 18, 2023\n\n\nsummary 01. RNN\n\n\nGC \n\n\n\n\nOct 18, 2023\n\n\nsummary 02. LSTM\n\n\nGC \n\n\n\n\nOct 18, 2023\n\n\nsummary 03. Transformer\n\n\nGC \n\n\n\n\nOct 12, 2023\n\n\nExtra 02. 시각지능\n\n\nGC \n\n\n\n\nOct 10, 2023\n\n\nExtra 01. 언어지능\n\n\nGC \n\n\n\n\nOct 6, 2023\n\n\n03. 딥러닝 (4)\n\n\nGC \n\n\n\n\nOct 5, 2023\n\n\n02. 딥러닝 (3)\n\n\nGC \n\n\n\n\nOct 4, 2023\n\n\n01. 딥러닝 (2)\n\n\nGC \n\n\n\n\nOct 3, 2023\n\n\n00. 딥러닝 (1)\n\n\nGC \n\n\n\n\nSep 28, 2023\n\n\n08. summary (1)\n\n\nGC \n\n\n\n\nSep 19, 2023\n\n\n07. 머신러닝 (6)\n\n\nGC \n\n\n\n\nSep 18, 2023\n\n\n06. 머신러닝 (5)\n\n\nGC \n\n\n\n\nSep 15, 2023\n\n\n04. 머신러닝 (4)\n\n\nGC \n\n\n\n\nSep 15, 2023\n\n\n05. 종합실습\n\n\nGC \n\n\n\n\nSep 14, 2023\n\n\n03. 머신러닝 (3)\n\n\nGC \n\n\n\n\nSep 13, 2023\n\n\n02. 머신러닝 (2)\n\n\nGC \n\n\n\n\nSep 12, 2023\n\n\n01. 머신러닝 (1)\n\n\nGC \n\n\n\n\nSep 11, 2023\n\n\n00. Intro\n\n\nGC \n\n\n\n\nSep 5, 2023\n\n\n01. 데이터 수집 (2)\n\n\nGC \n\n\n\n\nSep 4, 2023\n\n\n00. 데이터 수집 (1)\n\n\nGC \n\n\n\n\nSep 1, 2023\n\n\n02. 데이터 분석 (3)\n\n\nGC \n\n\n\n\nAug 31, 2023\n\n\n01. 데이터 분석 (2)\n\n\nGC \n\n\n\n\nAug 28, 2023\n\n\n00. 데이터 분석 (1)\n\n\nGC \n\n\n\n\nAug 24, 2023\n\n\n00. MP (1)\n\n\nGC \n\n\n\n\nAug 23, 2023\n\n\n04. numpy & pandas (5)\n\n\nGC \n\n\n\n\nAug 22, 2023\n\n\n03. numpy & pandas (4)\n\n\nGC \n\n\n\n\nAug 21, 2023\n\n\n02. numpy & pandas (3)\n\n\nGC \n\n\n\n\nAug 19, 2023\n\n\n01. Plotly test\n\n\nGC \n\n\n\n\nAug 18, 2023\n\n\n00. numpy & pandas (1)\n\n\nGC \n\n\n\n\nAug 18, 2023\n\n\n01. numpy & pandas (2)\n\n\nGC \n\n\n\n\nAug 17, 2023\n\n\n05. Python Basic (6)\n\n\nGC \n\n\n\n\nAug 16, 2023\n\n\n04. Python Basic (5)\n\n\nGC \n\n\n\n\nAug 15, 2023\n\n\nExtra 04. 클래스 탐구 (3)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\n03. Python Basic (4)\n\n\nGC \n\n\n\n\nAug 14, 2023\n\n\nExtra 03. 클래스 탐구 (2)\n\n\nGC \n\n\n\n\nAug 11, 2023\n\n\n02. Python Basic (3)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\n01. Python Basic (2)\n\n\nGC \n\n\n\n\nAug 10, 2023\n\n\nExtra 02. 클래스 탐구 (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\n00. Python Basic (1)\n\n\nGC \n\n\n\n\nAug 9, 2023\n\n\nExtra 01. 클래스\n\n\nGC \n\n\n\n\nAug 8, 2023\n\n\nExtra 00. 밈\n\n\nGC \n\n\n\n\nJul 31, 2023\n\n\n00. Intro & setting\n\n\nGC \n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Gang-Cheol, Lee",
+    "section": "",
+    "text": "E-mail : rkdcjf8232@gmail.com"
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "Gang-Cheol, Lee",
+    "section": "",
+    "text": "E-mail : rkdcjf8232@gmail.com"
+  },
+  {
     "objectID": "about.html#education",
     "href": "about.html#education",
-    "title": "About Me",
+    "title": "Gang-Cheol, Lee",
     "section": "Education",
-    "text": "Education\n- 전북대학교 통계학과 학사(부전공: 컴퓨터공학) 졸업 | 3.67 / 4.50 | 2015. 03 ~ 2021. 02\n- 전북대학교 통계학과 석사 졸업 | 4.44 / 4.50 | 2021. 03 ~ 2023. 02"
-  },
-  {
-    "objectID": "about.html#experience",
-    "href": "about.html#experience",
-    "title": "About Me",
-    "section": "Experience",
-    "text": "Experience\n- 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n- 지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n- 빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\n- KT AIVLE School DX Consultant Track | KT | 2023. 08. 08 ~ 2024. 01. 25"
-  },
-  {
-    "objectID": "about.html#publications",
-    "href": "about.html#publications",
-    "title": "About Me",
-    "section": "Publications",
-    "text": "Publications\n- 데이터 분석을 통한 지역별 고령친화도 시각화\n`-` 김영선, 강민구, 이강철 등  | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존 \n- 핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선\n`-` 이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학"
+    "text": "Education\n\n전북대학교 통계학 학사(부전공 : 컴퓨터공학) | 2015.03 ~ 2021.02\n전북대학교 통계학 석사 | 2021.03 ~ 2023.02"
   },
   {
     "objectID": "about.html#certificate",
     "href": "about.html#certificate",
-    "title": "About Me",
+    "title": "Gang-Cheol, Lee",
     "section": "Certificate",
-    "text": "Certificate\n- 워드프로세서 | 대한상공회의소 | 19-19-017981 | 2019. 08. 30\n- 데이터분석준전문가(ADsP) | 한국데이터진흥원 | ADsP-0223898 | 2019. 10. 01\n- 사회조사분석사 2급 | 한국산업인력공단 | 19201142418N | 2019. 10. 01\n- AICE associate | 케이티 | AICE_20231103_A00084 | 2023. 11. 03"
+    "text": "Certificate\n\n사회조사분석사 2급\n데이터분석준전문가(ADsP)\nAICE Associate"
   },
   {
-    "objectID": "about.html#language",
-    "href": "about.html#language",
-    "title": "About Me",
-    "section": "Language",
-    "text": "Language\n- - Toeic speaking IH | 2023. 07. 01"
+    "objectID": "about.html#skill",
+    "href": "about.html#skill",
+    "title": "Gang-Cheol, Lee",
+    "section": "Skill",
+    "text": "Skill\n\nR ⭐⭐⭐⭐\nPython ⭐⭐⭐⭐\nEXCEL ⭐⭐⭐⭐\nSPSS ⭐⭐⭐⭐\nSQL ⭐⭐⭐\nJAVA, C ⭐⭐"
   },
   {
-    "objectID": "about.html#conctact",
-    "href": "about.html#conctact",
-    "title": "About Me",
-    "section": "Conctact",
-    "text": "Conctact\n- rkdcjf8232@gmail.com"
+    "objectID": "about.html#extracurricular-activities",
+    "href": "about.html#extracurricular-activities",
+    "title": "Gang-Cheol, Lee",
+    "section": "Extracurricular Activities",
+    "text": "Extracurricular Activities\n\n국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\nKT AIVLE School DX Consultant Track | KT | 2023. 08. 08 ~ 2024. 01. 25"
+  },
+  {
+    "objectID": "about.html#publication",
+    "href": "about.html#publication",
+    "title": "Gang-Cheol, Lee",
+    "section": "Publication",
+    "text": "Publication\n\n데이터 분석을 통한 지역별 고령친화도 시각화\n\n김영선, 강민구, 이강철 등 | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존\n\n핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선\n\n이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학"
+  },
+  {
+    "objectID": "about.html#awards",
+    "href": "about.html#awards",
+    "title": "Gang-Cheol, Lee",
+    "section": "Awards",
+    "text": "Awards\n\n학회장상 | 한국통계학회 | 2023. 02. 22\nAIVLE Big Project Practical | KT | 2024. 01. 25"
+  },
+  {
+    "objectID": "about.html#interest",
+    "href": "about.html#interest",
+    "title": "Gang-Cheol, Lee",
+    "section": "Interest",
+    "text": "Interest\n\nNLP\nAction Recognition, Object Detection\nData Science\nGrowth Hacking"
+  },
+  {
+    "objectID": "about.html#my-blog",
+    "href": "about.html#my-blog",
+    "title": "Gang-Cheol, Lee",
+    "section": "My blog",
+    "text": "My blog\n 1. Lecture\n\nR for Data Science\nSpecial Topics in Data Visualization\nIntroduction to Python\nSpecial Topics in Big Data Analysis\nSpecial Topics in Machine Learning\n\n 2. Tableau\n\nTableau Practice\n\n 3. DX\n\nDX Consultant Education\n\n 4. Study\n\nISLP Study\nAlgorithm Study"
   },
   {
     "objectID": "posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html",

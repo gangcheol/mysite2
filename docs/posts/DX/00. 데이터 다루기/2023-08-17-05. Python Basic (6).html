@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,29 +98,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -126,46 +159,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html">00. 데이터 다루기</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).html">05. Python Basic (6)</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html">00. 데이터 다루기</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).html">05. Python Basic (6)</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -173,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html">00. 데이터 다루기</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/00. 데이터 다루기/2023-08-17-05. Python Basic (6).html">05. Python Basic (6)</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">05. Python Basic (6)</h1>
@@ -208,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -807,7 +840,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -882,12 +915,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="파일-다루기" class="level1">
 <h1>파일 다루기</h1>
 <section id="경로-설정" class="level2">
 <h2 class="anchored" data-anchor-id="경로-설정">경로 설정</h2>
 <p><code>-</code> 홈 디렉토리를 불러오는 명령어</p>
-<div class="cell" data-execution_count="1">
+<div id="fa9779f2-05fb-427d-8115-42076a4f4212" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="bu">print</span>(Path.home())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -895,7 +929,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>-</code> 현재 작업 디렉토리 확인</p>
-<div class="cell" data-execution_count="3">
+<div id="f641a2df-dbf8-49e3-ab37-77ee566903ad" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">print</span>(Path.cwd())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>C:\projects\mysite2\posts\DX\0. 데이터 다루기</code></pre>
@@ -904,7 +938,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>Path.cwd().glob()</code> <span class="math inline">\(\to\)</span> 해당 경로안에 있는 파일들의 목록을 확인</li>
 </ul>
-<div class="cell" data-execution_count="6">
+<div id="b93a66d6-ca9e-4e7f-83d9-fe88a2a1e229" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a>files <span class="op">=</span> Path.cwd().glob(<span class="st">'*'</span>)</span>
@@ -927,7 +961,7 @@ C:\projects\mysite2\posts\DX\0. 데이터 다루기\repr.png</code></pre>
 </section>
 <section id="파일-쓰기w-write" class="level2">
 <h2 class="anchored" data-anchor-id="파일-쓰기w-write">파일 쓰기(<code>W : write</code>)</h2>
-<div class="cell" data-execution_count="7">
+<div id="f5f61724-c828-4144-b490-c6617d83c718" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"gc.txt"</span>, <span class="st">"w"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a>f.write(<span class="st">"gc test</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -940,18 +974,18 @@ C:\projects\mysite2\posts\DX\0. 데이터 다루기\repr.png</code></pre>
 <ul>
 <li><code>exist_ok = True</code> : 아래와 같이 <code>Files</code>이라는 폴더가 존재하면 있는 폴더를 쓰고 없을 경우 만들어서 씀</li>
 </ul>
-<div class="cell" data-execution_count="11">
+<div id="c842060a-ab20-48bf-aed1-50eff1b1ec1b" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>Path(<span class="st">"Files"</span>).mkdir(exist_ok <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 에러문 확인!</p>
-<div class="cell" data-execution_count="12">
+<div id="4e03864b-72ec-427b-bec8-e4267264567b" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>Path(<span class="st">"Files"</span>).mkdir(exist_ok <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>FileExistsError: [WinError 183] 파일이 이미 있으므로 만들 수 없습니다: 'Files'</code></pre>
 </div>
 </div>
 <p><code>-</code> 생성한 디렉토리에 파일을 쓰기</p>
-<div class="cell" data-execution_count="9">
+<div id="d9fbbea7-93ff-4751-9521-419e04721393" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"Files/gc.txt"</span>, <span class="st">"w"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3"></a>f.write(<span class="st">"gc test</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -961,7 +995,7 @@ C:\projects\mysite2\posts\DX\0. 데이터 다루기\repr.png</code></pre>
 </section>
 <section id="파일-읽기-r-read" class="level2">
 <h2 class="anchored" data-anchor-id="파일-읽기-r-read">파일 읽기 (<code>R : read</code>)</h2>
-<div class="cell" data-execution_count="14">
+<div id="53c84a27-0408-4bca-aa78-bb0204bcf26a" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"Files/gc.txt"</span>,<span class="st">"r"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2"></a></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="bu">print</span>(f.read())</span>
@@ -976,14 +1010,14 @@ C:\projects\mysite2\posts\DX\0. 데이터 다루기\repr.png</code></pre>
 <section id="파일-추가-a-append" class="level2">
 <h2 class="anchored" data-anchor-id="파일-추가-a-append">파일 추가 (<code>a : append</code>)</h2>
 <p><code>-</code> 지정한 파일이 없으면 새로운 파일을 생성한다.</p>
-<div class="cell" data-execution_count="15">
+<div id="2ddd7804-7f3e-4f44-b697-29f9ac5c244a" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"Files/gc.txt"</span>,<span class="st">"a"</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a></span>
 <span id="cb14-3"><a href="#cb14-3"></a>f.write(<span class="st">"test를 확인 중입니다."</span>)</span>
 <span id="cb14-4"><a href="#cb14-4"></a></span>
 <span id="cb14-5"><a href="#cb14-5"></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="18">
+<div id="e9f05056-4694-423e-b1e1-dc0228c61b46" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">'Files/gc.txt'</span>, <span class="st">'r'</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="bu">print</span>(f.read())</span>
 <span id="cb15-3"><a href="#cb15-3"></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -996,7 +1030,7 @@ test를 확인 중입니다.</code></pre>
 <section id="파일-존재-유무-확인-x" class="level2">
 <h2 class="anchored" data-anchor-id="파일-존재-유무-확인-x">파일 존재 유무 확인 (<code>x</code>)</h2>
 <p><code>-</code> <strong>[Errno 17] File exists: ‘Files/gc.txt’</strong></p>
-<div class="cell" data-execution_count="19">
+<div id="be0f86ab-8cda-4f99-8515-ea1d2d1f62b5" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">'Files/gc.txt'</span>, <span class="st">'x'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>FileExistsError: [Errno 17] File exists: 'Files/gc.txt'</code></pre>
@@ -1004,7 +1038,7 @@ test를 확인 중입니다.</code></pre>
 </div>
 <section id="에러핸들링-같은-이름의-파일이-있으면-오류-출력" class="level3">
 <h3 class="anchored" data-anchor-id="에러핸들링-같은-이름의-파일이-있으면-오류-출력">에러핸들링 : 같은 이름의 파일이 있으면 오류 출력</h3>
-<div class="cell" data-execution_count="20">
+<div id="5e06170c-f886-4633-8db9-6952811809e3" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="cf">try</span> : </span>
 <span id="cb19-2"><a href="#cb19-2"></a>    f <span class="op">=</span> <span class="bu">open</span>(<span class="st">'Files/gc.txt'</span>, <span class="st">'x'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3"></a><span class="cf">except</span> <span class="pp">FileExistsError</span> :</span>
@@ -1021,7 +1055,7 @@ test를 확인 중입니다.</code></pre>
 <h2 class="anchored" data-anchor-id="excercise">excercise</h2>
 <section id="ex1.-임의의-파일생성" class="level3">
 <h3 class="anchored" data-anchor-id="ex1.-임의의-파일생성">ex1. 임의의 파일생성</h3>
-<div class="cell" data-execution_count="36">
+<div id="6e2eff6c-f59b-453a-b7ed-c6a5b73cd660" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"test.txt"</span>,<span class="st">"w"</span>)</span>
 <span id="cb21-2"><a href="#cb21-2"></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1029,7 +1063,7 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="ex2.-파일을-열어-나이와-이름을-입력" class="level3">
 <h3 class="anchored" data-anchor-id="ex2.-파일을-열어-나이와-이름을-입력">ex2. 파일을 열어 나이와 이름을 입력</h3>
-<div class="cell" data-execution_count="37">
+<div id="24e461f5-f235-4f5d-892b-0b0082564f45" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"test.txt"</span>,<span class="st">"a"</span>)</span>
 <span id="cb22-2"><a href="#cb22-2"></a></span>
 <span id="cb22-3"><a href="#cb22-3"></a>f.write(<span class="st">"이름 : 이강철</span><span class="ch">\n</span><span class="st"> 나이 : 28세"</span>)</span>
@@ -1039,7 +1073,7 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="ex3.-파일을-읽어-파일-내용-출력" class="level3">
 <h3 class="anchored" data-anchor-id="ex3.-파일을-읽어-파일-내용-출력">ex3. 파일을 읽어 파일 내용 출력</h3>
-<div class="cell" data-execution_count="38">
+<div id="2fb43412-f382-4784-9c4b-e03dfebfec6a" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"test.txt"</span>,<span class="st">"r"</span>)</span>
 <span id="cb23-2"><a href="#cb23-2"></a></span>
 <span id="cb23-3"><a href="#cb23-3"></a><span class="bu">print</span>(f.read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1053,7 +1087,7 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="파일-쓰기-writelines" class="level2">
 <h2 class="anchored" data-anchor-id="파일-쓰기-writelines">파일 쓰기 (<code>writelines()</code>)</h2>
-<div class="cell" data-execution_count="39">
+<div id="990f3bd6-19d5-4a85-9df0-d01a2bc0f7f3" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>l <span class="op">=</span> [<span class="st">"이강철</span><span class="ch">\n</span><span class="st">"</span>,<span class="st">"28세</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">"통계학 전공</span><span class="ch">\n</span><span class="st">"</span>]</span>
 <span id="cb25-2"><a href="#cb25-2"></a></span>
 <span id="cb25-3"><a href="#cb25-3"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"test2.txt"</span>,<span class="st">"w"</span>)</span>
@@ -1061,7 +1095,7 @@ test를 확인 중입니다.</code></pre>
 <span id="cb25-5"><a href="#cb25-5"></a>f.writelines(l)</span>
 <span id="cb25-6"><a href="#cb25-6"></a>f.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="41">
+<div id="e8746207-972e-4e42-bd8f-6611725ee0b1" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"test2.txt"</span>,<span class="st">"r"</span>)</span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="bu">print</span>(f.read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1074,7 +1108,7 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="파일-읽기readlines" class="level2">
 <h2 class="anchored" data-anchor-id="파일-읽기readlines">파일 읽기(<code>readlines()</code>)</h2>
-<div class="cell" data-execution_count="44">
+<div id="e9b36576-564f-433e-a0b2-2b5a9ba5725f" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"test2.txt"</span>,<span class="st">"r"</span>)</span>
 <span id="cb28-2"><a href="#cb28-2"></a>result <span class="op">=</span> f.readlines() </span>
 <span id="cb28-3"><a href="#cb28-3"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1082,7 +1116,7 @@ test를 확인 중입니다.</code></pre>
 <pre><code>['이강철\n', '28세\n', '통계학 전공\n']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="46">
+<div id="1d01f9f2-4127-4a81-9266-1e3f0aa726e6" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="cf">for</span> txt <span class="kw">in</span> result:</span>
 <span id="cb30-2"><a href="#cb30-2"></a>    <span class="bu">print</span>(txt,end<span class="op">=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1094,7 +1128,7 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="파일-읽기-readline-한-행씩" class="level2">
 <h2 class="anchored" data-anchor-id="파일-읽기-readline-한-행씩">파일 읽기 (<code>readline() : 한 행씩</code>)</h2>
-<div class="cell" data-execution_count="100">
+<div id="c05967ce-e866-4717-b797-a5aa634d11db" class="cell" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">"test2.txt"</span>,<span class="st">"r"</span>)</span>
 <span id="cb32-2"><a href="#cb32-2"></a></span>
 <span id="cb32-3"><a href="#cb32-3"></a>result <span class="op">=</span> f.readline()</span>
@@ -1113,28 +1147,28 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="워드-클라우드" class="level1">
 <h1>워드 클라우드</h1>
-<div class="cell" data-execution_count="82">
+<div id="32aeb354-a2f4-434d-8a59-246af533a308" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>txt <span class="op">=</span><span class="st">"The generative model can be thought of as analogous to a team of counterfeiters, trying to produce fake currency and use it without detection, while the discriminative model is analogous to the police, trying to detect the counterfeit currency. Competition in this game drives both teams to improve their methods until the counterfeits are indistiguishable from the genuine article"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="83">
+<div id="a1ac9cca-9356-449c-ab83-5a081e16878d" class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <pre><code>'The generative model can be thought of as analogous to a team of counterfeiters, trying to produce fake currency and use it without detection, while the discriminative model is analogous to the police, trying to detect the counterfeit currency. Competition in this game drives both teams to improve their methods until the counterfeits are indistiguishable from the genuine article'</code></pre>
 </div>
 </div>
 <p><code>-</code> 공백을 기준으로 단어 생성</p>
-<div class="cell" data-execution_count="84">
+<div id="20e3bdea-0c1d-43b3-836d-1f6c5bf54911" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>word <span class="op">=</span> txt.split(<span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 단어 중복 제거</p>
-<div class="cell" data-execution_count="85">
+<div id="29f1db8e-ed62-4440-8977-147eeb96a50e" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>w_u <span class="op">=</span> <span class="bu">set</span>(word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 단어와 개수를 쌍으로 하는 딕셔너리 생성</p>
-<div class="cell" data-execution_count="87">
+<div id="b4d6e8ea-f18f-4d05-a661-f1b2d23db98b" class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>w_c <span class="op">=</span> {i : word.count(i) <span class="cf">for</span> i <span class="kw">in</span> w_u}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="88">
+<div id="9ccfe08a-e7a2-4b66-91b5-91c68a0858e6" class="cell" data-execution_count="88">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>w_c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="88">
 <pre><code>{'both': 1,
@@ -1187,15 +1221,15 @@ test를 확인 중입니다.</code></pre>
 </div>
 </div>
 <p><code>-</code> 불용어 삭제</p>
-<div class="cell" data-execution_count="89">
+<div id="b9f3d55b-4e54-441d-8b40-a44430bb7a5a" class="cell" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>del_word <span class="op">=</span> [<span class="st">"the"</span>,<span class="st">'The'</span>,<span class="st">'a'</span>,<span class="st">'is'</span>,<span class="st">'are'</span>, <span class="st">'not'</span>,<span class="st">'of'</span>,<span class="st">'on'</span>,<span class="st">'that'</span>,<span class="st">'this'</span>,<span class="st">'and'</span>,<span class="st">'be'</span>,<span class="st">'to'</span>, <span class="st">'from'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="90">
+<div id="69e1b17f-7553-48ac-882f-0989bdb2071d" class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="cf">for</span> w <span class="kw">in</span> del_word :</span>
 <span id="cb43-2"><a href="#cb43-2"></a>    <span class="cf">if</span> w <span class="kw">in</span> w_c :</span>
 <span id="cb43-3"><a href="#cb43-3"></a>        <span class="kw">del</span> w_c[w]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="91">
+<div id="3b7564af-d74d-436a-a7f0-368ede5ffebb" class="cell" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>w_c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="91">
 <pre><code>{'both': 1,
@@ -1238,7 +1272,7 @@ test를 확인 중입니다.</code></pre>
 </div>
 <section id="패키지-설치" class="level2">
 <h2 class="anchored" data-anchor-id="패키지-설치">패키지 설치</h2>
-<div class="cell" data-execution_count="93">
+<div id="e0dfb377-2719-4491-8d81-707b01006444" class="cell" data-execution_count="93">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="co">#!pip install wordcloud</span></span>
 <span id="cb46-2"><a href="#cb46-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb46-3"><a href="#cb46-3"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1246,7 +1280,7 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="워드클라우드-생성" class="level2">
 <h2 class="anchored" data-anchor-id="워드클라우드-생성">워드클라우드 생성</h2>
-<div class="cell" data-execution_count="95">
+<div id="6d0c8657-0382-49e1-bd06-8d65bb5fce7b" class="cell" data-execution_count="95">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="op">%</span>config InlineBackend.figure_format<span class="op">=</span><span class="st">'retina'</span> <span class="co">## 이미지 포맷</span></span>
 <span id="cb47-2"><a href="#cb47-2"></a></span>
 <span id="cb47-3"><a href="#cb47-3"></a><span class="co"># 워드 클라우드 만들기</span></span>
@@ -1262,7 +1296,11 @@ test를 확인 중입니다.</code></pre>
 <span id="cb47-13"><a href="#cb47-13"></a>plt.tight_layout(pad<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb47-14"><a href="#cb47-14"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1271,10 +1309,10 @@ test를 확인 중입니다.</code></pre>
 <p><code>-</code> 이미지 파일을 사용해 워드클라우드의 프레임 변셩</p>
 <section id="import" class="level3">
 <h3 class="anchored" data-anchor-id="import">import</h3>
-<div class="cell" data-execution_count="111">
+<div id="b8bbba34-ebd1-4bec-ade2-a75652ff875d" class="cell" data-execution_count="111">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="co">#pip install opencv-python</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="112">
+<div id="d3bff416-94ac-496c-bf37-e22d2a11e0ca" class="cell" data-execution_count="112">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb49-2"><a href="#cb49-2"></a><span class="im">from</span> PIL <span class="im">import</span> Image <span class="co">## 이미지를 불러오기 위한 모듈</span></span>
 <span id="cb49-3"><a href="#cb49-3"></a><span class="im">import</span> cv2 <span class="im">as</span> cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1282,38 +1320,43 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="해당-이미지-확인" class="level3">
 <h3 class="anchored" data-anchor-id="해당-이미지-확인">해당 이미지 확인</h3>
-<div class="cell" data-execution_count="132">
+<div id="4bf639d3-f4e0-4b63-bb62-b93b805b7b45" class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>h <span class="op">=</span> cv.imread(<span class="st">"human.jpg"</span>)</span>
 <span id="cb50-2"><a href="#cb50-2"></a>plt.imshow(h)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="132">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1701cf10bd0&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-35-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="워드클라우드와-함께-그리기" class="level3">
 <h3 class="anchored" data-anchor-id="워드클라우드와-함께-그리기">워드클라우드와 함께 그리기</h3>
-<div class="cell" data-execution_count="133">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>m_image <span class="op">=</span> np.array(Image.<span class="bu">open</span>(<span class="st">"human.jpg"</span>))</span>
-<span id="cb52-2"><a href="#cb52-2"></a></span>
-<span id="cb52-3"><a href="#cb52-3"></a>wordcloud <span class="op">=</span> WordCloud(font_path <span class="op">=</span> <span class="st">'C:/Windiws/fonts/HMKMRHD.TTF'</span>,</span>
-<span id="cb52-4"><a href="#cb52-4"></a>                      width<span class="op">=</span><span class="dv">2000</span>, </span>
-<span id="cb52-5"><a href="#cb52-5"></a>                      height<span class="op">=</span><span class="dv">1000</span>, </span>
-<span id="cb52-6"><a href="#cb52-6"></a>                      mask<span class="op">=</span>m_image,</span>
-<span id="cb52-7"><a href="#cb52-7"></a>                      background_color<span class="op">=</span><span class="st">'white'</span>).generate_from_frequencies(w_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ec274cba-5583-4b74-a743-26e05048725f" class="cell" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>m_image <span class="op">=</span> np.array(Image.<span class="bu">open</span>(<span class="st">"human.jpg"</span>))</span>
+<span id="cb51-2"><a href="#cb51-2"></a></span>
+<span id="cb51-3"><a href="#cb51-3"></a>wordcloud <span class="op">=</span> WordCloud(font_path <span class="op">=</span> <span class="st">'C:/Windiws/fonts/HMKMRHD.TTF'</span>,</span>
+<span id="cb51-4"><a href="#cb51-4"></a>                      width<span class="op">=</span><span class="dv">2000</span>, </span>
+<span id="cb51-5"><a href="#cb51-5"></a>                      height<span class="op">=</span><span class="dv">1000</span>, </span>
+<span id="cb51-6"><a href="#cb51-6"></a>                      mask<span class="op">=</span>m_image,</span>
+<span id="cb51-7"><a href="#cb51-7"></a>                      background_color<span class="op">=</span><span class="st">'white'</span>).generate_from_frequencies(w_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="136">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb53-2"><a href="#cb53-2"></a></span>
-<span id="cb53-3"><a href="#cb53-3"></a>ax1,ax2 <span class="op">=</span> axes</span>
-<span id="cb53-4"><a href="#cb53-4"></a></span>
-<span id="cb53-5"><a href="#cb53-5"></a>ax1.imshow(h)</span>
-<span id="cb53-6"><a href="#cb53-6"></a>ax2.imshow(wordcloud)</span>
-<span id="cb53-7"><a href="#cb53-7"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="758ed228-e122-46d3-ba32-ef3890b2eb52" class="cell" data-execution_count="136">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
+<span id="cb52-2"><a href="#cb52-2"></a></span>
+<span id="cb52-3"><a href="#cb52-3"></a>ax1,ax2 <span class="op">=</span> axes</span>
+<span id="cb52-4"><a href="#cb52-4"></a></span>
+<span id="cb52-5"><a href="#cb52-5"></a>ax1.imshow(h)</span>
+<span id="cb52-6"><a href="#cb52-6"></a>ax2.imshow(wordcloud)</span>
+<span id="cb52-7"><a href="#cb52-7"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-37-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 원래 강아지 사진으로 하려고 했는데 강아지 모양이 안나왔다.</p>
@@ -1325,74 +1368,79 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="꽃-사진으로-워드클라우드" class="level2">
 <h2 class="anchored" data-anchor-id="꽃-사진으로-워드클라우드">꽃 사진으로 워드클라우드!</h2>
-<div class="cell" data-execution_count="148">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>flower<span class="op">=</span>  cv.imread(<span class="st">"flower.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8bbc7e30-8213-4355-8ed0-952001f07284" class="cell" data-execution_count="148">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>flower<span class="op">=</span>  cv.imread(<span class="st">"flower.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="147">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>m_image <span class="op">=</span> np.array(Image.<span class="bu">open</span>(<span class="st">"flower.png"</span>))</span>
+<div id="cd307e79-ec12-49ce-b4bc-f13edd301ef7" class="cell" data-execution_count="147">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>m_image <span class="op">=</span> np.array(Image.<span class="bu">open</span>(<span class="st">"flower.png"</span>))</span>
+<span id="cb54-2"><a href="#cb54-2"></a></span>
+<span id="cb54-3"><a href="#cb54-3"></a>wordcloud <span class="op">=</span> WordCloud(font_path <span class="op">=</span> <span class="st">'C:/Windiws/fonts/HMKMRHD.TTF'</span>,</span>
+<span id="cb54-4"><a href="#cb54-4"></a>                      width<span class="op">=</span><span class="dv">2000</span>, </span>
+<span id="cb54-5"><a href="#cb54-5"></a>                      height<span class="op">=</span><span class="dv">1000</span>, </span>
+<span id="cb54-6"><a href="#cb54-6"></a>                      mask<span class="op">=</span>m_image,</span>
+<span id="cb54-7"><a href="#cb54-7"></a>                      background_color<span class="op">=</span><span class="st">'white'</span>).generate_from_frequencies(w_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4f245fb4-ce11-418c-9d63-3fd7a812e8e2" class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
 <span id="cb55-2"><a href="#cb55-2"></a></span>
-<span id="cb55-3"><a href="#cb55-3"></a>wordcloud <span class="op">=</span> WordCloud(font_path <span class="op">=</span> <span class="st">'C:/Windiws/fonts/HMKMRHD.TTF'</span>,</span>
-<span id="cb55-4"><a href="#cb55-4"></a>                      width<span class="op">=</span><span class="dv">2000</span>, </span>
-<span id="cb55-5"><a href="#cb55-5"></a>                      height<span class="op">=</span><span class="dv">1000</span>, </span>
-<span id="cb55-6"><a href="#cb55-6"></a>                      mask<span class="op">=</span>m_image,</span>
-<span id="cb55-7"><a href="#cb55-7"></a>                      background_color<span class="op">=</span><span class="st">'white'</span>).generate_from_frequencies(w_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb56-2"><a href="#cb56-2"></a></span>
-<span id="cb56-3"><a href="#cb56-3"></a>ax1,ax2 <span class="op">=</span> axes</span>
-<span id="cb56-4"><a href="#cb56-4"></a></span>
-<span id="cb56-5"><a href="#cb56-5"></a>ax1.imshow(flower)</span>
-<span id="cb56-6"><a href="#cb56-6"></a>ax2.imshow(wordcloud)</span>
-<span id="cb56-7"><a href="#cb56-7"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb55-3"><a href="#cb55-3"></a>ax1,ax2 <span class="op">=</span> axes</span>
+<span id="cb55-4"><a href="#cb55-4"></a></span>
+<span id="cb55-5"><a href="#cb55-5"></a>ax1.imshow(flower)</span>
+<span id="cb55-6"><a href="#cb55-6"></a>ax2.imshow(wordcloud)</span>
+<span id="cb55-7"><a href="#cb55-7"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-40-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-40-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 </section>
 <section id="기분전환" class="level1">
 <h1>기분전환</h1>
-<div class="cell" data-execution_count="137">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>hani <span class="op">=</span> cv.imread(<span class="st">"hani.jpeg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="78ddf734-b275-4c85-8d8d-88fae7df89c3" class="cell" data-execution_count="137">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>hani <span class="op">=</span> cv.imread(<span class="st">"hani.jpeg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="142">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb58-2"><a href="#cb58-2"></a>plt.imshow(hani)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="142">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x17027070bd0&gt;</code></pre>
-</div>
+<div id="ce79a7d7-ef57-4c37-bbba-18aa7cba49ad" class="cell" data-execution_count="142">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
+<span id="cb57-2"><a href="#cb57-2"></a>plt.imshow(hani)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-17-05. Python Basic (6)_files/figure-html/cell-42-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
 </section>
 <section id="엑셀-파일-다루기" class="level1">
 <h1>엑셀 파일 다루기</h1>
-<div class="cell" data-execution_count="229">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a><span class="im">import</span> openpyxl <span class="im">as</span> xl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="34e17f59-cb33-408f-b3be-4e22c6eb0274" class="cell" data-execution_count="229">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="im">import</span> openpyxl <span class="im">as</span> xl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 워크북 오브젝트 생성</p>
-<div class="cell" data-execution_count="230">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>wb <span class="op">=</span> xl.load_workbook(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f3b6ca09-9320-40a9-8560-e75c7d3ba24a" class="cell" data-execution_count="230">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>wb <span class="op">=</span> xl.load_workbook(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 시트 목록 확인</p>
-<div class="cell" data-execution_count="231">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>wb.sheetnames</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9dc8f0f0-910c-4b3c-9fd8-adc60ccd81b1" class="cell" data-execution_count="231">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>wb.sheetnames</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="231">
 <pre><code>['Sheet1', 'Sheet2']</code></pre>
 </div>
 </div>
 <section id="파일-load" class="level2">
 <h2 class="anchored" data-anchor-id="파일-load">파일 Load</h2>
-<div class="cell" data-execution_count="232">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>s1 <span class="op">=</span> wb[<span class="st">"Sheet1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9efeb1b6-2693-4cd6-8e1d-c2c32289ffa4" class="cell" data-execution_count="232">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>s1 <span class="op">=</span> wb[<span class="st">"Sheet1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="셀이름으로-값-확인" class="level3">
 <h3 class="anchored" data-anchor-id="셀이름으로-값-확인">셀이름으로 값 확인</h3>
-<div class="cell" data-execution_count="233">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>s1[<span class="st">"A1"</span>].value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3d74e1c2-53b2-4c2b-8435-57e34b7c4ea5" class="cell" data-execution_count="233">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>s1[<span class="st">"A1"</span>].value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="233">
 <pre><code>'date'</code></pre>
 </div>
@@ -1400,14 +1448,14 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="행과-열-변호로-셀-값확인" class="level3">
 <h3 class="anchored" data-anchor-id="행과-열-변호로-셀-값확인">행과 열 변호로 셀 값확인</h3>
-<div class="cell" data-execution_count="234">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column <span class="op">=</span><span class="dv">1</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8473fc64-3a2b-4cfb-93f7-ff9e3f890a56" class="cell" data-execution_count="234">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column <span class="op">=</span><span class="dv">1</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="234">
 <pre><code>'date'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="236">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>s1.cell(row<span class="op">=</span><span class="dv">2</span>,column <span class="op">=</span><span class="dv">6</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f6594b7d-040d-4c54-8230-cc4cc84f0b0d" class="cell" data-execution_count="236">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>s1.cell(row<span class="op">=</span><span class="dv">2</span>,column <span class="op">=</span><span class="dv">6</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="236">
 <pre><code>'F'</code></pre>
 </div>
@@ -1415,9 +1463,9 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="데이터-영역-확인" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-영역-확인">데이터 영역 확인</h3>
-<div class="cell" data-execution_count="237">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a><span class="bu">print</span>(s1.min_row,s1.max_row)</span>
-<span id="cb71-2"><a href="#cb71-2"></a><span class="bu">print</span>(s1.min_column,s1.max_column)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1881bd3b-e63f-4b05-89de-6414cc5dc68e" class="cell" data-execution_count="237">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a><span class="bu">print</span>(s1.min_row,s1.max_row)</span>
+<span id="cb69-2"><a href="#cb69-2"></a><span class="bu">print</span>(s1.min_column,s1.max_column)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1 21
 1 6</code></pre>
@@ -1426,11 +1474,11 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="ex1.-반복문을-이용해서-데이터를-출력" class="level3">
 <h3 class="anchored" data-anchor-id="ex1.-반복문을-이용해서-데이터를-출력">ex1. 반복문을 이용해서 데이터를 출력</h3>
-<div class="cell" data-execution_count="254">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(s1.min_row,s1.max_row<span class="op">+</span><span class="dv">1</span>) :</span>
-<span id="cb73-2"><a href="#cb73-2"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(s1.min_column,s1.max_column<span class="op">+</span><span class="dv">1</span>) :</span>
-<span id="cb73-3"><a href="#cb73-3"></a>        <span class="bu">print</span>(s1.cell(row <span class="op">=</span> i, column<span class="op">=</span>j).value,end<span class="op">=</span><span class="st">" | "</span>)</span>
-<span id="cb73-4"><a href="#cb73-4"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ffcd85c0-20a8-4ba0-b2ab-661eefe043c9" class="cell" data-execution_count="254">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(s1.min_row,s1.max_row<span class="op">+</span><span class="dv">1</span>) :</span>
+<span id="cb71-2"><a href="#cb71-2"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(s1.min_column,s1.max_column<span class="op">+</span><span class="dv">1</span>) :</span>
+<span id="cb71-3"><a href="#cb71-3"></a>        <span class="bu">print</span>(s1.cell(row <span class="op">=</span> i, column<span class="op">=</span>j).value,end<span class="op">=</span><span class="st">" | "</span>)</span>
+<span id="cb71-4"><a href="#cb71-4"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>date | A | B | C | D | sex | 
 
@@ -1477,10 +1525,11 @@ test를 확인 중입니다.</code></pre>
 </div>
 </div>
 <p><code>-</code> 원데이터 확인</p>
-<div class="cell" data-execution_count="257">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>_df <span class="op">=</span> pd.read_excel(<span class="st">"df.xlsx"</span>)</span>
-<span id="cb75-2"><a href="#cb75-2"></a>_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7bd90d5a-b9f2-45a1-8698-40877d232bcf" class="cell" data-execution_count="257">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>_df <span class="op">=</span> pd.read_excel(<span class="st">"df.xlsx"</span>)</span>
+<span id="cb73-2"><a href="#cb73-2"></a>_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="257">
+<div>
 <div>
 
 
@@ -1683,6 +1732,7 @@ test를 확인 중입니다.</code></pre>
 </div>
 </div>
 </div>
+</div>
 <hr>
 </section>
 </section>
@@ -1691,11 +1741,11 @@ test를 확인 중입니다.</code></pre>
 <ul>
 <li><code>date</code> <span class="math inline">\(\to\)</span> <code>날짜</code>로 ㄹ바꿔보자</li>
 </ul>
-<div class="cell" data-execution_count="258">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>s1[<span class="st">"A1"</span>].value <span class="op">=</span> <span class="st">"날짜"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8677b9c0-a754-42f2-bed4-d83bbad0f006" class="cell" data-execution_count="258">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>s1[<span class="st">"A1"</span>].value <span class="op">=</span> <span class="st">"날짜"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="259">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column<span class="op">=</span><span class="dv">1</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6a845863-59c1-4ddc-ac33-e5f1bb7582d8" class="cell" data-execution_count="259">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column<span class="op">=</span><span class="dv">1</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="259">
 <pre><code>'날짜'</code></pre>
 </div>
@@ -1703,18 +1753,18 @@ test를 확인 중입니다.</code></pre>
 <p><code>-</code> 그러나 아직 파일에는 반영이 되지 않았음</p>
 <section id="원본에-파일-반영하여-저장" class="level3">
 <h3 class="anchored" data-anchor-id="원본에-파일-반영하여-저장">원본에 파일 반영하여 저장</h3>
-<div class="cell" data-execution_count="260">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>wb.save(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2b5f999c-02e4-4655-be92-7d1b09877f84" class="cell" data-execution_count="260">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>wb.save(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 다시 load후 결과 확인</p>
-<div class="cell" data-execution_count="282">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a>wb <span class="op">=</span> xl.load_workbook(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="798550fc-15d9-49a4-9c4e-f741b4cf8bd1" class="cell" data-execution_count="282">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>wb <span class="op">=</span> xl.load_workbook(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="283">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>s1 <span class="op">=</span> wb[<span class="st">"Sheet1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="071cff51-09ac-4fe4-9ed3-1058f3ca4865" class="cell" data-execution_count="283">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>s1 <span class="op">=</span> wb[<span class="st">"Sheet1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="284">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column<span class="op">=</span><span class="dv">1</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="02ca28c0-e71f-4859-a258-e59aea1ca1b7" class="cell" data-execution_count="284">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column<span class="op">=</span><span class="dv">1</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="284">
 <pre><code>'날짜'</code></pre>
 </div>
@@ -1722,22 +1772,22 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="ex1.-sex-to-성별" class="level3">
 <h3 class="anchored" data-anchor-id="ex1.-sex-to-성별">ex1. <code>sex</code> <span class="math inline">\(\to\)</span> <code>성별</code></h3>
-<div class="cell" data-execution_count="285">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column<span class="op">=</span><span class="dv">6</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4ffde78b-c6f2-428c-98fc-5f45cc7bcdc6" class="cell" data-execution_count="285">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column<span class="op">=</span><span class="dv">6</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="285">
 <pre><code>'sex'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="286">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>s1[<span class="st">"F1"</span>].value <span class="op">=</span> <span class="st">"성별"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="abe4baed-772e-4d32-9a7f-3b34690611f0" class="cell" data-execution_count="286">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a>s1[<span class="st">"F1"</span>].value <span class="op">=</span> <span class="st">"성별"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="287">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>wb.save(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="83fdc8fd-2ad7-4b09-9979-dee34b6f3c0a" class="cell" data-execution_count="287">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>wb.save(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="288">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>wb <span class="op">=</span> xl.load_workbook(<span class="st">"df.xlsx"</span>)</span>
-<span id="cb88-2"><a href="#cb88-2"></a>s1 <span class="op">=</span> wb[<span class="st">"Sheet1"</span>]</span>
-<span id="cb88-3"><a href="#cb88-3"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column<span class="op">=</span><span class="dv">6</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a588a2ca-aca0-44e1-9bcd-d435e97a8bdc" class="cell" data-execution_count="288">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>wb <span class="op">=</span> xl.load_workbook(<span class="st">"df.xlsx"</span>)</span>
+<span id="cb86-2"><a href="#cb86-2"></a>s1 <span class="op">=</span> wb[<span class="st">"Sheet1"</span>]</span>
+<span id="cb86-3"><a href="#cb86-3"></a>s1.cell(row<span class="op">=</span><span class="dv">1</span>,column<span class="op">=</span><span class="dv">6</span>).value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="288">
 <pre><code>'성별'</code></pre>
 </div>
@@ -1746,19 +1796,19 @@ test를 확인 중입니다.</code></pre>
 <section id="행-추가" class="level3">
 <h3 class="anchored" data-anchor-id="행-추가">행 추가</h3>
 <p><code>-</code> 워크북 오브젝트 생성</p>
-<div class="cell" data-execution_count="290">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a>wb <span class="op">=</span> xl.load_workbook(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b64d9e86-dbb0-4def-9858-d3d2b430c3ee" class="cell" data-execution_count="290">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>wb <span class="op">=</span> xl.load_workbook(<span class="st">"df.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="293">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a>s1 <span class="op">=</span> wb[<span class="st">"Sheet1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7d9af045-4255-4692-8719-89b7f70468b6" class="cell" data-execution_count="293">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a>s1 <span class="op">=</span> wb[<span class="st">"Sheet1"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 두 번째 행에 빈 행 추가</p>
-<div class="cell" data-execution_count="294">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a>s1.insert_rows(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7c14492b-bff3-43bd-8b45-48786176776b" class="cell" data-execution_count="294">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a>s1.insert_rows(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 빈 값이 들어간 것을 확인</p>
-<div class="cell" data-execution_count="297">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a><span class="bu">print</span>(s1.cell(<span class="dv">2</span>, <span class="dv">1</span>).value, s1.cell(<span class="dv">2</span>, <span class="dv">2</span>).value)b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6edfe229-49e3-42cf-96dc-cb56462a64ea" class="cell" data-execution_count="297">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a><span class="bu">print</span>(s1.cell(<span class="dv">2</span>, <span class="dv">1</span>).value, s1.cell(<span class="dv">2</span>, <span class="dv">2</span>).value)b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>None None</code></pre>
 </div>
@@ -1766,22 +1816,22 @@ test를 확인 중입니다.</code></pre>
 </section>
 <section id="열-추가" class="level3">
 <h3 class="anchored" data-anchor-id="열-추가">열 추가</h3>
-<div class="cell" data-execution_count="298">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>s1.insert_cols(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6176beea-60bb-4bc6-85ba-4820d9bf5cb0" class="cell" data-execution_count="298">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>s1.insert_cols(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 빈 값이 들어간 것을 확인</p>
-<div class="cell" data-execution_count="300">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a><span class="bu">print</span>(s1.cell(<span class="dv">1</span>, <span class="dv">7</span>).value, s1.cell(<span class="dv">2</span>, <span class="dv">7</span>).value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1d3d1e03-aa87-4519-8adc-8b569940009c" class="cell" data-execution_count="300">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a><span class="bu">print</span>(s1.cell(<span class="dv">1</span>, <span class="dv">7</span>).value, s1.cell(<span class="dv">2</span>, <span class="dv">7</span>).value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>None None</code></pre>
 </div>
 </div>
 <p><code>-</code> 전체 데이터 확인</p>
-<div class="cell" data-execution_count="301">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(s1.min_row,s1.max_row<span class="op">+</span><span class="dv">1</span>) :</span>
-<span id="cb98-2"><a href="#cb98-2"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(s1.min_column,s1.max_column<span class="op">+</span><span class="dv">1</span>) :</span>
-<span id="cb98-3"><a href="#cb98-3"></a>        <span class="bu">print</span>(s1.cell(row <span class="op">=</span> i, column<span class="op">=</span>j).value,end<span class="op">=</span><span class="st">" | "</span>)</span>
-<span id="cb98-4"><a href="#cb98-4"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="51481ac4-9ce4-485b-a445-c9e2783027cc" class="cell" data-execution_count="301">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(s1.min_row,s1.max_row<span class="op">+</span><span class="dv">1</span>) :</span>
+<span id="cb96-2"><a href="#cb96-2"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(s1.min_column,s1.max_column<span class="op">+</span><span class="dv">1</span>) :</span>
+<span id="cb96-3"><a href="#cb96-3"></a>        <span class="bu">print</span>(s1.cell(row <span class="op">=</span> i, column<span class="op">=</span>j).value,end<span class="op">=</span><span class="st">" | "</span>)</span>
+<span id="cb96-4"><a href="#cb96-4"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>날짜 | A | B | C | D | 성별 | None | 
 
@@ -1832,16 +1882,16 @@ None | None | None | None | None | None | None |
 </section>
 <section id="위에서-추가한-빈-행과-열을-삭제" class="level3">
 <h3 class="anchored" data-anchor-id="위에서-추가한-빈-행과-열을-삭제">위에서 추가한 빈 행과 열을 삭제</h3>
-<div class="cell" data-execution_count="302">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a>s1.delete_rows(<span class="dv">2</span>)</span>
-<span id="cb100-2"><a href="#cb100-2"></a>s1.delete_cols(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="69643eff-36e4-4afb-862a-d8c10866ae77" class="cell" data-execution_count="302">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a>s1.delete_rows(<span class="dv">2</span>)</span>
+<span id="cb98-2"><a href="#cb98-2"></a>s1.delete_cols(<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 삭제 후 확인</p>
-<div class="cell" data-execution_count="303">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(s1.min_row,s1.max_row<span class="op">+</span><span class="dv">1</span>) :</span>
-<span id="cb101-2"><a href="#cb101-2"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(s1.min_column,s1.max_column<span class="op">+</span><span class="dv">1</span>) :</span>
-<span id="cb101-3"><a href="#cb101-3"></a>        <span class="bu">print</span>(s1.cell(row <span class="op">=</span> i, column<span class="op">=</span>j).value,end<span class="op">=</span><span class="st">" | "</span>)</span>
-<span id="cb101-4"><a href="#cb101-4"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9f507ba6-e963-441a-96ce-847d186f6fe4" class="cell" data-execution_count="303">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(s1.min_row,s1.max_row<span class="op">+</span><span class="dv">1</span>) :</span>
+<span id="cb99-2"><a href="#cb99-2"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(s1.min_column,s1.max_column<span class="op">+</span><span class="dv">1</span>) :</span>
+<span id="cb99-3"><a href="#cb99-3"></a>        <span class="bu">print</span>(s1.cell(row <span class="op">=</span> i, column<span class="op">=</span>j).value,end<span class="op">=</span><span class="st">" | "</span>)</span>
+<span id="cb99-4"><a href="#cb99-4"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>날짜 | A | B | C | D | 성별 | 
 
@@ -1895,9 +1945,9 @@ None | None | None | None | None | None | None |
 <h1>이메일 보내기</h1>
 <section id="import-1" class="level2">
 <h2 class="anchored" data-anchor-id="import-1">import</h2>
-<div class="cell" data-execution_count="309">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1"></a><span class="im">import</span> smtplib</span>
-<span id="cb103-2"><a href="#cb103-2"></a><span class="im">from</span> email.mime.text <span class="im">import</span> MIMEText</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="49c3d075-7d93-4c96-983a-c1ae518805a1" class="cell" data-execution_count="309">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a><span class="im">import</span> smtplib</span>
+<span id="cb101-2"><a href="#cb101-2"></a><span class="im">from</span> email.mime.text <span class="im">import</span> MIMEText</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step1.-기본-셋팅" class="level2">
@@ -1908,15 +1958,15 @@ None | None | None | None | None | None | None |
 <li><p>컴퓨터용 앱 비밀번호 복사</p></li>
 <li><p>복사 후 첫 번째 인자에는 나의 이메일을, 두 번째 인자에는 복사한 비밀번호를 기입 후 실행</p></li>
 </ol>
-<div class="cell" data-execution_count="313">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a><span class="co"># smtp 주소</span></span>
-<span id="cb104-2"><a href="#cb104-2"></a>s <span class="op">=</span> smtplib.SMTP(<span class="st">'smtp.gmail.com'</span>, <span class="dv">587</span>)</span>
-<span id="cb104-3"><a href="#cb104-3"></a></span>
-<span id="cb104-4"><a href="#cb104-4"></a><span class="co"># TLS 보안 시작</span></span>
-<span id="cb104-5"><a href="#cb104-5"></a>s.starttls() </span>
-<span id="cb104-6"><a href="#cb104-6"></a></span>
-<span id="cb104-7"><a href="#cb104-7"></a><span class="co">## 로그인</span></span>
-<span id="cb104-8"><a href="#cb104-8"></a>s.login(<span class="st">'rkdcjf8232@gmail.com'</span>, <span class="st">'zfkdrzytshqsucln'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a4f78c7e-2c1c-4550-931d-4a8beea3a656" class="cell" data-execution_count="313">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1"></a><span class="co"># smtp 주소</span></span>
+<span id="cb102-2"><a href="#cb102-2"></a>s <span class="op">=</span> smtplib.SMTP(<span class="st">'smtp.gmail.com'</span>, <span class="dv">587</span>)</span>
+<span id="cb102-3"><a href="#cb102-3"></a></span>
+<span id="cb102-4"><a href="#cb102-4"></a><span class="co"># TLS 보안 시작</span></span>
+<span id="cb102-5"><a href="#cb102-5"></a>s.starttls() </span>
+<span id="cb102-6"><a href="#cb102-6"></a></span>
+<span id="cb102-7"><a href="#cb102-7"></a><span class="co">## 로그인</span></span>
+<span id="cb102-8"><a href="#cb102-8"></a>s.login(<span class="st">'rkdcjf8232@gmail.com'</span>, <span class="st">'zfkdrzytshqsucln'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="313">
 <pre><code>(235, b'2.7.0 Accepted')</code></pre>
 </div>
@@ -1924,23 +1974,23 @@ None | None | None | None | None | None | None |
 </section>
 <section id="step2.-메일-내용구성" class="level2">
 <h2 class="anchored" data-anchor-id="step2.-메일-내용구성">step2. 메일 내용구성</h2>
-<div class="cell" data-execution_count="315">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a><span class="co">## 본문</span></span>
-<span id="cb106-2"><a href="#cb106-2"></a>m <span class="op">=</span> MIMEText(<span class="st">'''</span></span>
-<span id="cb106-3"><a href="#cb106-3"></a><span class="st">메일 보내기 테스트 테스트</span></span>
-<span id="cb106-4"><a href="#cb106-4"></a><span class="st">'''</span></span>
-<span id="cb106-5"><a href="#cb106-5"></a>)</span>
-<span id="cb106-6"><a href="#cb106-6"></a></span>
-<span id="cb106-7"><a href="#cb106-7"></a><span class="co">## 제목</span></span>
-<span id="cb106-8"><a href="#cb106-8"></a>m[<span class="st">"Subject"</span>] <span class="op">=</span> <span class="st">"gc test"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fa0589f1-08d5-4724-8e32-8398bb2c964c" class="cell" data-execution_count="315">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a><span class="co">## 본문</span></span>
+<span id="cb104-2"><a href="#cb104-2"></a>m <span class="op">=</span> MIMEText(<span class="st">'''</span></span>
+<span id="cb104-3"><a href="#cb104-3"></a><span class="st">메일 보내기 테스트 테스트</span></span>
+<span id="cb104-4"><a href="#cb104-4"></a><span class="st">'''</span></span>
+<span id="cb104-5"><a href="#cb104-5"></a>)</span>
+<span id="cb104-6"><a href="#cb104-6"></a></span>
+<span id="cb104-7"><a href="#cb104-7"></a><span class="co">## 제목</span></span>
+<span id="cb104-8"><a href="#cb104-8"></a>m[<span class="st">"Subject"</span>] <span class="op">=</span> <span class="st">"gc test"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step3.-메일-보내기" class="level2">
 <h2 class="anchored" data-anchor-id="step3.-메일-보내기">step3. 메일 보내기</h2>
 <p><code>-</code> s.sendmail(발신주소, 수신주소, 메일)</p>
-<div class="cell" data-execution_count="316">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a>s.sendmail(<span class="st">"rkdcjf8232@gmail.com"</span>,<span class="st">"rkdcjf202150256@gmail.com"</span>,m.as_string())</span>
-<span id="cb107-2"><a href="#cb107-2"></a>s.quit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7fec5ccf-2ef4-470c-9239-baa104ecc05f" class="cell" data-execution_count="316">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1"></a>s.sendmail(<span class="st">"rkdcjf8232@gmail.com"</span>,<span class="st">"rkdcjf202150256@gmail.com"</span>,m.as_string())</span>
+<span id="cb105-2"><a href="#cb105-2"></a>s.quit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="316">
 <pre><code>(221,
  b'2.0.0 closing connection s11-20020a62e70b000000b006888029fd63sm2245220pfh.9 - gsmtp')</code></pre>
@@ -2035,10 +2085,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2048,8 +2115,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2061,7 +2137,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2105,6 +2304,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2130,6 +2330,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2191,17 +2417,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).html" class="pagination-link">
+      <a href="../../../posts/DX/00. 데이터 다루기/2023-08-16-04. Python Basic (5).html" class="pagination-link" aria-label="04. Python Basic (5)">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">04. Python Basic (5)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="pagination-link">
+      <a href="../../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html" class="pagination-link" aria-label="Extra 00. 밈">
         <span class="nav-page-text">Extra 00. 밈</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

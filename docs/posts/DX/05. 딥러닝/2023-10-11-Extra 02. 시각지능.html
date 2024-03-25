@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -101,17 +108,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -123,46 +156,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/05. 딥러닝/2023-10-03-00. 딥러닝 (1).html">05. 딥러닝</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/05. 딥러닝/2023-10-11-Extra 02. 시각지능.html">Extra 02. 시각지능</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/05. 딥러닝/2023-10-03-00. 딥러닝 (1).html">05. 딥러닝</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/05. 딥러닝/2023-10-11-Extra 02. 시각지능.html">Extra 02. 시각지능</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -170,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/05. 딥러닝/2023-10-03-00. 딥러닝 (1).html">05. 딥러닝</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/05. 딥러닝/2023-10-11-Extra 02. 시각지능.html">Extra 02. 시각지능</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Extra 02. 시각지능</h1>
@@ -204,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -803,7 +836,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -869,9 +902,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="드라이브-마운트" class="level1">
 <h1>드라이브 마운트</h1>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:774,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085010700,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="bc1040d9-c547-435f-ea52-400da35ba258">
+<div id="cell-2" class="cell" data-executioninfo="{&quot;elapsed&quot;:774,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085010700,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="bc1040d9-c547-435f-ea52-400da35ba258">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>cd <span class="op">/</span>content<span class="op">/</span>drive<span class="op">/</span>MyDrive<span class="op">/</span>Colab Notebooks<span class="op">/</span>DX<span class="op">/</span>딥러닝</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/content/drive/MyDrive/Colab Notebooks/DX/딥러닝</code></pre>
@@ -882,23 +916,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Fashion MNIST 연습 : DNN</h1>
 <section id="라이브러리-및-데이터-불러오기" class="level2">
 <h2 class="anchored" data-anchor-id="라이브러리-및-데이터-불러오기">1. 라이브러리 및 데이터 불러오기</h2>
-<div class="cell">
+<div id="cell-5" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-6" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> tensorflow.keras.datasets <span class="im">import</span> fashion_mnist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-7" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>(train_x, train_y), (test_x, test_y) <span class="op">=</span> fashion_mnist.load_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:17,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085012297,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="8a5b1bab-7734-4017-c801-a58d6c82d84f">
+<div id="cell-8" class="cell" data-executioninfo="{&quot;elapsed&quot;:17,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085012297,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="8a5b1bab-7734-4017-c801-a58d6c82d84f">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>train_x.shape, train_y.shape, test_x.shape, test_y.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>((60000, 28, 28), (60000,), (10000, 28, 28), (10000,))</code></pre>
 </div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:15,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085012297,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="311829be-f75a-4071-f75c-eba6888df657">
+<div id="cell-9" class="cell" data-executioninfo="{&quot;elapsed&quot;:15,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085012297,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="311829be-f75a-4071-f75c-eba6888df657">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>labels <span class="op">=</span> [<span class="st">'T-shirt'</span>,</span>
 <span id="cb8-2"><a href="#cb8-2"></a>          <span class="st">'Trouser'</span>,</span>
 <span id="cb8-3"><a href="#cb8-3"></a>          <span class="st">'Pullover'</span>,</span>
@@ -916,15 +950,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>['T-shirt', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="cell-10" class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:678,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085080162,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="e9a8f413-5c2c-4534-a4eb-554929a04139">
+<div id="cell-11" class="cell" data-executioninfo="{&quot;elapsed&quot;:678,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085080162,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="e9a8f413-5c2c-4534-a4eb-554929a04139">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>plt.imshow(test_x[<span class="dv">1</span>], cmap<span class="op">=</span><span class="st">'Greys'</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-10-11-Extra 02. 시각지능_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-10-11-Extra 02. 시각지능_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -934,24 +972,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>전처리 규칙은 트레인셋을 따라야한다. (test set을 반영할 경우 이미 정답을 알고 있기 때문에 반칙임)</li>
 </ul>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085082454,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="237eb771-5d46-4015-9ae3-86abc11d46f3">
+<div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697085082454,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="237eb771-5d46-4015-9ae3-86abc11d46f3">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>max_n, min_n <span class="op">=</span> train_x.<span class="bu">max</span>(), train_x.<span class="bu">min</span>()</span>
 <span id="cb12-2"><a href="#cb12-2"></a>max_n, min_n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>(255, 0)</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="cell-16" class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>train_x <span class="op">=</span> (train_x <span class="op">-</span> min_n) <span class="op">/</span> (max_n <span class="op">-</span> min_n)</span>
 <span id="cb14-2"><a href="#cb14-2"></a>test_x <span class="op">=</span> (test_x <span class="op">-</span> min_n) <span class="op">/</span> (max_n <span class="op">-</span> min_n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> Date reshape (흑백 채널 추가)</p>
-<div class="cell">
+<div id="cell-18" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>train_x_re1 <span class="op">=</span> train_x.reshape(train_x.shape[<span class="dv">0</span>], <span class="dv">28</span>, <span class="dv">28</span>, <span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>test_x_re1 <span class="op">=</span> test_x.reshape(test_x.shape[<span class="dv">0</span>], <span class="dv">28</span>, <span class="dv">28</span>, <span class="op">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> Y : one-hot Encoding</p>
-<div class="cell">
+<div id="cell-20" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">from</span> keras.utils <span class="im">import</span> to_categorical</span>
 <span id="cb16-2"><a href="#cb16-2"></a>train_y_c <span class="op">=</span> to_categorical(train_y, <span class="dv">10</span>)</span>
 <span id="cb16-3"><a href="#cb16-3"></a>test_y_c <span class="op">=</span> to_categorical(test_y, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -962,7 +1000,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sequential-api" class="level3">
 <h3 class="anchored" data-anchor-id="sequential-api">(1) Sequential API</h3>
 <p><code>-</code> 레이어를 순차적으로 쌓음</p>
-<div class="cell">
+<div id="cell-24" class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
 <span id="cb17-3"><a href="#cb17-3"></a></span>
@@ -970,7 +1008,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-5"><a href="#cb17-5"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Sequential, Model</span>
 <span id="cb17-6"><a href="#cb17-6"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Input, Dense, Flatten, BatchNormalization, Dropout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-25" class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># 1. 세션 클리어</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a>clear_session()</span>
 <span id="cb18-3"><a href="#cb18-3"></a></span>
@@ -1000,7 +1038,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-27"><a href="#cb18-27"></a>model1.<span class="bu">compile</span>(optimizer <span class="op">=</span> <span class="st">"adam"</span>, loss <span class="op">=</span> tf.keras.losses.categorical_crossentropy,</span>
 <span id="cb18-28"><a href="#cb18-28"></a>                              metrics <span class="op">=</span> [<span class="st">"accuracy"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:750,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697086927056,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="4fc0942a-7228-44ce-d88c-46d6824fc4b4">
+<div id="cell-26" class="cell" data-executioninfo="{&quot;elapsed&quot;:750,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697086927056,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="4fc0942a-7228-44ce-d88c-46d6824fc4b4">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>model1.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model: "sequential"
@@ -1049,7 +1087,7 @@ _________________________________________________________________</code></pre>
 <section id="functial-api" class="level3">
 <h3 class="anchored" data-anchor-id="functial-api">(2) Functial API</h3>
 <p><code>-</code> 레이어를 사슬처럼 엮기!</p>
-<div class="cell">
+<div id="cell-29" class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">## Functional</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a></span>
 <span id="cb21-3"><a href="#cb21-3"></a><span class="co"># 1. 세션 클리어</span></span>
@@ -1084,7 +1122,7 @@ _________________________________________________________________</code></pre>
 <span id="cb21-32"><a href="#cb21-32"></a>                             loss <span class="op">=</span> tf.keras.losses.categorical_crossentropy,</span>
 <span id="cb21-33"><a href="#cb21-33"></a>                             metrics <span class="op">=</span> [<span class="st">"accuracy"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:596,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697087278773,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="940e8e71-b734-4466-b42f-fac8c3d5ed58">
+<div id="cell-30" class="cell" data-executioninfo="{&quot;elapsed&quot;:596,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697087278773,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="940e8e71-b734-4466-b42f-fac8c3d5ed58">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>model2.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model: "model"
@@ -1135,11 +1173,11 @@ _________________________________________________________________</code></pre>
 <section id="early-stoppin" class="level3">
 <h3 class="anchored" data-anchor-id="early-stoppin">(3) Early Stoppin!</h3>
 <p><code>-</code> 과적합 방지</p>
-<div class="cell">
+<div id="cell-33" class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">from</span> tensorflow.keras.callbacks <span class="im">import</span> EarlyStopping</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> <code>validation_set</code>이 존재하지 않으면 학습은 되지만 <code>조기 종료</code>가 적용되지는 않음</p>
-<div class="cell">
+<div id="cell-35" class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>es <span class="op">=</span> EarlyStopping(monitor <span class="op">=</span> <span class="st">"val_loss"</span>,  <span class="co">## 과적합 방지 기준</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>                                   min_delta <span class="op">=</span> <span class="dv">0</span>, <span class="co">## 설정한 값으로 변화해야 모델 성능이 개선되었다고 판단하는 기준 ( Threshole)</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a>                                    patience <span class="op">=</span> <span class="dv">3</span>, <span class="co">## 성능이 개선되지 않을 떄 얼마나 참을건지</span></span>
@@ -1150,7 +1188,7 @@ _________________________________________________________________</code></pre>
 </section>
 <section id="학습" class="level3">
 <h3 class="anchored" data-anchor-id="학습">(4) 학습</h3>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:160202,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697087954330,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="4de80b8d-41cd-42f0-9faa-a560cb69dcb5">
+<div id="cell-37" class="cell" data-executioninfo="{&quot;elapsed&quot;:160202,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697087954330,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="4de80b8d-41cd-42f0-9faa-a560cb69dcb5">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>model1.fit(train_x_re1, train_y_c, epochs <span class="op">=</span> <span class="dv">10000</span>, verbose <span class="op">=</span> <span class="dv">1</span>,</span>
 <span id="cb26-2"><a href="#cb26-2"></a>                    validation_split <span class="op">=</span> <span class="fl">0.2</span>,</span>
 <span id="cb26-3"><a href="#cb26-3"></a>                    callbacks <span class="op">=</span> [es]</span>
@@ -1194,16 +1232,16 @@ Epoch 14: early stopping</code></pre>
 </section>
 <section id="예측" class="level3">
 <h3 class="anchored" data-anchor-id="예측">(5) 예측</h3>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2355,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697088791202,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="b9755f14-69e6-4f4c-a094-e88fa870167c">
+<div id="cell-39" class="cell" data-executioninfo="{&quot;elapsed&quot;:2355,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697088791202,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="b9755f14-69e6-4f4c-a094-e88fa870167c">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>y_pred <span class="op">=</span> model1.predict(test_x_re1).argmax(axis  <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>313/313 [==============================] - 1s 3ms/step</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="cell-40" class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:759,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697089525811,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ee392119-6cfe-4e60-f540-5e0d66975c47">
+<div id="cell-41" class="cell" data-executioninfo="{&quot;elapsed&quot;:759,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697089525811,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ee392119-6cfe-4e60-f540-5e0d66975c47">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">print</span>(classification_report(test_y, y_pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
@@ -1245,7 +1283,7 @@ weighted avg       0.88      0.88      0.88     10000
 <h2 class="anchored" data-anchor-id="실습">실습</h2>
 <section id="import" class="level3">
 <h3 class="anchored" data-anchor-id="import">(0) import</h3>
-<div class="cell">
+<div id="cell-51" class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb34-2"><a href="#cb34-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb34-3"><a href="#cb34-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1256,16 +1294,16 @@ weighted avg       0.88      0.88      0.88     10000
 <span id="cb34-8"><a href="#cb34-8"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb34-9"><a href="#cb34-9"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-52" class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>(train_x, train_y), (test_x, test_y) <span class="op">=</span> keras.datasets.cifar10.load_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162126783,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="4d591bdf-c2ca-4272-9fb5-0844a4531778">
+<div id="cell-53" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162126783,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="4d591bdf-c2ca-4272-9fb5-0844a4531778">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="bu">print</span>(train_x.shape, train_y.shape, test_x.shape, test_y.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(50000, 32, 32, 3) (50000, 1) (10000, 32, 32, 3) (10000, 1)</code></pre>
 </div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697161445136,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="a4be62dc-96ec-490d-dbbd-b43c36e8a667">
+<div id="cell-54" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697161445136,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="a4be62dc-96ec-490d-dbbd-b43c36e8a667">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>labels <span class="op">=</span> {<span class="dv">0</span> : <span class="st">'Airplane'</span>,</span>
 <span id="cb38-2"><a href="#cb38-2"></a>          <span class="dv">1</span> : <span class="st">'Automobile'</span>,</span>
 <span id="cb38-3"><a href="#cb38-3"></a>          <span class="dv">2</span> : <span class="st">'Bird'</span>,</span>
@@ -1287,48 +1325,48 @@ weighted avg       0.88      0.88      0.88     10000
 <h3 class="anchored" data-anchor-id="데이터-스케일링">(1) 데이터 스케일링</h3>
 <p><span class="math display">\[ X_{scaled} = {{x_{original} - mean(x)}\over{std(x)} } \]</span></p>
 <p><code>1</code> 한꺼번에 스케일링</p>
-<div class="cell">
+<div id="cell-58" class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>mean_n,  std_n <span class="op">=</span> train_x.mean(), train_x.std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-59" class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>train_x <span class="op">=</span> (train_x <span class="op">-</span> mean_n)<span class="op">/</span>std_n</span>
 <span id="cb41-2"><a href="#cb41-2"></a>test_x <span class="op">=</span> (test_x<span class="op">-</span>mean_n)<span class="op">/</span>std_n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:886,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162132331,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="60b7f5bd-196f-4f37-f659-e37bba84aaa3">
+<div id="cell-60" class="cell" data-executioninfo="{&quot;elapsed&quot;:886,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162132331,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="60b7f5bd-196f-4f37-f659-e37bba84aaa3">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>train_x.mean(),  train_x.std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>(-2.5247951877342226e-17, 1.0000000000000022)</code></pre>
 </div>
 </div>
 <p><code>2</code> 채널별로 스케일링</p>
-<div class="cell">
+<div id="cell-62" class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>tr_r_mean, tr_r_std <span class="op">=</span> train_x[:,:,:,<span class="dv">0</span>].mean(), train_x[:,:,:,<span class="dv">0</span>].std() <span class="co">##  첫번째 채널에 대한 평균과 표준편차</span></span>
 <span id="cb44-2"><a href="#cb44-2"></a>tr_g_mean, tr_g_std <span class="op">=</span> train_x[:,:,:,<span class="dv">1</span>].mean(), train_x[:,:,:,<span class="dv">1</span>].std()</span>
 <span id="cb44-3"><a href="#cb44-3"></a>tr_b_mean, tr_b_std <span class="op">=</span> train_x[:,:,:,<span class="dv">2</span>].mean(), train_x[:,:,:,<span class="dv">2</span>].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-63" class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>train_x_r <span class="op">=</span> (train_x[:,:,:,<span class="dv">0</span>]<span class="op">-</span> tr_r_mean)<span class="op">/</span>tr_r_std</span>
 <span id="cb45-2"><a href="#cb45-2"></a>train_x_g <span class="op">=</span> (train_x[:,:,:,<span class="dv">1</span>]<span class="op">-</span> tr_g_mean)<span class="op">/</span>tr_g_std</span>
 <span id="cb45-3"><a href="#cb45-3"></a>train_x_b <span class="op">=</span> (train_x[:,:,:,<span class="dv">2</span>]<span class="op">-</span> tr_b_mean)<span class="op">/</span>tr_b_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-64" class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>train_x <span class="op">=</span> np.stack([train_x_r, train_x_g, train_x_b], axis <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162134543,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="2d4ad60e-6338-4293-b64f-f28f5fe0e3ee">
+<div id="cell-65" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162134543,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="2d4ad60e-6338-4293-b64f-f28f5fe0e3ee">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>train_x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>(50000, 32, 32, 3)</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="cell-66" class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>test_x_r <span class="op">=</span> (test_x[:,:,:,<span class="dv">0</span>]<span class="op">-</span> tr_r_mean)<span class="op">/</span>tr_r_std</span>
 <span id="cb49-2"><a href="#cb49-2"></a>test_x_g <span class="op">=</span> (test_x[:,:,:,<span class="dv">1</span>]<span class="op">-</span> tr_g_mean)<span class="op">/</span>tr_g_std</span>
 <span id="cb49-3"><a href="#cb49-3"></a>test_x_b <span class="op">=</span> (test_x[:,:,:,<span class="dv">2</span>]<span class="op">-</span> tr_b_mean)<span class="op">/</span>tr_b_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-67" class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>test_x <span class="op">=</span> np.stack([test_x_r, test_x_g, test_x_b], axis <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162136859,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="55b2e6c1-f0d0-479b-87c0-af4e36568890">
+<div id="cell-68" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162136859,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="55b2e6c1-f0d0-479b-87c0-af4e36568890">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>test_x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>(10000, 32, 32, 3)</code></pre>
@@ -1337,7 +1375,7 @@ weighted avg       0.88      0.88      0.88     10000
 </section>
 <section id="원핫인코딩" class="level3">
 <h3 class="anchored" data-anchor-id="원핫인코딩">(2) 원핫인코딩</h3>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162137853,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="09552252-d72e-4a2f-e408-6b649ac01694">
+<div id="cell-70" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162137853,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="09552252-d72e-4a2f-e408-6b649ac01694">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>train_y[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>array([[6],
@@ -1347,21 +1385,21 @@ weighted avg       0.88      0.88      0.88     10000
        [1]], dtype=uint8)</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="cell-71" class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>train_y <span class="op">=</span> np.ravel(train_y)</span>
 <span id="cb55-2"><a href="#cb55-2"></a>test_y <span class="op">=</span> np.ravel(test_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-72" class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>class_n <span class="op">=</span> <span class="bu">len</span>(np.unique(train_y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-73" class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="im">from</span> tensorflow.keras.utils <span class="im">import</span> to_categorical</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-74" class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>train_y <span class="op">=</span> to_categorical(train_y, class_n)</span>
 <span id="cb58-2"><a href="#cb58-2"></a>test_y <span class="op">=</span> to_categorical(test_y, class_n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162238509,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ff7eba00-7d91-48ec-8bc8-903418719f44">
+<div id="cell-75" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697162238509,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ff7eba00-7d91-48ec-8bc8-903418719f44">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>train_y.shape, test_y.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>((50000, 10), (10000, 10))</code></pre>
@@ -1402,11 +1440,11 @@ weighted avg       0.88      0.88      0.88     10000
 <li>아웃풋레이어</li>
 </ol></li>
 </ul>
-<div class="cell">
+<div id="cell-77" class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb61-2"><a href="#cb61-2"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:290,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697163584102,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="9d0b1971-e842-4449-f787-1aad4e9a5ccc">
+<div id="cell-78" class="cell" data-executioninfo="{&quot;elapsed&quot;:290,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697163584102,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="9d0b1971-e842-4449-f787-1aad4e9a5ccc">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># 1. 세션클리어</span></span>
 <span id="cb62-2"><a href="#cb62-2"></a></span>
 <span id="cb62-3"><a href="#cb62-3"></a>keras.backend.clear_session()</span>
@@ -1539,14 +1577,14 @@ _________________________________________________________________</code></pre>
 </section>
 <section id="modeling-2.-functional" class="level3">
 <h3 class="anchored" data-anchor-id="modeling-2.-functional">(5) Modeling 2. Functional</h3>
-<div class="cell">
+<div id="cell-80" class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a><span class="im">from</span> tensorflow.keras.backend <span class="im">import</span> clear_session</span>
 <span id="cb64-2"><a href="#cb64-2"></a><span class="im">from</span> tensorflow.keras.models <span class="im">import</span> Model</span>
 <span id="cb64-3"><a href="#cb64-3"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Input, Dense, Flatten, BatchNormalization, Dropout</span>
 <span id="cb64-4"><a href="#cb64-4"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> Conv2D, MaxPool2D</span>
 <span id="cb64-5"><a href="#cb64-5"></a><span class="im">from</span> tensorflow.keras.losses <span class="im">import</span> categorical_crossentropy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-81" class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a><span class="co">## Functional API</span></span>
 <span id="cb65-2"><a href="#cb65-2"></a><span class="co"># 1. 세션 클리어 : 청소</span></span>
 <span id="cb65-3"><a href="#cb65-3"></a>clear_session()</span>
@@ -1620,7 +1658,7 @@ _________________________________________________________________</code></pre>
 <span id="cb65-71"><a href="#cb65-71"></a>               metrics<span class="op">=</span>[<span class="st">'accuracy'</span>]</span>
 <span id="cb65-72"><a href="#cb65-72"></a>               )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:18,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697165686019,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="efbd6db7-d404-494d-b15d-6a5c6f5f601a">
+<div id="cell-82" class="cell" data-executioninfo="{&quot;elapsed&quot;:18,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697165686019,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="efbd6db7-d404-494d-b15d-6a5c6f5f601a">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>model2.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model: "model"
@@ -1674,10 +1712,10 @@ _________________________________________________________________</code></pre>
 </section>
 <section id="조기-종료-fit" class="level3">
 <h3 class="anchored" data-anchor-id="조기-종료-fit">(6) 조기 종료 &amp; fit</h3>
-<div class="cell">
+<div id="cell-84" class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a><span class="im">from</span> tensorflow.keras.callbacks <span class="im">import</span> EarlyStopping</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-85" class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>es <span class="op">=</span> EarlyStopping(monitor<span class="op">=</span><span class="st">'val_loss'</span>,     <span class="co"># 얼리스토핑을 적용할 대상!</span></span>
 <span id="cb69-2"><a href="#cb69-2"></a>                   min_delta<span class="op">=</span><span class="dv">0</span>,            <span class="co"># Threshold. 이보다 크게 변화해야 성능 개선 간주!</span></span>
 <span id="cb69-3"><a href="#cb69-3"></a>                   patience<span class="op">=</span><span class="dv">3</span>,             <span class="co"># 성능 개선이 발생하지 않을 때, 몇 epochs 더 볼 것인지!</span></span>
@@ -1685,7 +1723,7 @@ _________________________________________________________________</code></pre>
 <span id="cb69-5"><a href="#cb69-5"></a>                   restore_best_weights<span class="op">=</span><span class="va">True</span> <span class="co"># 얼리스토핑으로 학습이 멈췄을 때, 최적의 가중치를 가진 시점으로 돌려줌!</span></span>
 <span id="cb69-6"><a href="#cb69-6"></a>                   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:110968,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697165845430,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d80542ae-a813-4157-8147-1cb4a7e8325f">
+<div id="cell-86" class="cell" data-executioninfo="{&quot;elapsed&quot;:110968,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697165845430,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d80542ae-a813-4157-8147-1cb4a7e8325f">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>model2.fit(train_x, train_y, epochs<span class="op">=</span><span class="dv">10000</span>, verbose<span class="op">=</span><span class="dv">1</span>,</span>
 <span id="cb70-2"><a href="#cb70-2"></a>           validation_split<span class="op">=</span><span class="fl">0.2</span>,   <span class="co"># 매 epoch마다 training set에서 20%를 validation으로 지정!</span></span>
 <span id="cb70-3"><a href="#cb70-3"></a>           callbacks<span class="op">=</span>[es]          <span class="co"># 얼리스토핑 적용!</span></span>
@@ -1729,7 +1767,7 @@ Epoch 14: early stopping</code></pre>
 </section>
 <section id="예측-1" class="level3">
 <h3 class="anchored" data-anchor-id="예측-1">(7) 예측</h3>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:6363,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697165856958,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="07daa1de-ee17-409d-bd4b-6d937d8d45a1">
+<div id="cell-88" class="cell" data-executioninfo="{&quot;elapsed&quot;:6363,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697165856958,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="07daa1de-ee17-409d-bd4b-6d937d8d45a1">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># 원핫 인코딩 해제 : 카테고리 중 가장 높은 값</span></span>
 <span id="cb73-2"><a href="#cb73-2"></a>train_y <span class="op">=</span> train_y.argmax(axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb73-3"><a href="#cb73-3"></a>test_y <span class="op">=</span> test_y.argmax(axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -1763,7 +1801,7 @@ CNN
 <h1>Yolo</h1>
 <section id="import-1" class="level2">
 <h2 class="anchored" data-anchor-id="import-1">import</h2>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:5609,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176104414,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="92382026-dd9c-4192-f1d8-f130d84f4526" data-execution_count="1">
+<div id="cell-92" class="cell" data-executioninfo="{&quot;elapsed&quot;:5609,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176104414,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="92382026-dd9c-4192-f1d8-f130d84f4526" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a><span class="op">!</span>pip install ultralytics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Collecting ultralytics
@@ -1812,7 +1850,7 @@ Installing collected packages: thop, ultralytics
 Successfully installed thop-0.1.1.post2209072238 ultralytics-8.0.197</code></pre>
 </div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4502,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176191968,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="2">
+<div id="cell-93" class="cell" data-executioninfo="{&quot;elapsed&quot;:4502,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176191968,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a><span class="im">from</span> ultralytics <span class="im">import</span> YOLO</span>
 <span id="cb77-2"><a href="#cb77-2"></a><span class="im">from</span> ultralytics <span class="im">import</span> settings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1820,7 +1858,7 @@ Successfully installed thop-0.1.1.post2209072238 ultralytics-8.0.197</code></pre
 <section id="모델링.-연습" class="level2">
 <h2 class="anchored" data-anchor-id="모델링.-연습">모델링. 연습</h2>
 <p><code>-</code> <code>yolov8n.t</code>라는 파이토치 파일을 받게됨</p>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:107562,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176484476,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="9716539a-5840-40fa-814e-8ab16f5ba970" data-execution_count="4">
+<div id="cell-96" class="cell" data-executioninfo="{&quot;elapsed&quot;:107562,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176484476,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="9716539a-5840-40fa-814e-8ab16f5ba970" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>model <span class="op">=</span> YOLO()  <span class="co">## step1. 모델 로드</span></span>
 <span id="cb78-2"><a href="#cb78-2"></a>model.train() <span class="co">##  step2. 모델학습</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -2410,7 +2448,7 @@ speed: {'preprocess': 0.17499923706054688, 'inference': 1.9223690032958984, 'los
 task: 'detect'</code></pre>
 </div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:5821,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176620434,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ca616619-2738-4171-826a-b99291a9c2d1" data-execution_count="5">
+<div id="cell-97" class="cell" data-executioninfo="{&quot;elapsed&quot;:5821,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176620434,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ca616619-2738-4171-826a-b99291a9c2d1" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>model.val()  <span class="co">## step3. 모델 평가</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Ultralytics YOLOv8.0.197 🚀 Python-3.10.12 torch-2.0.1+cu118 CUDA:0 (NVIDIA A100-SXM4-40GB, 40514MiB)
@@ -2555,7 +2593,7 @@ Speed: 2.0ms preprocess, 9.7ms inference, 1.9ms postprocess per image at shape (
  speed: {'preprocess': 1.5532970428466797, 'inference': 9.807109832763672, 'postprocess': 1.6529560089111328}]</code></pre>
 </div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:349,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176878291,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="3cd367fa-fd2a-40af-c36b-4daab2a4cfa7" data-execution_count="6">
+<div id="cell-98" class="cell" data-executioninfo="{&quot;elapsed&quot;:349,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697176878291,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="3cd367fa-fd2a-40af-c36b-4daab2a4cfa7" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a>model.predict(save <span class="op">=</span> <span class="va">True</span>)  <span class="co">## step4. 예측</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>WARNING ⚠️ 'source' is missing. Using 'source=/usr/local/lib/python3.10/dist-packages/ultralytics/assets'.
@@ -2692,10 +2730,10 @@ Results saved to runs/detect/predict</code></pre>
 </section>
 <section id="일단-코드-돌리기" class="level1">
 <h1>일단 코드 돌리기</h1>
-<div class="cell">
+<div id="cell-100" class="cell">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a><span class="co"># !pip install ultralytics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177030976,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="2e6be5d1-f98d-4fab-fa41-6c5cca7a16ab" data-execution_count="8">
+<div id="cell-101" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177030976,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="2e6be5d1-f98d-4fab-fa41-6c5cca7a16ab" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a><span class="im">from</span> ultralytics <span class="im">import</span> settings</span>
 <span id="cb88-2"><a href="#cb88-2"></a>settings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -2717,7 +2755,7 @@ Results saved to runs/detect/predict</code></pre>
  'wandb': True}</code></pre>
 </div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177040871,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="3e5a7df0-b471-4700-fcc3-606b4a418ce5" data-execution_count="10">
+<div id="cell-102" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177040871,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="3e5a7df0-b471-4700-fcc3-606b4a418ce5" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a><span class="im">from</span> ultralytics <span class="im">import</span> YOLO</span>
 <span id="cb90-2"><a href="#cb90-2"></a>YOLO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -2737,7 +2775,7 @@ Results saved to runs/detect/predict</code></pre>
 <li>task : detect, segment, classify, pose 중 택일</li>
 </ol></li>
 </ul>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:321,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177081528,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="11">
+<div id="cell-105" class="cell" data-executioninfo="{&quot;elapsed&quot;:321,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177081528,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a>model <span class="op">=</span> YOLO(model<span class="op">=</span><span class="st">'yolov8n.pt'</span>, task<span class="op">=</span><span class="st">'detect'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 모델 학습</p>
@@ -2765,7 +2803,7 @@ Results saved to runs/detect/predict</code></pre>
 </section>
 <section id="모델-학습" class="level2">
 <h2 class="anchored" data-anchor-id="모델-학습">(2) 모델 학습</h2>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:84202,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177391061,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="45228d61-dfb1-4ca5-fd37-433473e53762" data-execution_count="13">
+<div id="cell-108" class="cell" data-executioninfo="{&quot;elapsed&quot;:84202,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177391061,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="45228d61-dfb1-4ca5-fd37-433473e53762" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>model.train(data<span class="op">=</span><span class="st">'coco128.yaml'</span>,  <span class="co">## 학습시킬 데이터셋의 경로. default 'coco128.yaml'</span></span>
 <span id="cb93-2"><a href="#cb93-2"></a>            epochs<span class="op">=</span><span class="dv">10</span>, <span class="co">##  학습 데이터 전체를 총 몇 번씩 학습시킬 것인지 설정. default 100</span></span>
 <span id="cb93-3"><a href="#cb93-3"></a>            patience<span class="op">=</span><span class="dv">5</span>, <span class="co">## 학습 과정에서 성능 개선이 발생하지 않을 때 몇 epoch 더 지켜볼 것인지 설정. default 50</span></span>
@@ -3185,7 +3223,7 @@ task: 'detect'</code></pre>
 <li>line_width : 그려지는 박스의 두께 설정. default None</li>
 </ol></li>
 </ul>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2048,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177872832,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="3d1b966c-dcc3-473d-9006-a13d2dc6c879" data-execution_count="14">
+<div id="cell-110" class="cell" data-executioninfo="{&quot;elapsed&quot;:2048,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697177872832,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="3d1b966c-dcc3-473d-9006-a13d2dc6c879" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a>model.predict(source<span class="op">=</span><span class="st">'https://images.pexels.com/photos/139303/pexels-photo-139303.jpeg'</span>,</span>
 <span id="cb96-2"><a href="#cb96-2"></a>              save<span class="op">=</span><span class="va">True</span>, save_txt<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -3272,7 +3310,7 @@ Results saved to trained/trained_model3
 <h1>Yolo : roboflow</h1>
 <section id="locale-설정" class="level2">
 <h2 class="anchored" data-anchor-id="locale-설정">locale 설정</h2>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697179471189,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="1">
+<div id="cell-115" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697179471189,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a><span class="im">import</span> locale</span>
 <span id="cb99-2"><a href="#cb99-2"></a><span class="kw">def</span> getpreferredencoding(do_setlocale <span class="op">=</span> <span class="va">True</span>):</span>
 <span id="cb99-3"><a href="#cb99-3"></a>    <span class="cf">return</span> <span class="st">"UTF-8"</span></span>
@@ -3282,7 +3320,7 @@ Results saved to trained/trained_model3
 <section id="데이터-로드" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-로드">데이터 로드</h2>
 <p><code>-</code> <a href="https://universe.roboflow.com/joaoissamu/objectdetect-fs9hx/dataset/1">데이터 링크</a></p>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:8805,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697179481564,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d668fee0-2f8a-44a5-e2cd-3ea61b24e126" data-execution_count="2">
+<div id="cell-118" class="cell" data-executioninfo="{&quot;elapsed&quot;:8805,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697179481564,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d668fee0-2f8a-44a5-e2cd-3ea61b24e126" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a><span class="op">!</span>pip install roboflow</span>
 <span id="cb100-2"><a href="#cb100-2"></a></span>
 <span id="cb100-3"><a href="#cb100-3"></a><span class="im">from</span> roboflow <span class="im">import</span> Roboflow</span>
@@ -3332,11 +3370,11 @@ Extracting Dataset Version Zip to ObjectDetect-1 in yolov8:: 100%|████�
 </section>
 <section id="모델링-기존-모델로-예측" class="level2">
 <h2 class="anchored" data-anchor-id="모델링-기존-모델로-예측">모델링 : 기존 모델로 예측</h2>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:533,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697179568870,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="3">
+<div id="cell-122" class="cell" data-executioninfo="{&quot;elapsed&quot;:533,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697179568870,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1"></a><span class="im">from</span> ultralytics <span class="im">import</span> YOLO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>1</code> 모델 로드</p>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1225,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697179800879,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="28722070-17fd-460c-eea7-d5e6c78481ec" data-execution_count="4">
+<div id="cell-124" class="cell" data-executioninfo="{&quot;elapsed&quot;:1225,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697179800879,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="28722070-17fd-460c-eea7-d5e6c78481ec" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a>model <span class="op">=</span> YOLO( model <span class="op">=</span> <span class="st">"yolov8s.pt"</span>, task <span class="op">=</span> <span class="st">"detect"</span> ) <span class="co">## 두번째로 작은 모델을 불러옴</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s.pt to 'yolov8s.pt'...
@@ -3344,7 +3382,7 @@ Extracting Dataset Version Zip to ObjectDetect-1 in yolov8:: 100%|████�
 </div>
 </div>
 <p><code>2</code> 모델학습</p>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:37432,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697180094233,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="566d7ba0-4294-410f-8577-6c5609a5b770" data-execution_count="14">
+<div id="cell-126" class="cell" data-executioninfo="{&quot;elapsed&quot;:37432,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697180094233,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="566d7ba0-4294-410f-8577-6c5609a5b770" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a>model.train(</span>
 <span id="cb106-2"><a href="#cb106-2"></a>                         data <span class="op">=</span> <span class="st">"/content/ObjectDetect-1/data.yaml"</span>,  <span class="co">## 이미지 경로 data.yaml 파일에서 확인</span></span>
 <span id="cb106-3"><a href="#cb106-3"></a>                         epochs <span class="op">=</span> <span class="dv">1</span>,</span>
@@ -3619,7 +3657,7 @@ task: 'detect'</code></pre>
 <section id="예측-2" class="level2">
 <h2 class="anchored" data-anchor-id="예측-2">예측</h2>
 <p><code>-</code> 경로 : runs -&gt; detect&gt; -&gt; predict</p>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1359,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697181161669,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="29905fc1-3690-454d-a54f-f3788a18e755" data-execution_count="19">
+<div id="cell-129" class="cell" data-executioninfo="{&quot;elapsed&quot;:1359,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697181161669,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="29905fc1-3690-454d-a54f-f3788a18e755" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1"></a>results <span class="op">=</span> model.predict(source<span class="op">=</span><span class="st">'https://images.pexels.com/photos/139303/pexels-photo-139303.jpeg'</span>,</span>
 <span id="cb109-2"><a href="#cb109-2"></a>               save<span class="op">=</span><span class="va">True</span>, save_txt<span class="op">=</span><span class="va">True</span>, line_width<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -3632,11 +3670,11 @@ Results saved to runs/detect/predict5
 <ul>
 <li><code>epochs = 1</code> 이라서 그런 것 같음,,</li>
 </ul>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:314,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697181166320,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="20">
+<div id="cell-131" class="cell" data-executioninfo="{&quot;elapsed&quot;:314,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697181166320,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1"></a><span class="cf">for</span> r <span class="kw">in</span> results :</span>
 <span id="cb111-2"><a href="#cb111-2"></a>          boxes <span class="op">=</span> r.boxes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697181171631,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="3459b1b2-bc51-46c1-e2c9-fc988c76d6da" data-execution_count="21">
+<div id="cell-132" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1697181171631,&quot;user&quot;:{&quot;displayName&quot;:&quot;ccc flkwerkdai&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="3459b1b2-bc51-46c1-e2c9-fc988c76d6da" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1"></a>boxes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>ultralytics.engine.results.Boxes object with attributes:
@@ -3759,10 +3797,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3772,8 +3827,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3785,7 +3849,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -3829,6 +4016,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -3854,6 +4042,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -3915,17 +4129,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/DX/05. 딥러닝/2023-10-10-Extra 01. 언어지능 (1).html" class="pagination-link">
+      <a href="../../../posts/DX/05. 딥러닝/2023-10-10-Extra 01. 언어지능 (1).html" class="pagination-link" aria-label="Extra 01. 언어지능">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Extra 01. 언어지능</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 01. RNN.html" class="pagination-link">
+      <a href="../../../posts/DX/05. 딥러닝/summary/2023-10-18-summary 01. RNN.html" class="pagination-link" aria-label="summary 01. RNN">
         <span class="nav-page-text">summary 01. RNN</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

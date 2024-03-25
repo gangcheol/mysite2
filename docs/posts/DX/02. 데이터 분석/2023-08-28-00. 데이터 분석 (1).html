@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,29 +98,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -126,46 +159,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">02. 데이터 분석</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">00. 데이터 분석 (1)</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">02. 데이터 분석</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">00. 데이터 분석 (1)</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -173,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">02. 데이터 분석</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">00. 데이터 분석 (1)</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">00. 데이터 분석 (1)</h1>
@@ -208,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -807,7 +840,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -878,9 +911,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="import" class="level1">
 <h1>import</h1>
-<div class="cell" data-tags="[]" data-execution_count="1">
+<div id="52847938-7efe-404b-9f82-54b84a4a6e93" class="cell" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -891,11 +925,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="review" class="level1">
 <h1>review</h1>
-<div class="cell" data-execution_count="2">
+<div id="19bc4ca3-1a19-4eb5-979f-c6c235ec666d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>path <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/titanic_simple.csv'</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>df <span class="op">=</span> pd.read_csv(path)</span>
 <span id="cb2-3"><a href="#cb2-3"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
+<div>
 <div>
 
 
@@ -975,9 +1010,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</div>
 <section id="기본-정보-조회" class="level2">
 <h2 class="anchored" data-anchor-id="기본-정보-조회">기본 정보 조회</h2>
-<div class="cell" data-tags="[]" data-execution_count="3">
+<div id="91ea8acd-d655-40e6-907a-6c6a5486095a" class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -1001,9 +1037,10 @@ memory usage: 55.8+ KB</code></pre>
 <section id="조건-조회" class="level2">
 <h2 class="anchored" data-anchor-id="조건-조회">조건 조회</h2>
 <p><code>-</code> 객실 등급(Pclass) 1등급, 나이(Age) 10살 이하 탑승객 조회</p>
-<div class="cell" data-tags="[]" data-execution_count="4">
+<div id="a63aecc6-6e7a-41f2-b343-3ad89f679724" class="cell" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.loc[ <span class="bu">map</span>(<span class="kw">lambda</span> x,y  : (x<span class="op">==</span><span class="dv">1</span>) <span class="op">&amp;</span> (y <span class="op">&lt;=</span><span class="dv">10</span>), df.Pclass, df.Age), : ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
+<div>
 <div>
 
 
@@ -1061,10 +1098,12 @@ memory usage: 55.8+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p><code>-</code> 객실 등급(Pclass)별 탑승객 수</p>
-<div class="cell" data-tags="[]" data-execution_count="5">
+<div id="0380ff96-1f84-4480-8d23-a08403830cec" class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.Pclass.value_counts().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 <div>
 
 
@@ -1098,15 +1137,17 @@ memory usage: 55.8+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p><code>-</code> 성별(Sex)이 남자인 탑승객과 여자인 탑승객의 나이를 각각 저장하시오.</p>
-<div class="cell" data-tags="[]" data-execution_count="6">
+<div id="0a919877-a88b-405b-8298-6fbe44663723" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>_m <span class="op">=</span> df.loc[df.Sex<span class="op">==</span><span class="st">"male"</span>,[<span class="st">"Sex"</span>,<span class="st">"Age"</span>]]</span>
 <span id="cb7-2"><a href="#cb7-2"></a>_f <span class="op">=</span> df.loc[df.Sex<span class="op">==</span><span class="st">"female"</span>,[<span class="st">"Age"</span>,<span class="st">"Sex"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 나이(Age)에 NaN이 아닌 탑승객을 조회하시오.</p>
-<div class="cell" data-tags="[]" data-execution_count="7">
+<div id="41730de4-ccb9-43f6-a499-8e45321ed6b3" class="cell" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df.loc[df.Age <span class="op">==</span><span class="va">True</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
+<div>
 <div>
 
 
@@ -1208,17 +1249,19 @@ memory usage: 55.8+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p><code>-</code> 아래의 데이터에서 날짜(Date)가, <code>1973-05-01</code>, <code>1973-06-01</code>, <code>1973-07-01</code>.<code>1973-08-01</code>을 조회</p>
-<div class="cell" data-tags="[]" data-execution_count="8">
+<div id="5b3514c9-9354-4071-a88c-2018763d5c9b" class="cell" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>path <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/air2.csv'</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>air <span class="op">=</span> pd.read_csv(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="9">
+<div id="f1714767-198e-4c78-92f9-13a0df341eb7" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>d_l <span class="op">=</span> [<span class="st">"1973-05-01"</span>, <span class="st">"1973-06-01"</span>, <span class="st">"1973-07-01"</span>,<span class="st">"1973-08-01"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="10">
+<div id="5636444e-1b3a-4553-acab-a90943cf471b" class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>air.loc[<span class="bu">map</span>(<span class="kw">lambda</span> x : x <span class="kw">in</span> d_l, air.Date),:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
+<div>
 <div>
 
 
@@ -1272,10 +1315,12 @@ memory usage: 55.8+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p><code>-</code> 오존 농도 10~20 사이의 데이터를 조회</p>
-<div class="cell" data-tags="[]" data-execution_count="11">
+<div id="bb730ad5-70b4-4e81-b8c6-410e76744201" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>air.loc[air.Ozone.between(<span class="dv">10</span>,<span class="dv">20</span>),:].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
+<div>
 <div>
 
 
@@ -1337,11 +1382,12 @@ memory usage: 55.8+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="값-변경" class="level2">
 <h2 class="anchored" data-anchor-id="값-변경">값 변경</h2>
 <p>[titanic] 승선지역(Embarked)을 변경 * Southamton –&gt; S * Cherbourg –&gt; C * Queenstown –&gt; Q</p>
-<div class="cell" data-tags="[]" data-execution_count="12">
+<div id="ce13e379-ed7b-42a5-afc1-b10d170dee12" class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df.Embarked</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>0      Southampton
@@ -1358,12 +1404,12 @@ memory usage: 55.8+ KB</code></pre>
 Name: Embarked, Length: 891, dtype: object</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="13">
+<div id="32b8a89e-e0a3-41b3-8227-d0206b29780c" class="cell" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.Embarked<span class="op">=</span>df[<span class="st">"Embarked"</span>].<span class="bu">map</span>({<span class="st">"Southampton"</span>:<span class="st">"S"</span>,</span>
 <span id="cb15-2"><a href="#cb15-2"></a>                   <span class="st">"Cherbourg"</span> : <span class="st">"C"</span>,</span>
 <span id="cb15-3"><a href="#cb15-3"></a>                   <span class="st">"Queenstown"</span>:<span class="st">"Q"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="14">
+<div id="5bc5cb07-f123-49b4-8625-4065b6ebe9a4" class="cell" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df.Embarked.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>array(['S', 'C', 'Q', nan], dtype=object)</code></pre>
@@ -1375,16 +1421,16 @@ Name: Embarked, Length: 891, dtype: object</code></pre>
 <li><p>&lt;= 100 ==&gt; ‘M’</p></li>
 <li><p>100 &lt; ==&gt; ‘H’</p></li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="15">
+<div id="faf0cce6-6954-4bf1-b999-035d792b5866" class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>bins <span class="op">=</span> [<span class="op">-</span>np.Inf, <span class="dv">30</span>, <span class="dv">100</span>, np.Inf]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="16">
+<div id="b64f176a-0f7b-463e-b7e4-28f62a4c99ad" class="cell" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>labels <span class="op">=</span> <span class="bu">list</span>(<span class="st">"LMH"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="17">
+<div id="3392b650-c77d-4018-8ed6-e515cd4f8b34" class="cell" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df.Fare <span class="op">=</span> pd.cut(df.Fare,bins <span class="op">=</span> bins, labels<span class="op">=</span> labels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="18">
+<div id="1a491690-1d89-42de-b70d-0a7f9462b290" class="cell" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>df.Fare.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>['L', 'M', 'H']
@@ -1398,12 +1444,13 @@ Categories (3, object): ['L' &lt; 'M' &lt; 'H']</code></pre>
 <li><p>female ==&gt; 0</p></li>
 <li><p>male ==&gt; 1</p></li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="19">
+<div id="1d5c2878-f948-4dc9-945c-e9cd1744ee54" class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df.Sex <span class="op">=</span> np.where(df.Sex<span class="op">==</span><span class="st">"male"</span>,<span class="dv">1</span>,<span class="dv">0</span>).tolist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="20">
+<div id="9aefb497-8865-4d7d-9e2a-47c50b6ff0d6" class="cell" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
+<div>
 <div>
 
 
@@ -1483,13 +1530,14 @@ Categories (3, object): ['L' &lt; 'M' &lt; 'H']</code></pre>
 </div>
 </div>
 </div>
+</div>
 <hr>
 </section>
 </section>
 </section>
 <section id="시각화" class="level1">
 <h1>시각화</h1>
-<div class="cell" data-tags="[]" data-execution_count="21">
+<div id="1a8bb1bb-ac2d-46bf-8550-343b434ea7e8" class="cell" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb25-2"><a href="#cb25-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -1499,13 +1547,14 @@ Categories (3, object): ['L' &lt; 'M' &lt; 'H']</code></pre>
 </div>
 <section id="데이터-로드" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-로드">데이터 로드</h2>
-<div class="cell" data-tags="[]" data-execution_count="22">
+<div id="69d1b94d-93df-44cd-94f7-194d3b39d552" class="cell" data-tags="[]" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>path <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/airquality_simple2.csv'</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a>data <span class="op">=</span> pd.read_csv(path)</span>
 <span id="cb26-3"><a href="#cb26-3"></a>data[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(data[<span class="st">'Date'</span>])</span>
 <span id="cb26-4"><a href="#cb26-4"></a>data.dropna(axis <span class="op">=</span> <span class="dv">0</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb26-5"><a href="#cb26-5"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
+<div>
 <div>
 
 
@@ -1567,53 +1616,57 @@ Categories (3, object): ['L' &lt; 'M' &lt; 'H']</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="기본-차트-그리기-matplotlib" class="level2">
 <h2 class="anchored" data-anchor-id="기본-차트-그리기-matplotlib">기본 차트 그리기 <code>matplotlib</code></h2>
 <section id="기본" class="level3">
 <h3 class="anchored" data-anchor-id="기본">기본</h3>
-<div class="cell" data-tags="[]" data-execution_count="23">
+<div id="1a943a65-e282-4189-912a-bfe40dc28d50" class="cell" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>data.plot(x<span class="op">=</span><span class="st">"Date"</span>,y<span class="op">=</span><span class="st">"Temp"</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>&lt;Axes: xlabel='Date'&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="24">
+</div>
+<div id="050b5956-ecc0-4474-952e-11b236b74e3a" class="cell" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>data.plot(x<span class="op">=</span><span class="st">"Date"</span>, y<span class="op">=</span> <span class="st">"Ozone"</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">3</span>),</span>
+<span id="cb28-2"><a href="#cb28-2"></a>            xlabel <span class="op">=</span><span class="st">"Date"</span>,ylabel<span class="op">=</span><span class="st">"Ozone"</span>,title <span class="op">=</span> <span class="st">"Daily Airquality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="3010042c-a9cc-4bd1-a5d4-ef2913308e85" class="cell" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>data.plot(x<span class="op">=</span><span class="st">"Date"</span>, y<span class="op">=</span> <span class="st">"Ozone"</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">3</span>),</span>
-<span id="cb29-2"><a href="#cb29-2"></a>            xlabel <span class="op">=</span><span class="st">"Date"</span>,ylabel<span class="op">=</span><span class="st">"Ozone"</span>,title <span class="op">=</span> <span class="st">"Daily Airquality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<pre><code>&lt;Axes: title={'center': 'Daily Airquality'}, xlabel='Date', ylabel='Ozone'&gt;</code></pre>
-</div>
+<span id="cb29-2"><a href="#cb29-2"></a>            xlabel <span class="op">=</span><span class="st">"Date"</span>,ylabel<span class="op">=</span><span class="st">"Ozone"</span>,title <span class="op">=</span> <span class="st">"Daily Airquality"</span>,</span>
+<span id="cb29-3"><a href="#cb29-3"></a>             color <span class="op">=</span> <span class="st">"green"</span>,marker<span class="op">=</span><span class="st">"o"</span>,alpha<span class="op">=</span><span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-</div>
-<div class="cell" data-tags="[]" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>data.plot(x<span class="op">=</span><span class="st">"Date"</span>, y<span class="op">=</span> <span class="st">"Ozone"</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">3</span>),</span>
-<span id="cb31-2"><a href="#cb31-2"></a>            xlabel <span class="op">=</span><span class="st">"Date"</span>,ylabel<span class="op">=</span><span class="st">"Ozone"</span>,title <span class="op">=</span> <span class="st">"Daily Airquality"</span>,</span>
-<span id="cb31-3"><a href="#cb31-3"></a>             color <span class="op">=</span> <span class="st">"green"</span>,marker<span class="op">=</span><span class="st">"o"</span>,alpha<span class="op">=</span><span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>&lt;Axes: title={'center': 'Daily Airquality'}, xlabel='Date', ylabel='Ozone'&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-26-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="그래프-겹처그리기" class="level3">
 <h3 class="anchored" data-anchor-id="그래프-겹처그리기">그래프 겹처그리기</h3>
-<div class="cell" data-tags="[]" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>plt.plot(data.Date, data.Temp,<span class="st">"--r"</span>)</span>
-<span id="cb33-2"><a href="#cb33-2"></a>plt.plot(data.Date, data.Ozone,<span class="st">"--g"</span>)</span>
-<span id="cb33-3"><a href="#cb33-3"></a>plt.legend([<span class="st">"Temp"</span>,<span class="st">"Ozone"</span>],loc<span class="op">=</span><span class="st">"upper right"</span>)</span>
-<span id="cb33-4"><a href="#cb33-4"></a>plt.title(<span class="st">"Temp, Ozone"</span>)</span>
-<span id="cb33-5"><a href="#cb33-5"></a>plt.grid()</span>
-<span id="cb33-6"><a href="#cb33-6"></a>plt.xlabel(<span class="st">"Date"</span>)</span>
-<span id="cb33-7"><a href="#cb33-7"></a>plt.ylabel(<span class="st">"value"</span>)</span>
-<span id="cb33-8"><a href="#cb33-8"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6bfca6c1-333b-4759-8b65-98b31537a3be" class="cell" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>plt.plot(data.Date, data.Temp,<span class="st">"--r"</span>)</span>
+<span id="cb30-2"><a href="#cb30-2"></a>plt.plot(data.Date, data.Ozone,<span class="st">"--g"</span>)</span>
+<span id="cb30-3"><a href="#cb30-3"></a>plt.legend([<span class="st">"Temp"</span>,<span class="st">"Ozone"</span>],loc<span class="op">=</span><span class="st">"upper right"</span>)</span>
+<span id="cb30-4"><a href="#cb30-4"></a>plt.title(<span class="st">"Temp, Ozone"</span>)</span>
+<span id="cb30-5"><a href="#cb30-5"></a>plt.grid()</span>
+<span id="cb30-6"><a href="#cb30-6"></a>plt.xlabel(<span class="st">"Date"</span>)</span>
+<span id="cb30-7"><a href="#cb30-7"></a>plt.ylabel(<span class="st">"value"</span>)</span>
+<span id="cb30-8"><a href="#cb30-8"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>(array([1247., 1251., 1255., 1259., 1263., 1267., 1271., 1275., 1277.]),
  [Text(1247.0, 0, '1973-06-01'),
@@ -1627,65 +1680,78 @@ Categories (3, object): ['L' &lt; 'M' &lt; 'H']</code></pre>
   Text(1277.0, 0, '1973-07-01')])</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-27-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-27-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="그래프-범위" class="level3">
 <h3 class="anchored" data-anchor-id="그래프-범위">그래프 범위</h3>
-<div class="cell" data-tags="[]" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>data.plot(x<span class="op">=</span><span class="st">"Date"</span>,y<span class="op">=</span><span class="st">"Ozone"</span>,</span>
-<span id="cb35-2"><a href="#cb35-2"></a>          ylim<span class="op">=</span>(<span class="bu">min</span>(data.Ozone)<span class="op">-</span><span class="dv">1</span>,<span class="bu">max</span>(data.Ozone)<span class="op">+</span><span class="dv">1</span>),</span>
-<span id="cb35-3"><a href="#cb35-3"></a>          grid<span class="op">=</span><span class="va">True</span>,ylabel<span class="op">=</span><span class="st">"Ozone"</span>,figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>&lt;Axes: xlabel='Date', ylabel='Ozone'&gt;</code></pre>
-</div>
+<div id="945ac900-78b0-48ca-8f0f-70d048eb44a7" class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>data.plot(x<span class="op">=</span><span class="st">"Date"</span>,y<span class="op">=</span><span class="st">"Ozone"</span>,</span>
+<span id="cb32-2"><a href="#cb32-2"></a>          ylim<span class="op">=</span>(<span class="bu">min</span>(data.Ozone)<span class="op">-</span><span class="dv">1</span>,<span class="bu">max</span>(data.Ozone)<span class="op">+</span><span class="dv">1</span>),</span>
+<span id="cb32-3"><a href="#cb32-3"></a>          grid<span class="op">=</span><span class="va">True</span>,ylabel<span class="op">=</span><span class="st">"Ozone"</span>,figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="다중-그래프-그리기" class="level3">
 <h3 class="anchored" data-anchor-id="다중-그래프-그리기">다중 그래프 그리기</h3>
 <p><code>-</code> 방법 1 : 내가 쓰던 방식</p>
-<div class="cell" data-tags="[]" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>fig,axes <span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">4</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
-<span id="cb37-2"><a href="#cb37-2"></a>fig.autofmt_xdate(rotation<span class="op">=</span><span class="dv">45</span>)</span>
-<span id="cb37-3"><a href="#cb37-3"></a>l1 <span class="op">=</span> data.columns</span>
-<span id="cb37-4"><a href="#cb37-4"></a>color <span class="op">=</span> [<span class="st">"red"</span>,<span class="st">"green"</span>,<span class="st">"blue"</span>,<span class="st">"orange"</span>]</span>
-<span id="cb37-5"><a href="#cb37-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>) :</span>
-<span id="cb37-6"><a href="#cb37-6"></a>    axes[i].plot(data[<span class="st">"Date"</span>],data[l1[i]],color<span class="op">=</span>color[i],linestyle<span class="op">=</span><span class="st">"dashed"</span>,alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb37-7"><a href="#cb37-7"></a>    axes[i].set_title(l1[i])</span>
-<span id="cb37-8"><a href="#cb37-8"></a></span>
-<span id="cb37-9"><a href="#cb37-9"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="22ddc3df-e42b-4944-90d9-ba85d46a3493" class="cell" data-tags="[]" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>fig,axes <span class="op">=</span>plt.subplots(<span class="dv">1</span>,<span class="dv">4</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb33-2"><a href="#cb33-2"></a>fig.autofmt_xdate(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb33-3"><a href="#cb33-3"></a>l1 <span class="op">=</span> data.columns</span>
+<span id="cb33-4"><a href="#cb33-4"></a>color <span class="op">=</span> [<span class="st">"red"</span>,<span class="st">"green"</span>,<span class="st">"blue"</span>,<span class="st">"orange"</span>]</span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>) :</span>
+<span id="cb33-6"><a href="#cb33-6"></a>    axes[i].plot(data[<span class="st">"Date"</span>],data[l1[i]],color<span class="op">=</span>color[i],linestyle<span class="op">=</span><span class="st">"dashed"</span>,alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb33-7"><a href="#cb33-7"></a>    axes[i].set_title(l1[i])</span>
+<span id="cb33-8"><a href="#cb33-8"></a></span>
+<span id="cb33-9"><a href="#cb33-9"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
-<span id="cb38-2"><a href="#cb38-2"></a>plt.subplot(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb38-3"><a href="#cb38-3"></a>plt.plot(<span class="st">'Date'</span>, <span class="st">'Temp'</span>, data <span class="op">=</span> data)</span>
-<span id="cb38-4"><a href="#cb38-4"></a>plt.title(<span class="st">'Temp'</span>)</span>
-<span id="cb38-5"><a href="#cb38-5"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">40</span>)</span>
-<span id="cb38-6"><a href="#cb38-6"></a>plt.grid()</span>
-<span id="cb38-7"><a href="#cb38-7"></a></span>
-<span id="cb38-8"><a href="#cb38-8"></a>plt.subplot(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
-<span id="cb38-9"><a href="#cb38-9"></a>plt.plot(<span class="st">'Date'</span>, <span class="st">'Wind'</span>, data <span class="op">=</span> data)</span>
-<span id="cb38-10"><a href="#cb38-10"></a>plt.title(<span class="st">'Wind'</span>)</span>
-<span id="cb38-11"><a href="#cb38-11"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">40</span>)</span>
-<span id="cb38-12"><a href="#cb38-12"></a>plt.grid()</span>
-<span id="cb38-13"><a href="#cb38-13"></a></span>
-<span id="cb38-14"><a href="#cb38-14"></a>plt.subplot(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb38-15"><a href="#cb38-15"></a>plt.plot(<span class="st">'Date'</span>, <span class="st">'Ozone'</span>, data <span class="op">=</span> data)</span>
-<span id="cb38-16"><a href="#cb38-16"></a>plt.title(<span class="st">'Ozone'</span>)</span>
-<span id="cb38-17"><a href="#cb38-17"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">40</span>)</span>
-<span id="cb38-18"><a href="#cb38-18"></a>plt.grid()</span>
-<span id="cb38-19"><a href="#cb38-19"></a></span>
-<span id="cb38-20"><a href="#cb38-20"></a>plt.tight_layout() <span class="co"># 그래프간 간격을 적절히 맞추기</span></span>
-<span id="cb38-21"><a href="#cb38-21"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f54405f6-0fcd-4029-92bf-fee328062209" class="cell" data-tags="[]" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb34-2"><a href="#cb34-2"></a>plt.subplot(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb34-3"><a href="#cb34-3"></a>plt.plot(<span class="st">'Date'</span>, <span class="st">'Temp'</span>, data <span class="op">=</span> data)</span>
+<span id="cb34-4"><a href="#cb34-4"></a>plt.title(<span class="st">'Temp'</span>)</span>
+<span id="cb34-5"><a href="#cb34-5"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">40</span>)</span>
+<span id="cb34-6"><a href="#cb34-6"></a>plt.grid()</span>
+<span id="cb34-7"><a href="#cb34-7"></a></span>
+<span id="cb34-8"><a href="#cb34-8"></a>plt.subplot(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb34-9"><a href="#cb34-9"></a>plt.plot(<span class="st">'Date'</span>, <span class="st">'Wind'</span>, data <span class="op">=</span> data)</span>
+<span id="cb34-10"><a href="#cb34-10"></a>plt.title(<span class="st">'Wind'</span>)</span>
+<span id="cb34-11"><a href="#cb34-11"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">40</span>)</span>
+<span id="cb34-12"><a href="#cb34-12"></a>plt.grid()</span>
+<span id="cb34-13"><a href="#cb34-13"></a></span>
+<span id="cb34-14"><a href="#cb34-14"></a>plt.subplot(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb34-15"><a href="#cb34-15"></a>plt.plot(<span class="st">'Date'</span>, <span class="st">'Ozone'</span>, data <span class="op">=</span> data)</span>
+<span id="cb34-16"><a href="#cb34-16"></a>plt.title(<span class="st">'Ozone'</span>)</span>
+<span id="cb34-17"><a href="#cb34-17"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">40</span>)</span>
+<span id="cb34-18"><a href="#cb34-18"></a>plt.grid()</span>
+<span id="cb34-19"><a href="#cb34-19"></a></span>
+<span id="cb34-20"><a href="#cb34-20"></a>plt.tight_layout() <span class="co"># 그래프간 간격을 적절히 맞추기</span></span>
+<span id="cb34-21"><a href="#cb34-21"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -1696,69 +1762,85 @@ Categories (3, object): ['L' &lt; 'M' &lt; 'H']</code></pre>
 <h1>일변량 분석</h1>
 <section id="데이터-로드-1" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-로드-1">데이터 로드</h2>
-<div class="cell" data-tags="[]" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>path1 <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/titanic_simple.csv'</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a>titanic <span class="op">=</span> pd.read_csv(path1)</span>
-<span id="cb39-3"><a href="#cb39-3"></a>path2 <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/air2.csv'</span></span>
-<span id="cb39-4"><a href="#cb39-4"></a>air <span class="op">=</span> pd.read_csv(path2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c5afc434-3d28-4c59-ad34-85eedfefdcd3" class="cell" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>path1 <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/titanic_simple.csv'</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>titanic <span class="op">=</span> pd.read_csv(path1)</span>
+<span id="cb35-3"><a href="#cb35-3"></a>path2 <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/air2.csv'</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>air <span class="op">=</span> pd.read_csv(path2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="분포-시각화-hist" class="level2">
 <h2 class="anchored" data-anchor-id="분포-시각화-hist">분포 시각화 (hist)</h2>
 <section id="basic" class="level3">
 <h3 class="anchored" data-anchor-id="basic">basic</h3>
-<div class="cell" data-tags="[]" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>plt.hist(titanic.Fare, bins <span class="op">=</span> <span class="dv">5</span>, edgecolor <span class="op">=</span> <span class="st">'gray'</span>)</span>
-<span id="cb40-2"><a href="#cb40-2"></a>plt.xlabel(<span class="st">'Fare'</span>)</span>
-<span id="cb40-3"><a href="#cb40-3"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
-<span id="cb40-4"><a href="#cb40-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cd43fb0e-5e2b-4911-8319-e559390a7f55" class="cell" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>plt.hist(titanic.Fare, bins <span class="op">=</span> <span class="dv">5</span>, edgecolor <span class="op">=</span> <span class="st">'gray'</span>)</span>
+<span id="cb36-2"><a href="#cb36-2"></a>plt.xlabel(<span class="st">'Fare'</span>)</span>
+<span id="cb36-3"><a href="#cb36-3"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb36-4"><a href="#cb36-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="구간개수-조절" class="level3">
 <h3 class="anchored" data-anchor-id="구간개수-조절">구간개수 조절</h3>
-<div class="cell" data-tags="[]" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>plt.hist(titanic.Fare, bins <span class="op">=</span> <span class="dv">30</span>, edgecolor <span class="op">=</span> <span class="st">'gray'</span>)</span>
-<span id="cb41-2"><a href="#cb41-2"></a>plt.xlabel(<span class="st">'Fare'</span>)</span>
-<span id="cb41-3"><a href="#cb41-3"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
-<span id="cb41-4"><a href="#cb41-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4c482583-c29a-48fb-a71d-67d68954ed44" class="cell" data-tags="[]" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>plt.hist(titanic.Fare, bins <span class="op">=</span> <span class="dv">30</span>, edgecolor <span class="op">=</span> <span class="st">'gray'</span>)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>plt.xlabel(<span class="st">'Fare'</span>)</span>
+<span id="cb37-3"><a href="#cb37-3"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb37-4"><a href="#cb37-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span> (<span class="dv">10</span>,<span class="dv">4</span>))</span>
-<span id="cb42-2"><a href="#cb42-2"></a></span>
-<span id="cb42-3"><a href="#cb42-3"></a>(ax1,ax2)<span class="op">=</span> axes</span>
-<span id="cb42-4"><a href="#cb42-4"></a>ax1.hist(titanic.Fare,bins <span class="op">=</span> <span class="dv">5</span>, edgecolor <span class="op">=</span> <span class="st">'gray'</span>)</span>
-<span id="cb42-5"><a href="#cb42-5"></a>ax1.set_title(<span class="st">"hist of Fare (bins =5)"</span>)</span>
-<span id="cb42-6"><a href="#cb42-6"></a>ax2.hist(titanic.Fare,bins <span class="op">=</span> <span class="dv">30</span>, edgecolor <span class="op">=</span> <span class="st">'gray'</span>)</span>
-<span id="cb42-7"><a href="#cb42-7"></a>ax2.set_title(<span class="st">"hist of Fare (bins =30)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="19e9aaeb-5ad6-4315-8fe6-1f4fedecc145" class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span> (<span class="dv">10</span>,<span class="dv">4</span>))</span>
+<span id="cb38-2"><a href="#cb38-2"></a></span>
+<span id="cb38-3"><a href="#cb38-3"></a>(ax1,ax2)<span class="op">=</span> axes</span>
+<span id="cb38-4"><a href="#cb38-4"></a>ax1.hist(titanic.Fare,bins <span class="op">=</span> <span class="dv">5</span>, edgecolor <span class="op">=</span> <span class="st">'gray'</span>)</span>
+<span id="cb38-5"><a href="#cb38-5"></a>ax1.set_title(<span class="st">"hist of Fare (bins =5)"</span>)</span>
+<span id="cb38-6"><a href="#cb38-6"></a>ax2.hist(titanic.Fare,bins <span class="op">=</span> <span class="dv">30</span>, edgecolor <span class="op">=</span> <span class="st">'gray'</span>)</span>
+<span id="cb38-7"><a href="#cb38-7"></a>ax2.set_title(<span class="st">"hist of Fare (bins =30)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>Text(0.5, 1.0, 'hist of Fare (bins =30)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-34-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-34-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="seaborn" class="level3">
 <h3 class="anchored" data-anchor-id="seaborn">seaborn</h3>
-<div class="cell" data-tags="[]" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span> (<span class="dv">10</span>,<span class="dv">4</span>))</span>
-<span id="cb44-2"><a href="#cb44-2"></a></span>
-<span id="cb44-3"><a href="#cb44-3"></a>(ax1,ax2)<span class="op">=</span> axes</span>
-<span id="cb44-4"><a href="#cb44-4"></a>sns.histplot(x<span class="op">=</span>titanic.Fare,ax<span class="op">=</span>ax1, bins <span class="op">=</span> <span class="dv">5</span>)</span>
-<span id="cb44-5"><a href="#cb44-5"></a>sns.histplot(x<span class="op">=</span>titanic.Fare,ax<span class="op">=</span>ax2, bins <span class="op">=</span> <span class="dv">30</span>)</span>
-<span id="cb44-6"><a href="#cb44-6"></a>ax1.set_title(<span class="st">"hist of Fare (bins =5)"</span>)</span>
-<span id="cb44-7"><a href="#cb44-7"></a>ax2.set_title(<span class="st">"hist of Fare (bins =30)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f35e213c-0db9-49b8-80f0-2f70fcccb825" class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span> (<span class="dv">10</span>,<span class="dv">4</span>))</span>
+<span id="cb40-2"><a href="#cb40-2"></a></span>
+<span id="cb40-3"><a href="#cb40-3"></a>(ax1,ax2)<span class="op">=</span> axes</span>
+<span id="cb40-4"><a href="#cb40-4"></a>sns.histplot(x<span class="op">=</span>titanic.Fare,ax<span class="op">=</span>ax1, bins <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb40-5"><a href="#cb40-5"></a>sns.histplot(x<span class="op">=</span>titanic.Fare,ax<span class="op">=</span>ax2, bins <span class="op">=</span> <span class="dv">30</span>)</span>
+<span id="cb40-6"><a href="#cb40-6"></a>ax1.set_title(<span class="st">"hist of Fare (bins =5)"</span>)</span>
+<span id="cb40-7"><a href="#cb40-7"></a>ax2.set_title(<span class="st">"hist of Fare (bins =30)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>Text(0.5, 1.0, 'hist of Fare (bins =30)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-35-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-35-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -1770,18 +1852,19 @@ Categories (3, object): ['L' &lt; 'M' &lt; 'H']</code></pre>
 <li><p>밀도함수 그래프는 막대의 너비를 가정하지 않고 모든 점에서 데이터의 밀도(확률)을 추정</p></li>
 <li><p>이는 커널 밀도 방식을 사용하기 때문에 모양이 달라져 발생할 수 있는 혼동을 방지할 수 있다.</p></li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="co">#sns.histplot(titanic["Fare"])</span></span>
-<span id="cb46-2"><a href="#cb46-2"></a>sns.kdeplot(titanic[<span class="st">"Fare"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="59">
-<pre><code>&lt;Axes: xlabel='Fare', ylabel='Density'&gt;</code></pre>
-</div>
+<div id="721e6961-4035-4665-91bd-c6eb20a7fc14" class="cell" data-tags="[]" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co">#sns.histplot(titanic["Fare"])</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>sns.kdeplot(titanic[<span class="st">"Fare"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-36-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>titanic.Fare.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d9dedbfa-6871-4441-abec-f9b41a3ad71e" class="cell" data-tags="[]" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>titanic.Fare.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>count    891.000000
 mean      32.204208
@@ -1799,13 +1882,14 @@ Name: Fare, dtype: float64</code></pre>
 <li>원 데이터의 0보다 작은값은 없지만 컴퓨터에서 확률을 추정하려고 하다보니 위 같이 표현된 것 뿐이다.</li>
 </ul>
 <p><code>-</code> 아래와 같이 히스토그램과 같이 그릴 수도 있다.</p>
-<div class="cell" data-tags="[]" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>sns.histplot(x<span class="op">=</span>titanic.Age,kde<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="62">
-<pre><code>&lt;Axes: xlabel='Age', ylabel='Count'&gt;</code></pre>
-</div>
+<div id="2376c8c4-2398-4ea4-a9f4-c53f349c0b03" class="cell" data-tags="[]" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>sns.histplot(x<span class="op">=</span>titanic.Age,kde<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-38-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-38-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1813,35 +1897,38 @@ Name: Fare, dtype: float64</code></pre>
 <h3 class="anchored" data-anchor-id="boxplot">boxplot</h3>
 <p><code>-</code> 주의사항 : <code>Nan</code>값이 있으면 그려지지 않는다!</p>
 <p><code>1</code> matplot</p>
-<div class="cell" data-tags="[]" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>titanic.plot(kind<span class="op">=</span><span class="st">"box"</span>, y<span class="op">=</span><span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
-<pre><code>&lt;Axes: &gt;</code></pre>
-</div>
+<div id="32de50cf-331e-45e4-bdc5-5f76d47d2a1e" class="cell" data-tags="[]" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>titanic.plot(kind<span class="op">=</span><span class="st">"box"</span>, y<span class="op">=</span><span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-39-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>titanic.plot(kind<span class="op">=</span><span class="st">"box"</span>, y<span class="op">=</span><span class="st">"Age"</span>,vert<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
-<pre><code>&lt;Axes: &gt;</code></pre>
 </div>
+<div id="4b40a139-fb43-4a8d-80e1-98d93cd68ede" class="cell" data-tags="[]" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>titanic.plot(kind<span class="op">=</span><span class="st">"box"</span>, y<span class="op">=</span><span class="st">"Age"</span>,vert<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-40-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-40-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>2</code> seaborn</p>
-<div class="cell" data-tags="[]" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb56-2"><a href="#cb56-2"></a>ax1,ax2<span class="op">=</span>axes</span>
-<span id="cb56-3"><a href="#cb56-3"></a>sns.boxplot(x <span class="op">=</span> titanic[<span class="st">'Age'</span>],ax<span class="op">=</span>ax1)</span>
-<span id="cb56-4"><a href="#cb56-4"></a>sns.boxplot(y <span class="op">=</span> titanic[<span class="st">'Age'</span>],ax<span class="op">=</span>ax2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="81">
-<pre><code>&lt;Axes: ylabel='Age'&gt;</code></pre>
-</div>
+<div id="cb59e81c-37c7-48bd-b756-92897444cb5b" class="cell" data-tags="[]" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb48-2"><a href="#cb48-2"></a>ax1,ax2<span class="op">=</span>axes</span>
+<span id="cb48-3"><a href="#cb48-3"></a>sns.boxplot(x <span class="op">=</span> titanic[<span class="st">'Age'</span>],ax<span class="op">=</span>ax1)</span>
+<span id="cb48-4"><a href="#cb48-4"></a>sns.boxplot(y <span class="op">=</span> titanic[<span class="st">'Age'</span>],ax<span class="op">=</span>ax2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-41-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -1852,19 +1939,20 @@ Name: Fare, dtype: float64</code></pre>
 <h1>Boston</h1>
 <section id="import-1" class="level2">
 <h2 class="anchored" data-anchor-id="import-1">import</h2>
-<div class="cell" data-tags="[]" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb58-2"><a href="#cb58-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb58-3"><a href="#cb58-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb58-4"><a href="#cb58-4"></a><span class="im">from</span> ISLP <span class="im">import</span> load_data</span>
-<span id="cb58-5"><a href="#cb58-5"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bb7a2e48-a30c-4467-98e1-951d8413684d" class="cell" data-tags="[]" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb49-4"><a href="#cb49-4"></a><span class="im">from</span> ISLP <span class="im">import</span> load_data</span>
+<span id="cb49-5"><a href="#cb49-5"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>data <span class="op">=</span> load_data(<span class="st">"Boston"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="983dfd84-29b3-4d12-90dd-2cd7a5be7756" class="cell" data-tags="[]" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>data <span class="op">=</span> load_data(<span class="st">"Boston"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1eb134db-e84d-4b62-9d3a-007d7800d757" class="cell" data-tags="[]" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="86">
+<div>
 <div>
 
 
@@ -1974,6 +2062,7 @@ Name: Fare, dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p><strong>변수설명</strong></p>
 <blockquote class="blockquote">
 <ul>
@@ -1997,22 +2086,26 @@ Name: Fare, dtype: float64</code></pre>
 </section>
 <section id="주어진-변수에-대한-hist-boxplot을-그리는-함수-작성" class="level2">
 <h2 class="anchored" data-anchor-id="주어진-변수에-대한-hist-boxplot을-그리는-함수-작성">주어진 변수에 대한 hist, boxplot을 그리는 함수 작성</h2>
-<div class="cell" data-tags="[]" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a><span class="kw">def</span> f(data,var,bins<span class="op">=</span><span class="dv">30</span>) : </span>
-<span id="cb61-2"><a href="#cb61-2"></a>    fig,axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">3</span>))</span>
-<span id="cb61-3"><a href="#cb61-3"></a>    ax1,ax2 <span class="op">=</span> axes</span>
-<span id="cb61-4"><a href="#cb61-4"></a>    </span>
-<span id="cb61-5"><a href="#cb61-5"></a>    sns.histplot(x<span class="op">=</span>data[var],kde <span class="op">=</span> <span class="va">True</span>,ax<span class="op">=</span>ax1,bins<span class="op">=</span>bins)</span>
-<span id="cb61-6"><a href="#cb61-6"></a>    ax1.set_title(<span class="ss">f"hist of </span><span class="sc">{</span>var<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb61-7"><a href="#cb61-7"></a>    sns.boxplot(x<span class="op">=</span>data[var],ax<span class="op">=</span>ax2)</span>
-<span id="cb61-8"><a href="#cb61-8"></a>    ax2.set_title(<span class="ss">f"boxplot of </span><span class="sc">{</span>var<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1fe71251-3772-4dcf-92ab-cfb3210f1c44" class="cell" data-tags="[]" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="kw">def</span> f(data,var,bins<span class="op">=</span><span class="dv">30</span>) : </span>
+<span id="cb52-2"><a href="#cb52-2"></a>    fig,axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">3</span>))</span>
+<span id="cb52-3"><a href="#cb52-3"></a>    ax1,ax2 <span class="op">=</span> axes</span>
+<span id="cb52-4"><a href="#cb52-4"></a>    </span>
+<span id="cb52-5"><a href="#cb52-5"></a>    sns.histplot(x<span class="op">=</span>data[var],kde <span class="op">=</span> <span class="va">True</span>,ax<span class="op">=</span>ax1,bins<span class="op">=</span>bins)</span>
+<span id="cb52-6"><a href="#cb52-6"></a>    ax1.set_title(<span class="ss">f"hist of </span><span class="sc">{</span>var<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb52-7"><a href="#cb52-7"></a>    sns.boxplot(x<span class="op">=</span>data[var],ax<span class="op">=</span>ax2)</span>
+<span id="cb52-8"><a href="#cb52-8"></a>    ax2.set_title(<span class="ss">f"boxplot of </span><span class="sc">{</span>var<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="medv집값" class="level3">
 <h3 class="anchored" data-anchor-id="medv집값">medv(집값)</h3>
-<div class="cell" data-tags="[]" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>f(data,<span class="st">"medv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="57daaf50-c2e8-4c16-872c-8bb8f5a4afe4" class="cell" data-tags="[]" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>f(data,<span class="st">"medv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-46-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-46-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ol type="1">
@@ -2022,10 +2115,14 @@ Name: Fare, dtype: float64</code></pre>
 </section>
 <section id="crim범죄율" class="level3">
 <h3 class="anchored" data-anchor-id="crim범죄율">crim(범죄율)</h3>
-<div class="cell" data-tags="[]" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>f(data,<span class="st">"crim"</span>,bins<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="26d182c5-0dd7-425e-8a71-530332392f21" class="cell" data-tags="[]" data-execution_count="104">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>f(data,<span class="st">"crim"</span>,bins<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-47-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-47-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ol type="1">
@@ -2037,10 +2134,14 @@ Name: Fare, dtype: float64</code></pre>
 </section>
 <section id="lstat하위계층-비율" class="level3">
 <h3 class="anchored" data-anchor-id="lstat하위계층-비율">lstat(하위계층 비율)</h3>
-<div class="cell" data-tags="[]" data-execution_count="112">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>f(data,<span class="st">"lstat"</span>,bins<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5ea96ba8-b073-43fb-849c-0eb38639016b" class="cell" data-tags="[]" data-execution_count="112">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>f(data,<span class="st">"lstat"</span>,bins<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-48-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-48-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ol type="1">
@@ -2050,10 +2151,14 @@ Name: Fare, dtype: float64</code></pre>
 </section>
 <section id="ptratio교사1명당-학생수" class="level3">
 <h3 class="anchored" data-anchor-id="ptratio교사1명당-학생수">ptratio(교사1명당 학생수)</h3>
-<div class="cell" data-tags="[]" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>f(data,<span class="st">"ptratio"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6e749b45-4f11-4786-ba60-7165e4631eb9" class="cell" data-tags="[]" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>f(data,<span class="st">"ptratio"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-49-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-49-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ol type="1">
@@ -2062,10 +2167,14 @@ Name: Fare, dtype: float64</code></pre>
 </section>
 <section id="tax재산세" class="level3">
 <h3 class="anchored" data-anchor-id="tax재산세">tax(재산세)</h3>
-<div class="cell" data-tags="[]" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>f(data,<span class="st">"tax"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1b810e8d-16ea-40c2-ab0a-c3ac1cc8ecb0" class="cell" data-tags="[]" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>f(data,<span class="st">"tax"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-50-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ol type="1">
@@ -2081,11 +2190,12 @@ Name: Fare, dtype: float64</code></pre>
 <h1>범주형 변수의 시각화</h1>
 <section id="데이터-전처리" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-전처리">데이터 전처리</h2>
-<div class="cell" data-tags="[]" data-execution_count="129">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>e_table <span class="op">=</span> titanic.Embarked.<span class="op">\</span></span>
-<span id="cb67-2"><a href="#cb67-2"></a>            value_counts(normalize<span class="op">=</span><span class="va">True</span>).reset_index()</span>
-<span id="cb67-3"><a href="#cb67-3"></a>e_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="09dc6e72-0a86-4c70-aa57-11ad01e77c90" class="cell" data-tags="[]" data-execution_count="129">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>e_table <span class="op">=</span> titanic.Embarked.<span class="op">\</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>            value_counts(normalize<span class="op">=</span><span class="va">True</span>).reset_index()</span>
+<span id="cb58-3"><a href="#cb58-3"></a>e_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="129">
+<div>
 <div>
 
 
@@ -2119,15 +2229,17 @@ Name: Fare, dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p><code>-</code> 생존률이 매우 낮다.</p>
 <ul>
 <li>고민 1 : 그럼 구명보트에 가까운사람, 1등석에 탄 사람들만 살았나?? (이런 상황에 대한 도메인 지식이 필요할 때가 있다….)</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="147">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>titanic.Survived.<span class="op">\</span></span>
-<span id="cb68-2"><a href="#cb68-2"></a>            value_counts(normalize<span class="op">=</span><span class="va">True</span>).<span class="op">\</span></span>
-<span id="cb68-3"><a href="#cb68-3"></a>                    reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0daace03-2fbc-4dca-b3c5-f4498eaca904" class="cell" data-tags="[]" data-execution_count="147">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>titanic.Survived.<span class="op">\</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a>            value_counts(normalize<span class="op">=</span><span class="va">True</span>).<span class="op">\</span></span>
+<span id="cb59-3"><a href="#cb59-3"></a>                    reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="147">
+<div>
 <div>
 
 
@@ -2156,19 +2268,24 @@ Name: Fare, dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="시각화-1.-bar-chart" class="level2">
 <h2 class="anchored" data-anchor-id="시각화-1.-bar-chart">시각화 1. bar chart</h2>
-<div class="cell" data-tags="[]" data-execution_count="162">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>fig,axe <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">3</span>))</span>
-<span id="cb69-2"><a href="#cb69-2"></a>ax1,ax2 <span class="op">=</span>axe</span>
-<span id="cb69-3"><a href="#cb69-3"></a>sns.countplot(y<span class="op">=</span> titanic.Pclass,ax<span class="op">=</span>ax1)</span>
-<span id="cb69-4"><a href="#cb69-4"></a>ax1.set_title(<span class="st">"count of Pclass"</span>)</span>
-<span id="cb69-5"><a href="#cb69-5"></a>sns.countplot(y<span class="op">=</span> titanic.Embarked,ax<span class="op">=</span>ax2)</span>
-<span id="cb69-6"><a href="#cb69-6"></a>ax2.set_title(<span class="st">"count of Embarked"</span>)</span>
-<span id="cb69-7"><a href="#cb69-7"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f150146b-31d0-4a6f-a8c1-eae08afb5fd2" class="cell" data-tags="[]" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>fig,axe <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">3</span>))</span>
+<span id="cb60-2"><a href="#cb60-2"></a>ax1,ax2 <span class="op">=</span>axe</span>
+<span id="cb60-3"><a href="#cb60-3"></a>sns.countplot(y<span class="op">=</span> titanic.Pclass,ax<span class="op">=</span>ax1)</span>
+<span id="cb60-4"><a href="#cb60-4"></a>ax1.set_title(<span class="st">"count of Pclass"</span>)</span>
+<span id="cb60-5"><a href="#cb60-5"></a>sns.countplot(y<span class="op">=</span> titanic.Embarked,ax<span class="op">=</span>ax2)</span>
+<span id="cb60-6"><a href="#cb60-6"></a>ax2.set_title(<span class="st">"count of Embarked"</span>)</span>
+<span id="cb60-7"><a href="#cb60-7"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-53-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -2178,9 +2295,9 @@ Name: Fare, dtype: float64</code></pre>
 <ul>
 <li>사실 난 그렇게 좋아하지 않음… <span class="math inline">\(\to\)</span> 비율로 먼가 어떤 현상을 설명할 때 직관적으로 와닿지가 않는다…</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="178">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>titanic.Pclass.<span class="op">\</span></span>
-<span id="cb70-2"><a href="#cb70-2"></a>        value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bd914c05-bfd1-4e30-ab6c-3d5388fcb689" class="cell" data-tags="[]" data-execution_count="178">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>titanic.Pclass.<span class="op">\</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a>        value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="178">
 <pre><code>Pclass
 3    491
@@ -2190,30 +2307,32 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p><code>-</code> 기본</p>
-<div class="cell" data-tags="[]" data-execution_count="180">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>titanic.Pclass.<span class="op">\</span></span>
-<span id="cb72-2"><a href="#cb72-2"></a>        value_counts().<span class="op">\</span></span>
-<span id="cb72-3"><a href="#cb72-3"></a>                plot(kind<span class="op">=</span><span class="st">"pie"</span>,y<span class="op">=</span><span class="st">"count"</span>,</span>
-<span id="cb72-4"><a href="#cb72-4"></a>                     autopct<span class="op">=</span> <span class="st">"</span><span class="sc">%.2f%%</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="180">
-<pre><code>&lt;Axes: ylabel='count'&gt;</code></pre>
-</div>
+<div id="c4c5d24a-5ae8-4f5d-b856-5bbe55965981" class="cell" data-tags="[]" data-execution_count="180">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>titanic.Pclass.<span class="op">\</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>        value_counts().<span class="op">\</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a>                plot(kind<span class="op">=</span><span class="st">"pie"</span>,y<span class="op">=</span><span class="st">"count"</span>,</span>
+<span id="cb63-4"><a href="#cb63-4"></a>                     autopct<span class="op">=</span> <span class="st">"</span><span class="sc">%.2f%%</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-55-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-55-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 시작점과 방향 지정</p>
-<div class="cell" data-tags="[]" data-execution_count="184">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>titanic.Pclass.<span class="op">\</span></span>
-<span id="cb74-2"><a href="#cb74-2"></a>        value_counts().<span class="op">\</span></span>
-<span id="cb74-3"><a href="#cb74-3"></a>                plot(kind<span class="op">=</span><span class="st">"pie"</span>,y<span class="op">=</span><span class="st">"count"</span>,</span>
-<span id="cb74-4"><a href="#cb74-4"></a>                     autopct<span class="op">=</span> <span class="st">"</span><span class="sc">%.2f%%</span><span class="st">"</span>, startangle<span class="op">=</span><span class="dv">90</span>,</span>
-<span id="cb74-5"><a href="#cb74-5"></a>                    counterclock <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="184">
-<pre><code>&lt;Axes: ylabel='count'&gt;</code></pre>
-</div>
+<div id="defafa28-b53b-44f8-ab9a-3941ab98dc0d" class="cell" data-tags="[]" data-execution_count="184">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>titanic.Pclass.<span class="op">\</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>        value_counts().<span class="op">\</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a>                plot(kind<span class="op">=</span><span class="st">"pie"</span>,y<span class="op">=</span><span class="st">"count"</span>,</span>
+<span id="cb64-4"><a href="#cb64-4"></a>                     autopct<span class="op">=</span> <span class="st">"</span><span class="sc">%.2f%%</span><span class="st">"</span>, startangle<span class="op">=</span><span class="dv">90</span>,</span>
+<span id="cb64-5"><a href="#cb64-5"></a>                    counterclock <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-56-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-56-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -2221,16 +2340,17 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="review-1" class="level1">
 <h1>Review</h1>
-<div class="cell" data-tags="[]" data-execution_count="191">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>data <span class="op">=</span> load_data(<span class="st">"Boston"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="67398d04-2719-4d1f-be1d-eeea9add0381" class="cell" data-tags="[]" data-execution_count="191">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>data <span class="op">=</span> load_data(<span class="st">"Boston"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> chas(찰스강변 여부)에 대한 단변량 분석</p>
-<div class="cell" data-tags="[]" data-execution_count="216">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>p_t<span class="op">=</span> data.chas.<span class="op">\</span></span>
-<span id="cb77-2"><a href="#cb77-2"></a>        value_counts(normalize<span class="op">=</span><span class="va">True</span>).reset_index()</span>
-<span id="cb77-3"><a href="#cb77-3"></a>c_t <span class="op">=</span> data.chas.<span class="op">\</span></span>
-<span id="cb77-4"><a href="#cb77-4"></a>        value_counts().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8eeaa48b-264b-4d5c-ac75-44cf5d0f0a5b" class="cell" data-tags="[]" data-execution_count="216">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>p_t<span class="op">=</span> data.chas.<span class="op">\</span></span>
+<span id="cb66-2"><a href="#cb66-2"></a>        value_counts(normalize<span class="op">=</span><span class="va">True</span>).reset_index()</span>
+<span id="cb66-3"><a href="#cb66-3"></a>c_t <span class="op">=</span> data.chas.<span class="op">\</span></span>
+<span id="cb66-4"><a href="#cb66-4"></a>        value_counts().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="216">
+<div>
 <div>
 
 
@@ -2259,20 +2379,25 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="231">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>fig,axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">3</span>))</span>
-<span id="cb78-2"><a href="#cb78-2"></a></span>
-<span id="cb78-3"><a href="#cb78-3"></a>ax1,ax2 <span class="op">=</span> axes</span>
-<span id="cb78-4"><a href="#cb78-4"></a></span>
-<span id="cb78-5"><a href="#cb78-5"></a>ax1.pie(p_t.proportion,labels<span class="op">=</span>p_t.chas,startangle<span class="op">=</span><span class="dv">90</span>,counterclock<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb78-6"><a href="#cb78-6"></a>ax1.set_title(<span class="st">"prop of chas"</span>)</span>
-<span id="cb78-7"><a href="#cb78-7"></a>sns.countplot(x<span class="op">=</span>data.chas,ax<span class="op">=</span>ax2,width<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb78-8"><a href="#cb78-8"></a>ax2.set_title(<span class="st">"count of chas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f0cd1a38-692a-4a93-b245-eb763d26dabb" class="cell" data-tags="[]" data-execution_count="231">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>fig,axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">3</span>))</span>
+<span id="cb67-2"><a href="#cb67-2"></a></span>
+<span id="cb67-3"><a href="#cb67-3"></a>ax1,ax2 <span class="op">=</span> axes</span>
+<span id="cb67-4"><a href="#cb67-4"></a></span>
+<span id="cb67-5"><a href="#cb67-5"></a>ax1.pie(p_t.proportion,labels<span class="op">=</span>p_t.chas,startangle<span class="op">=</span><span class="dv">90</span>,counterclock<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb67-6"><a href="#cb67-6"></a>ax1.set_title(<span class="st">"prop of chas"</span>)</span>
+<span id="cb67-7"><a href="#cb67-7"></a>sns.countplot(x<span class="op">=</span>data.chas,ax<span class="op">=</span>ax2,width<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb67-8"><a href="#cb67-8"></a>ax2.set_title(<span class="st">"count of chas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="231">
 <pre><code>Text(0.5, 1.0, 'count of chas')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-59-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-28-00. 데이터 분석 (1)_files/figure-html/cell-59-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="소감" class="level2">
@@ -2369,10 +2494,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2382,8 +2524,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2395,7 +2546,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2439,6 +2713,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2464,6 +2739,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2525,17 +2826,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-23-04. numpy &amp; pandas (5).html" class="pagination-link">
+      <a href="../../../posts/DX/01. 데이터 다듬기/2023-08-23-04. numpy &amp; pandas (5).html" class="pagination-link" aria-label="04. numpy &amp; pandas (5)">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">04. numpy &amp; pandas (5)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" class="pagination-link">
+      <a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html" class="pagination-link" aria-label="01. 데이터 분석 (2)">
         <span class="nav-page-text">01. 데이터 분석 (2)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

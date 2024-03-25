@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,29 +98,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -126,46 +159,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">02. 데이터 분석</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html">01. 데이터 분석 (2)</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">02. 데이터 분석</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html">01. 데이터 분석 (2)</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -173,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html">02. 데이터 분석</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/02. 데이터 분석/2023-08-29-01. 데이터 분석 (2).html">01. 데이터 분석 (2)</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">01. 데이터 분석 (2)</h1>
@@ -209,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -808,7 +841,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -857,9 +890,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="import" class="level1">
 <h1>import</h1>
-<div class="cell" data-tags="[]" data-execution_count="312">
+<div id="6158afd1-f271-4f09-b20c-03d7858bc5a0" class="cell" data-tags="[]" data-execution_count="312">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -874,7 +908,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="상관분석" class="level1">
 <h1>상관분석</h1>
-<div class="cell" data-tags="[]" data-execution_count="313">
+<div id="fe4ddbb0-2ece-48e7-9d62-93d58f74d2c0" class="cell" data-tags="[]" data-execution_count="313">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># 타이타닉 데이터</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>titanic <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/titanic.0.csv'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
@@ -883,7 +917,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="pairplot좋아하는-plot은-아님" class="level2">
 <h2 class="anchored" data-anchor-id="pairplot좋아하는-plot은-아님">pairplot(좋아하는 plot은 아님)</h2>
-<div class="cell" data-tags="[]" data-execution_count="314">
+<div id="38e845ff-4938-440a-9f0e-322ff8e3485a" class="cell" data-tags="[]" data-execution_count="314">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>sns.pairplot(air, kind<span class="op">=</span><span class="st">'reg'</span> )</span>
 <span id="cb3-2"><a href="#cb3-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -893,57 +927,74 @@ The figure layout has changed to tight
 </code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="joinplot" class="level2">
 <h2 class="anchored" data-anchor-id="joinplot">joinplot</h2>
-<div class="cell" data-tags="[]" data-execution_count="315">
+<div id="8ee636c6-4e78-4fc9-a00b-c5c0159f06b8" class="cell" data-tags="[]" data-execution_count="315">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>sns.jointplot(x<span class="op">=</span><span class="st">'Temp'</span>, y<span class="op">=</span><span class="st">'Ozone'</span>, data <span class="op">=</span> air)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="316">
+</div>
+<div id="13e8e7f6-e619-45d1-b52b-5aadf24cbf48" class="cell" data-tags="[]" data-execution_count="316">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>sns.jointplot(x<span class="op">=</span><span class="st">'Wind'</span>, y<span class="op">=</span><span class="st">'Ozone'</span>, data <span class="op">=</span> air)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="regplot" class="level2">
 <h2 class="anchored" data-anchor-id="regplot">regplot</h2>
-<div class="cell" data-tags="[]" data-execution_count="317">
+<div id="d6e3e527-ff48-4c89-864f-02bda445d792" class="cell" data-tags="[]" data-execution_count="317">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>sns.regplot(x<span class="op">=</span><span class="st">'Solar.R'</span>, y<span class="op">=</span><span class="st">'Ozone'</span>, data <span class="op">=</span> air)</span>
 <span id="cb7-2"><a href="#cb7-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="상관계수-계산" class="level2">
 <h2 class="anchored" data-anchor-id="상관계수-계산">상관계수 계산</h2>
-<div class="cell" data-tags="[]" data-execution_count="318">
+<div id="ad411dfc-6f80-402e-9d3d-6250a03ea805" class="cell" data-tags="[]" data-execution_count="318">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> spst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="319">
+<div id="d917ed21-bf43-40b6-8e8b-57c04720c410" class="cell" data-tags="[]" data-execution_count="319">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>spst.pearsonr(air.Temp,air.Ozone)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="319">
 <pre><code>PearsonRResult(statistic=0.6833717861490115, pvalue=2.197769800200287e-22)</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="320">
+<div id="db474357-2e5f-4cdd-9d47-8cdcd3ae9b1b" class="cell" data-tags="[]" data-execution_count="320">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>spst.pearsonr(air.Wind,air.Ozone)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="320">
 <pre><code>PearsonRResult(statistic=-0.6054782354684076, pvalue=1.1255146087637929e-16)</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="321">
+<div id="e7804a0b-9504-4cb4-bb1f-4fd9c55241d9" class="cell" data-tags="[]" data-execution_count="321">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>air.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="321">
+<div>
 <div>
 
 
@@ -1005,10 +1056,11 @@ The figure layout has changed to tight
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="heatmap" class="level2">
 <h2 class="anchored" data-anchor-id="heatmap">heatmap</h2>
-<div class="cell" data-tags="[]" data-execution_count="322">
+<div id="dd3e5097-2413-4bd2-ba3a-b81afc374c9d" class="cell" data-tags="[]" data-execution_count="322">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">4</span>, <span class="dv">4</span>))</span>
 <span id="cb14-2"><a href="#cb14-2"></a>sns.heatmap(air.corr(),</span>
 <span id="cb14-3"><a href="#cb14-3"></a>            annot <span class="op">=</span> <span class="va">True</span>,            <span class="co"># 숫자(상관계수) 표기 여부</span></span>
@@ -1017,7 +1069,11 @@ The figure layout has changed to tight
 <span id="cb14-6"><a href="#cb14-6"></a>            vmin <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, vmax <span class="op">=</span> <span class="dv">1</span>)     <span class="co"># 값의 최소, 최대값</span></span>
 <span id="cb14-7"><a href="#cb14-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1026,7 +1082,7 @@ The figure layout has changed to tight
 <h1>평균 비교</h1>
 <section id="import-1" class="level2">
 <h2 class="anchored" data-anchor-id="import-1">import</h2>
-<div class="cell" data-execution_count="354">
+<div id="1e8be42a" class="cell" data-execution_count="354">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="im">import</span> random <span class="im">as</span> rd</span>
@@ -1051,31 +1107,35 @@ The figure layout has changed to tight
 </section>
 <section id="신뢰구간" class="level2">
 <h2 class="anchored" data-anchor-id="신뢰구간">95%신뢰구간</h2>
-<div class="cell" data-execution_count="367">
+<div id="f408219b" class="cell" data-execution_count="367">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>rd.normalvariate?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>1</code> 평균이 172, 표준편차가 1인 표본을 800,000개 추출</p>
-<div class="cell" data-execution_count="370">
+<div id="a1c49a89" class="cell" data-execution_count="370">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>pop <span class="op">=</span> [<span class="bu">round</span>(rd.normalvariate(<span class="dv">172</span>, <span class="dv">7</span>),<span class="dv">1</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">800000</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="371">
+<div id="fa6f2ce6" class="cell" data-execution_count="371">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>sns.histplot(pop, bins <span class="op">=</span> <span class="dv">100</span>)</span>
 <span id="cb18-2"><a href="#cb18-2"></a>plt.axvline(np.mean(pop), color <span class="op">=</span> <span class="st">'r'</span>)</span>
 <span id="cb18-3"><a href="#cb18-3"></a>plt.text(np.mean(pop)<span class="op">+</span><span class="dv">1</span>, <span class="dv">30000</span>, <span class="ss">f'pop mean : </span><span class="sc">{</span>np<span class="sc">.</span>mean(pop)<span class="sc">.</span><span class="bu">round</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="ss">'</span>, color <span class="op">=</span> <span class="st">'r'</span>)</span>
 <span id="cb18-4"><a href="#cb18-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>2</code> . 50개씩 데이터를 추출 후 표본 평균을 계산</p>
-<div class="cell" data-execution_count="373">
+<div id="fe592be3" class="cell" data-execution_count="373">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>x_mean <span class="op">=</span> []</span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
 <span id="cb19-3"><a href="#cb19-3"></a>    s1 <span class="op">=</span> rd.sample(pop, <span class="dv">50</span>)</span>
 <span id="cb19-4"><a href="#cb19-4"></a>    s1 <span class="op">=</span> pd.Series(s1)</span>
 <span id="cb19-5"><a href="#cb19-5"></a>    x_mean.append(<span class="bu">round</span>(s1.mean(),<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="374">
+<div id="4396dd5f" class="cell" data-execution_count="374">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
 <span id="cb20-2"><a href="#cb20-2"></a>sns.kdeplot(x_mean)</span>
 <span id="cb20-3"><a href="#cb20-3"></a>plt.axvline(np.mean(x_mean), color <span class="op">=</span> <span class="st">'r'</span>)</span>
@@ -1084,7 +1144,11 @@ The figure layout has changed to tight
 <pre><code>Text(172.92226, 0.1, 'pop mean : 171.922')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-18-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-18-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1097,10 +1161,10 @@ The figure layout has changed to tight
 </ul>
 <section id="표본평균의-분포" class="level3">
 <h3 class="anchored" data-anchor-id="표본평균의-분포">표본평균의 분포</h3>
-<div class="cell" data-execution_count="375">
+<div id="b598fd38" class="cell" data-execution_count="375">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>pop <span class="op">=</span> [<span class="bu">round</span>(rd.expovariate(<span class="fl">.3</span>)<span class="op">+</span><span class="dv">165</span>,<span class="dv">2</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10001</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="376">
+<div id="fb8d0458" class="cell" data-execution_count="376">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># 표본의 크기</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>n <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a></span>
@@ -1121,20 +1185,28 @@ The figure layout has changed to tight
 <pre><code>Text(168.4570502949705, 0.02, '168.357')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="모집단의-분포" class="level3">
 <h3 class="anchored" data-anchor-id="모집단의-분포">모집단의 분포</h3>
-<div class="cell" data-execution_count="377">
+<div id="7ac7b89e" class="cell" data-execution_count="377">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>)) <span class="co">#설정</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>sns.histplot(pop, bins <span class="op">=</span> <span class="dv">100</span>)</span>
 <span id="cb25-3"><a href="#cb25-3"></a>plt.axvline(x<span class="op">=</span>np.mean(pop), color <span class="op">=</span> <span class="st">'grey'</span>) <span class="co"># 모평균</span></span>
 <span id="cb25-4"><a href="#cb25-4"></a>plt.text(np.mean(pop)<span class="op">+</span><span class="fl">.5</span>, <span class="dv">800</span>, <span class="bu">round</span>(np.mean(pop),<span class="dv">2</span>), color <span class="op">=</span> <span class="st">'grey'</span>)</span>
 <span id="cb25-5"><a href="#cb25-5"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1142,20 +1214,20 @@ The figure layout has changed to tight
 </section>
 <section id="t-test" class="level1">
 <h1>t-test</h1>
-<div class="cell" data-tags="[]" data-execution_count="323">
+<div id="3e7ed4bd-a326-48fb-9dd1-3ee886bf7823" class="cell" data-tags="[]" data-execution_count="323">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># 타이타닉 데이터</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a>titanic <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/titanic.0.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="324">
+<div id="10c4185c-2f36-4e51-96b8-a89590e04719" class="cell" data-tags="[]" data-execution_count="324">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># NaN 행 제외</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a>temp <span class="op">=</span> titanic.loc[titanic[<span class="st">'Age'</span>].notnull()]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="325">
+<div id="5f1ab8d2-8872-41eb-8c5f-27d78c2be7ec" class="cell" data-tags="[]" data-execution_count="325">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># 두 그룹으로 데이터 저장</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a>died <span class="op">=</span> temp.loc[titanic[<span class="st">'Survived'</span>]<span class="op">==</span><span class="dv">0</span>, <span class="st">'Age'</span>]</span>
 <span id="cb28-3"><a href="#cb28-3"></a>survived <span class="op">=</span> temp.loc[titanic[<span class="st">'Survived'</span>]<span class="op">==</span><span class="dv">1</span>, <span class="st">'Age'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="326">
+<div id="ba57d507-791a-44de-bc7f-24650205dfe2" class="cell" data-tags="[]" data-execution_count="326">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>spst.ttest_ind(died, survived)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="326">
 <pre><code>TtestResult(statistic=2.06668694625381, pvalue=0.03912465401348249, df=712.0)</code></pre>
@@ -1164,25 +1236,26 @@ The figure layout has changed to tight
 </section>
 <section id="anova" class="level1">
 <h1>anova</h1>
-<div class="cell" data-tags="[]" data-execution_count="327">
+<div id="da42ca14-08ad-44bf-8b34-fd2329f7d54a" class="cell" data-tags="[]" data-execution_count="327">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Pclass(3 범주) --&gt; Age</span></span>
 <span id="cb31-2"><a href="#cb31-2"></a>sns.barplot(x<span class="op">=</span><span class="st">"Pclass"</span>, y<span class="op">=</span><span class="st">"Age"</span>, data<span class="op">=</span>titanic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="327">
-<pre><code>&lt;Axes: xlabel='Pclass', ylabel='Age'&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-26-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="328">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>temp <span class="op">=</span> titanic.loc[titanic[<span class="st">'Age'</span>].notnull()]</span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="co"># 그룹별 저장</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a>P_1 <span class="op">=</span> temp.loc[temp.Pclass <span class="op">==</span> <span class="dv">1</span>, <span class="st">'Age'</span>]</span>
-<span id="cb33-4"><a href="#cb33-4"></a>P_2 <span class="op">=</span> temp.loc[temp.Pclass <span class="op">==</span> <span class="dv">2</span>, <span class="st">'Age'</span>]</span>
-<span id="cb33-5"><a href="#cb33-5"></a>P_3 <span class="op">=</span> temp.loc[temp.Pclass <span class="op">==</span> <span class="dv">3</span>, <span class="st">'Age'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="329">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>spst.f_oneway(P_1, P_2, P_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="890159b6-24d5-4fef-abf4-6a7c44ea8996" class="cell" data-tags="[]" data-execution_count="328">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>temp <span class="op">=</span> titanic.loc[titanic[<span class="st">'Age'</span>].notnull()]</span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># 그룹별 저장</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>P_1 <span class="op">=</span> temp.loc[temp.Pclass <span class="op">==</span> <span class="dv">1</span>, <span class="st">'Age'</span>]</span>
+<span id="cb32-4"><a href="#cb32-4"></a>P_2 <span class="op">=</span> temp.loc[temp.Pclass <span class="op">==</span> <span class="dv">2</span>, <span class="st">'Age'</span>]</span>
+<span id="cb32-5"><a href="#cb32-5"></a>P_3 <span class="op">=</span> temp.loc[temp.Pclass <span class="op">==</span> <span class="dv">3</span>, <span class="st">'Age'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4d1db219-780e-4eb2-bca5-0cd880893565" class="cell" data-tags="[]" data-execution_count="329">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>spst.f_oneway(P_1, P_2, P_3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="329">
 <pre><code>F_onewayResult(statistic=57.443484340676214, pvalue=7.487984171959904e-24)</code></pre>
 </div>
@@ -1191,30 +1264,31 @@ The figure layout has changed to tight
 </section>
 <section id="교차분석" class="level1">
 <h1>교차분석</h1>
-<div class="cell" data-tags="[]" data-execution_count="330">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb36-3"><a href="#cb36-3"></a><span class="co"># import random as rd</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a></span>
-<span id="cb36-5"><a href="#cb36-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb36-6"><a href="#cb36-6"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb36-7"><a href="#cb36-7"></a><span class="im">from</span> statsmodels.graphics.mosaicplot <span class="im">import</span> mosaic      <span class="co">#mosaic plot!</span></span>
-<span id="cb36-8"><a href="#cb36-8"></a></span>
-<span id="cb36-9"><a href="#cb36-9"></a><span class="im">import</span> scipy.stats <span class="im">as</span> spst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6599a46c-e2ac-4622-85bb-6eaac1da82d9" class="cell" data-tags="[]" data-execution_count="330">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="co"># import random as rd</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="im">from</span> statsmodels.graphics.mosaicplot <span class="im">import</span> mosaic      <span class="co">#mosaic plot!</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a></span>
+<span id="cb35-9"><a href="#cb35-9"></a><span class="im">import</span> scipy.stats <span class="im">as</span> spst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="데이터-로드" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-로드">1. 데이터 로드</h2>
-<div class="cell" data-tags="[]" data-execution_count="331">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>titanic <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/titanic.1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bced399d-93cf-4211-b815-24c6c8418816" class="cell" data-tags="[]" data-execution_count="331">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>titanic <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/DA4BAM/dataset/master/titanic.1.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="교차표-생성" class="level2">
 <h2 class="anchored" data-anchor-id="교차표-생성">2. 교차표 생성</h2>
 <p><code>-</code> 생존과 성별 변수로 교차표를 생성</p>
-<div class="cell" data-tags="[]" data-execution_count="332">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># 두 범주별 빈도수를 교차표로 만들어 봅시다.</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Sex'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="340cc348-9a3b-4b5f-8c94-e1d3cab04801" class="cell" data-tags="[]" data-execution_count="332">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># 두 범주별 빈도수를 교차표로 만들어 봅시다.</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Sex'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="332">
+<div>
 <div>
 
 
@@ -1248,10 +1322,12 @@ The figure layout has changed to tight
 </div>
 </div>
 </div>
+</div>
 <p><code>-</code> 열별 비율</p>
-<div class="cell" data-tags="[]" data-execution_count="333">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Sex'</span>], normalize <span class="op">=</span> <span class="st">'columns'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="91957c21-7260-4e14-9946-55e2b1365250" class="cell" data-tags="[]" data-execution_count="333">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Sex'</span>], normalize <span class="op">=</span> <span class="st">'columns'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="333">
+<div>
 <div>
 
 
@@ -1285,10 +1361,12 @@ The figure layout has changed to tight
 </div>
 </div>
 </div>
+</div>
 <p><code>-</code> index별 비율</p>
-<div class="cell" data-tags="[]" data-execution_count="334">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Sex'</span>], normalize <span class="op">=</span> <span class="st">'index'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a38d914f-e449-4a49-988d-b1f02e585790" class="cell" data-tags="[]" data-execution_count="334">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Sex'</span>], normalize <span class="op">=</span> <span class="st">'index'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="334">
+<div>
 <div>
 
 
@@ -1322,10 +1400,12 @@ The figure layout has changed to tight
 </div>
 </div>
 </div>
+</div>
 <p><code>-</code> (행,열)별 전체 비율</p>
-<div class="cell" data-tags="[]" data-execution_count="335">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Embarked'</span>], normalize <span class="op">=</span> <span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e3c51e34-aafd-4108-84fb-d6f0e3036e8f" class="cell" data-tags="[]" data-execution_count="335">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Embarked'</span>], normalize <span class="op">=</span> <span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="335">
+<div>
 <div>
 
 
@@ -1363,26 +1443,28 @@ The figure layout has changed to tight
 </div>
 </div>
 </div>
+</div>
 <ol type="1">
 <li><p><code>x</code>축의 길이는 각 객실 등급별 승객 비율을 표시</p></li>
 <li><p>y축의 길이는 각 객실 등급별 사망 및 생존 비율을 의미한다.</p></li>
 </ol>
-<div class="cell" data-tags="[]" data-execution_count="336">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># Pclass별 생존여부를 mosaic plot으로 그려 봅시다.</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a>mosaic(titanic, [ <span class="st">'Pclass'</span>,<span class="st">'Survived'</span>])</span>
-<span id="cb42-3"><a href="#cb42-3"></a>plt.axhline(<span class="dv">1</span><span class="op">-</span> titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="336">
-<pre><code>&lt;matplotlib.lines.Line2D at 0x2c073331350&gt;</code></pre>
-</div>
+<div id="1eae7ab2-9e00-4554-aee1-0d01aa4ba878" class="cell" data-tags="[]" data-execution_count="336">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Pclass별 생존여부를 mosaic plot으로 그려 봅시다.</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>mosaic(titanic, [ <span class="st">'Pclass'</span>,<span class="st">'Survived'</span>])</span>
+<span id="cb41-3"><a href="#cb41-3"></a>plt.axhline(<span class="dv">1</span><span class="op">-</span> titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-35-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="337">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>temp <span class="op">=</span> pd.crosstab(titanic[<span class="st">'Pclass'</span>], titanic[<span class="st">'Survived'</span>], normalize <span class="op">=</span> <span class="st">'index'</span>)</span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="bu">print</span>(temp)</span>
-<span id="cb44-3"><a href="#cb44-3"></a>temp.plot.bar(stacked<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb44-4"><a href="#cb44-4"></a>plt.axhline(<span class="dv">1</span><span class="op">-</span>titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="3b0b70e9-8d68-4a56-a9d9-561b3ede8f1b" class="cell" data-tags="[]" data-execution_count="337">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>temp <span class="op">=</span> pd.crosstab(titanic[<span class="st">'Pclass'</span>], titanic[<span class="st">'Survived'</span>], normalize <span class="op">=</span> <span class="st">'index'</span>)</span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="bu">print</span>(temp)</span>
+<span id="cb42-3"><a href="#cb42-3"></a>temp.plot.bar(stacked<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb42-4"><a href="#cb42-4"></a>plt.axhline(<span class="dv">1</span><span class="op">-</span>titanic[<span class="st">'Survived'</span>].mean(), color <span class="op">=</span> <span class="st">'r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Survived         0         1
 Pclass                      
@@ -1390,11 +1472,12 @@ Pclass
 2         0.527174  0.472826
 3         0.757637  0.242363</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="337">
-<pre><code>&lt;matplotlib.lines.Line2D at 0x2c0729818d0&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-36-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-36-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1412,13 +1495,14 @@ Pclass
 <section id="카이제곱통계량-계산손계산" class="level3">
 <h3 class="anchored" data-anchor-id="카이제곱통계량-계산손계산">카이제곱통계량 계산(손계산)</h3>
 <p><code>1</code>. 기대빈도 계산</p>
-<div class="cell" data-execution_count="339">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>tem <span class="op">=</span> titanic.groupby([<span class="st">"Pclass"</span>,<span class="st">"Survived"</span>],as_index<span class="op">=</span><span class="va">False</span>)[[<span class="st">"Pclass"</span>]].value_counts()</span>
-<span id="cb47-2"><a href="#cb47-2"></a>tem.rename(columns <span class="op">=</span> {<span class="st">"count"</span>: <span class="st">"관측빈도"</span>},inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9f2c50f6" class="cell" data-execution_count="339">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>tem <span class="op">=</span> titanic.groupby([<span class="st">"Pclass"</span>,<span class="st">"Survived"</span>],as_index<span class="op">=</span><span class="va">False</span>)[[<span class="st">"Pclass"</span>]].value_counts()</span>
+<span id="cb44-2"><a href="#cb44-2"></a>tem.rename(columns <span class="op">=</span> {<span class="st">"count"</span>: <span class="st">"관측빈도"</span>},inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="340">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>tem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5a696b97" class="cell" data-execution_count="340">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>tem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="340">
+<div>
 <div>
 
 
@@ -1474,22 +1558,24 @@ Pclass
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="341">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>tem1  <span class="op">=</span> tem.groupby([<span class="st">"Pclass"</span>],as_index<span class="op">=</span><span class="va">False</span>)[[<span class="st">"관측빈도"</span>]].<span class="bu">sum</span>().rename(columns <span class="op">=</span>{<span class="st">"관측빈도"</span> : <span class="st">"P_total"</span>})</span>
-<span id="cb49-2"><a href="#cb49-2"></a>tem2  <span class="op">=</span> tem.groupby([<span class="st">"Survived"</span>],as_index<span class="op">=</span><span class="va">False</span>)[[<span class="st">"관측빈도"</span>]].<span class="bu">sum</span>().rename(columns <span class="op">=</span>{<span class="st">"관측빈도"</span> : <span class="st">"S_total"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="342">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>total <span class="op">=</span> pd.merge(pd.merge(tem,tem1),tem2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="02c6edf2" class="cell" data-execution_count="341">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>tem1  <span class="op">=</span> tem.groupby([<span class="st">"Pclass"</span>],as_index<span class="op">=</span><span class="va">False</span>)[[<span class="st">"관측빈도"</span>]].<span class="bu">sum</span>().rename(columns <span class="op">=</span>{<span class="st">"관측빈도"</span> : <span class="st">"P_total"</span>})</span>
+<span id="cb46-2"><a href="#cb46-2"></a>tem2  <span class="op">=</span> tem.groupby([<span class="st">"Survived"</span>],as_index<span class="op">=</span><span class="va">False</span>)[[<span class="st">"관측빈도"</span>]].<span class="bu">sum</span>().rename(columns <span class="op">=</span>{<span class="st">"관측빈도"</span> : <span class="st">"S_total"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="343">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>total[<span class="st">"total"</span>] <span class="op">=</span><span class="bu">sum</span>(total.S_total.unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="40d45420" class="cell" data-execution_count="342">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>total <span class="op">=</span> pd.merge(pd.merge(tem,tem1),tem2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="344">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>total[<span class="st">"기대빈도"</span>] <span class="op">=</span> total.P_total<span class="op">*</span>total.S_total<span class="op">/</span>total.total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a30ac886" class="cell" data-execution_count="343">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>total[<span class="st">"total"</span>] <span class="op">=</span><span class="bu">sum</span>(total.S_total.unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="345">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="33b36bb1" class="cell" data-execution_count="344">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>total[<span class="st">"기대빈도"</span>] <span class="op">=</span> total.P_total<span class="op">*</span>total.S_total<span class="op">/</span>total.total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="455c28d8" class="cell" data-execution_count="345">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>total</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="345">
+<div>
 <div>
 
 
@@ -1573,10 +1659,12 @@ Pclass
 </div>
 </div>
 </div>
+</div>
 <p><code>2</code>. 카이제곱 통계량 계산</p>
-<div class="cell" data-execution_count="346">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Pclass'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ebd4c3d6" class="cell" data-execution_count="346">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Pclass'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="346">
+<div>
 <div>
 
 
@@ -1614,55 +1702,57 @@ Pclass
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="347">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>chi_s <span class="op">=</span> <span class="bu">sum</span>(((total[<span class="st">"관측빈도"</span>] <span class="op">-</span> total[<span class="st">"기대빈도"</span>])<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>total[<span class="st">"기대빈도"</span>])</span>
-<span id="cb55-2"><a href="#cb55-2"></a>chi_s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f700338f" class="cell" data-execution_count="347">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>chi_s <span class="op">=</span> <span class="bu">sum</span>(((total[<span class="st">"관측빈도"</span>] <span class="op">-</span> total[<span class="st">"기대빈도"</span>])<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>total[<span class="st">"기대빈도"</span>])</span>
+<span id="cb52-2"><a href="#cb52-2"></a>chi_s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="347">
 <pre><code>102.88898875696056</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="348">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span> <span class="co">## 유의수준</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c1782d90" class="cell" data-execution_count="348">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span> <span class="co">## 유의수준</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="349">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>a2 <span class="op">=</span> spst.chi2.ppf(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>,<span class="dv">2</span>) <span class="co">## 기각영역1</span></span>
-<span id="cb58-2"><a href="#cb58-2"></a>a1 <span class="op">=</span> spst.chi2.ppf(alpha<span class="op">/</span><span class="dv">2</span>,<span class="dv">2</span>) <span class="co">## 기각영역 2</span></span>
-<span id="cb58-3"><a href="#cb58-3"></a></span>
-<span id="cb58-4"><a href="#cb58-4"></a>(a1,a2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="604b41bb" class="cell" data-execution_count="349">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>a2 <span class="op">=</span> spst.chi2.ppf(<span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>,<span class="dv">2</span>) <span class="co">## 기각영역1</span></span>
+<span id="cb55-2"><a href="#cb55-2"></a>a1 <span class="op">=</span> spst.chi2.ppf(alpha<span class="op">/</span><span class="dv">2</span>,<span class="dv">2</span>) <span class="co">## 기각영역 2</span></span>
+<span id="cb55-3"><a href="#cb55-3"></a></span>
+<span id="cb55-4"><a href="#cb55-4"></a>(a1,a2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="349">
 <pre><code>(0.05063561596857975, 7.377758908227871)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="350">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">110</span>,<span class="dv">10000</span>) <span class="co">## 임의의 x생성</span></span>
-<span id="cb60-2"><a href="#cb60-2"></a>s <span class="op">=</span> spst.chi2.pdf(x,<span class="dv">2</span>) <span class="co">## x에 따른 카이제곱 분포 생성</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4b46acac" class="cell" data-execution_count="350">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">110</span>,<span class="dv">10000</span>) <span class="co">## 임의의 x생성</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a>s <span class="op">=</span> spst.chi2.pdf(x,<span class="dv">2</span>) <span class="co">## x에 따른 카이제곱 분포 생성</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="352">
-<details>
+<div id="60357d3e" class="cell" data-execution_count="352">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>plt.plot(x,s,<span class="st">".r"</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb61-2"><a href="#cb61-2"></a>plt.plot(x[(x<span class="op">&gt;</span>a1) <span class="op">&amp;</span> (x<span class="op">&lt;</span>a2)],s[(x<span class="op">&gt;</span>a1) <span class="op">&amp;</span> (x<span class="op">&lt;</span>a2)],<span class="st">".b"</span>,alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb61-3"><a href="#cb61-3"></a>plt.axvline(x<span class="op">=</span>chi_s,color<span class="op">=</span><span class="st">"b"</span>,linestyle <span class="op">=</span> <span class="st">":"</span>)</span>
-<span id="cb61-4"><a href="#cb61-4"></a>plt.text(chi_s<span class="op">-</span><span class="dv">15</span>,<span class="fl">.4</span>, <span class="vs">r"계산된 $\chi$ 의 위치 "</span><span class="op">+</span><span class="st">" </span><span class="ch">\n</span><span class="st"> = "</span><span class="op">+</span><span class="bu">str</span>(<span class="bu">round</span>(chi_s,<span class="dv">2</span>)))</span>
-<span id="cb61-5"><a href="#cb61-5"></a>plt.legend([<span class="st">"빨강(기각영역)"</span>,<span class="st">"파랑(신뢰구간)"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>plt.plot(x,s,<span class="st">".r"</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb58-2"><a href="#cb58-2"></a>plt.plot(x[(x<span class="op">&gt;</span>a1) <span class="op">&amp;</span> (x<span class="op">&lt;</span>a2)],s[(x<span class="op">&gt;</span>a1) <span class="op">&amp;</span> (x<span class="op">&lt;</span>a2)],<span class="st">".b"</span>,alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb58-3"><a href="#cb58-3"></a>plt.axvline(x<span class="op">=</span>chi_s,color<span class="op">=</span><span class="st">"b"</span>,linestyle <span class="op">=</span> <span class="st">":"</span>)</span>
+<span id="cb58-4"><a href="#cb58-4"></a>plt.text(chi_s<span class="op">-</span><span class="dv">15</span>,<span class="fl">.4</span>, <span class="vs">r"계산된 $\chi$ 의 위치 "</span><span class="op">+</span><span class="st">" </span><span class="ch">\n</span><span class="st"> = "</span><span class="op">+</span><span class="bu">str</span>(<span class="bu">round</span>(chi_s,<span class="dv">2</span>)))</span>
+<span id="cb58-5"><a href="#cb58-5"></a>plt.legend([<span class="st">"빨강(기각영역)"</span>,<span class="st">"파랑(신뢰구간)"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="352">
-<pre><code>&lt;matplotlib.legend.Legend at 0x2c072976190&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-49-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-29-01. 데이터 분석 (2)_files/figure-html/cell-49-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="카이제곱통계량-계산함수이용" class="level3">
 <h3 class="anchored" data-anchor-id="카이제곱통계량-계산함수이용">카이제곱통계량 계산(함수이용)</h3>
-<div class="cell" data-execution_count="353">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>table <span class="op">=</span> pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Pclass'</span>])</span>
-<span id="cb63-2"><a href="#cb63-2"></a><span class="bu">print</span>(table)</span>
-<span id="cb63-3"><a href="#cb63-3"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>,<span class="st">'-'</span> <span class="op">*</span> <span class="dv">50</span>)</span>
-<span id="cb63-4"><a href="#cb63-4"></a></span>
-<span id="cb63-5"><a href="#cb63-5"></a><span class="co"># 2) 카이제곱검정</span></span>
-<span id="cb63-6"><a href="#cb63-6"></a>spst.chi2_contingency(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f0df1fdc" class="cell" data-execution_count="353">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>table <span class="op">=</span> pd.crosstab(titanic[<span class="st">'Survived'</span>], titanic[<span class="st">'Pclass'</span>])</span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="bu">print</span>(table)</span>
+<span id="cb59-3"><a href="#cb59-3"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>,<span class="st">'-'</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb59-4"><a href="#cb59-4"></a></span>
+<span id="cb59-5"><a href="#cb59-5"></a><span class="co"># 2) 카이제곱검정</span></span>
+<span id="cb59-6"><a href="#cb59-6"></a>spst.chi2_contingency(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Pclass      1   2    3
 Survived              
@@ -1762,10 +1852,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1775,8 +1882,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1788,7 +1904,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1832,6 +2071,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1857,6 +2097,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1918,17 +2184,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html" class="pagination-link">
+      <a href="../../../posts/DX/02. 데이터 분석/2023-08-28-00. 데이터 분석 (1).html" class="pagination-link" aria-label="00. 데이터 분석 (1)">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00. 데이터 분석 (1)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="pagination-link">
+      <a href="../../../posts/DX/02. 데이터 분석/2023-09-01-02. 데이터 분석 (2).html" class="pagination-link" aria-label="02. 데이터 분석 (3)">
         <span class="nav-page-text">02. 데이터 분석 (3)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

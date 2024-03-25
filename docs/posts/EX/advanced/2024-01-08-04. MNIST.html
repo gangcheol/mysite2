@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -101,17 +108,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -123,46 +156,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/EX/2023-10-30-00. Churn.html">EX</a></li><li class="breadcrumb-item"><a href="../../../posts/EX/advanced/2024-01-08-04. MNIST.html">Advanced</a></li><li class="breadcrumb-item"><a href="../../../posts/EX/advanced/2024-01-08-04. MNIST.html">04. MNIST</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/EX/2023-10-30-00. Churn.html">EX</a></li><li class="breadcrumb-item"><a href="../../../posts/EX/advanced/2024-01-08-04. MNIST.html">Advanced</a></li><li class="breadcrumb-item"><a href="../../../posts/EX/advanced/2024-01-08-04. MNIST.html">04. MNIST</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -170,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/EX/2023-10-30-00. Churn.html">EX</a></li><li class="breadcrumb-item"><a href="../../../posts/EX/advanced/2024-01-08-04. MNIST.html">Advanced</a></li><li class="breadcrumb-item"><a href="../../../posts/EX/advanced/2024-01-08-04. MNIST.html">04. MNIST</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">04. MNIST</h1>
@@ -203,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -802,7 +835,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -842,22 +875,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="import" class="level1">
 <h1>import</h1>
-<div class="cell" data-execution_count="1">
+<div id="cell-2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="데이터-로드" class="level1">
 <h1>데이터 로드</h1>
-<div class="cell" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> tensorflow.keras.datasets <span class="im">import</span> fashion_mnist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="train-test-데이터-셋-분리" class="level1">
 <h1>train, test 데이터 셋 분리</h1>
-<div class="cell" data-outputid="99d32957-1755-4f63-f1f9-394ba01b1467" data-execution_count="3">
+<div id="cell-6" class="cell" data-outputid="99d32957-1755-4f63-f1f9-394ba01b1467" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>(x_train, y_train), (x_test, y_test) <span class="op">=</span> fashion_mnist.load_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-labels-idx1-ubyte.gz
@@ -870,7 +904,7 @@ Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-dataset
 4422102/4422102 [==============================] - 1s 0us/step</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="ee2e2f62-b744-4fec-ef3e-0b0ff24672e2" data-execution_count="4">
+<div id="cell-7" class="cell" data-outputid="ee2e2f62-b744-4fec-ef3e-0b0ff24672e2" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">print</span>(x_train.shape)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="bu">print</span>(y_train.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -878,7 +912,7 @@ Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-dataset
 (60000,)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="b0ac57bc-7078-496b-d461-9bd30a9ed900" data-execution_count="5">
+<div id="cell-8" class="cell" data-outputid="b0ac57bc-7078-496b-d461-9bd30a9ed900" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(x_test.shape)</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="bu">print</span>(y_test.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -887,7 +921,7 @@ Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-dataset
 </div>
 </div>
 <p><code>-</code> 라벨 지정</p>
-<div class="cell" data-outputid="4ba98b55-bad5-482d-b4d8-a803c43447c7" data-execution_count="6">
+<div id="cell-10" class="cell" data-outputid="4ba98b55-bad5-482d-b4d8-a803c43447c7" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>labels <span class="op">=</span>[<span class="st">"T-shirt"</span>, <span class="st">"Trouser"</span>, <span class="st">"Pullover"</span>,<span class="st">"Dress"</span>,</span>
 <span id="cb9-2"><a href="#cb9-2"></a>         <span class="st">"Coat"</span>, <span class="st">"Sandal"</span>, <span class="st">"Shirt"</span>, <span class="st">"Sneaker"</span>,<span class="st">"Bag"</span>,<span class="st">"Ankle boot"</span>]</span>
 <span id="cb9-3"><a href="#cb9-3"></a></span>
@@ -899,15 +933,19 @@ Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-dataset
 </section>
 <section id="시각화" class="level1">
 <h1>시각화</h1>
-<div class="cell" data-execution_count="7">
+<div id="cell-12" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="4621c307-c944-49f1-9d96-6bbb95cbb788" data-execution_count="8">
+<div id="cell-13" class="cell" data-outputid="4621c307-c944-49f1-9d96-6bbb95cbb788" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>plt.imshow(x_test[<span class="dv">1</span>], cmap <span class="op">=</span> <span class="st">"Greys"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2024-01-08-04. MNIST_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2024-01-08-04. MNIST_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -917,28 +955,28 @@ Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-dataset
 <ul>
 <li>전처리 규칙은 트레인셋을 따라야한다.</li>
 </ul>
-<div class="cell" data-outputid="c33fcfa3-86c4-411a-b54d-26287fbf9dc8" data-execution_count="9">
+<div id="cell-17" class="cell" data-outputid="c33fcfa3-86c4-411a-b54d-26287fbf9dc8" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>max_n, min_n <span class="op">=</span> x_train.<span class="bu">max</span>(), x_train.<span class="bu">min</span>()</span>
 <span id="cb13-2"><a href="#cb13-2"></a>max_n, min_n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>(255, 0)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="cell-18" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>train_x <span class="op">=</span> (x_train <span class="op">-</span> min_n) <span class="op">/</span> (max_n <span class="op">-</span> min_n)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>test_x <span class="op">=</span> (x_test <span class="op">-</span> min_n) <span class="op">/</span> (max_n <span class="op">-</span> min_n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> Date reshape(흑백채널 추가)</p>
-<div class="cell" data-execution_count="11">
+<div id="cell-20" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>train_x_rel <span class="op">=</span> train_x.reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">28</span>,<span class="dv">28</span>,<span class="dv">1</span>)</span>
 <span id="cb16-2"><a href="#cb16-2"></a>test_x_rel <span class="op">=</span> test_x.reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">28</span>,<span class="dv">28</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="one-hot-encoding" class="level2">
 <h2 class="anchored" data-anchor-id="one-hot-encoding">one-hot encoding</h2>
-<div class="cell" data-execution_count="12">
+<div id="cell-22" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">from</span> keras.utils <span class="im">import</span> to_categorical</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="cell-23" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>train_y_c <span class="op">=</span> to_categorical(y_train, <span class="dv">10</span>)</span>
 <span id="cb18-2"><a href="#cb18-2"></a>test_y_c <span class="op">=</span> to_categorical(y_test, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -949,7 +987,7 @@ Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-dataset
 <h1>모델링 1. DNN</h1>
 <section id="import-1" class="level2">
 <h2 class="anchored" data-anchor-id="import-1">import</h2>
-<div class="cell" data-execution_count="14">
+<div id="cell-27" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
 <span id="cb19-3"><a href="#cb19-3"></a></span>
@@ -960,7 +998,7 @@ Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-dataset
 </section>
 <section id="모델-설계" class="level2">
 <h2 class="anchored" data-anchor-id="모델-설계">모델 설계</h2>
-<div class="cell" data-execution_count="15">
+<div id="cell-29" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># 1. 세션 클리어</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a>clear_session()</span>
 <span id="cb20-3"><a href="#cb20-3"></a></span>
@@ -986,7 +1024,7 @@ Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-dataset
 <span id="cb20-23"><a href="#cb20-23"></a>model1.<span class="bu">compile</span>(optimizer <span class="op">=</span> <span class="st">"adam"</span>, loss <span class="op">=</span> tf.keras.losses.categorical_crossentropy,</span>
 <span id="cb20-24"><a href="#cb20-24"></a>               metrics <span class="op">=</span> [<span class="st">"accuracy"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="87adea51-e8f8-417a-fe87-22e571186d57" data-execution_count="16">
+<div id="cell-30" class="cell" data-outputid="87adea51-e8f8-417a-fe87-22e571186d57" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>model1.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model: "sequential"
@@ -1025,17 +1063,17 @@ _________________________________________________________________</code></pre>
 </section>
 <section id="학습" class="level2">
 <h2 class="anchored" data-anchor-id="학습">학습</h2>
-<div class="cell" data-execution_count="19">
+<div id="cell-32" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">from</span> keras.callbacks <span class="im">import</span> EarlyStopping</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
+<div id="cell-33" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>es <span class="op">=</span> EarlyStopping(monitor <span class="op">=</span> <span class="st">"val_loss"</span>,</span>
 <span id="cb24-2"><a href="#cb24-2"></a>                  min_delta <span class="op">=</span> <span class="dv">0</span>,</span>
 <span id="cb24-3"><a href="#cb24-3"></a>                  patience <span class="op">=</span> <span class="dv">3</span>,</span>
 <span id="cb24-4"><a href="#cb24-4"></a>                   verbose <span class="op">=</span> <span class="dv">1</span>,</span>
 <span id="cb24-5"><a href="#cb24-5"></a>                   restore_best_weights <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="cd32e70e-0525-40b1-83af-72005485e4e8" data-execution_count="22">
+<div id="cell-34" class="cell" data-outputid="cd32e70e-0525-40b1-83af-72005485e4e8" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>history <span class="op">=</span> model1.fit(train_x_rel, train_y_c,</span>
 <span id="cb25-2"><a href="#cb25-2"></a>                     epochs <span class="op">=</span> <span class="dv">10000</span>, verbose <span class="op">=</span> <span class="dv">1</span>,</span>
 <span id="cb25-3"><a href="#cb25-3"></a>                     validation_split <span class="op">=</span> <span class="fl">0.2</span>,</span>
@@ -1074,29 +1112,33 @@ Epoch 13: early stopping</code></pre>
 </section>
 <section id="결과-시각화" class="level2">
 <h2 class="anchored" data-anchor-id="결과-시각화">결과 시각화</h2>
-<div class="cell" data-outputid="721432e7-e49b-41d5-eb4c-106458b06104" data-execution_count="24">
+<div id="cell-36" class="cell" data-outputid="721432e7-e49b-41d5-eb4c-106458b06104" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
 <span id="cb27-2"><a href="#cb27-2"></a>plt.plot(history[<span class="st">"loss"</span>],<span class="st">"--."</span>,label <span class="op">=</span> <span class="st">"train_loss"</span>)</span>
 <span id="cb27-3"><a href="#cb27-3"></a>plt.plot(history[<span class="st">"val_loss"</span>], <span class="st">"--."</span>,label <span class="op">=</span> <span class="st">"val_loss"</span>)</span>
 <span id="cb27-4"><a href="#cb27-4"></a>plt.legend()</span>
 <span id="cb27-5"><a href="#cb27-5"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2024-01-08-04. MNIST_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2024-01-08-04. MNIST_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="예측" class="level2">
 <h2 class="anchored" data-anchor-id="예측">예측</h2>
-<div class="cell" data-outputid="c145c875-0683-46b0-cd50-62f2650bb07e" data-execution_count="25">
+<div id="cell-38" class="cell" data-outputid="c145c875-0683-46b0-cd50-62f2650bb07e" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>y_pred <span class="op">=</span>  model1.predict(test_x_rel).argmax(axis <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>313/313 [==============================] - 1s 2ms/step</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="26">
+<div id="cell-39" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="54af4f5c-a8c1-46bd-f626-2fbc9f04cc19" data-execution_count="31">
+<div id="cell-40" class="cell" data-outputid="54af4f5c-a8c1-46bd-f626-2fbc9f04cc19" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>confusion_matrix(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>array([[875,   0,  18,  27,   1,   0,  70,   0,   9,   0],
@@ -1111,7 +1153,7 @@ Epoch 13: early stopping</code></pre>
        [  0,   0,   0,   0,   0,  17,   1,  27,   0, 955]])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="0a2e0148-dd39-4aa9-8cdb-40cbb8ce892f" data-execution_count="33">
+<div id="cell-41" class="cell" data-outputid="0a2e0148-dd39-4aa9-8cdb-40cbb8ce892f" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
@@ -1140,7 +1182,7 @@ weighted avg       0.88      0.88      0.88     10000
 <h1>모델링 2. CNN</h1>
 <section id="import-2" class="level2">
 <h2 class="anchored" data-anchor-id="import-2">import</h2>
-<div class="cell" data-execution_count="43">
+<div id="cell-45" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb35-2"><a href="#cb35-2"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
 <span id="cb35-3"><a href="#cb35-3"></a><span class="im">from</span> keras.backend <span class="im">import</span> clear_session</span>
@@ -1150,7 +1192,7 @@ weighted avg       0.88      0.88      0.88     10000
 </section>
 <section id="모델-설계-1" class="level2">
 <h2 class="anchored" data-anchor-id="모델-설계-1">모델 설계</h2>
-<div class="cell" data-outputid="1ba9ccb8-184c-4c9e-9a93-63b648b896fb" data-execution_count="62">
+<div id="cell-47" class="cell" data-outputid="1ba9ccb8-184c-4c9e-9a93-63b648b896fb" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a></span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="co"># 1. 세션클리어</span></span>
 <span id="cb36-3"><a href="#cb36-3"></a>keras.backend.clear_session()</span>
@@ -1229,16 +1271,16 @@ _________________________________________________________________</code></pre>
 </section>
 <section id="모델-학습" class="level2">
 <h2 class="anchored" data-anchor-id="모델-학습">모델 학습</h2>
-<div class="cell" data-execution_count="63">
+<div id="cell-49" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">from</span> tensorflow.keras.callbacks <span class="im">import</span> EarlyStopping</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="9edcb475-429c-46cb-8198-2a4a8126b1aa" data-execution_count="64">
+<div id="cell-50" class="cell" data-outputid="9edcb475-429c-46cb-8198-2a4a8126b1aa" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>train_x_rel.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <pre><code>(60000, 28, 28, 1)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="65">
+<div id="cell-51" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>es <span class="op">=</span> EarlyStopping(</span>
 <span id="cb41-2"><a href="#cb41-2"></a>      monitor <span class="op">=</span> <span class="st">"val_loss"</span>,</span>
 <span id="cb41-3"><a href="#cb41-3"></a>      min_delta <span class="op">=</span> <span class="dv">0</span>,</span>
@@ -1247,7 +1289,7 @@ _________________________________________________________________</code></pre>
 <span id="cb41-6"><a href="#cb41-6"></a>      restore_best_weights  <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb41-7"><a href="#cb41-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="6605db2a-33c6-456b-c0ee-0335be9f4597" data-execution_count="66">
+<div id="cell-52" class="cell" data-outputid="6605db2a-33c6-456b-c0ee-0335be9f4597" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>history <span class="op">=</span> model2.fit(train_x_rel, train_y_c,</span>
 <span id="cb42-2"><a href="#cb42-2"></a>                     epochs <span class="op">=</span> <span class="dv">10000</span>, verbose <span class="op">=</span> <span class="dv">1</span>,</span>
 <span id="cb42-3"><a href="#cb42-3"></a>                     validation_split <span class="op">=</span> <span class="fl">0.2</span>,</span>
@@ -1272,26 +1314,30 @@ Epoch 6: early stopping</code></pre>
 </section>
 <section id="결과-시각화-1" class="level2">
 <h2 class="anchored" data-anchor-id="결과-시각화-1">결과 시각화</h2>
-<div class="cell" data-outputid="6e7cd3f3-be27-41a7-c851-9b2c41d48e5b" data-execution_count="67">
+<div id="cell-54" class="cell" data-outputid="6e7cd3f3-be27-41a7-c851-9b2c41d48e5b" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">4</span>))</span>
 <span id="cb44-2"><a href="#cb44-2"></a>plt.plot(history[<span class="st">"loss"</span>],<span class="st">"--."</span>,label <span class="op">=</span> <span class="st">"train_loss"</span>)</span>
 <span id="cb44-3"><a href="#cb44-3"></a>plt.plot(history[<span class="st">"val_loss"</span>], <span class="st">"--."</span>,label <span class="op">=</span> <span class="st">"val_loss"</span>)</span>
 <span id="cb44-4"><a href="#cb44-4"></a>plt.legend()</span>
 <span id="cb44-5"><a href="#cb44-5"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2024-01-08-04. MNIST_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2024-01-08-04. MNIST_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="예측-1" class="level2">
 <h2 class="anchored" data-anchor-id="예측-1">예측</h2>
-<div class="cell" data-outputid="de074288-7d72-4ecc-9ba2-740b043ad56e" data-execution_count="68">
+<div id="cell-56" class="cell" data-outputid="de074288-7d72-4ecc-9ba2-740b043ad56e" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>y_pred <span class="op">=</span>  model1.predict(test_x_rel).argmax(axis <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>313/313 [==============================] - 1s 3ms/step</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="f81a7b1e-2923-4da7-a193-d338b30c5185" data-execution_count="69">
+<div id="cell-57" class="cell" data-outputid="f81a7b1e-2923-4da7-a193-d338b30c5185" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
@@ -1398,10 +1444,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1411,8 +1474,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1424,7 +1496,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1468,6 +1663,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1493,6 +1689,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1554,17 +1776,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/EX/2023-11-01-03. Titanic.html" class="pagination-link">
+      <a href="../../../posts/EX/2023-11-01-03. Titanic.html" class="pagination-link" aria-label="03. Titanic">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">03. Titanic</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/EX/advanced/2024-01-21-00. Associate review.html" class="pagination-link">
+      <a href="../../../posts/EX/advanced/2024-01-21-00. Associate review.html" class="pagination-link" aria-label="00. Associate Review">
         <span class="nav-page-text">00. Associate Review</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

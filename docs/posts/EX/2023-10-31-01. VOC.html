@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,29 +98,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -126,46 +159,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/EX/2023-10-30-00. Churn.html">EX</a></li><li class="breadcrumb-item"><a href="../../posts/EX/2023-10-31-01. VOC.html">01. VOC</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/EX/2023-10-30-00. Churn.html">EX</a></li><li class="breadcrumb-item"><a href="../../posts/EX/2023-10-31-01. VOC.html">01. VOC</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -173,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/EX/2023-10-30-00. Churn.html">EX</a></li><li class="breadcrumb-item"><a href="../../posts/EX/2023-10-31-01. VOC.html">01. VOC</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">01. VOC</h1>
@@ -206,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -805,7 +838,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -852,13 +885,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="importstarstarstar" class="level1">
 <h1>import(<span class="math inline">\(\star\)</span><span class="math inline">\(\star\)</span><span class="math inline">\(\star\)</span>)</h1>
-<div class="cell" data-tags="[]" data-execution_count="251">
+<div id="f113a7cf-b96f-4f70-bdde-3573b4df571b" class="cell" data-tags="[]" data-execution_count="251">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#!pip install tensorflow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="252">
-<details>
+<div id="14e9448d-a6d1-488d-938e-8acc4b9b88ff" class="cell" data-tags="[]" data-execution_count="252">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -880,7 +914,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-18"><a href="#cb2-18"></a>plt.rcParams[<span class="st">"axes.unicode_minus"</span>] <span class="op">=</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="253">
+<div id="25783d34-7437-4181-af4b-b456e0d0d5dd" class="cell" data-tags="[]" data-execution_count="253">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> warnings</span>
 <span id="cb3-2"><a href="#cb3-2"></a>warnings.filterwarnings(action <span class="op">=</span><span class="st">"ignore"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -898,10 +932,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="tabular-데이터-로딩" class="level1">
 <h1>1. Tabular 데이터 로딩</h1>
-<div class="cell" data-tags="[]" data-execution_count="254">
+<div id="5e28b255-39da-4e3e-a844-df9bf3d2d1bf" class="cell" data-tags="[]" data-execution_count="254">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"voc_data.csv"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="254">
+<div>
 <div>
 
 
@@ -1060,10 +1095,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="데이터-구성확인" class="level1">
 <h1>2. 데이터 구성확인</h1>
-<div class="cell" data-tags="[]" data-execution_count="255">
+<div id="2bcadb6f-b351-45ec-aed5-90c57b9859cc" class="cell" data-tags="[]" data-execution_count="255">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -1099,15 +1135,16 @@ dtypes: int64(12), object(12)
 memory usage: 1.8+ MB</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="256">
+<div id="6a47d93d-6ccf-4118-95be-adfc8fccdcdd" class="cell" data-tags="[]" data-execution_count="256">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="256">
 <pre><code>RangeIndex(start=0, stop=10000, step=1)</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="257">
+<div id="d8597f0b-ecc0-4b54-8ab3-2d7fff4647dc" class="cell" data-tags="[]" data-execution_count="257">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="257">
+<div>
 <div>
 
 
@@ -1256,7 +1293,8 @@ memory usage: 1.8+ MB</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="258">
+</div>
+<div id="3edbe4f3-cbf0-4f8d-8f88-28e929e2c474" class="cell" data-tags="[]" data-execution_count="258">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="258">
 <pre><code>voc_trt_perd_itg_cd               0
@@ -1288,7 +1326,7 @@ dtype: int64</code></pre>
 </div>
 <section id="voc_trt_perd_itg_cd-칼럼에-고유값-count" class="level3">
 <h3 class="anchored" data-anchor-id="voc_trt_perd_itg_cd-칼럼에-고유값-count"><code>voc_trt_perd_itg_cd</code> 칼럼에 고유값 count</h3>
-<div class="cell" data-tags="[]" data-execution_count="259">
+<div id="90d47a68-c2a1-4131-898d-d49412f9c541" class="cell" data-tags="[]" data-execution_count="259">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df[<span class="st">"voc_trt_perd_itg_cd"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="259">
 <pre><code>voc_trt_perd_itg_cd
@@ -1312,7 +1350,7 @@ _        5422
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="260">
+<div id="fabf0317-18a1-4873-879d-2ac36c297fea" class="cell" data-tags="[]" data-execution_count="260">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df[<span class="st">"voc_trt_perd_itg_cd"</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="260">
 <pre><code>voc_trt_perd_itg_cd
@@ -1340,7 +1378,7 @@ Name: proportion, dtype: float64</code></pre>
 </section>
 <section id="불필요한-칼럼-삭제" class="level1">
 <h1>3. 불필요한 칼럼 삭제</h1>
-<div class="cell" data-tags="[]" data-execution_count="261">
+<div id="4e200900-7624-4d12-a09f-886bf362455b" class="cell" data-tags="[]" data-execution_count="261">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>d_c <span class="op">=</span> [<span class="st">'voc_trt_perd_itg_cd'</span>, </span>
 <span id="cb16-2"><a href="#cb16-2"></a>       <span class="st">'voc_trt_reslt_itg_cd'</span>, </span>
 <span id="cb16-3"><a href="#cb16-3"></a>       <span class="st">'oos_cause_type_itg_cd'</span>, </span>
@@ -1348,21 +1386,21 @@ Name: proportion, dtype: float64</code></pre>
 <span id="cb16-5"><a href="#cb16-5"></a>       <span class="st">'engt_tgt_div_itg_cd'</span>,</span>
 <span id="cb16-6"><a href="#cb16-6"></a>       <span class="st">'fclt_oos_yn'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="262">
+<div id="4681d4b3-dc16-4a5e-88fe-7564c94b0884" class="cell" data-tags="[]" data-execution_count="262">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df1 <span class="op">=</span> df.drop(d_c, axis <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="263">
+<div id="a9569207-a1a1-49e3-9dc4-74ace8aa317e" class="cell" data-tags="[]" data-execution_count="263">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>[<span class="dv">1</span> <span class="cf">if</span> i <span class="kw">in</span> d_c <span class="cf">else</span> <span class="dv">0</span> <span class="cf">for</span> i <span class="kw">in</span> df.columns.values]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="263">
 <pre><code>[1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0]</code></pre>
 </div>
 </div>
 <p><code>-</code> ‘voc_mis_pbls_yn’ 컬럼은 ‘N’ 값이 99% 이상 차지하므로 삭제</p>
-<div class="cell" data-tags="[]" data-execution_count="264">
+<div id="4ac18ac6-1dbf-44ed-8def-e3da707fd570" class="cell" data-tags="[]" data-execution_count="264">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df1.drop(<span class="st">'voc_mis_pbls_yn'</span>, axis <span class="op">=</span> <span class="dv">1</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 날짜 관련 컬럼 삭제</p>
-<div class="cell" data-tags="[]" data-execution_count="265">
+<div id="227c335a-667a-4677-99f9-ffc219b46f3b" class="cell" data-tags="[]" data-execution_count="265">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>date_col <span class="op">=</span> [<span class="st">'new_date'</span>, <span class="st">'opn_nfl_chg_date'</span>, <span class="st">'cont_fns_pam_date'</span>]</span>
 <span id="cb21-2"><a href="#cb21-2"></a>df1.drop(date_col, axis <span class="op">=</span> <span class="dv">1</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb21-3"><a href="#cb21-3"></a>[<span class="dv">1</span> <span class="cf">if</span> i <span class="kw">in</span> date_col <span class="cf">else</span> <span class="dv">0</span> <span class="cf">for</span> i <span class="kw">in</span> df1.columns.values]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1379,10 +1417,10 @@ Name: proportion, dtype: float64</code></pre>
 <li>“df1” DataFrame 자체에 저장할 것이므로 inplace=True 사용</li>
 <li>컬럼별 Null 갯수 확인</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="266">
+<div id="10266153-92a9-4e07-b629-47a339c391d3" class="cell" data-tags="[]" data-execution_count="266">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df1.replace(<span class="st">"_"</span>, np.nan,inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="267">
+<div id="f42b42b1-d7d9-4305-a711-fcee16826968" class="cell" data-tags="[]" data-execution_count="267">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df1.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="267">
 <pre><code>voc_prod_sbt_id                      0
@@ -1405,7 +1443,7 @@ dtype: int64</code></pre>
 </section>
 <section id="cust_clas_itg_cd의-결측치를-최빈값으로-변경" class="level1">
 <h1>5. <code>cust_clas_itg_cd</code>의 결측치를 최빈값으로 변경</h1>
-<div class="cell" data-tags="[]" data-execution_count="268">
+<div id="902ebbb0-d965-4636-af50-6c6538206b1d" class="cell" data-tags="[]" data-execution_count="268">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>df1[<span class="st">"cust_clas_itg_cd"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="268">
 <pre><code>cust_clas_itg_cd
@@ -1420,17 +1458,17 @@ M       1
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="269">
+<div id="4c3aceb5-ab1c-4e0d-94ad-307eb6737cf6" class="cell" data-tags="[]" data-execution_count="269">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>m <span class="op">=</span> df1[<span class="st">"cust_clas_itg_cd"</span>].mode()[<span class="dv">0</span>]</span>
 <span id="cb28-2"><a href="#cb28-2"></a>df1[<span class="st">"cust_clas_itg_cd"</span>].fillna(m,inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="270">
+<div id="60fea209-20fc-49b7-aab5-b57e93a7a681" class="cell" data-tags="[]" data-execution_count="270">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>df1[<span class="st">"cust_clas_itg_cd"</span>].isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="270">
 <pre><code>0</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="271">
+<div id="87d832d8-508e-465f-aa90-fd51281abef4" class="cell" data-tags="[]" data-execution_count="271">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>df1.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -1459,25 +1497,25 @@ memory usage: 1.1+ MB</code></pre>
 </section>
 <section id="age_itg_cd의-결측치를-중앙값으로-변경하고-데이터-타입을-정수로-변경" class="level1">
 <h1>6. <code>age_itg_cd</code>의 결측치를 중앙값으로 변경하고 데이터 타입을 정수로 변경</h1>
-<div class="cell" data-tags="[]" data-execution_count="272">
+<div id="3adbc147-778a-403a-b825-5de6548fdb8d" class="cell" data-tags="[]" data-execution_count="272">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>m2 <span class="op">=</span> df1[<span class="st">"age_itg_cd"</span>].median()</span>
 <span id="cb33-2"><a href="#cb33-2"></a></span>
 <span id="cb33-3"><a href="#cb33-3"></a>df1[<span class="st">"age_itg_cd"</span>].fillna(m2, inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="273">
+<div id="a69d7cf1-d01d-4d23-8b5c-943c0ada8be2" class="cell" data-tags="[]" data-execution_count="273">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>df1[<span class="st">"age_itg_cd"</span>].isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="273">
 <pre><code>0</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="274">
+<div id="dc655493-57df-4dd5-a12f-9e9c42bb040e" class="cell" data-tags="[]" data-execution_count="274">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>df1[<span class="st">"age_itg_cd"</span>] <span class="op">=</span> df1[<span class="st">"age_itg_cd"</span>].astype(<span class="bu">int</span>)</span>
 <span id="cb36-2"><a href="#cb36-2"></a>df1[<span class="st">"age_itg_cd"</span>].dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="274">
 <pre><code>dtype('int32')</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="275">
+<div id="8f22b252-ec66-4903-95a2-b33bb75b8a81" class="cell" data-tags="[]" data-execution_count="275">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>df1.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -1506,24 +1544,24 @@ memory usage: 1.0+ MB</code></pre>
 </section>
 <section id="cont_sttus_itg_cd의-null-값과-cust_dtl_ctg_itg_cd의-null-값을-최빈값mode으로-변경" class="level1">
 <h1>7. <code>cont_sttus_itg_cd</code>의 null 값과 <code>cust_dtl_ctg_itg_cd</code>의 null 값을 최빈값(mode)으로 변경</h1>
-<div class="cell" data-tags="[]" data-execution_count="276">
+<div id="207e4347-ec9a-4ee9-8656-c9f36c344f8e" class="cell" data-tags="[]" data-execution_count="276">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>m3, m4 <span class="op">=</span> df1[<span class="st">"cont_sttus_itg_cd"</span>].mode()[<span class="dv">0</span>], df1[<span class="st">"cust_dtl_ctg_itg_cd"</span>].mode()[<span class="dv">0</span>]</span>
 <span id="cb40-2"><a href="#cb40-2"></a>m3, m4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="276">
 <pre><code>('10001', '10003')</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="277">
+<div id="5c9ac724-4f12-40fb-876c-7e890eb40aa3" class="cell" data-tags="[]" data-execution_count="277">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>df1[<span class="st">"cont_sttus_itg_cd"</span>].fillna(m3,inplace <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb42-2"><a href="#cb42-2"></a>df1[<span class="st">"cust_dtl_ctg_itg_cd"</span>].fillna(m4,inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="278">
+<div id="6bf68cf9-242e-4949-9385-4c2556532f6f" class="cell" data-tags="[]" data-execution_count="278">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>df1[<span class="st">"cont_sttus_itg_cd"</span>].isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="278">
 <pre><code>0</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="279">
+<div id="870c4a05-913f-48ad-8e96-58fbc976cf4e" class="cell" data-tags="[]" data-execution_count="279">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>df1[<span class="st">"cust_dtl_ctg_itg_cd"</span>].isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="279">
 <pre><code>0</code></pre>
@@ -1533,12 +1571,13 @@ memory usage: 1.0+ MB</code></pre>
 <section id="라벨-인코딩-원핫-인코딩starstarstar" class="level1">
 <h1>라벨 인코딩, 원핫 인코딩(<span class="math inline">\(\star\)</span><span class="math inline">\(\star\)</span><span class="math inline">\(\star\)</span>)</h1>
 <p><code>-</code> <code>df1</code>에서 문자열(object) 데이터 타입을 가진 열들을 선택하여 <code>cat_cols</code>라는 변수에 저장</p>
-<div class="cell" data-tags="[]" data-execution_count="280">
+<div id="9b3faadc-b366-4939-8c90-09c0a56a5ba9" class="cell" data-tags="[]" data-execution_count="280">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>cat_cols <span class="op">=</span> df1.select_dtypes(<span class="st">"O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="281">
+<div id="78400db1-237d-4aff-9303-392992486404" class="cell" data-tags="[]" data-execution_count="281">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>cat_cols.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="281">
+<div>
 <div>
 
 
@@ -1594,18 +1633,20 @@ memory usage: 1.0+ MB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <section id="sklearn의-모듈을-읽어와-범주형-데이터를-카테고리화starstarstar" class="level2">
 <h2 class="anchored" data-anchor-id="sklearn의-모듈을-읽어와-범주형-데이터를-카테고리화starstarstar">sklearn의 모듈을 읽어와 범주형 데이터를 카테고리화(<span class="math inline">\(\star\star\star\)</span>)</h2>
 <p><code>-</code> cat_cols 데이터프레임에서 <code>cust_clas_itg_cd</code> 열의 범주형 데이터를 숫자로 인코딩하고, 그 결과를 <code>le_cust_clas_itg_cd</code> 열에 저장</p>
-<div class="cell" data-tags="[]" data-execution_count="282">
+<div id="06419807-f93c-4bf1-8a84-d4c61e7c2291" class="cell" data-tags="[]" data-execution_count="282">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
 <span id="cb49-2"><a href="#cb49-2"></a></span>
 <span id="cb49-3"><a href="#cb49-3"></a>le <span class="op">=</span> LabelEncoder()</span>
 <span id="cb49-4"><a href="#cb49-4"></a>cat_cols[<span class="st">"le_cust_clas_itg_cd"</span>] <span class="op">=</span> le.fit_transform(cat_cols[<span class="st">"cust_clas_itg_cd"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="283">
+<div id="8084fb6b-b4dd-4e7e-8a1a-66fa703c1922" class="cell" data-tags="[]" data-execution_count="283">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>cat_cols.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="283">
+<div>
 <div>
 
 
@@ -1667,6 +1708,7 @@ memory usage: 1.0+ MB</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 </section>
 <section id="범주형-컬럼cat_columns에-대해서-one-hot-encoding될-수-있도록-pandas의-get_dummies-함수를-적용" class="level1">
@@ -1679,12 +1721,12 @@ memory usage: 1.0+ MB</code></pre>
 <li>drop_first=True</li>
 <li>해당 전처리가 반영된 결과를 ‘df1’ DataFrame에 저장해 주세요.</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="284">
+<div id="1b1d7f49-c7b5-4763-b6cb-af0035874aa5" class="cell" data-tags="[]" data-execution_count="284">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>cat_columns <span class="op">=</span> df1.select_dtypes(<span class="st">"O"</span>).columns.values.tolist()</span>
 <span id="cb51-2"><a href="#cb51-2"></a></span>
 <span id="cb51-3"><a href="#cb51-3"></a>df1 <span class="op">=</span> pd.get_dummies(data <span class="op">=</span> df1, columns <span class="op">=</span> cat_columns, drop_first <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="285">
+<div id="a831e2ab-3eab-4a9f-83d0-901c67ba3881" class="cell" data-tags="[]" data-execution_count="285">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>df1.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -1745,7 +1787,7 @@ memory usage: 986.5 KB</code></pre>
 <li>X, y, test_size=0.2, stratify=y, random_state=0</li>
 <li>사이킷런 train_test_split 함수 사용</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="286">
+<div id="5a20b9e6-207f-4c38-907e-610989207acf" class="cell" data-tags="[]" data-execution_count="286">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>target <span class="op">=</span> <span class="st">"trm_yn_Y"</span></span>
 <span id="cb54-2"><a href="#cb54-2"></a></span>
 <span id="cb54-3"><a href="#cb54-3"></a>X <span class="op">=</span> df1.drop(target, axis <span class="op">=</span> <span class="dv">1</span>)</span>
@@ -1765,7 +1807,7 @@ memory usage: 986.5 KB</code></pre>
 <li>훈련 데이터 ’X_train’을 최소-최대 스케일링하여 변환, fit_transform 메서드 적용</li>
 <li>테스트 데이터 ’X_test’를 훈련 데이터에 맞춰 스케일링, transform 메서드 적용</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="287">
+<div id="d92baca5-76d5-4d58-9009-385e34581210" class="cell" data-tags="[]" data-execution_count="287">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb55-2"><a href="#cb55-2"></a></span>
 <span id="cb55-3"><a href="#cb55-3"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
@@ -1774,7 +1816,7 @@ memory usage: 986.5 KB</code></pre>
 <span id="cb55-6"><a href="#cb55-6"></a>X_test <span class="op">=</span> scaler.transform(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> <code>voc_prod_sbt_id</code> 컬럼의 값이 1보다 작은 숫자인 것 확인</p>
-<div class="cell" data-tags="[]" data-execution_count="295">
+<div id="fa8373d6-c889-403a-9c83-6290b554b615" class="cell" data-tags="[]" data-execution_count="295">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="bu">sum</span>(X_train[:,<span class="dv">0</span>]<span class="op">&gt;</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="295">
 <pre><code>1</code></pre>
@@ -1792,7 +1834,7 @@ memory usage: 986.5 KB</code></pre>
 <li>fit을 활용해 모델을 학습해주세요. 학습 시 훈련데이터 셋을 활용해주세요.</li>
 <li>모델의 테스트 데이터 X_test에 대한 예측 정확도를 계산해주세요</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="307">
+<div id="4f98e13e-c1cd-4fd8-be2f-35057833bcb8" class="cell" data-tags="[]" data-execution_count="307">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb58-2"><a href="#cb58-2"></a></span>
 <span id="cb58-3"><a href="#cb58-3"></a>logit <span class="op">=</span> LogisticRegression(C <span class="op">=</span> <span class="fl">1.0</span>, max_iter <span class="op">=</span> <span class="dv">2000</span>)</span>
@@ -1816,7 +1858,7 @@ memory usage: 986.5 KB</code></pre>
 <li>heatmap 옵션 : annot=True, fmt=‘d’</li>
 <li>’y_test’와 ’y_pred’를 비교하여 성능지표 출력</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="310">
+<div id="5ed55e7c-3ad6-460e-a8d2-6a1b7b829f57" class="cell" data-tags="[]" data-execution_count="310">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>y_pred <span class="op">=</span> logit.predict(X_test)</span>
 <span id="cb60-2"><a href="#cb60-2"></a></span>
 <span id="cb60-3"><a href="#cb60-3"></a>cf_matrix <span class="op">=</span> confusion_matrix(y_test, y_pred)</span>
@@ -1836,13 +1878,17 @@ weighted avg       0.98      0.98      0.97      2000
 </code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-10-31-01. VOC_files/figure-html/cell-41-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-10-31-01. VOC_files/figure-html/cell-41-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="문제-13.-tree" class="level1">
 <h1>문제 13. tree</h1>
-<div class="cell" data-tags="[]" data-execution_count="311">
+<div id="3d8197c4-ec0d-4785-849e-b8751c47d883" class="cell" data-tags="[]" data-execution_count="311">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
 <span id="cb62-2"><a href="#cb62-2"></a></span>
 <span id="cb62-3"><a href="#cb62-3"></a>tree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">10</span>, random_state <span class="op">=</span> <span class="dv">42</span>)</span>
@@ -1851,7 +1897,7 @@ weighted avg       0.98      0.98      0.97      2000
 <span id="cb62-6"><a href="#cb62-6"></a></span>
 <span id="cb62-7"><a href="#cb62-7"></a>tree_pred <span class="op">=</span> tree.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="312">
+<div id="2b8bb611-7d75-4165-bdcc-74501219b311" class="cell" data-tags="[]" data-execution_count="312">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>accuracy_score(y_test, tree_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="312">
 <pre><code>0.9705</code></pre>
@@ -1860,7 +1906,7 @@ weighted avg       0.98      0.98      0.97      2000
 </section>
 <section id="문제-14.-rf" class="level1">
 <h1>문제 14. RF</h1>
-<div class="cell" data-tags="[]" data-execution_count="316">
+<div id="ccdb2bcf-ee8c-40bc-9646-9080a74a049c" class="cell" data-tags="[]" data-execution_count="316">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
 <span id="cb65-2"><a href="#cb65-2"></a></span>
 <span id="cb65-3"><a href="#cb65-3"></a>rf <span class="op">=</span> RandomForestClassifier(max_depth <span class="op">=</span> <span class="dv">10</span>, n_estimators <span class="op">=</span> <span class="dv">100</span>)</span>
@@ -1877,7 +1923,7 @@ weighted avg       0.98      0.98      0.97      2000
 </section>
 <section id="문제-15.-xgboost" class="level1">
 <h1>문제 15. XGBoost</h1>
-<div class="cell" data-tags="[]" data-execution_count="319">
+<div id="62c9d0c4-0537-4e14-b3ae-781d12780581" class="cell" data-tags="[]" data-execution_count="319">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBClassifier</span>
 <span id="cb67-2"><a href="#cb67-2"></a></span>
 <span id="cb67-3"><a href="#cb67-3"></a>xgb <span class="op">=</span> XGBClassifier(max_depth <span class="op">=</span> <span class="dv">10</span>, n_estimators <span class="op">=</span> <span class="dv">100</span>)</span>
@@ -1894,7 +1940,7 @@ weighted avg       0.98      0.98      0.97      2000
 </section>
 <section id="문제-16.-lightgbmstarstarstar" class="level1">
 <h1>문제 16. lightgbm(<span class="math inline">\(\star\)</span><span class="math inline">\(\star\)</span><span class="math inline">\(\star\)</span>)</h1>
-<div class="cell" data-tags="[]" data-execution_count="322">
+<div id="18737032-449c-450a-800a-1fc372dd7a46" class="cell" data-tags="[]" data-execution_count="322">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a><span class="im">from</span> lightgbm <span class="im">import</span> LGBMClassifier</span>
 <span id="cb69-2"><a href="#cb69-2"></a></span>
 <span id="cb69-3"><a href="#cb69-3"></a>lgbm <span class="op">=</span> LGBMClassifier(max_depth <span class="op">=</span> <span class="dv">10</span>, n_estimators <span class="op">=</span> <span class="dv">100</span>)</span>
@@ -1937,15 +1983,15 @@ And if memory is not enough, you can set `force_col_wise=true`.
 <li>EarlyStopping 객체는 es 변수에 ModelCheckpoint 객체는 mc 변수에 저장해서 활용해 주세요.</li>
 <li>학습정보는 history 변수에 저장하세요.</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="328">
+<div id="0eda2636-8527-4b03-9cfe-992dbd2af65e" class="cell" data-tags="[]" data-execution_count="328">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>batch_size <span class="op">=</span> <span class="dv">1024</span></span>
 <span id="cb72-2"><a href="#cb72-2"></a>epochs <span class="op">=</span> <span class="dv">30</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="335">
+<div id="7ed7fe8b-27a3-4551-8151-8a1564c6e915" class="cell" data-tags="[]" data-execution_count="335">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb73-2"><a href="#cb73-2"></a><span class="im">from</span> keras.optimizers <span class="im">import</span> Adam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="340">
+<div id="d18ea36b-a14c-4185-a670-4a05477b934e" class="cell" data-tags="[]" data-execution_count="340">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>model <span class="op">=</span> Sequential()</span>
 <span id="cb74-2"><a href="#cb74-2"></a>model.add(Dense(<span class="dv">64</span>, input_shape <span class="op">=</span> (<span class="dv">34</span>,), activation <span class="op">=</span> <span class="st">"relu"</span>))</span>
 <span id="cb74-3"><a href="#cb74-3"></a>model.add(Dropout(<span class="fl">0.2</span>))</span>
@@ -2151,7 +2197,7 @@ INFO:tensorflow:Assets written to: my_checkpoint.ckpt\assets</code></pre>
 <li><p>가로 10, 세로 5로 그래프 크기 설정, figsize=(10,5)</p></li>
 <li><p>범례는 ‘Train Loss’와 ’Validation Loss’로 표시하세요. x축에는 ’Epochs’, y축에는 ’Loss’라고 표시하세요.</p></li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="346">
+<div id="02d6a475-0289-4658-beff-50ce9e7dea77" class="cell" data-tags="[]" data-execution_count="346">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">5</span>))</span>
 <span id="cb77-2"><a href="#cb77-2"></a>plt.plot(history[<span class="st">"loss"</span>],label <span class="op">=</span> <span class="st">"Train loss"</span>)</span>
 <span id="cb77-3"><a href="#cb77-3"></a>plt.plot(history[<span class="st">"val_loss"</span>],label <span class="op">=</span> <span class="st">'Validation Loss'</span>)</span>
@@ -2160,7 +2206,11 @@ INFO:tensorflow:Assets written to: my_checkpoint.ckpt\assets</code></pre>
 <span id="cb77-6"><a href="#cb77-6"></a>plt.ylabel(<span class="st">"Loss"</span>)</span>
 <span id="cb77-7"><a href="#cb77-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-10-31-01. VOC_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-10-31-01. VOC_files/figure-html/cell-50-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -2255,10 +2305,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2268,8 +2335,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2281,7 +2357,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2325,6 +2524,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2350,6 +2550,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2411,17 +2637,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../posts/EX/2023-10-30-00. Churn.html" class="pagination-link">
+      <a href="../../posts/EX/2023-10-30-00. Churn.html" class="pagination-link" aria-label="00. Churn">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00. Churn</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../posts/EX/2023-11-01-02. iris.html" class="pagination-link">
+      <a href="../../posts/EX/2023-11-01-02. iris.html" class="pagination-link" aria-label="02. iris">
         <span class="nav-page-text">02. iris</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -47,7 +47,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -95,17 +102,43 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -117,46 +150,46 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">GC blog</li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">GC blog</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -172,7 +205,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-body">
 
       
     
@@ -182,7 +215,7 @@ ul.task-list li input[type="checkbox"] {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -781,13 +814,14 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(64)</span></div><div class="category" data-category="BP">BP <span class="quarto-category-count">(4)</span></div><div class="category" data-category="CA">CA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="IT 인프라">IT 인프라 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="KNN">KNN <span class="quarto-category-count">(2)</span></div><div class="category" data-category="LSTM">LSTM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="PRO">PRO <span class="quarto-category-count">(3)</span></div><div class="category" data-category="RNN">RNN <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Transformer">Transformer <span class="quarto-category-count">(1)</span></div><div class="category" data-category="class">class <span class="quarto-category-count">(5)</span></div><div class="category" data-category="concat">concat <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ex">ex <span class="quarto-category-count">(5)</span></div><div class="category" data-category="extra">extra <span class="quarto-category-count">(5)</span></div><div class="category" data-category="join">join <span class="quarto-category-count">(1)</span></div><div class="category" data-category="matplot 한글 설정">matplot 한글 설정 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="matplotlib">matplotlib <span class="quarto-category-count">(2)</span></div><div class="category" data-category="numpy">numpy <span class="quarto-category-count">(5)</span></div><div class="category" data-category="pandas">pandas <span class="quarto-category-count">(5)</span></div><div class="category" data-category="plotly">plotly <span class="quarto-category-count">(1)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(17)</span></div><div class="category" data-category="pytorch">pytorch <span class="quarto-category-count">(3)</span></div><div class="category" data-category="quarto">quarto <span class="quarto-category-count">(1)</span></div><div class="category" data-category="streamlit">streamlit <span class="quarto-category-count">(1)</span></div><div class="category" data-category="summary">summary <span class="quarto-category-count">(1)</span></div><div class="category" data-category="transform">transform <span class="quarto-category-count">(1)</span></div><div class="category" data-category="결측치">결측치 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="교차검증">교차검증 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="더미변수">더미변수 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="데이터 다듬기">데이터 다듬기 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="데이터 다루기">데이터 다루기 <span class="quarto-category-count">(6)</span></div><div class="category" data-category="데이터 분석">데이터 분석 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="데이터 수집">데이터 수집 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="딥러닝">딥러닝 <span class="quarto-category-count">(9)</span></div><div class="category" data-category="머신러닝">머신러닝 <span class="quarto-category-count">(8)</span></div><div class="category" data-category="모형 평가">모형 평가 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="비지도학습">비지도학습 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="시각지능">시각지능 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="시계열 분석">시계열 분석 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="알고리즘">알고리즘 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="앙상블">앙상블 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="언어지능">언어지능 <span class="quarto-category-count">(4)</span></div><div class="category" data-category="이변량 분석">이변량 분석 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="자료형">자료형 <span class="quarto-category-count">(3)</span></div><div class="category" data-category="정규표현식">정규표현식 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="정규표현식 복기">정규표현식 복기 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="제안서 작성">제안서 작성 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="제안전략수립">제안전략수립 <span class="quarto-category-count">(5)</span></div><div class="category" data-category="제어문">제어문 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="종합실습">종합실습 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="지도학습">지도학습 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="파일 다루기">파일 다루기 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="평가지표 함수">평가지표 함수 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="하이퍼파라미터. 클래스 불균형">하이퍼파라미터. 클래스 불균형 <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-body" id="quarto-document-content">
+
 
 
 
@@ -822,7 +856,6 @@ ul.task-list li input[type="checkbox"] {
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-
 <table class="quarto-listing-table table">
 <thead>
 <tr>
@@ -838,7 +871,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-categories="python,PRO" data-listing-date-sort="1705849200000" data-listing-file-modified-sort="1705906709552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="01. 텍스트 분류" data-listing-filename-sort="2024-01-22-01. 텍스트 분류.ipynb">
+<tr data-index="0" data-categories="python,PRO" data-listing-date-sort="1705849200000" data-listing-file-modified-sort="1705906709552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="222" data-listing-title-sort="01. 텍스트 분류" data-listing-filename-sort="2024-01-22-01. 텍스트 분류.ipynb">
 <td>
 <span class="listing-date">Jan 22, 2024</span>
 </td>
@@ -849,7 +882,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="1" data-categories="python,PRO" data-listing-date-sort="1705849200000" data-listing-file-modified-sort="1705913401448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="02. 이미지 분류" data-listing-filename-sort="2024-01-22-02.이미지_분류.ipynb">
+<tr data-index="1" data-categories="python,PRO" data-listing-date-sort="1705849200000" data-listing-file-modified-sort="1705913401448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="144" data-listing-title-sort="02. 이미지 분류" data-listing-filename-sort="2024-01-22-02.이미지_분류.ipynb">
 <td>
 <span class="listing-date">Jan 22, 2024</span>
 </td>
@@ -860,7 +893,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="2" data-categories="python,PRO" data-listing-date-sort="1705762800000" data-listing-file-modified-sort="1705899513684" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="00. Associate Review" data-listing-filename-sort="2024-01-21-00. Associate review.ipynb">
+<tr data-index="2" data-categories="python,PRO" data-listing-date-sort="1705762800000" data-listing-file-modified-sort="1705899513684" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="367" data-listing-title-sort="00. Associate Review" data-listing-filename-sort="2024-01-21-00. Associate review.ipynb">
 <td>
 <span class="listing-date">Jan 21, 2024</span>
 </td>
@@ -871,7 +904,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="3" data-categories="CA" data-listing-date-sort="1705244400000" data-listing-file-modified-sort="1705454828425" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="00. CA (1)" data-listing-filename-sort="2024-01-15-00. CA (1).ipynb">
+<tr data-index="3" data-categories="CA" data-listing-date-sort="1705244400000" data-listing-file-modified-sort="1705454828425" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="225" data-listing-title-sort="00. CA (1)" data-listing-filename-sort="2024-01-15-00. CA (1).ipynb">
 <td>
 <span class="listing-date">Jan 15, 2024</span>
 </td>
@@ -882,7 +915,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="4" data-categories="ex" data-listing-date-sort="1704639600000" data-listing-file-modified-sort="1704760035807" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="04. MNIST" data-listing-filename-sort="2024-01-08-04. MNIST.ipynb">
+<tr data-index="4" data-categories="ex" data-listing-date-sort="1704639600000" data-listing-file-modified-sort="1704760035807" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="52" data-listing-title-sort="04. MNIST" data-listing-filename-sort="2024-01-08-04. MNIST.ipynb">
 <td>
 <span class="listing-date">Jan 8, 2024</span>
 </td>
@@ -893,7 +926,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="5" data-categories="BP" data-listing-date-sort="1704034800000" data-listing-file-modified-sort="1704090474116" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="03. model theory" data-listing-filename-sort="2024-01-01-03. model theory.ipynb">
+<tr data-index="5" data-categories="BP" data-listing-date-sort="1704034800000" data-listing-file-modified-sort="1704090474116" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="289" data-listing-title-sort="03. model theory" data-listing-filename-sort="2024-01-01-03. model theory.ipynb">
 <td>
 <span class="listing-date">Jan 1, 2024</span>
 </td>
@@ -904,7 +937,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="6" data-categories="python,pytorch,BP" data-listing-date-sort="1703689200000" data-listing-file-modified-sort="1703729657111" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="00. model train (1)" data-listing-filename-sort="2023-12-28-00. model train (1).ipynb">
+<tr data-index="6" data-categories="python,pytorch,BP" data-listing-date-sort="1703689200000" data-listing-file-modified-sort="1703729657111" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="183" data-listing-title-sort="00. model train (1)" data-listing-filename-sort="2023-12-28-00. model train (1).ipynb">
 <td>
 <span class="listing-date">Dec 28, 2023</span>
 </td>
@@ -915,7 +948,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="7" data-categories="python,pytorch,BP" data-listing-date-sort="1703689200000" data-listing-file-modified-sort="1703741675069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="01. model train (2)" data-listing-filename-sort="2023-12-28-01. model train (2).ipynb">
+<tr data-index="7" data-categories="python,pytorch,BP" data-listing-date-sort="1703689200000" data-listing-file-modified-sort="1703741675069" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="113" data-listing-title-sort="01. model train (2)" data-listing-filename-sort="2023-12-28-01. model train (2).ipynb">
 <td>
 <span class="listing-date">Dec 28, 2023</span>
 </td>
@@ -926,7 +959,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="8" data-categories="python,pytorch,BP" data-listing-date-sort="1703689200000" data-listing-file-modified-sort="1703744824262" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="02. model fit &amp; save" data-listing-filename-sort="2023-12-28-02. model fit &amp; save.ipynb">
+<tr data-index="8" data-categories="python,pytorch,BP" data-listing-date-sort="1703689200000" data-listing-file-modified-sort="1703744824262" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="46" data-listing-title-sort="02. model fit &amp; save" data-listing-filename-sort="2023-12-28-02. model fit &amp; save.ipynb">
 <td>
 <span class="listing-date">Dec 28, 2023</span>
 </td>
@@ -937,7 +970,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="9" data-categories="제안서 작성" data-listing-date-sort="1701270000000" data-listing-file-modified-sort="1703736611349" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="05. 제안서 작성 (1)" data-listing-filename-sort="2023-11-30-05. 제안서 작성 (1).ipynb">
+<tr data-index="9" data-categories="제안서 작성" data-listing-date-sort="1701270000000" data-listing-file-modified-sort="1703736611349" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="177" data-listing-title-sort="05. 제안서 작성 (1)" data-listing-filename-sort="2023-11-30-05. 제안서 작성 (1).ipynb">
 <td>
 <span class="listing-date">Nov 30, 2023</span>
 </td>
@@ -948,7 +981,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="10" data-categories="제안전략수립" data-listing-date-sort="1701183600000" data-listing-file-modified-sort="1701259006029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="04. 사업정의" data-listing-filename-sort="2023-11-29-04. 사업정의.ipynb">
+<tr data-index="10" data-categories="제안전략수립" data-listing-date-sort="1701183600000" data-listing-file-modified-sort="1701259006029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="617" data-listing-title-sort="04. 사업정의" data-listing-filename-sort="2023-11-29-04. 사업정의.ipynb">
 <td>
 <span class="listing-date">Nov 29, 2023</span>
 </td>
@@ -959,7 +992,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="11" data-categories="제안전략수립" data-listing-date-sort="1701097200000" data-listing-file-modified-sort="1701219556825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="03. 실행계획 수립" data-listing-filename-sort="2023-11-28-03. 실행계획 수립.ipynb">
+<tr data-index="11" data-categories="제안전략수립" data-listing-date-sort="1701097200000" data-listing-file-modified-sort="1701219556825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="538" data-listing-title-sort="03. 실행계획 수립" data-listing-filename-sort="2023-11-28-03. 실행계획 수립.ipynb">
 <td>
 <span class="listing-date">Nov 28, 2023</span>
 </td>
@@ -970,7 +1003,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="12" data-categories="제안전략수립" data-listing-date-sort="1701010800000" data-listing-file-modified-sort="1701185575496" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="02. 고객가치정의 및 아이디어 도출" data-listing-filename-sort="2023-11-27-02. 고객가치정의 및 아이디어 도출.ipynb">
+<tr data-index="12" data-categories="제안전략수립" data-listing-date-sort="1701010800000" data-listing-file-modified-sort="1701185575496" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="646" data-listing-title-sort="02. 고객가치정의 및 아이디어 도출" data-listing-filename-sort="2023-11-27-02. 고객가치정의 및 아이디어 도출.ipynb">
 <td>
 <span class="listing-date">Nov 27, 2023</span>
 </td>
@@ -981,7 +1014,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="13" data-categories="제안전략수립" data-listing-date-sort="1700751600000" data-listing-file-modified-sort="1701181902449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="01. 환경분석 기법의 이해" data-listing-filename-sort="2023-11-24-01. 환경분석 기법의 이해.ipynb">
+<tr data-index="13" data-categories="제안전략수립" data-listing-date-sort="1700751600000" data-listing-file-modified-sort="1701181902449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="632" data-listing-title-sort="01. 환경분석 기법의 이해" data-listing-filename-sort="2023-11-24-01. 환경분석 기법의 이해.ipynb">
 <td>
 <span class="listing-date">Nov 24, 2023</span>
 </td>
@@ -992,7 +1025,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="14" data-categories="제안전략수립" data-listing-date-sort="1700665200000" data-listing-file-modified-sort="1701177795448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="00. 제안전략수립" data-listing-filename-sort="2023-11-23-00. 제안전략수립.ipynb">
+<tr data-index="14" data-categories="제안전략수립" data-listing-date-sort="1700665200000" data-listing-file-modified-sort="1701177795448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="415" data-listing-title-sort="00. 제안전략수립" data-listing-filename-sort="2023-11-23-00. 제안전략수립.ipynb">
 <td>
 <span class="listing-date">Nov 23, 2023</span>
 </td>
@@ -1003,7 +1036,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="15" data-categories="IT 인프라" data-listing-date-sort="1699196400000" data-listing-file-modified-sort="1699259262556" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="00. IT 인프라 (1)" data-listing-filename-sort="2023-11-06-00. IT 인프라 (1).ipynb">
+<tr data-index="15" data-categories="IT 인프라" data-listing-date-sort="1699196400000" data-listing-file-modified-sort="1699259262556" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="626" data-listing-title-sort="00. IT 인프라 (1)" data-listing-filename-sort="2023-11-06-00. IT 인프라 (1).ipynb">
 <td>
 <span class="listing-date">Nov 6, 2023</span>
 </td>
@@ -1014,7 +1047,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="16" data-categories="ex" data-listing-date-sort="1698850800000" data-listing-file-modified-sort="1698848840006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="03. Titanic" data-listing-filename-sort="2023-11-01-03. Titanic.ipynb">
+<tr data-index="16" data-categories="ex" data-listing-date-sort="1698850800000" data-listing-file-modified-sort="1698848840006" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="78" data-listing-title-sort="03. Titanic" data-listing-filename-sort="2023-11-01-03. Titanic.ipynb">
 <td>
 <span class="listing-date">Nov 2, 2023</span>
 </td>
@@ -1025,7 +1058,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="17" data-categories="ex" data-listing-date-sort="1698764400000" data-listing-file-modified-sort="1698843821539" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="02. iris" data-listing-filename-sort="2023-11-01-02. iris.ipynb">
+<tr data-index="17" data-categories="ex" data-listing-date-sort="1698764400000" data-listing-file-modified-sort="1698843821539" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="44" data-listing-title-sort="02. iris" data-listing-filename-sort="2023-11-01-02. iris.ipynb">
 <td>
 <span class="listing-date">Nov 1, 2023</span>
 </td>
@@ -1036,7 +1069,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="18" data-categories="ex" data-listing-date-sort="1698678000000" data-listing-file-modified-sort="1698799232152" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="01. VOC" data-listing-filename-sort="2023-10-31-01. VOC.ipynb">
+<tr data-index="18" data-categories="ex" data-listing-date-sort="1698678000000" data-listing-file-modified-sort="1698799232152" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="569" data-listing-title-sort="01. VOC" data-listing-filename-sort="2023-10-31-01. VOC.ipynb">
 <td>
 <span class="listing-date">Oct 31, 2023</span>
 </td>
@@ -1047,7 +1080,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="19" data-categories="ex" data-listing-date-sort="1698591600000" data-listing-file-modified-sort="1698673755849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="00. Churn" data-listing-filename-sort="2023-10-30-00. Churn.ipynb">
+<tr data-index="19" data-categories="ex" data-listing-date-sort="1698591600000" data-listing-file-modified-sort="1698673755849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="510" data-listing-title-sort="00. Churn" data-listing-filename-sort="2023-10-30-00. Churn.ipynb">
 <td>
 <span class="listing-date">Oct 30, 2023</span>
 </td>
@@ -1058,7 +1091,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="20" data-listing-date-sort="1698246000000" data-listing-file-modified-sort="1698458118624" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="02. BERTopic" data-listing-filename-sort="2023-10-26-02. BERTopic.ipynb">
+<tr data-index="20" data-listing-date-sort="1698246000000" data-listing-file-modified-sort="1698458118624" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="136" data-listing-title-sort="02. BERTopic" data-listing-filename-sort="2023-10-26-02. BERTopic.ipynb">
 <td>
 <span class="listing-date">Oct 26, 2023</span>
 </td>
@@ -1069,7 +1102,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="21" data-categories="streamlit" data-listing-date-sort="1697986800000" data-listing-file-modified-sort="1698124504722" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-title-sort="00. streamlit" data-listing-filename-sort="2023-10-23-00. streamlit.ipynb">
+<tr data-index="21" data-categories="streamlit" data-listing-date-sort="1697986800000" data-listing-file-modified-sort="1698124504722" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1953" data-listing-title-sort="00. streamlit" data-listing-filename-sort="2023-10-23-00. streamlit.ipynb">
 <td>
 <span class="listing-date">Oct 23, 2023</span>
 </td>
@@ -1080,7 +1113,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">gc </span>
 </td>
 </tr>
-<tr data-index="22" data-categories="RNN,딥러닝,언어지능" data-listing-date-sort="1697554800000" data-listing-file-modified-sort="1697468142109" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="summary 01. RNN" data-listing-filename-sort="2023-10-18-summary 01. RNN.ipynb">
+<tr data-index="22" data-categories="RNN,딥러닝,언어지능" data-listing-date-sort="1697554800000" data-listing-file-modified-sort="1697468142109" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="306" data-listing-title-sort="summary 01. RNN" data-listing-filename-sort="2023-10-18-summary 01. RNN.ipynb">
 <td>
 <span class="listing-date">Oct 18, 2023</span>
 </td>
@@ -1091,7 +1124,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="23" data-categories="LSTM,딥러닝,언어지능" data-listing-date-sort="1697554800000" data-listing-file-modified-sort="1697468173142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="summary 02. LSTM" data-listing-filename-sort="2023-10-18-summary 02. LSTM.ipynb">
+<tr data-index="23" data-categories="LSTM,딥러닝,언어지능" data-listing-date-sort="1697554800000" data-listing-file-modified-sort="1697468173142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="208" data-listing-title-sort="summary 02. LSTM" data-listing-filename-sort="2023-10-18-summary 02. LSTM.ipynb">
 <td>
 <span class="listing-date">Oct 18, 2023</span>
 </td>
@@ -1102,7 +1135,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="24" data-categories="Transformer,딥러닝,언어지능" data-listing-date-sort="1697554800000" data-listing-file-modified-sort="1697475232611" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="summary 03. Transformer" data-listing-filename-sort="2023-10-18-summary 03. transformer.ipynb">
+<tr data-index="24" data-categories="Transformer,딥러닝,언어지능" data-listing-date-sort="1697554800000" data-listing-file-modified-sort="1697475232611" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="552" data-listing-title-sort="summary 03. Transformer" data-listing-filename-sort="2023-10-18-summary 03. transformer.ipynb">
 <td>
 <span class="listing-date">Oct 18, 2023</span>
 </td>
@@ -1113,7 +1146,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="25" data-categories="딥러닝,시각지능" data-listing-date-sort="1697036400000" data-listing-file-modified-sort="1697417922221" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Extra 02. 시각지능" data-listing-filename-sort="2023-10-11-Extra 02. 시각지능.ipynb">
+<tr data-index="25" data-categories="딥러닝,시각지능" data-listing-date-sort="1697036400000" data-listing-file-modified-sort="1697417922221" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="766" data-listing-title-sort="Extra 02. 시각지능" data-listing-filename-sort="2023-10-11-Extra 02. 시각지능.ipynb">
 <td>
 <span class="listing-date">Oct 12, 2023</span>
 </td>
@@ -1124,7 +1157,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="26" data-categories="딥러닝,언어지능" data-listing-date-sort="1696863600000" data-listing-file-modified-sort="1697010587883" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Extra 01. 언어지능" data-listing-filename-sort="2023-10-10-Extra 01. 언어지능 (1).ipynb">
+<tr data-index="26" data-categories="딥러닝,언어지능" data-listing-date-sort="1696863600000" data-listing-file-modified-sort="1697010587883" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="405" data-listing-title-sort="Extra 01. 언어지능" data-listing-filename-sort="2023-10-10-Extra 01. 언어지능 (1).ipynb">
 <td>
 <span class="listing-date">Oct 10, 2023</span>
 </td>
@@ -1135,7 +1168,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="27" data-categories="딥러닝" data-listing-date-sort="1696518000000" data-listing-file-modified-sort="1696578724553" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="03. 딥러닝 (4)" data-listing-filename-sort="2023-10-06-03. 딥러닝 (4).ipynb">
+<tr data-index="27" data-categories="딥러닝" data-listing-date-sort="1696518000000" data-listing-file-modified-sort="1696578724553" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526" data-listing-title-sort="03. 딥러닝 (4)" data-listing-filename-sort="2023-10-06-03. 딥러닝 (4).ipynb">
 <td>
 <span class="listing-date">Oct 6, 2023</span>
 </td>
@@ -1146,7 +1179,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="28" data-categories="딥러닝" data-listing-date-sort="1696431600000" data-listing-file-modified-sort="1696578722546" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="02. 딥러닝 (3)" data-listing-filename-sort="2023-10-05-02. 딥러닝 (3).ipynb">
+<tr data-index="28" data-categories="딥러닝" data-listing-date-sort="1696431600000" data-listing-file-modified-sort="1696578722546" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="540" data-listing-title-sort="02. 딥러닝 (3)" data-listing-filename-sort="2023-10-05-02. 딥러닝 (3).ipynb">
 <td>
 <span class="listing-date">Oct 5, 2023</span>
 </td>
@@ -1157,7 +1190,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="29" data-categories="딥러닝" data-listing-date-sort="1696345200000" data-listing-file-modified-sort="1696404603330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="01. 딥러닝 (2)" data-listing-filename-sort="2023-10-04-01. 딥러닝 (2).ipynb">
+<tr data-index="29" data-categories="딥러닝" data-listing-date-sort="1696345200000" data-listing-file-modified-sort="1696404603330" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="285" data-listing-title-sort="01. 딥러닝 (2)" data-listing-filename-sort="2023-10-04-01. 딥러닝 (2).ipynb">
 <td>
 <span class="listing-date">Oct 4, 2023</span>
 </td>
@@ -1168,7 +1201,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="30" data-categories="딥러닝" data-listing-date-sort="1696258800000" data-listing-file-modified-sort="1696377444656" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="00. 딥러닝 (1)" data-listing-filename-sort="2023-10-03-00. 딥러닝 (1).ipynb">
+<tr data-index="30" data-categories="딥러닝" data-listing-date-sort="1696258800000" data-listing-file-modified-sort="1696377444656" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="553" data-listing-title-sort="00. 딥러닝 (1)" data-listing-filename-sort="2023-10-03-00. 딥러닝 (1).ipynb">
 <td>
 <span class="listing-date">Oct 3, 2023</span>
 </td>
@@ -1179,7 +1212,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="31" data-categories="머신러닝,summary,지도학습" data-listing-date-sort="1695826800000" data-listing-file-modified-sort="1695975240438" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-title-sort="08. summary (1)" data-listing-filename-sort="2023-09-28-08. summary (1).ipynb">
+<tr data-index="31" data-categories="머신러닝,summary,지도학습" data-listing-date-sort="1695826800000" data-listing-file-modified-sort="1695975240438" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3151" data-listing-title-sort="08. summary (1)" data-listing-filename-sort="2023-09-28-08. summary (1).ipynb">
 <td>
 <span class="listing-date">Sep 28, 2023</span>
 </td>
@@ -1190,7 +1223,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="32" data-categories="머신러닝,비지도학습" data-listing-date-sort="1695049200000" data-listing-file-modified-sort="1695090259806" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="07. 머신러닝 (6)" data-listing-filename-sort="2023-09-19-07. 머신러닝 (6).ipynb">
+<tr data-index="32" data-categories="머신러닝,비지도학습" data-listing-date-sort="1695049200000" data-listing-file-modified-sort="1695090259806" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="73" data-listing-title-sort="07. 머신러닝 (6)" data-listing-filename-sort="2023-09-19-07. 머신러닝 (6).ipynb">
 <td>
 <span class="listing-date">Sep 19, 2023</span>
 </td>
@@ -1201,7 +1234,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="33" data-categories="머신러닝,비지도학습" data-listing-date-sort="1694962800000" data-listing-file-modified-sort="1695024106245" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="06. 머신러닝 (5)" data-listing-filename-sort="2023-09-18-06. 머신러닝 (5).ipynb">
+<tr data-index="33" data-categories="머신러닝,비지도학습" data-listing-date-sort="1694962800000" data-listing-file-modified-sort="1695024106245" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="467" data-listing-title-sort="06. 머신러닝 (5)" data-listing-filename-sort="2023-09-18-06. 머신러닝 (5).ipynb">
 <td>
 <span class="listing-date">Sep 18, 2023</span>
 </td>
@@ -1212,7 +1245,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="34" data-categories="머신러닝,하이퍼파라미터. 클래스 불균형,앙상블" data-listing-date-sort="1694703600000" data-listing-file-modified-sort="1694996852566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="04. 머신러닝 (4)" data-listing-filename-sort="2023-09-15-04. 머신러닝 (4).ipynb">
+<tr data-index="34" data-categories="머신러닝,하이퍼파라미터. 클래스 불균형,앙상블" data-listing-date-sort="1694703600000" data-listing-file-modified-sort="1694996852566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1131" data-listing-title-sort="04. 머신러닝 (4)" data-listing-filename-sort="2023-09-15-04. 머신러닝 (4).ipynb">
 <td>
 <span class="listing-date">Sep 15, 2023</span>
 </td>
@@ -1223,7 +1256,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="35" data-categories="종합실습" data-listing-date-sort="1694703600000" data-listing-file-modified-sort="1695881111254" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="05. 종합실습" data-listing-filename-sort="2023-09-15-05. 종합실습.ipynb">
+<tr data-index="35" data-categories="종합실습" data-listing-date-sort="1694703600000" data-listing-file-modified-sort="1695881111254" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="186" data-listing-title-sort="05. 종합실습" data-listing-filename-sort="2023-09-15-05. 종합실습.ipynb">
 <td>
 <span class="listing-date">Sep 15, 2023</span>
 </td>
@@ -1234,7 +1267,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="36" data-categories="머신러닝,교차검증" data-listing-date-sort="1694617200000" data-listing-file-modified-sort="1694737450727" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="03. 머신러닝 (3)" data-listing-filename-sort="2023-09-14-03. 머신러닝 (3).ipynb">
+<tr data-index="36" data-categories="머신러닝,교차검증" data-listing-date-sort="1694617200000" data-listing-file-modified-sort="1694737450727" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="320" data-listing-title-sort="03. 머신러닝 (3)" data-listing-filename-sort="2023-09-14-03. 머신러닝 (3).ipynb">
 <td>
 <span class="listing-date">Sep 14, 2023</span>
 </td>
@@ -1245,7 +1278,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="37" data-categories="머신러닝,KNN,알고리즘,평가지표 함수" data-listing-date-sort="1694530800000" data-listing-file-modified-sort="1695881380089" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-title-sort="02. 머신러닝 (2)" data-listing-filename-sort="2023-09-13-02. 머신러닝 (2).ipynb">
+<tr data-index="37" data-categories="머신러닝,KNN,알고리즘,평가지표 함수" data-listing-date-sort="1694530800000" data-listing-file-modified-sort="1695881380089" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1091" data-listing-title-sort="02. 머신러닝 (2)" data-listing-filename-sort="2023-09-13-02. 머신러닝 (2).ipynb">
 <td>
 <span class="listing-date">Sep 13, 2023</span>
 </td>
@@ -1256,7 +1289,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="38" data-categories="머신러닝,모형 평가,정규표현식 복기,transform,KNN" data-listing-date-sort="1694444400000" data-listing-file-modified-sort="1694566423214" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="01. 머신러닝 (1)" data-listing-filename-sort="2023-09-12-01. 머신러닝 (1).ipynb">
+<tr data-index="38" data-categories="머신러닝,모형 평가,정규표현식 복기,transform,KNN" data-listing-date-sort="1694444400000" data-listing-file-modified-sort="1694566423214" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="278" data-listing-title-sort="01. 머신러닝 (1)" data-listing-filename-sort="2023-09-12-01. 머신러닝 (1).ipynb">
 <td>
 <span class="listing-date">Sep 12, 2023</span>
 </td>
@@ -1267,7 +1300,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="39" data-categories="머신러닝" data-listing-date-sort="1694358000000" data-listing-file-modified-sort="1694420152184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="00. Intro" data-listing-filename-sort="2023-09-11-00. intro.ipynb">
+<tr data-index="39" data-categories="머신러닝" data-listing-date-sort="1694358000000" data-listing-file-modified-sort="1694420152184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="59" data-listing-title-sort="00. Intro" data-listing-filename-sort="2023-09-11-00. intro.ipynb">
 <td>
 <span class="listing-date">Sep 11, 2023</span>
 </td>
@@ -1278,7 +1311,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="40" data-categories="데이터 수집" data-listing-date-sort="1693839600000" data-listing-file-modified-sort="1693901351432" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="01. 데이터 수집 (2)" data-listing-filename-sort="2023-09-05-01. 데이터 수집 (2).ipynb">
+<tr data-index="40" data-categories="데이터 수집" data-listing-date-sort="1693839600000" data-listing-file-modified-sort="1693901351432" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="718" data-listing-title-sort="01. 데이터 수집 (2)" data-listing-filename-sort="2023-09-05-01. 데이터 수집 (2).ipynb">
 <td>
 <span class="listing-date">Sep 5, 2023</span>
 </td>
@@ -1289,7 +1322,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="41" data-categories="데이터 수집" data-listing-date-sort="1693753200000" data-listing-file-modified-sort="1694420213519" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="00. 데이터 수집 (1)" data-listing-filename-sort="2023-09-04-00. 데이터 수집 (1).ipynb">
+<tr data-index="41" data-categories="데이터 수집" data-listing-date-sort="1693753200000" data-listing-file-modified-sort="1694420213519" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="769" data-listing-title-sort="00. 데이터 수집 (1)" data-listing-filename-sort="2023-09-04-00. 데이터 수집 (1).ipynb">
 <td>
 <span class="listing-date">Sep 4, 2023</span>
 </td>
@@ -1300,7 +1333,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="42" data-categories="python,데이터 분석,시계열 분석,이변량 분석" data-listing-date-sort="1693494000000" data-listing-file-modified-sort="1693554948066" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="02. 데이터 분석 (3)" data-listing-filename-sort="2023-09-01-02. 데이터 분석 (2).ipynb">
+<tr data-index="42" data-categories="python,데이터 분석,시계열 분석,이변량 분석" data-listing-date-sort="1693494000000" data-listing-file-modified-sort="1693554948066" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="55" data-listing-title-sort="02. 데이터 분석 (3)" data-listing-filename-sort="2023-09-01-02. 데이터 분석 (2).ipynb">
 <td>
 <span class="listing-date">Sep 1, 2023</span>
 </td>
@@ -1311,7 +1344,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="43" data-categories="python,데이터 분석,matplotlib,이변량 분석" data-listing-date-sort="1693407600000" data-listing-file-modified-sort="1693534140140" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="01. 데이터 분석 (2)" data-listing-filename-sort="2023-08-29-01. 데이터 분석 (2).ipynb">
+<tr data-index="43" data-categories="python,데이터 분석,matplotlib,이변량 분석" data-listing-date-sort="1693407600000" data-listing-file-modified-sort="1693534140140" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="187" data-listing-title-sort="01. 데이터 분석 (2)" data-listing-filename-sort="2023-08-29-01. 데이터 분석 (2).ipynb">
 <td>
 <span class="listing-date">Aug 31, 2023</span>
 </td>
@@ -1322,7 +1355,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="44" data-categories="python,데이터 분석,matplotlib" data-listing-date-sort="1693148400000" data-listing-file-modified-sort="1693294918747" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="00. 데이터 분석 (1)" data-listing-filename-sort="2023-08-28-00. 데이터 분석 (1).ipynb">
+<tr data-index="44" data-categories="python,데이터 분석,matplotlib" data-listing-date-sort="1693148400000" data-listing-file-modified-sort="1693294918747" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="485" data-listing-title-sort="00. 데이터 분석 (1)" data-listing-filename-sort="2023-08-28-00. 데이터 분석 (1).ipynb">
 <td>
 <span class="listing-date">Aug 28, 2023</span>
 </td>
@@ -1333,7 +1366,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="45" data-categories="python" data-listing-date-sort="1692802800000" data-listing-file-modified-sort="1692852175287" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="00. MP (1)" data-listing-filename-sort="2023-08-24-00. MP (1).ipynb">
+<tr data-index="45" data-categories="python" data-listing-date-sort="1692802800000" data-listing-file-modified-sort="1692852175287" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="529" data-listing-title-sort="00. MP (1)" data-listing-filename-sort="2023-08-24-00. MP (1).ipynb">
 <td>
 <span class="listing-date">Aug 24, 2023</span>
 </td>
@@ -1344,7 +1377,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="46" data-categories="데이터 다듬기,numpy,pandas,concat,join,matplot 한글 설정" data-listing-date-sort="1692716400000" data-listing-file-modified-sort="1692776213836" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="04. numpy &amp; pandas (5)" data-listing-filename-sort="2023-08-23-04. numpy &amp; pandas (5).ipynb">
+<tr data-index="46" data-categories="데이터 다듬기,numpy,pandas,concat,join,matplot 한글 설정" data-listing-date-sort="1692716400000" data-listing-file-modified-sort="1692776213836" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="80" data-listing-title-sort="04. numpy &amp; pandas (5)" data-listing-filename-sort="2023-08-23-04. numpy &amp; pandas (5).ipynb">
 <td>
 <span class="listing-date">Aug 23, 2023</span>
 </td>
@@ -1355,7 +1388,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="47" data-categories="데이터 다듬기,numpy,pandas,결측치,더미변수" data-listing-date-sort="1692630000000" data-listing-file-modified-sort="1692759699078" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="03. numpy &amp; pandas (4)" data-listing-filename-sort="2023-08-22-03. numpy &amp; pandas (4).ipynb">
+<tr data-index="47" data-categories="데이터 다듬기,numpy,pandas,결측치,더미변수" data-listing-date-sort="1692630000000" data-listing-file-modified-sort="1692759699078" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="363" data-listing-title-sort="03. numpy &amp; pandas (4)" data-listing-filename-sort="2023-08-22-03. numpy &amp; pandas (4).ipynb">
 <td>
 <span class="listing-date">Aug 22, 2023</span>
 </td>
@@ -1366,7 +1399,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="48" data-categories="데이터 다듬기,numpy,pandas" data-listing-date-sort="1692543600000" data-listing-file-modified-sort="1692608966521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="02. numpy &amp; pandas (3)" data-listing-filename-sort="2023-08-21-02. numpy &amp; pandas (3).ipynb">
+<tr data-index="48" data-categories="데이터 다듬기,numpy,pandas" data-listing-date-sort="1692543600000" data-listing-file-modified-sort="1692608966521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="124" data-listing-title-sort="02. numpy &amp; pandas (3)" data-listing-filename-sort="2023-08-21-02. numpy &amp; pandas (3).ipynb">
 <td>
 <span class="listing-date">Aug 21, 2023</span>
 </td>
@@ -1377,7 +1410,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="49" data-categories="python,plotly" data-listing-date-sort="1692370800000" data-listing-file-modified-sort="1692523887243" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="01. Plotly test" data-listing-filename-sort="2023-08-19-01. Plotly test.ipynb">
+<tr data-index="49" data-categories="python,plotly" data-listing-date-sort="1692370800000" data-listing-file-modified-sort="1711330344998" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="01. Plotly test" data-listing-filename-sort="2023-08-19-01. Plotly test.ipynb">
 <td>
 <span class="listing-date">Aug 19, 2023</span>
 </td>
@@ -1388,7 +1421,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="50" data-categories="데이터 다듬기,numpy,pandas" data-listing-date-sort="1692284400000" data-listing-file-modified-sort="1692417042996" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="00. numpy &amp; pandas (1)" data-listing-filename-sort="2023-08-18-00. numpy &amp; pandas (1).ipynb">
+<tr data-index="50" data-categories="데이터 다듬기,numpy,pandas" data-listing-date-sort="1692284400000" data-listing-file-modified-sort="1692417042996" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="361" data-listing-title-sort="00. numpy &amp; pandas (1)" data-listing-filename-sort="2023-08-18-00. numpy &amp; pandas (1).ipynb">
 <td>
 <span class="listing-date">Aug 18, 2023</span>
 </td>
@@ -1399,7 +1432,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="51" data-categories="데이터 다듬기,numpy,pandas" data-listing-date-sort="1692284400000" data-listing-file-modified-sort="1693789046890" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="01. numpy &amp; pandas (2)" data-listing-filename-sort="2023-08-18-01. numpy &amp; pandas (2).ipynb">
+<tr data-index="51" data-categories="데이터 다듬기,numpy,pandas" data-listing-date-sort="1692284400000" data-listing-file-modified-sort="1693789046890" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="112" data-listing-title-sort="01. numpy &amp; pandas (2)" data-listing-filename-sort="2023-08-18-01. numpy &amp; pandas (2).ipynb">
 <td>
 <span class="listing-date">Aug 18, 2023</span>
 </td>
@@ -1410,7 +1443,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="52" data-categories="python,데이터 다루기,파일 다루기" data-listing-date-sort="1692198000000" data-listing-file-modified-sort="1692417042966" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="05. Python Basic (6)" data-listing-filename-sort="2023-08-17-05. Python Basic (6).ipynb">
+<tr data-index="52" data-categories="python,데이터 다루기,파일 다루기" data-listing-date-sort="1692198000000" data-listing-file-modified-sort="1692417042966" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="357" data-listing-title-sort="05. Python Basic (6)" data-listing-filename-sort="2023-08-17-05. Python Basic (6).ipynb">
 <td>
 <span class="listing-date">Aug 17, 2023</span>
 </td>
@@ -1421,7 +1454,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="53" data-categories="python,데이터 다루기,정규표현식" data-listing-date-sort="1692111600000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="04. Python Basic (5)" data-listing-filename-sort="2023-08-16-04. Python Basic (5).ipynb">
+<tr data-index="53" data-categories="python,데이터 다루기,정규표현식" data-listing-date-sort="1692111600000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="335" data-listing-title-sort="04. Python Basic (5)" data-listing-filename-sort="2023-08-16-04. Python Basic (5).ipynb">
 <td>
 <span class="listing-date">Aug 16, 2023</span>
 </td>
@@ -1432,7 +1465,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="54" data-categories="extra,class" data-listing-date-sort="1692025200000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Extra 04. 클래스 탐구 (3)" data-listing-filename-sort="2023-08-15-Extra 04. 클래스 탐구 (3).ipynb">
+<tr data-index="54" data-categories="extra,class" data-listing-date-sort="1692025200000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="253" data-listing-title-sort="Extra 04. 클래스 탐구 (3)" data-listing-filename-sort="2023-08-15-Extra 04. 클래스 탐구 (3).ipynb">
 <td>
 <span class="listing-date">Aug 15, 2023</span>
 </td>
@@ -1443,7 +1476,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="55" data-categories="데이터 다루기,python,제어문" data-listing-date-sort="1691938800000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="03. Python Basic (4)" data-listing-filename-sort="2023-08-14-03. Python Basic (4).ipynb">
+<tr data-index="55" data-categories="데이터 다루기,python,제어문" data-listing-date-sort="1691938800000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="105" data-listing-title-sort="03. Python Basic (4)" data-listing-filename-sort="2023-08-14-03. Python Basic (4).ipynb">
 <td>
 <span class="listing-date">Aug 14, 2023</span>
 </td>
@@ -1454,7 +1487,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="56" data-categories="extra,class" data-listing-date-sort="1691938800000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Extra 03. 클래스 탐구 (2)" data-listing-filename-sort="2023-08-14-Extra 03. 클래스 탐구 (2).ipynb">
+<tr data-index="56" data-categories="extra,class" data-listing-date-sort="1691938800000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="492" data-listing-title-sort="Extra 03. 클래스 탐구 (2)" data-listing-filename-sort="2023-08-14-Extra 03. 클래스 탐구 (2).ipynb">
 <td>
 <span class="listing-date">Aug 14, 2023</span>
 </td>
@@ -1465,7 +1498,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="57" data-categories="데이터 다루기,python,자료형" data-listing-date-sort="1691679600000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="02. Python Basic (3)" data-listing-filename-sort="2023-08-11-02. Python Basic (3) .ipynb">
+<tr data-index="57" data-categories="데이터 다루기,python,자료형" data-listing-date-sort="1691679600000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="367" data-listing-title-sort="02. Python Basic (3)" data-listing-filename-sort="2023-08-11-02. Python Basic (3) .ipynb">
 <td>
 <span class="listing-date">Aug 11, 2023</span>
 </td>
@@ -1476,7 +1509,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="58" data-categories="데이터 다루기,python,자료형" data-listing-date-sort="1691593200000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="01. Python Basic (2)" data-listing-filename-sort="2023-08-10-01. Python Basic (2) .ipynb">
+<tr data-index="58" data-categories="데이터 다루기,python,자료형" data-listing-date-sort="1691593200000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="450" data-listing-title-sort="01. Python Basic (2)" data-listing-filename-sort="2023-08-10-01. Python Basic (2) .ipynb">
 <td>
 <span class="listing-date">Aug 10, 2023</span>
 </td>
@@ -1487,7 +1520,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="59" data-categories="extra,class" data-listing-date-sort="1691593200000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Extra 02. 클래스 탐구 (1)" data-listing-filename-sort="2023-08-10-Extra 02. 클래스 탐구 (1).ipynb">
+<tr data-index="59" data-categories="extra,class" data-listing-date-sort="1691593200000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="492" data-listing-title-sort="Extra 02. 클래스 탐구 (1)" data-listing-filename-sort="2023-08-10-Extra 02. 클래스 탐구 (1).ipynb">
 <td>
 <span class="listing-date">Aug 10, 2023</span>
 </td>
@@ -1498,7 +1531,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="60" data-categories="데이터 다루기,python,자료형" data-listing-date-sort="1691506800000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="00. Python Basic (1)" data-listing-filename-sort="2023-08-09-00. Python Basic (1).ipynb">
+<tr data-index="60" data-categories="데이터 다루기,python,자료형" data-listing-date-sort="1691506800000" data-listing-file-modified-sort="1692417042949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="116" data-listing-title-sort="00. Python Basic (1)" data-listing-filename-sort="2023-08-09-00. Python Basic (1).ipynb">
 <td>
 <span class="listing-date">Aug 9, 2023</span>
 </td>
@@ -1509,7 +1542,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="61" data-categories="extra,class" data-listing-date-sort="1691506800000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Extra 01. 클래스" data-listing-filename-sort="2023-08-09-Extra 01. 클래스.ipynb">
+<tr data-index="61" data-categories="extra,class" data-listing-date-sort="1691506800000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="597" data-listing-title-sort="Extra 01. 클래스" data-listing-filename-sort="2023-08-09-Extra 01. 클래스.ipynb">
 <td>
 <span class="listing-date">Aug 9, 2023</span>
 </td>
@@ -1520,7 +1553,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="62" data-categories="extra,class" data-listing-date-sort="1691420400000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-title-sort="Extra 00. 밈" data-listing-filename-sort="2023-08-08-Extra 00. 밈.ipynb">
+<tr data-index="62" data-categories="extra,class" data-listing-date-sort="1691420400000" data-listing-file-modified-sort="1692417042981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="164" data-listing-title-sort="Extra 00. 밈" data-listing-filename-sort="2023-08-08-Extra 00. 밈.ipynb">
 <td>
 <span class="listing-date">Aug 8, 2023</span>
 </td>
@@ -1531,7 +1564,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="listing-author">GC </span>
 </td>
 </tr>
-<tr data-index="63" data-categories="quarto" data-listing-date-sort="1690729200000" data-listing-file-modified-sort="1692417042996" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="00. Intro &amp; setting" data-listing-filename-sort="2023-07-31-00.intro.ipynb">
+<tr data-index="63" data-categories="quarto" data-listing-date-sort="1690729200000" data-listing-file-modified-sort="1711330521161" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550" data-listing-title-sort="00. Intro &amp; setting" data-listing-filename-sort="2023-07-31-00.intro.ipynb">
 <td>
 <span class="listing-date">Jul 31, 2023</span>
 </td>
@@ -1543,7 +1576,6 @@ ul.task-list li input[type="checkbox"] {
 </td>
 </tr>
 </tbody>
-
 </table>
 <div class="listing-no-matching d-none">
 No matching items
@@ -1631,10 +1663,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1644,8 +1693,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1657,7 +1715,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1701,6 +1882,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1726,6 +1908,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1786,6 +1994,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

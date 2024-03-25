@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,29 +98,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -126,46 +159,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html">00. 데이터 다루기</a></li><li class="breadcrumb-item"><a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html">Extra</a></li><li class="breadcrumb-item"><a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html">Extra 02. 클래스 탐구 (1)</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html">00. 데이터 다루기</a></li><li class="breadcrumb-item"><a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html">Extra</a></li><li class="breadcrumb-item"><a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html">Extra 02. 클래스 탐구 (1)</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -173,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../../posts/DX/00. 데이터 다루기/2023-08-09-00. Python Basic (1).html">00. 데이터 다루기</a></li><li class="breadcrumb-item"><a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-08-Extra 00. 밈.html">Extra</a></li><li class="breadcrumb-item"><a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-10-Extra 02. 클래스 탐구 (1).html">Extra 02. 클래스 탐구 (1)</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Extra 02. 클래스 탐구 (1)</h1>
@@ -207,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -806,7 +839,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -844,9 +877,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="import" class="level1">
 <h1>import</h1>
-<div class="cell" data-execution_count="1">
+<div id="c0a75eea-b261-4429-a31a-7ec87471128c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> IPython.core.display <span class="im">import</span> HTML</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -854,7 +888,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="작성한-class-등록" class="level2">
 <h2 class="anchored" data-anchor-id="작성한-class-등록">작성한 class 등록</h2>
-<div class="cell" data-execution_count="5">
+<div id="30fa70a8-caa6-4254-98cc-950386d95fe5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> jkm:</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>) :</span>
 <span id="cb2-3"><a href="#cb2-3"></a>        <span class="va">self</span>.title <span class="op">=</span> <span class="st">"중요한건 꺽이지 않는 마음"</span></span>
@@ -907,10 +941,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-50"><a href="#cb2-50"></a>            h1 <span class="op">=</span> <span class="va">self</span>.h1 )</span>
 <span id="cb2-51"><a href="#cb2-51"></a>        display(HTML(_str))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="8e966eb3-f988-4fac-9b1b-7d619ccb08e9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>test <span class="op">=</span> jkm()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="6a09a192-58f8-4931-b894-b146ab92129e" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>test.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
@@ -950,7 +984,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="깨달음-1.-type-class" class="level2">
 <h2 class="anchored" data-anchor-id="깨달음-1.-type-class">깨달음 1. type == class?</h2>
 <p><code>-</code> 아래처럼 우리가 생성한 <code>test</code>의 타입을 확인하니 type 이 <code>jkm</code> 으로 나온다.</p>
-<div class="cell" data-execution_count="11">
+<div id="4e9a9283-b9c8-40aa-b0c4-d16388886898" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>test?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
@@ -961,19 +995,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><code>-</code> 아래의 리스트, 튜플, 리스트(튜플)의 타입을 확인해보자.</p>
-<div class="cell" data-execution_count="12">
+<div id="65fec081-ed5a-4248-8fcf-aa2a450950df" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">type</span>([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>list</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="5f383913-ea4d-4987-936b-731e44f4dd17" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">type</span>((<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>tuple</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="05d75a5b-d350-4a16-b001-6a034055c8ce" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">type</span>(<span class="bu">list</span>((<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>list</code></pre>
@@ -983,14 +1017,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="깨달음-2.-__init__" class="level2">
 <h2 class="anchored" data-anchor-id="깨달음-2.-__init__">깨달음 2. <code>__init__</code></h2>
-<div class="cell" data-execution_count="19">
+<div id="d8a3fdae-e5f0-47e3-92b9-f91a46eab451" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>a <span class="op">=</span> <span class="st">"123"</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="bu">list</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>['1', '2', '3']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="9bb6be9b-d83d-4908-882f-cc817e76cd5d" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>a <span class="op">=</span> <span class="bu">list</span>()</span>
 <span id="cb14-2"><a href="#cb14-2"></a></span>
 <span id="cb14-3"><a href="#cb14-3"></a>a.<span class="fu">__init__</span>(<span class="st">"123"</span>)</span>
@@ -999,7 +1033,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>['1', '2', '3']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="98ac6e2b-ccb3-43cb-82c4-25d9f9b00494" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>a <span class="op">=</span> <span class="bu">list</span>()</span>
 <span id="cb16-2"><a href="#cb16-2"></a>a.<span class="fu">__init__</span>(<span class="st">'123'</span>) </span>
 <span id="cb16-3"><a href="#cb16-3"></a>a.<span class="fu">__init__</span>() <span class="co"># 리스트 최기화</span></span>
@@ -1013,7 +1047,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="깨달음-3.-__str__" class="level2">
 <h2 class="anchored" data-anchor-id="깨달음-3.-__str__">깨달음 3. <code>__str__</code></h2>
 <p><code>-</code> 아래의 클래스를 관찰하자</p>
-<div class="cell" data-execution_count="27">
+<div id="dd72aab2-8b42-4f43-ab72-f1298bf6c844" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">class</span> UpJump:</span>
 <span id="cb18-2"><a href="#cb18-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb18-3"><a href="#cb18-3"></a>        <span class="va">self</span>.reset()</span>
@@ -1029,13 +1063,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-13"><a href="#cb18-13"></a>        <span class="va">self</span>.a <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb18-14"><a href="#cb18-14"></a>        <span class="bu">print</span>(<span class="st">"a의 값이 0으로 초기화 되었습니다."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="28">
+<div id="63711717-9218-4cb4-a91f-bc060ea7f889" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>a <span class="op">=</span> UpJump()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a의 값이 0으로 초기화 되었습니다.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="29">
+<div id="bae3a8ef-31e3-47b3-925c-538651cb95e2" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>a?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div class="ansi-escaped-output">
@@ -1045,25 +1079,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="30">
+<div id="b667b954-3042-4af4-81b9-d3dd4a91e981" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>a.up()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a의 값이 1 증가합니다.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="33">
+<div id="dc851ccb-3c38-44f0-9ef7-1376e597141a" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>a.jump(<span class="op">-</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a의 값이 -2 증가합니다.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+<div id="0b93fb63-ba35-448c-8cbb-32bce5e35661" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>a.reset()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a의 값이 0으로 초기화 되었습니다.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="36">
+<div id="a4709ae8-354c-4815-82bd-0b13c4a887ba" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>a.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a=0</code></pre>
@@ -1074,7 +1108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>show 함수는 print와 비슷하다 <span class="math inline">\(\to\)</span> 그렇다면….?</p></li>
 <li><p><code>print(a)</code>를 하면 <code>a.show()</code> 와 동일한 효과를 내도록 만들 수 있을까?</p></li>
 </ul>
-<div class="cell" data-execution_count="37">
+<div id="1c687fb3-b13c-4b3f-a229-0a263ba05812" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;__main__.UpJump object at 0x000001E17A4FE650&gt;</code></pre>
@@ -1090,13 +1124,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="관찰1-__str__" class="level3">
 <h3 class="anchored" data-anchor-id="관찰1-__str__">관찰1 : <code>__str__</code></h3>
 <p><code>-</code> 아래둘은 같은 역할을 한다. <span class="math inline">\(\to\)</span> 즉, print(“a”)는 <code>print("a".__str__())</code>의 축약 버전이다.</p>
-<div class="cell" data-execution_count="44">
+<div id="a294a4a4-2157-439d-8c9f-2a898b65b27d" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a> <span class="bu">print</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="45">
+<div id="cdb31814-137c-456c-9f2f-ec24f94e563e" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="bu">print</span>(<span class="st">"a"</span>.<span class="fu">__str__</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a</code></pre>
@@ -1109,7 +1143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="관찰-2-함수-덧씌우기" class="level3">
 <h3 class="anchored" data-anchor-id="관찰-2-함수-덧씌우기">관찰 2: 함수 덧씌우기</h3>
-<div class="cell" data-execution_count="41">
+<div id="c6f5406b-f020-49cd-9d1b-11e14a40335c" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">def</span> f():</span>
 <span id="cb37-2"><a href="#cb37-2"></a>    <span class="bu">print</span>(<span class="st">"강철"</span>)</span>
 <span id="cb37-3"><a href="#cb37-3"></a>    </span>
@@ -1118,7 +1152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>강철</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="42">
+<div id="dd9e02c3-785f-4954-99a5-cd06b4e50269" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="kw">def</span> f() :</span>
 <span id="cb39-2"><a href="#cb39-2"></a>    <span class="bu">print</span>(<span class="st">"DX 강철"</span>)</span>
 <span id="cb39-3"><a href="#cb39-3"></a>f()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1133,7 +1167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>def show()</code> <span class="math inline">\(\to\)</span> <code>def __str__()</code>, <code>print</code> <span class="math inline">\(\to\)</span> <code>return</code></li>
 </ul>
-<div class="cell" data-execution_count="68">
+<div id="be1431d0-2d79-4acc-ac53-2fb5d708f601" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="kw">class</span> UpJump:</span>
 <span id="cb41-2"><a href="#cb41-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb41-3"><a href="#cb41-3"></a>        <span class="va">self</span>.reset()</span>
@@ -1149,19 +1183,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb41-13"><a href="#cb41-13"></a>        <span class="va">self</span>.a <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb41-14"><a href="#cb41-14"></a>        <span class="bu">print</span>(<span class="st">"a의 값이 0으로 초기화 되었습니다."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="70">
+<div id="50474da8-5d3c-4b20-ba5e-434e0c331e97" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>a <span class="op">=</span> UpJump()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a의 값이 0으로 초기화 되었습니다.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="71">
+<div id="330183ad-eeea-4b4f-a584-6a11a91bd55b" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>a.<span class="fu">__str__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>'a=0'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="74">
+<div id="a724dd77-e59a-4b89-8563-3ef6892e0887" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="bu">print</span>(a) <span class="co">## 성공했다!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a=0</code></pre>
@@ -1174,30 +1208,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>-</code> 우리가 어떤 변수를 할당하고 실행할때 사용되는 내장 함수는 <code>__repr__()</code> <span class="math inline">\(\to\)</span> representation의 약자이다.</p>
 <p><code>-</code> 그러면 <code>__repr__</code>도 우리가 정의할 수 있지 않을까?</p>
 <p><code>-</code> <code>__str()__</code> 과 비교해보자.</p>
-<div class="cell" data-execution_count="81">
+<div id="9d3eed8d-8abe-40cd-9745-63ada62d72ec" class="cell" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>a <span class="op">=</span> np.arange(<span class="dv">4</span>).reshape(<span class="dv">2</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="82">
+<div id="a82bc57b-26fe-4bc4-94b3-72a4912aa9ac" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>a.<span class="fu">__str__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="82">
 <pre><code>'[[0 1]\n [2 3]]'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="83">
+<div id="0117e566-f5db-4fdf-9d02-26beac2733a8" class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>a.<span class="fu">__repr__</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <pre><code>'array([[0, 1],\n       [2, 3]])'</code></pre>
 </div>
 </div>
 <p><code>-</code> print 문을 사용한 비교.</p>
-<div class="cell" data-execution_count="84">
+<div id="e4fd7896-88c9-4b04-8cd2-56a22764bfd3" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="bu">print</span>(a.<span class="fu">__str__</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0 1]
  [2 3]]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="87">
+<div id="0b4bae01-9fff-42e9-afc8-fbfc38bc5857" class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="bu">print</span>(a.<span class="fu">__repr__</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>array([[0, 1],
@@ -1208,7 +1242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="class의-적용">class의 적용</h3>
 <div class="sourceCode" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
 <span id="cb57-2"><a href="#cb57-2"></a>    <span class="cf">return</span> <span class="st">'a=</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(<span class="va">self</span>.a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-execution_count="89">
+<div id="05a246e4-3381-4525-96ba-a4107494899c" class="cell" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="kw">class</span> UpJump:</span>
 <span id="cb58-2"><a href="#cb58-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb58-3"><a href="#cb58-3"></a>        <span class="va">self</span>.reset()</span>
@@ -1226,19 +1260,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb58-15"><a href="#cb58-15"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
 <span id="cb58-16"><a href="#cb58-16"></a>        <span class="cf">return</span> <span class="st">'a=</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(<span class="va">self</span>.a)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="90">
+<div id="757cbd00-8595-46b3-93d9-6d071f398f28" class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>a <span class="op">=</span> UpJump()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a의 값이 0으로 초기화 되었습니다.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="91">
+<div id="73d8062e-0427-4679-a66a-46cfb7db5c9c" class="cell" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a의 값은 0입니다.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="92">
+<div id="7efe8eda-eec0-42d4-89fe-8b319c07731b" class="cell" data-execution_count="92">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="92">
 <pre><code>a=0</code></pre>
@@ -1248,7 +1282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="주의-star-star" class="level3">
 <h3 class="anchored" data-anchor-id="주의-star-star">주의!!!! (<span class="math inline">\(\star \star\)</span>)</h3>
 <p><code>-</code> 만약 <code>__repr__()</code>만 정의되어 있고 <code>__str__()</code>이 정의되있지 않았다면 <code>__repr__()</code>의 내용이 <code>__str__()</code>의 내용을 대신한다. <strong>(단, 역은 성립하지 않음)</strong></p>
-<div class="cell" data-execution_count="97">
+<div id="7a4d2a35-19e0-4de7-ae7a-0742707380be" class="cell" data-execution_count="97">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a><span class="kw">class</span> UpJump:</span>
 <span id="cb65-2"><a href="#cb65-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb65-3"><a href="#cb65-3"></a>        <span class="va">self</span>.reset()</span>
@@ -1266,19 +1300,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb65-15"><a href="#cb65-15"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
 <span id="cb65-16"><a href="#cb65-16"></a>        <span class="cf">return</span> <span class="st">'a=</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(<span class="va">self</span>.a)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="98">
+<div id="567a3bb6-8f87-4429-83bc-e1821c62c338" class="cell" data-execution_count="98">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>a <span class="op">=</span> UpJump()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a의 값이 0으로 초기화 되었습니다.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="99">
+<div id="38e41b33-642a-464a-8997-a2d390a70dae" class="cell" data-execution_count="99">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="99">
 <pre><code>a=0</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="100">
+<div id="ec6c8e2f-f9df-4b15-ae72-d9be6c63ee5d" class="cell" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="kw">class</span> UpJump:</span>
 <span id="cb70-2"><a href="#cb70-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb70-3"><a href="#cb70-3"></a>        <span class="va">self</span>.reset()</span>
@@ -1296,13 +1330,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb70-15"><a href="#cb70-15"></a>   <span class="co"># def __repr__(self):</span></span>
 <span id="cb70-16"><a href="#cb70-16"></a>    <span class="co">#    return 'a={}'.format(self.a)  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="101">
+<div id="ed46a7da-ad19-4da5-88ea-029234279cfe" class="cell" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>a <span class="op">=</span> UpJump()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>a의 값이 0으로 초기화 되었습니다.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="102">
+<div id="e4491f37-0acb-4633-ac77-89ded02d9190" class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="102">
 <pre><code>&lt;__main__.UpJump at 0x1e17b574090&gt;</code></pre>
@@ -1314,10 +1348,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="깨달음-5.-_repr_html_">깨달음 5. <code>_repr_html_</code></h2>
 <section id="데이터프레임-출력의-비밀" class="level3">
 <h3 class="anchored" data-anchor-id="데이터프레임-출력의-비밀">데이터프레임 출력의 비밀</h3>
-<div class="cell" data-execution_count="105">
+<div id="a5ea949d-b16d-46c6-b100-08150196059f" class="cell" data-execution_count="105">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'a'</span>:[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">'b'</span>:[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]})</span>
 <span id="cb75-2"><a href="#cb75-2"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="105">
+<div>
 <div>
 
 
@@ -1351,7 +1386,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="106">
+</div>
+<div id="9ecbbce2-e67e-46ce-ab53-ffe200cfa480" class="cell" data-execution_count="106">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a><span class="bu">print</span>(df.<span class="fu">__repr__</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   a  b
@@ -1360,7 +1396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 2  3  4</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="107">
+<div id="21a514ac-b5f2-4c01-91b7-310c18d13a10" class="cell" data-execution_count="107">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a><span class="bu">print</span>(df.<span class="fu">__str__</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   a  b
@@ -1371,15 +1407,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>-</code> 뭔가 이상하다. 앞서 배운대로라면 코드를 실행할 때 나오는 표처럼 예쁘게 나와야 하는데 그렇지 않다…</p>
 <p><code>-</code> 아래를 살펴보자.</p>
-<div class="cell" data-execution_count="109">
+<div id="f0dbebd1-ff58-4fa9-b4de-8afc6afa4c8c" class="cell" data-execution_count="109">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a>df._repr_html_()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="109">
 <pre><code>'&lt;div&gt;\n&lt;style scoped&gt;\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n&lt;/style&gt;\n&lt;table border="1" class="dataframe"&gt;\n  &lt;thead&gt;\n    &lt;tr style="text-align: right;"&gt;\n      &lt;th&gt;&lt;/th&gt;\n      &lt;th&gt;a&lt;/th&gt;\n      &lt;th&gt;b&lt;/th&gt;\n    &lt;/tr&gt;\n  &lt;/thead&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;th&gt;0&lt;/th&gt;\n      &lt;td&gt;1&lt;/td&gt;\n      &lt;td&gt;2&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;th&gt;1&lt;/th&gt;\n      &lt;td&gt;2&lt;/td&gt;\n      &lt;td&gt;3&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;th&gt;2&lt;/th&gt;\n      &lt;td&gt;3&lt;/td&gt;\n      &lt;td&gt;4&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;\n&lt;/div&gt;'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="110">
+<div id="168bd2b9-b22f-4428-a4f8-61d24fbad36f" class="cell" data-execution_count="110">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a>HTML(df._repr_html_())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="110">
+<div>
 <div>
 
 
@@ -1410,6 +1447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -1440,7 +1478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb84-6"><a href="#cb84-6"></a>            A <span class="op">=</span> <span class="va">self</span>.A,</span>
 <span id="cb84-7"><a href="#cb84-7"></a>            h1 <span class="op">=</span> <span class="va">self</span>.h1 )</span>
 <span id="cb84-8"><a href="#cb84-8"></a>        <span class="cf">return</span> _str</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-execution_count="124">
+<div id="3380e8d8-0e14-44d6-9f67-d994168d9958" class="cell" data-execution_count="124">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a><span class="kw">class</span> jkm:</span>
 <span id="cb85-2"><a href="#cb85-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>) :</span>
 <span id="cb85-3"><a href="#cb85-3"></a>        <span class="va">self</span>.title <span class="op">=</span> <span class="st">"중요한건 꺽이지 않는 마음"</span></span>
@@ -1493,7 +1531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb85-50"><a href="#cb85-50"></a>                    h1 <span class="op">=</span> <span class="va">self</span>.h1)</span>
 <span id="cb85-51"><a href="#cb85-51"></a>                <span class="cf">return</span> _str</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="125">
+<div id="5e905eba-8825-4c0d-8046-83915a0124f8" class="cell" data-execution_count="125">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>a <span class="op">=</span> jkm()</span>
 <span id="cb86-2"><a href="#cb86-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="125">
@@ -1616,10 +1654,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1629,8 +1684,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1642,7 +1706,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1686,6 +1873,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1711,6 +1899,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1772,17 +1986,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.html" class="pagination-link">
+      <a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-09-Extra 01. 클래스.html" class="pagination-link" aria-label="Extra 01. 클래스">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Extra 01. 클래스</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).html" class="pagination-link">
+      <a href="../../../../posts/DX/00. 데이터 다루기/extra/2023-08-14-Extra 03. 클래스 탐구 (2).html" class="pagination-link" aria-label="Extra 03. 클래스 탐구 (2)">
         <span class="nav-page-text">Extra 03. 클래스 탐구 (2)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

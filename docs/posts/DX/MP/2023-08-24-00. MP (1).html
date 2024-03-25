@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,13 +98,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -107,12 +114,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -124,46 +130,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html">MP</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html">00. MP (1)</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html">MP</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html">00. MP (1)</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -171,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../../posts/DX/2023-07-31-00.intro.html">DX</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html">MP</a></li><li class="breadcrumb-item"><a href="../../../posts/DX/MP/2023-08-24-00. MP (1).html">00. MP (1)</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">00. MP (1)</h1>
@@ -204,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -803,7 +809,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -907,6 +913,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="단계-1-데이터-전처리" class="level1">
 <h1>단계 1 : 데이터 전처리</h1>
 <section id="환경설정" class="level2">
@@ -916,8 +923,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>pandas</code>와 <code>numpy</code> 라라이브러리를 불러오기</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="258">
-<details>
+<div id="46f4d1cb-e4de-4e5f-8a31-648fc9ccb9c8" class="cell" data-tags="[]" data-execution_count="258">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -927,14 +934,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="데이터-불러오기" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-불러오기">(2) 데이터 불러오기</h3>
 <p><code>-</code> 데이터를 불러온 후 상위 10개 행 확인</p>
-<div class="cell" data-tags="[]" data-execution_count="259">
-<details>
+<div id="6b7dfd03-b5ea-4268-9003-be4abe0ef48c" class="cell" data-tags="[]" data-execution_count="259">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> openpyxl</span>
 <span id="cb2-2"><a href="#cb2-2"></a>data <span class="op">=</span> pd.read_excel(<span class="st">"data04.xlsx"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3"></a>data.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="259">
+<div>
 <div>
 
 
@@ -1146,6 +1154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</div>
 <hr>
 </section>
 </section>
@@ -1153,8 +1162,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="데이터프레임-탐색">2. 데이터프레임 탐색</h2>
 <section id="전체-데이터의-행-열-개수를-확인" class="level3">
 <h3 class="anchored" data-anchor-id="전체-데이터의-행-열-개수를-확인">(1) 전체 데이터의 행, 열 개수를 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="260">
-<details>
+<div id="1827c387-0f8a-423b-96df-8bc3c3b6706d" class="cell" data-tags="[]" data-execution_count="260">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">print</span>(<span class="ss">f"전체 데이터는 </span><span class="sc">{</span>data<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">개의 행과 </span><span class="sc">{</span>data<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">열로 구성되어 있습니다."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1165,12 +1174,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="하위-5개의-행-확인" class="level3">
 <h3 class="anchored" data-anchor-id="하위-5개의-행-확인">(2) 하위 5개의 행 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="261">
-<details>
+<div id="551899cd-25dc-45b6-bcd1-a68cfed4a72e" class="cell" data-tags="[]" data-execution_count="261">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>data.tail(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="261">
+<div>
 <div>
 
 
@@ -1292,11 +1302,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="전체-데이터의-모든-변수-확인" class="level3">
 <h3 class="anchored" data-anchor-id="전체-데이터의-모든-변수-확인">(3) 전체 데이터의 모든 변수 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="262">
-<details>
+<div id="391945d9-934e-46db-bfc7-3c3acea43291" class="cell" data-tags="[]" data-execution_count="262">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">print</span>(<span class="bu">list</span>(data.columns))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1307,8 +1318,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="전체-데이터-정보-확인" class="level3">
 <h3 class="anchored" data-anchor-id="전체-데이터-정보-확인">(4) 전체 데이터 정보 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="263">
-<details>
+<div id="80958880-d76b-455d-af44-36084505815f" class="cell" data-tags="[]" data-execution_count="263">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">print</span>(data.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1344,8 +1355,8 @@ None</code></pre>
 <ul>
 <li><code>기출문제 공부횟수</code>에서 <code>총 3개</code>의 결측치가 확인된다.</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="264">
-<details>
+<div id="145ecf00-83af-4377-9ecf-0521e2fe30ee" class="cell" data-tags="[]" data-execution_count="264">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>data.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1371,12 +1382,13 @@ dtype: int64</code></pre>
 </section>
 <section id="데이터의-통계정보를-확인" class="level3">
 <h3 class="anchored" data-anchor-id="데이터의-통계정보를-확인">(6) 데이터의 통계정보를 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="265">
-<details>
+<div id="4afc5bc7-1c33-4878-b87f-c437365daa66" class="cell" data-tags="[]" data-execution_count="265">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="265">
+<div>
 <div>
 
 
@@ -1489,6 +1501,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <hr>
 </section>
 </section>
@@ -1496,8 +1509,8 @@ dtype: int64</code></pre>
 <h2 class="anchored" data-anchor-id="데이터-전처리-수행">3. 데이터 전처리 수행</h2>
 <section id="컬럼별-데이터-타입을-출력" class="level3">
 <h3 class="anchored" data-anchor-id="컬럼별-데이터-타입을-출력">(1)-1. 컬럼별 데이터 타입을 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="266">
-<details>
+<div id="eb6076c9-938b-4d09-a488-f69c16df3512" class="cell" data-tags="[]" data-execution_count="266">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="bu">print</span>(data.dtypes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1523,18 +1536,19 @@ dtype: object</code></pre>
 </section>
 <section id="student-id-컬럼을-삭제" class="level3">
 <h3 class="anchored" data-anchor-id="student-id-컬럼을-삭제">(1)-2. <code>Student ID</code> 컬럼을 삭제</h3>
-<div class="cell" data-tags="[]" data-execution_count="267">
-<details>
+<div id="d09ce930-fa73-42b3-9670-601c59f67896" class="cell" data-tags="[]" data-execution_count="267">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>data.drop(<span class="st">"Student ID"</span>,axis<span class="op">=</span><span class="dv">1</span>,inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="268">
-<details>
+<div id="459cc34b-e8cd-44ee-af6d-79ca672abbcb" class="cell" data-tags="[]" data-execution_count="268">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="268">
+<div>
 <div>
 
 
@@ -1650,11 +1664,12 @@ dtype: object</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="개의-컬럼에서-13개의-컬럼으로-줄어든-것을-확인" class="level3">
 <h3 class="anchored" data-anchor-id="개의-컬럼에서-13개의-컬럼으로-줄어든-것을-확인">(1)-3. 14개의 컬럼에서 13개의 컬럼으로 줄어든 것을 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="269">
-<details>
+<div id="0291581d-4397-463e-b538-96bf2cdd760d" class="cell" data-tags="[]" data-execution_count="269">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="bu">len</span>(data.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1665,8 +1680,8 @@ dtype: object</code></pre>
 </section>
 <section id="기출문제-공부-횟수의-null값을-0으로-바꾸기" class="level3">
 <h3 class="anchored" data-anchor-id="기출문제-공부-횟수의-null값을-0으로-바꾸기">(1)-4. 기출문제 공부 횟수의 null값을 0으로 바꾸기</h3>
-<div class="cell" data-tags="[]" data-execution_count="270">
-<details>
+<div id="5b8d9908-76ba-47e5-9aff-6925699ae5a7" class="cell" data-tags="[]" data-execution_count="270">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>data[<span class="st">"기출문제 공부 횟수"</span>].fillna(<span class="dv">0</span>,inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1674,8 +1689,8 @@ dtype: object</code></pre>
 </section>
 <section id="바꾼-후-결과확인" class="level3">
 <h3 class="anchored" data-anchor-id="바꾼-후-결과확인">(1)-5. 바꾼 후 결과확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="271">
-<details>
+<div id="999a551b-41b3-48bc-9db7-6bede9184198" class="cell" data-tags="[]" data-execution_count="271">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>data[<span class="st">"기출문제 공부 횟수"</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1690,8 +1705,8 @@ dtype: object</code></pre>
 <li><p>df1(개인정보 데이터) features : <code>'ID', 'Gender', 'Birth_Year'</code></p></li>
 <li><p>df2(토익시험 학습정보 데이터) features : <code>'ID','Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목표', '학습방법', '강의 학습 교재 유형', '학습빈도', '기출문제 공부 횟수', '취약분야 인지 여부', '토익 모의테스트 횟수'</code></p></li>
 </ol>
-<div class="cell" data-tags="[]" data-execution_count="272">
-<details>
+<div id="a0a870ea-4900-44f7-a7c2-4d439590c473" class="cell" data-tags="[]" data-execution_count="272">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>col_1 <span class="op">=</span> [<span class="st">'ID'</span>, <span class="st">'Gender'</span>, <span class="st">'Birth_Year'</span>]</span>
 <span id="cb22-2"><a href="#cb22-2"></a>col_2 <span class="op">=</span> [<span class="st">'ID'</span>,<span class="st">'Seq'</span>, <span class="st">'LC_Score'</span>, <span class="st">'RC_Score'</span>, <span class="st">'Total Score'</span>,</span>
@@ -1717,18 +1732,19 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </section>
 <section id="개인정보의-중복값-제거" class="level3">
 <h3 class="anchored" data-anchor-id="개인정보의-중복값-제거">(2)-1. 개인정보의 중복값 제거</h3>
-<div class="cell" data-tags="[]" data-execution_count="273">
-<details>
+<div id="03f21f04-bc3a-4405-b275-0bd099aa5244" class="cell" data-tags="[]" data-execution_count="273">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df1 <span class="op">=</span> df1.drop_duplicates()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="274">
-<details>
+<div id="7b698fa2-a14c-4962-a222-ed0bfde678d5" class="cell" data-tags="[]" data-execution_count="274">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>df1.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="274">
+<div>
 <div>
 
 
@@ -1778,12 +1794,13 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </div>
 </div>
 </div>
+</div>
 <hr>
 </section>
 <section id="df2에서-id별-차시seq가-3인-행을-선택하여-새로운-데이터프레임-temp에-할당" class="level3">
 <h3 class="anchored" data-anchor-id="df2에서-id별-차시seq가-3인-행을-선택하여-새로운-데이터프레임-temp에-할당">(3)-1. <code>df2</code>에서 ID별 차시(Seq)가 3인 행을 선택하여 새로운 데이터프레임 <code>temp</code>에 할당</h3>
-<div class="cell" data-tags="[]" data-execution_count="275">
-<details>
+<div id="d2a6a402-0d4c-41d3-8720-3feb738ba0ee" class="cell" data-tags="[]" data-execution_count="275">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>temp <span class="op">=</span> df2.loc[<span class="bu">map</span>(<span class="kw">lambda</span> x : x <span class="op">==</span> <span class="dv">3</span>,df2.Seq), :]</span>
 <span id="cb26-2"><a href="#cb26-2"></a>temp.Seq.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1792,12 +1809,13 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 <pre><code>array([3], dtype=int64)</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="276">
-<details>
+<div id="e20e80ab-90c6-4598-b47a-4b58149924bc" class="cell" data-tags="[]" data-execution_count="276">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>temp.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="276">
+<div>
 <div>
 
 
@@ -1901,14 +1919,15 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="temp-데이터프레임의-열-이름-변경" class="level3">
 <h3 class="anchored" data-anchor-id="temp-데이터프레임의-열-이름-변경">(3)-2. temp 데이터프레임의 열 이름 변경</h3>
 <ul>
 <li><code>LC_Score</code>, <code>RC_Score</code>, <code>Total Score</code>를 각각 ‘3st_LC_Score’, ‘3st_RC_Score’, ’3st_Total_Score’로 변경하고 확인해주세요.</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="277">
-<details>
+<div id="9a122f15-aacf-41a7-9e84-7218d6dfc5c5" class="cell" data-tags="[]" data-execution_count="277">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>temp <span class="op">=</span> temp.rename(columns <span class="op">=</span> {<span class="st">"LC_Score"</span> : <span class="st">"3st_LC_SCcore"</span>,</span>
 <span id="cb29-2"><a href="#cb29-2"></a>                        <span class="st">"RC_Score"</span> : <span class="st">"3st_RC_SCcore"</span>,</span>
@@ -1917,6 +1936,7 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 <span id="cb29-5"><a href="#cb29-5"></a>temp.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="277">
+<div>
 <div>
 
 
@@ -2020,11 +2040,12 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="df2에서-id별-차시seq가-1인-행을-선택하여-새로운-데이터프레임-temp1에-할당" class="level3">
 <h3 class="anchored" data-anchor-id="df2에서-id별-차시seq가-1인-행을-선택하여-새로운-데이터프레임-temp1에-할당">(3)-3. <code>df2</code>에서 ID별 차시(Seq)가 1인 행을 선택하여 새로운 데이터프레임 <code>temp1</code>에 할당</h3>
-<div class="cell" data-tags="[]" data-execution_count="278">
-<details>
+<div id="5c52f0fb-6f92-4799-a690-9c9cb623bee2" class="cell" data-tags="[]" data-execution_count="278">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>temp1 <span class="op">=</span> df2.loc[<span class="bu">map</span>(<span class="kw">lambda</span> x : x <span class="op">==</span> <span class="dv">1</span>,df2.Seq), :]</span>
 <span id="cb30-2"><a href="#cb30-2"></a>temp1.Seq.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2036,8 +2057,8 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </section>
 <section id="temp1-에는-df2idlc_scorerc_scoretotal-score만-불러오기" class="level3">
 <h3 class="anchored" data-anchor-id="temp1-에는-df2idlc_scorerc_scoretotal-score만-불러오기">(3)-4.<code>temp1</code> 에는 df2[‘ID’,‘LC_Score’,‘RC_Score’,‘Total Score’]만 불러오기</h3>
-<div class="cell" data-tags="[]" data-execution_count="279">
-<details>
+<div id="d72f65b0-d46f-4500-98c8-20c5ed918602" class="cell" data-tags="[]" data-execution_count="279">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>temp1 <span class="op">=</span> temp1.loc[:,[<span class="st">'ID'</span>,<span class="st">'LC_Score'</span>,<span class="st">'RC_Score'</span>,<span class="st">'Total Score'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2048,8 +2069,8 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 <ul>
 <li><code>LC_Score</code>, <code>RC_Score</code>, <code>Total Score</code>를 각각 ‘1st_LC_Score’, ‘1st_RC_Score’, ’1st_Total_Score’로 변경하고 확인해주세요.</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="280">
-<details>
+<div id="8fb6d0f1-679d-4c29-9f49-5a28079621dc" class="cell" data-tags="[]" data-execution_count="280">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>temp1 <span class="op">=</span> temp1.rename(columns <span class="op">=</span> {<span class="st">"LC_Score"</span> : <span class="st">"1st_LC_SCcore"</span>,</span>
 <span id="cb33-2"><a href="#cb33-2"></a>                        <span class="st">"RC_Score"</span> : <span class="st">"1st_RC_SCcore"</span>,</span>
@@ -2058,6 +2079,7 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 <span id="cb33-5"><a href="#cb33-5"></a>temp1.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="280">
+<div>
 <div>
 
 
@@ -2113,11 +2135,12 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="df2에서-id별-차시seq가-2인-행을-선택하여-새로운-데이터프레임-temp2에-할당" class="level3">
 <h3 class="anchored" data-anchor-id="df2에서-id별-차시seq가-2인-행을-선택하여-새로운-데이터프레임-temp2에-할당">(3)-6. <code>df2</code>에서 ID별 차시(Seq)가 2인 행을 선택하여 새로운 데이터프레임 <code>temp2</code>에 할당</h3>
-<div class="cell" data-tags="[]" data-execution_count="281">
-<details>
+<div id="ec3f16f5-7d87-46d8-b729-3afe680d3850" class="cell" data-tags="[]" data-execution_count="281">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>temp2 <span class="op">=</span> df2.loc[<span class="bu">map</span>(<span class="kw">lambda</span> x : x <span class="op">==</span> <span class="dv">2</span>,df2.Seq), :]</span>
 <span id="cb34-2"><a href="#cb34-2"></a>temp2.Seq.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2129,8 +2152,8 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </section>
 <section id="temp2-에는-df2idlc_scorerc_scoretotal-score만-불러오기" class="level3">
 <h3 class="anchored" data-anchor-id="temp2-에는-df2idlc_scorerc_scoretotal-score만-불러오기">(3)-7. <code>temp2</code> 에는 df2[‘ID’,‘LC_Score’,‘RC_Score’,‘Total Score’]만 불러오기</h3>
-<div class="cell" data-tags="[]" data-execution_count="282">
-<details>
+<div id="25ad3b7f-f019-4dfc-8099-4867a3d39e50" class="cell" data-tags="[]" data-execution_count="282">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>temp2 <span class="op">=</span>  temp2.loc[:,[<span class="st">'ID'</span>,<span class="st">'LC_Score'</span>,<span class="st">'RC_Score'</span>,<span class="st">'Total Score'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2138,8 +2161,8 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </section>
 <section id="temp2-데이터프레임의-열-이름-변경" class="level3">
 <h3 class="anchored" data-anchor-id="temp2-데이터프레임의-열-이름-변경">(3)-8. temp2 데이터프레임의 열 이름 변경</h3>
-<div class="cell" data-tags="[]" data-execution_count="283">
-<details>
+<div id="cd0f7b9c-9043-420e-b8b2-cd55872f75de" class="cell" data-tags="[]" data-execution_count="283">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>temp2 <span class="op">=</span> temp2.rename(columns <span class="op">=</span> {<span class="st">"LC_Score"</span> : <span class="st">"2st_LC_SCcore"</span>,</span>
 <span id="cb37-2"><a href="#cb37-2"></a>                        <span class="st">"RC_Score"</span> : <span class="st">"2st_RC_SCcore"</span>,</span>
@@ -2148,6 +2171,7 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 <span id="cb37-5"><a href="#cb37-5"></a>temp2.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="283">
+<div>
 <div>
 
 
@@ -2203,12 +2227,13 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="차토익시험-점수-temp데이터-1차토익시험-점수-temp1합치기" class="level3">
 <h3 class="anchored" data-anchor-id="차토익시험-점수-temp데이터-1차토익시험-점수-temp1합치기">(3)-9. (3차토익시험 점수 <code>temp</code>데이터) + (1차토익시험 점수 <code>temp1</code>합치기)</h3>
 <p><code>-</code> 합친 후 ’score_merged_data1’에 할당</p>
-<div class="cell" data-tags="[]" data-execution_count="284">
-<details>
+<div id="5ac418ef-c3d3-4fba-9017-ca1c9772d537" class="cell" data-tags="[]" data-execution_count="284">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>score_merged_data1 <span class="op">=</span> pd.merge(temp,temp1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2216,8 +2241,8 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </section>
 <section id="score_merged_data1과-temp2데이터를-합쳐-score_merged_data2에-할당" class="level3">
 <h3 class="anchored" data-anchor-id="score_merged_data1과-temp2데이터를-합쳐-score_merged_data2에-할당">(3)-10. <code>score_merged_data1</code>과 <code>temp2</code>데이터를 합쳐 <code>score_merged_data2</code>에 할당</h3>
-<div class="cell" data-tags="[]" data-execution_count="285">
-<details>
+<div id="32579368-9bec-4a46-9ef2-069acaa10f90" class="cell" data-tags="[]" data-execution_count="285">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>score_merged_data2 <span class="op">=</span> pd.merge(score_merged_data1,temp2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2225,8 +2250,8 @@ df2의 컬럼 : ['ID', 'Seq', 'LC_Score', 'RC_Score', 'Total Score', '학습목�
 </section>
 <section id="score_merged_date2확인" class="level3">
 <h3 class="anchored" data-anchor-id="score_merged_date2확인">(3)-10. <code>score_merged_date2</code>확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="286">
-<details>
+<div id="66bafa2a-f28d-4240-9fdc-797b6558a56d" class="cell" data-tags="[]" data-execution_count="286">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="bu">print</span>(score_merged_data2.info())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2264,14 +2289,14 @@ None</code></pre>
 <section id="개인정보-데이터df1와-토익시험-학습정보score_merged_data2-합치기" class="level3">
 <h3 class="anchored" data-anchor-id="개인정보-데이터df1와-토익시험-학습정보score_merged_data2-합치기">(4) 개인정보 데이터(<code>df1</code>)와 토익시험 학습정보(<code>score_merged_data2</code>) 합치기</h3>
 <p><code>-</code> 합친 데이터를 <code>baseline_data</code>에 할당</p>
-<div class="cell" data-tags="[]" data-execution_count="287">
-<details>
+<div id="536ae2e1-b384-46a6-8b9c-3f38c2aa098d" class="cell" data-tags="[]" data-execution_count="287">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>baseline_data <span class="op">=</span> pd.merge(df1,score_merged_data2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="288">
-<details>
+<div id="5eb25a05-61ff-493c-843b-e02aa95be01f" class="cell" data-tags="[]" data-execution_count="288">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>baseline_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2311,8 +2336,8 @@ memory usage: 78.6+ KB</code></pre>
 <ul>
 <li>‘Score_diff_total’ = ‘3st_Total_Score’ - ‘2st_Total_Score’</li>
 </ul>
-<div class="cell" data-tags="[]" data-execution_count="289">
-<details>
+<div id="b5e8be39-e828-4f3c-a5b1-7f9a2bd1b82c" class="cell" data-tags="[]" data-execution_count="289">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>baseline_data[<span class="st">"Score_diff_total"</span>] <span class="op">=</span> baseline_data[<span class="st">"3st_Total_SCcore"</span>] <span class="op">-</span> baseline_data[<span class="st">"2st_Total_SCcore"</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2320,8 +2345,8 @@ memory usage: 78.6+ KB</code></pre>
 </section>
 <section id="데이터-확인" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-확인">(5)-2. 데이터 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="290">
-<details>
+<div id="fb3ec879-5676-4f61-b551-73a684fc9166" class="cell" data-tags="[]" data-execution_count="290">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>baseline_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2363,8 +2388,8 @@ memory usage: 82.5+ KB</code></pre>
 <h2 class="anchored" data-anchor-id="데이터셋-저장하기">4. 데이터셋 저장하기</h2>
 <section id="전처리된-데이터-프레임-baseline_data를-csv파일로-저장" class="level3">
 <h3 class="anchored" data-anchor-id="전처리된-데이터-프레임-baseline_data를-csv파일로-저장">(1) 전처리된 데이터 프레임 <code>baseline_data</code>를 <code>CSV</code>파일로 저장</h3>
-<div class="cell" data-tags="[]" data-execution_count="291">
-<details>
+<div id="f41bd32d-ecfa-46e5-8e18-588793e5a12e" class="cell" data-tags="[]" data-execution_count="291">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>baseline_data.to_csv(<span class="st">"data04_baseline.csv"</span>,index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2372,8 +2397,8 @@ memory usage: 82.5+ KB</code></pre>
 </section>
 <section id="제대로-저장되었는지-확인" class="level3">
 <h3 class="anchored" data-anchor-id="제대로-저장되었는지-확인">(2) 제대로 저장되었는지 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="292">
-<details>
+<div id="161edc75-676b-49f7-ac72-ff72c81b087f" class="cell" data-tags="[]" data-execution_count="292">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>pd.read_csv(<span class="st">"data04_baseline.csv"</span>).info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2418,8 +2443,8 @@ memory usage: 82.5+ KB</code></pre>
 <h2 class="anchored" data-anchor-id="환경설정-1">1. 환경설정</h2>
 <section id="폰트설치" class="level3">
 <h3 class="anchored" data-anchor-id="폰트설치">(1) 폰트설치</h3>
-<div class="cell" data-tags="[]" data-execution_count="293">
-<details>
+<div id="304edb84-c58f-41ea-8d88-ed0d2c33f775" class="cell" data-tags="[]" data-execution_count="293">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="op">!</span>pip install matplotlib</span>
 <span id="cb51-2"><a href="#cb51-2"></a><span class="op">!</span>pip install <span class="op">--</span>upgrade matplotlib</span>
@@ -2454,8 +2479,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\rkdcj\anaconda3\envs\dx\l
 </section>
 <section id="라이브러리-불러오기" class="level3">
 <h3 class="anchored" data-anchor-id="라이브러리-불러오기">(2) 라이브러리 불러오기</h3>
-<div class="cell" data-tags="[]" data-execution_count="294">
-<details>
+<div id="0c286253-27b9-4f4c-84ee-e5b6ae13ac0a" class="cell" data-tags="[]" data-execution_count="294">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb53-2"><a href="#cb53-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -2467,8 +2492,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\rkdcj\anaconda3\envs\dx\l
 </section>
 <section id="데이터-불러오기-1" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-불러오기-1">(3)-1. 데이터 불러오기</h3>
-<div class="cell" data-tags="[]" data-execution_count="295">
-<details>
+<div id="146e769e-3b92-462f-abfc-e3f2db6de681" class="cell" data-tags="[]" data-execution_count="295">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"data04_baseline.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2476,12 +2501,13 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\rkdcj\anaconda3\envs\dx\l
 </section>
 <section id="데이터-확인-1" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-확인-1">(3)-2 데이터 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="296">
-<details>
+<div id="0db175bd-def5-4eb8-8e61-fd758269a237" class="cell" data-tags="[]" data-execution_count="296">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="296">
+<div>
 <div>
 
 
@@ -2640,11 +2666,12 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\rkdcj\anaconda3\envs\dx\l
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="열과-행확인" class="level3">
 <h3 class="anchored" data-anchor-id="열과-행확인">(3)-3. 열과 행확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="297">
-<details>
+<div id="480daf81-5ada-4f7d-8a38-d1b3bbdf29ef" class="cell" data-tags="[]" data-execution_count="297">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2655,8 +2682,8 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\rkdcj\anaconda3\envs\dx\l
 </section>
 <section id="데이터의-자료구조row-colun-not-null-type을-확인" class="level3">
 <h3 class="anchored" data-anchor-id="데이터의-자료구조row-colun-not-null-type을-확인">(3)-4. 데이터의 자료구조(Row, Colu,n, Not-null, type)을 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="298">
-<details>
+<div id="6add184e-8357-4cd8-b1d4-f795fe2b193f" class="cell" data-tags="[]" data-execution_count="298">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2694,8 +2721,8 @@ memory usage: 82.5+ KB</code></pre>
 </section>
 <section id="인덱스-확인" class="level3">
 <h3 class="anchored" data-anchor-id="인덱스-확인">(3)-5. 인덱스 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="299">
-<details>
+<div id="a984f12a-3f5c-466d-8f25-b8555cb45678" class="cell" data-tags="[]" data-execution_count="299">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>data.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2706,8 +2733,8 @@ memory usage: 82.5+ KB</code></pre>
 </section>
 <section id="컬럼명을-확인" class="level3">
 <h3 class="anchored" data-anchor-id="컬럼명을-확인">(3)-6. 컬럼명을 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="300">
-<details>
+<div id="ebb66772-bff9-48d8-8212-6bbd8d661af7" class="cell" data-tags="[]" data-execution_count="300">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2723,12 +2750,13 @@ memory usage: 82.5+ KB</code></pre>
 </section>
 <section id="상단-5행을-확인" class="level3">
 <h3 class="anchored" data-anchor-id="상단-5행을-확인">(3)-7. 상단 5행을 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="301">
-<details>
+<div id="55cd3176-228b-4c0a-951c-52b811c4d0d1" class="cell" data-tags="[]" data-execution_count="301">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>data.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="301">
+<div>
 <div>
 
 
@@ -2887,6 +2915,7 @@ memory usage: 82.5+ KB</code></pre>
 </div>
 </div>
 </div>
+</div>
 <hr>
 </section>
 </section>
@@ -2894,8 +2923,8 @@ memory usage: 82.5+ KB</code></pre>
 <h2 class="anchored" data-anchor-id="데이터프레임-탐색-개별-변수-분석">2. 데이터프레임 탐색 : 개별 변수 분석</h2>
 <section id="열별-누락값-확인" class="level3">
 <h3 class="anchored" data-anchor-id="열별-누락값-확인">(1)-1 : 열별 누락값 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="302">
-<details>
+<div id="aea96af8-af81-4ac5-bf74-e217b334eaf5" class="cell" data-tags="[]" data-execution_count="302">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>data.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2927,12 +2956,13 @@ dtype: int64</code></pre>
 </section>
 <section id="열별-통계량-요약하여-출력" class="level3">
 <h3 class="anchored" data-anchor-id="열별-통계량-요약하여-출력">(1)-2. 열별 통계량 요약하여 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="303">
-<details>
+<div id="a9cc1e1c-d491-4ea8-86b7-b6c040eb1eee" class="cell" data-tags="[]" data-execution_count="303">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="303">
+<div>
 <div>
 
 
@@ -3108,15 +3138,17 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="출력한-요약통계량을-행과-열을-바꿔서-출력" class="level3">
 <h3 class="anchored" data-anchor-id="출력한-요약통계량을-행과-열을-바꿔서-출력">(1)-3. 출력한 요약통계량을 행과 열을 바꿔서 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="304">
-<details>
+<div id="5e50d02e-e583-49b1-8c49-bf38ab1068e3" class="cell" data-tags="[]" data-execution_count="304">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>data.describe().T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="304">
+<div>
 <div>
 
 
@@ -3306,11 +3338,12 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="gender-컬럼의-값-별-개수를-확인" class="level3">
 <h3 class="anchored" data-anchor-id="gender-컬럼의-값-별-개수를-확인">(1)-4. Gender 컬럼의 값 별 개수를 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="305">
-<details>
+<div id="6fb53e8f-0eec-4663-9941-57cd0973e465" class="cell" data-tags="[]" data-execution_count="305">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>data.Gender.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -3324,14 +3357,14 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="gender-컬럼의-m-f-12로-변경" class="level3">
 <h3 class="anchored" data-anchor-id="gender-컬럼의-m-f-12로-변경">(1)-5. <code>Gender</code> 컬럼의 [‘M’, ‘F’] –&gt; [1,2]로 변경</h3>
-<div class="cell" data-tags="[]" data-execution_count="306">
-<details>
+<div id="058a77ff-1977-41cb-9d77-058759aaff3f" class="cell" data-tags="[]" data-execution_count="306">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>data.Gender <span class="op">=</span> [<span class="dv">1</span> <span class="cf">if</span> i <span class="op">==</span><span class="st">"M"</span> <span class="cf">else</span> <span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> data.Gender]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="307">
-<details>
+<div id="eb31f659-3ae9-495b-b8c2-3e4f516bd118" class="cell" data-tags="[]" data-execution_count="307">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>data.Gender.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -3342,8 +3375,8 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="gender-컬럼의-값-별-개수를-다시-확인해주세요." class="level3">
 <h3 class="anchored" data-anchor-id="gender-컬럼의-값-별-개수를-다시-확인해주세요.">(1)-6. Gender 컬럼의 값 별 개수를 다시 확인해주세요.</h3>
-<div class="cell" data-tags="[]" data-execution_count="308">
-<details>
+<div id="d9035ce5-d094-4495-a9ca-05839e01e501" class="cell" data-tags="[]" data-execution_count="308">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>data.Gender.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -3361,8 +3394,8 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="데이터-프레임의-null-데이터가-있는지-확인" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-프레임의-null-데이터가-있는지-확인">(1)-8. 데이터 프레임의 Null 데이터가 있는지 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="309">
-<details>
+<div id="0603bb8d-3d4b-4c80-9a0a-8a39655e163c" class="cell" data-tags="[]" data-execution_count="309">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>data.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -3395,8 +3428,8 @@ dtype: int64</code></pre>
 </section>
 <section id="변수-sdt-문자열-score_diff_total을-할당" class="level3">
 <h3 class="anchored" data-anchor-id="변수-sdt-문자열-score_diff_total을-할당">(2)-1. 변수 sdt 문자열 “Score_diff_total”을 할당</h3>
-<div class="cell" data-tags="[]" data-execution_count="319">
-<details>
+<div id="89de184d-416d-4703-9a7e-33cf1d8df68d" class="cell" data-tags="[]" data-execution_count="319">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>sdt  <span class="op">=</span><span class="st">"Score_diff_total"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -3404,12 +3437,13 @@ dtype: int64</code></pre>
 </section>
 <section id="score_diff_total에-대한-기술-통계-정보를-데이터-프레임의-형태로-출력" class="level3">
 <h3 class="anchored" data-anchor-id="score_diff_total에-대한-기술-통계-정보를-데이터-프레임의-형태로-출력">(2)-2. <code>Score_diff_total</code>에 대한 기술 통계 정보를 데이터 프레임의 형태로 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="323">
-<details>
+<div id="58ec6f83-7fe3-4a71-8f17-03e992b5d70f" class="cell" data-tags="[]" data-execution_count="323">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>data[[sdt]].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="323">
+<div>
 <div>
 
 
@@ -3459,15 +3493,17 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="위의-결과를-행과-열을-변환하여-출력" class="level3">
 <h3 class="anchored" data-anchor-id="위의-결과를-행과-열을-변환하여-출력">(2)-3. 위의 결과를 행과 열을 변환하여 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="325">
-<details>
+<div id="9e73e8e6-90ec-46d8-b779-2501c113ed47" class="cell" data-tags="[]" data-execution_count="325">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a>data[[sdt]].describe().T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="325">
+<div>
 <div>
 
 
@@ -3503,11 +3539,12 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="변수-by에-문자열-birth_year을-할당" class="level3">
 <h3 class="anchored" data-anchor-id="변수-by에-문자열-birth_year을-할당">(2)-4. 변수 BY에 문자열 ’Birth_Year’을 할당</h3>
-<div class="cell" data-tags="[]" data-execution_count="326">
-<details>
+<div id="2bf31fa0-6537-46c8-ba26-289b0eed1684" class="cell" data-tags="[]" data-execution_count="326">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>BY <span class="op">=</span> <span class="st">"Birth_Year"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -3515,12 +3552,13 @@ dtype: int64</code></pre>
 </section>
 <section id="birth_year열에-대한-기술-통계-정보를-행과열을-변환해-출력" class="level3">
 <h3 class="anchored" data-anchor-id="birth_year열에-대한-기술-통계-정보를-행과열을-변환해-출력">(2)-5. ’Birth_Year’열에 대한 기술 통계 정보를 행과열을 변환해 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="328">
-<details>
+<div id="17a0593c-0c33-4d8c-8899-fafc9b7f144b" class="cell" data-tags="[]" data-execution_count="328">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a>data[[BY]].describe().T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="328">
+<div>
 <div>
 
 
@@ -3556,11 +3594,12 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="data-데이터프레임의-birth_year-컬럼의-연도별-개수를-bar-차트로-그리세요." class="level3">
 <h3 class="anchored" data-anchor-id="data-데이터프레임의-birth_year-컬럼의-연도별-개수를-bar-차트로-그리세요.">(2)-6. ‘data’ 데이터프레임의 ‘Birth_Year’ 컬럼의 연도별 개수를 Bar 차트로 그리세요.</h3>
-<div class="cell" data-tags="[]" data-execution_count="369">
-<details>
+<div id="e7598a90-dc20-4bec-a038-09c68dd94fcb" class="cell" data-tags="[]" data-execution_count="369">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a>data[BY]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -3579,29 +3618,31 @@ dtype: int64</code></pre>
 Name: Birth_Year, Length: 502, dtype: int64</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="374">
-<details>
+<div id="f5ed7cde-a740-4c50-abdf-43743fa5dfba" class="cell" data-tags="[]" data-execution_count="374">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>data.groupby(BY)[[BY]].count().<span class="op">\</span></span>
 <span id="cb85-2"><a href="#cb85-2"></a>                    rename(columns <span class="op">=</span> {<span class="st">"Birth_Year"</span> : <span class="st">"Count"</span>}).<span class="op">\</span></span>
 <span id="cb85-3"><a href="#cb85-3"></a>                    reset_index().plot(kind<span class="op">=</span> <span class="st">"bar"</span>,x<span class="op">=</span><span class="st">"Birth_Year"</span>,y<span class="op">=</span><span class="st">"Count"</span>,title<span class="op">=</span>  <span class="st">"Count of Birth_Year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="374">
-<pre><code>&lt;Axes: title={'center': 'Count of Birth_Year'}, xlabel='Birth_Year'&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-24-00. MP (1)_files/figure-html/cell-60-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-24-00. MP (1)_files/figure-html/cell-60-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="데이터-타입이-object인-컬럼만-추출" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-타입이-object인-컬럼만-추출">(2)-7. 데이터 타입이 object인 컬럼만 추출</h3>
-<div class="cell" data-tags="[]" data-execution_count="408">
-<details>
+<div id="ed51140e-eb36-4047-90e0-862c80a9273d" class="cell" data-tags="[]" data-execution_count="408">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>data.select_dtypes(<span class="st">"O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>data.select_dtypes(<span class="st">"O"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="408">
+<div>
 <div>
 
 
@@ -3712,13 +3753,14 @@ Name: Birth_Year, Length: 502, dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="데이터-타입이-object-형태인-컬럼의-컬럼명만-추출해서-출력" class="level3">
 <h3 class="anchored" data-anchor-id="데이터-타입이-object-형태인-컬럼의-컬럼명만-추출해서-출력">(2)-8. 데이터 타입이 Object 형태인 컬럼의 컬럼명만 추출해서 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="416">
-<details>
+<div id="2a10789a-4743-481e-997a-2416a0fa4944" class="cell" data-tags="[]" data-execution_count="416">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>data.select_dtypes(<span class="st">"O"</span>).columns.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>data.select_dtypes(<span class="st">"O"</span>).columns.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="416">
 <pre><code>array(['학습목표', '학습방법', '강의 학습 교재 유형', '학습빈도', '취약분야 인지 여부'], dtype=object)</code></pre>
@@ -3727,12 +3769,13 @@ Name: Birth_Year, Length: 502, dtype: int64</code></pre>
 </section>
 <section id="학습목표의-값들의-빈도수를-계산하여-출력" class="level3">
 <h3 class="anchored" data-anchor-id="학습목표의-값들의-빈도수를-계산하여-출력">(2)-9. <code>학습목표의</code> 값들의 빈도수를 계산하여 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="425">
-<details>
+<div id="7689a5b3-84c3-4476-b5aa-7841661d6726" class="cell" data-tags="[]" data-execution_count="425">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a>data.select_dtypes(<span class="st">"O"</span>)[[<span class="st">"학습목표"</span>]].value_counts().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a>data.select_dtypes(<span class="st">"O"</span>)[[<span class="st">"학습목표"</span>]].value_counts().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="425">
+<div>
 <div>
 
 
@@ -3766,19 +3809,20 @@ Name: Birth_Year, Length: 502, dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="data-데이터-프레임의-전체-열과-행-개수를-출력" class="level3">
 <h3 class="anchored" data-anchor-id="data-데이터-프레임의-전체-열과-행-개수를-출력">(2)-10. <code>data</code> 데이터 프레임의 전체 열과 행 개수를 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="427">
-<details>
+<div id="f61569ea-cd6c-466b-a230-d6c36bc23aed" class="cell" data-tags="[]" data-execution_count="427">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a>r,c <span class="op">=</span> data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a>r,c <span class="op">=</span> data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="428">
-<details>
+<div id="aaa8b9ca-9951-45fd-ac9d-727b452fffc3" class="cell" data-tags="[]" data-execution_count="428">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a><span class="bu">print</span>(<span class="ss">f"전체 행의 수 : </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">, 전체 열의 수 : </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a><span class="bu">print</span>(<span class="ss">f"전체 행의 수 : </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">, 전체 열의 수 : </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>전체 행의 수 : 502, 전체 열의 수 : 21</code></pre>
@@ -3787,24 +3831,25 @@ Name: Birth_Year, Length: 502, dtype: int64</code></pre>
 </section>
 <section id="변수-학습목표의-값들의-빈도수를-전체-데이터의-개수로-나누어서-해당-값들이-전체-데이터에서-차지하는-비율을-구하기" class="level3">
 <h3 class="anchored" data-anchor-id="변수-학습목표의-값들의-빈도수를-전체-데이터의-개수로-나누어서-해당-값들이-전체-데이터에서-차지하는-비율을-구하기">(2)-10. 변수 ’학습목표’의 값들의 빈도수를 전체 데이터의 개수로 나누어서 해당 값들이 전체 데이터에서 차지하는 비율을 구하기</h3>
-<div class="cell" data-tags="[]" data-execution_count="441">
-<details>
+<div id="91dcd412-39a9-4752-b00d-2c484a11236e" class="cell" data-tags="[]" data-execution_count="441">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a>temp <span class="op">=</span> data.select_dtypes(<span class="st">"O"</span>)[[<span class="st">"학습목표"</span>]].value_counts().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>temp <span class="op">=</span> data.select_dtypes(<span class="st">"O"</span>)[[<span class="st">"학습목표"</span>]].value_counts().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="444">
-<details>
+<div id="71150e54-ac1c-4507-ae92-9e3dfe814375" class="cell" data-tags="[]" data-execution_count="444">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>temp[<span class="st">"비율(%)"</span>] <span class="op">=</span> <span class="bu">round</span>(temp[<span class="st">"count"</span>]<span class="op">/</span>r<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a>temp[<span class="st">"비율(%)"</span>] <span class="op">=</span> <span class="bu">round</span>(temp[<span class="st">"count"</span>]<span class="op">/</span>r<span class="op">*</span><span class="dv">100</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="446">
-<details>
+<div id="6c4f7cab-966b-44ce-b147-e3ebd340b2d3" class="cell" data-tags="[]" data-execution_count="446">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a>temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="446">
+<div>
 <div>
 
 
@@ -3842,36 +3887,39 @@ Name: Birth_Year, Length: 502, dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="학습목표-열에-대한-bar-차트를-확인" class="level3">
 <h3 class="anchored" data-anchor-id="학습목표-열에-대한-bar-차트를-확인">(2)-11. <code>학습목표</code> 열에 대한 Bar 차트를 확인</h3>
-<div class="cell" data-tags="[]" data-execution_count="448">
-<details>
+<div id="77ad56fa-b9df-4f25-8e2b-a1cdbddb7e44" class="cell" data-tags="[]" data-execution_count="448">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a>temp.plot(kind<span class="op">=</span> <span class="st">"bar"</span>, x<span class="op">=</span> <span class="st">"학습목표"</span>,y<span class="op">=</span><span class="st">"비율(%)"</span>, title <span class="op">=</span><span class="st">"토익 학습 목표 비율"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a>temp.plot(kind<span class="op">=</span> <span class="st">"bar"</span>, x<span class="op">=</span> <span class="st">"학습목표"</span>,y<span class="op">=</span><span class="st">"비율(%)"</span>, title <span class="op">=</span><span class="st">"토익 학습 목표 비율"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="448">
-<pre><code>&lt;Axes: title={'center': '토익 학습 목표 비율'}, xlabel='학습목표'&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-24-00. MP (1)_files/figure-html/cell-69-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-24-00. MP (1)_files/figure-html/cell-69-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="data-데이터-프레임에서-숫자형-컬럼에-대하여-검색" class="level3">
 <h3 class="anchored" data-anchor-id="data-데이터-프레임에서-숫자형-컬럼에-대하여-검색">(2)-12. <code>data</code> 데이터 프레임에서 숫자형 컬럼에 대하여 검색</h3>
-<div class="cell" data-tags="[]" data-execution_count="452">
-<details>
+<div id="720e27ce-2b53-4505-a12c-646607c7f4ce" class="cell" data-tags="[]" data-execution_count="452">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a><span class="co">#data.info()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a><span class="co">#data.info()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="451">
-<details>
+<div id="d9e5e7c2-6d2d-4593-9912-cb24e7f3e2d6" class="cell" data-tags="[]" data-execution_count="451">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a>data.select_dtypes(include<span class="op">=</span> [<span class="st">"float64"</span>, <span class="st">"int64"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a>data.select_dtypes(include<span class="op">=</span> [<span class="st">"float64"</span>, <span class="st">"int64"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="451">
+<div>
 <div>
 
 
@@ -4114,27 +4162,29 @@ Name: Birth_Year, Length: 502, dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="변수-강의-학습-교재-유형의-값들의-빈도수-비율을-계산해서-출력" class="level3">
 <h3 class="anchored" data-anchor-id="변수-강의-학습-교재-유형의-값들의-빈도수-비율을-계산해서-출력">(2)-13. 변수 ’강의 학습 교재 유형’의 값들의 빈도수, 비율을 계산해서 출력</h3>
-<div class="cell" data-tags="[]" data-execution_count="462">
-<details>
+<div id="096b5922-eafc-4af0-b747-07d263140c24" class="cell" data-tags="[]" data-execution_count="462">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a>temp2 <span class="op">=</span> data[[<span class="st">"강의 학습 교재 유형"</span>]].value_counts().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a>temp2 <span class="op">=</span> data[[<span class="st">"강의 학습 교재 유형"</span>]].value_counts().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="463">
-<details>
+<div id="5f3f874c-9c69-4990-8d11-7732e27d565a" class="cell" data-tags="[]" data-execution_count="463">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1"></a>temp2[<span class="st">"비율(%)"</span>] <span class="op">=</span> temp2[<span class="st">"count"</span>]<span class="op">/</span>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a>temp2[<span class="st">"비율(%)"</span>] <span class="op">=</span> temp2[<span class="st">"count"</span>]<span class="op">/</span>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="464">
-<details>
+<div id="b771c5a4-b8f8-4188-a58a-1e27cf8fa179" class="cell" data-tags="[]" data-execution_count="464">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1"></a>temp2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a>temp2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="464">
+<div>
 <div>
 
 
@@ -4178,22 +4228,23 @@ Name: Birth_Year, Length: 502, dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="취약분야-인지-여부-문자열의-값을-알고-있음은-1-알고-있지-않음은-0으로-변경" class="level3">
 <h3 class="anchored" data-anchor-id="취약분야-인지-여부-문자열의-값을-알고-있음은-1-알고-있지-않음은-0으로-변경">(2)-14. <code>취약분야 인지 여부</code> 문자열의 값을 <code>알고 있음</code>은 <code>1</code>, <code>알고 있지 않음</code>은 <code>0</code>으로 변경</h3>
-<div class="cell" data-tags="[]" data-execution_count="469">
-<details>
+<div id="9459ae4c-8678-4dda-9f89-207f3603727c" class="cell" data-tags="[]" data-execution_count="469">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a>data[<span class="st">"취약분야 인지 여부"</span>].replace(<span class="st">"알고 있음"</span>,<span class="st">"1"</span>).replace(<span class="st">"알고 있지 않음"</span>,<span class="st">"0"</span>).unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1"></a>data[<span class="st">"취약분야 인지 여부"</span>].replace(<span class="st">"알고 있음"</span>,<span class="st">"1"</span>).replace(<span class="st">"알고 있지 않음"</span>,<span class="st">"0"</span>).unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="469">
 <pre><code>array(['1', '0'], dtype=object)</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="470">
-<details>
+<div id="fbea7b98-de02-45cf-b4cd-fc4dfd1a7981" class="cell" data-tags="[]" data-execution_count="470">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a>data[<span class="st">"취약분야 인지 여부"</span>] <span class="op">=</span> data[<span class="st">"취약분야 인지 여부"</span>].replace(<span class="st">"알고 있음"</span>,<span class="st">"1"</span>).replace(<span class="st">"알고 있지 않음"</span>,<span class="st">"0"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a>data[<span class="st">"취약분야 인지 여부"</span>] <span class="op">=</span> data[<span class="st">"취약분야 인지 여부"</span>].replace(<span class="st">"알고 있음"</span>,<span class="st">"1"</span>).replace(<span class="st">"알고 있지 않음"</span>,<span class="st">"0"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <hr>
@@ -4201,16 +4252,16 @@ Name: Birth_Year, Length: 502, dtype: int64</code></pre>
 </section>
 <section id="데이터-저장" class="level2">
 <h2 class="anchored" data-anchor-id="데이터-저장">3. 데이터 저장</h2>
-<div class="cell" data-tags="[]" data-execution_count="471">
-<details>
+<div id="f033c84b-2772-4dab-a0de-72124fc60ab0" class="cell" data-tags="[]" data-execution_count="471">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a>data.to_csv(<span class="st">"data04_featured.csv"</span>,index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1"></a>data.to_csv(<span class="st">"data04_featured.csv"</span>,index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="473">
-<details>
+<div id="10efd967-2a6d-4b44-8c5f-beea8ae11051" class="cell" data-tags="[]" data-execution_count="473">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>pd.read_csv(<span class="st">"data04_featured.csv"</span>).info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a>pd.read_csv(<span class="st">"data04_featured.csv"</span>).info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -4328,10 +4379,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -4341,8 +4409,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -4354,7 +4431,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -4398,6 +4598,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -4423,6 +4624,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -4484,17 +4711,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/DX/BP/Extra/2024-01-15-00. CA (1).html" class="pagination-link">
+      <a href="../../../posts/DX/BP/Extra/2024-01-15-00. CA (1).html" class="pagination-link" aria-label="00. CA (1)">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">00. CA (1)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/EX/2023-10-30-00. Churn.html" class="pagination-link">
+      <a href="../../../posts/EX/2023-10-30-00. Churn.html" class="pagination-link" aria-label="00. Churn">
         <span class="nav-page-text">00. Churn</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

@@ -4866,8 +4866,19 @@
     "objectID": "about.html#contact",
     "href": "about.html#contact",
     "title": "About me",
-    "section": "contact",
-    "text": "contact\n\nE-mail : rkdcjf8232@gmail.com",
+    "section": "Contact",
+    "text": "Contact\n\nE-mail : rkdcjf8232@gmail.com",
+    "crumbs": [
+      "Lecture",
+      "**About me**"
+    ]
+  },
+  {
+    "objectID": "about.html#interest",
+    "href": "about.html#interest",
+    "title": "About me",
+    "section": "Interest",
+    "text": "Interest\n\nData Science\nMixtape",
     "crumbs": [
       "Lecture",
       "**About me**"
@@ -4878,7 +4889,7 @@
     "href": "about.html#education",
     "title": "About me",
     "section": "Education",
-    "text": "Education\n\n전북대학교 통계학 학사(부전공 : 컴퓨터공학) | 2015.03 ~ 2021.02\n전북대학교 통계학 석사 | 2021.03 ~ 2023.02",
+    "text": "Education\n\n전북대학교\n\n통계학(2015. 03 ~ 2021. 02, 학사), 컴퓨터공학(부)\n통계학(2021. 03 ~ 2023. 02, 석사)",
     "crumbs": [
       "Lecture",
       "**About me**"
@@ -4889,7 +4900,7 @@
     "href": "about.html#certificate",
     "title": "About me",
     "section": "Certificate",
-    "text": "Certificate\n\n사회조사분석사 2급\n데이터분석준전문가(ADsP)\nAICE Associate",
+    "text": "Certificate\n\n사회조사분석사 2급\n데이터분석준전문가(ADsP)\nAICE Associate\nToeic Speaking IH(140)",
     "crumbs": [
       "Lecture",
       "**About me**"
@@ -4900,7 +4911,7 @@
     "href": "about.html#skill",
     "title": "About me",
     "section": "Skill",
-    "text": "Skill\n\nR ⭐⭐⭐⭐\nPython ⭐⭐⭐⭐\nEXCEL ⭐⭐⭐⭐\nSPSS ⭐⭐⭐⭐\nSQL ⭐⭐⭐\nJAVA, C ⭐⭐",
+    "text": "Skill\n\nR ⭐⭐⭐⭐\nPython ⭐⭐⭐⭐\nEXCEL ⭐⭐⭐⭐\nSPSS ⭐⭐⭐⭐",
     "crumbs": [
       "Lecture",
       "**About me**"
@@ -4911,7 +4922,7 @@
     "href": "about.html#extracurricular-activities",
     "title": "About me",
     "section": "Extracurricular Activities",
-    "text": "Extracurricular Activities\n\n국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\nKT AIVLE School DX Consultant Track | KT | 2023. 08. 08 ~ 2024. 01. 25",
+    "text": "Extracurricular Activities\n\n지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n빅데이터 혁신공유대학사업 서포터즈 | 전북대학교 빅데이터 현신공유대학사업 | 2021. 07. 01 ~ 2021. 10. 31\nKT AIVLE School DX Consultant Track | KT | 2023. 08. 08 ~ 2024. 01. 25",
     "crumbs": [
       "Lecture",
       "**About me**"
@@ -4929,33 +4940,55 @@
     ]
   },
   {
-    "objectID": "about.html#awards",
-    "href": "about.html#awards",
+    "objectID": "about.html#lecture",
+    "href": "about.html#lecture",
     "title": "About me",
-    "section": "Awards",
-    "text": "Awards\n\n학회장상 | 한국통계학회 | 2023. 02. 22\nAIVLE Big Project Practical | KT | 2024. 01. 25",
+    "section": "1. Lecture",
+    "text": "1. Lecture\n\nR for Data Science\nSpecial Topics in Data Visualization\nIntroduction to Python\nSpecial Topics in Big Data Analysis\nSpecial Topics in Machine Learning\nSpecial Topics in Time Series Analysis\nTableau Practice",
     "crumbs": [
       "Lecture",
       "**About me**"
     ]
   },
   {
-    "objectID": "about.html#interest",
-    "href": "about.html#interest",
+    "objectID": "about.html#aivle-school",
+    "href": "about.html#aivle-school",
     "title": "About me",
-    "section": "Interest",
-    "text": "Interest\n\nNLP\nAction Recognition, Object Detection\nData Science\nGrowth Hacking",
+    "section": "2. AIVLE SCHOOL",
+    "text": "2. AIVLE SCHOOL\n\nDX Consultant Education",
     "crumbs": [
       "Lecture",
       "**About me**"
     ]
   },
   {
-    "objectID": "about.html#my-blog",
-    "href": "about.html#my-blog",
+    "objectID": "about.html#projects",
+    "href": "about.html#projects",
     "title": "About me",
-    "section": "My blog",
-    "text": "My blog\n 1. Lecture\n\nR for Data Science\nSpecial Topics in Data Visualization\nIntroduction to Python\nSpecial Topics in Big Data Analysis\nSpecial Topics in Machine Learning\n\n 2. Tableau\n\nTableau Practice\n\n 3. DX\n\nDX Consultant Education\n\n 4. Study\n\nISLP Study\nAlgorithm Study",
+    "section": "3. Projects",
+    "text": "3. Projects\n\nmini project1 : Fine Watch, 계단오르기 행동감지 모델링\nmini project2 : Fine Apple, 군집분석을 통한 고객 segment 개발\nmini project3 : AIVLE, 1:1 문의유형 자동분류 모델링 및 교육 인사이트 도출\nmini project4 : CCTV 차량인식, 실시간 신호등 제어 솔루션\nmini project5 : 응급환자, 119 구급대원의 빠른병원선정을 위한 솔루션\nbig project1 : Do Nation, 재난 기부 플랫폼 구축\nbig project2 : AI PORT, 지능형 CCTV 기반 보안관리 솔루션",
+    "crumbs": [
+      "Lecture",
+      "**About me**"
+    ]
+  },
+  {
+    "objectID": "about.html#teaching",
+    "href": "about.html#teaching",
+    "title": "About me",
+    "section": "4. Teaching",
+    "text": "4. Teaching\n\n2024\n\nPrinciple of Business Analytics",
+    "crumbs": [
+      "Lecture",
+      "**About me**"
+    ]
+  },
+  {
+    "objectID": "about.html#etc",
+    "href": "about.html#etc",
+    "title": "About me",
+    "section": "5. etc",
+    "text": "5. etc\n\nISLP, An introduction to statistical learning with python\nAlgorithm\nDoodle…Doodle….",
     "crumbs": [
       "Lecture",
       "**About me**"
